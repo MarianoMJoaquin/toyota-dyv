@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tab Pagination with Sliders</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"></script>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto">
+        <!-- Tab Navigation -->
+        <ul class="flex justify-center space-x-4 mb-8 border-b">
+            <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-blue-500" id="autos-tab">Autos</li>
+            <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-blue-500" id="pickups-tab">Pick-Ups</li>
+            <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-blue-500" id="cross-tab">Cross</li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div id="tab-content">
+            <div id="autos" class="swiper-container">
+                <div class="swiper-wrapper">
+                    <!-- Slides for Autos -->
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 1</div>
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 2</div>
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 3</div>
+                </div>
+            </div>
+
+            <div id="pickups" class="swiper-container hidden">
+                <div class="swiper-wrapper">
+                    <!-- Slides for Pick-Ups -->
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Pick-Up 1</div>
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Pick-Up 2</div>
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Pick-Up 3</div>
+                </div>
+            </div>
+
+            <div id="cross" class="swiper-container hidden">
+                <div class="swiper-wrapper">
+                    <!-- Slides for Cross -->
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 1</div>
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 2</div>
+                    <div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // Initialize Swiper
+        var swiperAutos = new Swiper('#autos', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true,
+        });
+
+        var swiperPickups = new Swiper('#pickups', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true,
+        });
+
+        var swiperCross = new Swiper('#cross', {
+            slidesPerView: 1,
+            spaceBetween: 10,
+            loop: true,
+        });
+
+        // Tab functionality
+        document.getElementById('autos-tab').addEventListener('click', function() {
+            document.getElementById('autos').classList.remove('hidden');
+            document.getElementById('pickups').classList.add('hidden');
+            document.getElementById('cross').classList.add('hidden');
+        });
+
+        document.getElementById('pickups-tab').addEventListener('click', function() {
+            document.getElementById('autos').classList.add('hidden');
+            document.getElementById('pickups').classList.remove('hidden');
+            document.getElementById('cross').classList.add('hidden');
+        });
+
+        document.getElementById('cross-tab').addEventListener('click', function() {
+            document.getElementById('autos').classList.add('hidden');
+            document.getElementById('pickups').classList.add('hidden');
+            document.getElementById('cross').classList.remove('hidden');
+        });
+    </script>
+</body>
+</html>
