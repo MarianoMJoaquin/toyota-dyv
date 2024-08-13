@@ -1036,9 +1036,7 @@ html {
   }
   */
   /*========== SERVICES ==========*/
-  .container .services__container{
-    max-width: 1450px; 
-  }
+  
   
   .services__container{
     row-gap: 2.5rem;
@@ -1077,8 +1075,8 @@ html {
       height: 70px;
     }
     .services__title{
-      font-size: 1.5rem;
-      margin: 2rem;
+      
+      margin-left: 1rem;
     }
     
   }
@@ -1086,6 +1084,7 @@ html {
     font-size: 2rem;
     color: black;
     font-family: 'Toyota-Type-Book', sans-serif;
+    font-weight: 600;
     transition: all 0.2s;
   }
 
