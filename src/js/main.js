@@ -5914,32 +5914,7 @@
   
   addEventListener('resize', removeStyle)*/
   
-  /*=============== SWIPER JS ===============*/
-  let swiperCards = new Swiper(".card__content", {
-    loop: true,
-    spaceBetween: 32,
-    grabCursor: true,
-  
-    pagination: {
-      el: ".swiper-pagination",
-      clickable: true,
-      dynamicBullets: true,
-    },
-  
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  
-    breakpoints:{
-      600: {
-        slidesPerView: 2,
-      },
-      968: {
-        slidesPerView: 3,
-      },
-    },
-  });
+
   
   /*=============== SHOW MENU ===============*/
   const showMenu = (toggleId, navId) => {
@@ -6013,3 +5988,12 @@
   }
   
   addEventListener('resize', removeStyle)
+/*Loader */
+  /*window.addEventListener("load", function() {
+    document.querySelector(".loader-wrapper").style.transition = "opacity 0.6s";
+    document.querySelector(".loader-wrapper").style.opacity = 0;
+    setTimeout(function() {
+        document.querySelector(".loader-wrapper").style.display = "none";
+    }, 600); // 600ms corresponds to "slow" in jQuery
+});*/
+
