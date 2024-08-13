@@ -176,8 +176,98 @@
         <!--=============== NAV MENU ===============-->
         <div class="nav__menu" id="nav-menu">
             <ul class="nav__list">
+                
+                <li class="dropdown__item">                      
+                    <div class="nav__link dropdown__button">
+                        Modelos <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                    </div>
+
+                    <div class="dropdown__container">
+                        <div class="dropdown__content">
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-car-fill"></i>
+                                </div>
+                                <span class="dropdown__title">Autos</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Yaris Hatchback</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Yaris Sedán</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Corolla</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-roadster-fill"></i>
+                                </div>
+
+                                <span class="dropdown__title">SUV</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Development with Flutter</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Web development with React</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Backend development expert</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-book-mark-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Careers</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Web development</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Applications development</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">UI/UX design</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Informatic security</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                                <div class="dropdown__icon">
+                                    <i class="ri-file-paper-2-line"></i>
+                                </div>
+
+                                <span class="dropdown__title">Certifications</span>
+
+                                <ul class="dropdown__list">
+                                    <li>
+                                        <a href="#" class="dropdown__link">Course certificates</a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link">Free certifications</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+
                 <li>
-                    <a href="#" class="nav__link">Home</a>
+                    <a href="#" class="nav__link">Modelos</a>
                 </li>
 
                 <!--=============== DROPDOWN 1 ===============-->
@@ -403,7 +493,7 @@
   --header-height: 3.5rem;
   /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
-  --first-color: hsl(220, 68%, 54%);
+  --first-color: #eb0a1e;
   --first-color-lighten: hsl(220, 68%, 97%);
   --title-color: black;
   --text-color: hsl(220, 12%, 45%);
@@ -572,6 +662,7 @@ a {
 .dropdown__group {
   padding-left: 2.5rem;
   row-gap: 0.5rem;
+  border-right: 2px solid var(--first-color-lighten);
 }
 .dropdown__group:first-child {
   margin-top: 1.25rem;
@@ -590,6 +681,10 @@ a {
 }
 .dropdown__list {
   row-gap: 0.25rem;
+  padding-right: 2.5rem;
+}
+.dropdown__group:last-child {
+  border: none;
 }
 .dropdown__link {
   font-size: var(--smaller-font-size);
