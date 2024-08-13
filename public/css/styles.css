@@ -123,8 +123,8 @@ html {
     display: inline-flex;
     visibility: hidden;
     opacity: 0;
-    width: 5rem;
-    height: 5rem;
+    width: 3.5rem;
+    height: 3.5rem;
     border-radius: 50%;
     background-color: rgba(255, 0, 0, 0.7);
     -webkit-box-pack: center;
