@@ -546,7 +546,7 @@ import srcImage6 from "../assets/images/hilux_cabin_chasis_dx_4x2_lateral_218_a5
   :root {
     --normal-font-size: 2rem;
     --small-font-size: 1.5rem;
-    --smaller-font-size: 1rem;
+    --smaller-font-size: 1.2rem;
   }
 }
 
@@ -646,6 +646,7 @@ a {
   justify-content: space-between;
   align-items: center;
   transition: background-color 0.3s;
+  font-size: var(--smaller-font-size);
 }
 .nav__link:hover {
   background-color: var(--first-color-lighten);
@@ -674,7 +675,7 @@ a {
   cursor: pointer;
 }
 .dropdown__link img {
-    width: 20rem;
+    width: 12rem;
     transition: all 0.2s ease;
 }
 .dropdown__arrow {
@@ -763,6 +764,7 @@ a {
     display: flex;
   }
   .nav__link {
+    font-size: var(--smaller-font-size);
     padding: 0;
   }
   .nav__link:hover {
@@ -790,6 +792,7 @@ a {
     column-gap: 6rem;
     max-width: 1120px;
     margin-inline: auto;
+    
   }
   .dropdown__group {
     justify-self: center;
@@ -816,19 +819,17 @@ a {
     font-size: 2rem;
   }
   .dropdown__title {
-    font-size: var(--normal-font-size);
+    font-size: var(--small-font-size);
   }
   .dropdown__link {
-    font-size: var(--small-font-size);
+    font-size: var(--smaller-font-size);
   }
   .dropdown__link:hover {
     color: var(--first-color);
     transition: all 0.2s ease;
   }
   .dropdown__link img {
-    margin: 0;
-    padding: 0;
-    width: 20rem;
+    width: 10rem;
     transition: all 0.2s ease;
   }
   .dropdown__link:hover img {
