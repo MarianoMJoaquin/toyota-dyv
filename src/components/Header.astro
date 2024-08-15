@@ -14,6 +14,10 @@ import srcImage10 from "../assets/images/copia10.webp"
 import srcImage11 from "../assets/images/copia11.webp"
 import srcImage12 from "../assets/images/copia12.webp"
 import srcImage13 from "../assets/images/copia13.webp"
+import srcImage14 from "../assets/images/google.svg"
+import srcImage15 from "../assets/images/apple.svg"
+import srcImage16 from "../assets/images/kinto-fleet.png"
+import srcImage17 from "../assets/images/kinto-personal.png"
 
 ---
 
@@ -327,11 +331,6 @@ import srcImage13 from "../assets/images/copia13.webp"
                                             Ver todos los modelos <i class="ri-arrow-right-s-line"></i>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link inline-block" >
-                                            Ver modelos usados <i class="ri-arrow-right-s-line"></i>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -339,93 +338,67 @@ import srcImage13 from "../assets/images/copia13.webp"
                 </li>
 
                 <li>
-                    <a href="#" class="nav__link">Modelos</a>
+                    <a href="#" class="nav__link">Toyota Plan</a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav__link">Usados</a>
                 </li>
 
                 <!--=============== DROPDOWN 1 ===============-->
                 <li class="dropdown__item">                      
                     <div class="nav__link dropdown__button">
-                        Discover <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        Kinto <i class="ri-arrow-down-s-line dropdown__arrow"></i>
                     </div>
 
                     <div class="dropdown__container">
                         <div class="dropdown__content">
                             <div class="dropdown__group">
-                                <div class="dropdown__icon">
-                                    <i class="ri-flashlight-line"></i>
+                                <div class="dropdown__icon_kinto">
+                                    <i class="ri-smartphone-line"></i>
                                 </div>
-
-                                <span class="dropdown__title">Most viewed courses</span>
-
-                                <ul class="dropdown__list">
+                                <span class="dropdown__title_kinto">Kinto Share</span>
+                                <p class="dropdown_text pr-12">Descargá la app, registrate y reservá el modelo que quieras.</p>
+                                <ul class="dropdown__list_kinto">
                                     <li>
-                                        <a href="#" class="dropdown__link">HTML for beginners</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link">Advanced CSS</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link">JavaScript OOP</a>
+                                        <a href="#" class="dropdown__link">
+                                            <Image src={srcImage14} format="avif" alt=""></Image>
+                                        </a>
+                                        <a href="#" class="dropdown__link">
+                                            <Image src={srcImage15} format="avif" alt=""></Image>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="dropdown__group">
-                                <div class="dropdown__icon">
-                                    <i class="ri-heart-3-line"></i>
+                                <div class="dropdown__icon_kinto">
+                                    <Image src={srcImage16} format="avif" alt=""></Image>
                                 </div>
 
-                                <span class="dropdown__title">Popular courses</span>
-
+                                <span class="dropdown__title_kinto">Kinto One Fleet</span>
+                                <p class="dropdown_text pr-12">Busca ofrecerle a tu empresa el alquiler de vehículos</p>
                                 <ul class="dropdown__list">
                                     <li>
-                                        <a href="#" class="dropdown__link">Development with Flutter</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link">Web development with React</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link">Backend development expert</a>
+                                        <a href="#" class="dropdown__link inline-block">
+                                            Conocer más <i class="ri-arrow-right-s-line"></i>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
 
                             <div class="dropdown__group">
-                                <div class="dropdown__icon">
-                                    <i class="ri-book-mark-line"></i>
+                                <div class="dropdown__icon_kinto">
+                                    <Image src={srcImage17} format="avif" alt=""></Image>
                                 </div>
 
-                                <span class="dropdown__title">Careers</span>
-
+                                <span class="dropdown__title_kinto">Kinto One Personal</span>
+                                <p class="dropdown_text">Alquiler de vehículos bajo la modalidad de suscripción mensual.</p>
                                 <ul class="dropdown__list">
                                     <li>
-                                        <a href="#" class="dropdown__link">Web development</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link">Applications development</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link">UI/UX design</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link">Informatic security</a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="dropdown__group">
-                                <div class="dropdown__icon">
-                                    <i class="ri-file-paper-2-line"></i>
-                                </div>
-
-                                <span class="dropdown__title">Certifications</span>
-
-                                <ul class="dropdown__list">
-                                    <li>
-                                        <a href="#" class="dropdown__link">Course certificates</a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link">Free certifications</a>
+                                        <a href="#" class="dropdown__link inline-block">
+                                            Conocer más <i class="ri-arrow-right-s-line"></i>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
@@ -570,6 +543,7 @@ import srcImage13 from "../assets/images/copia13.webp"
   --title-color: black;
   --text-color: hsl(220, 12%, 45%);
   --body-color: hsl(220, 100%, 99%);
+  --kinto-color: #00708d;
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
   
@@ -750,12 +724,25 @@ a {
   font-size: 1.25rem;
   color: var(--first-color);
 }
-.dropdown__title {
+.dropdown__icon_kinto i {
+  font-size: 1.25rem;
+  color: var(--kinto-color);
+}
+.dropdown__icon_kinto img {
+    width: 1.7rem;
+    height: 1.7rem;
+    object-fit: cover;
+}
+.dropdown__title,
+.dropdown__title_kinto {
   font-size: var(--small-font-size);
   font-weight: var(--font-semi-bold);
   color: var(--title-color);
   width: max-content;
   border-bottom: solid 2px #eb0a1e;
+}
+.dropdown__title_kinto {
+  border-bottom: solid 2px var(--kinto-color);
 }
 .dropdown__list {
   row-gap: 2rem;
@@ -772,9 +759,14 @@ a {
   justify-content: center;
 }
 .dropdown__link:hover {
-  color: var(--title-color);
+  color: var(--title-color); 
 }
 
+.dropdown_text{
+    font-size: 1rem;
+    font-weight: var(--font-medium);
+    color: var(--title-color);
+}
 /* Rotate dropdown icon */
 .show-dropdown .dropdown__arrow {
   transform: rotate(180deg);
@@ -850,7 +842,8 @@ a {
   .dropdown__list {
     row-gap: 0.75rem;
   }
-  .dropdown__icon {
+  .dropdown__icon,
+  .dropdown__icon_kinto {
     width: 60px;
     height: 60px;
     background-color: var(--first-color-lighten);
@@ -862,6 +855,14 @@ a {
   .dropdown__icon i {
     font-size: 2rem;
   }
+  .dropdown__icon_kinto i {
+    font-size: 2rem;
+}
+    .dropdown__icon_kinto img {
+        width: 2.5rem;
+        height: 2.5rem;
+        object-fit: cover;
+    }   
   .dropdown__title {;
     width: max-content;
     border-bottom: solid 2px #eb0a1e;
