@@ -406,10 +406,17 @@ import srcImage17 from "../assets/images/kinto-personal.png"
                     </div>
                 </li>
 
+                <li>
+                    <a href="#" class="nav__link">Financiación</a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav__link">Seguros</a>
+                </li>
                 <!--=============== DROPDOWN 2 ===============-->
                 <li class="dropdown__item">
                     <div class="nav__link dropdown__button">
-                        Resources <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        Posventa <i class="ri-arrow-down-s-line dropdown__arrow"></i>
                     </div>
 
                     <div class="dropdown__container">
@@ -474,14 +481,10 @@ import srcImage17 from "../assets/images/kinto-personal.png"
                     </div>
                 </li>
 
-                <li>
-                    <a href="#" class="nav__link">Pricing</a>
-                </li>
-
                 <!--=============== DROPDOWN 3 ===============-->
                 <li class="dropdown__item">                        
                     <div class="nav__link dropdown__button">
-                        Company <i class="ri-arrow-down-s-line dropdown__arrow"></i>
+                        Empresa <i class="ri-arrow-down-s-line dropdown__arrow"></i>
                     </div>
 
                     <div class="dropdown__container">
@@ -524,6 +527,10 @@ import srcImage17 from "../assets/images/kinto-personal.png"
                             </div>
                         </div>
                     </div>
+                </li>
+
+                <li>
+                    <a href="#" class="nav__link">Contacto</a>
                 </li>
             </ul>
         </div>
@@ -799,7 +806,7 @@ a {
     display: flex;
   }
   .nav__link {
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding: 0;
   }
   .nav__link:hover {
@@ -824,10 +831,10 @@ a {
   }
   .dropdown__content {
     grid-template-columns: repeat(4, max-content);
-    column-gap: 6rem;
+    /*column-gap: 6rem;*/
     max-width: 1120px;
     margin-inline: auto;
-    justify-content: center;
+    justify-content: space-between;
   }
   .dropdown__group {
     justify-self: center;
