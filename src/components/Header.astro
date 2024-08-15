@@ -323,7 +323,7 @@ import srcImage13 from "../assets/images/copia13.webp"
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" class="dropdown__link mt-10">
+                                        <a href="#" class="dropdown__link mt-10" >
                                             Ver todos los modelos <i class="ri-arrow-right-line"></i>
                                         </a>
                                     </li>
@@ -734,7 +734,6 @@ a {
 .dropdown__group {
   padding-left: 2.5rem;
   row-gap: 0.5rem;
-  border-right: 2px solid var(--first-color-lighten);
 }
 .dropdown__group:first-child {
   margin-top: 1.25rem;
@@ -765,6 +764,7 @@ a {
   font-weight: var(--font-medium);
   color: var(--text-color);
   transition: color 0.3s;
+  justify-content: center;
 }
 .dropdown__link:hover {
   color: var(--title-color);
@@ -827,7 +827,7 @@ a {
   }
   .dropdown__content {
     grid-template-columns: repeat(4, max-content);
-    column-gap: 6rem;
+    /*column-gap: 6rem;*/
     max-width: 1120px;
     margin-inline: auto;
     justify-content: space-between;
