@@ -327,6 +327,11 @@ import srcImage13 from "../assets/images/copia13.webp"
                                             Ver todos los modelos <i class="ri-arrow-right-s-line"></i>
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="#" class="dropdown__link inline-block" >
+                                            Ver usados <i class="ri-arrow-right-s-line"></i>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -827,16 +832,17 @@ a {
   }
   .dropdown__content {
     grid-template-columns: repeat(4, max-content);
-    /*column-gap: 6rem;*/
+    column-gap: 6rem;
     max-width: 1120px;
     margin-inline: auto;
-    justify-content: space-between;
+    justify-content: center;
   }
   .dropdown__group {
     justify-self: center;
     padding: 4rem 0;
     align-content: baseline;
     row-gap: 1.25rem;
+    border-right: solid 1px var(--first-color-lighten);
   }
   .dropdown__group:first-child, .dropdown__group:last-child {
     margin: 0;
