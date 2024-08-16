@@ -627,6 +627,9 @@ html {
     .slider__item-title span {
       font-size: 1rem;
     }
+    .slider__item-btn {
+      bottom: 1.8rem;
+    }
   }
   @media (max-width: 425px) {
     .slider__item-btn {
