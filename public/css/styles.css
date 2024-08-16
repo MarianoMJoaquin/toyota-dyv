@@ -616,6 +616,7 @@ html {
     .slider__arrow {
       width: 2rem;
       height: 2rem;
+      display: none;
     }
     .slider__arrow img {
       width: 1.8rem;
