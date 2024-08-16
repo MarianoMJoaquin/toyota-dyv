@@ -831,17 +831,20 @@ a {
   }
   .dropdown__content {
     grid-template-columns: repeat(4, max-content);
-    /*column-gap: 6rem;*/
+    column-gap: 6rem;
     max-width: 1120px;
     margin-inline: auto;
-    justify-content: space-between;
+    justify-content: center;
   }
   .dropdown__group {
     justify-self: center;
-    padding: 3rem 1.5rem;
+    padding: 3rem 1rem;
     align-content: baseline;
     row-gap: 1.25rem;
     border-right: solid 1px var(--first-color-lighten);
+  }
+  .dropdown_text {
+    width: 20rem;
   }
   .dropdown__group:first-child, .dropdown__group:last-child {
     margin: 0;
