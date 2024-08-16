@@ -631,7 +631,7 @@ html {
       bottom: 1.8rem;
     }
   }
-  @media (max-width: 425px) {
+  @media (max-width: 425px) { /*Dispositivos móviles asta 425px de anco, mas de 425px de anco no se aplican los estilos los estilos*/
     .slider__item-btn {
       bottom: 1.8rem;
     }
