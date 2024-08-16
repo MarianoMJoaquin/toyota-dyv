@@ -5751,7 +5751,7 @@
     }
     render() {
       const e = document.createElement("div");
-      e.classList.add("catalog__item"),
+      e.classList.add("catalog__item", "swiper-slide"),
         e.classList.add(this.className),
         "cars" !== this.className && e.classList.add("hidden"),
         (e.innerHTML = `\n
@@ -5911,3 +5911,4 @@
   
   addEventListener('resize', removeStyle)
 
+  let swiperCards
