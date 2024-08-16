@@ -653,7 +653,7 @@ html {
   .catalog__filter-btn {
     position: relative;
     padding: 1rem 5rem;
-    font-size: 1.8rem;
+    font-size: 1.3rem;
   }
   .catalog__filter-btn::after {
     content: "";
@@ -823,7 +823,7 @@ html {
     -ms-flex-pack: justify;
     justify-content: space-between;
     gap: 3rem;
-    padding: 10rem;
+    padding: 5rem;
     /*margin: 0 20rem;*/
   }
   .about__inner_company {
@@ -850,17 +850,18 @@ html {
     margin-bottom: 3rem;
   }
   .about__text {
-    font-size: 2rem;
+    font-size: 1.3rem;
     margin-bottom: 4rem;
   }
   .about__link {
-    padding: 1.5rem 3rem;
+    padding: 1rem 2rem;
     background-color: #eb0a1e;
     color: #fff;
     font-weight: 600;
     border-radius: 3rem;
     transition: all 0.2s;
     width: max-content;
+    font-size: 1rem;
   }
   
   .about__link:hover {
@@ -870,17 +871,18 @@ html {
   
   .about__link__gr {
     border: solid 0.1px #eb0a1e;
-    padding: 1.5rem 3rem;
+    padding: 1rem 2rem;
     background-color: #eb0a1e;
     color: #fff;
     font-weight: 600;
     border-radius: 3rem;
     transition: all 0.2s;
     width: max-content;
+    font-size: 1rem;
   }
   
   .about__link__gr:hover {
-    padding: 1.5rem 3rem;
+    padding: 1rem 2rem;
     border: solid 0.1px #eb0a1e;
     background-color: black;
     transition: all 0.2s;
