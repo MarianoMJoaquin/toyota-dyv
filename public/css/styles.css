@@ -206,7 +206,7 @@ html {
     }
   }
   .heading-1 {
-    font-size: 6.5rem;
+    font-size: 5rem;
   }
   @media (max-width: 768px) {
     .heading-1 {
