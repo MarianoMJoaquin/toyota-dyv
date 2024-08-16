@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets"
 
+import logo from "../assets/images/logodyv.webp"
 import srcImage1 from "../assets/images/copia1.webp"
 import srcImage2 from "../assets/images/copia2.webp"
 import srcImage3 from "../assets/images/copia3.webp"
@@ -16,8 +17,8 @@ import srcImage12 from "../assets/images/copia12.webp"
 import srcImage13 from "../assets/images/copia13.webp"
 import srcImage14 from "../assets/images/google.svg"
 import srcImage15 from "../assets/images/apple.svg"
-import srcImage16 from "../assets/images/kinto-fleet.png"
-import srcImage17 from "../assets/images/kinto-personal.png"
+import srcImage16 from "../assets/images/kinto-fleet.webp"
+import srcImage17 from "../assets/images/kinto-personal.webp"
 
 ---
 
@@ -186,8 +187,7 @@ import srcImage17 from "../assets/images/kinto-personal.png"
     <nav class="nav container">
         <div class="nav__data">
             <a href="#" class="nav__logo">
-                <!--<i class="ri-code-s-slash-line"></i> CodeBox -->
-                <img src="/images/logodyv.png" alt="">
+                <Image src={logo} format="avif" alt="">
             </a>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -838,7 +838,7 @@ a {
   }
   .dropdown__group {
     justify-self: center;
-    padding: 3rem 0;
+    padding: 3rem 1.5rem;
     align-content: baseline;
     row-gap: 1.25rem;
     border-right: solid 1px var(--first-color-lighten);
