@@ -102,62 +102,61 @@ import srcImage1 from "../assets/images/cross-2.png";
 		<section class="vehicles section" id="catalog">
 		  <div class="container">
 			<h1 class="vehicles__title heading-1">Explorar los vehículos</h1>
-			<div class="catalog__filter-btns">
-			  <button data-filter="cars" class="catalog__filter-btn catalog__filter-btn_active">
-				Autos
-			  </button>
-			  <button data-filter="trucks" class="catalog__filter-btn">
-				Pick-Ups
-			  </button>
-			  <button data-filter="crossovers" class="catalog__filter-btn">
-				Crossovers
-			  </button>
-			</div>
-  
-			<div class="vehicles__catalog catalog swiper">
-			  <div class="catalog__items swiper-wrapper">
 
-				<div class="skeleton">
-				  <div class="skeleton__img"></div>
   
-				  <div class="skeleton__content">
-					<div class="skeleton__top"></div>
-  
-					<div class="skeleton__name"></div>
-					<div class="skeleton__text"></div>
-  
-					<div class="skeleton__bottom"></div>
-				  </div>
+			<div class="vehicles__catalog catalog">
+				<ul class="flex justify-center space-x-4 m-0 mb-8 border-b">
+				  <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition" id="autos-tab">Autos</li>
+				  <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition" id="pickups-tab">Pick-Ups</li>
+				  <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition" id="cross-tab">Cross</li>
+			  </ul>
+			  
+			  <!-- Tab Content -->
+			  <div id="tab-content">
+				<!-- Autos Slider -->
+				<div id="autos" class="swiper swiper-container opacity-0 transform scale-95 transition-opacity duration-500">
+					<div class="swiper-wrapper cars">
+						<!-- Slides for Autos -->
+						<!--<div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 1</div>
+						<div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 2</div>
+						<div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 3</div>-->
+					</div>
+					<!-- Pagination and Navigation -->
+					<div class="swiper-pagination"></div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
 				</div>
-  
-				<div class="skeleton">
-				  <div class="skeleton__img"></div>
-  
-				  <div class="skeleton__content">
-					<div class="skeleton__top"></div>
-  
-					<div class="skeleton__name"></div>
-					<div class="skeleton__text"></div>
-  
-					<div class="skeleton__bottom"></div>
-				  </div>
+	
+				<!-- Pick-Ups Slider -->
+				<div id="pickups" class="swiper swiper-container m-auto hidden opacity-0 transform scale-95 transition-opacity duration-500">
+					<div class="swiper-wrapper trucks">
+						<!-- Slides for Pick-Ups -->
+						<!--<div class="swiper-slide bg-black h-screen rounded-lg shadow p-4">Pick-Up 1</div>
+						<div class="swiper-slide bg-white rounded-lg shadow p-4">Pick-Up 2</div>
+						<div class="swiper-slide bg-white rounded-lg shadow p-4">Pick-Up 3</div>-->
+					</div>
+					<!-- Pagination and Navigation -->
+					<div class="swiper-pagination"></div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
 				</div>
-  
-				<div class="skeleton">
-				  <div class="skeleton__img"></div>
-  
-				  <div class="skeleton__content">
-					<div class="skeleton__top"></div>
-  
-					<div class="skeleton__name"></div>
-					<div class="skeleton__text"></div>
-  
-					<div class="skeleton__bottom"></div>
-				  </div>
+	
+				<!-- Cross Slider -->
+				<div id="cross" class="swiper swiper-container hidden opacity-0 transform scale-95 transition-opacity duration-500">
+					<div class="swiper-wrapper crossovers">
+						<!-- Slides for Cross -->
+						<!--<div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 1</div>
+						<div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 2</div>
+						<div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 3</div>-->
+					</div>
+					<!-- Pagination and Navigation -->
+					<div class="swiper-pagination"></div>
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
 				</div>
-
 			  </div>
-			</div>
+			  </div>
+			  
 		  </div>
 		</section>
   
@@ -566,8 +565,6 @@ import srcImage1 from "../assets/images/cross-2.png";
 		  
 		</section> 
 	  </main>
-	<script src="/src/assets/js/main.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </Layout>
 
 <style>
