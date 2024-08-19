@@ -5925,7 +5925,7 @@ var swiperAutos = new Swiper('#autos', {
           spaceBetween: 20,
       },
       1024: {
-          slidesPerView: 4,
+          slidesPerView: 3,
           spaceBetween: 30,
       },
   },
@@ -5957,6 +5957,7 @@ var swiperPickups = new Swiper('#pickups', {
           spaceBetween: 30,
       },
   },
+  autoHeight: true,
   spaceBetween: 10,
   pagination: {
       el: '.swiper-pagination',

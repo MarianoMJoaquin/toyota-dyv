@@ -347,7 +347,7 @@ html {
     transform: translateY(-50%);
   }*/
   @media (max-width: 768px) {
-    li:first-child {
+    /*li:first-child {
       padding-top: 25px;
     }
     .topbar__inner{
@@ -611,6 +611,10 @@ html {
     /*.home {
       padding-top: 6rem;
     }*/
+    .swiper-button-prev,
+    .swiper-button-next{
+      display: none !important;
+    }
   }
   @media (max-width: 520px) {
     .slider__arrow {
@@ -630,10 +634,18 @@ html {
     .slider__item-btn {
       bottom: 1.8rem;
     }
+    .swiper-button-prev,
+    .swiper-button-next{
+      display: none !important;
+    }
   }
   @media (max-width: 425px) { /*Dispositivos móviles asta 425px de anco, mas de 425px de anco no se aplican los estilos los estilos*/
     .slider__item-btn {
       bottom: 1.8rem;
+    }
+    .swiper-button-prev,
+    .swiper-button-next{
+      display: none !important;
     }
   }
   .vehicles__title {
@@ -641,7 +653,42 @@ html {
     text-align: center;
   }
   .swiper-wrapper {
-    padding-bottom: 3rem;
+    height: max-content !important ;
+    padding-bottom: 4rem ;
+    margin-right: 5rem !important;
+  }
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    content: "" !important;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    font-size: 2rem !important;
+    color: white !important;
+    background-color: black !important;
+    height: 2pc !important;
+    width: 3pc !important; 
+    border-radius: 5rem !important;
+    top: 49.5rem !important;
+  }
+  .swiper-button-prev {
+    margin-left: 40rem !important;
+    transition: all 0.3s !important;  
+  }
+  .swiper-button-next {
+    margin-right: 40rem !important;
+    transition: all 0.3s !important;  
+  }
+  
+  .swiper-pagination-bullet {
+    background-color: #e64b58 !important;
+    opacity: 1 !important;
+    transition: all 0.3s !important;  
+  }
+  
+  .swiper-pagination-bullet-active {
+    background-color: #eb0a1e !important;
+    transform: scale(1.3) !important; 
   }
   .catalog__filter-btns {
     display: -webkit-box;
