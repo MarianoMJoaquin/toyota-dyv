@@ -640,6 +640,9 @@ html {
     margin-bottom: 3rem;
     text-align: center;
   }
+  .swiper-wrapper {
+    padding-bottom: 3rem;
+  }
   .catalog__filter-btns {
     display: -webkit-box;
     display: -ms-flexbox;
