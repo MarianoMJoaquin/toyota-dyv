@@ -5911,4 +5911,168 @@
   
   addEventListener('resize', removeStyle)
 
+
+
   
+  
+// Tab functionality with animations
+function showTab(tabId) {
+  // Hide all tabs
+  document.querySelectorAll('.swiper-container').forEach(tab => {
+      tab.classList.add('hidden');
+      tab.classList.remove('opacity-100', 'scale-100');
+      tab.classList.add('opacity-0', 'scale-95');
+  });
+
+  // Show the selected tab with animation
+  const selectedTab = document.getElementById(tabId);
+  selectedTab.classList.remove('hidden');
+  setTimeout(() => {
+      selectedTab.classList.remove('opacity-0', 'scale-95');
+      selectedTab.classList.add('opacity-100', 'scale-100');
+  }, 50);  // Delay for smooth transition
+}
+
+document.getElementById('autos-tab').addEventListener('click', function() {
+  showTab('autos');
+});
+
+document.getElementById('pickups-tab').addEventListener('click', function() {
+  showTab('pickups');
+});
+
+document.getElementById('cross-tab').addEventListener('click', function() {
+  showTab('cross');
+});
+
+// Initial tab to show
+showTab('autos');
+
+async function fetchData() {
+try {
+  const response = await fetch("https://63efea4c4d5eb64db0d31d0a.mockapi.io/toyora-cars");
+  const data = await response.json();
+
+  
+
+  const cardContainer = document.querySelector(".cars");
+  const cardContainer2 = document.querySelector(".trucks");
+  const cardContainer3 = document.querySelector(".crossovers");
+
+  data.forEach((car) => {
+      if (car.className === "cars") {
+          const card = document.createElement("div");
+          card.classList.add("swiper-slide", "catalog__item");
+          card.innerHTML = `
+              <a class="catalog__item-link" href="#">\n            
+                  <img class="catalog__item-img" src=${car.src} alt=${car.alt}>\n         
+              </a>\n         
+              <div class="catalog__item-info">\n
+                  <div class="catalog__item-top">\n
+                  <span class="catalog__item-year">
+                      ${car.year}
+                  </span>\n
+                  <span>|</span>\n                  
+                  <span class="catalog__item-type">
+                      ${car.type}
+                  </span>\n            
+                  </div>\n
+                  <div class="catalog__item-middle">\n 
+                  <div class="catalog__item-name">\n 
+                      ${car.name}\n
+                  </div>\n 
+                  <p class="catalog__item-text">\n
+                      ${car.text}\n
+                  </p>\n
+                  </div>\n
+                  <div class="catalog__item-bottom">\n
+                  <button class="catalog__item-btn btn">\n
+                      Explorar\n
+                  </button>\n
+                  <div class="catalog__item-price">\n
+                      $${car.price}\n
+                  </div>\n
+                  </div>\n
+              </div>\n
+          `;
+          cardContainer.appendChild(card);
+      } else if(car.className ==="trucks") {
+          const card = document.createElement("div");
+          card.classList.add("swiper-slide", "catalog__item");
+          card.innerHTML = `
+              <a class="catalog__item-link" href="#">\n            
+                  <img class="catalog__item-img" src=${car.src} alt=${car.alt}>\n         
+              </a>\n         
+              <div class="catalog__item-info">\n
+                  <div class="catalog__item-top">\n
+                  <span class="catalog__item-year">
+                      ${car.year}
+                  </span>\n
+                  <span>|</span>\n                  
+                  <span class="catalog__item-type">
+                      ${car.type}
+                  </span>\n            
+                  </div>\n
+                  <div class="catalog__item-middle">\n 
+                  <div class="catalog__item-name">\n 
+                      ${car.name}\n
+                  </div>\n 
+                  <p class="catalog__item-text">\n
+                      ${car.text}\n
+                  </p>\n
+                  </div>\n
+                  <div class="catalog__item-bottom">\n
+                  <button class="catalog__item-btn btn">\n
+                      Explorar\n
+                  </button>\n
+                  <div class="catalog__item-price">\n
+                      $${car.price}\n
+                  </div>\n
+                  </div>\n
+              </div>\n
+          `;
+          cardContainer2.appendChild(card);
+      } else if (car.className === "crossovers") {
+          const card = document.createElement("div");
+          card.classList.add("swiper-slide", "catalog__item");
+          card.innerHTML = `
+              <a class="catalog__item-link" href="#">\n            
+                  <img class="catalog__item-img" src=${car.src} alt=${car.alt}>\n         
+              </a>\n         
+              <div class="catalog__item-info">\n
+                  <div class="catalog__item-top">\n
+                  <span class="catalog__item-year">
+                      ${car.year}
+                  </span>\n
+                  <span>|</span>\n                  
+                  <span class="catalog__item-type">
+                      ${car.type}
+                  </span>\n            
+                  </div>\n
+                  <div class="catalog__item-middle">\n 
+                  <div class="catalog__item-name">\n 
+                      ${car.name}\n
+                  </div>\n 
+                  <p class="catalog__item-text">\n
+                      ${car.text}\n
+                  </p>\n
+                  </div>\n
+                  <div class="catalog__item-bottom">\n
+                  <button class="catalog__item-btn btn">\n
+                      Explorar\n
+                  </button>\n
+                  <div class="catalog__item-price">\n
+                      $${car.price}\n
+                  </div>\n
+                  </div>\n
+              </div>\n
+          `;
+          cardContainer3.appendChild(card);
+      }
+  });
+} catch (error) {
+  console.error("Error fetching data:", error);
+}
+}
+
+fetchData();
