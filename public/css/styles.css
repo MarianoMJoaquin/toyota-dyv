@@ -666,7 +666,7 @@ html {
     font-size: 2rem !important;
     color: white !important;
     background-color: black !important;
-    height: 2pc !important;
+    height: 3pc !important;
     width: 3pc !important; 
     border-radius: 5rem !important;
   }
@@ -767,6 +767,7 @@ html {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 1.5rem;
+    min-height: max-content;
   }
   .catalog__item-top {
     display: -webkit-box;
