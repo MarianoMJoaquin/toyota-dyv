@@ -666,8 +666,8 @@ html {
     font-size: 2rem !important;
     color: white !important;
     background-color: black !important;
-    height: 3pc !important;
-    width: 3pc !important; 
+    height: 2pc !important;
+    width: 2pc !important; 
     border-radius: 5rem !important;
   }
   .swiper-button-prev {
@@ -754,6 +754,11 @@ html {
   }
   .catalog__item.hidden {
     display: none;
+  }
+  .catalog__item-img {
+    width: 100%;
+    height: 18rem;
+    object-fit: cover;
   }
   .catalog__item-info {
     display: -webkit-box;
