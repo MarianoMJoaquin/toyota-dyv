@@ -654,7 +654,7 @@ html {
   }
   .swiper-wrapper {
     height: max-content !important ;
-    padding-bottom: 4rem ;
+    padding-bottom: 3rem ;
     margin-right: 5rem !important;
   }
   .swiper-button-prev:after,
