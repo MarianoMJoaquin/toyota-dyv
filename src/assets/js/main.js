@@ -5951,7 +5951,7 @@
             spaceBetween: 20,
         },
         1024: {
-            slidesPerView: 3 ,
+            slidesPerView: 3,
             spaceBetween: 30,
         },
     },
