@@ -767,7 +767,6 @@ html {
     -ms-flex-pack: justify;
     justify-content: space-between;
     padding: 1.5rem;
-    min-height: 23.5rem;
   }
   .catalog__item-top {
     display: -webkit-box;
@@ -776,7 +775,7 @@ html {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     gap: 5px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     white-space: nowrap;
   }
   .catalog__item-middle {
@@ -784,11 +783,11 @@ html {
   }
   .catalog__item-name {
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 2rem;
     margin-bottom: 1rem;
   }
   .catalog__item-text {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
   }
   .catalog__item-bottom {
     display: -webkit-box;
@@ -803,7 +802,7 @@ html {
     margin-top: auto;
   }
   .catalog__item-price {
-    font-size: 2.2rem;
+    font-size: 2rem;
     text-transform: uppercase;
   }
   @-webkit-keyframes showBlock {
