@@ -669,14 +669,11 @@ html {
     height: 2pc !important;
     width: 3pc !important; 
     border-radius: 5rem !important;
-    top: 49.5rem !important;
   }
   .swiper-button-prev {
-    margin-left: 40rem !important;
     transition: all 0.3s !important;  
   }
   .swiper-button-next {
-    margin-right: 40rem !important;
     transition: all 0.3s !important;  
   }
   
