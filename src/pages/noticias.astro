@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const response = await fetch("https://panelweb.derkayvargas.com/api/entradas/");
+const data = await response.json();
+
+interface Entrada {
+    titulo: string;
+    contenido: string;
+    imageUrl: string;
+}
+---
+
+<Layout title="Novedades | Derka y Vargas">
+    <h1 class="vehicles__title heading-1 ">Explorar los vehículos</h1>
+    
+
+    <div class="hola">
+        <div class="swiper-wraper">
+            {data.data.map((entrada: Entrada) => 
+                <div class="swiper-slide">
+                    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                        <a href="#">
+                            {entrada.imageUrl && <img class="rounded-t-lg" src={entrada.imageUrl} alt="" />}
+                        </a>
+                        <div class="p-5">
+                            <a href="#">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{entrada.titulo}</h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400 ">{entrada.contenido.substring(150,-1)+"..."}</p>
+                            <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                Leer más
+                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            )}
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+</Layout>
+
+<script>
+/*    const data = [10, 5, 20, 15]; // Puedes reemplazar esto con tus datos reales
+    const resultsContainer = document.getElementById('results');
+    
+    // Función para mostrar los resultados
+    function displayResults(sortedData: number[]) {
+      const resultsContainer = document.getElementById('results');
+      if (resultsContainer) {
+        resultsContainer.innerHTML = '';
+        sortedData.forEach(item => {
+          const div = document.createElement('div');
+          div.classList.add('p-2', 'bg-gray-200', 'mb-2', 'rounded');
+          div.textContent = item.toString();
+          resultsContainer.appendChild(div);
+        });
+      }
+    }
+    
+    // Función para ordenar los datos
+    function sortData(order: string) {
+      let sortedData = [];
+      if (order === 'asc') {
+        sortedData = data.sort((a, b) => a - b);
+      } else {
+        sortedData = data.sort((a, b) => b - a);
+      }
+      displayResults(sortedData);
+    }
+    
+    // Evento de cambio en el select
+    const orderFilter = document.getElementById('orderFilter');
+    if (orderFilter) {
+      orderFilter.addEventListener('change', (event) => {
+        if (event && event.target) {
+          const target = event.target as HTMLSelectElement;
+          sortData(target.value);
+        }
+      });
+    }
+  
+    // Mostrar resultados iniciales
+    displayResults(data);*/
+  </script>
