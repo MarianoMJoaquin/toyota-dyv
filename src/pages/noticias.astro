@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets"
 
 const response = await fetch("https://panelweb.derkayvargas.com/api/entradas/");
 const data = await response.json();
@@ -21,7 +22,7 @@ interface Entrada {
                 <div class="swiper-slide">
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
-                            {entrada.imageUrl && <img class="rounded-t-lg" src={entrada.imageUrl} alt="" />}
+                            {entrada.imageUrl && <Image width="633" height="633"  class="rounded-t-lg" src={entrada.imageUrl} alt="" />}
                         </a>
                         <div class="p-5">
                             <a href="#">
