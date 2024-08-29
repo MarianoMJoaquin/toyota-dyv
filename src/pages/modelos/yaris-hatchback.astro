@@ -3,8 +3,21 @@ import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets"
 
 
+//Galeria de imágenes
 import srcImage1 from "../../assets/images/gallery/yaris1.png"
+import srcImage2 from "../../assets/images/gallery/yaris2.jpeg"
+import srcImage3 from "../../assets/images/gallery/yaris3.png"
+import srcImage4 from "../../assets/images/gallery/yaris4.jpeg"
+import srcImage5 from "../../assets/images/gallery/yaris5.jpeg"
 
+//Hero
+import srcImgBg from "../../assets/images/hero_banner_07792e92e4 copy.webp"
+
+//Fondo Slider
+import sliderImg from "../../assets/images/yarisfondo.jpeg"
+import slideImg1 from "../../assets/images/events-slider/slider1.png"
+import slideImg2 from "../../assets/images/events-slider/slider2.jpeg"
+import slideImg3 from "../../assets/images/events-slider/slider3.png"
 
 
 
@@ -16,7 +29,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
         <!-- Hero Section -->
         <section id="hero" class="hero section dark-background">
     
-          <img src="/images/hero_banner_07792e92e4.webp" alt="" data-aos="fade-in">
+          <Image src={srcImgBg} data-aos="fade-in" format="avif" alt=""></Image>
     
           <div class="container mx-auto sm:px-4">
             <div class="flex flex-wrap justify-center">
@@ -25,7 +38,6 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                 <h2 data-aos="fade-up" data-aos-delay="100">Yaris <span>Hatchback</span></h2>
                 <div class="flex mt-4" data-aos="fade-up" data-aos-delay="300">
                   <a href="https://dyv.e.toyota.com.ar/inventory/yaris-hatchback" class="cta-btn">Cotizar ahora</a>
-                  <!--<a href="#book-a-table" class="cta-btn">Book a Table</a>-->
                 </div>
               </div>
               <div class="lg:w-1/3 pr-4 pl-4 flex items-center justify-center mt-5 lg:mt-0">
@@ -89,7 +101,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
         <!-- Specs-2 Section -->
         <section id="events" class="events 2xl:mx-44 xl:mx-5 lg:mx-5 section">
     
-          <img class="slider-bg" src="assets/img/yarisfondo.jpeg" alt="" data-aos="fade-in">
+          <Image src={sliderImg} class="slider-bg" format="avif" alt="" data-aos="fade-in"></Image>
     
           <div class="container mx-auto sm:px-4">
     
@@ -99,7 +111,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                 <div class="swiper-slide">
                   <div class="flex flex-wrap  gy-4 event-item">
                     <div class="lg:w-1/2 pr-4 pl-4">
-                      <img src="assets/img/events-slider/slider1.png" class="max-w-full h-auto" alt="">
+                      <Image src={slideImg1} class="max-w-full h-auto" format="avif" alt=""></Image>
                     </div>
                     <div class="lg:w-1/2 pr-4 pl-4 pt-4 lg:pt-0 flex flex-col justify-center ontent">
                       <h3>Conectividad en todas sus versiones</h3>
@@ -113,7 +125,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                 <div class="swiper-slide">
                   <div class="flex flex-wrap  gy-4 event-item">
                     <div class="lg:w-1/2 pr-4 pl-4">
-                      <img src="assets/img/events-slider/slider2.jpeg" class="max-w-full h-auto" alt="">
+                      <Image src={slideImg2} class="max-w-full h-auto" format="avif" alt=""></Image>
                     </div>
                     <div class="lg:w-1/2 pr-4 pl-4 pt-4 lg:pt-0 flex flex-col justify-center content">
                       <h3>Toyota Safety Sense*</h3>
@@ -129,6 +141,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                   <div class="flex flex-wrap  gy-4 event-item">
                     <div class="lg:w-1/2 pr-4 pl-4">
                       <img src="assets/img/events-slider/slider3.png" class="max-w-full h-auto" alt="">
+                      <Image src={slideImg3} class="max-w-full h-auto" format="avif" alt=""></Image>
                     </div>
                     <div class="lg:w-1/2 pr-4 pl-4 pt-4 lg:pt-0 flex flex-col justify-center content">
                       <h3>Confort interior</h3>            
@@ -169,19 +182,19 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                 <div class="menu-content gap-4 flex-col justify-center items-center">
                   <div class="viewer bg-white rounded-md" id="productViewer">
                       <div id="spinner" class="spinner"></div>
-                      <img src="/images/XS/red/1.png" alt="Producto en 360" id="productImage">
+                      <img src="/images/XS/red/4.png" alt="Producto en 360" id="productImage">
                   </div>
                   <div class="menu-ingredients">
                     <i class="ri-arrow-left-s-line"></i> Arrastre para girar <i class="ri-arrow-right-s-line"></i>
                   </div>
                   <div class="flex gap-3">
-                      <button class="inline-block align-middle text-center select-none border-2 border-solid border-500-gray font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-red-600 border text-white px-3 py-3 rounded-full" data-color="red"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-solid border-500-gray font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-200 border  text-white px-3 rounded-full" data-color="white"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-solid border-500-gray font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-700 border  text-white px-3 rounded-full" data-color="gray"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-solid border-500-gray font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-400 border text-white px-3 py-3 rounded-full" data-color="silver"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-solid border-500-gray font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-black border text-white px-3 py-3 rounded-full" data-color="black"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-solid border-500-gray font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-gray-300 border text-white px-3 py-3 rounded-full" data-color="white-perl"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-solid border-500-gray font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-sky-900 border text-white px-3 py-3 rounded-full" data-color="blue"></button>
+                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-red-600 text-white px-3 rounded-full" data-color="red"></button>
+                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-200 text-white px-3 rounded-full" data-color="white"></button>
+                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-700  text-white px-3 rounded-full" data-color="gray"></button>
+                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-400 text-white px-3 rounded-full" data-color="silver"></button>
+                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-black text-white px-3 rounded-full" data-color="black"></button>
+                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-300 text-white px-3 rounded-full" data-color="white-perl"></button>
+                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-sky-900 text-white px-3 rounded-full" data-color="blue"></button>
                   </div>
                   <div class="colors mb-5">
                     <span id="colorName">Color seleccionado: Rojo Metalizado</span>
@@ -200,7 +213,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                         <button
                           id="manual-xs-tab"
                           class="px-4 py-2 border-b-2 font-medium text-sm text-red-600 border-red-500 transition-colors duration-300 ease-in-out"
-                          onclick="openTab(event, 'manual')"
+                          
                         >
                           XS 1.5 6M/T 5P
                         </button>
@@ -209,7 +222,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                         <button
                           id="automatico-xs-tab"
                           class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          onclick="openTab(event, 'automatico')"
+                          
                         >
                           XS 1.5 CVT 5P
                         </button>
@@ -218,7 +231,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                         <button
                           id="manual-xls-tab"
                           class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          onclick="openTab(event, 'manual-xls')"
+                          
                         >
                           XLS 1.5 6M/T 5P
                         </button>
@@ -227,7 +240,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                         <button
                           id="automatico-xls-tab"
                           class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          onclick="openTab(event, 'automatico-xls')"
+                         
                         >
                           XLS 1.5 CVT 5P
                         </button>
@@ -236,7 +249,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                         <button
                           id="automatico-xls-pack-tab"
                           class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          onclick="openTab(event, 'automatico-xls-pack')"
+                          
                         >
                           XLS PACK 1.5 CVT 5P
                         </button>
@@ -245,7 +258,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
                         <button
                           id="automatico-s-tab"
                           class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          onclick="openTab(event, 'automatico-s')"
+                          
                         >
                           S 1.5 CVT 5P
                         </button>
@@ -380,7 +393,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
     
               <div class="col-span-1 md:col-span-2 lg:col-span-2">
                 <div class="gallery-item">
-                  <a href="/assets/img/gallery/yaris1.png" class="glightbox" data-gallery="images-gallery">
+                  <a href="/images/gallery/yaris1.png" class="glightbox" data-gallery="images-gallery">
                     <Image src={srcImage1} class="w-full" format="avif" alt="">
                   </a>
                 </div>
@@ -388,16 +401,16 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
     
               <div class="col-span-1 md:col-span-2 lg:col-span-2">
                 <div class="gallery-item">
-                  <a href="../assets/images/gallery/yaris2.jpeg" class="glightbox" data-gallery="images-gallery">
-                    <img src="/images/gallery/yaris2.jpeg" alt="" class="w-full">
+                  <a href="/images/gallery/yaris2.jpeg" class="glightbox" data-gallery="images-gallery">
+                    <Image src={srcImage2} class="w-full" format="avif" alt="">
                   </a>
                 </div>
               </div><!-- End Gallery Item -->
     
               <div class="col-span-1 md:col-span-2 lg:col-span-2">
                 <div class="gallery-item">
-                  <a href="assets/img/gallery/yaris3.png" class="glightbox" data-gallery="images-gallery">
-                    <img src="assets/img/gallery/yaris3.png" alt="" class="w-full">
+                  <a href="/images/gallery/yaris3.png" class="glightbox" data-gallery="images-gallery">
+                    <Image src={srcImage3} class="w-full" format="avif" alt="">
                   </a>
                 </div>
               </div><!-- End Gallery Item -->
@@ -405,16 +418,16 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
               
               <div class="col-span-1 md:col-span-3 lg:col-span-3">
                 <div class="gallery-item">
-                  <a href="assets/img/gallery/yaris4.jpeg" class="glightbox" data-gallery="images-gallery">
-                    <img src="assets/img/gallery/yaris4.jpeg" alt="" class="w-full">
+                  <a href="/images/gallery/yaris4.jpeg" class="glightbox" data-gallery="images-gallery">
+                    <Image src={srcImage4} class="w-full" format="avif" alt="">
                   </a>
                 </div>
               </div><!-- End Gallery Item -->
       
               <div class="col-span-1 md:col-span-3 lg:col-span-3">
                 <div class="gallery-item">
-                  <a href="assets/img/gallery/yaris5.jpeg" class="glightbox" data-gallery="images-gallery">
-                    <img src="assets/img/gallery/yaris5.jpeg" alt="" class="w-full">
+                  <a href="/images/gallery/yaris5.jpeg" class="glightbox" data-gallery="images-gallery">
+                    <Image src={srcImage5} class="w-full" format="avif" alt="">
                   </a>
                 </div>
               </div>
@@ -497,7 +510,7 @@ import srcImage1 from "../../assets/images/gallery/yaris1.png"
         <a href="#" id="scroll-top" class="scroll-top flex items-center justify-center"><i class="ri-arrow-up-line"></i></a>
 
         <!-- Preloader -->
-        <!-- <div id="preloader"></div>-->
+         <div id="preloader"></div>
        
        
 <style>
@@ -2342,29 +2355,27 @@ section,
 
 <script>
     
-    
-    
     let currentFrame = 4; // Frame inicial
     const totalFrames = 30; // Total de frames
     let isDragging = false; // Bandera para saber si se está arrastrando
     let startX = 0; // Posición inicial del mouse
     let accumulatedMovement = 0; // Movimiento acumulado para mayor precisión
     const frameChangeThreshold = 20; // Ajustamos el umbral para hacer el touch más suave
-    const productImage = document.getElementById('productImage');
+    const productImage = document.getElementById('productImage') as HTMLImageElement;
     let currentColor = 'red'; // Color inicial
     let currentProduct = 'XS'; // Producto inicial
     let imagesLoaded = false; // Bandera para saber si las imágenes se han cargado
     const colorName = document.getElementById('colorName'); // Elemento para mostrar el nombre del color
 
     // Preload de todas las imágenes
-    let imageCache = {};
-    let imagesToLoad = [];
+    let imageCache: { [key: string]: HTMLImageElement } = {}; // Cache de imágenes cargadas 
+    let imagesToLoad: string[] = []; // Array de imágenes a cargar  
 
     function preloadImages() {
       imagesToLoad = []; // Reiniciamos las imágenes a cargar
       for (let i = 1; i <= totalFrames; i++) {
-        const imgSrc = `/images/${currentProduct}/${currentColor}/${i}.png`;
-        imagesToLoad.push(imgSrc);
+        const imgSrc = `/images/${currentProduct}/${currentColor}/${i}.png`; // Ruta de la imagen a cargar
+        imagesToLoad.push(imgSrc); // Agregar la imagen al array de imágenes a cargar
       }
 
       loadNextImage(); // Iniciar la precarga
@@ -2373,13 +2384,18 @@ section,
     function loadNextImage() {
       if (imagesToLoad.length === 0) {
         // Todas las imágenes se han cargado
-        document.getElementById('spinner').style.display = 'none';
-        productImage.style.display = 'block';
+        const spinner = document.getElementById('spinner');
+        if (spinner) {
+          spinner.style.display = 'none';
+        }
+        if (productImage) {
+          productImage.style.display = 'block';
+        }
         imagesLoaded = true;
         return;
       }
 
-      const nextImageSrc = imagesToLoad.shift();
+      const nextImageSrc = imagesToLoad.shift() || '';
       const img = new Image();
       img.src = nextImageSrc;
 
@@ -2399,40 +2415,48 @@ section,
       preloadImages();
     };
 
-    productImage.addEventListener('dragstart', (event) => {
-      event.preventDefault(); 
-    });
+    if (productImage) {
+      productImage.addEventListener('dragstart', (event) => { // Evitar que la imagen se pueda arrastrar en el navegador al hacer clic prolongado 
+        event.preventDefault(); // Evitar el comportamiento por defecto del navegador
+      });
+    }
+      
+    
 
-    const viewer = document.getElementById('productViewer');
+    const viewer = document.getElementById('productViewer');// Elemento contenedor de la imagen
 
     // --- Controladores para el mouse ---
-    viewer.addEventListener('mousedown', (event) => {
-      if (!imagesLoaded) return; // No permitir interacción hasta que las imágenes se carguen
-      isDragging = true;
-      startX = event.pageX;
-      viewer.style.cursor = "grabbing";
-      productImage.style.transition = 'transform 0s'; //  Desactivar la transición para un arrastre más suave
-    });
 
-    viewer.addEventListener('mouseup', () => {
-      isDragging = false;
-      viewer.style.cursor = "grab";
-    });
+    if (viewer) { //Si el elemento existe en el DOM (no es null) entonces se ejecuta el código dentro de las llaves {}  
+        viewer.addEventListener('mousedown', (event) => {
+          if (!imagesLoaded) return; // No permitir interacción hasta que las imágenes se carguen
+          isDragging = true;
+          startX = event.pageX;
+          viewer.style.cursor = "grabbing";
+          productImage.style.transition = 'transform 0s';//  Desactivar la transición para un arrastre más suave
+        });
 
-    viewer.addEventListener('mouseleave', () => {
-      isDragging = false;
-      viewer.style.cursor = "grab";
-    });
+        viewer.addEventListener('mouseup', () => {
+          isDragging = false;
+          viewer.style.cursor = "grab";
+        });
 
-    viewer.addEventListener('mousemove', (event) => {
-      if (isDragging) {
-        const diff = event.pageX - startX;
-        handleMouseDrag(diff);
-        startX = event.pageX;
+        viewer.addEventListener('mouseleave', () => {
+          isDragging = false;
+          viewer.style.cursor = "grab";
+        });
+
+        viewer.addEventListener('mousemove', (event) => {
+          if (isDragging) {
+            const diff = event.pageX - startX;
+            handleMouseDrag(diff);
+            startX = event.pageX;
+          }
+        });
       }
-    });
+       
 
-    function handleMouseDrag(diff) {
+    function handleMouseDrag(diff: number) { //Función para manejar el arrastre del mouse
       accumulatedMovement += diff;
 
       if (Math.abs(accumulatedMovement) > frameChangeThreshold) {
@@ -2448,26 +2472,32 @@ section,
     }
 
     // --- Controladores para dispositivos táctiles (touch) ---
-    viewer.addEventListener('touchstart', (event) => {
-      if (!imagesLoaded || event.touches.length !== 1) return; // No permitir interacción hasta que las imágenes se carguen
-      isDragging = true;
-      startX = event.touches[0].pageX; // Capturamos la posición inicial del primer toque
-      accumulatedMovement = 0; // Reiniciamos el acumulador de movimiento
-    });
 
-    viewer.addEventListener('touchend', () => {
-      isDragging = false; // El usuario ha dejado de arrastrar, reseteamos el arrastre
-    });
+    if (viewer) {   //Si el elemento existe en el DOM (no es null) entonces se ejecuta el código dentro de las llaves {}
+      viewer.addEventListener('touchstart', (event) => {
+        if (!imagesLoaded || event.touches.length !== 1) return; // No permitir interacción hasta que las imágenes se carguen
+        isDragging = true;
+        startX = event.touches[0].pageX; // Capturamos la posición inicial del primer toque
+        accumulatedMovement = 0; // Reiniciamos el acumulador de movimiento
+      });
+      viewer.addEventListener('touchend', () => {
+        isDragging = false; // El usuario ha dejado de arrastrar, reseteamos el arrastre
+      });
 
-    viewer.addEventListener('touchmove', (event) => {
-      if (isDragging && event.touches.length === 1) {
-        const diff = event.touches[0].pageX - startX; // Calculamos la diferencia entre la posición inicial y la actual
-        handleTouchDrag(diff);
-        startX = event.touches[0].pageX; // Actualizamos la posición inicial al nuevo punto de arrastre
-      }
-    });
+      viewer.addEventListener('touchmove', (event) => {
+        if (isDragging && event.touches.length === 1) {
+          const diff = event.touches[0].pageX - startX; // Calculamos la diferencia entre la posición inicial y la actual
+          handleTouchDrag(diff);
+          startX = event.touches[0].pageX; // Actualizamos la posición inicial al nuevo punto de arrastre
+        }
+      });
+    }
+      
+    
 
-    function handleTouchDrag(diff) {
+    
+
+    function handleTouchDrag(diff: number) {
       accumulatedMovement += diff;
 
       if (Math.abs(accumulatedMovement) > frameChangeThreshold) {
@@ -2483,22 +2513,28 @@ section,
     }
 
     function updateImage() {
-      productImage.src = `/images/${currentProduct}/${currentColor}/${currentFrame}.png`;
+      if (productImage) {
+        productImage.src = `/images/${currentProduct}/${currentColor}/${currentFrame}.png`;
+      }
     }
 
-    // Cambiar de Versión cuando se hace clic en una tab
+    // Cambiar de Versión del Vehículo cuando se hace clic en una tab
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         tabs.forEach(t => t.classList.remove('active')); // Remover la clase "active" de todas las tabs
         tab.classList.add('active'); // Activar la tab seleccionada
 
-        currentProduct = tab.getAttribute('data-product'); // Cambiar al producto seleccionado // Reiniciar el color
+        currentProduct = tab.getAttribute('data-product') || ''; // Cambiar al producto seleccionado // Reiniciar el color
         currentColor = 'red'; // Reiniciar el color
         imagesLoaded = false; // Marcar las imágenes como no cargadas
-        document.getElementById('spinner').style.display = 'block'; // Mostrar el spinner
+        const spinner = document.getElementById('spinner');
+        if (spinner) {
+          spinner.style.display = 'block'; // Mostrar el spinner
+        }
         productImage.style.display = 'none'; // Ocultar la imagen actual
         currentFrame = 4; //Reiniciar el frame
+        colorSelected(currentColor); // Actualizar el nombre del color
         updateCarInfo(); // Actualizar la información del auto
         preloadImages(); // Cargar las imágenes del nuevo producto
         updateImage(); // Actualizar la imagen
@@ -2507,21 +2543,35 @@ section,
 
     
     // Función para cambiar el color seleccionado
-    function colorSelected(color) {
+    function colorSelected(color: string) {
       if (color === 'red') {
-        colorName.innerText = 'Color seleccionado: Rojo Metalizado';
+        if (colorName) {
+          colorName.innerText = 'Color seleccionado: Rojo Metalizado';
+        }
       } else if (color === 'black') {
-        colorName.innerText = 'Color seleccionado: Negro Mica';
+        if (colorName) {
+          colorName.innerText = 'Color seleccionado: Negro Mica';
+        }
       } else if(color === 'white'){
-        colorName.innerText = 'Color seleccionado: Super Blanco';
+        if (colorName) {
+          colorName.innerText = 'Color seleccionado: Super Blanco';
+        }
       } else if(color === 'gray'){
-        colorName.innerText = 'Color seleccionado: Gris Oscuro';
+        if (colorName) {
+          colorName.innerText = 'Color seleccionado: Gris Oscuro';
+        }
       } else if(color === 'silver'){
-        colorName.innerText = 'Color seleccionado: Gris Plata';
+        if (colorName) {
+          colorName.innerText = 'Color seleccionado: Gris Plata';
+        }
       } else if(color === 'blue'){
-        colorName.innerText = 'Color seleccionado: Gris Azulado';
+        if (colorName) {
+          colorName.innerText = 'Color seleccionado: Gris Azulado';
+        }
       } else if(color === 'white-perl'){
-        colorName.innerText = 'Color seleccionado: Blanco Perlado';
+        if (colorName) {
+          colorName.innerText = 'Color seleccionado: Blanco Perlado';
+        }
       }
 
     }
@@ -2530,7 +2580,7 @@ section,
     const colorButtons = document.querySelectorAll('button[data-color]');
     colorButtons.forEach(button => {
       button.addEventListener('click', () => {
-        currentColor = button.getAttribute('data-color');
+        currentColor = button.getAttribute('data-color') ?? '';
         colorSelected(currentColor);
         preloadImages(); // Cargar las imágenes del nuevo color
         updateImage(); // Actualizar la imagen
@@ -2538,8 +2588,9 @@ section,
     });
 
     //Tabs de las especificaciones
-    function openTab(event, tabName) {
+    function openTab(tabName: string) {
       let i,tabcontent, tablinks;
+
       // Ocultar todo el contenido de las tabs
       tabcontent = document.getElementsByClassName("tab-content");
       for (i = 0; i < tabcontent.length; i++) {
@@ -2559,13 +2610,100 @@ section,
       });
 
       // Mostrar la tab actual y agregar clase 'active'
-      document.getElementById(tabName).classList.add("show", "active");
+      const element = document.getElementById(tabName);
+      if (element) {
+        element.classList.add("show", "active");
+      }
       
       // Aplicar la clase 'active' al botón de la tab actual
-      event.currentTarget.classList.add("text-red-600", "border-red-500");
-      event.currentTarget.classList.remove("text-gray-500", "border-transparent");
+      if (tabName === 'automatico') {
+        const automaticoXsTab = document.getElementById("automatico-xs-tab");
+        if (automaticoXsTab) {
+          automaticoXsTab.classList.add("text-red-600", "border-red-500");
+          automaticoXsTab.classList.remove("text-gray-500", "border-transparent");   
+        }
+      } else if (tabName === 'manual') {
+        const manualXsTab = document.getElementById("manual-xs-tab");
+        if (manualXsTab) {
+          manualXsTab.classList.add("text-red-600", "border-red-500");
+          manualXsTab.classList.remove("text-gray-500", "border-transparent");
+        }
+      } else if (tabName === 'automatico-xls') {
+        const automaticoXlsTab = document.getElementById("automatico-xls-tab");
+        if (automaticoXlsTab) {
+          automaticoXlsTab.classList.add("text-red-600", "border-red-500");
+          automaticoXlsTab.classList.remove("text-gray-500", "border-transparent");
+        }
+      } else if (tabName === 'manual-xls') {
+        const manualXlsTab = document.getElementById("manual-xls-tab");
+        if (manualXlsTab) {
+          manualXlsTab.classList.add("text-red-600", "border-red-500");
+          manualXlsTab.classList.remove("text-gray-500", "border-transparent");
+        }
+      } else if (tabName === 'automatico-xls-pack') {
+        const automaticoXlsPackTab = document.getElementById("automatico-xls-pack-tab");
+        if (automaticoXlsPackTab) {
+          automaticoXlsPackTab.classList.add("text-red-600", "border-red-500");
+          automaticoXlsPackTab.classList.remove("text-gray-500", "border-transparent");
+        }
+      } else if (tabName === 'automatico-s') {
+        const automaticoS = document.getElementById("automatico-s-tab");
+        if (automaticoS) {
+          automaticoS.classList.add("text-red-600", "border-red-500");
+          automaticoS.classList.remove("text-gray-500", "border-transparent");
+        }
+      }
     }
+
+    // Asociar eventos a los botones al cargar la página
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const automaticoXsTab = document.getElementById("automatico-xs-tab");
+      if (automaticoXsTab) {
+        automaticoXsTab.addEventListener("click", function () {
+          openTab('automatico');
+        });
+      }
+       
+      
+      const manualXsTab = document.getElementById("manual-xs-tab");
+      if (manualXsTab) {
+        manualXsTab.addEventListener("click", function () {
+          openTab('manual');
+        });
+      }
+
+      const automaticoXlsTab = document.getElementById("automatico-xls-tab");
+      if (automaticoXlsTab) {
+        automaticoXlsTab.addEventListener("click", function () {
+          openTab('automatico-xls');
+        });
+      }
+
+      const manualXlsTab = document.getElementById("manual-xls-tab");
+      if (manualXlsTab) {
+        manualXlsTab.addEventListener("click", function () {
+          openTab('manual-xls');
+        });
+      }
+
+      const automaticoXlsPackTab = document.getElementById("automatico-xls-pack-tab");
+      if (automaticoXlsPackTab) {
+        automaticoXlsPackTab.addEventListener("click", function () {
+          openTab('automatico-xls-pack');
+        });
+      }
+
+      const automaticoS = document.getElementById("automatico-s-tab");
+      if (automaticoS) {
+        automaticoS.addEventListener("click", function () {
+          openTab('automatico-s');
+        });
+      }
+    });
     
+
+    // Actualizar la información del auto
     let manualXsTab = document.getElementById('manual-xs-tab');
     let automaticoXsTab = document.getElementById('automatico-xs-tab');
 
@@ -2575,42 +2713,62 @@ section,
 
     let automaticoS = document.getElementById('automatico-s-tab');
 
-    manualXsTab.click();
-    manualXsTab.style.display = 'block';
-    automaticoXsTab.style.display = 'block';
-    manualXlsTab.style.display = 'none';
-    automaticoXlsTab.style.display = 'none';
-    automaticoXlsPackTab.style.display = 'none';
-    automaticoS.style.display = 'none';
-
+    // Actualizar la información del auto
+    if (manualXsTab && automaticoXsTab && manualXlsTab && automaticoXlsTab && automaticoXlsPackTab && automaticoS) {
+      manualXsTab.click();
+      manualXsTab.style.display = 'block';
+      automaticoXsTab.style.display = 'block';
+      manualXlsTab.style.display = 'none';
+      automaticoXlsTab.style.display = 'none';
+      automaticoXlsPackTab.style.display = 'none';
+      automaticoS.style.display = 'none';
+    }
+    
+     // Actualizar la información del auto
     function updateCarInfo(){
       if(currentProduct === 'XS'){
-        manualXsTab.click();
-        manualXsTab.style.display = 'block';
-        automaticoXsTab.style.display = 'block';
-        manualXlsTab.style.display = 'none';
-        automaticoXlsTab.style.display = 'none';
-        automaticoXlsPackTab.style.display = 'none';
-        automaticoS.style.display = 'none';
+        if (manualXsTab && automaticoXsTab && manualXlsTab && automaticoXlsTab && automaticoXlsPackTab && automaticoS) { // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
+          manualXsTab.click();
+          manualXsTab.style.display = 'block';
+          automaticoXsTab.style.display = 'block';
+          manualXlsTab.style.display = 'none';
+          automaticoXlsTab.style.display = 'none';
+          automaticoXlsPackTab.style.display = 'none';
+          automaticoS.style.display = 'none';
+        }
       } else if(currentProduct === 'XLS'){
-        manualXlsTab.click();
-        manualXlsTab.style.display = 'block';
-        automaticoXlsTab.style.display = 'block';
-        automaticoXlsPackTab.style.display = 'block';
-        manualXsTab.style.display = 'none';
-        automaticoXsTab.style.display = 'none';
-        automaticoS.style.display = 'none';
+        if (manualXlsTab && automaticoXlsTab && automaticoXlsPackTab && automaticoS && manualXsTab && automaticoXsTab) { // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
+          manualXlsTab.click();
+          manualXlsTab.style.display = 'block';
+          automaticoXlsTab.style.display = 'block';
+          automaticoXlsPackTab.style.display = 'block';
+          manualXsTab.style.display = 'none';
+          automaticoXsTab.style.display = 'none';
+          automaticoS.style.display = 'none';
+        }
       } else if(currentProduct === 'S'){
-        automaticoS.click();
-        automaticoS.style.display = 'block';
-        manualXsTab.style.display = 'none';
-        automaticoXsTab.style.display = 'none';
-        manualXlsTab.style.display = 'none';
-        automaticoXlsTab.style.display = 'none';
-        automaticoXlsPackTab.style.display = 'none';
+        if (automaticoS && manualXsTab && automaticoXsTab && manualXlsTab && automaticoXlsTab && automaticoXlsPackTab) { // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
+          automaticoS.click();
+          automaticoS.style.display = 'block';
+          manualXsTab.style.display = 'none';
+          automaticoXsTab.style.display = 'none';
+          manualXlsTab.style.display = 'none';
+          automaticoXlsTab.style.display = 'none';
+          automaticoXlsPackTab.style.display = 'none';
+        }
       }
     }
 
+    //Slider de especificaciones
+    var swiperespecificaciones = new Swiper('.init-swiper', {
+      loop: true,
+      speed: 600,      
+      spaceBetween: 10,
+      pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+      },
+  });
   </script>
 
  
