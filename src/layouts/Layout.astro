@@ -2,14 +2,12 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-
-
-
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
+
 ---
 
 <!doctype html>
@@ -22,13 +20,17 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/glightbox.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     <!--=============== REMIXICONS ===============-->
     <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-    rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
     
-    <!--<link rel="stylesheet" href="/css/aos/aos.css"> -->
+    
 
      <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -42,11 +44,27 @@ const { title } = Astro.props;
     <script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <script src="../assets/js/main.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="../assets/aos/aos.js"></script>
-
-    <script is:inline src="https://cdn.tailwindcss.com"></script>
-    
-
+    <script is:inline src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <!--<script is:inline src="js/glightbox.min.js"></script>-->
+    <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script is:inline src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+    <script is:inline>
+       /**
+       * Animation on scroll function and init
+       */
+      AOS.init({
+        duration: 600,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+      });
+      /**
+       * Initiate glightbox
+       */
+      const glightbox = GLightbox({
+        selector: '.glightbox'
+      });
+    </script>
   </body>
 </html>
 <style>
