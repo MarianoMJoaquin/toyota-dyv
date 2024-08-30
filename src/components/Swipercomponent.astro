@@ -21,8 +21,7 @@ interface Slide {
 <div class="swiper">
   <div class="swiper-wrapper">
     {slides.data.map((slide: Slide) => (
-      <div class="swiper-slide catalog__item">
-        
+    <div class="swiper-slide catalog__item">
         <a class="catalog__item-link" href="#">           
             <img class="catalog__item-img" src={srcImage + slide.foto.replace("public/","storage/")} alt={slide.modelo}>         
         </a>        
@@ -53,9 +52,7 @@ interface Slide {
                 </div>
             </div>
         </div>
-
-      </div>
-    ))}
+      </div>))}
   </div>
 
   <!-- Paginación y navegación -->
