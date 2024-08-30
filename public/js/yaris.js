@@ -17,7 +17,7 @@
     function preloadImages() {
       imagesToLoad = []; // Reiniciamos las imágenes a cargar
       for (let i = 1; i <= totalFrames; i++) {
-        const imgSrc = `/images/${currentProduct}/${currentColor}/${i}.png`;
+        const imgSrc = `/images/modelos/yaris-hatchback/${currentProduct}/${currentColor}/${i}.png`;
         imagesToLoad.push(imgSrc);
       }
 
@@ -137,7 +137,7 @@
     }
 
     function updateImage() {
-      productImage.src = `/images/${currentProduct}/${currentColor}/${currentFrame}.png`;
+      productImage.src = `/images/modelos/yaris-hatchback/${currentProduct}/${currentColor}/${currentFrame}.png`;
     }
 
     // Cambiar de Versión cuando se hace clic en una tab
