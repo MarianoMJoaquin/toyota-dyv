@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets"
-
+import 'swiper/swiper-bundle.css';
 
 //Galeria de imágenes
 import srcImage1 from "../../assets/images/gallery/yaris1.png"
@@ -2353,3 +2353,18 @@ section,
 }
 </style>  
 
+<script>
+  import Swiper from 'swiper/bundle'; // Importa todo el bundle de Swiper
+
+  if (typeof window !== 'undefined') {
+    const swiper = new Swiper('.init-swiper', {
+      spaceBetween: 20,
+      slidesPerView: "auto",
+      
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  }  
+</script>

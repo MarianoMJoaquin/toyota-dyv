@@ -4,7 +4,9 @@ import Layout from '../layouts/Layout.astro';
 
 import srcImage1 from "../assets/images/cross-2.png";
 
+import Swipercomponent from '../components/Swipercomponent.astro';
 
+      
 
 ---
 
@@ -117,7 +119,7 @@ import srcImage1 from "../assets/images/cross-2.png";
 			  <!-- Tab Content -->
 			  <div id="tab-content">
 				<!-- Autos Slider -->
-				<div id="autos" class="swiper swiper-container opacity-0 transform scale-95 transition-opacity duration-500">
+				<div id="#autos" class="swiper swiper-container opacity-0 transform scale-95 transition-opacity duration-500">
 					<div class="swiper-wrapper cars">
 						<!-- Slides for Autos -->
 						<!--<div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 1</div>
@@ -183,6 +185,8 @@ import srcImage1 from "../assets/images/cross-2.png";
 			  </div>
 			  </div>
 			  
+
+			  <Swipercomponent client:load/>
 		  </div>
 		</section>
   
@@ -591,91 +595,89 @@ import srcImage1 from "../assets/images/cross-2.png";
 		  
 		</section> 
 	  </main>
+	   
 </Layout>
 
-<style>
-	
-</style>
-
 <script>
-	var swiperAutos = new Swiper('#autos', {
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-        },
+	import Swiper from 'swiper/bundle';
+	let swiperAutos = new Swiper('#autos', {
+          breakpoints: {
+              640: {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+              },
+              768: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+              },
+              1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+              },
+          },
+          
+          spaceBetween: 10,
+          
+          pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+          },
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+        });
         
-        spaceBetween: 10,
+        let swiperPickups = new Swiper('#pickups', {
+          breakpoints: {
+              640: {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+              },
+              768: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+              },
+              1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+              },
+          },
+          
+          spaceBetween: 10,
+          pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+          },
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+        });
         
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-      });
-      
-      var swiperPickups = new Swiper('#pickups', {
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-        },
-        
-        spaceBetween: 10,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-      });
-      
-      var swiperCross = new Swiper('#cross', {
-        breakpoints: {
-            640: {
-                slidesPerView: 1,
-                spaceBetween: 10,
-            },
-            768: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            1024: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-        },
-        spaceBetween: 10,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
-      });
+        let swiperCross = new Swiper('#cross', {
+          breakpoints: {
+              640: {
+                  slidesPerView: 1,
+                  spaceBetween: 10,
+              },
+              768: {
+                  slidesPerView: 2,
+                  spaceBetween: 20,
+              },
+              1024: {
+                  slidesPerView: 3,
+                  spaceBetween: 30,
+              },
+          },
+          spaceBetween: 10,
+          pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+          },
+          navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+          },
+        });
 </script>

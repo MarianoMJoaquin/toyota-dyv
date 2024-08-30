@@ -33,20 +33,24 @@ const { title } = Astro.props;
     
 
      <!-- Link Swiper's CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />-->
     
   </head>
   <body>
     
+
     <Header />
     <slot />
     <Footer />
+    
     <script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     
     <script is:inline src="/js/main.js"></script>
     <script is:inline src="/js/yaris.js"></script>
     <script is:inline src="/js/menu.js"></script>
-    <script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <!-- <script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>-->
+    
     <script is:inline src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
@@ -97,19 +101,8 @@ const { title } = Astro.props;
 
       window.addEventListener('load', toggleScrollTop);
       document.addEventListener('scroll', toggleScrollTop);
-      //Slider de especificaciones
-      var swiperespecificaciones = new Swiper('.init-swiper', {
-        loop: true,
-        speed: 600,      
-        spaceBetween: 10,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true,
-        },
-      });
       
-      
-      
+
     </script>
   </body>
 </html>

@@ -1,0 +1,168 @@
+---
+import 'swiper/swiper-bundle.css'; // Importa todo el bundle de estilos de Swiper
+
+const response = await fetch('https://panelweb.derkayvargas.com/api/usados/'); // Cambia a tu API real
+const slides = await response.json(); // Ajusta según la estructura del JSON de la API
+
+const srcImage = "https://panelweb.derkayvargas.com/";
+
+
+interface Slide {
+  marca: string;
+  modelo: string;
+  anio: number;
+  km: number;
+  estado: string;
+  precio: number;
+  foto: string;
+}
+---
+
+<div class="swiper">
+  <div class="swiper-wrapper">
+    {slides.data.map((slide: Slide) => (
+      <div class="swiper-slide catalog__item">
+        
+        <a class="catalog__item-link" href="#">           
+            <img class="catalog__item-img" src={srcImage + slide.foto.replace("public/","storage/")} alt={slide.modelo}>         
+        </a>        
+        <div class="catalog__item-info">
+            <div class="catalog__item-top">
+                <span class="catalog__item-year">
+                    {slide.anio}
+                </span>
+                <span>|</span>                  
+                <span class="catalog__item-type">
+                    {slide.km.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")} km
+                </span>            
+            </div>
+            <div class="catalog__item-middle"> 
+                <div class="catalog__item-name"> 
+                    {slide.marca} {slide.modelo}
+                </div> 
+                <p class="catalog__item-text">
+                    Estado: {slide.estado}
+                </p>
+            </div>
+            <div class="catalog__item-bottom">
+                <a href="/modelos/yaris-hatchback" class="catalog__item-btn btn">
+                    Explorar
+                </a>
+                <div class="catalog__item-price">
+                ${slide.precio.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}
+                </div>
+            </div>
+        </div>
+
+      </div>
+    ))}
+  </div>
+
+  <!-- Paginación y navegación -->
+  <div class="swiper-pagination"></div>
+  
+</div>
+
+<script>
+  import Swiper from 'swiper/bundle'; // Importa todo el bundle de Swiper
+
+  if (typeof window !== 'undefined') {
+    const swiper = new Swiper('.swiper', {
+      spaceBetween: 20,
+      slidesPerView: 3,
+      
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+  }
+</script>
+
+<style>
+    .catalog__items {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr) [3];
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5rem;
+  }
+
+  .catalog__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: #1e1f23;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    border-radius: 2rem;
+    overflow: hidden;
+    color: #fff;
+    -webkit-animation: showBlock 0.3s linear forwards;
+    animation: showBlock 0.3s linear forwards;
+  }
+  .catalog__item.hidden {
+    display: none;
+  }
+  .catalog__item-img {
+    width: 100%;
+    height: 25rem;
+    object-fit: cover;
+  }
+  .catalog__item-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 1.5rem;
+    min-height: max-content;
+  }
+  .catalog__item-top {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 1.5rem;
+    white-space: nowrap;
+  }
+  .catalog__item-middle {
+    margin-bottom: 2rem;
+  }
+  .catalog__item-name {
+    font-weight: 700;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .catalog__item-text {
+    font-size: 1.2rem;
+  }
+  .catalog__item-bottom {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-top: auto;
+  }
+  .catalog__item-price {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+</style>
