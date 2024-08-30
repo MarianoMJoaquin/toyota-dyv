@@ -5828,9 +5828,11 @@
       });
     });
   });
+
+
   
   /*=============== SHOW MENU ===============*/
-  const showMenu = (toggleId, navId) => {
+ /* const showMenu = (toggleId, navId) => {
     const toggle = document.getElementById(toggleId),
         nav = document.getElementById(navId)
   
@@ -5843,6 +5845,7 @@
   
   showMenu('nav-toggle', 'nav-menu')
   /*=============== SHOW DROPDOWN MENU ===============*/
+  /*
   const dropdownItems = document.querySelectorAll('.dropdown__item')
   
   // 1. Select each dropdown item
@@ -5881,6 +5884,7 @@
   }
   
   /*=============== DELETE DROPDOWN STYLES ===============*/
+  /*
   const mediaQuery = matchMedia('(min-width: 1118px)'),
       dropdownContainer = document.querySelectorAll('.dropdown__container')
   
@@ -5900,7 +5904,7 @@
     }
   }
   
-  addEventListener('resize', removeStyle)
+  addEventListener('resize', removeStyle)*/
 
 
   var swiperAutos = new Swiper('#autos', {
