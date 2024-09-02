@@ -20,7 +20,7 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
     <div id="spinner" class="spinner"></div>
     <img src="/images/modelos/yaris-hatchback/XS/red/4.png" alt="Producto en 360" id="productImage">
 </div>
-<div class="menu-ingredients">
+<div class="indicador-arrastre">
   <i class="ri-arrow-left-s-line"></i> Arrastre para girar <i class="ri-arrow-right-s-line"></i>
 </div>
 <div class="flex gap-3">
@@ -36,7 +36,11 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
   <span id="colorName">Color seleccionado: Rojo Metalizado</span>
 </div>
   <style>
-    
+    .indicador-arrastre {
+        font-style: italic;
+        font-size: 14px;
+        color: color-mix(in srgb, var(--default-color), transparent 50%);
+    }
 .viewer {
   width: 100%;
   height: 400px;

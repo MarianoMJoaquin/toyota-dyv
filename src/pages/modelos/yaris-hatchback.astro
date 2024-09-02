@@ -24,7 +24,7 @@ import Car360 from "../../components/Car360.astro";
 
 ---
 
-<Layout title="Yaris Hatchback">
+<Layout title="Yaris Hatchback | Derka y cargas">
     <main class="main">
 
         <!-- Hero Section -->
@@ -505,7 +505,45 @@ import Car360 from "../../components/Car360.astro";
     
         </section><!-- /Book A Table Section -->
     
+        <!-- Specs-1 Section -->
+        <section id="material-descargable" class="material-descargable lg:mx-5 section">
+    
+          <!-- Section Title -->
+          <div class="container mx-auto section-title" data-aos="fade-up">
+            <h2>YARIS HATCHBACK</h2>
+            <p>Material descargable</p>
+          </div><!-- End Section Title -->
+    
+          <div class="container mx-auto">
+    
+            <div class="flex flex-wrap gap-y-4">
+    
+              <div class="lg:w-1/3 pr-4 pl-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-item">
+                  <span><img src="https://media.toyota.com.ar/e093c2df-8ddd-4f5b-96f1-bb37e31c596f.png" alt=""></span>
+                  <h4><a href="https://media.toyota.com.ar/2bffb3d0-1b18-4c41-812e-87a308b26d3a.pdf"  target="_blank" class="stretched-link">Ficha Técnica</a></h4>
+                </div>
+              </div><!-- Card Item -->
+    
+              <div class="lg:w-1/3 pr-4 pl-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-item">
+                  <span><img src="https://media.toyota.com.ar/b09bb49b-1f95-44b0-8777-c47862617bc4.png" alt=""></span>
+                  <h4><a href="https://media.toyota.com.ar/fe109e0a-f841-4637-9631-ce25967b345d.pdf" target="_blank" class="stretched-link">Información de consumo</a></h4>
+                </div>
+              </div><!-- Card Item -->
+    
+              <div class="lg:w-1/3 pr-4 pl-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-item">
+                  <span><img src="https://media.toyota.com.ar/0530f369-ffa4-4219-af0d-5d34f5fff07c.png" alt=""></span>
+                  <h4><a href="https://media.toyota.com.ar/52dca697-53be-41e1-9562-e9d6a346687a.pdf" target="_blank" class="stretched-link">Información sobre airbags</a></h4>
+                </div>
+              </div><!-- Card Item -->
         
+            </div>
+    
+          </div>
+    
+        </section><!-- /Why Us Section -->    
     
       </main>
       <!-- Scroll Top -->
@@ -1700,11 +1738,30 @@ section,
   border-radius: 1rem;
 }
 
+.material-descargable .card-item {
+  background: #f5f5f5;  
+  padding: 10px 20px;
+  transition: all ease-in-out 0.3s;
+  height: 100%;
+  position: relative;
+  border-radius: 1rem;
+}
+
 .why-us .card-item span {
   color: var(--accent-color);
   display: block;
   font-size: 2rem;
   font-weight: 5 00;
+}
+
+.material-descargable .card-item span {
+  color: var(--accent-color);
+  display: block;
+  font-size: 8.4rem;
+}
+
+.material-descargable .card-item span img{
+  width: max-content;
 }
 
 .why-us .card-item h4 {
@@ -1714,7 +1771,15 @@ section,
   margin: 20px 0;
 }
 
-.why-us .card-item h4 a {
+.material-descargable .card-item h4 {
+  font-size: 30px;
+  font-weight: 300;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.why-us .card-item h4 a,
+.material-descargable .card-item h4 a {
   color: var(--contrast-color);
 }
 
@@ -1816,13 +1881,7 @@ section,
   font-weight: 600;
 }
 
-.menu .menu-ingredients {
-  /*margin-left: 95px;*/
-  font-style: italic;
-  font-size: 14px;
-  font-family: var(--nav-font);
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-}
+
 
 /*--------------------------------------------------------------
 # Specials Section
