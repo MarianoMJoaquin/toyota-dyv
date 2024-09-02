@@ -18,6 +18,7 @@ import sliderImg from "../../assets/images/yarisfondo.jpeg"
 import slideImg1 from "../../assets/images/events-slider/slider1.png"
 import slideImg2 from "../../assets/images/events-slider/slider2.jpeg"
 import slideImg3 from "../../assets/images/events-slider/slider3.png"
+import Car360 from "../../components/Car360.astro";
 
 
 
@@ -180,7 +181,7 @@ import slideImg3 from "../../assets/images/events-slider/slider3.png"
     
               <div class="lg:w-1/2 pr-4 pl-4 menu-item">
                 <div class="menu-content gap-4 flex-col justify-center items-center">
-                  <div class="viewer bg-white rounded-md" id="productViewer">
+                 <!-- <div class="viewer bg-white rounded-md" id="productViewer">
                       <div id="spinner" class="spinner"></div>
                       <img src="/images/modelos/yaris-hatchback/XS/red/4.png" alt="Producto en 360" id="productImage">
                   </div>
@@ -198,15 +199,16 @@ import slideImg3 from "../../assets/images/events-slider/slider3.png"
                   </div>
                   <div class="colors mb-5">
                     <span id="colorName">Color seleccionado: Rojo Metalizado</span>
-                  </div>
+                  </div>-->
+                  <Car360 currentModel="yaris-hatchback" currentColor="red" currentProduct="XS"/>
                 </div>
     
     
-              </div><!-- Menu Item -->
+              </div>
     
               <div class="lg:w-1/2 pr-4 pl-4 flex justify-between items-start">
                 <div class="max-w-xl mx-auto">
-                  <!-- Tabs -->
+                  
                   <div id="tab-info" class="border-b border-gray-200">
                     <ul  class="flex justify-center space-x-4" role="tablist">
                       <li>
@@ -266,7 +268,7 @@ import slideImg3 from "../../assets/images/events-slider/slider3.png"
                     </ul>
                   </div>
               
-                  <!-- Contenido -->
+                  
                   <div id="manual" class="tab-content active fade show">
                     <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 space-y-2">
                       <li>Motor 1,5 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 107 CV de potencia máxima</li>
@@ -371,7 +373,7 @@ import slideImg3 from "../../assets/images/events-slider/slider3.png"
               </div>
     
             </div><!-- Menu Container -->
-    
+            
           </div>
     
     
