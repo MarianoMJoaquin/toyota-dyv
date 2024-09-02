@@ -18,7 +18,7 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
 
 <div class="viewer bg-white rounded-md" id="productViewer">
     <div id="spinner" class="spinner"></div>
-    <img src="/images/modelos/yaris-hatchback/XS/red/4.png" alt="Producto en 360" id="productImage">
+    <img src=`/images/modelos/${currentModel}/${currentProduct}/${currentColor}/4.png` alt="Producto en 360" id="productImage">
 </div>
 <div class="indicador-arrastre">
   <i class="ri-arrow-left-s-line"></i> Arrastre para girar <i class="ri-arrow-right-s-line"></i>
@@ -318,7 +318,9 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
     // Función para cambiar el color seleccionado
     function colorSelected(color) {
       if (color === 'red') {
-        colorName.innerText = 'Color seleccionado: Rojo Metalizado';
+        if (currentModelAux === 'yaris-sedan'){
+          
+        }
       } else if (color === 'black') {
         colorName.innerText = 'Color seleccionado: Negro Mica';
       } else if(color === 'white'){

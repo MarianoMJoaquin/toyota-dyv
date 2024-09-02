@@ -18,6 +18,7 @@ import sliderImg from "../../assets/images/events-slider/yaris-sedan.webp"
 import slideImg1 from "../../assets/images/events-slider/slider1.png"
 import slideImg2 from "../../assets/images/events-slider/slider2.jpeg"
 import slideImg3 from "../../assets/images/events-slider/slider3.png"
+import Car360 from "../../components/Car360.astro";
 
 
 
@@ -174,11 +175,11 @@ import slideImg3 from "../../assets/images/events-slider/slider3.png"
               <div class="tab active" data-product="XLS">XLS</div>
             </div>        
     
-            <div class="flex flex-wrap " data-aos="fade-up" data-aos-delay="200">
+            <div class="grid grid-cols-2 grid-rows-1 gap-4" data-aos="fade-up" data-aos-delay="200">
     
-              <div class="lg:w-1/2 pr-4 pl-4 menu-item">
+              <div class="menu-item">
                 <div class="menu-content gap-4 flex-col justify-center items-center">
-                  <div class="viewer bg-white rounded-md" id="productViewer">
+                  <!--<div class="viewer bg-white rounded-md" id="productViewer">
                       <div id="spinner" class="spinner"></div>
                       <img src="/images/modelos/yaris-sedan/XLS/gray/4.png" alt="Producto en 360" id="productImage">
                   </div>
@@ -192,16 +193,14 @@ import slideImg3 from "../../assets/images/events-slider/slider3.png"
                       <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-black text-white px-3 rounded-full" data-color="black"></button>
                       <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-300 text-white px-3 rounded-full" data-color="white-perl"></button>
                       <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-sky-900 text-white px-3 rounded-full" data-color="blue"></button>
-                  </div>
-                  <div class="colors mb-5">
-                    <span id="colorName">Color seleccionado: Rojo Metalizado</span>
-                  </div>
+                  </div>-->
+                  <Car360 currentModel="yaris-sedan" currentColor="gray" currentProduct="XLS"/>
                 </div>
     
     
               </div><!-- Menu Item -->
     
-              <div class="lg:w-1/2 pr-4 pl-4 flex justify-between items-start">
+              <div class="flex justify-between items-start">
                 <div class="max-w-xl mx-auto">
                   <!-- Tabs -->
                   <div id="tab-info" class="border-b border-gray-200">
