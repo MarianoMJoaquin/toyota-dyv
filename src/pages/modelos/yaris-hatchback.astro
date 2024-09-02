@@ -1874,7 +1874,12 @@ section,
 }
 
 @media screen and (max-width: 768px) {
-  #manual {
+  #manual,
+  #automatico,
+  #manual-xls,
+  #automatico-xls,
+  #automatico-xls-pack,
+  #automatico-s {
     font-size: 1.3rem;
   }
 }
@@ -1883,21 +1888,22 @@ section,
 /*--------------------------------------------------------------
 # Specials Section
 --------------------------------------------------------------*/
+
 .plyr--full-ui input[type=range]{
-  color: var(--accent-color)
+  color: var(--accent-color) !important;
 }
 
 .plyr__control--overlaid{
-  background: #eb0a1e;
+  background: #eb0a1e !important;
 }
 
 .plyr--video .plyr__control.plyr__tab-focus, .plyr--video .plyr__control:hover, .plyr--video .plyr__control[aria-expanded=true] {
-  background: #eb0a1e;
-  color: #fff;
+  background: #eb0a1e !important;
+  color: #fff !important;
 }
 
 .plyr--video{
-  border-radius: 1rem;
+  border-radius: 1rem !important;
 }
 
 .specials {
