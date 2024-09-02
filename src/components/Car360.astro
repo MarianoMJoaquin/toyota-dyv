@@ -33,7 +33,7 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
     <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-sky-900 text-white px-3 rounded-full" data-color="blue"></button>
 </div>
 <div class="colors mb-5">
-  <span id="colorName">Color seleccionado: Rojo Metalizado</span>
+  <span id="colorName">Color seleccionado: </span>
 </div>
   <style>
     .indicador-arrastre {
@@ -303,7 +303,6 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
         tab.classList.add('active'); // Activar la tab seleccionada
 
         currentProductAux = tab.getAttribute('data-product'); // Cambiar al producto seleccionado // Reiniciar el color
-        currentColorAux = 'red'; // Reiniciar el color
         imagesLoaded = false; // Marcar las imágenes como no cargadas
         document.getElementById('spinner').style.display = 'block'; // Mostrar el spinner
         productImage.style.display = 'none'; // Ocultar la imagen actual
@@ -318,8 +317,8 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
     // Función para cambiar el color seleccionado
     function colorSelected(color) {
       if (color === 'red') {
-        if (currentModelAux === 'yaris-sedan'){
-          
+        if (currentModelAux === 'yaris-hatchback'){
+          colorName.innerText = 'Color seleccionado: Negro Mica';
         }
       } else if (color === 'black') {
         colorName.innerText = 'Color seleccionado: Negro Mica';
@@ -478,12 +477,24 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
           // Actualizar la información del auto
           if (manualXsTab && automaticoXsTab && manualXlsTab && automaticoXlsTab && automaticoXlsPackTab && automaticoS) {
             manualXsTab.click();
+            console.log('click')
             manualXsTab.style.display = 'block';
             automaticoXsTab.style.display = 'block';
             manualXlsTab.style.display = 'none';
             automaticoXlsTab.style.display = 'none';
             automaticoXlsPackTab.style.display = 'none';
             automaticoS.style.display = 'none';
+          }
+
+          if (currentModelAux === 'yaris-hatchback'){
+            manualXsTab.click();
+          } else if (currentModelAux === 'yaris-sedan'){
+            if (manualXlsTab){
+              manualXlsTab.click();
+              console.log('click');
+            } else{
+              console.log('no click');
+            }
           }
           
            // Actualizar la información del auto
@@ -521,5 +532,26 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
             }
           }
 
+          function updateCarModelColors(modelo){
+            if (modelo === "yaris-sedan"){
+              colorButtons.forEach(button => {
+                if (button.getAttribute('data-color') === 'gray' || button.getAttribute('data-color') === 'silver' || button.getAttribute('data-color') === 'black' || button.getAttribute('data-color') === 'white-perl' || button.getAttribute('data-color') === 'blue' || button.getAttribute('data-color') === 'white') { 
+                  return; // No hacer nada
+                } else {
+                  button.style.display = 'none'; // Ocultar el botón de color que no corresponda al modelo seleccionado
+                }
+              });
+            } else if (modelo === "yaris-hatchback"){
+              colorButtons.forEach(button => {
+                if (button.getAttribute('data-color') === 'red' || button.getAttribute('data-color') === 'white' || button.getAttribute('data-color') === 'blue' || button.getAttribute('data-color') === 'black' || button.getAttribute('data-color') === 'gray' || button.getAttribute('data-color') === 'silver' || button.getAttribute('data-color') === 'white-perl') {
+                  return; // No hacer nada
+                } else {
+                  button.style.display = 'none';  // Ocultar el botón de color que no corresponda al modelo seleccionado
+                }
+              });
+            }
+          }
+
+          updateCarModelColors(currentModelAux);
     
   </script>
