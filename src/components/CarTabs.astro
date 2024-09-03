@@ -193,120 +193,122 @@ const { currentModel } = Astro.props;
     }
   </style>
 
-  <script>
+  <script is:inline define:vars={{ currentModel }}>
+
+    let currentModelAux = currentModel;
     //Tabs de las especificaciones
-    function openTab(tabName: string) {
-            let i,tabcontent, tablinks;
+    function openTab(tabName) {
+      let i,tabcontent, tablinks;
       
-            // Ocultar todo el contenido de las tabs
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-              if (tabcontent[i].id !== tabName) {
-                tabcontent[i].classList.remove("show");
-                tabcontent[i].classList.remove("active");
-              } else if (tabcontent[i].id === tabName) {
-                tabcontent[i].classList.add("show");
-                tabcontent[i].classList.add("active");
-              }
-            }
-            // Remover la clase 'active' de todos los botones de tabs
-            tablinks = document.querySelectorAll("button");
-            tablinks.forEach(function (tablink) {
-              tablink.classList.remove("text-red-600", "border-red-500");
-              tablink.classList.add("text-gray-500", "border-transparent");
-            });
+      // Ocultar todo el contenido de las tabs
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        if (tabcontent[i].id !== tabName) {
+            tabcontent[i].classList.remove("show");
+          tabcontent[i].classList.remove("active");
+        } else if (tabcontent[i].id === tabName) {
+          tabcontent[i].classList.add("show");
+          tabcontent[i].classList.add("active");
+        }
+      }
+      // Remover la clase 'active' de todos los botones de tabs
+      tablinks = document.querySelectorAll("button");
+      tablinks.forEach(function (tablink) {
+      tablink.classList.remove("text-red-600", "border-red-500");
+      tablink.classList.add("text-gray-500", "border-transparent");
+      });
       
-            // Mostrar la tab actual y agregar clase 'active'
-            const element = document.getElementById(tabName);
-            if (element) {
-              element.classList.add("show", "active");
-            }
+      // Mostrar la tab actual y agregar clase 'active'
+      const element = document.getElementById(tabName);
+      if (element) {
+        element.classList.add("show", "active");
+      }
             
-            // Aplicar la clase 'active' al botón de la tab actual
-            if (tabName === 'automatico') {
-              const automaticoXsTab = document.getElementById("automatico-xs-tab");
-              if (automaticoXsTab) {
-                automaticoXsTab.classList.add("text-red-600", "border-red-500");
-                automaticoXsTab.classList.remove("text-gray-500", "border-transparent");   
-              }
-            } else if (tabName === 'manual') {
-              const manualXsTab = document.getElementById("manual-xs-tab");
-              if (manualXsTab) {
-                manualXsTab.classList.add("text-red-600", "border-red-500");
-                manualXsTab.classList.remove("text-gray-500", "border-transparent");
-              }
-            } else if (tabName === 'automatico-xls') {
-              const automaticoXlsTab = document.getElementById("automatico-xls-tab");
-              if (automaticoXlsTab) {
-                automaticoXlsTab.classList.add("text-red-600", "border-red-500");
-                automaticoXlsTab.classList.remove("text-gray-500", "border-transparent");
-              }
-            } else if (tabName === 'manual-xls') {
-              const manualXlsTab = document.getElementById("manual-xls-tab");
-              if (manualXlsTab) {
-                manualXlsTab.classList.add("text-red-600", "border-red-500");
-                manualXlsTab.classList.remove("text-gray-500", "border-transparent");
-              }
-            } else if (tabName === 'automatico-xls-pack') {
-              const automaticoXlsPackTab = document.getElementById("automatico-xls-pack-tab");
-              if (automaticoXlsPackTab) {
-                automaticoXlsPackTab.classList.add("text-red-600", "border-red-500");
-                automaticoXlsPackTab.classList.remove("text-gray-500", "border-transparent");
-              }
-            } else if (tabName === 'automatico-s') {
-              const automaticoS = document.getElementById("automatico-s-tab");
-              if (automaticoS) {
-                automaticoS.classList.add("text-red-600", "border-red-500");
-                automaticoS.classList.remove("text-gray-500", "border-transparent");
-              }
-            }
-          }
+      // Aplicar la clase 'active' al botón de la tab actual
+      if (tabName === 'automatico') {
+        const automaticoXsTab = document.getElementById("automatico-xs-tab");
+        if (automaticoXsTab) {
+          automaticoXsTab.classList.add("text-red-600", "border-red-500");
+          automaticoXsTab.classList.remove("text-gray-500", "border-transparent");   
+        }
+      } else if (tabName === 'manual') {
+        const manualXsTab = document.getElementById("manual-xs-tab");
+        if (manualXsTab) {
+          manualXsTab.classList.add("text-red-600", "border-red-500");
+          manualXsTab.classList.remove("text-gray-500", "border-transparent");
+        }
+      } else if (tabName === 'automatico-xls') {
+        const automaticoXlsTab = document.getElementById("automatico-xls-tab");
+        if (automaticoXlsTab) {
+          automaticoXlsTab.classList.add("text-red-600", "border-red-500");
+          automaticoXlsTab.classList.remove("text-gray-500", "border-transparent");
+        }
+      } else if (tabName === 'manual-xls') {
+        const manualXlsTab = document.getElementById("manual-xls-tab");
+        if (manualXlsTab) {
+          manualXlsTab.classList.add("text-red-600", "border-red-500");
+          manualXlsTab.classList.remove("text-gray-500", "border-transparent");
+        }
+      } else if (tabName === 'automatico-xls-pack') {
+        const automaticoXlsPackTab = document.getElementById("automatico-xls-pack-tab");
+        if (automaticoXlsPackTab) {
+          automaticoXlsPackTab.classList.add("text-red-600", "border-red-500");
+          automaticoXlsPackTab.classList.remove("text-gray-500", "border-transparent");
+        }
+      } else if (tabName === 'automatico-s') {
+        const automaticoS = document.getElementById("automatico-s-tab");
+        if (automaticoS) {
+          automaticoS.classList.add("text-red-600", "border-red-500");
+          automaticoS.classList.remove("text-gray-500", "border-transparent");
+        }
+      }
+    }
       
-          // Asociar eventos a los botones al cargar la página
-          document.addEventListener("DOMContentLoaded", function () {
+    // Asociar eventos a los botones al cargar la página
+    document.addEventListener("DOMContentLoaded", function () {
       
-            const automaticoXsTab = document.getElementById("automatico-xs-tab");
-            if (automaticoXsTab) {
-              automaticoXsTab.addEventListener("click", function () {
-                openTab('automatico');
-              });
-            }
+      const automaticoXsTab = document.getElementById("automatico-xs-tab");
+      if (automaticoXsTab) {
+        automaticoXsTab.addEventListener("click", function () {
+          openTab('automatico');
+        });
+      }
              
             
-            const manualXsTab = document.getElementById("manual-xs-tab");
-            if (manualXsTab) {
-              manualXsTab.addEventListener("click", function () {
-                openTab('manual');
-              });
-            }
+      const manualXsTab = document.getElementById("manual-xs-tab");
+      if (manualXsTab) {
+        manualXsTab.addEventListener("click", function () {
+          openTab('manual');
+        });
+      }
       
-            const automaticoXlsTab = document.getElementById("automatico-xls-tab");
-            if (automaticoXlsTab) {
-              automaticoXlsTab.addEventListener("click", function () {
-                openTab('automatico-xls');
-              });
-            }
+      const automaticoXlsTab = document.getElementById("automatico-xls-tab");
+      if (automaticoXlsTab) {
+        automaticoXlsTab.addEventListener("click", function () {
+          openTab('automatico-xls');
+        });
+      }
       
-            const manualXlsTab = document.getElementById("manual-xls-tab");
-            if (manualXlsTab) {
-              manualXlsTab.addEventListener("click", function () {
-                openTab('manual-xls');
-              });
-            }
+      const manualXlsTab = document.getElementById("manual-xls-tab");
+      if (manualXlsTab) {
+        manualXlsTab.addEventListener("click", function () {
+          openTab('manual-xls');
+        });
+      }
       
-            const automaticoXlsPackTab = document.getElementById("automatico-xls-pack-tab");
-            if (automaticoXlsPackTab) {
-              automaticoXlsPackTab.addEventListener("click", function () {
-                openTab('automatico-xls-pack');
-              });
-            }
+      const automaticoXlsPackTab = document.getElementById("automatico-xls-pack-tab");
+      if (automaticoXlsPackTab) {
+        automaticoXlsPackTab.addEventListener("click", function () {
+          openTab('automatico-xls-pack');
+        });
+      }
       
-            const automaticoS = document.getElementById("automatico-s-tab");
-            if (automaticoS) {
-              automaticoS.addEventListener("click", function () {
-                openTab('automatico-s');
-              });
-            }
-          });
+      const automaticoS = document.getElementById("automatico-s-tab");
+      if (automaticoS) {
+        automaticoS.addEventListener("click", function () {
+          openTab('automatico-s');
+        });
+      }
+    });
           
   </script>
