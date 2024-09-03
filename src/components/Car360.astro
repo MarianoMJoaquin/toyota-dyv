@@ -125,25 +125,6 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
   border-bottom: 2px solid var(--accent-color);
 }
 
-/*Tabs Especificaciones*/
-
-.tab-content {
-  display: none;
-}
-
-.tab-content.active {
-  display: block;
-}
-
-/* Transición de contenido */
-.fade {
-  opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.fade.show {
-  opacity: 1;
-}
   </style>
   
   <script is:inline define:vars={{currentModel, currentColor, currentProduct}}>
