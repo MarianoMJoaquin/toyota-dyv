@@ -4,20 +4,19 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout title="Toyota Plan | Derka y Vargas">
     <!--======================= SCROLL-ARROW =======================-->
-		<button class="scroll-arrow">
-            <img class="scroll-arrow__img" src="images/arrow-scroll.svg" alt="arrow" />
-        </button>
+    <main class="main">
         <section class="section">
-            <div class="home__container">
-                <div class="home__data">
-                    <h1 class="home__title">Toyota Plan</h1>
-                    <p class="home__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptates.</p>
-                    <a href="#services" class="button button--flex">
-                        More Info
-                        <i class="ri-arrow-down-s-line button__icon"></i>
-                    </a>
+            <div class="container mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col justify-center items-center">
+                        <h1 class="text-3xl md:text-4xl font-bold text-center">Toyota Plan</h1>
+                        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                    <div class="flex justify-center items-center">
+                        <img src="/images/toyota-plan.jpg" alt="Toyota Plan" class="w-full md:w-4/5" />
+                    </div>
                 </div>
-                <img src="images/home.png" alt="home" class="home__img" />
             </div>
         </section>
+    </main>
 </Layout>
