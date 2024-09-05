@@ -4,20 +4,20 @@ import { Image } from "astro:assets"
 import 'swiper/swiper-bundle.css';
 
 //Galeria de imágenes
-import srcImage1 from "../../assets/images/gallery/yaris1.png"
-import srcImage2 from "../../assets/images/gallery/yaris2.jpeg"
-import srcImage3 from "../../assets/images/gallery/yaris3.png"
-import srcImage4 from "../../assets/images/gallery/yaris4.jpeg"
-import srcImage5 from "../../assets/images/gallery/yaris5.jpeg"
+import srcImage1 from "../../assets/images/modelos/yaris-sedan/galeria/yaris-sedan-1.png"
+import srcImage2 from "../../assets/images/modelos/yaris-sedan/galeria/yaris-sedan-2.jpeg"
+import srcImage3 from "../../assets/images/modelos/yaris-sedan/galeria/yaris-sedan-3.jpg"
+import srcImage4 from "../../assets/images/modelos/yaris-sedan/galeria/yaris-sedan-4.jpeg"
+import srcImage5 from "../../assets/images/modelos/yaris-sedan/galeria/yaris-sedan-5.jpeg"
 
 //Hero
-import srcImgBg from "../../assets/images/yaris-sedan-bg.webp"
+import srcImgBg from "../../assets/images/modelos/yaris-sedan/fondo/yaris-sedan-bg.webp"
 
 //Fondo Slider
-import sliderImg from "../../assets/images/events-slider/yaris-sedan.webp"
-import slideImg1 from "../../assets/images/events-slider/slider1.png"
-import slideImg2 from "../../assets/images/events-slider/slider2.jpeg"
-import slideImg3 from "../../assets/images/events-slider/slider3.png"
+import sliderImg from "../../assets/images/modelos/yaris-sedan/slider/yaris-sedan.webp"
+import slideImg1 from "../../assets/images/modelos/yaris-sedan/slider/slider1.png"
+import slideImg2 from "../../assets/images/modelos/yaris-sedan/slider/slider2.jpeg"
+import slideImg3 from "../../assets/images/modelos/yaris-sedan/slider/slider3.png"
 import Car360 from "../../components/Car360.astro";
 import CarTabs from "../../components/CarTabs.astro";
 
@@ -1659,11 +1659,34 @@ section,
   border-radius: 1rem;
 }
 
+.material-descargable .card-item {
+  background: #f5f5f5;  
+  padding: 10px 20px;
+  transition: all ease-in-out 0.3s;
+  height: 100%;
+  position: relative;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .why-us .card-item span {
   color: var(--accent-color);
   display: block;
   font-size: 2rem;
   font-weight: 5 00;
+}
+
+.material-descargable .card-item span {
+  color: var(--accent-color);
+  display: block;
+  font-size: 8.4rem;
+}
+
+.material-descargable .card-item span img{
+  width: max-content;
 }
 
 .why-us .card-item h4 {
@@ -1673,8 +1696,20 @@ section,
   margin: 20px 0;
 }
 
-.why-us .card-item h4 a {
+.material-descargable .card-item h4 {
+  font-size: 30px;
+  font-weight: 300;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.why-us .card-item h4 a,
+.material-descargable .card-item h4 a {
   color: var(--contrast-color);
+}
+
+.material-descargable .card-item h4 a:hover {
+  color: var(--accent-color);
 }
 
 .why-us .card-item p {
@@ -1695,6 +1730,7 @@ section,
 .why-us .card-item:hover p {
   /*color: var(--background-color);*/
 }
+
 
 /*--------------------------------------------------------------
 # Menu Section
@@ -1782,6 +1818,15 @@ section,
   font-family: var(--nav-font);
   color: color-mix(in srgb, var(--default-color), transparent 50%);
 }
+
+@media screen and (max-width: 768px) {
+  #manual-xls,
+  #automatico-xls,
+  #automatico-xls-pack,{
+    font-size: 1.3rem;
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Specials Section

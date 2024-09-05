@@ -4,20 +4,20 @@ import { Image } from "astro:assets"
 import 'swiper/swiper-bundle.css';
 
 //Galeria de imágenes
-import srcImage1 from "../../assets/images/gallery/yaris1.png"
-import srcImage2 from "../../assets/images/gallery/yaris2.jpeg"
-import srcImage3 from "../../assets/images/gallery/yaris3.png"
-import srcImage4 from "../../assets/images/gallery/yaris4.jpeg"
-import srcImage5 from "../../assets/images/gallery/yaris5.jpeg"
+import srcImage1 from "../../assets/images/modelos/yaris-hatchback/galeria/yaris-hatchback-1.png"
+import srcImage2 from "../../assets/images/modelos/yaris-hatchback/galeria/yaris-hatchback-2.jpeg"
+import srcImage3 from "../../assets/images/modelos/yaris-hatchback/galeria/yaris-hatchback-3.png"
+import srcImage4 from "../../assets/images/modelos/yaris-hatchback/galeria/yaris-hatchback-4.jpeg"
+import srcImage5 from "../../assets/images/modelos/yaris-hatchback/galeria/yaris-hatchback-5.jpeg"
 
 //Hero
-import srcImgBg from "../../assets/images/hero_banner_07792e92e4 copy.webp"
+import srcImgBg from "../../assets/images/modelos/yaris-hatchback/fondo/yaris-hatchback-bg.webp"
 
 //Fondo Slider
-import sliderImg from "../../assets/images/yarisfondo.jpeg"
-import slideImg1 from "../../assets/images/events-slider/slider1.png"
-import slideImg2 from "../../assets/images/events-slider/slider2.jpeg"
-import slideImg3 from "../../assets/images/events-slider/slider3.png"
+import sliderImg from "../../assets/images/modelos/yaris-hatchback/slider/slider-fondo.jpeg"
+import slideImg1 from "../../assets/images/modelos/yaris-hatchback/slider/slider1.png"
+import slideImg2 from "../../assets/images/modelos/yaris-hatchback/slider/slider2.jpeg"
+import slideImg3 from "../../assets/images/modelos/yaris-hatchback/slider/slider3.png"
 import Car360 from "../../components/Car360.astro";
 import CarTabs from "../../components/CarTabs.astro";
 
@@ -1736,6 +1736,10 @@ section,
   height: 100%;
   position: relative;
   border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .why-us .card-item span {
@@ -1772,6 +1776,10 @@ section,
 .why-us .card-item h4 a,
 .material-descargable .card-item h4 a {
   color: var(--contrast-color);
+}
+
+.material-descargable .card-item h4 a:hover {
+  color: var(--accent-color);
 }
 
 .why-us .card-item p {
