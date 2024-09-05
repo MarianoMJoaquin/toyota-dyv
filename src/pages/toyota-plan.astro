@@ -99,7 +99,7 @@ import srcImage1 from "../assets/images/cross-2.png";
 
 <script>
     const sliderWrapper = document.querySelector(".slider__wrapper"),
-    sliderInner = document.querySelector(".slider__inner"),
+    sliderInner = document.querySelector(".slider__inner") as HTMLElement,
     sliderItems = document.querySelectorAll(".slider__item"),
     sliderArrowNext = document.querySelector(".slider__arrow_next"),
     sliderArrowPrev = document.querySelector(".slider__arrow_prev"),
@@ -158,8 +158,8 @@ import srcImage1 from "../assets/images/cross-2.png";
       });
       let x1: null | number = null,
           y1: number | null = null;
-      function handleTouchStart(e) {
-        (x1 = e.touches[0].clientX), (y1 = e.touches[0].clientY);
+      function handleTouchStart(e: TouchEvent) {
+          (x1 = e.touches[0].clientX), (y1 = e.touches[0].clientY);
       }
       function handleTouchMove(e) {
         if (!x1 || !y1) return !1;
@@ -173,7 +173,7 @@ import srcImage1 from "../assets/images/cross-2.png";
           Math.abs(r) > Math.abs(i) ? (r > 0 ? "prev" : "next") : void 0
         );
       }
-      sliderInner.addEventListener("touchstart", handleTouchStart),
+      sliderInner.addEventListener("touchstart", (e: TouchEvent) => handleTouchStart(e as TouchEvent)),
         sliderInner.addEventListener("touchmove", (e) => {
           let t = handleTouchMove(e);
           "prev" === t ? slideMovePrev() : "next" === t && slideMoveNext();
