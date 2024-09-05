@@ -161,7 +161,7 @@ import srcImage1 from "../assets/images/cross-2.png";
       function handleTouchStart(e: TouchEvent) {
           (x1 = e.touches[0].clientX), (y1 = e.touches[0].clientY);
       }
-      function handleTouchMove(e) {
+      function handleTouchMove(e: TouchEvent) {
         if (!x1 || !y1) return !1;
         let t = e.touches[0].clientX,
           n = e.touches[0].clientY,
