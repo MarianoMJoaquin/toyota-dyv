@@ -104,75 +104,81 @@ import srcImage1 from "../assets/images/cross-2.png";
     sliderArrowNext = document.querySelector(".slider__arrow_next"),
     sliderArrowPrev = document.querySelector(".slider__arrow_prev"),
     sliderNavBtns = document.querySelectorAll(".slider__nav-btn");
-  let slideIndex = 1,
+    let slideIndex = 1,
     offset = 0;
-  function slideMoveNext() {
-    removeBtnClass(),
-      slideIndex == sliderItems.length
-        ? ((offset = 0), (slideIndex = 1))
-        : ((offset += 100 / sliderItems.length), slideIndex++),
-      addBtnClass(slideIndex - 1),
-      (sliderInner.style.transform = `translateX(-${offset}%)`);
-  }
-  function slideMovePrev() {
-    removeBtnClass(),
-      1 == slideIndex
-        ? ((offset = (100 / sliderItems.length) * (sliderItems.length - 1)),
-          (slideIndex = sliderItems.length))
-        : ((offset -= 100 / sliderItems.length), slideIndex--),
-      addBtnClass(slideIndex - 1),
-      (sliderInner.style.transform = `translateX(-${offset}%)`);
-  }
-  (sliderInner.style.cssText = `display: flex; width: ${
-    100 * sliderItems.length
-  }%;`),
-    (sliderWrapper.style.overflow = "hidden");
-  let slideTimer = setInterval(slideMoveNext, 1e4);
-  function removeBtnClass() {
-    sliderNavBtns.forEach((e) => e.classList.remove("slider__nav-btn_active"));
-  }
-  function addBtnClass(e = 0) {
-    sliderNavBtns[e].classList.add("slider__nav-btn_active"),
-      clearInterval(slideTimer),
-      (slideTimer = setInterval(slideMoveNext, 1e4));
-  }
-  sliderArrowNext.addEventListener("click", () => {
-    slideMoveNext();
-  }),
-    sliderArrowPrev.addEventListener("click", () => {
-      slideMovePrev();
-    }),
-    sliderNavBtns.forEach((e, t) => {
-      e.addEventListener("click", () => {
+    if (sliderInner) {
+      function slideMoveNext() {
         removeBtnClass(),
-          (offset = (100 / sliderItems.length) * t),
-          (slideIndex = t + 1),
-          (sliderInner.style.transform = `translateX(-${offset}%)`),
-          addBtnClass(t);
+          slideIndex == sliderItems.length
+            ? ((offset = 0), (slideIndex = 1))
+            : ((offset += 100 / sliderItems.length), slideIndex++),
+          addBtnClass(slideIndex - 1),
+          (sliderInner as HTMLElement).style.transform = `translateX(-${offset}%)`;
+      }
+      function slideMovePrev() {
+        removeBtnClass(),
+          1 == slideIndex
+            ? ((offset = (100 / sliderItems.length) * (sliderItems.length - 1)),
+              (slideIndex = sliderItems.length))
+            : ((offset -= 100 / sliderItems.length), slideIndex--),
+          addBtnClass(slideIndex - 1),
+          ((sliderInner as HTMLElement).style.transform = `translateX(-${offset}%)`);
+      }
+      ((sliderInner as HTMLElement).style.cssText = `display: flex; width: ${
+        100 * sliderItems.length
+      }%;`),
+        ((sliderWrapper as HTMLElement).style.overflow = "hidden");
+      let slideTimer = setInterval(slideMoveNext, 1e4);
+      function removeBtnClass() {
+        sliderNavBtns.forEach((e) => e.classList.remove("slider__nav-btn_active"));
+      }
+      function addBtnClass(e = 0) {
+        sliderNavBtns[e].classList.add("slider__nav-btn_active"),
+          clearInterval(slideTimer),
+          (slideTimer = setInterval(slideMoveNext, 1e4));
+      }
+      if (sliderArrowNext) {
+        sliderArrowNext.addEventListener("click", () => {
+          slideMoveNext();
+        });
+      }
+      if (sliderArrowPrev) {
+        sliderArrowPrev.addEventListener("click", () => {
+          slideMovePrev();
+        });
+      }
+      sliderNavBtns.forEach((e, t) => {
+        e.addEventListener("click", () => {
+          removeBtnClass(),
+            (offset = (100 / sliderItems.length) * t),
+            (slideIndex = t + 1),
+            ((sliderInner as HTMLElement).style.transform = `translateX(-${offset}%)`),
+            addBtnClass(t);
+        });
       });
-    });
-  let x1 = null,
-    y1 = null;
-  function handleTouchStart(e) {
-    (x1 = e.touches[0].clientX), (y1 = e.touches[0].clientY);
-  }
-  function handleTouchMove(e) {
-    if (!x1 || !y1) return !1;
-    let t = e.touches[0].clientX,
-      n = e.touches[0].clientY,
-      r = t - x1,
-      i = n - y1;
-    return (
-      (x1 = null),
-      (y1 = null),
-      Math.abs(r) > Math.abs(i) ? (r > 0 ? "prev" : "next") : void 0
-    );
-  }
-  sliderInner.addEventListener("touchstart", handleTouchStart),
-    sliderInner.addEventListener("touchmove", (e) => {
-      let t = handleTouchMove(e);
-      "prev" === t ? slideMovePrev() : "next" === t && slideMoveNext();
-    });
+      let x1: null | number = null,
+          y1: number | null = null;
+      function handleTouchStart(e) {
+        (x1 = e.touches[0].clientX), (y1 = e.touches[0].clientY);
+      }
+      function handleTouchMove(e) {
+        if (!x1 || !y1) return !1;
+        let t = e.touches[0].clientX,
+          n = e.touches[0].clientY,
+          r = t - x1,
+          i = n - y1;
+        return (
+          (x1 = null),
+          (y1 = null),
+          Math.abs(r) > Math.abs(i) ? (r > 0 ? "prev" : "next") : void 0
+        );
+      }
+      sliderInner.addEventListener("touchstart", handleTouchStart),
+        sliderInner.addEventListener("touchmove", (e) => {
+          let t = handleTouchMove(e);
+          "prev" === t ? slideMovePrev() : "next" === t && slideMoveNext();
+        });
+    }
 </script>
 
 <style>
