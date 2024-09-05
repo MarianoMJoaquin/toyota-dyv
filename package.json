@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/netlify": "^5.5.1",
     "@astrojs/tailwind": "^5.1.0",
     "@material-tailwind/react": "^2.1.9",
     "@types/react": "^18.3.4",
