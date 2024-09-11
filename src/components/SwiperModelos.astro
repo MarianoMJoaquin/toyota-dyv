@@ -15,7 +15,7 @@ interface Slide {
 
 ---
 
-<div class="swiper">
+<div class="swiper-modelos">
   <div class="swiper-wrapper">
     {slides.data.map((slide: Slide) => (
     <div class="swiper-slide catalog__item">
@@ -51,7 +51,7 @@ interface Slide {
   </div>
 
   <!-- Paginación y navegación -->
-  <div class="swiper-pagination"></div>
+  <div class="swiper-pagination-modelos"></div>
   
 </div>
 
@@ -59,7 +59,7 @@ interface Slide {
   import Swiper from 'swiper/bundle'; // Importa todo el bundle de Swiper
 
   if (typeof window !== 'undefined') {
-    const swiper = new Swiper('.swiper', {
+    const swiper = new Swiper('.swiper-modelos', {
       spaceBetween: 20,
       breakpoints: {
         320: {
@@ -74,7 +74,7 @@ interface Slide {
       },
       
       pagination: {
-        el: '.swiper-pagination',
+        el: '.swiper-pagination-modelos',
         clickable: true,
       },
     });
@@ -166,5 +166,9 @@ interface Slide {
   .catalog__item-price {
     font-size: 2rem;
     text-transform: uppercase;
+  }
+  .swiper-pagination-modelos {
+    margin-top: 1.5rem !important;
+    text-align: center !important;
   }
 </style>
