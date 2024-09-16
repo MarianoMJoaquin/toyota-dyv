@@ -210,7 +210,7 @@ export default function NoticiaList({ noticias, categorias }) {
                         onClick={() => cambiarPagina(i + 1)}
                         className={`${
                           i + 1 === paginaActual
-                            ? 'bg-red-600 text-white'
+                            ? 'bg-gray-900 text-white'
                             : 'bg-gray-300 text-gray-700 hover:bg-red-600 hover:text-white'
                         } rounded-full w-12 h-12 flex items-center justify-center`}
                       >
