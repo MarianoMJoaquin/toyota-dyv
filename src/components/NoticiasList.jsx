@@ -83,7 +83,7 @@ export default function NoticiaList({ noticias, categorias }) {
           <div className="mb-4">
             <input
               type="text"
-              className="border border-gray-300 rounded-full p-3 w-full"
+              className="block py-2.5 px-3 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
               placeholder="Buscar noticias..."
               value={busqueda}
               onChange={(e) => setBusqueda(e.target.value)}
@@ -93,7 +93,7 @@ export default function NoticiaList({ noticias, categorias }) {
           {/* Filtros de Categorías */}
           <div className="mb-4">
             <select
-              className="border border-gray-300 rounded-full p-3 w-full"
+              className="text-lg text-gray-900 border-0 border-b-2 border-gray-300  focus:ring-0 focus:border-red-500 py-2.5 px-3 w-full"
               value={filtroCategoria}
               onChange={(e) => setFiltroCategoria(e.target.value)}
             >
@@ -106,11 +106,11 @@ export default function NoticiaList({ noticias, categorias }) {
 
           {/* Sección de Últimas Noticias */}
           <div className="bg-gray-100 p-4 rounded-lg max-lg:hidden">
-            <h3 className="text-lg font-semibold mb-3">Últimas Noticias</h3>
+            <h3 className="text-2xl font-semibold mb-3">Últimas Noticias</h3>
             <ul className="space-y-2">
               {ultimasNoticias.map(noticia => (
                 <li key={noticia.id} className="border-b pb-2">
-                  <a href="#" onClick={() => seleccionarArticulo(noticia)} className="text-gray-600 hover:text-red-600">
+                  <a href="#" onClick={() => seleccionarArticulo(noticia)} className="text-gray-600 text-xl hover:text-red-600">
                     {noticia.titulo}
                   </a>
                   <p className="text-gray-600 text-sm">
