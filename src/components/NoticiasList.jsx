@@ -73,7 +73,7 @@ export default function NoticiaList({ noticias, categorias }) {
     <section className="container mx-auto section">
       <h1 className="vehicles__title heading-1 border-b">Noticias</h1>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        <div className="lg:col-span-1 space-y-4 mx-5 lg:mx-0">
+        <div className="lg:col-span-1 space-y-4 mx-5 2xl:mx-0 xl:mx-5">
           <div className="mb-4">
             <input
               type="text"
@@ -177,17 +177,17 @@ export default function NoticiaList({ noticias, categorias }) {
                       </CSSTransition>
                     </TransitionGroup>
                   ) : (
-                    <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6">
                       {noticiasPaginadas.map(noticia => (
                         <CSSTransition key={noticia.id} timeout={300} classNames="fade">
-                          <div className="mx-5 lg:mx-auto bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
+                          <div className="mx-5 xl:mx-2 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
                             <img src={noticia.imageUrl} alt={noticia.titulo} className="w-full h-72 object-cover" />
                             <div className="p-4">
-                              <h2 className="text-2xl font-semibold mb-2">{noticia.titulo}</h2>
+                              <h2 className="text-sm lg:text-lg 2xl:text-xl xl:text-xl font-semibold mb-2">{noticia.titulo}</h2>
                               <p className="text-gray-500 text-sm">
                                 {new Date(noticia.created_at).toLocaleDateString()}
                               </p>
-                              <p className="text-gray-700 my-4 line-clamp-3">
+                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
                                 {noticia.contenido.substring(0, 120)}...
                               </p>
                               <button
@@ -210,9 +210,9 @@ export default function NoticiaList({ noticias, categorias }) {
                         onClick={() => cambiarPagina(i + 1)}
                         className={`${
                           i + 1 === paginaActual
-                            ? 'bg-gray-900 text-white'
-                            : 'bg-gray-300 text-gray-700 hover:bg-red-600 hover:text-white'
-                        } rounded-full w-12 h-12 flex items-center justify-center`}
+                            ? 'bg-gray-900 text-white text-lg'
+                            : 'bg-gray-300 text-gray-700 text-lg hover:bg-red-600 hover:text-white'
+                        } rounded-full w-8 h-8 flex items-center justify-center`}
                       >
                         {i + 1}
                       </button>
