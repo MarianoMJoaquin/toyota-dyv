@@ -34,7 +34,7 @@ export default function NoticiaList({ noticias, categorias }) {
     setTimeout(() => {
       filtrarNoticias();
       setCargando(false);
-    }, 300);
+    }, 100);
   }, [busqueda, filtroCategorias, filtroMeses, paginaActual]);  // Añadimos filtroMeses a las dependencias
 
   const filtrarNoticias = () => {
@@ -149,7 +149,7 @@ export default function NoticiaList({ noticias, categorias }) {
 
           {/* Filtro de Categorías */}
           <div className="mb-4 bg-gray-100 p-4">
-            <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-500 border-b-2">Filtrar por Categorías</h3>
+            <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Categorías</h3>
             <div className="space-y-2">
               {categorias.map(categoria => (
                 <div key={categoria.id} className="flex items-center">
@@ -159,7 +159,7 @@ export default function NoticiaList({ noticias, categorias }) {
                     value={categoria.name}
                     checked={filtroCategorias.includes(categoria.name)}
                     onChange={() => handleCategoriaCheck(categoria.name)}
-                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                   />
                   <label htmlFor={`categoria-${categoria.id}`} className="ml-2 text-xl text-gray-900">
                     {categoria.name}
@@ -171,7 +171,7 @@ export default function NoticiaList({ noticias, categorias }) {
 
           {/* Filtro por Mes */}
           <div className="mb-4 bg-gray-100 p-4">
-            <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-500 border-b-2">Filtrar por Mes</h3>
+            <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Mes</h3>
             <div className="space-y-2">
               {meses.map(mes => (
                 <div key={mes.id} className="flex items-center">
@@ -181,7 +181,7 @@ export default function NoticiaList({ noticias, categorias }) {
                     value={mes.name}
                     checked={filtroMeses.includes(mes.id)}
                     onChange={() => handleMesCheck(mes.id)}
-                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                   />
                   <label htmlFor={`mes-${mes.id}`} className="ml-2 text-xl text-gray-900">
                     {mes.name}

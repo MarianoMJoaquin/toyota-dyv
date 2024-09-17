@@ -1,38 +1,60 @@
 import { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
+// Genera una lista de meses con su nombre y valor numérico
+const meses = [
+  { id: 1, name: 'Enero' },
+  { id: 2, name: 'Febrero' },
+  { id: 3, name: 'Marzo' },
+  { id: 4, name: 'Abril' },
+  { id: 5, name: 'Mayo' },
+  { id: 6, name: 'Junio' },
+  { id: 7, name: 'Julio' },
+  { id: 8, name: 'Agosto' },
+  { id: 9, name: 'Septiembre' },
+  { id: 10, name: 'Octubre' },
+  { id: 11, name: 'Noviembre' },
+  { id: 12, name: 'Diciembre' },
+];
+
 export default function NoticiaList({ noticias, categorias }) {
   const [busqueda, setBusqueda] = useState('');
-  const [filtroCategorias, setFiltroCategorias] = useState([]);  // Cambiamos a un arreglo para múltiples categorías
+  const [filtroCategorias, setFiltroCategorias] = useState([]);
+  const [filtroMeses, setFiltroMeses] = useState([]);  // Estado para el filtro de meses
   const [noticiasFiltradas, setNoticiasFiltradas] = useState(noticias);
   const [noticiasPaginadas, setNoticiasPaginadas] = useState([]);
-  const [paginaActual, setPaginaActual] = useState(1);  
+  const [paginaActual, setPaginaActual] = useState(1);
   const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
   const [cargando, setCargando] = useState(true);
 
-  // Estado para manejar el modo de visualización
-  const [modoVista, setModoVista] = useState('grilla');  
-
+  const [modoVista, setModoVista] = useState('grilla');
   const noticiasPorPagina = 6;
-  const ultimasNoticias = noticias.slice(0, 5);
 
   useEffect(() => {
     setTimeout(() => {
       filtrarNoticias();
       setCargando(false);
     }, 300);
-  }, [busqueda, filtroCategorias, paginaActual]);  // Actualizamos filtroCategorias
+  }, [busqueda, filtroCategorias, filtroMeses, paginaActual]);  // Añadimos filtroMeses a las dependencias
 
   const filtrarNoticias = () => {
     const palabrasClave = busqueda.toLowerCase().split(' ').filter(Boolean);
 
     const filtradas = noticias.filter(noticia => {
       const titulo = noticia.titulo.toLowerCase();
+      const fechaNoticia = new Date(noticia.created_at);
+      const mesNoticia = fechaNoticia.getMonth() + 1; // Mes de la noticia (1 = Enero)
+
+      // Filtrar por búsqueda, categorías y meses
       const coincideBusqueda = palabrasClave.every(palabra => titulo.includes(palabra));
       const coincideCategorias = filtroCategorias.length
         ? noticia.categories.some(category => filtroCategorias.includes(category.name))
         : true;
-      return coincideBusqueda && coincideCategorias;
+      const coincideMeses = filtroMeses.length
+        ? filtroMeses.includes(mesNoticia)
+        : true;
+
+      return coincideBusqueda && coincideCategorias && coincideMeses;
     });
 
     setNoticiasFiltradas(filtradas);
@@ -42,7 +64,6 @@ export default function NoticiaList({ noticias, categorias }) {
     setNoticiasPaginadas(filtradas.slice(indiceInicial, indiceFinal));
   };
 
-  // Restablecer la página actual a 1 cuando se cambie la búsqueda
   const handleBusqueda = (e) => {
     setBusqueda(e.target.value);
     setPaginaActual(1);  
@@ -56,11 +77,24 @@ export default function NoticiaList({ noticias, categorias }) {
     setPaginaActual(1);
     setFiltroCategorias(prev => {
       if (prev.includes(categoria)) {
-        // Si ya está seleccionada, se deselecciona
         return prev.filter(cat => cat !== categoria);
       } else {
-        // Si no está seleccionada, se agrega
         return [...prev, categoria];
+      }
+    });
+    if (articuloSeleccionado) {
+      setArticuloSeleccionado(null);
+    }
+  };
+
+  // Función para manejar el checklist de meses
+  const handleMesCheck = (mes) => {
+    setPaginaActual(1);
+    setFiltroMeses(prev => {
+      if (prev.includes(mes)) {
+        return prev.filter(m => m !== mes);
+      } else {
+        return [...prev, mes];
       }
     });
     if (articuloSeleccionado) {
@@ -105,18 +139,18 @@ export default function NoticiaList({ noticias, categorias }) {
           <div className="mb-4 relative">
             <input
               type="text"
-              className="block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
+              className="block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 focus:transition ease-in-out peer"
               placeholder="Buscar noticias..."
               value={busqueda}
               onChange={handleBusqueda}  
             />
-            <i className="ri-search-line absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400"></i>
+            <i className="ri-search-line absolute top-1/2 left-3 -translate-y-1/2 text-gray-600 dark:text-gray-300 transition-all ease-in-out peer-focus:text-red-600 peer-focus:transition"></i>
           </div>
 
-          <div className="mb-4 bg-gray-100 p-4 rounded-lg">
-            {/* Cambiamos el select por un checklist */}
+          {/* Filtro de Categorías */}
+          <div className="mb-4 bg-gray-100 p-4">
+            <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Categorías</h3>
             <div className="space-y-2">
-              <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-500 border-b-2">Filtrar por Categorías</h3>
               {categorias.map(categoria => (
                 <div key={categoria.id} className="flex items-center">
                   <input
@@ -125,10 +159,32 @@ export default function NoticiaList({ noticias, categorias }) {
                     value={categoria.name}
                     checked={filtroCategorias.includes(categoria.name)}
                     onChange={() => handleCategoriaCheck(categoria.name)}
-                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                   />
                   <label htmlFor={`categoria-${categoria.id}`} className="ml-2 text-xl text-gray-900">
                     {categoria.name}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Filtro por Mes */}
+          <div className="mb-4 bg-gray-100 p-4">
+            <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Mes</h3>
+            <div className="space-y-2">
+              {meses.map(mes => (
+                <div key={mes.id} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id={`mes-${mes.id}`}
+                    value={mes.name}
+                    checked={filtroMeses.includes(mes.id)}
+                    onChange={() => handleMesCheck(mes.id)}
+                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                  />
+                  <label htmlFor={`mes-${mes.id}`} className="ml-2 text-xl text-gray-900">
+                    {mes.name}
                   </label>
                 </div>
               ))}
@@ -139,9 +195,9 @@ export default function NoticiaList({ noticias, categorias }) {
           <div className="bg-gray-100 p-4 rounded-lg max-lg:hidden">
             <h3 className="text-2xl font-semibold mb-3 max-w-max border-b-red-500 border-b-2">Últimas Noticias</h3>
             <ul className="space-y-2">
-              {ultimasNoticias.map(noticia => (
-                <li key={noticia.id} className="border-b pb-2">
-                  <a href="#" onClick={() => seleccionarArticulo(noticia)} className="text-gray-600 text-xl hover:text-red-600">
+              {noticias.slice(0, 5).map(noticia => (
+                <li key={noticia.id} className="border-b last:border-0 pb-2">
+                  <a href="#" onClick={() => seleccionarArticulo(noticia)} className="text-gray-600 transition-all ease-in-out text-xl hover:text-red-600">
                     {noticia.titulo}
                   </a>
                   <p className="text-gray-600 text-sm">
@@ -231,8 +287,8 @@ export default function NoticiaList({ noticias, categorias }) {
                 </div>
               ) : (
                 <div>
-                  {/* Mostrar mensaje si no se encontraron noticias */}
-                  {noticiasPaginadas.length === 0 ? (
+                   {/* Mostrar mensaje si no se encontraron noticias */}
+                   {noticiasPaginadas.length === 0 ? (
                     <TransitionGroup>
                       <CSSTransition key="no-news" timeout={300} classNames="fade">
                         <div className="text-center text-gray-500 w-full max-w-full h-screen">
@@ -322,7 +378,7 @@ export default function NoticiaList({ noticias, categorias }) {
                         className={`${
                           i + 1 === paginaActual
                             ? 'bg-red-600 text-white'
-                            : 'bg-gray-300 text-gray-700 hover:bg-red-600 hover:text-white'
+                            : 'bg-gray-300 text-gray-700 transition-all ease-in-out hover:bg-red-600 hover:text-white'
                         } rounded-full w-10 h-10 flex items-center justify-center`}
                       >
                         {i + 1}
