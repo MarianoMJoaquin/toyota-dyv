@@ -232,7 +232,7 @@ export default function NoticiaList({ noticias, categorias }) {
                   <button
                     key={i + 1}
                     onClick={() => cambiarPagina(i + 1)}
-                    className={p-2 rounded ${paginaActual === i + 1 ? 'text-red-500' : ' hover:text-red-500 text-gray-800'}}
+                    className={`p-2 rounded ${paginaActual === i + 1 ? 'text-red-500' : ' hover:text-red-500 text-gray-800'}`}
                   >
                     {i + 1}
                   </button>
