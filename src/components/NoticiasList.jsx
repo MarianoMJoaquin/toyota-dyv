@@ -72,8 +72,8 @@ export default function NoticiaList({ noticias, categorias }) {
   return (
     <section className="container mx-auto section">
       <h1 className="vehicles__title heading-1 border-b">Noticias</h1>
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        <div className="lg:col-span-1 space-y-4 mx-5 2xl:mx-0 xl:mx-5">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-3">
+        <div className="lg:col-span-1 space-y-4 mx-5 2xl:mx-0 xl:mx-4">
           <div className="mb-4">
             <input
               type="text"
@@ -98,7 +98,7 @@ export default function NoticiaList({ noticias, categorias }) {
           </div>
 
           <div className="bg-gray-100 p-4 rounded-lg max-lg:hidden">
-            <h3 className="text-2xl font-semibold mb-3">Últimas Noticias</h3>
+            <h3 className="text-2xl font-semibold border-b-red-500 border-b-2 pb-2 mb-3">Últimas Noticias</h3>
             <ul className="space-y-2">
               {ultimasNoticias.map(noticia => (
                 <li key={noticia.id} className="border-b pb-2">
@@ -191,7 +191,7 @@ export default function NoticiaList({ noticias, categorias }) {
                                 {noticia.contenido.substring(0, 120)}...
                               </p>
                               <button
-                                className="text-red-600 hover:text-red-700"
+                                className="text-red-600 text-lg hover:text-red-700"
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
