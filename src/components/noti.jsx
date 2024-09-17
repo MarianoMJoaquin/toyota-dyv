@@ -3,15 +3,15 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 export default function NoticiaList({ noticias, categorias }) {
   const [busqueda, setBusqueda] = useState('');
-  const [filtroCategoria, setFiltroCategoria] = useState('');
+  const [filtroCategorias, setFiltroCategorias] = useState([]);  // Cambiamos a un arreglo para múltiples categorías
   const [noticiasFiltradas, setNoticiasFiltradas] = useState(noticias);
   const [noticiasPaginadas, setNoticiasPaginadas] = useState([]);
-  const [paginaActual, setPaginaActual] = useState(1);
+  const [paginaActual, setPaginaActual] = useState(1);  
   const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
   const [cargando, setCargando] = useState(true);
 
   // Estado para manejar el modo de visualización
-  const [modoVista, setModoVista] = useState('grilla'); // Puede ser 'grilla' o 'lista'
+  const [modoVista, setModoVista] = useState('grilla');  
 
   const noticiasPorPagina = 6;
   const ultimasNoticias = noticias.slice(0, 5);
@@ -21,7 +21,7 @@ export default function NoticiaList({ noticias, categorias }) {
       filtrarNoticias();
       setCargando(false);
     }, 300);
-  }, [busqueda, filtroCategoria, paginaActual]);
+  }, [busqueda, filtroCategorias, paginaActual]);  // Actualizamos filtroCategorias
 
   const filtrarNoticias = () => {
     const palabrasClave = busqueda.toLowerCase().split(' ').filter(Boolean);
@@ -29,10 +29,10 @@ export default function NoticiaList({ noticias, categorias }) {
     const filtradas = noticias.filter(noticia => {
       const titulo = noticia.titulo.toLowerCase();
       const coincideBusqueda = palabrasClave.every(palabra => titulo.includes(palabra));
-      const coincideCategoria = filtroCategoria
-        ? noticia.categories.some(category => category.name === filtroCategoria)
+      const coincideCategorias = filtroCategorias.length
+        ? noticia.categories.some(category => filtroCategorias.includes(category.name))
         : true;
-      return coincideBusqueda && coincideCategoria;
+      return coincideBusqueda && coincideCategorias;
     });
 
     setNoticiasFiltradas(filtradas);
@@ -42,19 +42,38 @@ export default function NoticiaList({ noticias, categorias }) {
     setNoticiasPaginadas(filtradas.slice(indiceInicial, indiceFinal));
   };
 
+  // Restablecer la página actual a 1 cuando se cambie la búsqueda
+  const handleBusqueda = (e) => {
+    setBusqueda(e.target.value);
+    setPaginaActual(1);  
+    if (articuloSeleccionado) {
+      setArticuloSeleccionado(null);
+    }
+  };
+
+  // Función para manejar el checklist de categorías
+  const handleCategoriaCheck = (categoria) => {
+    setPaginaActual(1);
+    setFiltroCategorias(prev => {
+      if (prev.includes(categoria)) {
+        // Si ya está seleccionada, se deselecciona
+        return prev.filter(cat => cat !== categoria);
+      } else {
+        // Si no está seleccionada, se agrega
+        return [...prev, categoria];
+      }
+    });
+    if (articuloSeleccionado) {
+      setArticuloSeleccionado(null);
+    }
+  };
+
   const cambiarPagina = (nuevaPagina) => {
     setPaginaActual(nuevaPagina);
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     });
-  };
-
-  const handleBusqueda = (e) => {
-    setBusqueda(e.target.value);
-    if (articuloSeleccionado) {
-      setArticuloSeleccionado(null);
-    }
   };
 
   const seleccionarArticulo = (articulo) => {
@@ -89,24 +108,34 @@ export default function NoticiaList({ noticias, categorias }) {
               className="block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 peer"
               placeholder="Buscar noticias..."
               value={busqueda}
-              onChange={handleBusqueda}
+              onChange={handleBusqueda}  
             />
             <i className="ri-search-line absolute top-1/2 left-3 transform -translate-y-1/2 text-gray-400"></i>
           </div>
 
-          <div className="mb-4">
-            <select
-              className="text-lg text-gray-900 border-0 border-b-2 border-gray-300 focus:ring-0 focus:border-red-500 py-2.5 px-3 w-full"
-              value={filtroCategoria}
-              onChange={(e) => setFiltroCategoria(e.target.value)}
-            >
-              <option value="">Todas las Categorías</option>
+          <div className="mb-4 bg-gray-100 p-4 rounded-lg">
+            {/* Cambiamos el select por un checklist */}
+            <div className="space-y-2">
+              <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-500 border-b-2">Filtrar por Categorías</h3>
               {categorias.map(categoria => (
-                <option key={categoria.id} value={categoria.name}>{categoria.name}</option>
+                <div key={categoria.id} className="flex items-center">
+                  <input
+                    type="checkbox"
+                    id={`categoria-${categoria.id}`}
+                    value={categoria.name}
+                    checked={filtroCategorias.includes(categoria.name)}
+                    onChange={() => handleCategoriaCheck(categoria.name)}
+                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-500"
+                  />
+                  <label htmlFor={`categoria-${categoria.id}`} className="ml-2 text-xl text-gray-900">
+                    {categoria.name}
+                  </label>
+                </div>
               ))}
-            </select>
+            </div>
           </div>
 
+          {/* Últimas Noticias */}
           <div className="bg-gray-100 p-4 rounded-lg max-lg:hidden">
             <h3 className="text-2xl font-semibold mb-3 max-w-max border-b-red-500 border-b-2">Últimas Noticias</h3>
             <ul className="space-y-2">
@@ -141,7 +170,6 @@ export default function NoticiaList({ noticias, categorias }) {
               <i className={`ri-list-unordered ${modoVista === 'lista' ? 'text-red-600' : 'text-gray-700'}`}></i>
             </button>
           </div>
-
           {cargando ? (
             <div role="status" className='flex justify-center items-center'>
                 <svg aria-hidden="true" class="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,48 +182,67 @@ export default function NoticiaList({ noticias, categorias }) {
             <>
               {articuloSeleccionado ? (
                 <div className="space-y-6">
-                  {/* Vista del artículo seleccionado */}
-                  <CSSTransition timeout={300} classNames="fade">
-                    <div className="space-y-4">
-                      <img src={articuloSeleccionado.imageUrl} alt={articuloSeleccionado.titulo} style={{ height: "50rem" }} className="w-full object-cover rounded-lg" />
-                      <h1 className="text-3xl font-bold">{articuloSeleccionado.titulo}</h1>
-                      <p className="text-gray-600">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
-                      <div
-                        className="text-lg text-gray-700 space-y-4"
-                        dangerouslySetInnerHTML={{ __html: articuloSeleccionado.contenido }}
-                      />
-                      <div className="flex justify-between mt-8">
-                        <button
-                          onClick={() => navegarArticulo(-1)}
-                          className="hover:text-gray-700 text-gray-600"
-                          disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === 0}
-                        >
-                          <i className="ri-arrow-left-s-line"></i>
-                          Artículo Anterior
-                        </button>
-                        <button
-                          onClick={() => navegarArticulo(1)}
-                          className="hover:text-gray-700 text-gray-600"
-                          disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === noticias.length - 1}
-                        >
-                          Artículo Siguiente
-                          <i className="ri-arrow-right-s-line"></i>
-                        </button>
+                {/* Artículo completo */}
+                  <TransitionGroup>
+                    <CSSTransition timeout={300} classNames="fade">
+                      <div className="space-y-4">
+                        <img src={articuloSeleccionado.imageUrl} alt={articuloSeleccionado.titulo} style={{ height: "50rem" }} className="w-full object-cover rounded-lg" />
+                        <h1 className="text-3xl font-bold">{articuloSeleccionado.titulo}</h1>
+                        <p className="text-gray-600">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
+                        
+                        {/* Contenido formateado del artículo */}
+                        <div
+                          className="text-lg text-gray-700 space-y-4"
+                          dangerouslySetInnerHTML={{ __html: articuloSeleccionado.contenido }}
+                        />
+      
+                        {/* Botones de navegación entre artículos */}
+                        <div className="flex justify-between mt-8">
+                          <button
+                            onClick={() => navegarArticulo(-1)}
+                            className="hover:text-gray-700 text-gray-600"
+                            disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === 0}
+                          >
+                            <i class="ri-arrow-left-s-line"></i>
+                            Artículo Anterior
+                          </button>
+                          <button
+                            onClick={() => navegarArticulo(1)}
+                            className="hover:text-gray-700 text-gray-600"
+                            disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === noticias.length - 1}
+                          >
+                            Artículo Siguiente
+                            <i class="ri-arrow-right-s-line"></i>
+                          </button>
+                        </div>
+      
+                        {/* Botón para volver a la lista de noticias */}
+                        <div className="mt-8 flex justify-center">
+                          <button
+                            onClick={volverALista}
+                            className=" text-red-600 hover:text-red-700"
+                          >
+                            Volver a todas las noticias
+                          </button>
+                        </div>
                       </div>
-                      <div className="mt-8 flex justify-center">
-                        <button
-                          onClick={volverALista}
-                          className="text-red-600 hover:text-red-700"
-                        >
-                          Volver a todas las noticias
-                        </button>
-                      </div>
-                    </div>
-                  </CSSTransition>
+                    </CSSTransition>
+                  </TransitionGroup>
                 </div>
               ) : (
                 <div>
-                  {/* Diseño dinámico según el modo de vista */}
+                  {/* Mostrar mensaje si no se encontraron noticias */}
+                  {noticiasPaginadas.length === 0 ? (
+                    <TransitionGroup>
+                      <CSSTransition key="no-news" timeout={300} classNames="fade">
+                        <div className="text-center text-gray-500 w-full max-w-full h-screen">
+                          <h2 className="text-xl font-semibold mb-4">No se encontraron noticias</h2>
+                          <p>Intenta realizar una nueva búsqueda o aplicar otros filtros.</p>
+                        </div>
+                      </CSSTransition>
+                  </TransitionGroup>
+                  ): null}
+                  {/* Vista según modo seleccionado: grilla o lista */}
                   {modoVista === 'grilla' ? (
                     <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6">
                       {noticiasPaginadas.map(noticia => (
@@ -210,6 +257,13 @@ export default function NoticiaList({ noticias, categorias }) {
                               <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
                                 {noticia.contenido.substring(0, 120)}...
                               </p>
+                              <div className="mb-4">
+                                {noticia.categories.map(category => (
+                                  <span className="inline-block bg-gray-200 text-gray-800 text-xs font-semibold rounded px-2 py-1 mr-2" key={category.id}>
+                                    {category.name}
+                                  </span>
+                                ))}
+                              </div>
                               <button
                                 className="text-red-600 text-lg hover:text-red-700"
                                 onClick={() => seleccionarArticulo(noticia)}
@@ -225,19 +279,27 @@ export default function NoticiaList({ noticias, categorias }) {
                     <TransitionGroup>
                       {noticiasPaginadas.map(noticia => (
                         <CSSTransition key={noticia.id} timeout={300} classNames="fade">
-                          <div className="mb-6 flex flex-col lg:flex-row items-center lg:items-start lg:space-x-6">
+                          <div className="flex flex-col lg:flex-row items-center lg:items-start border-b py-6 lg:space-x-6">
                             <img
                               src={noticia.imageUrl}
                               alt={noticia.titulo}
-                              className="w-full lg:w-1/3 object-cover rounded-lg"
+                              className="w-full lg:w-1/3 h-72 object-cover rounded-lg"
                             />
-                            <div className="w-full lg:w-2/3">
-                              <h2 className="text-2xl font-semibold hover:text-red-600">
-                                <a href="#" onClick={() => seleccionarArticulo(noticia)}>{noticia.titulo}</a>
-                              </h2>
-                              <p className="text-gray-700 my-4 line-clamp-3">
-                                {noticia.contenido.substring(0, 120)}...
+                            <div className="mt-4 lg:mt-0 lg:flex-grow">
+                              <h2 className="text-lg lg:text-2xl font-semibold mb-2">{noticia.titulo}</h2>
+                              <p className="text-gray-500 text-sm">
+                                {new Date(noticia.created_at).toLocaleDateString()}
                               </p>
+                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
+                                {noticia.contenido.substring(0, 200)}...
+                              </p>
+                              <div className="mb-4">
+                                {noticia.categories.map(category => (
+                                  <span className="inline-block bg-gray-200 text-gray-800 text-xs font-semibold rounded px-2 py-1 mr-2" key={category.id}>
+                                    {category.name}
+                                  </span>
+                                ))}
+                              </div>
                               <button
                                 className="text-red-600 hover:text-red-700"
                                 onClick={() => seleccionarArticulo(noticia)}
@@ -251,6 +313,7 @@ export default function NoticiaList({ noticias, categorias }) {
                     </TransitionGroup>
                   )}
 
+                  {/* Paginación */}
                   <div className="mt-8 flex justify-center space-x-2">
                     {Array.from({ length: totalPaginas }).map((_, i) => (
                       <button
