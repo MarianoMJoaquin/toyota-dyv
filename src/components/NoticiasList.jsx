@@ -35,7 +35,7 @@ export default function NoticiaList({ noticias, categorias }) {
     setTimeout(() => {
       filtrarNoticias();
       setCargando(false);
-    }, 300);
+    }, 150);
   }, [busqueda, filtroCategorias, filtroMeses, paginaActual]);  // Añadimos filtroMeses a las dependencias
 
   const filtrarNoticias = () => {
@@ -132,6 +132,8 @@ export default function NoticiaList({ noticias, categorias }) {
 
   const totalPaginas = Math.ceil(noticiasFiltradas.length / noticiasPorPagina);
 
+
+
   return (
     <section className="container mx-auto section">
       <h1 className="vehicles__title heading-1 border-b">Noticias</h1>
@@ -149,7 +151,7 @@ export default function NoticiaList({ noticias, categorias }) {
           </div>
 
           {/* Filtro de Categorías */}
-          <div className="mb-4 bg-gray-100 p-4">
+          <div className="mb-4 max-lg:hidden bg-gray-100 p-4">
             <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Categorías</h3>
             <div className="space-y-2">
               {categorias.map(categoria => (
@@ -171,7 +173,7 @@ export default function NoticiaList({ noticias, categorias }) {
           </div>
 
           {/* Filtro por Mes */}
-          <div className="mb-4 bg-gray-100 p-4">
+          <div className="mb-4 max-lg:hidden bg-gray-100 p-4">
             <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Mes</h3>
             <div className="space-y-2">
               {meses.map(mes => (
@@ -226,7 +228,117 @@ export default function NoticiaList({ noticias, categorias }) {
             >
               <i className={`ri-list-unordered ${modoVista === 'lista' ? 'text-red-600' : 'text-gray-700'}`}></i>
             </button>
+
+            {/* Botón para abrir el Drawer */}
+            <div class="text-center">
+              <button class="ml-2 text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out" type="button" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" data-drawer-body-scrolling="true" aria-controls="drawer-right-example">
+              <i className="ri-filter-3-line"></i>
+              Filtros
+              </button>
+            </div>
+
+           {/* Botón para limpiar filtros */}
+            <button
+              onClick={() => {
+                setBusqueda('');
+                setFiltroCategorias([]);
+                setFiltroMeses([]);  // Limpiamos el filtro de meses
+                setPaginaActual(1);
+              }}
+              className="ml-2 max-lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
+            >
+              Limpiar Filtros
+            </button>
+
+            {/* Drawer */}
+            <div id="drawer-right-example" class="fixed top-14 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-right-label">
+                <h5 id="drawer-right-label" class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"><svg class="w-4 h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+              </svg>Right drawer</h5>
+              <button type="button" data-drawer-hide="drawer-right-example" aria-controls="drawer-right-example" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white" >
+                  <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                  </svg>
+                  <span class="sr-only">Close menu</span>
+              </button>
+              {/* Contenido */}
+
+                {/* Filtro de Categorías */}
+                <div className="mb-4 bg-gray-100 p-4">
+                  <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Categorías</h3>
+                  <div className="space-y-2">
+                    {categorias.map(categoria => (
+                      <div key={categoria.id} className="flex items-center">
+                        <input
+                          type="checkbox"
+                          id={`categoria-${categoria.id}`}
+                          value={categoria.name}
+                          checked={filtroCategorias.includes(categoria.name)}
+                          onChange={() => handleCategoriaCheck(categoria.name)}
+                          className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                        />
+                        <label htmlFor={`categoria-${categoria.id}`} className="ml-2 text-xl text-gray-900">
+                          {categoria.name}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Filtro por Mes */}
+                <div className="mb-4 bg-gray-100 p-4">
+                  <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Mes</h3>
+                  <div className="space-y-2">
+                    {meses.map(mes => (
+                      <div key={mes.id} className="flex items-center">
+                        <input
+                          type="checkbox"
+                          id={`mes-${mes.id}`}
+                          value={mes.name}
+                          checked={filtroMeses.includes(mes.id)}
+                          onChange={() => handleMesCheck(mes.id)}
+                          className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                        />
+                        <label htmlFor={`mes-${mes.id}`} className="ml-2 text-xl text-gray-900">
+                          {mes.name}
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                </div>    
+
+                {/* Botón para limpiar filtros */}
+                <button
+                    onClick={() => {
+                      setBusqueda('');
+                      setFiltroCategorias([]);
+                      setFiltroMeses([]);  // Limpiamos el filtro de meses
+                      setPaginaActual(1);
+                    }}
+                    className="ml-2 lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
+                  >
+                    Limpiar Filtros
+                </button>
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+              
+
           </div>
+
           {cargando ? (
             <div role="status" className='flex justify-center items-center'>
                 <svg aria-hidden="true" class="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -308,23 +420,24 @@ export default function NoticiaList({ noticias, categorias }) {
                     <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6">
                       {noticiasPaginadas.map(noticia => (
                         <CSSTransition key={noticia.id} timeout={300} classNames="fade">
-                          <div className="mx-5 xl:mx-2 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
+                          <div className="mx-5 flex flex-col justify-between xl:mx-2 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
                             <img src={noticia.imageUrl} alt={noticia.titulo} className="w-full h-72 object-cover" />
                             <div className="p-4">
                               <h2 className="text-sm lg:text-lg 2xl:text-xl xl:text-xl font-semibold mb-2">{noticia.titulo}</h2>
-                              <p className="text-gray-500 text-sm">
-                                {new Date(noticia.created_at).toLocaleDateString()}
-                              </p>
-                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
-                                {noticia.contenido.substring(0, 120)}...
-                              </p>
-                              <div className="mb-4">
+                              <div className="mb-4 flex items-center">
+                                <p className="text-gray-500 text-sm">
+                                  {new Date(noticia.created_at).toLocaleDateString()}
+                                </p>
+                                <span className='w-2 h-2 rounded-full bg-red-600 mx-2'></span>
                                 {noticia.categories.map(category => (
                                   <span className="inline-block bg-gray-200 text-gray-800 text-xs font-semibold rounded px-2 py-1 mr-2" key={category.id}>
                                     {category.name}
                                   </span>
                                 ))}
                               </div>
+                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
+                                {noticia.contenido.substring(0, 120)}...
+                              </p>
                               <button
                                 className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
                                 onClick={() => seleccionarArticulo(noticia)}
@@ -347,21 +460,22 @@ export default function NoticiaList({ noticias, categorias }) {
                               alt={noticia.titulo}
                               className="w-full lg:w-1/3 h-72 object-cover rounded-lg"
                             />
-                            <div className="mt-4 lg:mt-0 lg:flex-grow">
+                            <div className="mt-4lg:mt-0 lg:flex-grow">
                               <h2 className="text-lg lg:text-2xl font-semibold mb-2">{noticia.titulo}</h2>
-                              <p className="text-gray-500 text-sm">
-                                {new Date(noticia.created_at).toLocaleDateString()}
-                              </p>
-                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
-                                {noticia.contenido.substring(0, 200)}...
-                              </p>
-                              <div className="mb-4">
+                              <div className="mb-4 flex items-center">
+                                <p className="text-gray-500 text-sm">
+                                  {new Date(noticia.created_at).toLocaleDateString()}
+                                </p>
+                                <span className='w-2 h-2 rounded-full bg-red-600 mx-2'></span>
                                 {noticia.categories.map(category => (
                                   <span className="inline-block bg-gray-200 text-gray-800 text-xs font-semibold rounded px-2 py-1 mr-2" key={category.id}>
                                     {category.name}
                                   </span>
                                 ))}
                               </div>
+                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
+                                {noticia.contenido.substring(0, 200)}...
+                              </p>
                               <button
                                 className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
                                 onClick={() => seleccionarArticulo(noticia)}

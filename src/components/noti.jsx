@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import DOMPurify from 'dompurify'; // Import DOMPurify
 
 // Genera una lista de meses con su nombre y valor numérico
 const meses = [
@@ -34,7 +35,7 @@ export default function NoticiaList({ noticias, categorias }) {
     setTimeout(() => {
       filtrarNoticias();
       setCargando(false);
-    }, 300);
+    }, 150);
   }, [busqueda, filtroCategorias, filtroMeses, paginaActual]);  // Añadimos filtroMeses a las dependencias
 
   const filtrarNoticias = () => {
@@ -244,19 +245,23 @@ export default function NoticiaList({ noticias, categorias }) {
                       <div className="space-y-4">
                         <img src={articuloSeleccionado.imageUrl} alt={articuloSeleccionado.titulo} style={{ height: "50rem" }} className="w-full object-cover rounded-lg" />
                         <h1 className="text-3xl font-bold">{articuloSeleccionado.titulo}</h1>
-                        <p className="text-gray-600">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
+                        <p className="text-gray-600 border-b border-red-600 pb-2">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
                         
-                        {/* Contenido formateado del artículo */}
+                        {/* Contenido formateado del artículo, ahora sanitizado con DOMPurify */}
                         <div
-                          className="text-lg text-gray-700 space-y-4"
-                          dangerouslySetInnerHTML={{ __html: articuloSeleccionado.contenido }}
-                        />
-      
+                          className="text-xl leading-9 py-4 text-gray-700 space-y-4"
+                        >
+                          {
+                            articuloSeleccionado.contenido.split('\n').map((parrafo, index) => (
+                              <p key={index} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(parrafo) }} />
+                            ))
+                          }
+                        </div>    
                         {/* Botones de navegación entre artículos */}
                         <div className="flex justify-between mt-8">
                           <button
                             onClick={() => navegarArticulo(-1)}
-                            className="hover:text-gray-700 text-gray-600"
+                            className="hover:text-red-600 text-black transition-all ease-in-out"
                             disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === 0}
                           >
                             <i class="ri-arrow-left-s-line"></i>
@@ -264,7 +269,7 @@ export default function NoticiaList({ noticias, categorias }) {
                           </button>
                           <button
                             onClick={() => navegarArticulo(1)}
-                            className="hover:text-gray-700 text-gray-600"
+                            className="hover:text-red-600 text-black transition-all ease-in-out"
                             disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === noticias.length - 1}
                           >
                             Artículo Siguiente
@@ -276,7 +281,7 @@ export default function NoticiaList({ noticias, categorias }) {
                         <div className="mt-8 flex justify-center">
                           <button
                             onClick={volverALista}
-                            className=" text-red-600 hover:text-red-700"
+                            className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-2xl px-5 py-2.5 text-center me-2 mb-2 transition-all ease-in-out"
                           >
                             Volver a todas las noticias
                           </button>
@@ -303,28 +308,30 @@ export default function NoticiaList({ noticias, categorias }) {
                     <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6">
                       {noticiasPaginadas.map(noticia => (
                         <CSSTransition key={noticia.id} timeout={300} classNames="fade">
-                          <div className="mx-5 xl:mx-2 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
+                          <div className="mx-5 flex flex-col justify-between xl:mx-2 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
                             <img src={noticia.imageUrl} alt={noticia.titulo} className="w-full h-72 object-cover" />
                             <div className="p-4">
                               <h2 className="text-sm lg:text-lg 2xl:text-xl xl:text-xl font-semibold mb-2">{noticia.titulo}</h2>
-                              <p className="text-gray-500 text-sm">
-                                {new Date(noticia.created_at).toLocaleDateString()}
-                              </p>
-                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
-                                {noticia.contenido.substring(0, 120)}...
-                              </p>
-                              <div className="mb-4">
+                              <div className="mb-4 flex items-center">
+                                <p className="text-gray-500 text-sm">
+                                  {new Date(noticia.created_at).toLocaleDateString()}
+                                </p>
+                                <span className='w-2 h-2 rounded-full bg-red-600 mx-2'></span>
                                 {noticia.categories.map(category => (
                                   <span className="inline-block bg-gray-200 text-gray-800 text-xs font-semibold rounded px-2 py-1 mr-2" key={category.id}>
                                     {category.name}
                                   </span>
                                 ))}
                               </div>
+                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
+                                {noticia.contenido.substring(0, 120)}...
+                              </p>
                               <button
-                                className="text-red-600 text-lg hover:text-red-700"
+                                className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
+                                <i class="ri-arrow-right-s-line"></i>
                               </button>
                             </div>
                           </div>
@@ -357,10 +364,11 @@ export default function NoticiaList({ noticias, categorias }) {
                                 ))}
                               </div>
                               <button
-                                className="text-red-600 hover:text-red-700"
+                                className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
+                                <i class="ri-arrow-right-s-line"></i>
                               </button>
                             </div>
                           </div>
