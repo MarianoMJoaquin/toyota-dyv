@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import DOMPurify from 'dompurify'; // Import DOMPurify
 
 // Genera una lista de meses con su nombre y valor numérico
 const meses = [
@@ -34,7 +35,7 @@ export default function NoticiaList({ noticias, categorias }) {
     setTimeout(() => {
       filtrarNoticias();
       setCargando(false);
-    }, 100);
+    }, 300);
   }, [busqueda, filtroCategorias, filtroMeses, paginaActual]);  // Añadimos filtroMeses a las dependencias
 
   const filtrarNoticias = () => {
@@ -244,13 +245,21 @@ export default function NoticiaList({ noticias, categorias }) {
                       <div className="space-y-4">
                         <img src={articuloSeleccionado.imageUrl} alt={articuloSeleccionado.titulo} style={{ height: "50rem" }} className="w-full object-cover rounded-lg" />
                         <h1 className="text-3xl font-bold">{articuloSeleccionado.titulo}</h1>
-                        <p className="text-gray-600">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
+                        <p className="text-gray-600 border-b border-red-600 pb-2">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
                         
-                        {/* Contenido formateado del artículo */}
+                        {/* Contenido formateado del artículo, ahora sanitizado con DOMPurify */}
                         <div
-                          className="text-lg text-gray-700 space-y-4"
-                          dangerouslySetInnerHTML={{ __html: articuloSeleccionado.contenido }}
-                        />
+                          className="text-xl leading-9 py-4 text-gray-700 space-y-4"
+                        >
+                          {
+                            articuloSeleccionado.contenido.split('\n').map((parrafo, index) => (
+                              <p key={index} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(parrafo) }} />
+                            ))
+                          }
+                        </div>
+                        
+                        
+
       
                         {/* Botones de navegación entre artículos */}
                         <div className="flex justify-between mt-8">
