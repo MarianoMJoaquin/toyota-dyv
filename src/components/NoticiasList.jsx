@@ -309,6 +309,7 @@ export default function NoticiaList({ noticias, categorias }) {
 
                 {/* Botón para limpiar filtros */}
                 <button
+                    data-drawer-hide="drawer-right-example"
                     onClick={() => {
                       setBusqueda('');
                       setFiltroCategorias([]);
