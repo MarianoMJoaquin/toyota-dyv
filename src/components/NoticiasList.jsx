@@ -256,16 +256,12 @@ export default function NoticiaList({ noticias, categorias }) {
                               <p key={index} dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(parrafo) }} />
                             ))
                           }
-                        </div>
-                        
-                        
-
-      
+                        </div>    
                         {/* Botones de navegación entre artículos */}
                         <div className="flex justify-between mt-8">
                           <button
                             onClick={() => navegarArticulo(-1)}
-                            className="hover:text-gray-700 text-gray-600"
+                            className="hover:text-red-600 text-black transition-all ease-in-out"
                             disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === 0}
                           >
                             <i class="ri-arrow-left-s-line"></i>
@@ -273,7 +269,7 @@ export default function NoticiaList({ noticias, categorias }) {
                           </button>
                           <button
                             onClick={() => navegarArticulo(1)}
-                            className="hover:text-gray-700 text-gray-600"
+                            className="hover:text-red-600 text-black transition-all ease-in-out"
                             disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === noticias.length - 1}
                           >
                             Artículo Siguiente
@@ -285,7 +281,7 @@ export default function NoticiaList({ noticias, categorias }) {
                         <div className="mt-8 flex justify-center">
                           <button
                             onClick={volverALista}
-                            className=" text-red-600 hover:text-red-700"
+                            className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-2xl px-5 py-2.5 text-center me-2 mb-2 transition-all ease-in-out"
                           >
                             Volver a todas las noticias
                           </button>
@@ -330,10 +326,11 @@ export default function NoticiaList({ noticias, categorias }) {
                                 ))}
                               </div>
                               <button
-                                className="text-red-600 text-lg hover:text-red-700"
+                                className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
+                                <i class="ri-arrow-right-s-line"></i>
                               </button>
                             </div>
                           </div>
@@ -366,10 +363,11 @@ export default function NoticiaList({ noticias, categorias }) {
                                 ))}
                               </div>
                               <button
-                                className="text-red-600 hover:text-red-700"
+                                className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
+                                <i class="ri-arrow-right-s-line"></i>
                               </button>
                             </div>
                           </div>
