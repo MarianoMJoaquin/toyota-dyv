@@ -251,7 +251,7 @@ export default function NoticiaList({ noticias, categorias }) {
             </button>
 
             {/* Drawer */}
-            <div id="drawer-right-example" class="fixed top-14 right-0 z-40 h-screen p-4 overflow-y-scroll transition-transform translate-x-full bg-white w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-right-label">
+            <div id="drawer-right-example" class="fixed top-14 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800" tabindex="-1" aria-labelledby="drawer-right-label">
                 <h5 id="drawer-right-label" class="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"><svg class="w-4 h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
               </svg>Filtros</h5>
@@ -264,7 +264,7 @@ export default function NoticiaList({ noticias, categorias }) {
               {/* Contenido */}
 
                 {/* Filtro de Categorías */}
-                <div className="mb-4 bg-gray-100 p-4">
+                <div className="mb-4 rounded-lg bg-gray-100 p-4">
                   <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Categorías</h3>
                   <div className="space-y-2">
                     {categorias.map(categoria => (
@@ -286,7 +286,7 @@ export default function NoticiaList({ noticias, categorias }) {
                 </div>
 
                 {/* Filtro por Mes */}
-                <div className="mb-4 bg-gray-100 p-4">
+                <div className="mb-2 rounded-lg bg-gray-100 p-4">
                   <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Mes</h3>
                   <div className="space-y-2">
                     {meses.map(mes => (
@@ -315,7 +315,7 @@ export default function NoticiaList({ noticias, categorias }) {
                       setFiltroMeses([]);  // Limpiamos el filtro de meses
                       setPaginaActual(1);
                     }}
-                    className="ml-2 lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
+                    className="ml-2 lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-sm px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
                   >
                     Limpiar Filtros
                 </button>
