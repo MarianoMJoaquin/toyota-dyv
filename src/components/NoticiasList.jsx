@@ -474,7 +474,7 @@ export default function NoticiaList({ noticias, categorias }) {
                             <img
                               src={noticia.imageUrl}
                               alt={noticia.titulo}
-                              className="w-56 max-sm:h-64 max-sm:w-48 lg:w-52 h-60 object-cover rounded-lg"
+                              className="w-56 max-sm:h-60 max-sm:w-48 lg:w-52 h-60 xl:h-52 object-cover rounded-lg"
                             />
                             <div className="mt-4lg:mt-0 ml-3 max-sm:ml-3 max-sm:py-2 lg:flex-grow">
                               <h2 className="lg:text-2xl text-base font-semibold mb-2">{noticia.titulo}</h2>
