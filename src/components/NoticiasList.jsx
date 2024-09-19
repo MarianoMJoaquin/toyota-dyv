@@ -136,10 +136,10 @@ export default function NoticiaList({ noticias, categorias }) {
 
   return (
     <section className="container mx-auto section">
-      <h1 className="vehicles__title heading-1 border-b">Noticias</h1>
+      <h1 className="vehicles__title heading-1 max-w-max mx-auto border-b-2 border-red-600">Noticias</h1>
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-1 space-y-4 mx-5 lg:mx-0">
-          <div className="mb-4 relative">
+          <div className="mb-4 xl:mx-5 relative">
             <input
               type="text"
               className="block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 focus:transition ease-in-out peer"
@@ -151,7 +151,7 @@ export default function NoticiaList({ noticias, categorias }) {
           </div>
 
           {/* Filtro de Categorías */}
-          <div className="mb-4 max-lg:hidden bg-gray-100 p-4">
+          <div className="mb-4 xl:mx-5 max-lg:hidden rounded-lg bg-gray-100 p-4">
             <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Categorías</h3>
             <div className="space-y-2">
               {categorias.map(categoria => (
@@ -173,7 +173,7 @@ export default function NoticiaList({ noticias, categorias }) {
           </div>
 
           {/* Filtro por Mes */}
-          <div className="mb-4 max-lg:hidden bg-gray-100 p-4">
+          <div className="mb-4 xl:mx-5 max-lg:hidden rounded-lg bg-gray-100 p-4">
             <h3 className="text-lg font-semibold mb-2 max-w-max border-b-red-600 border-b-2">Filtrar por Mes</h3>
             <div className="space-y-2">
               {meses.map(mes => (
@@ -195,7 +195,7 @@ export default function NoticiaList({ noticias, categorias }) {
           </div>
 
           {/* Últimas Noticias */}
-          <div className="bg-gray-100 p-4 rounded-lg max-lg:hidden">
+          <div className="bg-gray-100 p-4 xl:mx-5 rounded-lg max-lg:hidden">
             <h3 className="text-2xl font-semibold mb-3 max-w-max border-b-red-500 border-b-2">Últimas Noticias</h3>
             <ul className="space-y-2">
               {noticias.slice(0, 5).map(noticia => (
@@ -231,7 +231,7 @@ export default function NoticiaList({ noticias, categorias }) {
 
             {/* Botón para abrir el Drawer */}
             <div class="text-center">
-              <button class="ml-2 text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out" type="button" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" data-drawer-body-scrolling="true" aria-controls="drawer-right-example">
+              <button class="ml-2 text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out" type="button" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" data-drawer-body-scrolling="true" aria-controls="drawer-right-example">
               <i className="ri-filter-3-line"></i>
               Filtros
               </button>
@@ -240,12 +240,12 @@ export default function NoticiaList({ noticias, categorias }) {
            {/* Botón para limpiar filtros */}
             <button
               onClick={() => {
-                setBusqueda('');
-                setFiltroCategorias([]);
+                setBusqueda(''); // Limpiamos la búsqueda
+                setFiltroCategorias([]); // Limpiamos el filtro de categorías
                 setFiltroMeses([]);  // Limpiamos el filtro de meses
-                setPaginaActual(1);
+                setPaginaActual(1); // Volvemos a la primera página
               }}
-              className="ml-2 max-lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
+              className="ml-2 max-lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
             >
               Limpiar Filtros
             </button>
