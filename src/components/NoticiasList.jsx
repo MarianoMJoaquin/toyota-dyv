@@ -231,7 +231,7 @@ export default function NoticiaList({ noticias, categorias }) {
 
             {/* Botón para abrir el Drawer */}
             <div class="text-center">
-              <button class="ml-2 text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out" type="button" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" data-drawer-body-scrolling="true" aria-controls="drawer-right-example">
+              <button class="ml-2 mr-5 text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out" type="button" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example" data-drawer-placement="right" data-drawer-body-scrolling="true" aria-controls="drawer-right-example">
               <i className="ri-filter-3-line"></i>
               Filtros
               </button>
@@ -245,7 +245,7 @@ export default function NoticiaList({ noticias, categorias }) {
                 setFiltroMeses([]);  // Limpiamos el filtro de meses
                 setPaginaActual(1); // Volvemos a la primera página
               }}
-              className="ml-2 max-lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
+              className="ml-5 mr-5 max-lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
             >
               Limpiar Filtros
             </button>
@@ -353,7 +353,7 @@ export default function NoticiaList({ noticias, categorias }) {
                 {/* Artículo completo */}
                   <TransitionGroup>
                     <CSSTransition timeout={300} classNames="fade">
-                      <div className="space-y-4">
+                      <div className="space-y-4 mx-5">
                         <img src={articuloSeleccionado.imageUrl} alt={articuloSeleccionado.titulo} style={{ height: "50rem" }} className="w-full object-cover rounded-lg" />
                         <h1 className="text-3xl font-bold">{articuloSeleccionado.titulo}</h1>
                         <p className="text-gray-600 border-b border-red-600 pb-2">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
@@ -372,7 +372,7 @@ export default function NoticiaList({ noticias, categorias }) {
                         <div className="flex justify-between mt-8">
                           <button
                             onClick={() => navegarArticulo(-1)}
-                            className="hover:text-red-600 text-black transition-all ease-in-out"
+                            className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-3 py-1 transition-all ease-in-out"
                             disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === 0}
                           >
                             <i class="ri-arrow-left-s-line"></i>
@@ -380,7 +380,7 @@ export default function NoticiaList({ noticias, categorias }) {
                           </button>
                           <button
                             onClick={() => navegarArticulo(1)}
-                            className="hover:text-red-600 text-black transition-all ease-in-out"
+                            className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-3 py-1 transition-all ease-in-out"
                             disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === noticias.length - 1}
                           >
                             Artículo Siguiente
@@ -392,7 +392,7 @@ export default function NoticiaList({ noticias, categorias }) {
                         <div className="mt-8 flex justify-center">
                           <button
                             onClick={volverALista}
-                            className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-2xl px-5 py-2.5 text-center me-2 mb-2 transition-all ease-in-out"
+                            className="hover:text-red-600 text-lg 2xl:text-2xl px-3 py-1.5 text-center me-2 mb-2 transition-all ease-in-out"
                           >
                             Volver a todas las noticias
                           </button>
