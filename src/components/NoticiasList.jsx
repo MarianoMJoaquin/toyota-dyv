@@ -429,10 +429,17 @@ export default function NoticiaList({ noticias, categorias }) {
                     <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6">
                       {noticiasPaginadas.map(noticia => (
                         <CSSTransition key={noticia.id} timeout={300} classNames="fade">
-                          <div className="mx-5 flex flex-col justify-between xl:mx-5 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
-                            <img src={noticia.imageUrl} alt={noticia.titulo} className="w-full h-72 object-cover" />
+                          <div 
+                            className="mx-5 flex flex-col justify-between xl:mx-5 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
+                            <img
+                              src={noticia.imageUrl} 
+                              alt={noticia.titulo} 
+                              className="w-full h-72 object-cover"
+                              onClick={() => seleccionarArticulo(noticia)}
+                               />
                             <div className="p-4">
-                              <h2 className="text-base lg:text-lg 2xl:text-xl xl:text-xl font-semibold mb-2">{noticia.titulo}</h2>
+                              <h2 
+                                className="text-base lg:text-lg 2xl:text-xl xl:text-xl font-semibold mb-2">{noticia.titulo}</h2>
                               <div className="mb-4 flex items-center">
                                 <p className="text-gray-500 text-sm">
                                   {new Date(noticia.created_at).toLocaleDateString()}
