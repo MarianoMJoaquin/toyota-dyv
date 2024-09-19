@@ -526,7 +526,7 @@ export default function NoticiaList({ noticias, categorias }) {
                             <img
                               src={noticia.imageUrl}
                               alt={noticia.titulo}
-                              className="w-full h-72 object-cover"
+                              className="w-full h-72 object-cover cursor-pointer"
                               onClick={() => seleccionarArticulo(noticia)}
                             />
                             <div className="p-4">
@@ -577,7 +577,7 @@ export default function NoticiaList({ noticias, categorias }) {
                               onClick={() => seleccionarArticulo(noticia)}
                               src={noticia.imageUrl}
                               alt={noticia.titulo}
-                              className="w-52 h-52 object-cover rounded-lg"
+                              className="w-52 h-52 object-cover rounded-lg cursor-pointer"
                             />
                             <div className="mt-4lg:mt-0 ml-3 max-sm:ml-3 max-sm:py-2 lg:flex-grow">
                               <h2 className="lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl md:text-base text-sm font-semibold mb-2">
