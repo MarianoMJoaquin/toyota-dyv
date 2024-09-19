@@ -365,7 +365,7 @@ export default function NoticiaList({ noticias, categorias }) {
                       <div className="space-y-4 mx-5">
                         <img src={articuloSeleccionado.imageUrl} alt={articuloSeleccionado.titulo} style={{ height: "50rem" }} className="w-full object-cover rounded-lg" />
                         <h1 className="text-3xl font-bold">{articuloSeleccionado.titulo}</h1>
-                        <p className="text-gray-600 border-b border-red-600 pb-2">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
+                        <p className="text-gray-600 text-lg border-b-2 border-red-600 pb-2">Fecha de publicación: {new Date(articuloSeleccionado.created_at).toLocaleDateString()}</p>
                         
                         {/* Contenido formateado del artículo, ahora sanitizado con DOMPurify */}
                         <div
@@ -474,10 +474,10 @@ export default function NoticiaList({ noticias, categorias }) {
                             <img
                               src={noticia.imageUrl}
                               alt={noticia.titulo}
-                              className="w-56 max-sm:h-60 max-sm:w-48 lg:w-52 h-60 xl:h-52 object-cover rounded-lg"
+                              className="w-52 h-52 object-cover rounded-lg"
                             />
                             <div className="mt-4lg:mt-0 ml-3 max-sm:ml-3 max-sm:py-2 lg:flex-grow">
-                              <h2 className="lg:text-2xl text-base font-semibold mb-2">{noticia.titulo}</h2>
+                              <h2 className="lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl md:text-base text-sm font-semibold mb-2">{noticia.titulo}</h2>
                               <div className="mb-4 flex items-center">
                                 <p className="text-gray-500 text-sm">
                                   {new Date(noticia.created_at).toLocaleDateString()}
@@ -489,7 +489,7 @@ export default function NoticiaList({ noticias, categorias }) {
                                   </span>
                                 ))}
                               </div>
-                              <p className="text-gray-700 text-sm xl:text-lg my-4 line-clamp-3">
+                              <p className="text-gray-700 text-xs sm:text-sm lg:text-lg xl:text-xl my-4 line-clamp-3">
                                 {noticia.contenido.substring(0, 200)}...
                               </p>
                               <button
