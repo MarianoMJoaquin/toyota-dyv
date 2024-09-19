@@ -1,0 +1,9 @@
+---
+import UsadosList from '../components/UsadosList.jsx';
+import Layout from '../layouts/Layout.astro';
+---
+<Layout title="Usados | Derka y Vargas">
+    <main class="main">
+        <UsadosList client:load />
+    </main>
+</Layout>
