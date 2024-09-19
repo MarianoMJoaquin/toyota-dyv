@@ -142,7 +142,7 @@ export default function NoticiaList({ noticias, categorias }) {
           <div className="mb-4 xl:mx-5 relative">
             <input
               type="text"
-              className="block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 focus:transition ease-in-out peer"
+              className="caret-red-600 block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 focus:transition ease-in-out peer"
               placeholder="Buscar noticias..."
               value={busqueda}
               onChange={handleBusqueda}  
@@ -453,14 +453,14 @@ export default function NoticiaList({ noticias, categorias }) {
                     <TransitionGroup>
                       {noticiasPaginadas.map(noticia => (
                         <CSSTransition key={noticia.id} timeout={300} classNames="fade">
-                          <div className="flex flex-col lg:flex-row items-center lg:items-start border-b py-6 lg:space-x-6">
+                          <div className="mx-5 flex flex-row items-center lg:items-start border-b py-6 lg:space-x-6">
                             <img
                               src={noticia.imageUrl}
                               alt={noticia.titulo}
-                              className="w-full lg:w-1/3 h-72 object-cover rounded-lg"
+                              className="w-full max-sm:h-52 max-sm:w-1/3 lg:w-1/3 h-72 object-cover rounded-lg"
                             />
-                            <div className="mt-4lg:mt-0 lg:flex-grow">
-                              <h2 className="text-lg lg:text-2xl font-semibold mb-2">{noticia.titulo}</h2>
+                            <div className="mt-4lg:mt-0 max-sm:ml-3 max-sm:py-2 lg:flex-grow">
+                              <h2 className="lg:text-2xl text-base font-semibold mb-2">{noticia.titulo}</h2>
                               <div className="mb-4 flex items-center">
                                 <p className="text-gray-500 text-sm">
                                   {new Date(noticia.created_at).toLocaleDateString()}
@@ -472,11 +472,11 @@ export default function NoticiaList({ noticias, categorias }) {
                                   </span>
                                 ))}
                               </div>
-                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
+                              <p className="text-gray-700 text-sm xl:text-lg my-4 line-clamp-3">
                                 {noticia.contenido.substring(0, 200)}...
                               </p>
                               <button
-                                className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
+                                className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
