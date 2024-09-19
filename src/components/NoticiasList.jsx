@@ -28,7 +28,7 @@ export default function NoticiaList({ noticias, categorias }) {
   const [articuloSeleccionado, setArticuloSeleccionado] = useState(null);
   const [cargando, setCargando] = useState(true);
 
-  const [modoVista, setModoVista] = useState('grilla');
+  const [modoVista, setModoVista] = useState('lista'); // Estado para el modo de vista (grilla o lista) por defecto lista 
   const noticiasPorPagina = 6;
 
   useEffect(() => {
@@ -226,17 +226,16 @@ export default function NoticiaList({ noticias, categorias }) {
             ) : null}
             {/* Botones para cambiar de vista */}
             <button
-              className="mr-2"            
-              onClick={() => setModoVista('grilla')}
-            >
-              <i className={`ri-grid-fill ${modoVista === 'grilla' ? 'text-red-600' : 'text-gray-700'}`}></i>
-            </button>
-
-            <button
-              
+              className="mr-2" 
               onClick={() => setModoVista('lista')}
             >
               <i className={`ri-list-unordered ${modoVista === 'lista' ? 'text-red-600' : 'text-gray-700'}`}></i>
+            </button>
+            <button
+                         
+              onClick={() => setModoVista('grilla')}
+            >
+              <i className={`ri-grid-fill ${modoVista === 'grilla' ? 'text-red-600' : 'text-gray-700'}`}></i>
             </button>
 
             {/* Botón para abrir el Drawer */}
@@ -382,16 +381,17 @@ export default function NoticiaList({ noticias, categorias }) {
                         <div className="flex justify-between mt-8">
                           <button
                             onClick={() => navegarArticulo(-1)}
-                            className="text-red-600 text-base xl:text-xl transition-all ease-in-out"
-                            disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === 0}
+                            className="mr-auto text-red-600 text-base xl:text-xl transition-all ease-in-out"
+                            hidden={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === 0}
                           >
                             <i class="ri-arrow-left-s-line"></i>
                             Artículo Anterior
                           </button>
+                          
                           <button
                             onClick={() => navegarArticulo(1)}
-                            className="text-red-600 text-base xl:text-xl transition-all ease-in-out"
-                            disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === noticias.length - 1}
+                            className="ml-auto text-red-600 text-base xl:text-xl transition-all ease-in-out"
+                            hidden={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === noticias.length - 1}
                           >
                             Artículo Siguiente
                             <i class="ri-arrow-right-s-line"></i>
