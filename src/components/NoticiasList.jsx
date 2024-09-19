@@ -242,7 +242,7 @@ export default function NoticiaList({ noticias, categorias }) {
                 onClick={volverALista}
                 className="text-black hover:text-red-600 text-base ml-5 mr-auto transition-all ease-in-out"
               >
-                <i class="ri-arrow-left-s-line"></i>
+                <i className="ri-arrow-left-s-line"></i>
                 Volver a todas las noticias
               </button>
             ) : null}
@@ -259,9 +259,9 @@ export default function NoticiaList({ noticias, categorias }) {
             </button>
 
             {/* Botón para abrir el Drawer */}
-            <div class="text-center">
+            <div className="text-center">
               <button
-                class="ml-2 mr-5 text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
+                className="ml-2 mr-5 text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
                 type="button"
                 data-drawer-target="drawer-right-example"
                 data-drawer-show="drawer-right-example"
@@ -290,7 +290,7 @@ export default function NoticiaList({ noticias, categorias }) {
             {/* Drawer */}
             <div
               id="drawer-right-example"
-              class="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800"
+              className="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800"
               tabindex="-1"
               aria-labelledby="drawer-right-label"
             >
@@ -299,10 +299,10 @@ export default function NoticiaList({ noticias, categorias }) {
                 type="button"
                 data-drawer-hide="drawer-right-example"
                 aria-controls="drawer-right-example"
-                class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
               >
                 <svg
-                  class="w-3 h-3"
+                  className="w-3 h-3"
                   aria-hidden="true"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -316,7 +316,7 @@ export default function NoticiaList({ noticias, categorias }) {
                     d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                   />
                 </svg>
-                <span class="sr-only">Close menu</span>
+                <span className="sr-only">Close menu</span>
               </button>
               {/* Contenido */}
 
@@ -393,7 +393,7 @@ export default function NoticiaList({ noticias, categorias }) {
             <div role="status" className="flex justify-center items-center">
               <svg
                 aria-hidden="true"
-                class="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
+                className="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -407,7 +407,7 @@ export default function NoticiaList({ noticias, categorias }) {
                   fill="currentFill"
                 />
               </svg>
-              <span class="sr-only">Cargando noticias...</span>
+              <span className="sr-only">Cargando noticias...</span>
             </div>
           ) : (
             <>
@@ -458,7 +458,7 @@ export default function NoticiaList({ noticias, categorias }) {
                               ) === 0
                             }
                           >
-                            <i class="ri-arrow-left-s-line"></i>
+                            <i className="ri-arrow-left-s-line"></i>
                             Artículo Anterior
                           </button>
 
@@ -474,7 +474,7 @@ export default function NoticiaList({ noticias, categorias }) {
                             }
                           >
                             Artículo Siguiente
-                            <i class="ri-arrow-right-s-line"></i>
+                            <i className="ri-arrow-right-s-line"></i>
                           </button>
                         </div>
 
@@ -557,7 +557,7 @@ export default function NoticiaList({ noticias, categorias }) {
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
-                                <i class="ri-arrow-right-s-line"></i>
+                                <i className="ri-arrow-right-s-line"></i>
                               </button>
                             </div>
                           </div>
@@ -607,7 +607,7 @@ export default function NoticiaList({ noticias, categorias }) {
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
-                                <i class="ri-arrow-right-s-line"></i>
+                                <i className="ri-arrow-right-s-line"></i>
                               </button>
                             </div>
                           </div>
