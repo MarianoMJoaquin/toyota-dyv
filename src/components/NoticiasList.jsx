@@ -218,7 +218,7 @@ export default function NoticiaList({ noticias, categorias }) {
             {articuloSeleccionado ? (
               <button
                 onClick={volverALista}
-                className="text-red-600 text-base ml-5 mr-auto transition-all ease-in-out"
+                className="text-black hover:text-red-600 text-base ml-5 mr-auto transition-all ease-in-out"
               >
                 <i class="ri-arrow-left-s-line"></i>
                 Volver a todas las noticias
