@@ -424,7 +424,7 @@ export default function NoticiaList({ noticias, categorias }) {
                           <div className="mx-5 flex flex-col justify-between xl:mx-2 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
                             <img src={noticia.imageUrl} alt={noticia.titulo} className="w-full h-72 object-cover" />
                             <div className="p-4">
-                              <h2 className="text-sm lg:text-lg 2xl:text-xl xl:text-xl font-semibold mb-2">{noticia.titulo}</h2>
+                              <h2 className="text-base lg:text-lg 2xl:text-xl xl:text-xl font-semibold mb-2">{noticia.titulo}</h2>
                               <div className="mb-4 flex items-center">
                                 <p className="text-gray-500 text-sm">
                                   {new Date(noticia.created_at).toLocaleDateString()}
@@ -436,11 +436,11 @@ export default function NoticiaList({ noticias, categorias }) {
                                   </span>
                                 ))}
                               </div>
-                              <p className="text-gray-700 xl:text-lg my-4 line-clamp-3">
+                              <p className="text-gray-700 text-sm xl:text-lg my-4 line-clamp-3">
                                 {noticia.contenido.substring(0, 120)}...
                               </p>
                               <button
-                                className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-lg px-3 py-2 text-center me-2 mb-2 transition-all ease-in-out"
+                                className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
                                 onClick={() => seleccionarArticulo(noticia)}
                               >
                                 Leer más
