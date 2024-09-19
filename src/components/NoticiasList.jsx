@@ -214,6 +214,16 @@ export default function NoticiaList({ noticias, categorias }) {
 
         <div className="lg:col-span-3">
           <div className="flex justify-end mb-4">
+            {/* Botón para volver a la lista de noticias */}
+            {articuloSeleccionado ? (
+              <button
+                onClick={volverALista}
+                className="text-red-600 text-base ml-5 mr-auto transition-all ease-in-out"
+              >
+                <i class="ri-arrow-left-s-line"></i>
+                Volver a todas las noticias
+              </button>
+            ) : null}
             {/* Botones para cambiar de vista */}
             <button
               className="mr-2"            
@@ -245,7 +255,7 @@ export default function NoticiaList({ noticias, categorias }) {
                 setFiltroMeses([]);  // Limpiamos el filtro de meses
                 setPaginaActual(1); // Volvemos a la primera página
               }}
-              className="ml-5 mr-5 max-lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
+              className="ml-5 xl:mr-5 3xl:mr-5 max-lg:hidden text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center me-2 mb-2 transition-all ease-in-out"
             >
               Limpiar Filtros
             </button>
@@ -372,7 +382,7 @@ export default function NoticiaList({ noticias, categorias }) {
                         <div className="flex justify-between mt-8">
                           <button
                             onClick={() => navegarArticulo(-1)}
-                            className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-3 py-1 transition-all ease-in-out"
+                            className="text-red-600 text-base xl:text-xl transition-all ease-in-out"
                             disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === 0}
                           >
                             <i class="ri-arrow-left-s-line"></i>
@@ -380,7 +390,7 @@ export default function NoticiaList({ noticias, categorias }) {
                           </button>
                           <button
                             onClick={() => navegarArticulo(1)}
-                            className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-3 py-1 transition-all ease-in-out"
+                            className="text-red-600 text-base xl:text-xl transition-all ease-in-out"
                             disabled={noticias.findIndex(noticia => noticia.id === articuloSeleccionado.id) === noticias.length - 1}
                           >
                             Artículo Siguiente
@@ -419,7 +429,7 @@ export default function NoticiaList({ noticias, categorias }) {
                     <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-6">
                       {noticiasPaginadas.map(noticia => (
                         <CSSTransition key={noticia.id} timeout={300} classNames="fade">
-                          <div className="mx-5 flex flex-col justify-between xl:mx-2 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
+                          <div className="mx-5 flex flex-col justify-between xl:mx-5 bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 ease-in-out transform hover:scale-105">
                             <img src={noticia.imageUrl} alt={noticia.titulo} className="w-full h-72 object-cover" />
                             <div className="p-4">
                               <h2 className="text-base lg:text-lg 2xl:text-xl xl:text-xl font-semibold mb-2">{noticia.titulo}</h2>
@@ -453,7 +463,7 @@ export default function NoticiaList({ noticias, categorias }) {
                     <TransitionGroup>
                       {noticiasPaginadas.map(noticia => (
                         <CSSTransition key={noticia.id} timeout={300} classNames="fade">
-                          <div className="mx-5 flex flex-row items-center lg:items-start border-b py-6 lg:space-x-6">
+                          <div className="mx-5 flex xl:mx-5 flex-row items-center lg:items-start border-b py-6 lg:space-x-6">
                             <img
                               src={noticia.imageUrl}
                               alt={noticia.titulo}
@@ -499,7 +509,7 @@ export default function NoticiaList({ noticias, categorias }) {
                           i + 1 === paginaActual
                             ? 'bg-red-600 text-white'
                             : 'bg-gray-300 text-gray-700 transition-all ease-in-out hover:bg-red-600 hover:text-white'
-                        } rounded-full w-10 h-10 flex items-center justify-center`}
+                        } rounded-full text-lg w-10 h-10 flex items-center justify-center`}
                       >
                         {i + 1}
                       </button>
