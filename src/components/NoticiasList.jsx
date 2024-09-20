@@ -35,7 +35,7 @@ export default function NoticiaList({ noticias, categorias }) {
     setTimeout(() => {
       filtrarNoticias();
       setCargando(false);
-    }, 150);
+    }, 1500);
   }, [busqueda, filtroCategorias, filtroMeses, paginaActual]); // Añadimos filtroMeses a las dependencias
 
   const filtrarNoticias = () => {
@@ -132,13 +132,24 @@ export default function NoticiaList({ noticias, categorias }) {
     }
   };
 
-  const navegarArticulo = (direccion) => {
+  const navegarArticulo = async (direccion) => {
+    setCargando(true);
     const indiceActual = noticias.findIndex(
       (noticia) => noticia.id === articuloSeleccionado.id
     );
     const nuevoIndice = indiceActual + direccion;
-    if (nuevoIndice >= 0 && nuevoIndice < noticias.length) {
-      setArticuloSeleccionado(noticias[nuevoIndice]);
+    const nuevaNoticia = noticias[nuevoIndice];
+    try {
+      const response = await fetch(`https://panelweb.derkayvargas.com/api/entradas/${nuevaNoticia.slug}`);
+      if (!response.ok) {
+        throw new Error("Error al obtener los detalles el artículo");
+      }
+      const data = await response.json();
+      setArticuloSeleccionado(data.data);
+    } catch (error) {
+      console.error('Error al obtener los detalles del articulo',error);
+    } finally {
+      setCargando(false);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
