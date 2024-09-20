@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { CSSTransition, TransitionGroup } from "react-transition-group"; // Importamos las herramientas para animación
 
 export default function UsadosList() {
   const [autos, setAutos] = useState([]);
@@ -261,15 +260,9 @@ export default function UsadosList() {
           </button>
         </div>
       ) : (
-        
         // Mostrar la lista de autos paginada
-        <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {autosPaginados.map((auto) => (
-            <CSSTransition
-              timeout={300}
-              classNames="fade"
-              key={auto.id}
-            >
             <div
               key={auto.id}
               className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer"
@@ -288,9 +281,8 @@ export default function UsadosList() {
                 <p>Estado: {auto.estado}</p>
               </div>
             </div>
-            </CSSTransition>
           ))}
-        </TransitionGroup>
+        </div>
       )}
 
       {/* Paginación */}

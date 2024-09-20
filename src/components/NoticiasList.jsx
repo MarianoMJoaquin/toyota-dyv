@@ -115,9 +115,21 @@ export default function NoticiaList({ noticias, categorias }) {
     });
   };
 
-  const seleccionarArticulo = (articulo) => {
-    setArticuloSeleccionado(articulo);
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  const seleccionarArticulo = async (articulo) => {
+    setCargando(true);
+    try {
+      const response = await fetch(`https://panelweb.derkayvargas.com/api/entradas/${articulo.slug}`);
+      if (!response.ok) {
+        throw new Error("Error al obtener los detalles el artículo");
+      }
+      const data = await response.json();
+      setArticuloSeleccionado(data.data);
+    } catch (error) {
+      console.error('Error al obtener los detalles del articulo',error);
+    } finally {
+      setCargando(false);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   const navegarArticulo = (direccion) => {
@@ -418,7 +430,7 @@ export default function NoticiaList({ noticias, categorias }) {
                     <CSSTransition timeout={300} classNames="fade">
                       <div className="space-y-4 mx-5">
                         <img
-                          src={articuloSeleccionado.imageUrl}
+                          src={`https://panelweb.derkayvargas.com/${articuloSeleccionado.imagen_portada}`}
                           alt={articuloSeleccionado.titulo}
                           style={{ height: "50rem" }}
                           className="w-full object-cover rounded-lg"
