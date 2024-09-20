@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import DOMPurify from "dompurify"; // Import DOMPurify
+
 
 // Genera una lista de meses con su nombre y valor numérico
 const meses = [
@@ -457,18 +457,7 @@ export default function NoticiaList({ noticias, categorias }) {
                         </p>
 
                         {/* Contenido formateado del artículo, ahora sanitizado con DOMPurify */}
-                        <div className="text-xl leading-9 py-4 text-gray-700 space-y-4">
-                          {articuloSeleccionado.contenido
-                            .split("\n")
-                            .map((parrafo, index) => (
-                              <p
-                                key={index}
-                                dangerouslySetInnerHTML={{
-                                  __html: DOMPurify.sanitize(parrafo),
-                                }}
-                              />
-                            ))}
-                        </div>
+                        <div className="prose max-w-none" dangerouslySetInnerHTML={{ __html: articuloSeleccionado.contenido }}></div>
                         {/* Botones de navegación entre artículos */}
                         <div className="flex justify-between mt-8">
                           <button
