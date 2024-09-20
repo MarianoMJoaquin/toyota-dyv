@@ -35,7 +35,7 @@ export default function NoticiaList({ noticias, categorias }) {
     setTimeout(() => {
       filtrarNoticias();
       setCargando(false);
-    }, 1500);
+    }, 150);
   }, [busqueda, filtroCategorias, filtroMeses, paginaActual]); // Añadimos filtroMeses a las dependencias
 
   const filtrarNoticias = () => {
