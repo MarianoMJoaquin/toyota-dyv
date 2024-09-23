@@ -695,7 +695,8 @@ export default function UsadosList() {
                       style={{
                         ...props.style,
                         height: "5px",
-                        background: "#e64b58",
+                        background: "#d1d5db",
+                        borderRadius: "5px",
                       }}
                     >
                       {children}
@@ -741,7 +742,8 @@ export default function UsadosList() {
                       style={{
                         ...props.style,
                         height: "5px",
-                        background: "#e64b58",
+                        background: "#d1d5db",
+                        borderRadius: "5px",
                       }}
                     >
                       {children}
