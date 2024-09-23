@@ -638,7 +638,7 @@ export default function NoticiaList({ noticias, categorias }) {
                           i + 1 === paginaActual
                             ? "bg-red-600 text-white"
                             : "bg-gray-300 text-gray-700 transition-all ease-in-out hover:bg-red-600 hover:text-white"
-                        }   `}
+                        } rounded-full text-lg w-10 h-10 flex items-center justify-center`}
                       >
                         {i + 1}
                       </button>

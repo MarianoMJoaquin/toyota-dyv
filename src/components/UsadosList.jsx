@@ -252,7 +252,11 @@ export default function UsadosList() {
               {/* Botón para limpiar todos los filtros */}
               {busqueda || filtroMarcas.length > 0 || filtroModelos.length > 0 || filtroColores.length > 0 || filtroCombustibles.length > 0 || filtroTransmisiones.length > 0 || filtroUct.length > 0 || filtroEstados.length > 0 || filtroAnioDesde || filtroAnioHasta || rangoPrecios[0] !== minPrecio || rangoPrecios[1] !== maxPrecio || rangoKilometros[0] !== minKilometros || rangoKilometros[1] !== maxKilometros ? (
                 <button onClick={limpiarFiltros} className="text-white text-base bg-red-600 py-2 px-4 rounded-full">Limpiar filtros</button>
-              ) : null}
+              ) : 
+                <div className="max-w-max flex justify-center items-center">
+                  <span className="text-lg">No hay filtros activos</span>
+                </div>
+              }
             </div>
           </div>
 
@@ -393,85 +397,85 @@ export default function UsadosList() {
                   value={filtroAnioDesde}
                   onChange={(e) => {setFiltroAnioDesde(e.target.value); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
                   placeholder="Desde"
-                  className="w-full py-2 px-4 border-2 border-gray-300 rounded-lg"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                 />
                 <input
                   type="number"
                   value={filtroAnioHasta}
                   onChange={(e) => {setFiltroAnioHasta(e.target.value); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
                   placeholder="Hasta"
-                  className="w-full py-2 px-4 border-2 border-gray-300 ring-red-600 outline-none focus:ring-red-600 rounded-lg"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                 />
               </div>
             </div>
-              <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-            {/* Filtro por Precio con Rango */}
-            <div className="mb-4">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Precio</h3>
-              <Range
-                step={1000000}
-                min={minPrecio}
-                max={maxPrecio}
-                values={rangoPrecios}
-                onChange={(values) => {setRangoPrecios(values); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
-                renderTrack={({ props, children }) => (
-                  <div {...props} style={{ ...props.style, height: '5px', background: '#e64b58' }}>
-                    {children}
-                  </div>
-                )}
-                renderThumb={({ props, index }) => (
-                  <div
-                    {...props}
-                    style={{
-                      ...props.style,
-                      height: '12px',
-                      width: '12px',
-                      backgroundColor: '#eb0a1e',
-                      borderRadius: '50%',
-                      boxShadow: '0px 2px 6px #AAA',
-                    }}
-                  />
-                )}
-              />
-              <div className="flex justify-between mt-2">
-                <span>${Number(rangoPrecios[0]).toLocaleString()}</span>
-                <span>${Number(rangoPrecios[1]).toLocaleString()}</span>
-              </div>
-            </div>
 
-            {/* Filtro por Kilómetros con Rango */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Kilometraje</h3>
-              <Range
-                step={1000}
-                min={minKilometros}
-                max={maxKilometros}
-                values={rangoKilometros}
-                onChange={(values) => {setRangoKilometros(values); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
-                renderTrack={({ props, children }) => (
-                  <div {...props} style={{ ...props.style, height: '5px', background: '#e64b58' }}>
-                    {children}
-                  </div>
-                )}
-                renderThumb={({ props, index }) => (
-                  <div
-                    {...props}
-                    style={{
-                      ...props.style,
-                      height: '12px',
-                      width: '12px',
-                      backgroundColor: '#eb0a1e',
-                      borderRadius: '50%',
-                      boxShadow: '0px 2px 6px #AAA',
-                    }}
-                  />
-                )}
-              />
-              <div className="flex justify-between mt-2">
-                <span>{Number(rangoKilometros[0]).toLocaleString()} km</span>
-                <span>{Number(rangoKilometros[1]).toLocaleString()} km</span>
+            {/* Filtro por Precio con Rango */} {/* Filtro por Kilómetros con Rango */}
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <div className="mb-4">
+                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Precio</h3>
+                <Range
+                  step={1000000}
+                  min={minPrecio}
+                  max={maxPrecio}
+                  values={rangoPrecios}
+                  onChange={(values) => {setRangoPrecios(values); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
+                  renderTrack={({ props, children }) => (
+                    <div {...props} style={{ ...props.style, height: '5px', background: '#e64b58' }}>
+                      {children}
+                    </div>
+                  )}
+                  renderThumb={({ props, index }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: '12px',
+                        width: '12px',
+                        backgroundColor: '#eb0a1e',
+                        borderRadius: '50%',
+                        boxShadow: '0px 2px 6px #AAA',
+                      }}
+                    />
+                  )}
+                />
+                <div className="flex justify-between mt-2">
+                  <span>${Number(rangoPrecios[0]).toLocaleString()}</span>
+                  <span>${Number(rangoPrecios[1]).toLocaleString()}</span>
+                </div>
               </div>
-            </div>
+
+              <div>
+                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Kilometraje</h3>
+                <Range
+                  step={1000}
+                  min={minKilometros}
+                  max={maxKilometros}
+                  values={rangoKilometros}
+                  onChange={(values) => {setRangoKilometros(values); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
+                  renderTrack={({ props, children }) => (
+                    <div {...props} style={{ ...props.style, height: '5px', background: '#e64b58' }}>
+                      {children}
+                    </div>
+                  )}
+                  renderThumb={({ props, index }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: '12px',
+                        width: '12px',
+                        backgroundColor: '#eb0a1e',
+                        borderRadius: '50%',
+                        boxShadow: '0px 2px 6px #AAA',
+                      }}
+                    />
+                  )}
+                />
+                <div className="flex justify-between mt-2">
+                  <span>{Number(rangoKilometros[0]).toLocaleString()} km</span>
+                  <span>{Number(rangoKilometros[1]).toLocaleString()} km</span>
+                </div>
+              </div>
             </div>    
 
 
