@@ -470,7 +470,9 @@ export default function UsadosList() {
                       type="checkbox"
                       id={`marca-${marca}`}
                       onChange={() =>
-                        handleCheckbox(filtroMarcas, setFiltroMarcas, marca)
+                        {handleCheckbox(filtroMarcas, setFiltroMarcas, marca); 
+                          setPaginaActual(1); 
+                          volverALista();}
                       }
                       checked={filtroMarcas.includes(marca)}
                       className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
@@ -509,7 +511,10 @@ export default function UsadosList() {
                       type="checkbox"
                       id={`color-${color}`}
                       onChange={() =>
-                        handleCheckbox(filtroColores, setFiltroColores, color)
+                        {handleCheckbox(filtroColores, setFiltroColores, color); 
+                          setPaginaActual(1); 
+                          volverALista();
+                        }
                       }
                       checked={filtroColores.includes(color)}
                       className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
@@ -533,11 +538,14 @@ export default function UsadosList() {
                       type="checkbox"
                       id={`combustible-${combustible}`}
                       onChange={() =>
-                        handleCheckbox(
+                        {handleCheckbox(
                           filtroCombustibles,
                           setFiltroCombustibles,
                           combustible
-                        )
+                        ); 
+                        setPaginaActual(1);
+                        volverALista();
+                        }
                       }
                       checked={filtroCombustibles.includes(combustible)}
                       className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
@@ -564,11 +572,14 @@ export default function UsadosList() {
                       type="checkbox"
                       id={`transmision-${transmision}`}
                       onChange={() =>
-                        handleCheckbox(
+                        {handleCheckbox(
                           filtroTransmisiones,
                           setFiltroTransmisiones,
                           transmision
-                        )
+                        );
+                        setPaginaActual(1);
+                        volverALista();
+                      }
                       }
                       checked={filtroTransmisiones.includes(transmision)}
                       className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
@@ -592,7 +603,11 @@ export default function UsadosList() {
                 <input
                   type="checkbox"
                   id="uct-1"
-                  onChange={() => handleCheckbox(filtroUct, setFiltroUct, "1")}
+                  onChange={() => {
+                    handleCheckbox(filtroUct, setFiltroUct, "1");
+                    setPaginaActual(1);
+                    volverALista();
+                  }}
                   checked={filtroUct.includes("1")}
                   className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                 />
@@ -604,7 +619,10 @@ export default function UsadosList() {
                 <input
                   type="checkbox"
                   id="uct-0"
-                  onChange={() => handleCheckbox(filtroUct, setFiltroUct, "0")}
+                  onChange={() => {handleCheckbox(filtroUct, setFiltroUct, "0");
+                    setPaginaActual(1);
+                    volverALista();
+                  }}
                   checked={filtroUct.includes("0")}
                   className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                 />
