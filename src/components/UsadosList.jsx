@@ -178,73 +178,73 @@ export default function UsadosList() {
             <div className="space-y-2">
               {/* Mostrar filtros activos */}
               {busqueda && (
-                <div className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Búsqueda: {busqueda}</span>
                   <button onClick={() => setBusqueda("")} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               )}
               {filtroMarcas.map((marca) => (
-                <div key={marca} className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div key={marca} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Marca: {capitalizar(marca)}</span>
                   <button onClick={() => eliminarFiltro(filtroMarcas, setFiltroMarcas, marca)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               ))}
               {filtroModelos.map((modelo) => (
-                <div key={modelo} className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div key={modelo} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Modelo: {capitalizar(modelo)}</span>
                   <button onClick={() => eliminarFiltro(filtroModelos, setFiltroModelos, modelo)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               ))}
               {filtroColores.map((color) => (
-                <div key={color} className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div key={color} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Color: {capitalizar(color)}</span>
                   <button onClick={() => eliminarFiltro(filtroColores, setFiltroColores, color)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               ))}
               {filtroCombustibles.map((combustible) => (
-                <div key={combustible} className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div key={combustible} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Combustible: {capitalizar(combustible)}</span>
                   <button onClick={() => eliminarFiltro(filtroCombustibles, setFiltroCombustibles, combustible)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               ))}
               {filtroTransmisiones.map((transmision) => (
-                <div key={transmision} className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div key={transmision} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Transmisión: {capitalizar(transmision)}</span>
                   <button onClick={() => eliminarFiltro(filtroTransmisiones, setFiltroTransmisiones, transmision)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               ))}
               {filtroEstados.map((estado) => (
-                <div key={estado} className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div key={estado} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Estado: {capitalizar(estado)}</span>
                   <button onClick={() => eliminarFiltro(filtroEstados, setFiltroEstados, estado)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               ))}
               {filtroAnioDesde && (
-                <div className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Año desde: {filtroAnioDesde}</span>
                   <button onClick={() => setFiltroAnioDesde("")} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               )}
               {filtroAnioHasta && (
-                <div className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Año hasta: {filtroAnioHasta}</span>
                   <button onClick={() => setFiltroAnioHasta("")} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               )}
               {(rangoPrecios[0] !== minPrecio || rangoPrecios[1] !== maxPrecio) && (
-                <div className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Precio: ${Number(rangoPrecios[0]).toLocaleString()} - ${Number(rangoPrecios[1]).toLocaleString()}</span>
                   <button onClick={() => setRangoPrecios([minPrecio, maxPrecio])} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               )}
               {(rangoKilometros[0] !== minKilometros || rangoKilometros[1] !== maxKilometros) && (
-                <div className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Kilómetros: {Number(rangoKilometros[0]).toLocaleString()} - {Number(rangoKilometros[1]).toLocaleString()}</span>
                   <button onClick={() => setRangoKilometros([minKilometros, maxKilometros])} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
               )}
               {filtroUct.map((uct) => (
-                <div key={uct} className="max-w-max flex justify-center items-center px-2 bg-gray-300 rounded-full">
+                <div key={uct} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">{uct === "1" ? "Certificado Toyota" : "No Certificado"}</span>
                   <button onClick={() => eliminarFiltro(filtroUct, setFiltroUct, uct)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
                 </div>
