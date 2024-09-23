@@ -30,7 +30,7 @@ export default function UsadosList() {
   const [paginaActual, setPaginaActual] = useState(1);
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
 
-  const autosPorPagina = 9;
+  const autosPorPagina = 12;
 
   // Cargar autos desde la API
   useEffect(() => {
@@ -192,7 +192,7 @@ export default function UsadosList() {
       </h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-        <div className="lg:col-span-1">
+        <div className="lg:col-span-1 mx-5 xl:mx-5">
           {/* Columna para filtros y búsqueda */}
 
           <div className="mb-4 xl:mx-5 relative">
@@ -423,7 +423,7 @@ export default function UsadosList() {
               rangoKilometros[1] !== maxKilometros ? (
                 <button
                   onClick={limpiarFiltros}
-                  className="text-white text-base bg-red-600 py-2 px-4 rounded-full"
+                  className="text-red-600 text-sm py-1 px-2 rounded-full"
                 >
                   Limpiar filtros
                 </button>
@@ -750,7 +750,7 @@ export default function UsadosList() {
         </div>
 
         {/* Columna para la lista de autos */}
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 mx-5 xl:mx-5">
           {cargando ? (
             <div role="status" className="flex justify-center items-center">
               <svg
@@ -817,18 +817,35 @@ export default function UsadosList() {
                     <img
                       src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
                       alt={`${auto.marca} ${auto.modelo}`}
-                      className="w-full h-48 object-cover"
+                      className="w-full h-72 object-cover"
                     />
-                    <div className="p-4">
+                    <div className="p-4 flex flex-col justify-center gap-2">
                       <h2 className="text-lg font-semibold">
                         {auto.marca} {auto.modelo}
                       </h2>
-                      <p>Año: {auto.anio}</p>
-                      <p>Kilometraje: {auto.km} km</p>
-                      <p className="font-semibold text-red-600">
-                        ${Number(auto.precio).toLocaleString()}
-                      </p>
-                      <p>Estado: {auto.estado}</p>
+                      <div className="flex justify-start items-center text-lg mt-2">
+                        <p className="mr-2">{auto.anio}</p>
+                        <p className="mr-2">|</p>
+                        <p className="mr-2">{Number(auto.km).toLocaleString()} km</p>
+                        <p className="mr-2">|</p>
+                        {auto.estado === "DISPONIBLE" ? (
+                          <span className="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">Disponible</span>
+                        ) : (
+                          <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">Reservado</span>
+                        )}
+                      </div>
+                      
+                      <div className="mt-4 flex justify-between items-center">
+                        <button
+                          onClick={() => seleccionarAuto(auto)}
+                          className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
+                        >
+                          Ver más
+                        </button>
+                        <p className="font-semibold text-black">
+                          ARS$ {Number(auto.precio).toLocaleString()}
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </CSSTransition>

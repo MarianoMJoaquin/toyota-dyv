@@ -441,7 +441,11 @@ export default function UsadosList() {
                       <p>Año: {auto.anio}</p>
                       <p>Kilometraje: {auto.km} km</p>
                       <p className="font-semibold text-red-600">${Number(auto.precio).toLocaleString()}</p>
-                      <p>Estado: {auto.estado}</p>
+                      {auto.estado === "DISPONIBLE" ? (
+                        <span className="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">Disponible</span>
+                      ) : (
+                        <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">Vendido</span>
+                      )}
                     </div>
                   </div>
                 </CSSTransition>
