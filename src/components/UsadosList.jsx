@@ -29,6 +29,8 @@ export default function UsadosList() {
   const [autosFiltrados, setAutosFiltrados] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
+  const [slugAutoSeleccionado, setSlugAutoSeleccionado] = useState(null);
+  const [detallesAuto, setDetallesAuto] = useState(null);
 
   const autosPorPagina = 12;
 
@@ -50,6 +52,23 @@ export default function UsadosList() {
 
     fetchAutos();
   }, []);
+
+  // Cuando se selecciona un auto, busca más detalles usando el slug
+  useEffect(() => {
+    if (slugAutoSeleccionado) {
+      const fetchDetallesAuto = async () => {
+        try {
+          const respuesta = await fetch(`https://panelweb.derkayvargas.com/api/usados/${slugAutoSeleccionado}`);
+          const data = await respuesta.json();
+          setDetallesAuto(data.data);  // Se guarda la información detallada del auto
+        } catch (error) {
+          console.error("Error al cargar los detalles del auto:", error);
+        }
+      };
+
+      fetchDetallesAuto();
+    }
+  }, [slugAutoSeleccionado]);
 
   // Filtrar autos en base a los filtros seleccionados
   useEffect(() => {
@@ -143,11 +162,13 @@ export default function UsadosList() {
 
   const seleccionarAuto = (auto) => {
     setAutoSeleccionado(auto);
+    setSlugAutoSeleccionado(auto.slug); // Guarda el slug para hacer la búsqueda de detalles
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const volverALista = () => {
     setAutoSeleccionado(null);
+    setDetallesAuto(null);  // Limpia los detalles cuando se vuelve a la lista
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
@@ -771,27 +792,53 @@ export default function UsadosList() {
               </svg>
               <span className="sr-only">Cargando noticias...</span>
             </div>
-          ) : autoSeleccionado ? (
-            <div className="space-y-6">
-              <img
-                src={`https://panelweb.derkayvargas.com/${autoSeleccionado.foto.replace("public", "storage")}`}
-                alt={`${autoSeleccionado.marca} ${autoSeleccionado.modelo}`}
-                className="w-full h-96 object-cover rounded-lg"
-              />
-              <h2 className="text-2xl font-bold">
-                {autoSeleccionado.marca} {autoSeleccionado.modelo}
-              </h2>
-              <p>Año: {autoSeleccionado.anio}</p>
-              <p>Kilometraje: {autoSeleccionado.km} km</p>
-              <p>Color: {autoSeleccionado.color}</p>
-              <p>Precio: ${Number(autoSeleccionado.precio).toLocaleString()}</p>
-              <p>Estado: {autoSeleccionado.estado}</p>
-              <button
-                onClick={volverALista}
-                className="text-white bg-red-600 py-2 px-4 rounded-lg"
-              >
-                Volver a la lista
-              </button>
+          ) : autoSeleccionado && detallesAuto ? (
+            <div className="space-y-6 lg:grid lg:grid-cols-2 lg:gap-8">
+               
+              {/* Galería de imágenes */}
+              <div className="space-y-4 flex flex-col justify-center items-center">
+               
+                <img
+                  src={`https://panelweb.derkayvargas.com/${detallesAuto.foto}`}
+                  alt={`${detallesAuto.marca} ${detallesAuto.modelo}`}
+                  className="w-full object-cover rounded-lg"
+                  style={{ height: "40rem" }}
+                  
+                />
+                 <div className="flex overflow-scroll gap-2">
+                  {detallesAuto.photos.map((photo, index) => (
+                    <img
+                      key={index}
+                      src={`https://panelweb.derkayvargas.com${photo.public_path}`}
+                      alt={`Imagen ${index + 1}`}
+                      className="w-32 object-cover rounded-lg cursor-pointer"
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Información del auto */}
+              <div className="space-y-4">
+                <h2 className="text-3xl font-bold">{detallesAuto.marca} {detallesAuto.modelo}</h2>
+                <div className="flex">
+                  <p className="text-xl text-gray-700">{detallesAuto.anio}</p>
+                  <p className="text-xl text-gray-700 mx-2">|</p>
+                  <p className="text-xl text-gray-700">{Number(detallesAuto.km).toLocaleString()} km</p>
+                </div>
+                <p className="text-xl text-gray-700">Color: {detallesAuto.color}</p>
+                <p className="text-xl font-semibold text-red-600">Precio: ${Number(detallesAuto.precio).toLocaleString()}</p>
+                <p className="text-xl text-gray-700">Estado: {detallesAuto.estado}</p>
+                <p className="text-xl text-gray-700">Transmisión: {detallesAuto.transmision}</p>
+                <p className="text-xl text-gray-700">Combustible: {detallesAuto.combustible}</p>
+                {detallesAuto.uct === 1 ? (
+                  <p className="text-xl text-green-600 font-semibold">Certificado Toyota</p>
+                ) : (
+                  <p className="text-xl text-gray-600">No certificado</p>
+                )}
+                <button onClick={volverALista} className="text-white bg-red-600 py-2 px-4 rounded-lg">
+                  Volver a la lista
+                </button>
+              </div>
             </div>
           ) : autosPaginados.length === 0 ? (
             <TransitionGroup>
@@ -855,7 +902,10 @@ export default function UsadosList() {
 
           {/* Paginación */}
           {autosFiltrados.length > autosPorPagina && (
-            <div className="mt-8 flex justify-center space-x-2">
+            <div className={`${autoSeleccionado
+              ? "hidden"
+              : "flex"
+             } mt-8 justify-center space-x-2`}>
               {Array.from({ length: totalPaginas }).map((_, i) => (
                 <button
                   key={i}
