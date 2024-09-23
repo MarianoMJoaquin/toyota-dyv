@@ -36,7 +36,9 @@ export default function UsadosList() {
   useEffect(() => {
     const fetchAutos = async () => {
       try {
-        const respuesta = await fetch("https://panelweb.derkayvargas.com/api/usados/");
+        const respuesta = await fetch(
+          "https://panelweb.derkayvargas.com/api/usados/"
+        );
         const data = await respuesta.json();
         setAutos(data.data);
         setAutosFiltrados(data.data);
@@ -56,23 +58,42 @@ export default function UsadosList() {
         .toLowerCase()
         .includes(busqueda.toLowerCase());
 
-      const coincideMarca = filtroMarcas.length > 0 ? filtroMarcas.includes(auto.marca) : true;
-      const coincideModelo = filtroModelos.length > 0 ? filtroModelos.some((modelo) => auto.modelo.includes(modelo)) : true;
-      const coincideColor = filtroColores.length > 0 ? filtroColores.includes(auto.color) : true;
-      const coincideCombustible = filtroCombustibles.length > 0 ? filtroCombustibles.includes(auto.combustible) : true;
-      const coincideTransmision = filtroTransmisiones.length > 0 ? filtroTransmisiones.includes(auto.transmision) : true;
-      const coincideUct = filtroUct.length > 0 ? filtroUct.includes(auto.uct.toString()) : true;
-      const coincideEstado = filtroEstados.length > 0 ? filtroEstados.includes(auto.estado) : true;
+      const coincideMarca =
+        filtroMarcas.length > 0 ? filtroMarcas.includes(auto.marca) : true;
+      const coincideModelo =
+        filtroModelos.length > 0
+          ? filtroModelos.some((modelo) => auto.modelo.includes(modelo))
+          : true;
+      const coincideColor =
+        filtroColores.length > 0 ? filtroColores.includes(auto.color) : true;
+      const coincideCombustible =
+        filtroCombustibles.length > 0
+          ? filtroCombustibles.includes(auto.combustible)
+          : true;
+      const coincideTransmision =
+        filtroTransmisiones.length > 0
+          ? filtroTransmisiones.includes(auto.transmision)
+          : true;
+      const coincideUct =
+        filtroUct.length > 0 ? filtroUct.includes(auto.uct.toString()) : true;
+      const coincideEstado =
+        filtroEstados.length > 0 ? filtroEstados.includes(auto.estado) : true;
 
       // Filtro por año
-      const coincideAnioDesde = filtroAnioDesde ? auto.anio >= filtroAnioDesde : true;
-      const coincideAnioHasta = filtroAnioHasta ? auto.anio <= filtroAnioHasta : true;
+      const coincideAnioDesde = filtroAnioDesde
+        ? auto.anio >= filtroAnioDesde
+        : true;
+      const coincideAnioHasta = filtroAnioHasta
+        ? auto.anio <= filtroAnioHasta
+        : true;
 
       // Filtro por precio
-      const coincidePrecio = auto.precio >= rangoPrecios[0] && auto.precio <= rangoPrecios[1];
+      const coincidePrecio =
+        auto.precio >= rangoPrecios[0] && auto.precio <= rangoPrecios[1];
 
       // Filtro por kilómetros
-      const coincideKilometraje = auto.km >= rangoKilometros[0] && auto.km <= rangoKilometros[1];
+      const coincideKilometraje =
+        auto.km >= rangoKilometros[0] && auto.km <= rangoKilometros[1];
 
       return (
         coincideBusqueda &&
@@ -92,7 +113,21 @@ export default function UsadosList() {
 
     setAutosFiltrados(autosFiltrados);
     setPaginaActual(1); // Reiniciar a la primera página al aplicar los filtros
-  }, [busqueda, filtroMarcas, filtroModelos, filtroColores, filtroCombustibles, filtroTransmisiones, filtroUct, filtroEstados, filtroAnioDesde, filtroAnioHasta, rangoPrecios, rangoKilometros, autos]);
+  }, [
+    busqueda,
+    filtroMarcas,
+    filtroModelos,
+    filtroColores,
+    filtroCombustibles,
+    filtroTransmisiones,
+    filtroUct,
+    filtroEstados,
+    filtroAnioDesde,
+    filtroAnioHasta,
+    rangoPrecios,
+    rangoKilometros,
+    autos,
+  ]);
 
   // Paginar autos
   const indiceInicial = (paginaActual - 1) * autosPorPagina;
@@ -146,9 +181,9 @@ export default function UsadosList() {
     setRangoKilometros([minKilometros, maxKilometros]);
   };
 
-
-    // Función para capitalizar la primera letra de un texto
-  const capitalizar = (texto) => texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+  // Función para capitalizar la primera letra de un texto
+  const capitalizar = (texto) =>
+    texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 
   return (
     <section className="container mx-auto section my-8">
@@ -158,105 +193,245 @@ export default function UsadosList() {
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-1">
-
           {/* Columna para filtros y búsqueda */}
-        
+
           <div className="mb-4 xl:mx-5 relative">
             <input
               type="text"
               value={busqueda}
-              onChange={(e) => {setBusqueda(e.target.value); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
+              onChange={(e) => {
+                setBusqueda(e.target.value);
+                setPaginaActual(1);
+                autoSeleccionado && setAutoSeleccionado(null);
+              }}
               placeholder="Buscar por marca o modelo..."
               className="caret-red-600 block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 focus:transition ease-in-out peer"
             />
-             <i className="ri-search-line absolute top-1/2 left-3 -translate-y-1/2 text-gray-600 dark:text-gray-300 transition-all ease-in-out peer-focus:text-red-600 peer-focus:transition"></i>
+            <i className="ri-search-line absolute top-1/2 left-3 -translate-y-1/2 text-gray-600 dark:text-gray-300 transition-all ease-in-out peer-focus:text-red-600 peer-focus:transition"></i>
           </div>
 
           {/* Sección de Filtros Activos */}
           <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-            <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Filtros Activos</h3>
+            <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+              Filtros Activos
+            </h3>
             <div className="space-y-2">
               {/* Mostrar filtros activos */}
               {busqueda && (
                 <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Búsqueda: {busqueda}</span>
-                  <button onClick={() => setBusqueda("")} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <button
+                    onClick={() => setBusqueda("")}
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               )}
               {filtroMarcas.map((marca) => (
-                <div key={marca} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
+                <div
+                  key={marca}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
                   <span className="text-lg">Marca: {capitalizar(marca)}</span>
-                  <button onClick={() => eliminarFiltro(filtroMarcas, setFiltroMarcas, marca)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroMarcas, setFiltroMarcas, marca)
+                    }
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               ))}
               {filtroModelos.map((modelo) => (
-                <div key={modelo} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
+                <div
+                  key={modelo}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
                   <span className="text-lg">Modelo: {capitalizar(modelo)}</span>
-                  <button onClick={() => eliminarFiltro(filtroModelos, setFiltroModelos, modelo)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroModelos, setFiltroModelos, modelo)
+                    }
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               ))}
               {filtroColores.map((color) => (
-                <div key={color} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
+                <div
+                  key={color}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
                   <span className="text-lg">Color: {capitalizar(color)}</span>
-                  <button onClick={() => eliminarFiltro(filtroColores, setFiltroColores, color)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroColores, setFiltroColores, color)
+                    }
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               ))}
               {filtroCombustibles.map((combustible) => (
-                <div key={combustible} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                  <span className="text-lg">Combustible: {capitalizar(combustible)}</span>
-                  <button onClick={() => eliminarFiltro(filtroCombustibles, setFiltroCombustibles, combustible)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                <div
+                  key={combustible}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
+                  <span className="text-lg">
+                    Combustible: {capitalizar(combustible)}
+                  </span>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(
+                        filtroCombustibles,
+                        setFiltroCombustibles,
+                        combustible
+                      )
+                    }
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               ))}
               {filtroTransmisiones.map((transmision) => (
-                <div key={transmision} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                  <span className="text-lg">Transmisión: {capitalizar(transmision)}</span>
-                  <button onClick={() => eliminarFiltro(filtroTransmisiones, setFiltroTransmisiones, transmision)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                <div
+                  key={transmision}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
+                  <span className="text-lg">
+                    Transmisión: {capitalizar(transmision)}
+                  </span>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(
+                        filtroTransmisiones,
+                        setFiltroTransmisiones,
+                        transmision
+                      )
+                    }
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               ))}
               {filtroEstados.map((estado) => (
-                <div key={estado} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
+                <div
+                  key={estado}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
                   <span className="text-lg">Estado: {capitalizar(estado)}</span>
-                  <button onClick={() => eliminarFiltro(filtroEstados, setFiltroEstados, estado)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroEstados, setFiltroEstados, estado)
+                    }
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               ))}
               {filtroAnioDesde && (
                 <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Año desde: {filtroAnioDesde}</span>
-                  <button onClick={() => setFiltroAnioDesde("")} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <button
+                    onClick={() => setFiltroAnioDesde("")}
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               )}
               {filtroAnioHasta && (
                 <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">Año hasta: {filtroAnioHasta}</span>
-                  <button onClick={() => setFiltroAnioHasta("")} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <button
+                    onClick={() => setFiltroAnioHasta("")}
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               )}
-              {(rangoPrecios[0] !== minPrecio || rangoPrecios[1] !== maxPrecio) && (
+              {(rangoPrecios[0] !== minPrecio ||
+                rangoPrecios[1] !== maxPrecio) && (
                 <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                  <span className="text-lg">Precio: ${Number(rangoPrecios[0]).toLocaleString()} - ${Number(rangoPrecios[1]).toLocaleString()}</span>
-                  <button onClick={() => setRangoPrecios([minPrecio, maxPrecio])} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <span className="text-lg">
+                    Precio: ${Number(rangoPrecios[0]).toLocaleString()} - $
+                    {Number(rangoPrecios[1]).toLocaleString()}
+                  </span>
+                  <button
+                    onClick={() => setRangoPrecios([minPrecio, maxPrecio])}
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               )}
-              {(rangoKilometros[0] !== minKilometros || rangoKilometros[1] !== maxKilometros) && (
+              {(rangoKilometros[0] !== minKilometros ||
+                rangoKilometros[1] !== maxKilometros) && (
                 <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                  <span className="text-lg">Kilómetros: {Number(rangoKilometros[0]).toLocaleString()} - {Number(rangoKilometros[1]).toLocaleString()}</span>
-                  <button onClick={() => setRangoKilometros([minKilometros, maxKilometros])} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                  <span className="text-lg">
+                    Kilómetros: {Number(rangoKilometros[0]).toLocaleString()} -{" "}
+                    {Number(rangoKilometros[1]).toLocaleString()}
+                  </span>
+                  <button
+                    onClick={() =>
+                      setRangoKilometros([minKilometros, maxKilometros])
+                    }
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               )}
               {filtroUct.map((uct) => (
-                <div key={uct} className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                  <span className="text-lg">{uct === "1" ? "Certificado Toyota" : "No Certificado"}</span>
-                  <button onClick={() => eliminarFiltro(filtroUct, setFiltroUct, uct)} className="ml-2 text-red-600"><i class="ri-close-circle-line"></i></button>
+                <div
+                  key={uct}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
+                  <span className="text-lg">
+                    {uct === "1" ? "Certificado Toyota" : "No Certificado"}
+                  </span>
+                  <button
+                    onClick={() => eliminarFiltro(filtroUct, setFiltroUct, uct)}
+                    className="ml-2 text-red-600"
+                  >
+                    <i class="ri-close-circle-line"></i>
+                  </button>
                 </div>
               ))}
               {/* Botón para limpiar todos los filtros */}
-              {busqueda || filtroMarcas.length > 0 || filtroModelos.length > 0 || filtroColores.length > 0 || filtroCombustibles.length > 0 || filtroTransmisiones.length > 0 || filtroUct.length > 0 || filtroEstados.length > 0 || filtroAnioDesde || filtroAnioHasta || rangoPrecios[0] !== minPrecio || rangoPrecios[1] !== maxPrecio || rangoKilometros[0] !== minKilometros || rangoKilometros[1] !== maxKilometros ? (
-                <button onClick={limpiarFiltros} className="text-white text-base bg-red-600 py-2 px-4 rounded-full">Limpiar filtros</button>
-              ) : 
+              {busqueda ||
+              filtroMarcas.length > 0 ||
+              filtroModelos.length > 0 ||
+              filtroColores.length > 0 ||
+              filtroCombustibles.length > 0 ||
+              filtroTransmisiones.length > 0 ||
+              filtroUct.length > 0 ||
+              filtroEstados.length > 0 ||
+              filtroAnioDesde ||
+              filtroAnioHasta ||
+              rangoPrecios[0] !== minPrecio ||
+              rangoPrecios[1] !== maxPrecio ||
+              rangoKilometros[0] !== minKilometros ||
+              rangoKilometros[1] !== maxKilometros ? (
+                <button
+                  onClick={limpiarFiltros}
+                  className="text-white text-base bg-red-600 py-2 px-4 rounded-full"
+                >
+                  Limpiar filtros
+                </button>
+              ) : (
                 <div className="max-w-max flex justify-center items-center">
                   <span className="text-lg">No hay filtros activos</span>
                 </div>
-              }
+              )}
             </div>
           </div>
 
@@ -264,21 +439,28 @@ export default function UsadosList() {
           <div className="space-y-4">
             {/* Filtro por Marca */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Marca</h3>
-              {Array.from(new Set(autos.map((auto) => auto.marca))).map((marca, index) => (
-                <div key={index}>
-                  <input
-                    type="checkbox"
-                    id={`marca-${marca}`}
-                    onChange={() => handleCheckbox(filtroMarcas, setFiltroMarcas, marca)}
-                    checked={filtroMarcas.includes(marca)}
-                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
-                  />
-                  <label htmlFor={`marca-${marca}`} className="ml-2 text-xl">{capitalizar(marca)}</label>
-                </div>
-              ))}
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Marca
+              </h3>
+              {Array.from(new Set(autos.map((auto) => auto.marca))).map(
+                (marca, index) => (
+                  <div key={index}>
+                    <input
+                      type="checkbox"
+                      id={`marca-${marca}`}
+                      onChange={() =>
+                        handleCheckbox(filtroMarcas, setFiltroMarcas, marca)
+                      }
+                      checked={filtroMarcas.includes(marca)}
+                      className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                    />
+                    <label htmlFor={`marca-${marca}`} className="ml-2 text-xl">
+                      {capitalizar(marca)}
+                    </label>
+                  </div>
+                )
+              )}
             </div>
-
             {/* Filtro por Modelo */}
             {/*<div className="mb-6 p-4 bg-gray-100 rounded-lg">
               <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Modelo</h3>
@@ -294,61 +476,97 @@ export default function UsadosList() {
                 </div>
               ))}
             </div*/}
-
             {/* Filtro por Color */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Color</h3>
-              {Array.from(new Set(autos.map((auto) => auto.color))).map((color, index) => (
-                <div key={index}>
-                  <input
-                    type="checkbox"
-                    id={`color-${color}`}
-                    onChange={() => handleCheckbox(filtroColores, setFiltroColores, color)}
-                    checked={filtroColores.includes(color)}
-                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
-                  />
-                  <label htmlFor={`color-${color}`} className="ml-2 text-xl">{color}</label>
-                </div>
-              ))}
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Color
+              </h3>
+              {Array.from(new Set(autos.map((auto) => auto.color))).map(
+                (color, index) => (
+                  <div key={index}>
+                    <input
+                      type="checkbox"
+                      id={`color-${color}`}
+                      onChange={() =>
+                        handleCheckbox(filtroColores, setFiltroColores, color)
+                      }
+                      checked={filtroColores.includes(color)}
+                      className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                    />
+                    <label htmlFor={`color-${color}`} className="ml-2 text-xl">
+                      {color}
+                    </label>
+                  </div>
+                )
+              )}
             </div>
-
             {/* Filtro por Combustible */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Combustible</h3>
-              {Array.from(new Set(autos.map((auto) => auto.combustible))).map((combustible, index) => (
-                <div key={index}>
-                  <input
-                    type="checkbox"
-                    id={`combustible-${combustible}`}
-                    onChange={() => handleCheckbox(filtroCombustibles, setFiltroCombustibles, combustible)}
-                    checked={filtroCombustibles.includes(combustible)}
-                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
-                  />
-                  <label htmlFor={`combustible-${combustible}`} className="ml-2 text-xl">{capitalizar(combustible)}</label>
-                </div>
-              ))}
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Combustible
+              </h3>
+              {Array.from(new Set(autos.map((auto) => auto.combustible))).map(
+                (combustible, index) => (
+                  <div key={index}>
+                    <input
+                      type="checkbox"
+                      id={`combustible-${combustible}`}
+                      onChange={() =>
+                        handleCheckbox(
+                          filtroCombustibles,
+                          setFiltroCombustibles,
+                          combustible
+                        )
+                      }
+                      checked={filtroCombustibles.includes(combustible)}
+                      className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                    />
+                    <label
+                      htmlFor={`combustible-${combustible}`}
+                      className="ml-2 text-xl"
+                    >
+                      {capitalizar(combustible)}
+                    </label>
+                  </div>
+                )
+              )}
             </div>
-
             {/* Filtro por Transmisión */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Transmisión</h3>
-              {Array.from(new Set(autos.map((auto) => auto.transmision))).map((transmision, index) => (
-                <div key={index}>
-                  <input
-                    type="checkbox"
-                    id={`transmision-${transmision}`}
-                    onChange={() => handleCheckbox(filtroTransmisiones, setFiltroTransmisiones, transmision)}
-                    checked={filtroTransmisiones.includes(transmision)}
-                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
-                  />
-                  <label htmlFor={`transmision-${transmision}`} className="ml-2 text-xl">{capitalizar(transmision)}</label>
-                </div>
-              ))}
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Transmisión
+              </h3>
+              {Array.from(new Set(autos.map((auto) => auto.transmision))).map(
+                (transmision, index) => (
+                  <div key={index}>
+                    <input
+                      type="checkbox"
+                      id={`transmision-${transmision}`}
+                      onChange={() =>
+                        handleCheckbox(
+                          filtroTransmisiones,
+                          setFiltroTransmisiones,
+                          transmision
+                        )
+                      }
+                      checked={filtroTransmisiones.includes(transmision)}
+                      className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                    />
+                    <label
+                      htmlFor={`transmision-${transmision}`}
+                      className="ml-2 text-xl"
+                    >
+                      {capitalizar(transmision)}
+                    </label>
+                  </div>
+                )
+              )}
             </div>
-
             {/* Filtro por Usado Certificado Toyota (UCT) */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Usado Certificado Toyota</h3>
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Usado Certificado Toyota
+              </h3>
               <div>
                 <input
                   type="checkbox"
@@ -357,7 +575,9 @@ export default function UsadosList() {
                   checked={filtroUct.includes("1")}
                   className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                 />
-                <label htmlFor="uct-1" className="ml-2 text-xl">Certificado Toyota</label>
+                <label htmlFor="uct-1" className="ml-2 text-xl">
+                  Certificado Toyota
+                </label>
               </div>
               <div>
                 <input
@@ -367,60 +587,96 @@ export default function UsadosList() {
                   checked={filtroUct.includes("0")}
                   className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                 />
-                <label htmlFor="uct-0" className="ml-2 text-xl">No Certificado</label>
+                <label htmlFor="uct-0" className="ml-2 text-xl">
+                  No Certificado
+                </label>
               </div>
             </div>
-
             {/* Filtro por Estado */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Estado</h3>
-              {Array.from(new Set(autos.map((auto) => auto.estado))).map((estado, index) => (
-                <div key={index}>
-                  <input
-                    type="checkbox"
-                    id={`estado-${estado}`}
-                    onChange={() => handleCheckbox(filtroEstados, setFiltroEstados, estado)}
-                    checked={filtroEstados.includes(estado)}
-                    className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
-                  />
-                  <label htmlFor={`estado-${estado}`} className="ml-2 text-xl">{capitalizar(estado)}</label>
-                </div>
-              ))}
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Estado
+              </h3>
+              {Array.from(new Set(autos.map((auto) => auto.estado))).map(
+                (estado, index) => (
+                  <div key={index}>
+                    <input
+                      type="checkbox"
+                      id={`estado-${estado}`}
+                      onChange={() => {
+                        handleCheckbox(filtroEstados, setFiltroEstados, estado);
+                        setPaginaActual(1);
+                        volverALista();
+                      }}
+                      checked={filtroEstados.includes(estado)}
+                      className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                    />
+                    <label
+                      htmlFor={`estado-${estado}`}
+                      className="ml-2 text-xl"
+                    >
+                      {capitalizar(estado)}
+                    </label>
+                  </div>
+                )
+              )}
             </div>
-
             {/* Filtro por Año */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Año</h3>
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Año
+              </h3>
               <div className="flex space-x-2">
                 <input
                   type="number"
                   value={filtroAnioDesde}
-                  onChange={(e) => {setFiltroAnioDesde(e.target.value); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
+                  onChange={(e) => {
+                    setFiltroAnioDesde(e.target.value);
+                    setPaginaActual(1);
+                    autoSeleccionado && setAutoSeleccionado(null);
+                  }}
                   placeholder="Desde"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                 />
                 <input
                   type="number"
                   value={filtroAnioHasta}
-                  onChange={(e) => {setFiltroAnioHasta(e.target.value); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
+                  onChange={(e) => {
+                    setFiltroAnioHasta(e.target.value);
+                    setPaginaActual(1);
+                    autoSeleccionado && setAutoSeleccionado(null);
+                  }}
                   placeholder="Hasta"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
                 />
               </div>
             </div>
-
-            {/* Filtro por Precio con Rango */} {/* Filtro por Kilómetros con Rango */}
+            {/* Filtro por Precio con Rango */}{" "}
+            {/* Filtro por Kilómetros con Rango */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
               <div className="mb-4">
-                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Precio</h3>
+                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                  Precio
+                </h3>
                 <Range
                   step={1000000}
                   min={minPrecio}
                   max={maxPrecio}
                   values={rangoPrecios}
-                  onChange={(values) => {setRangoPrecios(values); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
+                  onChange={(values) => {
+                    setRangoPrecios(values);
+                    setPaginaActual(1);
+                    autoSeleccionado && setAutoSeleccionado(null);
+                  }}
                   renderTrack={({ props, children }) => (
-                    <div {...props} style={{ ...props.style, height: '5px', background: '#e64b58' }}>
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "5px",
+                        background: "#e64b58",
+                      }}
+                    >
                       {children}
                     </div>
                   )}
@@ -429,31 +685,44 @@ export default function UsadosList() {
                       {...props}
                       style={{
                         ...props.style,
-                        height: '12px',
-                        width: '12px',
-                        backgroundColor: '#eb0a1e',
-                        borderRadius: '50%',
-                        boxShadow: '0px 2px 6px #AAA',
+                        height: "12px",
+                        width: "12px",
+                        backgroundColor: "#eb0a1e",
+                        borderRadius: "50%",
+                        boxShadow: "0px 2px 6px #AAA",
                       }}
                     />
                   )}
                 />
                 <div className="flex justify-between mt-2">
-                  <span>${Number(rangoPrecios[0]).toLocaleString()}</span>
-                  <span>${Number(rangoPrecios[1]).toLocaleString()}</span>
+                  <span className="text-xl">${Number(rangoPrecios[0]).toLocaleString()}</span>
+                  <span className="text-xl">${Number(rangoPrecios[1]).toLocaleString()}</span>
                 </div>
               </div>
 
               <div>
-                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Kilometraje</h3>
+                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                  Kilometraje
+                </h3>
                 <Range
                   step={1000}
                   min={minKilometros}
                   max={maxKilometros}
                   values={rangoKilometros}
-                  onChange={(values) => {setRangoKilometros(values); setPaginaActual(1); (autoSeleccionado && setAutoSeleccionado(null))}}
+                  onChange={(values) => {
+                    setRangoKilometros(values);
+                    setPaginaActual(1);
+                    autoSeleccionado && setAutoSeleccionado(null);
+                  }}
                   renderTrack={({ props, children }) => (
-                    <div {...props} style={{ ...props.style, height: '5px', background: '#e64b58' }}>
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "5px",
+                        background: "#e64b58",
+                      }}
+                    >
                       {children}
                     </div>
                   )}
@@ -462,24 +731,21 @@ export default function UsadosList() {
                       {...props}
                       style={{
                         ...props.style,
-                        height: '12px',
-                        width: '12px',
-                        backgroundColor: '#eb0a1e',
-                        borderRadius: '50%',
-                        boxShadow: '0px 2px 6px #AAA',
+                        height: "12px",
+                        width: "12px",
+                        backgroundColor: "#eb0a1e",
+                        borderRadius: "50%",
+                        boxShadow: "0px 2px 6px #AAA",
                       }}
                     />
                   )}
                 />
                 <div className="flex justify-between mt-2">
-                  <span>{Number(rangoKilometros[0]).toLocaleString()} km</span>
-                  <span>{Number(rangoKilometros[1]).toLocaleString()} km</span>
+                  <span className="text-xl">{Number(rangoKilometros[0]).toLocaleString()} km</span>
+                  <span className="text-xl">{Number(rangoKilometros[1]).toLocaleString()} km</span>
                 </div>
               </div>
-            </div>    
-
-
-
+            </div>
           </div>
         </div>
 
@@ -512,7 +778,9 @@ export default function UsadosList() {
                 alt={`${autoSeleccionado.marca} ${autoSeleccionado.modelo}`}
                 className="w-full h-96 object-cover rounded-lg"
               />
-              <h2 className="text-2xl font-bold">{autoSeleccionado.marca} {autoSeleccionado.modelo}</h2>
+              <h2 className="text-2xl font-bold">
+                {autoSeleccionado.marca} {autoSeleccionado.modelo}
+              </h2>
               <p>Año: {autoSeleccionado.anio}</p>
               <p>Kilometraje: {autoSeleccionado.km} km</p>
               <p>Color: {autoSeleccionado.color}</p>
@@ -525,6 +793,19 @@ export default function UsadosList() {
                 Volver a la lista
               </button>
             </div>
+          ) : autosPaginados.length === 0 ? (
+            <TransitionGroup>
+              <CSSTransition key="no-news" timeout={300} classNames="fade">
+                <div className="text-center text-gray-500 w-full max-w-full h-screen">
+                  <h2 className="text-xl font-semibold mb-4">
+                    No se encontraron autos con los filtros aplicados
+                  </h2>
+                  <p>
+                    Intenta realizar una nueva búsqueda o aplicar otros filtros.
+                  </p>
+                </div>
+              </CSSTransition>
+            </TransitionGroup>
           ) : (
             <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {autosPaginados.map((auto) => (
@@ -539,10 +820,14 @@ export default function UsadosList() {
                       className="w-full h-48 object-cover"
                     />
                     <div className="p-4">
-                      <h2 className="text-lg font-semibold">{auto.marca} {auto.modelo}</h2>
+                      <h2 className="text-lg font-semibold">
+                        {auto.marca} {auto.modelo}
+                      </h2>
                       <p>Año: {auto.anio}</p>
                       <p>Kilometraje: {auto.km} km</p>
-                      <p className="font-semibold text-red-600">${Number(auto.precio).toLocaleString()}</p>
+                      <p className="font-semibold text-red-600">
+                        ${Number(auto.precio).toLocaleString()}
+                      </p>
                       <p>Estado: {auto.estado}</p>
                     </div>
                   </div>
