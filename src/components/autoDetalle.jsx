@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Thumbs, Grid, EffectFade } from "swiper/modules";
+import { Navigation, Pagination, Thumbs, Grid, EffectFade, Zoom, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
 import 'swiper/css/grid';
 import 'swiper/css/effect-fade';
+import 'swiper/css/zoom';
+import 'swiper/css/autoplay';
 
 export default function AutoDetalles({ slug }) {
   const [detallesAuto, setDetallesAuto] = useState(null);
@@ -32,7 +34,7 @@ export default function AutoDetalles({ slug }) {
 
   if (cargando) {
     return (
-      <div role="status" className="flex justify-center items-center">
+      <div role="status" className="flex h-screen justify-center items-center">
         <svg
           aria-hidden="true"
           className="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
@@ -54,18 +56,50 @@ export default function AutoDetalles({ slug }) {
     );
   }
 
+  const mensajeWhatsapp = `Hola, estoy interesado en el auto ${detallesAuto.marca} ${detallesAuto.modelo}. ¿Podrías darme más información? Aquí está el enlace del auto: localhost:4321/usados/${detallesAuto.slug}`;
+
   return (
-    <div className="space-y-6 lg:grid lg:grid-cols-2 lg:gap-8">
+    <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+      {/* Breadcrumb y botón de retorno */}
+      <div className="col-span-2 mb-4">
+        <nav className="flex mb-4" aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1 md:space-x-3">
+            <li>
+              <a href="/" className="text-gray-700 hover:text-red-600">Inicio</a>
+            </li>
+            <li>
+              <span className="text-gray-500">/</span>
+            </li>
+            <li>
+              <a href="/usados" className="text-gray-700 hover:text-red-600">Usados</a>
+            </li>
+            <li>
+              <span className="text-gray-500">/</span>
+            </li>
+            <li>
+              <span className="text-gray-700">
+                {detallesAuto.marca} {detallesAuto.modelo}
+              </span>
+            </li>
+          </ol>
+        </nav>
+
+        <a href="/usados" className="text-red-600 flex items-center hover:text-red-700 text-lg">
+          <i className="ri-arrow-left-s-line"></i> Volver a la lista de Usados
+        </a>
+      </div>
+
       {/* Contenedor principal con miniaturas y galería */}
       <div className="flex flex-col">
-        {/* Galería principal, a la derecha */}
         <div>
           <Swiper
-            modules={[Navigation, Pagination, Thumbs, EffectFade]}
+            modules={[Navigation, Pagination, Thumbs, EffectFade, Zoom, Autoplay]}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
+            zoom={true}
+            autoplay={{ delay: 5000 }}
             effect="fade"
             loop={true}
             thumbs={{ swiper: thumbsSwiper }}
@@ -81,7 +115,6 @@ export default function AutoDetalles({ slug }) {
               </SwiperSlide>
             ))}
 
-            {/* Botones de navegación personalizados */}
             <div className="swiper-button-prev">
               <i className="ri-arrow-left-s-line text-3xl text-white"></i>
             </div>
@@ -91,8 +124,7 @@ export default function AutoDetalles({ slug }) {
           </Swiper>
         </div>
 
-        {/* Miniaturas en columna, a la izquierda */}
-        <div className="">
+        <div className="mt-4">
           <Swiper
             modules={[Grid]}
             onSwiper={setThumbsSwiper}
@@ -114,19 +146,20 @@ export default function AutoDetalles({ slug }) {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>    
-
+        </div>
       </div>
 
       {/* Información del auto */}
-      <div className="space-y-4">
-        <h2 className="text-3xl font-bold">
+      <div className="space-y-4 p-4 bg-gray-100 rounded-lg">
+        <h2 className="text-xl font-bold">
           {detallesAuto.marca} {detallesAuto.modelo}
         </h2>
-        <p className="text-xl text-gray-700">Año: {detallesAuto.anio}</p>
-        <p className="text-xl text-gray-700">Kilometraje: {detallesAuto.km} km</p>
+        <div className="flex">
+          <p className="text-xl text-gray-700">{detallesAuto.anio}</p>
+          <p className="text-xl text-gray-700 mx-2">|</p>
+          <p className="text-xl text-gray-700">{Number(detallesAuto.km).toLocaleString()} km</p>
+        </div>
         <p className="text-xl text-gray-700">Color: {detallesAuto.color}</p>
-        <p className="text-xl font-semibold text-red-600">Precio: ${Number(detallesAuto.precio).toLocaleString()}</p>
         <p className="text-xl text-gray-700">Estado: {detallesAuto.estado}</p>
         <p className="text-xl text-gray-700">Transmisión: {detallesAuto.transmision}</p>
         <p className="text-xl text-gray-700">Combustible: {detallesAuto.combustible}</p>
@@ -134,6 +167,20 @@ export default function AutoDetalles({ slug }) {
           <p className="text-xl text-green-600 font-semibold">Certificado Toyota</p>
         ) : (
           <p className="text-xl text-gray-600">No certificado</p>
+        )}
+        <p className="text-xl font-semibold text-red-600">ARS${Number(detallesAuto.precio).toLocaleString()}</p>
+
+        {/* Botón de WhatsApp (solo si está disponible) */}
+        {detallesAuto.estado === "DISPONIBLE" && (
+          <a
+            href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
+            className="inline-flex items-center px-4 py-2 bg-green-500 text-white text-xl font-semibold rounded-lg hover:bg-green-600 transition-all ease-in-out"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Consultar por WhatsApp
+            <i className="ri-whatsapp-line ml-2"></i>
+          </a>
         )}
       </div>
     </div>

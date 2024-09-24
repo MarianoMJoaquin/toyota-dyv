@@ -15,6 +15,7 @@ interface Slide {
   estado: string;
   precio: number;
   foto: string;
+  slug: string;
 }
 ---
 
@@ -22,7 +23,7 @@ interface Slide {
   <div class="swiper-wrapper">
     {slides.data.map((slide: Slide) => (
     <div class="swiper-slide catalog__item">
-        <a class="catalog__item-link" href="#">           
+        <a class="catalog__item-link" href={`/usados/${slide.slug}`}>           
             <img class="catalog__item-img" src={srcImage + slide.foto.replace("public/","storage/")} alt={slide.modelo}>         
         </a>        
         <div class="catalog__item-info">
@@ -44,7 +45,7 @@ interface Slide {
                 </p>
             </div>
             <div class="catalog__item-bottom">
-                <a href="/modelos/yaris-hatchback" class="catalog__item-btn btn">
+                <a href={`/usados/${slide.slug}`} class="catalog__item-btn btn">
                     Explorar
                 </a>
                 <div class="catalog__item-price">
