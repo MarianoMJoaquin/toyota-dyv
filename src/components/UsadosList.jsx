@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import AutoDetalles from "./autoDetalle";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Range } from "react-range";
 
@@ -812,54 +813,17 @@ export default function UsadosList() {
               </svg>
               <span className="sr-only">Cargando noticias...</span>
             </div>
-          ) : autoSeleccionado && detallesAuto ? (
-            <div className="space-y-6 lg:grid lg:grid-cols-2 lg:gap-8">
-               
-              {/* Galería de imágenes */}
-              <div className="space-y-4 flex flex-col justify-center items-center">
-               
-                <img
-                  src={`https://panelweb.derkayvargas.com/${detallesAuto.foto}`}
-                  alt={`${detallesAuto.marca} ${detallesAuto.modelo}`}
-                  className="w-full object-cover rounded-lg"
-                  style={{ height: "40rem" }}
-                  
-                />
-                 <div className="flex overflow-scroll gap-2">
-                  {detallesAuto.photos.map((photo, index) => (
-                    <img
-                      key={index}
-                      src={`https://panelweb.derkayvargas.com${photo.public_path}`}
-                      alt={`Imagen ${index + 1}`}
-                      className="w-32 object-cover rounded-lg cursor-pointer"
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Información del auto */}
-              <div className="space-y-4">
-                <h2 className="text-3xl font-bold">{detallesAuto.marca} {detallesAuto.modelo}</h2>
-                <div className="flex">
-                  <p className="text-xl text-gray-700">{detallesAuto.anio}</p>
-                  <p className="text-xl text-gray-700 mx-2">|</p>
-                  <p className="text-xl text-gray-700">{Number(detallesAuto.km).toLocaleString()} km</p>
-                </div>
-                <p className="text-xl text-gray-700">Color: {detallesAuto.color}</p>
-                <p className="text-xl font-semibold text-red-600">Precio: ${Number(detallesAuto.precio).toLocaleString()}</p>
-                <p className="text-xl text-gray-700">Estado: {detallesAuto.estado}</p>
-                <p className="text-xl text-gray-700">Transmisión: {detallesAuto.transmision}</p>
-                <p className="text-xl text-gray-700">Combustible: {detallesAuto.combustible}</p>
-                {detallesAuto.uct === 1 ? (
-                  <p className="text-xl text-green-600 font-semibold">Certificado Toyota</p>
-                ) : (
-                  <p className="text-xl text-gray-600">No certificado</p>
-                )}
-                <button onClick={volverALista} className="text-white bg-red-600 py-2 px-4 rounded-lg">
-                  Volver a la lista
-                </button>
-              </div>
+          ) : autoSeleccionado ? (
+            
+            // Si hay un auto seleccionado, mostrar el componente AutoDetalles con el slug
+            <div className="space-y-6 flex flex-col gap-8">
+              <AutoDetalles slug={slugAutoSeleccionado} /> {/* Componente de detalles del auto */}
+              <button onClick={volverALista} className="text-white bg-red-600 py-2 px-4 rounded-lg">
+                Volver a la lista
+              </button>
             </div>
+            
+            
           ) : autosPaginados.length === 0 ? (
             <TransitionGroup>
               <CSSTransition key="no-news" timeout={300} classNames="fade">
