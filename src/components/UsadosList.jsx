@@ -590,6 +590,43 @@ useEffect(() => {
 
           {/* Filtros con checkboxes */}
           <div className="space-y-4">
+            {/* Filtro por Usado Certificado Toyota (UCT) */}
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Usado Certificado Toyota
+              </h3>
+              <div>
+                <input
+                  type="checkbox"
+                  id="uct-1"
+                  onChange={() => {
+                    handleCheckbox(filtroUct, setFiltroUct, "1");
+                    setPaginaActual(1);
+                    volverALista();
+                  }}
+                  checked={filtroUct.includes("1")}
+                  className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                />
+                <label htmlFor="uct-1" className="ml-2 text-xl">
+                  Certificado Toyota
+                </label>
+              </div>
+              <div>
+                <input
+                  type="checkbox"
+                  id="uct-0"
+                  onChange={() => {handleCheckbox(filtroUct, setFiltroUct, "0");
+                    setPaginaActual(1);
+                    volverALista();
+                  }}
+                  checked={filtroUct.includes("0")}
+                  className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                />
+                <label htmlFor="uct-0" className="ml-2 text-xl">
+                  No Certificado
+                </label>
+              </div>
+            </div>
             {/* Filtro por Marca */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
               <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
@@ -615,6 +652,133 @@ useEffect(() => {
                   </div>
                 )
               )}
+            </div>
+            {/* Filtro por Precio con Rango */}{" "}
+            {/* Filtro por Kilómetros con Rango */}
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <div className="mb-4">
+                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                  Precio
+                </h3>
+                <Range
+                  step={1000000}
+                  min={minPrecio}
+                  max={maxPrecio}
+                  values={rangoPrecios}
+                  onChange={(values) => {
+                    setRangoPrecios(values);
+                    setPaginaActual(1);
+                    autoSeleccionado && setAutoSeleccionado(null);
+                  }}
+                  renderTrack={({ props, children }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "5px",
+                        background: "#d1d5db",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      {children}
+                    </div>
+                  )}
+                  renderThumb={({ props, index }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "12px",
+                        width: "12px",
+                        backgroundColor: "#eb0a1e",
+                        borderRadius: "50%",
+                        boxShadow: "0px 2px 6px #AAA",
+                      }}
+                    />
+                  )}
+                />
+                <div className="flex justify-between mt-2">
+                  <span className="text-xl">${Number(rangoPrecios[0]).toLocaleString()}</span>
+                  <span className="text-xl">${Number(rangoPrecios[1]).toLocaleString()}</span>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                  Kilometraje
+                </h3>
+                <Range
+                  step={1000}
+                  min={minKilometros}
+                  max={maxKilometros}
+                  values={rangoKilometros}
+                  onChange={(values) => {
+                    setRangoKilometros(values);
+                    setPaginaActual(1);
+                    autoSeleccionado && setAutoSeleccionado(null);
+                  }}
+                  renderTrack={({ props, children }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "5px",
+                        background: "#d1d5db",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      {children}
+                    </div>
+                  )}
+                  renderThumb={({ props, index }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "12px",
+                        width: "12px",
+                        backgroundColor: "#eb0a1e",
+                        borderRadius: "50%",
+                        boxShadow: "0px 2px 6px #AAA",
+                      }}
+                    />
+                  )}
+                />
+                <div className="flex justify-between mt-2">
+                  <span className="text-xl">{Number(rangoKilometros[0]).toLocaleString()} km</span>
+                  <span className="text-xl">{Number(rangoKilometros[1]).toLocaleString()} km</span>
+                </div>
+              </div>
+            </div>
+            {/* Filtro por Año */}
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Año
+              </h3>
+              <div className="flex space-x-2">
+                <input
+                  type="number"
+                  value={filtroAnioDesde}
+                  onChange={(e) => {
+                    setFiltroAnioDesde(e.target.value);
+                    setPaginaActual(1);
+                    autoSeleccionado && setAutoSeleccionado(null);
+                  }}
+                  placeholder="Desde"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                />
+                <input
+                  type="number"
+                  value={filtroAnioHasta}
+                  onChange={(e) => {
+                    setFiltroAnioHasta(e.target.value);
+                    setPaginaActual(1);
+                    autoSeleccionado && setAutoSeleccionado(null);
+                  }}
+                  placeholder="Hasta"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                />
+              </div>
             </div>
             {/* Filtro por Modelo */}
             {/*<div className="mb-6 p-4 bg-gray-100 rounded-lg">
@@ -726,43 +890,7 @@ useEffect(() => {
                 )
               )}
             </div>
-            {/* Filtro por Usado Certificado Toyota (UCT) */}
-            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
-                Usado Certificado Toyota
-              </h3>
-              <div>
-                <input
-                  type="checkbox"
-                  id="uct-1"
-                  onChange={() => {
-                    handleCheckbox(filtroUct, setFiltroUct, "1");
-                    setPaginaActual(1);
-                    volverALista();
-                  }}
-                  checked={filtroUct.includes("1")}
-                  className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
-                />
-                <label htmlFor="uct-1" className="ml-2 text-xl">
-                  Certificado Toyota
-                </label>
-              </div>
-              <div>
-                <input
-                  type="checkbox"
-                  id="uct-0"
-                  onChange={() => {handleCheckbox(filtroUct, setFiltroUct, "0");
-                    setPaginaActual(1);
-                    volverALista();
-                  }}
-                  checked={filtroUct.includes("0")}
-                  className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
-                />
-                <label htmlFor="uct-0" className="ml-2 text-xl">
-                  No Certificado
-                </label>
-              </div>
-            </div>
+            
             {/* Filtro por Estado */}
             <div className="mb-6 p-4 bg-gray-100 rounded-lg">
               <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
@@ -792,133 +920,8 @@ useEffect(() => {
                 )
               )}
             </div>
-            {/* Filtro por Año */}
-            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
-                Año
-              </h3>
-              <div className="flex space-x-2">
-                <input
-                  type="number"
-                  value={filtroAnioDesde}
-                  onChange={(e) => {
-                    setFiltroAnioDesde(e.target.value);
-                    setPaginaActual(1);
-                    autoSeleccionado && setAutoSeleccionado(null);
-                  }}
-                  placeholder="Desde"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-                />
-                <input
-                  type="number"
-                  value={filtroAnioHasta}
-                  onChange={(e) => {
-                    setFiltroAnioHasta(e.target.value);
-                    setPaginaActual(1);
-                    autoSeleccionado && setAutoSeleccionado(null);
-                  }}
-                  placeholder="Hasta"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
-                />
-              </div>
-            </div>
-            {/* Filtro por Precio con Rango */}{" "}
-            {/* Filtro por Kilómetros con Rango */}
-            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
-              <div className="mb-4">
-                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
-                  Precio
-                </h3>
-                <Range
-                  step={1000000}
-                  min={minPrecio}
-                  max={maxPrecio}
-                  values={rangoPrecios}
-                  onChange={(values) => {
-                    setRangoPrecios(values);
-                    setPaginaActual(1);
-                    autoSeleccionado && setAutoSeleccionado(null);
-                  }}
-                  renderTrack={({ props, children }) => (
-                    <div
-                      {...props}
-                      style={{
-                        ...props.style,
-                        height: "5px",
-                        background: "#d1d5db",
-                        borderRadius: "5px",
-                      }}
-                    >
-                      {children}
-                    </div>
-                  )}
-                  renderThumb={({ props, index }) => (
-                    <div
-                      {...props}
-                      style={{
-                        ...props.style,
-                        height: "12px",
-                        width: "12px",
-                        backgroundColor: "#eb0a1e",
-                        borderRadius: "50%",
-                        boxShadow: "0px 2px 6px #AAA",
-                      }}
-                    />
-                  )}
-                />
-                <div className="flex justify-between mt-2">
-                  <span className="text-xl">${Number(rangoPrecios[0]).toLocaleString()}</span>
-                  <span className="text-xl">${Number(rangoPrecios[1]).toLocaleString()}</span>
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
-                  Kilometraje
-                </h3>
-                <Range
-                  step={1000}
-                  min={minKilometros}
-                  max={maxKilometros}
-                  values={rangoKilometros}
-                  onChange={(values) => {
-                    setRangoKilometros(values);
-                    setPaginaActual(1);
-                    autoSeleccionado && setAutoSeleccionado(null);
-                  }}
-                  renderTrack={({ props, children }) => (
-                    <div
-                      {...props}
-                      style={{
-                        ...props.style,
-                        height: "5px",
-                        background: "#d1d5db",
-                        borderRadius: "5px",
-                      }}
-                    >
-                      {children}
-                    </div>
-                  )}
-                  renderThumb={({ props, index }) => (
-                    <div
-                      {...props}
-                      style={{
-                        ...props.style,
-                        height: "12px",
-                        width: "12px",
-                        backgroundColor: "#eb0a1e",
-                        borderRadius: "50%",
-                        boxShadow: "0px 2px 6px #AAA",
-                      }}
-                    />
-                  )}
-                />
-                <div className="flex justify-between mt-2">
-                  <span className="text-xl">{Number(rangoKilometros[0]).toLocaleString()} km</span>
-                  <span className="text-xl">{Number(rangoKilometros[1]).toLocaleString()} km</span>
-                </div>
-              </div>
-            </div>
+            
+            
           </div>
         </div>
 
