@@ -35,6 +35,9 @@ export default function UsadosList() {
 
   const autosPorPagina = 12;
 
+  // Nuevo estado para alternar vista
+  const [modoVista, setModoVista] = useState("grilla"); 
+
   // Cargar autos desde la API
   useEffect(() => {
     const fetchAutos = async () => {
@@ -212,6 +215,16 @@ export default function UsadosList() {
       <h1 className="vehicles__title heading-1 max-w-max mx-auto border-b-2 border-red-600">
         Usados
       </h1>
+
+      {/* Botones de modo de vista */}
+      <div className="flex justify-end mx-5 xl:mx-5 mb-4">
+        <button onClick={() => setModoVista("grilla")} className={`mr-2 ${modoVista === "grilla" ? "text-red-600" : "text-gray-700"}`}>
+            <i className="ri-grid-fill"></i>
+        </button>
+        <button onClick={() => setModoVista("lista")} className={`${modoVista === "lista" ? "text-red-600" : "text-gray-700"}`}>
+            <i className="ri-list-unordered"></i> 
+        </button>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-1 mx-5 xl:mx-5">
@@ -828,18 +841,19 @@ export default function UsadosList() {
               </CSSTransition>
             </TransitionGroup>
           ) : (
-            <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <TransitionGroup className={modoVista === "grilla" ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" : "space-y-6"}>
               {autosPaginados.map((auto) => (
                 <CSSTransition key={auto.id} timeout={300} classNames="fade">
                   <div
-                    className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105"
-                    onClick={() => seleccionarAuto(auto)}
+                    className={`bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105 ${modoVista === "lista" ? "flex" : ""}`}
                   >
-                    <img
-                      src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
-                      alt={`${auto.marca} ${auto.modelo}`}
-                      className="w-full h-72 object-cover"
-                    />
+                    <a href={`/usados/${auto.slug}`} className="cursor-pointer">
+                      <img
+                        src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
+                        alt={`${auto.marca} ${auto.modelo}`}
+                        className="w-full h-72 object-cover"
+                      />
+                    </a>
                     <div className="p-4 flex flex-col justify-center gap-2">
                       <h2 className="text-lg font-semibold">
                         {auto.marca} {auto.modelo}
@@ -857,12 +871,12 @@ export default function UsadosList() {
                       </div>
                       
                       <div className="mt-4 flex justify-between items-center">
-                        <button
+                        {/*<button
                           onClick={() => seleccionarAuto(auto)}
                           className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
                         >
                           Ver más
-                        </button>
+                        </button>*/}
                         <a href={`/usados/${auto.slug}`} className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"> Ver más</a>
                         <p className="font-semibold text-black">
                           ARS$ {Number(auto.precio).toLocaleString()}

@@ -38,6 +38,8 @@ export default function UsadosList() {
   // Nuevo estado para alternar vista
   const [modoVista, setModoVista] = useState("grilla"); 
 
+  const [orden, setOrden] = useState(""); 
+
   // Cargar autos desde la API
   useEffect(() => {
     const fetchAutos = async () => {
@@ -73,6 +75,125 @@ export default function UsadosList() {
       fetchDetallesAuto();
     }
   }, [slugAutoSeleccionado]);
+
+  // Lógica de filtrado y ordenación
+  useEffect(() => {
+    let autosFiltrados = [...autos];
+
+    // Filtros de búsqueda
+    if (busqueda) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            `${auto.marca} ${auto.modelo}`.toLowerCase().includes(busqueda.toLowerCase())
+        );
+    }
+
+    // Filtros por marcas
+    if (filtroMarcas.length > 0) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            filtroMarcas.includes(auto.marca)
+        );
+    }
+
+    // Filtros por modelos
+    if (filtroModelos.length > 0) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            filtroModelos.includes(auto.modelo)
+        );
+    }
+
+    // Filtros por colores
+    if (filtroColores.length > 0) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            filtroColores.includes(auto.color)
+        );
+    }
+
+    // Filtros por combustible
+    if (filtroCombustibles.length > 0) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            filtroCombustibles.includes(auto.combustible)
+        );
+    }
+
+    // Filtros por transmisión
+    if (filtroTransmisiones.length > 0) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            filtroTransmisiones.includes(auto.transmision)
+        );
+    }
+
+    // Filtros por UCT (Usado Certificado Toyota)
+    if (filtroUct.length > 0) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            filtroUct.includes(auto.uct.toString())
+        );
+    }
+
+    // Filtros por estado
+    if (filtroEstados.length > 0) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            filtroEstados.includes(auto.estado)
+        );
+    }
+
+    // Filtros por año
+    if (filtroAnioDesde) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            auto.anio >= filtroAnioDesde
+        );
+    }
+
+    if (filtroAnioHasta) {
+        autosFiltrados = autosFiltrados.filter((auto) =>
+            auto.anio <= filtroAnioHasta
+        );
+    }
+
+    // Filtros por precio
+    autosFiltrados = autosFiltrados.filter(
+        (auto) => auto.precio >= rangoPrecios[0] && auto.precio <= rangoPrecios[1]
+    );
+
+    // Filtros por kilometraje
+    autosFiltrados = autosFiltrados.filter(
+        (auto) => auto.km >= rangoKilometros[0] && auto.km <= rangoKilometros[1]
+    );
+
+    // Ordenar autos
+    switch (orden) {
+        case "mas-recientes":
+            autosFiltrados.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            break;
+        case "mayor-precio":
+            autosFiltrados.sort((a, b) => b.precio - a.precio);
+            break;
+        case "menor-precio":
+            autosFiltrados.sort((a, b) => a.precio - b.precio);
+            break;
+        case "mas-vistos":
+            autosFiltrados.sort((a, b) => b.orden - a.orden);
+            break;
+        default:
+            break;
+    }
+
+    setAutosFiltrados(autosFiltrados);
+}, [
+    busqueda,
+    filtroMarcas,
+    filtroModelos,
+    filtroColores,
+    filtroCombustibles,
+    filtroTransmisiones,
+    filtroUct,
+    filtroEstados,
+    filtroAnioDesde,
+    filtroAnioHasta,
+    rangoPrecios,
+    rangoKilometros,
+    orden,
+    autos,
+]);
 
   // Filtrar autos en base a los filtros seleccionados
   useEffect(() => {
@@ -216,17 +337,8 @@ export default function UsadosList() {
         Usados
       </h1>
 
-      {/* Botones de modo de vista */}
-      <div className="flex justify-end mx-5 xl:mx-5 mb-4">
-        <button onClick={() => setModoVista("grilla")} className={`mr-2 ${modoVista === "grilla" ? "text-red-600" : "text-gray-700"}`}>
-            <i className="ri-grid-fill"></i>
-        </button>
-        <button onClick={() => setModoVista("lista")} className={`${modoVista === "lista" ? "text-red-600" : "text-gray-700"}`}>
-            <i className="ri-list-unordered"></i> 
-        </button>
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        
         <div className="lg:col-span-1 mx-5 xl:mx-5">
           {/* Columna para filtros y búsqueda */}
 
@@ -806,6 +918,33 @@ export default function UsadosList() {
 
         {/* Columna para la lista de autos */}
         <div className="lg:col-span-3 mx-5 xl:mx-5">
+          <div className="flex justify-between mb-4">
+            {/* Filtro de orden */}
+            <div className="flex items-center">
+                <label htmlFor="orden" className="mr-2 text-lg">Ordenar por:</label>
+                <select 
+                    id="orden" 
+                    value={orden} 
+                    onChange={(e) => setOrden(e.target.value)} 
+                    className="p-2 border focus:ring-red-500 focus:border-red-500 border-gray-300 rounded-lg"
+                >
+                    <option className="hover:bg-red-500" value="">Selecciona una opción</option>
+                    <option className="hover:bg-red-500" value="mas-recientes">Más recientes</option>
+                    <option value="mayor-precio">Mayor precio</option>
+                    <option value="menor-precio">Menor precio</option>
+                    <option value="mas-vistos">Más vistos</option>
+                </select>
+            </div>
+             {/* Botones de vista */}
+             <div>
+                <button onClick={() => setModoVista("lista")} className={`mr-2 ${modoVista === "lista" ? "text-red-600" : "text-gray-700"}`}>
+                    <i className="ri-list-unordered"></i> 
+                </button>
+                <button onClick={() => setModoVista("grilla")} className={`${modoVista === "grilla" ? "text-red-600" : "text-gray-700"}`}>
+                    <i className="ri-grid-fill"></i>
+                </button>
+            </div>
+          </div>
           {cargando ? (
             <div role="status" className="flex justify-center items-center">
               <svg
