@@ -76,8 +76,8 @@ export default function UsadosList() {
     }
   }, [slugAutoSeleccionado]);
 
-  // Lógica de filtrado y ordenación
-  useEffect(() => {
+  // Función que aplica filtros y ordenación
+  const aplicarFiltrosYOrden = () => {
     let autosFiltrados = [...autos];
 
     // Filtros de búsqueda
@@ -171,13 +171,18 @@ export default function UsadosList() {
             autosFiltrados.sort((a, b) => a.precio - b.precio);
             break;
         case "mas-vistos":
-            autosFiltrados.sort((a, b) => b.orden - a.orden);
+            autosFiltrados.sort((a, b) => b.orden - a.orden); // Orden por popularidad
             break;
         default:
             break;
     }
 
     setAutosFiltrados(autosFiltrados);
+};
+
+// Asegurarse de que los filtros y la ordenación se apliquen siempre
+useEffect(() => {
+    aplicarFiltrosYOrden();
 }, [
     busqueda,
     filtroMarcas,
@@ -191,9 +196,10 @@ export default function UsadosList() {
     filtroAnioHasta,
     rangoPrecios,
     rangoKilometros,
-    orden,
+    orden, // Siempre que el estado de orden cambie, se aplicarán los filtros y la ordenación
     autos,
 ]);
+
 
   // Filtrar autos en base a los filtros seleccionados
   useEffect(() => {
@@ -369,7 +375,7 @@ export default function UsadosList() {
                   <span className="text-lg">Búsqueda: {busqueda}</span>
                   <button
                     onClick={() => setBusqueda("")}
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -385,7 +391,7 @@ export default function UsadosList() {
                     onClick={() =>
                       eliminarFiltro(filtroMarcas, setFiltroMarcas, marca)
                     }
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -401,7 +407,7 @@ export default function UsadosList() {
                     onClick={() =>
                       eliminarFiltro(filtroModelos, setFiltroModelos, modelo)
                     }
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -417,7 +423,7 @@ export default function UsadosList() {
                     onClick={() =>
                       eliminarFiltro(filtroColores, setFiltroColores, color)
                     }
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -439,7 +445,7 @@ export default function UsadosList() {
                         combustible
                       )
                     }
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -461,7 +467,7 @@ export default function UsadosList() {
                         transmision
                       )
                     }
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -477,7 +483,7 @@ export default function UsadosList() {
                     onClick={() =>
                       eliminarFiltro(filtroEstados, setFiltroEstados, estado)
                     }
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -488,7 +494,7 @@ export default function UsadosList() {
                   <span className="text-lg">Año desde: {filtroAnioDesde}</span>
                   <button
                     onClick={() => setFiltroAnioDesde("")}
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -499,7 +505,7 @@ export default function UsadosList() {
                   <span className="text-lg">Año hasta: {filtroAnioHasta}</span>
                   <button
                     onClick={() => setFiltroAnioHasta("")}
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -514,7 +520,7 @@ export default function UsadosList() {
                   </span>
                   <button
                     onClick={() => setRangoPrecios([minPrecio, maxPrecio])}
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -531,7 +537,7 @@ export default function UsadosList() {
                     onClick={() =>
                       setRangoKilometros([minKilometros, maxKilometros])
                     }
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
@@ -547,7 +553,7 @@ export default function UsadosList() {
                   </span>
                   <button
                     onClick={() => eliminarFiltro(filtroUct, setFiltroUct, uct)}
-                    className="ml-2 text-red-600"
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i class="ri-close-circle-line"></i>
                   </button>
