@@ -1,0 +1,21 @@
+.mySwiper .swiper-slide{
+    opacity: 0.7;
+    transition: 0.3s;
+  }
+  
+  .mySwiper .swiper-slide img{
+    border: 0.15rem solid #b2b2b2 ;
+  }
+
+  .mySwiper .swiper-slide-thumb-active {
+    opacity: 1;
+  }
+
+  .mySwiper .swiper-slide-thumb-active img {
+    border : 0.15rem solid #eb0a1e;
+  }
+
+  .swiper-button-prev, .swiper-button-next {
+    width: 2rem !important;
+    height: 2rem !important;
+  }

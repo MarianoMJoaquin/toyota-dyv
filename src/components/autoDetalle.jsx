@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Thumbs, Grid, EffectFade, Zoom, Autoplay } from "swiper/modules";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -9,6 +10,8 @@ import 'swiper/css/grid';
 import 'swiper/css/effect-fade';
 import 'swiper/css/zoom';
 import 'swiper/css/autoplay';
+
+import "../assets/styles/swiperAutoDetalles.css";
 
 export default function AutoDetalles({ slug }) {
   const [detallesAuto, setDetallesAuto] = useState(null);
@@ -21,7 +24,15 @@ export default function AutoDetalles({ slug }) {
         try {
           const respuesta = await fetch(`https://panelweb.derkayvargas.com/api/usados/${slug}`);
           const data = await respuesta.json();
-          setDetallesAuto(data.data);
+
+          // Verifica si el auto está visible
+          if (data.data.visible === 1) {
+            setDetallesAuto(data.data);
+          } else {
+            // Si el auto no es visible, establece los detalles como null
+            setDetallesAuto(null);
+          }
+          
           setCargando(false);
         } catch (error) {
           console.error("Error al cargar los detalles del auto:", error);
@@ -32,12 +43,16 @@ export default function AutoDetalles({ slug }) {
     }
   }, [slug]);
 
+  // Función para capitalizar la primera letra de un texto
+  const capitalizar = (texto) =>
+    texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+
   if (cargando) {
     return (
-      <div role="status" className="flex h-screen justify-center items-center">
+      <div role="status" style={ {height: "70vh;"} } className="flex items-center justify-center">
         <svg
           aria-hidden="true"
-          className="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
+          className="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -56,14 +71,32 @@ export default function AutoDetalles({ slug }) {
     );
   }
 
+   // Si los detalles del auto no están disponibles (no es visible)
+   if (!detallesAuto) {
+    return (
+      <div className="text-center h-screen py-10">
+        <h2 className="text-2xl font-bold text-gray-800">Este auto ya no se encuentra disponible</h2>
+        <a
+          href="/usados"
+          className="text-red-600 mt-4 inline-block text-xl hover:text-red-800"
+        >
+          <i className="ri-arrow-left-s-line"></i>
+          Volver a la lista de autos usados
+        </a>
+      </div>
+    );
+  }
+
   const mensajeWhatsapp = `Hola, estoy interesado en el auto ${detallesAuto.marca} ${detallesAuto.modelo}. ¿Podrías darme más información? Aquí está el enlace del auto: localhost:4321/usados/${detallesAuto.slug}`;
 
+  
   return (
-    <div className="lg:grid lg:grid-cols-2 lg:gap-8">
+    <div className="lg:grid lg:grid-cols-2 container mx-auto lg:gap-8">
+      
       {/* Breadcrumb y botón de retorno */}
-      <div className="col-span-2 mb-4">
+      <div className="col-span-2 mb-4 xl:mx-10">
         <nav className="flex mb-4" aria-label="Breadcrumb">
-          <ol className="inline-flex items-center space-x-1 md:space-x-3">
+          <ol className="inline-flex items-center space-x-1 text-base md:space-x-3">
             <li>
               <a href="/" className="text-gray-700 hover:text-red-600">Inicio</a>
             </li>
@@ -83,12 +116,9 @@ export default function AutoDetalles({ slug }) {
             </li>
           </ol>
         </nav>
-
-        <a href="/usados" className="text-red-600 flex items-center hover:text-red-700 text-lg">
-          <i className="ri-arrow-left-s-line"></i> Volver a la lista de Usados
-        </a>
       </div>
 
+      
       {/* Contenedor principal con miniaturas y galería */}
       <div className="flex flex-col">
         <div>
@@ -103,23 +133,26 @@ export default function AutoDetalles({ slug }) {
             effect="fade"
             loop={true}
             thumbs={{ swiper: thumbsSwiper }}
-            className="rounded-lg"
+            className="rounded-lg xl:w-5/6"  
           >
             {detallesAuto.photos.map((photo, index) => (
               <SwiperSlide key={index}>
                 <img
                   src={`https://panelweb.derkayvargas.com${photo.public_path}`}
                   alt={`Imagen ${index + 1}`}
-                  className="w-full h-auto object-cover rounded-lg"
+                  className="object-cover rounded-lg"
                 />
+                {detallesAuto.uct === 1 ? (
+                  <img src="../../src/assets/images/usado.png" alt="UCT" className="w-16 ml-2 max-sm:w-11 absolute top-2" />
+                ) : (null)}
               </SwiperSlide>
             ))}
 
             <div className="swiper-button-prev">
-              <i className="ri-arrow-left-s-line text-3xl text-white"></i>
+              <i className="ri-arrow-left-s-line text-2xl text-white"></i>
             </div>
             <div className="swiper-button-next">
-              <i className="ri-arrow-right-s-line text-3xl text-white"></i>
+              <i className="ri-arrow-right-s-line text-2xl text-white"></i>
             </div>
           </Swiper>
         </div>
@@ -134,7 +167,7 @@ export default function AutoDetalles({ slug }) {
             grid={{ rows: 2, fill: "row" }}
             watchSlidesVisibility={true}
             watchSlidesProgress={true}
-            className="rounded-lg"
+            className="rounded-lg mySwiper xl:w-2/3"
           >
             {detallesAuto.photos.map((photo, index) => (
               <SwiperSlide key={index}>
@@ -150,27 +183,39 @@ export default function AutoDetalles({ slug }) {
       </div>
 
       {/* Información del auto */}
-      <div className="space-y-4 p-4 bg-gray-100 rounded-lg">
-        <h2 className="text-xl font-bold">
+      <div className="space-y-6 p-4 bg-gray-100 xl:mx-16 rounded-lg">
+        <h2 className="text-2xl font-bold border-b-2 max-w-max border-b-red-600">
           {detallesAuto.marca} {detallesAuto.modelo}
         </h2>
+        
         <div className="flex">
           <p className="text-xl text-gray-700">{detallesAuto.anio}</p>
           <p className="text-xl text-gray-700 mx-2">|</p>
           <p className="text-xl text-gray-700">{Number(detallesAuto.km).toLocaleString()} km</p>
         </div>
-        <p className="text-xl text-gray-700">Color: {detallesAuto.color}</p>
-        <p className="text-xl text-gray-700">Estado: {detallesAuto.estado}</p>
-        <p className="text-xl text-gray-700">Transmisión: {detallesAuto.transmision}</p>
-        <p className="text-xl text-gray-700">Combustible: {detallesAuto.combustible}</p>
-        {detallesAuto.uct === 1 ? (
-          <p className="text-xl text-green-600 font-semibold">Certificado Toyota</p>
-        ) : (
-          <p className="text-xl text-gray-600">No certificado</p>
-        )}
-        <p className="text-xl font-semibold text-red-600">ARS${Number(detallesAuto.precio).toLocaleString()}</p>
+    
+        <div className="flex gap-2 items-center">
+          <div className="w-36 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
+            <i class="ri-palette-line text-lg text-red-500"></i>
+            <p className="text-base text-gray-600">Color</p>
+            <p className="text-lg">{capitalizar(detallesAuto.color)}</p>
+          </div>
+          <div className="w-36 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
+            <i class="ri-git-branch-line text-lg text-red-500"></i>
+            <p className="text-base text-gray-600">Transmisión</p>
+            <p className="text-lg">{capitalizar(detallesAuto.transmision)}</p>
+          </div>
+          <div className="w-36 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
+            <i class="ri-gas-station-line text-lg text-red-500"></i>
+            <p className="text-base text-gray-600">Combustible</p>
+            <p className="text-lg">{capitalizar(detallesAuto.combustible)}</p>
+          </div>
+        </div>
 
+        <p className="text-3xl font-semibold text-black">ARS$ {Number(detallesAuto.precio).toLocaleString()}</p>
+        
         {/* Botón de WhatsApp (solo si está disponible) */}
+        <div className="flex">
         {detallesAuto.estado === "DISPONIBLE" && (
           <a
             href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
@@ -178,11 +223,14 @@ export default function AutoDetalles({ slug }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Consultar por WhatsApp
+            Solicitar más información
             <i className="ri-whatsapp-line ml-2"></i>
           </a>
         )}
+        </div>
       </div>
+
+
     </div>
   );
 }

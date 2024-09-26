@@ -45,7 +45,7 @@ export default function UsadosList() {
     const fetchAutos = async () => {
       try {
         const respuesta = await fetch(
-          "https://panelweb.derkayvargas.com/api/usados/"
+          "https://panelweb.derkayvargas.com/api/usados?visible=1"
         );
         const data = await respuesta.json();
         setAutos(data.data);
@@ -66,7 +66,12 @@ export default function UsadosList() {
         try {
           const respuesta = await fetch(`https://panelweb.derkayvargas.com/api/usados/${slugAutoSeleccionado}`);
           const data = await respuesta.json();
-          setDetallesAuto(data.data);  // Se guarda la información detallada del auto
+          if (data.data.visible === 1) {
+            setDetallesAuto(data.data);  // Se guarda la información detallada del auto
+          } else {
+            setDetallesAuto(null);  // Si el auto no está visible, se limpian los detalles
+            console.error("El auto no está visible");
+          }
         } catch (error) {
           console.error("Error al cargar los detalles del auto:", error);
         }
@@ -549,7 +554,7 @@ useEffect(() => {
                   className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
                 >
                   <span className="text-lg">
-                    {uct === "1" ? "Certificado Toyota" : "No Certificado"}
+                    {uct === "1" ? "Usado Certificado Toyota" : "No Certificado"}
                   </span>
                   <button
                     onClick={() => eliminarFiltro(filtroUct, setFiltroUct, uct)}
@@ -608,7 +613,7 @@ useEffect(() => {
                   className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                 />
                 <label htmlFor="uct-1" className="ml-2 text-xl">
-                  Certificado Toyota
+                  Usado Certificado Toyota
                 </label>
               </div>
               <div>
@@ -1003,7 +1008,7 @@ useEffect(() => {
                       />
                     </a>
                     <div className="p-4 flex flex-col justify-center gap-2">
-                      <h2 className="text-lg font-semibold">
+                      <h2 className="text-lg font-semibold border-b-2  border-red-600 max-w-max mb-2">
                         {auto.marca} {auto.modelo}
                       </h2>
                       <div className="flex justify-start items-center text-lg mt-2">

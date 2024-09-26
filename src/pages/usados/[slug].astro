@@ -8,9 +8,6 @@ const { slug } = Astro.params;
 <Layout title={`${slug} | Derka y Vargas`}>
     <main class="main">
         <section class="container mx-auto section my-8">
-            <h1 class="vehicles__title heading-1 max-w-max mx-auto border-b-2 border-red-600">
-                Usados
-            </h1>
             <AutoDetalles client:load slug={slug} />
         </section>
     </main>
