@@ -4,7 +4,7 @@
   }
   
   .mySwiper .swiper-slide img{
-    border: 0.15rem solid #b2b2b2 ;
+    border: 0.15rem solid transparent ;
   }
 
   .mySwiper .swiper-slide-thumb-active {

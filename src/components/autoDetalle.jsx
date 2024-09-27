@@ -1,17 +1,27 @@
 import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Thumbs, Grid, EffectFade, Zoom, Autoplay } from "swiper/modules";
+import {
+  Navigation,
+  Pagination,
+  Thumbs,
+  Grid,
+  EffectFade,
+  Zoom,
+  Autoplay,
+} from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/thumbs";
-import 'swiper/css/grid';
-import 'swiper/css/effect-fade';
-import 'swiper/css/zoom';
-import 'swiper/css/autoplay';
+import "swiper/css/grid";
+import "swiper/css/effect-fade";
+import "swiper/css/zoom";
+import "swiper/css/autoplay";
 
 import "../assets/styles/swiperAutoDetalles.css";
+
+import GoogleMap from "./GoogleMap.jsx";
 
 export default function AutoDetalles({ slug }) {
   const [detallesAuto, setDetallesAuto] = useState(null);
@@ -22,7 +32,9 @@ export default function AutoDetalles({ slug }) {
     if (slug) {
       const fetchDetallesAuto = async () => {
         try {
-          const respuesta = await fetch(`https://panelweb.derkayvargas.com/api/usados/${slug}`);
+          const respuesta = await fetch(
+            `https://panelweb.derkayvargas.com/api/usados/${slug}`
+          );
           const data = await respuesta.json();
 
           // Verifica si el auto está visible
@@ -32,7 +44,7 @@ export default function AutoDetalles({ slug }) {
             // Si el auto no es visible, establece los detalles como null
             setDetallesAuto(null);
           }
-          
+
           setCargando(false);
         } catch (error) {
           console.error("Error al cargar los detalles del auto:", error);
@@ -49,7 +61,11 @@ export default function AutoDetalles({ slug }) {
 
   if (cargando) {
     return (
-      <div role="status" style={ {height: "70vh;"} } className="flex items-center justify-center">
+      <div
+        role="status"
+        style={{ height: "65vh;" }}
+        className="flex items-center justify-center"
+      >
         <svg
           aria-hidden="true"
           className="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
@@ -71,11 +87,13 @@ export default function AutoDetalles({ slug }) {
     );
   }
 
-   // Si los detalles del auto no están disponibles (no es visible)
-   if (!detallesAuto) {
+  // Si los detalles del auto no están disponibles (no es visible)
+  if (!detallesAuto) {
     return (
       <div className="text-center h-screen py-10">
-        <h2 className="text-2xl font-bold text-gray-800">Este auto ya no se encuentra disponible</h2>
+        <h2 className="text-2xl font-bold text-gray-800">
+          Este auto ya no se encuentra disponible
+        </h2>
         <a
           href="/usados"
           className="text-red-600 mt-4 inline-block text-xl hover:text-red-800"
@@ -89,22 +107,24 @@ export default function AutoDetalles({ slug }) {
 
   const mensajeWhatsapp = `Hola, estoy interesado en el auto ${detallesAuto.marca} ${detallesAuto.modelo}. ¿Podrías darme más información? Aquí está el enlace del auto: localhost:4321/usados/${detallesAuto.slug}`;
 
-  
   return (
-    <div className="lg:grid lg:grid-cols-2 container mx-auto lg:gap-8">
-      
+    <div className="lg:grid lg:grid-cols-2 justify-center  container mx-auto lg:gap-8">
       {/* Breadcrumb y botón de retorno */}
       <div className="col-span-2 mb-4 xl:mx-10">
         <nav className="flex mb-4" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 text-base md:space-x-3">
             <li>
-              <a href="/" className="text-gray-700 hover:text-red-600">Inicio</a>
+              <a href="/" className="text-gray-700 hover:text-red-600">
+                Inicio
+              </a>
             </li>
             <li>
               <span className="text-gray-500">/</span>
             </li>
             <li>
-              <a href="/usados" className="text-gray-700 hover:text-red-600">Usados</a>
+              <a href="/usados" className="text-gray-700 hover:text-red-600">
+                Usados
+              </a>
             </li>
             <li>
               <span className="text-gray-500">/</span>
@@ -118,12 +138,18 @@ export default function AutoDetalles({ slug }) {
         </nav>
       </div>
 
-      
       {/* Contenedor principal con miniaturas y galería */}
-      <div className="flex flex-col">
+      <div className="">
         <div>
           <Swiper
-            modules={[Navigation, Pagination, Thumbs, EffectFade, Zoom, Autoplay]}
+            modules={[
+              Navigation,
+              Pagination,
+              Thumbs,
+              EffectFade,
+              Zoom,
+              Autoplay,
+            ]}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
@@ -133,7 +159,7 @@ export default function AutoDetalles({ slug }) {
             effect="fade"
             loop={true}
             thumbs={{ swiper: thumbsSwiper }}
-            className="rounded-lg xl:w-5/6"  
+            className="rounded-lg xl:w-5/6"
           >
             {detallesAuto.photos.map((photo, index) => (
               <SwiperSlide key={index}>
@@ -143,8 +169,12 @@ export default function AutoDetalles({ slug }) {
                   className="object-cover rounded-lg"
                 />
                 {detallesAuto.uct === 1 ? (
-                  <img src="../../src/assets/images/usado.png" alt="UCT" className="w-16 ml-2 max-sm:w-11 absolute top-2" />
-                ) : (null)}
+                  <img
+                    src="../../src/assets/images/usado.png"
+                    alt="UCT"
+                    className="w-16 ml-2 max-sm:w-11 absolute top-2"
+                  />
+                ) : null}
               </SwiperSlide>
             ))}
 
@@ -182,55 +212,82 @@ export default function AutoDetalles({ slug }) {
         </div>
       </div>
 
-      {/* Información del auto */}
-      <div className="space-y-6 p-4 bg-gray-100 xl:mx-16 rounded-lg">
-        <h2 className="text-2xl font-bold border-b-2 max-w-max border-b-red-600">
-          {detallesAuto.marca} {detallesAuto.modelo}
-        </h2>
-        
-        <div className="flex">
-          <p className="text-xl text-gray-700">{detallesAuto.anio}</p>
-          <p className="text-xl text-gray-700 mx-2">|</p>
-          <p className="text-xl text-gray-700">{Number(detallesAuto.km).toLocaleString()} km</p>
-        </div>
-    
-        <div className="flex gap-2 items-center">
-          <div className="w-36 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
-            <i class="ri-palette-line text-lg text-red-500"></i>
-            <p className="text-base text-gray-600">Color</p>
-            <p className="text-lg">{capitalizar(detallesAuto.color)}</p>
+      <div className="flex flex-col max-h-max max-w-max">
+        {/* Información del auto */}
+        <div className="space-y-8  p-4 bg-gray-100 rounded-lg">
+          <h2 className="text-2xl font-bold border-b-2 max-w-max border-b-red-600">
+            {detallesAuto.marca} {detallesAuto.modelo}
+          </h2>
+
+          <div className="flex">
+            <p className="text-xl text-gray-700">{detallesAuto.anio}</p>
+            <p className="text-xl text-gray-700 mx-2">|</p>
+            <p className="text-xl text-gray-700">
+              {Number(detallesAuto.km).toLocaleString()} km
+            </p>
           </div>
-          <div className="w-36 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
-            <i class="ri-git-branch-line text-lg text-red-500"></i>
-            <p className="text-base text-gray-600">Transmisión</p>
-            <p className="text-lg">{capitalizar(detallesAuto.transmision)}</p>
+
+          <div className="flex justify-center gap-4 items-center">
+            <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
+              <i class="ri-palette-line text-lg text-red-500"></i>
+              <p className="text-base text-gray-600">Color</p>
+              <p className="text-lg">{capitalizar(detallesAuto.color)}</p>
+            </div>
+            <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
+              <i class="ri-git-branch-line text-lg text-red-500"></i>
+              <p className="text-base text-gray-600">Transmisión</p>
+              <p className="text-lg">{capitalizar(detallesAuto.transmision)}</p>
+            </div>
+            <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
+              <i class="ri-gas-station-line text-lg text-red-500"></i>
+              <p className="text-base text-gray-600">Combustible</p>
+              <p className="text-lg">{capitalizar(detallesAuto.combustible)}</p>
+            </div>
+            <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
+              <i class="ri-car-line text-lg text-red-500"></i>
+              <p className="text-base text-gray-600">Usado Certificado Toyota</p>
+              <p className="text-lg">
+                {detallesAuto.uct === 1 ? "Sí" : "No"}
+              </p>
+            </div>
           </div>
-          <div className="w-36 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
-            <i class="ri-gas-station-line text-lg text-red-500"></i>
-            <p className="text-base text-gray-600">Combustible</p>
-            <p className="text-lg">{capitalizar(detallesAuto.combustible)}</p>
-          </div>
+
+          <p className="text-3xl font-semibold text-black">
+            ARS$ {Number(detallesAuto.precio).toLocaleString()}
+          </p>
+
+          
         </div>
 
-        <p className="text-3xl font-semibold text-black">ARS$ {Number(detallesAuto.precio).toLocaleString()}</p>
-        
-        {/* Botón de WhatsApp (solo si está disponible) */}
-        <div className="flex">
-        {detallesAuto.estado === "DISPONIBLE" && (
-          <a
-            href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
-            className="inline-flex items-center px-4 py-2 bg-green-500 text-white text-xl font-semibold rounded-lg hover:bg-green-600 transition-all ease-in-out"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Solicitar más información
-            <i className="ri-whatsapp-line ml-2"></i>
-          </a>
-        )}
+        {/* Descripción del auto */}
+        <div className="col-span-2 mt-4 space-y-8 p-4 bg-gray-100 rounded-lg">
+          <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-b-red-600 max-w-max">
+            Descripción
+          </h3>
+          <p className="text-lg text-gray-700 mt-2">
+            {detallesAuto.descripcion}
+          </p>
+
+          <h3 className="text-2xl font-bold text-gray-800 mt-4 border-b-2 max-w-max border-b-red-600">Ubicación</h3>
+          <GoogleMap />
+          
+            {/* Botón de WhatsApp (solo si está disponible) */}
+          <div className="flex">
+            {detallesAuto.estado === "DISPONIBLE" && (
+              <a
+                href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
+                className="inline-flex items-center px-4 py-2 bg-green-500 text-white text-xl font-semibold rounded-lg hover:bg-green-600 transition-all ease-in-out"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Solicitar más información
+                <i className="ri-whatsapp-line ml-2"></i>
+              </a>
+            )}
+          </div>
+
         </div>
       </div>
-
-
     </div>
   );
 }
