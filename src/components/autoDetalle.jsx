@@ -27,6 +27,8 @@ export default function AutoDetalles({ slug }) {
   const [detallesAuto, setDetallesAuto] = useState(null);
   const [cargando, setCargando] = useState(true);
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [mostrarModal, setMostrarModal] = useState(false);
+  const [copiado, setCopiado] = useState(false);
 
   useEffect(() => {
     if (slug) {
@@ -58,6 +60,19 @@ export default function AutoDetalles({ slug }) {
   // Función para capitalizar la primera letra de un texto
   const capitalizar = (texto) =>
     texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
+
+  const copiarEnlace = () => {
+    const enlace = `https://tusitio.com/usados/${detallesAuto.slug}`;
+    navigator.clipboard.writeText(enlace);
+
+    // Mostrar el popover de "¡Copiado!"
+    setCopiado(true);
+
+    // Ocultar el popover después de 2 segundos
+    setTimeout(() => {
+      setCopiado(false);
+    }, 2000);
+  };
 
   if (cargando) {
     return (
@@ -215,9 +230,94 @@ export default function AutoDetalles({ slug }) {
       <div className="flex flex-col max-h-max max-w-max">
         {/* Información del auto */}
         <div className="space-y-8  p-4 bg-gray-100 rounded-lg">
-          <h2 className="text-2xl font-bold border-b-2 max-w-max border-b-red-600">
-            {detallesAuto.marca} {detallesAuto.modelo}
-          </h2>
+          <div className="flex justify-between">
+            <h2 className="text-3xl font-bold border-b-2 max-w-max border-b-red-600">
+              {detallesAuto.marca} {detallesAuto.modelo}
+            </h2>
+            <button onClick={() => setMostrarModal(true)}>
+              <i className="ri-share-forward-line text-2xl text-gray-600"></i>
+            </button>
+
+            {/* Modal para compartir */}
+            {mostrarModal && (
+              <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+                <div className="bg-white p-6 rounded-lg shadow-lg">
+                  <div className="flex justify-between items-center mb-4">
+                    <h3 className="text-lg font-semibold">Compartir</h3>
+                    <button
+                      onClick={() => setMostrarModal(false)}
+                      className="transition flex px-1 rounded-full bg-gray-200"
+                    >
+                      <i className="ri-close-line text-base text-black hover:text-red-600 transition"></i>
+                    </button>
+                  </div>
+                  <div className="flex flex-col space-y-4">
+                    <div className="flex space-x-4 justify-between">
+                      <a
+                        href={`https://www.facebook.com/sharer/sharer.php?u=https://tusitio.com/usados/${detallesAuto.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
+                      >
+                        <i className="ri-facebook-fill"></i>
+                      </a>
+                      <a
+                        href={`https://twitter.com/intent/tweet?url=https://tusitio.com/usados/${detallesAuto.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-black text-white px-4 py-2 rounded-full hover:bg-blue-500 transition"
+                      >
+                        <i className="ri-twitter-x-fill"></i>
+                      </a>
+                      <a
+                        href={`https://www.linkedin.com/shareArticle?mini=true&url=https://tusitio.com/usados/${detallesAuto.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition"
+                      >
+                        <i className="ri-linkedin-fill"></i>
+                      </a>
+                      <a
+                        href={`mailto:?body=https://tusitio.com/usados/${detallesAuto.slug}`}
+                        className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                      >
+                        <i className="ri-mail-fill"></i>
+                      </a>
+                      <a
+                        href={`sms:?&body=https://tusitio.com/usados/${detallesAuto.slug}`}
+                        className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
+                      >
+                        <i className="ri-message-fill"></i>
+                      </a>
+                      <a
+                        href={`whatsapp://send?text=https://tusitio.com/usados/${detallesAuto.slug}`}
+                        className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
+                      >
+                        <i className="ri-whatsapp-fill"></i>
+                      </a>
+                    </div>
+
+                    {/* Botón para copiar el enlace */}
+                    <div className="relative">
+                      <button
+                        onClick={copiarEnlace}
+                        className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition"
+                      >
+                        Copiar enlace
+                      </button>
+
+                      {/* Popover de "Copiado!" */}
+                      {copiado && (
+                        <div className="text-red-600 text-sm p-2">
+                          ¡Copiado!
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
 
           <div className="flex">
             <p className="text-xl text-gray-700">{detallesAuto.anio}</p>
@@ -245,18 +345,14 @@ export default function AutoDetalles({ slug }) {
             </div>
             <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
               <i class="ri-car-line text-lg text-red-500"></i>
-              <p className="text-base text-gray-600">Usado Certificado Toyota</p>
-              <p className="text-lg">
-                {detallesAuto.uct === 1 ? "Sí" : "No"}
-              </p>
+              <p className="text-base text-gray-600">UCT</p>
+              <p className="text-lg">{detallesAuto.uct === 1 ? "Sí" : "No"}</p>
             </div>
           </div>
 
           <p className="text-3xl font-semibold text-black">
             ARS$ {Number(detallesAuto.precio).toLocaleString()}
           </p>
-
-          
         </div>
 
         {/* Descripción del auto */}
@@ -267,11 +363,14 @@ export default function AutoDetalles({ slug }) {
           <p className="text-lg text-gray-700 mt-2">
             {detallesAuto.descripcion}
           </p>
-
-          <h3 className="text-2xl font-bold text-gray-800 mt-4 border-b-2 max-w-max border-b-red-600">Ubicación</h3>
+        </div>
+        <div className="col-span-2 mt-4 space-y-8 p-4 bg-gray-100 rounded-lg">
+          <h3 className="text-2xl font-bold text-gray-800 mt-4 border-b-2 max-w-max border-b-red-600">
+            Ubicación
+          </h3>
           <GoogleMap />
-          
-            {/* Botón de WhatsApp (solo si está disponible) */}
+
+          {/* Botón de WhatsApp (solo si está disponible) */}
           <div className="flex">
             {detallesAuto.estado === "DISPONIBLE" && (
               <a
@@ -285,7 +384,6 @@ export default function AutoDetalles({ slug }) {
               </a>
             )}
           </div>
-
         </div>
       </div>
     </div>
