@@ -235,24 +235,30 @@ export default function AutoDetalles({ slug }) {
               {detallesAuto.marca} {detallesAuto.modelo}
             </h2>
             <button onClick={() => setMostrarModal(true)}>
-              <i className="ri-share-forward-line text-2xl text-gray-600"></i>
+              <i className="ri-share-line text-2xl text-gray-600 hover:text-red-600 transition"></i>
             </button>
 
             {/* Modal para compartir */}
             {mostrarModal && (
               <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
-                <div className="bg-white p-6 rounded-lg shadow-lg">
+                <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-lg font-semibold">Compartir</h3>
+                    <h3 className="text-lg font-semibold border-b-2 border-b-red-600">Compartir</h3>
                     <button
                       onClick={() => setMostrarModal(false)}
-                      className="transition flex px-1 rounded-full bg-gray-200"
+                      className="transition flex justify-center items-center"
                     >
-                      <i className="ri-close-line text-base text-black hover:text-red-600 transition"></i>
+                      <i className="ri-close-circle-line text-md text-black hover:text-red-600 transition"></i>
                     </button>
                   </div>
                   <div className="flex flex-col space-y-4">
                     <div className="flex space-x-4 justify-between">
+                      <a
+                        href={`whatsapp://send?text=https://tusitio.com/usados/${detallesAuto.slug}`}
+                        className="bg-green-400 text-white px-4 py-2 rounded-full hover:bg-green-500 transition"
+                      >
+                        <i className="ri-whatsapp-line"></i>
+                      </a>
                       <a
                         href={`https://www.facebook.com/sharer/sharer.php?u=https://tusitio.com/usados/${detallesAuto.slug}`}
                         target="_blank"
@@ -265,53 +271,52 @@ export default function AutoDetalles({ slug }) {
                         href={`https://twitter.com/intent/tweet?url=https://tusitio.com/usados/${detallesAuto.slug}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-black text-white px-4 py-2 rounded-full hover:bg-blue-500 transition"
+                        className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition"
                       >
                         <i className="ri-twitter-x-fill"></i>
                       </a>
                       <a
-                        href={`https://www.linkedin.com/shareArticle?mini=true&url=https://tusitio.com/usados/${detallesAuto.slug}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-blue-700 text-white px-4 py-2 rounded-lg hover:bg-blue-800 transition"
-                      >
-                        <i className="ri-linkedin-fill"></i>
-                      </a>
-                      <a
                         href={`mailto:?body=https://tusitio.com/usados/${detallesAuto.slug}`}
-                        className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+                        className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition"
                       >
                         <i className="ri-mail-fill"></i>
                       </a>
                       <a
                         href={`sms:?&body=https://tusitio.com/usados/${detallesAuto.slug}`}
-                        className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
+                        className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition"
                       >
                         <i className="ri-message-fill"></i>
-                      </a>
-                      <a
-                        href={`whatsapp://send?text=https://tusitio.com/usados/${detallesAuto.slug}`}
-                        className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition"
-                      >
-                        <i className="ri-whatsapp-fill"></i>
                       </a>
                     </div>
 
                     {/* Botón para copiar el enlace */}
                     <div className="relative">
+                      <label for="npm-install" class="sr-only">
+                        Label
+                      </label>
+                      <input
+                        id="npm-install"
+                        type="text"
+                        class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        value={`https://tusitio.com/usados/${detallesAuto.slug}`}
+                        disabled
+                        readonly
+                      ></input>
+                      <div className="flex items-center mt-4">
                       <button
                         onClick={copiarEnlace}
-                        className="bg-gray-300 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-400 transition"
+                        className="bg-red-600 text-white text-base px-2 py-1 rounded-lg hover:opacity-80 transition"
                       >
                         Copiar enlace
                       </button>
 
                       {/* Popover de "Copiado!" */}
                       {copiado && (
-                        <div className="text-red-600 text-sm p-2">
+                        <div className="text-red-600 text-sm ml-2 transition-all ease-in-out">
                           ¡Copiado!
                         </div>
                       )}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -356,14 +361,18 @@ export default function AutoDetalles({ slug }) {
         </div>
 
         {/* Descripción del auto */}
-        <div className="col-span-2 mt-4 space-y-8 p-4 bg-gray-100 rounded-lg">
-          <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-b-red-600 max-w-max">
-            Descripción
-          </h3>
-          <p className="text-lg text-gray-700 mt-2">
-            {detallesAuto.descripcion}
-          </p>
-        </div>
+        {detallesAuto.descripcion && (
+          <div className="col-span-2 mt-4 space-y-4 p-4 bg-gray-100 rounded-lg">
+            <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-b-red-600 max-w-max">
+              Descripción
+            </h3>
+            <p className="text-lg text-gray-700 mt-2">
+              {detallesAuto.descripcion}
+            </p>
+          </div>
+        )}
+
+        {/* Ubicación del auto */}
         <div className="col-span-2 mt-4 space-y-8 p-4 bg-gray-100 rounded-lg">
           <h3 className="text-2xl font-bold text-gray-800 mt-4 border-b-2 max-w-max border-b-red-600">
             Ubicación
