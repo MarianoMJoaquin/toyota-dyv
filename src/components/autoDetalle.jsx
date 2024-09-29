@@ -212,7 +212,7 @@ export default function AutoDetalles({ slug }) {
             grid={{ rows: 2, fill: "row" }}
             watchSlidesVisibility={true}
             watchSlidesProgress={true}
-            className="rounded-lg mySwiper xl:w-2/3"
+            className="rounded-lg mySwiper xl:w-5/6"
           >
             {detallesAuto.photos.map((photo, index) => (
               <SwiperSlide key={index}>
@@ -355,10 +355,44 @@ export default function AutoDetalles({ slug }) {
             </div>
           </div>
 
+          <div className="flex justify-between items-center">
           <p className="text-3xl font-semibold text-black">
             ARS$ {Number(detallesAuto.precio).toLocaleString()}
           </p>
+
+          {/* Botón de WhatsApp (solo si está disponible) */}
+          <div className="flex">
+            {detallesAuto.estado === "DISPONIBLE" && (
+              <a
+                href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
+                className="inline-flex items-center px-4 py-2 bg-green-500 text-white text-xl font-semibold rounded-lg hover:bg-green-600 transition-all ease-in-out"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Solicitar más información
+                <i className="ri-whatsapp-line ml-2"></i>
+              </a>
+            )}
+          </div>
+          </div>
         </div>
+
+        {/* Info Usado certificado Toyota */}
+        {detallesAuto.uct === 1 && (
+          <div className="col-span-2 mt-4 space-y-4 p-4 bg-gray-100 rounded-lg">
+            <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-b-red-600 max-w-max">
+              ¿Qué es un Usado Certificado Toyota (UCT)?
+            </h3>
+            <p className="text-lg text-gray-700 mt-2">
+              Un Usado Certificado Toyota es un vehículo usado que ha sido
+              inspeccionado y certificado por técnicos especializados de Toyota.
+              Estos vehículos han pasado por un proceso de revisión de 150
+              puntos y cuentan con una garantía de 1 año o 200.000 km, lo que
+              ocurra primero.
+            </p>
+          </div>
+        )}
+
 
         {/* Descripción del auto */}
         {detallesAuto.descripcion && (
@@ -379,20 +413,7 @@ export default function AutoDetalles({ slug }) {
           </h3>
           <GoogleMap />
 
-          {/* Botón de WhatsApp (solo si está disponible) */}
-          <div className="flex">
-            {detallesAuto.estado === "DISPONIBLE" && (
-              <a
-                href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
-                className="inline-flex items-center px-4 py-2 bg-green-500 text-white text-xl font-semibold rounded-lg hover:bg-green-600 transition-all ease-in-out"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Solicitar más información
-                <i className="ri-whatsapp-line ml-2"></i>
-              </a>
-            )}
-          </div>
+          
         </div>
       </div>
     </div>

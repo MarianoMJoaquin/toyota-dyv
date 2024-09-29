@@ -5,7 +5,7 @@ function GoogleMap() {
 
   return (
     <div>
-      <iframe title="Mapa de Google" className="rounded-lg" src={iframeUrl} width="100%" height="400" />
+      <iframe title="Mapa de Google" className="rounded-lg" src={iframeUrl} width="100%" height="250" />
     </div>
   );
 }
