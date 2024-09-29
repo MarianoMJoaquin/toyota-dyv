@@ -231,7 +231,7 @@ export default function AutoDetalles({ slug }) {
         {/* Información del auto */}
         <div className="space-y-8  p-4 bg-gray-100 rounded-lg">
           <div className="flex justify-between">
-            <h2 className="text-3xl font-bold border-b-2 max-w-max border-b-red-600">
+            <h2 className="text-3xl max-sm:text-xl font-bold border-b-2 max-w-max border-b-red-600">
               {detallesAuto.marca} {detallesAuto.modelo}
             </h2>
             <button onClick={() => setMostrarModal(true)}>
@@ -243,7 +243,9 @@ export default function AutoDetalles({ slug }) {
               <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
                 <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
                   <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-lg font-semibold border-b-2 border-b-red-600">Compartir</h3>
+                    <h3 className="text-lg font-semibold border-b-2 border-b-red-600">
+                      Compartir
+                    </h3>
                     <button
                       onClick={() => setMostrarModal(false)}
                       className="transition flex justify-center items-center"
@@ -303,19 +305,19 @@ export default function AutoDetalles({ slug }) {
                         readonly
                       ></input>
                       <div className="flex items-center mt-4">
-                      <button
-                        onClick={copiarEnlace}
-                        className="bg-red-600 text-white text-base px-2 py-1 rounded-lg hover:opacity-80 transition"
-                      >
-                        Copiar enlace
-                      </button>
+                        <button
+                          onClick={copiarEnlace}
+                          className="bg-red-600 text-white text-base px-2 py-1 rounded-lg hover:opacity-80 transition"
+                        >
+                          Copiar enlace
+                        </button>
 
-                      {/* Popover de "Copiado!" */}
-                      {copiado && (
-                        <div className="text-red-600 text-sm ml-2 transition-all ease-in-out">
-                          ¡Copiado!
-                        </div>
-                      )}
+                        {/* Popover de "Copiado!" */}
+                        {copiado && (
+                          <div className="text-red-600 text-sm ml-2 transition-all ease-in-out">
+                            ¡Copiado!
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -356,24 +358,24 @@ export default function AutoDetalles({ slug }) {
           </div>
 
           <div className="flex justify-between items-center">
-          <p className="text-3xl font-semibold text-black">
-            ARS$ {Number(detallesAuto.precio).toLocaleString()}
-          </p>
+            <p className="text-3xl max-sm:text-xl font-semibold text-black">
+              ARS$ {Number(detallesAuto.precio).toLocaleString()}
+            </p>
 
-          {/* Botón de WhatsApp (solo si está disponible) */}
-          <div className="flex">
-            {detallesAuto.estado === "DISPONIBLE" && (
-              <a
-                href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
-                className="inline-flex items-center px-4 py-2 bg-green-500 text-white text-xl font-semibold rounded-lg hover:bg-green-600 transition-all ease-in-out"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Solicitar más información
-                <i className="ri-whatsapp-line ml-2"></i>
-              </a>
-            )}
-          </div>
+            {/* Botón de WhatsApp (solo si está disponible) */}
+            <div className="flex">
+              {detallesAuto.estado === "DISPONIBLE" && (
+                <a
+                  href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
+                  className="inline-flex items-center px-2 py-1 bg-green-500 text-white  font-semibold rounded-full hover:bg-green-600 transition-all ease-in-out"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Solicitar más información
+                  <i className="ri-whatsapp-line ml-2"></i>
+                </a>
+              )}
+            </div>
           </div>
         </div>
 
@@ -393,7 +395,6 @@ export default function AutoDetalles({ slug }) {
           </div>
         )}
 
-
         {/* Descripción del auto */}
         {detallesAuto.descripcion && (
           <div className="col-span-2 mt-4 space-y-4 p-4 bg-gray-100 rounded-lg">
@@ -412,8 +413,6 @@ export default function AutoDetalles({ slug }) {
             Ubicación
           </h3>
           <GoogleMap />
-
-          
         </div>
       </div>
     </div>
