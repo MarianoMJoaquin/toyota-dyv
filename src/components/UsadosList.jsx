@@ -17,12 +17,12 @@ export default function UsadosList() {
   const [filtroAnioHasta, setFiltroAnioHasta] = useState("");
 
   // Rango de precios
-  const [rangoPrecios, setRangoPrecios] = useState([0, 60000000]);
+  const [rangoPrecios, setRangoPrecios] = useState([0, 100000000]);
   const minPrecio = 0;
   const maxPrecio = 100000000;
 
   // Rango de kilómetros
-  const [rangoKilometros, setRangoKilometros] = useState([0, 300000]);
+  const [rangoKilometros, setRangoKilometros] = useState([0, 500000]);
   const minKilometros = 0;
   const maxKilometros = 500000;
 
