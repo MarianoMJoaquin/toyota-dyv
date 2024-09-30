@@ -940,6 +940,7 @@ export default function UsadosList() {
 
         {/* Columna para la lista de autos */}
         <div className="lg:col-span-3 mx-5 xl:mx-5">
+
           <div className="flex lg:hidden justify-end mb-2">
             {/* Botones de vista */}
             <div>
@@ -998,9 +999,9 @@ export default function UsadosList() {
             </div>
 
             {/* Botón para abrir el Drawer */}
-            <div className="text-center">
+            <div>
               <button
-                className="text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center transition-all ease-in-out"
+                className="text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
                 type="button"
                 data-drawer-target="drawer-right-example"
                 data-drawer-show="drawer-right-example"
