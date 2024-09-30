@@ -257,6 +257,8 @@ export default function NoticiaList({ noticias, categorias }) {
           </div>
         </div>
 
+        {/*Segunda columna*/}
+
         <div className="lg:col-span-3">
           <div className="flex justify-end mb-4">
             {/* Botón para volver a la lista de noticias */}
