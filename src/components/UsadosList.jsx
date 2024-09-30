@@ -958,7 +958,7 @@ export default function UsadosList() {
             </div>
           </div>
 
-          <div className="flex max-sm:justify-between justify-end mb-4">
+          <div className="flex items-center max-sm:justify-between justify-end mb-4">
             {/* Filtro de orden */}
             <div className="flex items-center mr-4">
               <label
