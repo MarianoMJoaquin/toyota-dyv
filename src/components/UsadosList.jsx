@@ -940,7 +940,6 @@ export default function UsadosList() {
 
         {/* Columna para la lista de autos */}
         <div className="lg:col-span-3 mx-5 xl:mx-5">
-
           <div className="flex lg:hidden justify-end mb-2">
             {/* Botones de vista */}
             <div>
@@ -960,10 +959,12 @@ export default function UsadosList() {
           </div>
 
           <div className="flex max-sm:justify-between justify-end mb-4">
-
             {/* Filtro de orden */}
             <div className="flex items-center mr-4">
-              <label htmlFor="orden" className="mr-2 max-sm:mr-1 text-sm lg:text-lg">
+              <label
+                htmlFor="orden"
+                className="mr-2 max-sm:mr-1 text-sm lg:text-lg"
+              >
                 Ordenar por:
               </label>
               <select
@@ -972,12 +973,8 @@ export default function UsadosList() {
                 onChange={(e) => setOrden(e.target.value)}
                 className="p-2 text-sm lg:text-lg border focus:ring-red-500 focus:border-red-500 border-gray-300 rounded-full"
               >
-                <option value="">
-                  Selecciona una opción
-                </option>
-                <option value="mas-recientes">
-                  Más recientes
-                </option>
+                <option value="">Selecciona una opción</option>
+                <option value="mas-recientes">Más recientes</option>
                 <option value="mayor-precio">Mayor precio</option>
                 <option value="menor-precio">Menor precio</option>
                 <option value="mas-vistos">Más vistos</option>
@@ -1295,6 +1292,363 @@ export default function UsadosList() {
                     <div className="max-w-max flex justify-center items-center">
                       <span className="text-lg">No hay filtros activos</span>
                     </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Filtros con checkboxes */}
+              <div className="space-y-4">
+                {/* Filtro por Usado Certificado Toyota (UCT) */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Usado Certificado Toyota
+                  </h3>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="uct-1"
+                      onChange={() => {
+                        handleCheckbox(filtroUct, setFiltroUct, "1");
+                        setPaginaActual(1);
+                        volverALista();
+                      }}
+                      checked={filtroUct.includes("1")}
+                      className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                    />
+                    <label htmlFor="uct-1" className="ml-2 text-xl">
+                      Usado Certificado Toyota
+                    </label>
+                  </div>
+                  <div>
+                    <input
+                      type="checkbox"
+                      id="uct-0"
+                      onChange={() => {
+                        handleCheckbox(filtroUct, setFiltroUct, "0");
+                        setPaginaActual(1);
+                        volverALista();
+                      }}
+                      checked={filtroUct.includes("0")}
+                      className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                    />
+                    <label htmlFor="uct-0" className="ml-2 text-xl">
+                      No Certificado
+                    </label>
+                  </div>
+                </div>
+                {/* Filtro por Marca */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Marca
+                  </h3>
+                  {Array.from(new Set(autos.map((auto) => auto.marca))).map(
+                    (marca, index) => (
+                      <div key={index}>
+                        <input
+                          type="checkbox"
+                          id={`marca-${marca}`}
+                          onChange={() => {
+                            handleCheckbox(
+                              filtroMarcas,
+                              setFiltroMarcas,
+                              marca
+                            );
+                            setPaginaActual(1);
+                            volverALista();
+                          }}
+                          checked={filtroMarcas.includes(marca)}
+                          className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                        />
+                        <label
+                          htmlFor={`marca-${marca}`}
+                          className="ml-2 text-xl"
+                        >
+                          {capitalizar(marca)}
+                        </label>
+                      </div>
+                    )
+                  )}
+                </div>
+                {/* Filtro por Precio con Rango */}{" "}
+                {/* Filtro por Kilómetros con Rango */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <div className="mb-4">
+                    <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                      Precio
+                    </h3>
+                    <Range
+                      step={1000000}
+                      min={minPrecio}
+                      max={maxPrecio}
+                      values={rangoPrecios}
+                      onChange={(values) => {
+                        setRangoPrecios(values);
+                        setPaginaActual(1);
+                        autoSeleccionado && setAutoSeleccionado(null);
+                      }}
+                      renderTrack={({ props, children }) => (
+                        <div
+                          {...props}
+                          style={{
+                            ...props.style,
+                            height: "5px",
+                            background: "#d1d5db",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          {children}
+                        </div>
+                      )}
+                      renderThumb={({ props, index }) => (
+                        <div
+                          {...props}
+                          style={{
+                            ...props.style,
+                            height: "12px",
+                            width: "12px",
+                            backgroundColor: "#eb0a1e",
+                            borderRadius: "50%",
+                            boxShadow: "0px 2px 6px #AAA",
+                          }}
+                        />
+                      )}
+                    />
+                    <div className="flex justify-between mt-2">
+                      <span className="text-xl">
+                        ${Number(rangoPrecios[0]).toLocaleString()}
+                      </span>
+                      <span className="text-xl">
+                        ${Number(rangoPrecios[1]).toLocaleString()}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                      Kilometraje
+                    </h3>
+                    <Range
+                      step={1000}
+                      min={minKilometros}
+                      max={maxKilometros}
+                      values={rangoKilometros}
+                      onChange={(values) => {
+                        setRangoKilometros(values);
+                        setPaginaActual(1);
+                        autoSeleccionado && setAutoSeleccionado(null);
+                      }}
+                      renderTrack={({ props, children }) => (
+                        <div
+                          {...props}
+                          style={{
+                            ...props.style,
+                            height: "5px",
+                            background: "#d1d5db",
+                            borderRadius: "5px",
+                          }}
+                        >
+                          {children}
+                        </div>
+                      )}
+                      renderThumb={({ props, index }) => (
+                        <div
+                          {...props}
+                          style={{
+                            ...props.style,
+                            height: "12px",
+                            width: "12px",
+                            backgroundColor: "#eb0a1e",
+                            borderRadius: "50%",
+                            boxShadow: "0px 2px 6px #AAA",
+                          }}
+                        />
+                      )}
+                    />
+                    <div className="flex justify-between mt-2">
+                      <span className="text-xl">
+                        {Number(rangoKilometros[0]).toLocaleString()} km
+                      </span>
+                      <span className="text-xl">
+                        {Number(rangoKilometros[1]).toLocaleString()} km
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                {/* Filtro por Año */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Año
+                  </h3>
+                  <div className="flex space-x-2">
+                    <input
+                      type="number"
+                      value={filtroAnioDesde}
+                      onChange={(e) => {
+                        setFiltroAnioDesde(e.target.value);
+                        setPaginaActual(1);
+                        autoSeleccionado && setAutoSeleccionado(null);
+                      }}
+                      placeholder="Desde"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                    />
+                    <input
+                      type="number"
+                      value={filtroAnioHasta}
+                      onChange={(e) => {
+                        setFiltroAnioHasta(e.target.value);
+                        setPaginaActual(1);
+                        autoSeleccionado && setAutoSeleccionado(null);
+                      }}
+                      placeholder="Hasta"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                    />
+                  </div>
+                </div>
+                {/* Filtro por Modelo */}
+                {/*<div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">Modelo</h3>
+              {Array.from(new Set(autos.map((auto) => auto.modelo))).map((modelo, index) => (
+                <div key={index}>
+                  <input
+                    type="checkbox"
+                    id={`modelo-${modelo}`}
+                    onChange={() => handleCheckbox(filtroModelos, setFiltroModelos, modelo)}
+                    checked={filtroModelos.includes(modelo)}
+                  />
+                  <label htmlFor={`modelo-${modelo}`} className="ml-2">{capitalizar(modelo)}</label>
+                </div>
+              ))}
+            </div*/}
+                {/* Filtro por Color */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Color
+                  </h3>
+                  {Array.from(new Set(autos.map((auto) => auto.color))).map(
+                    (color, index) => (
+                      <div key={index}>
+                        <input
+                          type="checkbox"
+                          id={`color-${color}`}
+                          onChange={() => {
+                            handleCheckbox(
+                              filtroColores,
+                              setFiltroColores,
+                              color
+                            );
+                            setPaginaActual(1);
+                            volverALista();
+                          }}
+                          checked={filtroColores.includes(color)}
+                          className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                        />
+                        <label
+                          htmlFor={`color-${color}`}
+                          className="ml-2 text-xl"
+                        >
+                          {color}
+                        </label>
+                      </div>
+                    )
+                  )}
+                </div>
+                {/* Filtro por Combustible */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Combustible
+                  </h3>
+                  {Array.from(
+                    new Set(autos.map((auto) => auto.combustible))
+                  ).map((combustible, index) => (
+                    <div key={index}>
+                      <input
+                        type="checkbox"
+                        id={`combustible-${combustible}`}
+                        onChange={() => {
+                          handleCheckbox(
+                            filtroCombustibles,
+                            setFiltroCombustibles,
+                            combustible
+                          );
+                          setPaginaActual(1);
+                          volverALista();
+                        }}
+                        checked={filtroCombustibles.includes(combustible)}
+                        className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                      />
+                      <label
+                        htmlFor={`combustible-${combustible}`}
+                        className="ml-2 text-xl"
+                      >
+                        {capitalizar(combustible)}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                {/* Filtro por Transmisión */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Transmisión
+                  </h3>
+                  {Array.from(
+                    new Set(autos.map((auto) => auto.transmision))
+                  ).map((transmision, index) => (
+                    <div key={index}>
+                      <input
+                        type="checkbox"
+                        id={`transmision-${transmision}`}
+                        onChange={() => {
+                          handleCheckbox(
+                            filtroTransmisiones,
+                            setFiltroTransmisiones,
+                            transmision
+                          );
+                          setPaginaActual(1);
+                          volverALista();
+                        }}
+                        checked={filtroTransmisiones.includes(transmision)}
+                        className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                      />
+                      <label
+                        htmlFor={`transmision-${transmision}`}
+                        className="ml-2 text-xl"
+                      >
+                        {capitalizar(transmision)}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+                {/* Filtro por Estado */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Estado
+                  </h3>
+                  {Array.from(new Set(autos.map((auto) => auto.estado))).map(
+                    (estado, index) => (
+                      <div key={index}>
+                        <input
+                          type="checkbox"
+                          id={`estado-${estado}`}
+                          onChange={() => {
+                            handleCheckbox(
+                              filtroEstados,
+                              setFiltroEstados,
+                              estado
+                            );
+                            setPaginaActual(1);
+                            volverALista();
+                          }}
+                          checked={filtroEstados.includes(estado)}
+                          className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
+                        />
+                        <label
+                          htmlFor={`estado-${estado}`}
+                          className="ml-2 text-xl"
+                        >
+                          {capitalizar(estado)}
+                        </label>
+                      </div>
+                    )
                   )}
                 </div>
               </div>
