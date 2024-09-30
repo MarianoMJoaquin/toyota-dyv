@@ -1316,7 +1316,7 @@ export default function UsadosList() {
                       checked={filtroUct.includes("1")}
                       className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                     />
-                    <label htmlFor="uct-1" className="ml-2 text-xl">
+                    <label htmlFor="uct-1" className="ml-2 text-lg">
                       Usado Certificado Toyota
                     </label>
                   </div>
@@ -1332,7 +1332,7 @@ export default function UsadosList() {
                       checked={filtroUct.includes("0")}
                       className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                     />
-                    <label htmlFor="uct-0" className="ml-2 text-xl">
+                    <label htmlFor="uct-0" className="ml-2 text-lg">
                       No Certificado
                     </label>
                   </div>
@@ -1362,7 +1362,7 @@ export default function UsadosList() {
                         />
                         <label
                           htmlFor={`marca-${marca}`}
-                          className="ml-2 text-xl"
+                          className="ml-2 text-lg"
                         >
                           {capitalizar(marca)}
                         </label>
@@ -1415,10 +1415,10 @@ export default function UsadosList() {
                       )}
                     />
                     <div className="flex justify-between mt-2">
-                      <span className="text-xl">
+                      <span className="text-lg">
                         ${Number(rangoPrecios[0]).toLocaleString()}
                       </span>
-                      <span className="text-xl">
+                      <span className="text-lg">
                         ${Number(rangoPrecios[1]).toLocaleString()}
                       </span>
                     </div>
@@ -1466,10 +1466,10 @@ export default function UsadosList() {
                       )}
                     />
                     <div className="flex justify-between mt-2">
-                      <span className="text-xl">
+                      <span className="text-lg">
                         {Number(rangoKilometros[0]).toLocaleString()} km
                       </span>
-                      <span className="text-xl">
+                      <span className="text-lg">
                         {Number(rangoKilometros[1]).toLocaleString()} km
                       </span>
                     </div>
@@ -1545,7 +1545,7 @@ export default function UsadosList() {
                         />
                         <label
                           htmlFor={`color-${color}`}
-                          className="ml-2 text-xl"
+                          className="ml-2 text-lg"
                         >
                           {color}
                         </label>
@@ -1579,7 +1579,7 @@ export default function UsadosList() {
                       />
                       <label
                         htmlFor={`combustible-${combustible}`}
-                        className="ml-2 text-xl"
+                        className="ml-2 text-lg"
                       >
                         {capitalizar(combustible)}
                       </label>
@@ -1612,7 +1612,7 @@ export default function UsadosList() {
                       />
                       <label
                         htmlFor={`transmision-${transmision}`}
-                        className="ml-2 text-xl"
+                        className="ml-2 text-lg"
                       >
                         {capitalizar(transmision)}
                       </label>
@@ -1644,7 +1644,7 @@ export default function UsadosList() {
                         />
                         <label
                           htmlFor={`estado-${estado}`}
-                          className="ml-2 text-xl"
+                          className="ml-2 text-lg"
                         >
                           {capitalizar(estado)}
                         </label>
