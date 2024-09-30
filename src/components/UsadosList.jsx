@@ -1699,7 +1699,7 @@ export default function UsadosList() {
               {autosPaginados.map((auto) => (
                 <CSSTransition key={auto.id} timeout={300} classNames="fade">
                   <div
-                    className={`bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105 ${modoVista === "lista" ? "flex items-center h-72" : ""}`}
+                    className={`${modoVista === "lista" ? "flex items-center h-72 bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105" : "bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105"}`}
                   >
                     <a href={`/usados/${auto.slug}`} className="cursor-pointer">
                       <img
