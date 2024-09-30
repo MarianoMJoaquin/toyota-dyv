@@ -1699,17 +1699,17 @@ export default function UsadosList() {
               {autosPaginados.map((auto) => (
                 <CSSTransition key={auto.id} timeout={300} classNames="fade">
                   <div
-                    className={`bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105 ${modoVista === "lista" ? "flex" : ""}`}
+                    className={`bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105 ${modoVista === "lista" ? "flex items-center h-72" : ""}`}
                   >
                     <a href={`/usados/${auto.slug}`} className="cursor-pointer">
                       <img
                         src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
                         alt={`${auto.marca} ${auto.modelo}`}
-                        className="w-full h-72 object-cover"
+                        className={`${modoVista === "lista" ? "h-72 object-cover" : "w-full h-72 object-cover"}`}
                       />
                     </a>
-                    <div className="p-4 flex flex-col justify-center gap-2">
-                      <h2 className="text-lg font-semibold border-b-2  border-red-600 max-w-max mb-2">
+                    <div className={`${modoVista === "lista" ? "p-4 flex flex-col gap-8" : "p-4 flex flex-col justify-center gap-2"}`}>
+                      <h2 className={`${modoVista === "lista" ? "text-3xl font-semibold border-b-2  border-red-600 max-w-max mb-2" : "text-lg font-semibold border-b-2  border-red-600 max-w-max mb-2"}`}>
                         {auto.marca} {auto.modelo}
                       </h2>
                       <div className="flex justify-start items-center text-lg mt-2">

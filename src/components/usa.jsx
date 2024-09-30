@@ -17,12 +17,12 @@ export default function UsadosList() {
   const [filtroAnioHasta, setFiltroAnioHasta] = useState("");
 
   // Rango de precios
-  const [rangoPrecios, setRangoPrecios] = useState([0, 60000000]);
+  const [rangoPrecios, setRangoPrecios] = useState([0, 100000000]);
   const minPrecio = 0;
   const maxPrecio = 100000000;
 
   // Rango de kilómetros
-  const [rangoKilometros, setRangoKilometros] = useState([0, 300000]);
+  const [rangoKilometros, setRangoKilometros] = useState([0, 500000]);
   const minKilometros = 0;
   const maxKilometros = 500000;
 
@@ -940,6 +940,7 @@ export default function UsadosList() {
 
         {/* Columna para la lista de autos */}
         <div className="lg:col-span-3 mx-5 xl:mx-5">
+
           <div className="flex lg:hidden justify-end mb-2">
             {/* Botones de vista */}
             <div>
@@ -958,7 +959,7 @@ export default function UsadosList() {
             </div>
           </div>
 
-          <div className="flex max-sm:justify-between justify-end mb-4">
+          <div className="flex items-center max-sm:justify-between justify-end mb-4">
             {/* Filtro de orden */}
             <div className="flex items-center mr-4">
               <label
@@ -998,9 +999,9 @@ export default function UsadosList() {
             </div>
 
             {/* Botón para abrir el Drawer */}
-            <div className="text-center">
+            <div>
               <button
-                className="text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full text-base px-2 py-1 text-center transition-all ease-in-out"
+                className="text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
                 type="button"
                 data-drawer-target="drawer-right-example"
                 data-drawer-show="drawer-right-example"
@@ -1054,8 +1055,8 @@ export default function UsadosList() {
                 <div className="space-y-2">
                   {/* Mostrar filtros activos */}
                   {busqueda && (
-                    <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                      <span className="text-lg">Búsqueda: {busqueda}</span>
+                    <div className="max-w-max flex justify-center items-center px-3 bg-gray-200 rounded-full">
+                      <span className="text-lg max-sm:text-base">Búsqueda: {busqueda}</span>
                       <button
                         onClick={() => setBusqueda("")}
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
@@ -1069,7 +1070,7 @@ export default function UsadosList() {
                       key={marca}
                       className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
                     >
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         Marca: {capitalizar(marca)}
                       </span>
                       <button
@@ -1087,7 +1088,7 @@ export default function UsadosList() {
                       key={modelo}
                       className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
                     >
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         Modelo: {capitalizar(modelo)}
                       </span>
                       <button
@@ -1109,7 +1110,7 @@ export default function UsadosList() {
                       key={color}
                       className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
                     >
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         Color: {capitalizar(color)}
                       </span>
                       <button
@@ -1127,7 +1128,7 @@ export default function UsadosList() {
                       key={combustible}
                       className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
                     >
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         Combustible: {capitalizar(combustible)}
                       </span>
                       <button
@@ -1149,7 +1150,7 @@ export default function UsadosList() {
                       key={transmision}
                       className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
                     >
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         Transmisión: {capitalizar(transmision)}
                       </span>
                       <button
@@ -1171,7 +1172,7 @@ export default function UsadosList() {
                       key={estado}
                       className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
                     >
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         Estado: {capitalizar(estado)}
                       </span>
                       <button
@@ -1190,7 +1191,7 @@ export default function UsadosList() {
                   ))}
                   {filtroAnioDesde && (
                     <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         Año desde: {filtroAnioDesde}
                       </span>
                       <button
@@ -1203,7 +1204,7 @@ export default function UsadosList() {
                   )}
                   {filtroAnioHasta && (
                     <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         Año hasta: {filtroAnioHasta}
                       </span>
                       <button
@@ -1216,8 +1217,8 @@ export default function UsadosList() {
                   )}
                   {(rangoPrecios[0] !== minPrecio ||
                     rangoPrecios[1] !== maxPrecio) && (
-                    <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                      <span className="text-lg">
+                    <div className="max-w-max flex justify-center items-center max-sm:p-3 px-2 bg-gray-200 rounded-full">
+                      <span className="text-lg max-sm:text-base">
                         Precio: ${Number(rangoPrecios[0]).toLocaleString()} - $
                         {Number(rangoPrecios[1]).toLocaleString()}
                       </span>
@@ -1231,8 +1232,8 @@ export default function UsadosList() {
                   )}
                   {(rangoKilometros[0] !== minKilometros ||
                     rangoKilometros[1] !== maxKilometros) && (
-                    <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
-                      <span className="text-lg">
+                    <div className="max-w-max flex justify-center items-center max-sm:p-3 px-2 bg-gray-200 rounded-full">
+                      <span className="text-lg max-sm:text-base">
                         Kilómetros:{" "}
                         {Number(rangoKilometros[0]).toLocaleString()} -{" "}
                         {Number(rangoKilometros[1]).toLocaleString()}
@@ -1252,7 +1253,7 @@ export default function UsadosList() {
                       key={uct}
                       className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
                     >
-                      <span className="text-lg">
+                      <span className="text-lg max-sm:text-base">
                         {uct === "1"
                           ? "Usado Certificado Toyota"
                           : "No Certificado"}
@@ -1315,7 +1316,7 @@ export default function UsadosList() {
                       checked={filtroUct.includes("1")}
                       className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                     />
-                    <label htmlFor="uct-1" className="ml-2 text-xl">
+                    <label htmlFor="uct-1" className="ml-2 text-lg">
                       Usado Certificado Toyota
                     </label>
                   </div>
@@ -1331,7 +1332,7 @@ export default function UsadosList() {
                       checked={filtroUct.includes("0")}
                       className="h-4 w-4 text-red-600 border-gray-300 rounded focus:ring-red-600"
                     />
-                    <label htmlFor="uct-0" className="ml-2 text-xl">
+                    <label htmlFor="uct-0" className="ml-2 text-lg">
                       No Certificado
                     </label>
                   </div>
@@ -1361,7 +1362,7 @@ export default function UsadosList() {
                         />
                         <label
                           htmlFor={`marca-${marca}`}
-                          className="ml-2 text-xl"
+                          className="ml-2 text-lg"
                         >
                           {capitalizar(marca)}
                         </label>
@@ -1414,10 +1415,10 @@ export default function UsadosList() {
                       )}
                     />
                     <div className="flex justify-between mt-2">
-                      <span className="text-xl">
+                      <span className="text-lg">
                         ${Number(rangoPrecios[0]).toLocaleString()}
                       </span>
-                      <span className="text-xl">
+                      <span className="text-lg">
                         ${Number(rangoPrecios[1]).toLocaleString()}
                       </span>
                     </div>
@@ -1465,10 +1466,10 @@ export default function UsadosList() {
                       )}
                     />
                     <div className="flex justify-between mt-2">
-                      <span className="text-xl">
+                      <span className="text-lg">
                         {Number(rangoKilometros[0]).toLocaleString()} km
                       </span>
-                      <span className="text-xl">
+                      <span className="text-lg">
                         {Number(rangoKilometros[1]).toLocaleString()} km
                       </span>
                     </div>
@@ -1544,7 +1545,7 @@ export default function UsadosList() {
                         />
                         <label
                           htmlFor={`color-${color}`}
-                          className="ml-2 text-xl"
+                          className="ml-2 text-lg"
                         >
                           {color}
                         </label>
@@ -1578,7 +1579,7 @@ export default function UsadosList() {
                       />
                       <label
                         htmlFor={`combustible-${combustible}`}
-                        className="ml-2 text-xl"
+                        className="ml-2 text-lg"
                       >
                         {capitalizar(combustible)}
                       </label>
@@ -1611,7 +1612,7 @@ export default function UsadosList() {
                       />
                       <label
                         htmlFor={`transmision-${transmision}`}
-                        className="ml-2 text-xl"
+                        className="ml-2 text-lg"
                       >
                         {capitalizar(transmision)}
                       </label>
@@ -1643,7 +1644,7 @@ export default function UsadosList() {
                         />
                         <label
                           htmlFor={`estado-${estado}`}
-                          className="ml-2 text-xl"
+                          className="ml-2 text-lg"
                         >
                           {capitalizar(estado)}
                         </label>
