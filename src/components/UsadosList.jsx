@@ -1784,7 +1784,7 @@ export default function UsadosList() {
                       <img
                         src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
                         alt={`${auto.marca} ${auto.modelo}`}
-                        className={`${modoVista === "lista" ? "w-full h-72 object-cover" : "w-full h-72 object-cover"}`}
+                        className={`${modoVista === "lista" ? "w-96" : "w-full h-72 object-cover"}`}
                       />
                     </a>
                     <div

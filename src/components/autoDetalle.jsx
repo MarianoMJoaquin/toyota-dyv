@@ -7,7 +7,6 @@ import {
   Grid,
   EffectFade,
   Zoom,
-  Autoplay,
 } from "swiper/modules";
 
 import "swiper/css";
@@ -17,7 +16,6 @@ import "swiper/css/thumbs";
 import "swiper/css/grid";
 import "swiper/css/effect-fade";
 import "swiper/css/zoom";
-import "swiper/css/autoplay";
 
 import "../assets/styles/swiperAutoDetalles.css";
 
@@ -154,23 +152,16 @@ export default function AutoDetalles({ slug }) {
       </div>
 
       {/* Contenedor principal con miniaturas y galería */}
-      <div className="">
+      <div>
         <div>
+          {/* Galería de fotos */}
           <Swiper
-            modules={[
-              Navigation,
-              Pagination,
-              Thumbs,
-              EffectFade,
-              Zoom,
-              Autoplay,
-            ]}
+            modules={[Navigation, Pagination, Thumbs, EffectFade, Zoom]}
             navigation={{
               nextEl: ".swiper-button-next",
               prevEl: ".swiper-button-prev",
             }}
             zoom={true}
-            autoplay={{ delay: 5000 }}
             effect="fade"
             loop={true}
             thumbs={{ swiper: thumbsSwiper }}
@@ -178,18 +169,20 @@ export default function AutoDetalles({ slug }) {
           >
             {detallesAuto.photos.map((photo, index) => (
               <SwiperSlide key={index}>
-                <img
-                  src={`https://panelweb.derkayvargas.com${photo.public_path}`}
-                  alt={`Imagen ${index + 1}`}
-                  className="object-cover rounded-lg"
-                />
-                {detallesAuto.uct === 1 ? (
+                <div className="swiper-zoom-container">
                   <img
-                    src="../../src/assets/images/usado.png"
-                    alt="UCT"
-                    className="w-16 ml-2 max-sm:w-11 absolute top-2"
+                    src={`https://panelweb.derkayvargas.com${photo.public_path}`}
+                    alt={`Imagen ${index + 1}`}
+                    className="object-cover rounded-lg"
                   />
-                ) : null}
+                  {detallesAuto.uct === 1 ? (
+                    <img
+                      src="../../src/assets/images/usado.png"
+                      alt="UCT"
+                      className="w-16 ml-2 max-sm:w-11 absolute top-2"
+                    />
+                  ) : null}
+                </div>
               </SwiperSlide>
             ))}
 
@@ -202,7 +195,15 @@ export default function AutoDetalles({ slug }) {
           </Swiper>
         </div>
 
-        <div className="mt-4">
+        {/* Indicación para hacer zoom */}
+        <div className="mt-4 flex justify-center items-center">
+          <p className="text-base italic text-gray-400">
+            Toca dos veces la imágen para hacer zoom
+          </p>
+        </div>
+
+        {/* Miniaturas */}
+        <div className="mt-8">
           <Swiper
             modules={[Grid]}
             onSwiper={setThumbsSwiper}
