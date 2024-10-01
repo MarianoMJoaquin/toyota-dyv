@@ -125,7 +125,7 @@ export default function AutoDetalles({ slug }) {
       {/* Breadcrumb y botón de retorno */}
       <div className="col-span-2 mb-4 xl:mx-10">
         <nav className="flex mb-4" aria-label="Breadcrumb">
-          <ol className="inline-flex items-center space-x-1 text-base md:space-x-3">
+          <ol className="inline-flex items-center space-x-1 text-base max-sm:text-sm md:space-x-3">
             <li>
               <a href="/" className="text-gray-700 hover:text-red-600">
                 Inicio
@@ -198,14 +198,14 @@ export default function AutoDetalles({ slug }) {
         {/* Indicación para hacer zoom en dispositivos móviles*/}
         <div className="lg:hidden mt-4 flex justify-center items-center">
           <p className="text-base italic text-gray-400">
-            Toca dos veces la imágen para hacer zoom
+            Toca dos veces para ampliar la imagen
           </p>
         </div>
 
         {/* Indicación para hacer zoom en escritorio*/}
         <div className="max-lg:hidden mt-4 flex justify-center items-center">
           <p className="text-base italic text-gray-400">
-            Haz click dos veces en la imágen para hacer zoom
+            Haz click dos veces para ampliar la imagen
           </p>
         </div>
 
@@ -239,7 +239,7 @@ export default function AutoDetalles({ slug }) {
         {/* Información del auto */}
         <div className="space-y-8  p-4 bg-gray-100 rounded-lg">
           <div className="flex justify-between">
-            <h2 className="text-3xl max-sm:text-xl font-bold border-b-2 max-w-max border-b-red-600">
+            <h2 className="text-3xl max-sm:text-lg font-bold border-b-2 max-w-max border-b-red-600">
               {detallesAuto.marca} {detallesAuto.modelo}
             </h2>
             <button onClick={() => setMostrarModal(true)}>
@@ -248,7 +248,7 @@ export default function AutoDetalles({ slug }) {
 
             {/* Modal para compartir */}
             {mostrarModal && (
-              <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+              <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50" onClick={() => setMostrarModal(false)}>
                 <div className="bg-gray-100 p-6 rounded-lg shadow-lg">
                   <div className="flex justify-between items-center mb-4">
                     <h3 className="text-lg font-semibold border-b-2 border-b-red-600">
@@ -334,6 +334,7 @@ export default function AutoDetalles({ slug }) {
             )}
           </div>
 
+          {/* Info de año y kilómetros */}
           <div className="flex">
             <p className="text-xl text-gray-700">{detallesAuto.anio}</p>
             <p className="text-xl text-gray-700 mx-2">|</p>
@@ -341,41 +342,43 @@ export default function AutoDetalles({ slug }) {
               {Number(detallesAuto.km).toLocaleString()} km
             </p>
           </div>
-
+            
+            {/* Info de color, transmisión, combustible y UCT */}
           <div className="flex justify-center gap-4 items-center">
             <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
               <i class="ri-palette-line text-lg text-red-500"></i>
-              <p className="text-base text-gray-600">Color</p>
-              <p className="text-lg">{capitalizar(detallesAuto.color)}</p>
+              <p className="text-base max-sm:text-sm text-gray-600">Color</p>
+              <p className="text-lg max-sm:text-base">{capitalizar(detallesAuto.color)}</p>
             </div>
             <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
               <i class="ri-git-branch-line text-lg text-red-500"></i>
-              <p className="text-base text-gray-600">Transmisión</p>
-              <p className="text-lg">{capitalizar(detallesAuto.transmision)}</p>
+              <p className="text-base max-sm:text-sm text-gray-600">Transmisión</p>
+              <p className="text-lg max-sm:text-base">{capitalizar(detallesAuto.transmision)}</p>
             </div>
             <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
               <i class="ri-gas-station-line text-lg text-red-500"></i>
-              <p className="text-base text-gray-600">Combustible</p>
-              <p className="text-lg">{capitalizar(detallesAuto.combustible)}</p>
+              <p className="text-base max-sm:text-sm text-gray-600">Combustible</p>
+              <p className="text-lg max-sm:text-base">{capitalizar(detallesAuto.combustible)}</p>
             </div>
             <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
               <i class="ri-car-line text-lg text-red-500"></i>
-              <p className="text-base text-gray-600">UCT</p>
-              <p className="text-lg">{detallesAuto.uct === 1 ? "Sí" : "No"}</p>
+              <p className="text-base max-sm:text-sm text-gray-600">UCT</p>
+              <p className="text-lg max-sm:text-base">{detallesAuto.uct === 1 ? "Sí" : "No"}</p>
             </div>
           </div>
 
+          {/* Info de precio y botón de WhatsApp */}
           <div className="flex justify-between items-center">
-            <p className="text-3xl max-sm:text-xl font-semibold text-black">
+            <p className="text-3xl max-sm:text-lg font-semibold text-black">
               ARS$ {Number(detallesAuto.precio).toLocaleString()}
             </p>
 
             {/* Botón de WhatsApp (solo si está disponible) */}
-            <div className="flex">
+            {/*<div className="flex">
               {detallesAuto.estado === "DISPONIBLE" && (
                 <a
                   href={`https://wa.me/5493624015990?text=${encodeURIComponent(mensajeWhatsapp)}`}
-                  className="inline-flex items-center px-2 py-1 bg-green-500 text-white  font-semibold rounded-full hover:bg-green-600 transition-all ease-in-out"
+                  className="inline-flex items-center px-2 py-1 max-sm:text-lg bg-green-500 text-white  font-semibold rounded-full hover:bg-green-600 transition-all ease-in-out"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -383,8 +386,9 @@ export default function AutoDetalles({ slug }) {
                   <i className="ri-whatsapp-line ml-2"></i>
                 </a>
               )}
-            </div>
+            </div>*/}
           </div>
+
         </div>
 
         {/* Info Usado certificado Toyota */}
@@ -415,11 +419,12 @@ export default function AutoDetalles({ slug }) {
           </div>
         )}
 
-        {/* Ubicación del auto */}
+        {/* Más información */}
         <div className="col-span-2 mt-4 space-y-8 p-4 bg-gray-100 rounded-lg">
           <h3 className="text-2xl font-bold text-gray-800 mt-4 border-b-2 max-w-max border-b-red-600">
-            Ubicación
+            Más información
           </h3>
+
           <GoogleMap />
         </div>
       </div>
