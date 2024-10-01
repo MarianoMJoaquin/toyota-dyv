@@ -166,7 +166,7 @@ export default function AutoDetalles({ slug }) {
               effect="fade"
               loop={true}
               thumbs={{ swiper: thumbsSwiper }}
-              className="rounded-lg xl:w-5/6"
+              className="rounded-lg xl:w-11/12"
             >
               {detallesAuto.photos.map((photo, index) => (
                 <SwiperSlide key={index}>
@@ -221,7 +221,7 @@ export default function AutoDetalles({ slug }) {
               grid={{ rows: 2, fill: "row" }}
               watchSlidesVisibility={true}
               watchSlidesProgress={true}
-              className="rounded-lg mySwiper xl:w-5/6"
+              className="rounded-lg mySwiper xl:w-11/12"
             >
               {detallesAuto.photos.map((photo, index) => (
                 <SwiperSlide key={index}>
@@ -431,7 +431,7 @@ export default function AutoDetalles({ slug }) {
         </div>
       </div>
 
-      <div className="lg:grid lg:grid-cols-3 justify-center container mx-auto lg:gap-8">
+      <div className="lg:grid lg:grid-cols-2 justify-center container mx-auto lg:gap-8">
        
           {/* Información del auto */}
           <div className="col-span-1 mt-4 space-y-8 p-4 bg-gray-100 rounded-lg">
@@ -441,7 +441,7 @@ export default function AutoDetalles({ slug }) {
           </div>
             
             {/* Info Usado certificado Toyota */}
-          <div className="col-span-2 mt-4 space-y-4 p-4 bg-gray-100 rounded-lg">
+          <div className="col-span-1 mt-4 space-y-4 p-4 bg-gray-100 rounded-lg">
             <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-b-red-600 max-w-max">
               ¿Qué es un Usado Certificado Toyota (UCT)?
             </h3>

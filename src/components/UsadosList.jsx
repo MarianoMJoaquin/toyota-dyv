@@ -349,7 +349,7 @@ export default function UsadosList() {
   return (
     <section className="container mx-auto section">
       {/* Breadcrumb y botón de retorno */}
-      <div className="col-span-2 mb-4 xl:mx-10">
+      <div className="col-span-2 mb-4 mx-5 xl:mx-10">
         <nav className="flex mb-4" aria-label="Breadcrumb">
           <ol className="inline-flex items-center space-x-1 text-base max-sm:text-sm md:space-x-3">
             <li>
