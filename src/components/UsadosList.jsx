@@ -964,7 +964,7 @@ export default function UsadosList() {
           <div className="grid grid-cols-2 grid-rows-1 mb-4 max-lg:hidden">
             <div className="flex justify-start items-center">
               {/* Cantidad de autos mostrados */}
-              <p className="text-lg">
+              <p className="text-sm lg:text-lg">
                 Mostrando {indiceInicial + 1} -{" "}
                 {indiceFinal > autosFiltrados.length
                   ? autosFiltrados.length
