@@ -941,7 +941,81 @@ export default function UsadosList() {
         {/* Columna para la lista de autos */}
         <div className="lg:col-span-3 mx-5 xl:mx-5">
 
-          <div className="flex lg:hidden justify-end mb-2">
+          <div className="grid grid-cols-2 grid-rows-1 mb-4 max-lg:hidden">
+            <div className="flex justify-start items-center">
+              {/* Cantidad de autos mostrados */}
+              <p className="text-lg">
+                Mostrando {indiceInicial + 1} -{" "}
+                {indiceFinal > autosFiltrados.length ? autosFiltrados.length : indiceFinal}{" "}
+                de {autosFiltrados.length} autos
+              </p>
+            </div>
+            <div className="flex justify-end items-center">
+               {/* Filtro de orden */}
+            <div className="flex items-center mr-4">
+              <label
+                htmlFor="orden"
+                className="mr-2 max-sm:mr-1 text-sm lg:text-lg"
+              >
+                Ordenar por:
+              </label>
+              <select
+                id="orden"
+                value={orden}
+                onChange={(e) => setOrden(e.target.value)}
+                className="p-2 text-sm lg:text-lg border focus:ring-red-500 focus:border-red-500 border-gray-300 rounded-full"
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="mas-recientes">Más recientes</option>
+                <option value="mayor-precio">Mayor precio</option>
+                <option value="menor-precio">Menor precio</option>
+                <option value="mas-vistos">Más vistos</option>
+              </select>
+            </div>
+
+            {/* Botones de vista */}
+            <div className="max-lg:hidden">
+              <button
+                onClick={() => setModoVista("lista")}
+                className={`mr-2 ${modoVista === "lista" ? "text-red-600" : "text-gray-700"}`}
+              >
+                <i className="ri-list-unordered"></i>
+              </button>
+              <button
+                onClick={() => setModoVista("grilla")}
+                className={`${modoVista === "grilla" ? "text-red-600" : "text-gray-700"}`}
+              >
+                <i className="ri-grid-fill"></i>
+              </button>
+            </div>
+
+            {/* Botón para abrir el Drawer */}
+            <div>
+              <button
+                className="text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
+                type="button"
+                data-drawer-target="drawer-right-example"
+                data-drawer-show="drawer-right-example"
+                data-drawer-placement="right"
+                data-drawer-body-scrolling="true"
+                aria-controls="drawer-right-example"
+              >
+                <i className="ri-filter-3-line"></i>
+                Filtros
+              </button>
+            </div>
+            </div>
+          </div>
+
+          <div className="flex lg:hidden justify-between mb-2">
+            <div className="flex justify-start items-center">
+              {/* Cantidad de autos mostrados */}
+              <p className="text-lg">
+                Mostrando {indiceInicial + 1} -{" "}
+                {indiceFinal > autosFiltrados.length ? autosFiltrados.length : indiceFinal}{" "}
+                de {autosFiltrados.length} autos
+              </p>
+            </div>
             {/* Botones de vista */}
             <div>
               <button
@@ -959,7 +1033,7 @@ export default function UsadosList() {
             </div>
           </div>
 
-          <div className="flex items-center max-sm:justify-between justify-end mb-4">
+          <div className="flex lg:hidden items-center max-lg:justify-between justify-end mb-4">
             {/* Filtro de orden */}
             <div className="flex items-center mr-4">
               <label
