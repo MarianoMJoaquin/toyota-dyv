@@ -195,10 +195,17 @@ export default function AutoDetalles({ slug }) {
           </Swiper>
         </div>
 
-        {/* Indicación para hacer zoom */}
-        <div className="mt-4 flex justify-center items-center">
+        {/* Indicación para hacer zoom en dispositivos móviles*/}
+        <div className="lg:hidden mt-4 flex justify-center items-center">
           <p className="text-base italic text-gray-400">
             Toca dos veces la imágen para hacer zoom
+          </p>
+        </div>
+
+        {/* Indicación para hacer zoom en escritorio*/}
+        <div className="max-lg:hidden mt-4 flex justify-center items-center">
+          <p className="text-base italic text-gray-400">
+            Haz click dos veces en la imágen para hacer zoom
           </p>
         </div>
 
