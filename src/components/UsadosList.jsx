@@ -347,7 +347,28 @@ export default function UsadosList() {
     texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 
   return (
-    <section className="container mx-auto section my-8">
+    <section className="container mx-auto section">
+      {/* Breadcrumb y botón de retorno */}
+      <div className="col-span-2 mb-4 xl:mx-10">
+        <nav className="flex mb-4" aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1 text-base max-sm:text-sm md:space-x-3">
+            <li>
+              <a href="/" className="text-gray-700 hover:text-red-600">
+                Inicio
+              </a>
+            </li>
+            <li>
+              <span className="text-gray-500">/</span>
+            </li>
+            <li>
+              <span className="text-gray-700">
+                Usados
+              </span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
       <h1 className="vehicles__title heading-1 max-w-max mx-auto border-b-2 border-red-600">
         Usados
       </h1>
