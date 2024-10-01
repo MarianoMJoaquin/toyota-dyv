@@ -124,7 +124,7 @@ export default function AutoDetalles({ slug }) {
     <>
       <div className="lg:grid lg:grid-cols-2 justify-center  container mx-auto lg:gap-8">
         {/* Breadcrumb y botón de retorno */}
-        <div className="col-span-2 mb-4 xl:mx-10">
+        <div className="col-span-2 mb-4">
           <nav className="flex mb-4" aria-label="Breadcrumb">
             <ol className="inline-flex items-center space-x-1 text-base max-sm:text-sm md:space-x-3">
               <li>
