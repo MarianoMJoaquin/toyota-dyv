@@ -377,7 +377,7 @@ export default function UsadosList() {
         <div className="lg:col-span-1 mx-5 xl:mx-5">
           {/* Columna para filtros y búsqueda */}
 
-          <div className="mb-4 xl:mx-5 relative">
+          <div className="mb-4 relative">
             <input
               type="text"
               value={busqueda}
