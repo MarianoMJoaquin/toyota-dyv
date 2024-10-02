@@ -60,7 +60,7 @@ export default function AutoDetalles({ slug }) {
     texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 
   const copiarEnlace = () => {
-    const enlace = `https://tusitio.com/usados/${detallesAuto.slug}`;
+    const enlace = `https://derkayvargas.com/usados/${detallesAuto.slug}`;
     navigator.clipboard.writeText(enlace);
 
     // Mostrar el popover de "¡Copiado!"
@@ -206,7 +206,7 @@ export default function AutoDetalles({ slug }) {
           {/* Indicación para hacer zoom en escritorio*/}
           <div className="max-lg:hidden mt-4 flex justify-center items-center">
             <p className="text-base italic text-gray-400">
-              Haz click dos veces para ampliar la imagen
+              Haz doble click para ampliar la imagen
             </p>
           </div>
 
@@ -265,13 +265,13 @@ export default function AutoDetalles({ slug }) {
                     <div className="flex flex-col space-y-4">
                       <div className="flex space-x-4 justify-between">
                         <a
-                          href={`whatsapp://send?text=https://tusitio.com/usados/${detallesAuto.slug}`}
+                          href={`whatsapp://send?text=https://derkayvargas.com/usados/${detallesAuto.slug}`}
                           className="bg-green-400 text-white px-4 py-2 rounded-full hover:bg-green-500 transition"
                         >
                           <i className="ri-whatsapp-line"></i>
                         </a>
                         <a
-                          href={`https://www.facebook.com/sharer/sharer.php?u=https://tusitio.com/usados/${detallesAuto.slug}`}
+                          href={`https://www.facebook.com/sharer/sharer.php?u=https://derkayvargas.com/usados/${detallesAuto.slug}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition"
@@ -279,7 +279,7 @@ export default function AutoDetalles({ slug }) {
                           <i className="ri-facebook-fill"></i>
                         </a>
                         <a
-                          href={`https://twitter.com/intent/tweet?url=https://tusitio.com/usados/${detallesAuto.slug}`}
+                          href={`https://twitter.com/intent/tweet?url=https://derkayvargas.com/usados/${detallesAuto.slug}`}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition"
@@ -287,13 +287,13 @@ export default function AutoDetalles({ slug }) {
                           <i className="ri-twitter-x-fill"></i>
                         </a>
                         <a
-                          href={`mailto:?body=https://tusitio.com/usados/${detallesAuto.slug}`}
+                          href={`mailto:?body=https://derkayvargas.com/usados/${detallesAuto.slug}`}
                           className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition"
                         >
                           <i className="ri-mail-fill"></i>
                         </a>
                         <a
-                          href={`sms:?&body=https://tusitio.com/usados/${detallesAuto.slug}`}
+                          href={`sms:?&body=https://derkayvargas.com/usados/${detallesAuto.slug}`}
                           className="bg-green-500 text-white px-4 py-2 rounded-full hover:bg-green-600 transition"
                         >
                           <i className="ri-message-fill"></i>
@@ -309,7 +309,7 @@ export default function AutoDetalles({ slug }) {
                           id="npm-install"
                           type="text"
                           class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          value={`https://tusitio.com/usados/${detallesAuto.slug}`}
+                          value={`https://derkayvargas.com/usados/${detallesAuto.slug}`}
                           disabled
                           readonly
                         ></input>
