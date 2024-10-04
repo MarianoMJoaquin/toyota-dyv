@@ -32,5 +32,8 @@
   },
   "devDependencies": {
     "@types/aos": "^3.0.7"
+  },
+  "volta": {
+    "node": "20.18.0"
   }
 }

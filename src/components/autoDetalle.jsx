@@ -221,7 +221,7 @@ export default function AutoDetalles({ slug }) {
               grid={{ rows: 2, fill: "row" }}
               watchSlidesVisibility={true}
               watchSlidesProgress={true}
-              className="rounded-lg mySwiper xl:w-11/12"
+              className="rounded-lg mySwiper"
             >
               {detallesAuto.photos.map((photo, index) => (
                 <SwiperSlide key={index}>
