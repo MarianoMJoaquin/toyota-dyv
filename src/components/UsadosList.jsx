@@ -28,7 +28,7 @@ export default function UsadosList() {
 
   const [autosFiltrados, setAutosFiltrados] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
-  
+
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
   const [slugAutoSeleccionado, setSlugAutoSeleccionado] = useState(null);
   const [detallesAuto, setDetallesAuto] = useState(null);

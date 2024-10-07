@@ -180,7 +180,7 @@ export default function AutoDetalles({ slug }) {
                       <img
                         src="../../src/assets/images/usado.png"
                         alt="UCT"
-                        className="w-16 ml-2 max-sm:w-11 absolute top-2"
+                        className="w-16 max-sm:w-11 absolute top-4 right-4"
                       />
                     ) : null}
                   </div>
