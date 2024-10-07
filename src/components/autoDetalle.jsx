@@ -76,7 +76,7 @@ export default function AutoDetalles({ slug }) {
     return (
       <div
         role="status"
-        style={{ height: "65vh;" }}
+        style={{ height: "65vh" }}
         className="flex items-center justify-center"
       >
         <svg

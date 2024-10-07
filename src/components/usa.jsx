@@ -28,6 +28,7 @@ export default function UsadosList() {
 
   const [autosFiltrados, setAutosFiltrados] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
+  
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
   const [slugAutoSeleccionado, setSlugAutoSeleccionado] = useState(null);
   const [detallesAuto, setDetallesAuto] = useState(null);
@@ -347,7 +348,26 @@ export default function UsadosList() {
     texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 
   return (
-    <section className="container mx-auto section my-8">
+    <section className="container mx-auto section">
+      {/* Breadcrumb y botón de retorno */}
+      <div className="col-span-2 mb-4 mx-5 xl:mx-10">
+        <nav className="flex mb-4" aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1 text-base max-sm:text-sm md:space-x-3">
+            <li>
+              <a href="/" className="text-gray-700 hover:text-red-600">
+                Inicio
+              </a>
+            </li>
+            <li>
+              <span className="text-gray-500">/</span>
+            </li>
+            <li>
+              <span className="text-gray-700">Usados</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
       <h1 className="vehicles__title heading-1 max-w-max mx-auto border-b-2 border-red-600">
         Usados
       </h1>
@@ -356,7 +376,7 @@ export default function UsadosList() {
         <div className="lg:col-span-1 mx-5 xl:mx-5">
           {/* Columna para filtros y búsqueda */}
 
-          <div className="mb-4 xl:mx-5 relative">
+          <div className="mb-4 relative">
             <input
               type="text"
               value={busqueda}
@@ -940,8 +960,85 @@ export default function UsadosList() {
 
         {/* Columna para la lista de autos */}
         <div className="lg:col-span-3 mx-5 xl:mx-5">
+          <div className="grid grid-cols-2 grid-rows-1 mb-4 max-lg:hidden">
+            <div className="flex justify-start items-center">
+              {/* Cantidad de autos mostrados */}
+              <p className="text-sm lg:text-lg">
+                Mostrando {indiceInicial + 1} -{" "}
+                {indiceFinal > autosFiltrados.length
+                  ? autosFiltrados.length
+                  : indiceFinal}{" "}
+                de {autosFiltrados.length} autos
+              </p>
+            </div>
+            <div className="flex justify-end items-center">
+              {/* Filtro de orden */}
+              <div className="flex items-center mr-4">
+                <label
+                  htmlFor="orden"
+                  className="mr-2 max-sm:mr-1 text-sm lg:text-lg"
+                >
+                  Ordenar por:
+                </label>
+                <select
+                  id="orden"
+                  value={orden}
+                  onChange={(e) => setOrden(e.target.value)}
+                  className="p-2 text-sm lg:text-lg border focus:ring-red-500 focus:border-red-500 border-gray-300 rounded-full"
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="mas-recientes">Más recientes</option>
+                  <option value="mayor-precio">Mayor precio</option>
+                  <option value="menor-precio">Menor precio</option>
+                  <option value="mas-vistos">Más vistos</option>
+                </select>
+              </div>
 
-          <div className="flex lg:hidden justify-end mb-2">
+              {/* Botones de vista */}
+              <div className="max-lg:hidden">
+                <button
+                  onClick={() => setModoVista("lista")}
+                  className={`mr-2 ${modoVista === "lista" ? "text-red-600" : "text-gray-700"}`}
+                >
+                  <i className="ri-list-unordered"></i>
+                </button>
+                <button
+                  onClick={() => setModoVista("grilla")}
+                  className={`${modoVista === "grilla" ? "text-red-600" : "text-gray-700"}`}
+                >
+                  <i className="ri-grid-fill"></i>
+                </button>
+              </div>
+
+              {/* Botón para abrir el Drawer */}
+              <div>
+                <button
+                  className="text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
+                  type="button"
+                  data-drawer-target="drawer-right-example"
+                  data-drawer-show="drawer-right-example"
+                  data-drawer-placement="right"
+                  data-drawer-body-scrolling="true"
+                  aria-controls="drawer-right-example"
+                >
+                  <i className="ri-filter-3-line"></i>
+                  Filtros
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div className="flex lg:hidden justify-between mb-2">
+            <div className="flex justify-start items-center">
+              {/* Cantidad de autos mostrados */}
+              <p className="text-lg">
+                Mostrando {indiceInicial + 1} -{" "}
+                {indiceFinal > autosFiltrados.length
+                  ? autosFiltrados.length
+                  : indiceFinal}{" "}
+                de {autosFiltrados.length} autos
+              </p>
+            </div>
             {/* Botones de vista */}
             <div>
               <button
@@ -959,7 +1056,7 @@ export default function UsadosList() {
             </div>
           </div>
 
-          <div className="flex items-center max-sm:justify-between justify-end mb-4">
+          <div className="flex lg:hidden items-center max-lg:justify-between justify-end mb-4">
             {/* Filtro de orden */}
             <div className="flex items-center mr-4">
               <label
@@ -1018,7 +1115,7 @@ export default function UsadosList() {
             <div
               id="drawer-right-example"
               className="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800"
-              tabindex="-1"
+              tabIndex="-1"
               aria-labelledby="drawer-right-label"
             >
               {/* Botón para cerrar el Drawer */}
@@ -1037,9 +1134,9 @@ export default function UsadosList() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                   />
                 </svg>
@@ -1056,7 +1153,9 @@ export default function UsadosList() {
                   {/* Mostrar filtros activos */}
                   {busqueda && (
                     <div className="max-w-max flex justify-center items-center px-3 bg-gray-200 rounded-full">
-                      <span className="text-lg max-sm:text-base">Búsqueda: {busqueda}</span>
+                      <span className="text-lg max-sm:text-base">
+                        Búsqueda: {busqueda}
+                      </span>
                       <button
                         onClick={() => setBusqueda("")}
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
@@ -1699,17 +1798,21 @@ export default function UsadosList() {
               {autosPaginados.map((auto) => (
                 <CSSTransition key={auto.id} timeout={300} classNames="fade">
                   <div
-                    className={`bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105 ${modoVista === "lista" ? "flex" : ""}`}
+                    className={`${modoVista === "lista" ? "flex items-center h-72 bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105" : "bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105"}`}
                   >
                     <a href={`/usados/${auto.slug}`} className="cursor-pointer">
                       <img
                         src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
                         alt={`${auto.marca} ${auto.modelo}`}
-                        className="w-full h-72 object-cover"
+                        className={`${modoVista === "lista" ? "w-96" : "w-full h-72 object-cover"}`}
                       />
                     </a>
-                    <div className="p-4 flex flex-col justify-center gap-2">
-                      <h2 className="text-lg font-semibold border-b-2  border-red-600 max-w-max mb-2">
+                    <div
+                      className={`${modoVista === "lista" ? "w-full p-4 flex flex-col gap-8" : "p-4 flex flex-col justify-center gap-2"}`}
+                    >
+                      <h2
+                        className={`${modoVista === "lista" ? "text-3xl font-semibold border-b-2  border-red-600 max-w-max mb-2" : "text-lg font-semibold border-b-2  border-red-600 max-w-max mb-2"}`}
+                      >
                         {auto.marca} {auto.modelo}
                       </h2>
                       <div className="flex justify-start items-center text-lg mt-2">
@@ -1731,17 +1834,10 @@ export default function UsadosList() {
                       </div>
 
                       <div className="mt-4 flex justify-between items-center">
-                        {/*<button
-                          onClick={() => seleccionarAuto(auto)}
-                          className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
-                        >
-                          Ver más
-                        </button>*/}
                         <a
                           href={`/usados/${auto.slug}`}
                           className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
                         >
-                          {" "}
                           Ver más
                         </a>
                         <p className="font-semibold text-black">

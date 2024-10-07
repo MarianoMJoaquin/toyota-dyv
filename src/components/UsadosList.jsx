@@ -28,6 +28,7 @@ export default function UsadosList() {
 
   const [autosFiltrados, setAutosFiltrados] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
+  
   const [autoSeleccionado, setAutoSeleccionado] = useState(null);
   const [slugAutoSeleccionado, setSlugAutoSeleccionado] = useState(null);
   const [detallesAuto, setDetallesAuto] = useState(null);
@@ -361,9 +362,7 @@ export default function UsadosList() {
               <span className="text-gray-500">/</span>
             </li>
             <li>
-              <span className="text-gray-700">
-                Usados
-              </span>
+              <span className="text-gray-700">Usados</span>
             </li>
           </ol>
         </nav>
@@ -406,7 +405,7 @@ export default function UsadosList() {
                     onClick={() => setBusqueda("")}
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               )}
@@ -422,7 +421,7 @@ export default function UsadosList() {
                     }
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               ))}
@@ -438,7 +437,7 @@ export default function UsadosList() {
                     }
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               ))}
@@ -454,7 +453,7 @@ export default function UsadosList() {
                     }
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               ))}
@@ -476,7 +475,7 @@ export default function UsadosList() {
                     }
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               ))}
@@ -498,7 +497,7 @@ export default function UsadosList() {
                     }
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               ))}
@@ -514,7 +513,7 @@ export default function UsadosList() {
                     }
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               ))}
@@ -525,7 +524,7 @@ export default function UsadosList() {
                     onClick={() => setFiltroAnioDesde("")}
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               )}
@@ -536,7 +535,7 @@ export default function UsadosList() {
                     onClick={() => setFiltroAnioHasta("")}
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               )}
@@ -551,7 +550,7 @@ export default function UsadosList() {
                     onClick={() => setRangoPrecios([minPrecio, maxPrecio])}
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               )}
@@ -568,7 +567,7 @@ export default function UsadosList() {
                     }
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               )}
@@ -586,7 +585,7 @@ export default function UsadosList() {
                     onClick={() => eliminarFiltro(filtroUct, setFiltroUct, uct)}
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    <i class="ri-close-circle-line"></i>
+                    <i className="ri-close-circle-line"></i>
                   </button>
                 </div>
               ))}
@@ -1116,7 +1115,7 @@ export default function UsadosList() {
             <div
               id="drawer-right-example"
               className="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800"
-              tabindex="-1"
+              tabIndex="-1"
               aria-labelledby="drawer-right-label"
             >
               {/* Botón para cerrar el Drawer */}
@@ -1135,9 +1134,9 @@ export default function UsadosList() {
                 >
                   <path
                     stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
                     d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
                   />
                 </svg>
@@ -1161,7 +1160,7 @@ export default function UsadosList() {
                         onClick={() => setBusqueda("")}
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   )}
@@ -1179,7 +1178,7 @@ export default function UsadosList() {
                         }
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   ))}
@@ -1201,7 +1200,7 @@ export default function UsadosList() {
                         }
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   ))}
@@ -1219,7 +1218,7 @@ export default function UsadosList() {
                         }
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   ))}
@@ -1241,7 +1240,7 @@ export default function UsadosList() {
                         }
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   ))}
@@ -1263,7 +1262,7 @@ export default function UsadosList() {
                         }
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   ))}
@@ -1285,7 +1284,7 @@ export default function UsadosList() {
                         }
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   ))}
@@ -1298,7 +1297,7 @@ export default function UsadosList() {
                         onClick={() => setFiltroAnioDesde("")}
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   )}
@@ -1311,7 +1310,7 @@ export default function UsadosList() {
                         onClick={() => setFiltroAnioHasta("")}
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   )}
@@ -1326,7 +1325,7 @@ export default function UsadosList() {
                         onClick={() => setRangoPrecios([minPrecio, maxPrecio])}
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   )}
@@ -1344,7 +1343,7 @@ export default function UsadosList() {
                         }
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   )}
@@ -1364,7 +1363,7 @@ export default function UsadosList() {
                         }
                         className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                       >
-                        <i class="ri-close-circle-line"></i>
+                        <i className="ri-close-circle-line"></i>
                       </button>
                     </div>
                   ))}
