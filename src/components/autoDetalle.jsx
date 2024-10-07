@@ -33,7 +33,7 @@ export default function AutoDetalles({ slug }) {
       const fetchDetallesAuto = async () => {
         try {
           const respuesta = await fetch(
-            `https://panelweb.test-dyv.netlify.app/api/usados/${slug}`
+            `https://panelweb.derkayvargas.com/api/usados/${slug}`
           );
           const data = await respuesta.json();
 
@@ -172,7 +172,7 @@ export default function AutoDetalles({ slug }) {
                 <SwiperSlide key={index}>
                   <div className="swiper-zoom-container">
                     <img
-                      src={`https://panelweb.test-dyv.netlify.app${photo.public_path}`}
+                      src={`https://panelweb.derkayvargas.com${photo.public_path}`}
                       alt={`Imagen ${index + 1}`}
                       className="object-cover rounded-lg"
                     />
@@ -226,7 +226,7 @@ export default function AutoDetalles({ slug }) {
               {detallesAuto.photos.map((photo, index) => (
                 <SwiperSlide key={index}>
                   <img
-                    src={`https://panelweb.test-dyv.netlify.app${photo.public_path}`}
+                    src={`https://panelweb.derkayvargas.com${photo.public_path}`}
                     alt={`Miniatura ${index + 1}`}
                     className="w-full h-20 object-cover rounded-lg cursor-pointer"
                   />
