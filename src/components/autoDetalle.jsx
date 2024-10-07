@@ -180,7 +180,7 @@ export default function AutoDetalles({ slug }) {
                       <img
                         src="/images/usado.webp"
                         alt="UCT"
-                        className="w-16 max-sm:w-11 absolute top-4 right-4"
+                        className="w-16 max-sm:w-11 top-4 right-4 absolute"
                       />
                     ) : null}
                   </div>
