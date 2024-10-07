@@ -178,7 +178,7 @@ export default function AutoDetalles({ slug }) {
                     />
                     {detallesAuto.uct === 1 ? (
                       <img
-                        src="../../public/images/usado.webp"
+                        src="/images/usado.webp"
                         alt="UCT"
                         className="w-16 max-sm:w-11 absolute top-4 right-4"
                       />
