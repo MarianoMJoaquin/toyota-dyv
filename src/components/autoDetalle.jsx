@@ -19,6 +19,8 @@ import "swiper/css/zoom";
 
 import "../assets/styles/swiperAutoDetalles.css";
 
+import UCTLogo from "../../src/assets/images/usado.png";
+
 import GoogleMap from "./GoogleMap.jsx";
 
 export default function AutoDetalles({ slug }) {
@@ -178,7 +180,7 @@ export default function AutoDetalles({ slug }) {
                     />
                     {detallesAuto.uct === 1 ? (
                       <img
-                        src="../../src/assets/images/usado.png"
+                        src={UCTLogo}
                         alt="UCT"
                         className="w-16 max-sm:w-11 absolute top-4 right-4"
                       />
