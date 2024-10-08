@@ -1,17 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-import Slider from '../components/SliderToyotaPlan';
-
-
 import '../assets/styles/swiper.css'
+import TabSliderComponent from '../components/TabSliderComponent.jsx';
 ---
 
 <Layout title="Toyota Plan | Derka y Vargas">
     <!--======================= SCROLL-ARROW =======================-->
     <main class="main">
-        <section class="home" id="home">
-            <Slider client:load/>
+        <section class="home section" id="home">
+            <TabSliderComponent client:load />
           </section>
     </main>
 </Layout>
