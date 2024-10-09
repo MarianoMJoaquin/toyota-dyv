@@ -808,7 +808,6 @@ html {
   }
   .catalog__item-price {
     font-size: 2rem;
-    text-transform: uppercase;
   }
   @-webkit-keyframes showBlock {
     0% {

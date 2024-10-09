@@ -6,6 +6,7 @@ import srcImage1 from "../assets/images/cross-2.png";
 
 import SwiperUsados from '../components/SwiperUsados.astro';
 import SwiperModelos from '../components/SwiperModelos.astro';
+import TabSliderComponent from '../components/TabSliderComponent';
 
       
 
@@ -108,89 +109,13 @@ import SwiperModelos from '../components/SwiperModelos.astro';
 		<section class="vehicles section" id="catalog">
 		  <div class="container">
 			<h1 class="vehicles__title heading-1">Explorar los vehículos</h1>
-
   
 			<div class="vehicles__catalog catalog">
-				<ul class="flex justify-center space-x-4 m-0 mb-8 border-b">
-				  <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition hover:text-black" id="autos-tab">Autos</li>
-				  <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition hover:text-black" id="pickups-tab">Pick-Ups</li>
-				  <li class="cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition hover:text-black" id="cross-tab">SUV</li>
-			  	</ul>
-			  <!-- Tab Content -->
-			  <div id="tab-content">
-				<!-- Autos Slider -->
-				<div id="#autos" class="container mx-auto overflow-hidden opacity-0 transform scale-95 transition-opacity duration-500">
-					<div class="swiper-wrapper cars">
-						<!-- Slides for Autos -->
-						<div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 1</div>
-						<div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 2</div>
-						<div class="swiper-slide bg-white rounded-lg shadow p-4">Auto 3</div>
-					</div>
-					<!-- Pagination and Navigation -->
-					<div class="swiper-pagination"></div>
-					
-					<div class="swiper-button-prev">
-						<i class="ri-arrow-left-s-line"></i>
-					</div>
-					<div class="swiper-button-next">
-						<i class="ri-arrow-right-s-line"></i>
-					</div><div class="swiper-button-next">
-						<i class="ri-arrow-right-s-line"></i>
-					</div>
-				</div>
-				
-				<!-- Pick-Ups Slider -->
-				<div id="pickups" class="swiper swiper-container m-auto hidden opacity-0 transform scale-95 transition-opacity duration-500">
-					<div class="swiper-wrapper trucks">
-						<!-- Slides for Pick-Ups -->
-						<!--<div class="swiper-slide bg-black h-screen rounded-lg shadow p-4">Pick-Up 1</div>
-						<div class="swiper-slide bg-white rounded-lg shadow p-4">Pick-Up 2</div>
-						<div class="swiper-slide bg-white rounded-lg shadow p-4">Pick-Up 3</div>-->
-					</div>
-					<!-- Pagination and Navigation -->
-					<!-- Pagination and Navigation -->
-					<div class="swiper-pagination"></div>
-					
-					<div class="swiper-button-prev">
-						<i class="ri-arrow-left-s-line"></i>
-					</div>
-					<div class="swiper-button-next">
-						<i class="ri-arrow-right-s-line"></i>
-					</div><div class="swiper-button-next">
-						<i class="ri-arrow-right-s-line"></i>
-					</div>
-				</div>
-			
-				<!-- Cross Slider -->
-				<div id="cross" class="swiper swiper-container hidden opacity-0 transform scale-95 transition-opacity duration-500">
-					<div class="swiper-wrapper crossovers">
-						<!-- Slides for Cross -->
-						<!--<div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 1</div>
-						<div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 2</div>
-						<div class="swiper-slide bg-white rounded-lg shadow p-4">Cross 3</div>-->
-					</div>
-					<!-- Pagination and Navigation -->
-					<!-- Pagination and Navigation -->
-					<div class="swiper-pagination"></div>
-					
-					<div class="swiper-button-prev">
-						<i class="ri-arrow-left-s-line"></i>
-					</div>
-					<div class="swiper-button-next">
-						<i class="ri-arrow-right-s-line"></i>
-					</div><div class="swiper-button-next">
-						<i class="ri-arrow-right-s-line"></i>
-					</div>
-				</div>
-			  </div>
-			  </div>
-			  
+				<TabSliderComponent client:load />
+			</div>
 
-			  
 		  </div>
 		</section>
-  
-	  
   
 		<section class="services section">
 		  <div class="container">
