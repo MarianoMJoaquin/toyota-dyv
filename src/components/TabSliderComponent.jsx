@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from 'axios';  // Importamos axios
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -15,11 +16,9 @@ const TabSliderComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://dyv.e.toyota.com.ar/api/backend/vehicles");
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
+        // Hacemos la solicitud al endpoint proxy de Astro en lugar de la API externa
+        const response = await axios.get("/api/vehicles");
+        const data = response.data;
 
         // Filtramos los vehículos por categorías
         const autosData = data.filter(vehicle =>
@@ -35,7 +34,7 @@ const TabSliderComponent = () => {
           vehicle.categories.some(category => category.name === "Comercial")
         );
 
-        // Actualizamos los estados
+        // Actualizamos los estados con los datos filtrados
         setAutos(autosData);
         setPickups(pickupsData);
         setSuv(suvData);
@@ -47,9 +46,8 @@ const TabSliderComponent = () => {
       }
     };
 
-    fetchData();
+    fetchData(); // Llamamos a la función que obtiene los datos
   }, []);
-
 
   if (loading) {
     return <p className="text-center">Cargando datos...</p>;

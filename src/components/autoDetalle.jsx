@@ -174,7 +174,7 @@ export default function AutoDetalles({ slug }) {
                     <img
                       src={`https://panelweb.derkayvargas.com${photo.public_path}`}
                       alt={`Imagen ${index + 1}`}
-                      className="object-cover rounded-lg"
+                      className="object-cover rounded-lg border-2 border-gray-300"
                     />
                     {detallesAuto.uct === 1 ? (
                       <img
