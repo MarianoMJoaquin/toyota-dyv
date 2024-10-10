@@ -3,7 +3,8 @@ import Layout from '../layouts/Layout.astro';
 
 import '../assets/styles/swiper.css'
 
-import UsedCarsSlider from '../components/UsedCarsSlider.jsx';
+
+import ContactForm from '../components/ContactForm';
 ---
 
 <Layout title="Toyota Plan | Derka y Vargas">
@@ -11,7 +12,8 @@ import UsedCarsSlider from '../components/UsedCarsSlider.jsx';
     <main class="main">
         <section class="home section" id="home">
             
-            <UsedCarsSlider client:load />
+            
+            <ContactForm client:load/>
           </section>
     </main>
 </Layout>
