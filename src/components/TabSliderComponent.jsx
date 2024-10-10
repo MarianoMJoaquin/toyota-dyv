@@ -102,7 +102,7 @@ const TabSliderComponent = () => {
           <p className="catalog__item-text">holaaaa</p>
         </div>
         <div className="catalog__item-bottom">
-          <button className="catalog__item-btn btn">Ver más</button>
+          <button className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">Ver más</button>
           <div className="catalog__item-price text-xl">
             <span className="catalog__item-price-text">Desde </span>
             <span className="catalog__item-price-number">{vehicle.defaultPrice?.currency}$ {vehicle.defaultPrice?.amount.toLocaleString()}</span>
