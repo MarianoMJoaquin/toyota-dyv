@@ -74,23 +74,24 @@ const UsedCarsSlider = () => {
           <span className="catalog__item-year">{car.anio}</span>
           <span>|</span>
           <span className="catalog__item-type">
-            {Number(car.km).toLocaleString()}
+            {Number(car.km).toLocaleString() + " km"}
           </span>
         </div>
         <div className="catalog__item-middle">
-          <div className="catalog__item-name">
+          <div className="catalog__item-name text-xl">
             {car.marca} {car.modelo}
           </div>
-          <p className="catalog__item-text">
+          {/*<p className="catalog__item-text text-lg">
             {car.descripcion || "Descripción no disponible"}
-          </p>
+          </p>*/}
         </div>
         <div className="catalog__item-bottom">
-          <a href={`/usados/${car.slug}`} className="catalog__item-btn btn">Ver más</a>
-          <div className="catalog__item-price text-xl">
-            <span className="catalog__item-price-text">Desde </span>
+          <a href={`/usados/${car.slug}`} className="catalog__item-btn btn">
+            Ver más
+          </a>
+          <div className="catalog__item-price">
             <span className="catalog__item-price-number">
-              {Number(car.precio).toLocaleString()} ARS
+              ARS$ {Number(car.precio).toLocaleString()}
             </span>
           </div>
         </div>
