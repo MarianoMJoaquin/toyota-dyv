@@ -114,7 +114,7 @@ const TabSliderComponent = () => {
 
   const renderSlider = (vehicles) => (
     <Swiper
-      modules={[Pagination]}
+      modules={[Pagination, Navigation]}
       autoHeight={true}
       spaceBetween={10}
       slidesPerView={1}

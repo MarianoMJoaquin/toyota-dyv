@@ -4,8 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 import srcImage1 from "../assets/images/cross-2.png";
 
-import SwiperUsados from '../components/SwiperUsados.astro';
-import SwiperModelos from '../components/SwiperModelos.astro';
+import UsedCarsSlider from '../components/UsedCarsSlider.jsx';
 import TabSliderComponent from '../components/TabSliderComponent';
 
       
@@ -518,93 +517,9 @@ import TabSliderComponent from '../components/TabSliderComponent';
 		<section class="section cards__container">
 			<div class="container">
 				<h1 class="vehicles__title heading-1">Explorar los vehículos usados</h1>
-				
+				<UsedCarsSlider client:load />
 			</div>
 		</section> 
 	  </main>
 	   
 </Layout>
-
-<script>
-	import Swiper from 'swiper/bundle';
-	let swiperAutos = new Swiper('#autos', {
-          breakpoints: {
-              640: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-              },
-              768: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-              },
-              1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-              },
-          },
-          
-          spaceBetween: 10,
-          
-          pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
-          },
-          navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-          },
-        });
-        
-        let swiperPickups = new Swiper('#pickups', {
-          breakpoints: {
-              640: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-              },
-              768: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-              },
-              1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-              },
-          },
-          
-          spaceBetween: 10,
-          pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
-          },
-          navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-          },
-        });
-        
-        let swiperCross = new Swiper('#cross', {
-          breakpoints: {
-              640: {
-                  slidesPerView: 1,
-                  spaceBetween: 10,
-              },
-              768: {
-                  slidesPerView: 2,
-                  spaceBetween: 20,
-              },
-              1024: {
-                  slidesPerView: 3,
-                  spaceBetween: 30,
-              },
-          },
-          spaceBetween: 10,
-          pagination: {
-              el: '.swiper-pagination',
-              clickable: true,
-          },
-          navigation: {
-              nextEl: '.swiper-button-next',
-              prevEl: '.swiper-button-prev',
-          },
-        });
-</script>

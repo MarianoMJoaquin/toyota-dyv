@@ -756,7 +756,7 @@ html {
   }
   .catalog__item-img {
     width: 100%;
-    height: 18rem;
+    height: 4rem;
     object-fit: cover;
   }
   .catalog__item-info {
