@@ -86,10 +86,10 @@ const UsedCarsSlider = () => {
           </p>*/}
         </div>
         <div className="catalog__item-bottom">
-          <a href={`/usados/${car.slug}`} className="catalog__item-btn btn">
+          <a href={`/usados/${car.slug}`} className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
             Ver más
           </a>
-          <div className="catalog__item-price">
+          <div className="catalog__item-price text-xl lg:text-2xl">
             <span className="catalog__item-price-number">
               ARS$ {Number(car.precio).toLocaleString()}
             </span>
