@@ -77,8 +77,6 @@ const TabSliderComponent = () => {
     );
   }
 
-  
-
   const renderCard = (vehicle) => (
     <div className="catalog__item">
       <a href="#" className="catalog__item-link">
@@ -102,10 +100,15 @@ const TabSliderComponent = () => {
           <p className="catalog__item-text">holaaaa</p>
         </div>
         <div className="catalog__item-bottom">
-          <button className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">Ver más</button>
+          <button className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
+            Ver más
+          </button>
           <div className="catalog__item-price text-xl">
             <span className="catalog__item-price-text">Desde </span>
-            <span className="catalog__item-price-number">{vehicle.defaultPrice?.currency}$ {vehicle.defaultPrice?.amount.toLocaleString()}</span>
+            <span className="catalog__item-price-number">
+              {vehicle.defaultPrice?.currency}${" "}
+              {vehicle.defaultPrice?.amount.toLocaleString()}
+            </span>
           </div>
         </div>
       </div>
@@ -150,7 +153,9 @@ const TabSliderComponent = () => {
         <button
           onClick={() => setActiveTab("Autos")}
           className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "Autos" ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600" : "cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition hover:text-black"
+            activeTab === "Autos"
+              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
+              : "cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition hover:text-black"
           }`}
         >
           Autos
@@ -158,7 +163,9 @@ const TabSliderComponent = () => {
         <button
           onClick={() => setActiveTab("Pick-Ups")}
           className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "Pick-Ups" ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600" : "text-gray-700 hover:text-red-600"
+            activeTab === "Pick-Ups"
+              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
+              : "text-gray-700 hover:text-red-600"
           }`}
         >
           Pick-Ups
@@ -166,7 +173,9 @@ const TabSliderComponent = () => {
         <button
           onClick={() => setActiveTab("SUV")}
           className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "SUV" ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600" : "text-gray-700 hover:text-red-600"
+            activeTab === "SUV"
+              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
+              : "text-gray-700 hover:text-red-600"
           }`}
         >
           SUV
@@ -174,7 +183,9 @@ const TabSliderComponent = () => {
         <button
           onClick={() => setActiveTab("Comerciales")}
           className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "Comerciales" ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600" : "text-gray-700 hover:text-red-600"
+            activeTab === "Comerciales"
+              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
+              : "text-gray-700 hover:text-red-600"
           }`}
         >
           Comerciales
@@ -187,6 +198,14 @@ const TabSliderComponent = () => {
         {activeTab === "Pick-Ups" && renderSlider(pickups)}
         {activeTab === "SUV" && renderSlider(suv)}
         {activeTab === "Comerciales" && renderSlider(comerciales)}
+      </div>
+      <div className="flex justify-end">
+        <a
+          href="/modelos"
+          className="text-gray-500 rounded-lg text-xl hover:text-black transition-all inline-block items-center"
+        >
+          Ver todos los modelos <i class="ml-1 text-2xl ri-arrow-right-s-line"></i>
+        </a>
       </div>
     </div>
   );
