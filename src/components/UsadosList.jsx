@@ -1755,7 +1755,7 @@ export default function UsadosList() {
             </div>
           </div>
           {cargando ? (
-            <div role="status" className="flex justify-center items-center">
+            <div role="status" style={{height: "40vh"}} className="flex justify-center items-center">
               <svg
                 aria-hidden="true"
                 className="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
@@ -1798,24 +1798,24 @@ export default function UsadosList() {
               {autosPaginados.map((auto) => (
                 <CSSTransition key={auto.id} timeout={300} classNames="fade">
                   <div
-                    className={`${modoVista === "lista" ? "flex items-center h-72 bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105" : "bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105"}`}
+                    className={`${modoVista === "lista" ? "flex items-center max-sm:h-44 h-72 bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105" : "bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105"}`}
                   >
                     <a href={`/usados/${auto.slug}`} className="cursor-pointer">
                       <img
                         src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
                         alt={`${auto.marca} ${auto.modelo}`}
-                        className={`${modoVista === "lista" ? "w-96" : "w-full h-72 object-cover"}`}
+                        className={`${modoVista === "lista" ? "max-sm:w-72 w-96 max-sm:h-44 h-72" : "w-full h-72 object-cover"}`}
                       />
                     </a>
                     <div
-                      className={`${modoVista === "lista" ? "w-full p-4 flex flex-col gap-8" : "p-4 flex flex-col justify-center gap-2"}`}
+                      className={`${modoVista === "lista" ? "w-full p-4 flex flex-col max-sm:gap-0 gap-8" : "p-4 flex flex-col justify-center gap-2"}`}
                     >
                       <h2
-                        className={`${modoVista === "lista" ? "text-3xl font-semibold border-b-2  border-red-600 max-w-max mb-2" : "text-lg font-semibold border-b-2  border-red-600 max-w-max mb-2"}`}
+                        className={`${modoVista === "lista" ? "text-sm lg:text-2xl xl:text-3xl font-semibold border-b-2  border-red-600 max-w-max mb-2" : "text-lg font-semibold border-b-2  border-red-600 max-w-max mb-2"}`}
                       >
                         {auto.marca} {auto.modelo}
                       </h2>
-                      <div className="flex justify-start items-center text-lg mt-2">
+                      <div className="flex justify-start items-center text-base mt-2">
                         <p className="mr-2">{auto.anio}</p>
                         <p className="mr-2">|</p>
                         <p className="mr-2">
@@ -1840,7 +1840,7 @@ export default function UsadosList() {
                         >
                           Ver más
                         </a>
-                        <p className="font-semibold text-black">
+                        <p className={`${modoVista === "lista" ? "font-semibold text-black text-lg" : ""}`}>
                           ARS$ {Number(auto.precio).toLocaleString()}
                         </p>
                       </div>
