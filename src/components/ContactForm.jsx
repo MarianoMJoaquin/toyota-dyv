@@ -99,7 +99,7 @@ const ContactForm = () => {
             value={message.name}
             onChange={handleChange}
             placeholder="Apellido y Nombre"
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-indigo-500 focus:border-indigo-500 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
+            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-red-500 focus:border-red-500 ${errors.name ? 'border-red-500' : 'border-gray-300'}`}
           />
           {errors.name && <div className="text-red-500 text-sm mt-1">{errors.name}</div>}
         </div>
@@ -112,7 +112,7 @@ const ContactForm = () => {
             value={message.phone}
             onChange={handleChange}
             placeholder="Teléfono"
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-indigo-500 focus:border-indigo-500 ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
+            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-red-500 focus:border-red-500 ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
           />
           {errors.phone && <div className="text-red-500 text-sm mt-1">{errors.phone}</div>}
         </div>
@@ -125,7 +125,7 @@ const ContactForm = () => {
             value={message.email}
             onChange={handleChange}
             placeholder="Email"
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-indigo-500 focus:border-indigo-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-red-500 focus:border-red-500 ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
           />
           {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
         </div>
@@ -137,7 +137,7 @@ const ContactForm = () => {
             value={message.message}
             onChange={handleChange}
             placeholder="Escribe tu mensaje"
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-indigo-500 focus:border-indigo-500 ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
+            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-red-500 focus:border-red-500 ${errors.message ? 'border-red-500' : 'border-gray-300'}`}
             rows="4"
           />
           {errors.message && <div className="text-red-500 text-sm mt-1">{errors.message}</div>}
@@ -149,7 +149,7 @@ const ContactForm = () => {
             name="sucursal"
             value={message.sucursal}
             onChange={handleChange}
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-indigo-500 focus:border-indigo-500 ${errors.sucursal ? 'border-red-500' : 'border-gray-300'}`}
+            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md focus:ring-red-500 focus:border-red-500 ${errors.sucursal ? 'border-red-500' : 'border-gray-300'}`}
           >
             <option value="">Selecciona una sucursal</option>
             {sucursales.map((sucursal, index) => (
@@ -165,7 +165,7 @@ const ContactForm = () => {
           <button
             type="submit"
             disabled={isSending}
-            className={`w-full bg-indigo-600 text-white p-3 rounded-md font-semibold transition-all duration-300 ease-in-out ${isSending ? 'opacity-70' : 'hover:bg-indigo-700'}`}
+            className={`w-full bg-red-600 text-white p-3 rounded-md font-semibold transition-all duration-300 ease-in-out ${isSending ? 'opacity-70' : 'hover:bg-red-700'}`}
           >
             {isSending ? (
               <span className="flex items-center justify-center">
