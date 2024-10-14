@@ -96,43 +96,45 @@ const TabSliderComponent = () => {
     );
   }
 
-  const renderCard = (vehicle) => (
-    <div className="catalog__item">
-      <a href="javascript:void(0)" className="catalog__item-link">
-        <img
-          className="w-full h-72 object-cover catalog__item-img"
-          src={
-            vehicle.images[0]?.formats?.large?.url ||
-            vehicle.defaultImage?.formats?.small?.url
-          }
-          alt={vehicle.name}
-        />
-      </a>
-      <div className="catalog__item-info">
-        <div className="catalog__item-top">
-          <span className="catalog__item-year">hola</span>
-          <span>|</span>
-          <span className="catalog__item-type">hola</span>
-        </div>
-        <div className="catalog__item-middle">
-          <div className="catalog__item-name">{vehicle.name}</div>
-          <p className="catalog__item-text">holaaaa</p>
-        </div>
-        <div className="catalog__item-bottom">
-          <button className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
-            Ver más
-          </button>
-          <div className="catalog__item-price text-xl">
-            <span className="catalog__item-price-text">Desde </span>
-            <span className="catalog__item-price-number">
-              {vehicle.defaultPrice?.currency}${" "}
-              {vehicle.defaultPrice?.amount.toLocaleString()}
-            </span>
+  const renderCard = (vehicle) => {
+    const heroImage = vehicle.images.find((img) => img.data.viewType === "banner");
+    const imageUrl = heroImage?.formats?.large?.url || vehicle.defaultImage?.formats?.small?.url;
+
+    return (
+      <div className="catalog__item">
+        <a href="javascript:void(0)" className="catalog__item-link">
+          <img
+            className="w-full h-80 object-cover catalog__item-img"
+            src={imageUrl}
+            alt={vehicle.name}
+          />
+        </a>
+        <div className="catalog__item-info">
+          <div className="catalog__item-top">
+            <span className="catalog__item-year">hola</span>
+            <span>|</span>
+            <span className="catalog__item-type">hola</span>
+          </div>
+          <div className="catalog__item-middle">
+            <div className="catalog__item-name">{vehicle.name}</div>
+            <p className="catalog__item-text">holaaaa</p>
+          </div>
+          <div className="catalog__item-bottom">
+            <button className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
+              Ver más
+            </button>
+            <div className="catalog__item-price text-xl">
+              <span className="catalog__item-price-text">Desde </span>
+              <span className="catalog__item-price-number">
+                {vehicle.defaultPrice?.currency}${" "}
+                {vehicle.defaultPrice?.amount.toLocaleString()}
+              </span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   const renderSlider = (vehicles) => (
     <Swiper
