@@ -12,6 +12,8 @@ const TabSliderComponent = () => {
   const [pickups, setPickups] = useState([]);
   const [suv, setSuv] = useState([]);
   const [comerciales, setComerciales] = useState([]);
+  const [deportivos, setDeportivos] = useState([]);
+  const [hibridos, setHibridos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -21,17 +23,32 @@ const TabSliderComponent = () => {
         const data = response.data;
 
         // Filtramos los vehículos por categorías
-        const autosData = data.filter((vehicle) =>
-          vehicle.categories.some((category) => category.name === "Auto")
+        const autosData = data.filter(
+          (vehicle) =>
+            vehicle.categories.some((category) => category.name === "Auto") &&
+            !vehicle.tags.includes("gazoo_racing") &&
+            !vehicle.tags.includes("hybrid")
         );
-        const pickupsData = data.filter((vehicle) =>
-          vehicle.categories.some((category) => category.name === "Pick Up")
+        const pickupsData = data.filter(
+          (vehicle) =>
+            vehicle.categories.some((category) => category.name === "Pick Up") &&
+            !vehicle.tags.includes("gazoo_racing") &&
+            !vehicle.tags.includes("hybrid")
         );
-        const suvData = data.filter((vehicle) =>
-          vehicle.categories.some((category) => category.name === "SUV")
+        const suvData = data.filter(
+          (vehicle) =>
+            vehicle.categories.some((category) => category.name === "SUV") &&
+            !vehicle.tags.includes("gazoo_racing") &&
+            !vehicle.tags.includes("hybrid")
         );
         const comercialesData = data.filter((vehicle) =>
           vehicle.categories.some((category) => category.name === "Comercial")
+        );
+        const deportivosData = data.filter((vehicle) =>
+          vehicle.tags.includes("gazoo_racing")
+        );
+        const hibridosData = data.filter((vehicle) =>
+          vehicle.tags.includes("hybrid")
         );
 
         // Actualizamos los estados con los datos filtrados
@@ -39,6 +56,8 @@ const TabSliderComponent = () => {
         setPickups(pickupsData);
         setSuv(suvData);
         setComerciales(comercialesData);
+        setDeportivos(deportivosData);
+        setHibridos(hibridosData);
         setLoading(false);
       } catch (error) {
         console.error("Error al obtener los datos de la API:", error);
@@ -79,7 +98,7 @@ const TabSliderComponent = () => {
 
   const renderCard = (vehicle) => (
     <div className="catalog__item">
-      <a href="#" className="catalog__item-link">
+      <a href="javascript:void(0)" className="catalog__item-link">
         <img
           className="w-full h-72 object-cover catalog__item-img"
           src={
@@ -120,7 +139,6 @@ const TabSliderComponent = () => {
       modules={[Pagination, Navigation]}
       autoHeight={true}
       spaceBetween={10}
-      slidesPerView={1}
       navigation={{
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
@@ -129,7 +147,7 @@ const TabSliderComponent = () => {
       breakpoints={{
         640: { slidesPerView: 1 },
         768: { slidesPerView: 2 },
-        1024: { slidesPerView: 3 },
+        1024: { slidesPerView: vehicles.length > 2 ? 3 : 2 },
       }}
     >
       {vehicles.map((vehicle) => (
@@ -190,6 +208,26 @@ const TabSliderComponent = () => {
         >
           Comerciales
         </button>
+        <button
+          onClick={() => setActiveTab("Deportivos")}
+          className={`relative px-4 py-2 text-xl transition-all  ${
+            activeTab === "Deportivos"
+              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
+              : "text-gray-700 hover:text-red-600"
+          }`}
+        >
+          Deportivos
+        </button>
+        <button
+          onClick={() => setActiveTab("Híbridos")}
+          className={`relative px-4 py-2 text-xl transition-all  ${
+            activeTab === "Híbridos"
+              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
+              : "text-gray-700 hover:text-red-600"
+          }`}
+        >
+          Híbridos
+        </button>
       </div>
 
       {/* Contenido del tab activo */}
@@ -198,13 +236,15 @@ const TabSliderComponent = () => {
         {activeTab === "Pick-Ups" && renderSlider(pickups)}
         {activeTab === "SUV" && renderSlider(suv)}
         {activeTab === "Comerciales" && renderSlider(comerciales)}
+        {activeTab === "Deportivos" && renderSlider(deportivos)}
+        {activeTab === "Híbridos" && renderSlider(hibridos)}
       </div>
       <div className="flex justify-end">
         <a
           href="/modelos"
           className="text-gray-500 rounded-lg text-xl hover:text-black transition-all inline-block items-center"
         >
-          Ver todos los modelos <i class="ml-1 text-2xl ri-arrow-right-s-line"></i>
+          Ver todos los modelos <i className="ml-1 text-2xl ri-arrow-right-s-line"></i>
         </a>
       </div>
     </div>
