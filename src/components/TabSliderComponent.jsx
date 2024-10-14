@@ -169,71 +169,39 @@ const TabSliderComponent = () => {
   return (
     <div className="w-full">
       {/* Botones de los tabs */}
-      <div className="flex justify-center space-x-4 mb-4 border-b border-gray-300">
-        <button
-          onClick={() => setActiveTab("Autos")}
-          className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "Autos"
+        <div className="flex justify-center space-x-4 mb-4 border-b border-gray-300 max-sm:hidden">
+          {["Autos", "Pick-Ups", "SUV", "Comerciales", "Deportivos", "Híbridos"].map((tab) => (
+            <button
+          key={tab}
+          onClick={() => setActiveTab(tab)}
+          className={`relative px-4 py-2 text-xl transition-all ${
+            activeTab === tab
               ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
               : "cursor-pointer py-2 px-4 text-gray-600 border-b-2 border-transparent hover:border-black hover:transition hover:text-black"
           }`}
-        >
-          Autos
-        </button>
-        <button
-          onClick={() => setActiveTab("Pick-Ups")}
-          className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "Pick-Ups"
-              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
-              : "text-gray-700 hover:text-red-600"
-          }`}
-        >
-          Pick-Ups
-        </button>
-        <button
-          onClick={() => setActiveTab("SUV")}
-          className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "SUV"
-              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
-              : "text-gray-700 hover:text-red-600"
-          }`}
-        >
-          SUV
-        </button>
-        <button
-          onClick={() => setActiveTab("Comerciales")}
-          className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "Comerciales"
-              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
-              : "text-gray-700 hover:text-red-600"
-          }`}
-        >
-          Comerciales
-        </button>
-        <button
-          onClick={() => setActiveTab("Deportivos")}
-          className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "Deportivos"
-              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
-              : "text-gray-700 hover:text-red-600"
-          }`}
-        >
-          Deportivos
-        </button>
-        <button
-          onClick={() => setActiveTab("Híbridos")}
-          className={`relative px-4 py-2 text-xl transition-all  ${
-            activeTab === "Híbridos"
-              ? "text-red-600 after:absolute after:left-0 after:right-0 after:bottom-0 after:h-0.5 after:bg-red-600"
-              : "text-gray-700 hover:text-red-600"
-          }`}
-        >
-          Híbridos
-        </button>
-      </div>
+            >
+          {tab}
+            </button>
+          ))}
+        </div>
 
-      {/* Contenido del tab activo */}
-      <div className="p-8">
+        {/* Select para dispositivos móviles */}
+        <div className="sm:hidden mb-4">
+          <select
+            value={activeTab}
+            onChange={(e) => setActiveTab(e.target.value)}
+            className="block py-2.5 w-full focus:text-black text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 peer"
+          >
+            {["Autos", "Pick-Ups", "SUV", "Comerciales", "Deportivos", "Híbridos"].map((tab) => (
+          <option key={tab} value={tab}>
+            {tab}
+          </option>
+            ))}
+          </select>
+        </div>
+
+        {/* Contenido del tab activo */}
+      <div className="py-8">
         {activeTab === "Autos" && renderSlider(autos)}
         {activeTab === "Pick-Ups" && renderSlider(pickups)}
         {activeTab === "SUV" && renderSlider(suv)}
