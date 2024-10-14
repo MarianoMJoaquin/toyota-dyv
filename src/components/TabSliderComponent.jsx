@@ -110,14 +110,14 @@ const TabSliderComponent = () => {
           />
         </a>
         <div className="catalog__item-info">
-          <div className="catalog__item-top">
+          {/* <div className="catalog__item-top">
             <span className="catalog__item-year">hola</span>
             <span>|</span>
             <span className="catalog__item-type">hola</span>
-          </div>
+          </div>*/}
           <div className="catalog__item-middle">
             <div className="catalog__item-name">{vehicle.name}</div>
-            <p className="catalog__item-text">holaaaa</p>
+            {/*<p className="catalog__item-text">holaaaa</p>*/}
           </div>
           <div className="catalog__item-bottom">
             <button className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
