@@ -4,115 +4,128 @@ interface Props {
   currentColor: string;
   currentProduct: string;
 }
-const { currentColor, currentProduct, currentModel } = Astro.props;
+const { currentColor, currentProduct, currentModel } = Astro.props;    
 ---
+<!--<div class="viewer bg-white shadow-lg rounded-md p-4 mb-4" id="productViewer">
+    <div id="spinner" class="spinner"></div>
+    <img src=`/images/modelos/${currentModel}/${currentProduct}/${currentColor}/4.png` alt="Producto en 360" id="productImage" style="display:none;">
+</div>
+  
+<div class="flex space-x-4">
+    <button class="bg-white text-black px-4 py-2 rounded" data-color="white">Blanco</button>
+    <button class="bg-red-500 text-white px-4 py-2 rounded" data-color="green">Rojo</button>
+</div>-->
+
 <div class="viewer bg-white rounded-md" id="productViewer">
-    <div id="spinner" class="spinner" aria-hidden="true"></div>
-    <img src={`/images/modelos/${currentModel}/${currentProduct}/${currentColor}/4.png`} alt="Producto en 360" id="productImage" loading="lazy">
+    <div id="spinner" class="spinner"></div>
+    <img src=`/images/modelos/${currentModel}/${currentProduct}/${currentColor}/4.png` alt="Producto en 360" id="productImage">
 </div>
 <div class="indicador-arrastre">
-  <i class="ri-arrow-left-s-line" aria-hidden="true"></i> Arrastre para girar <i class="ri-arrow-right-s-line" aria-hidden="true"></i>
+  <i class="ri-arrow-left-s-line"></i> Arrastre para girar <i class="ri-arrow-right-s-line"></i>
 </div>
 <div class="flex gap-3">
-    <button class="color-button bg-red-600" data-color="red" aria-label="Seleccionar color rojo"></button>
-    <button class="color-button bg-gray-200" data-color="white" aria-label="Seleccionar color blanco"></button>
-    <button class="color-button bg-gray-700" data-color="gray" aria-label="Seleccionar color gris"></button>
-    <button class="color-button bg-gray-400" data-color="silver" aria-label="Seleccionar color plata"></button>
-    <button class="color-button bg-black" data-color="black" aria-label="Seleccionar color negro"></button>
-    <button class="color-button bg-gray-300" data-color="white-perl" aria-label="Seleccionar color blanco perlado"></button>
-    <button class="color-button bg-sky-900" data-color="blue" aria-label="Seleccionar color azul"></button>
+    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-red-600 text-white px-3 rounded-full" data-color="red"></button>
+    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-200 text-white px-3 rounded-full" data-color="white"></button>
+    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-700  text-white px-3 rounded-full" data-color="gray"></button>
+    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-400 text-white px-3 rounded-full" data-color="silver"></button>
+    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-black text-white px-3 rounded-full" data-color="black"></button>
+    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-300 text-white px-3 rounded-full" data-color="white-perl"></button>
+    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-sky-900 text-white px-3 rounded-full" data-color="blue"></button>
 </div>
 <div class="colors mb-5">
   <span id="colorName">Color seleccionado: </span>
 </div>
-<style>
-  .indicador-arrastre {
-    font-style: italic;
-    font-size: 14px;
-    color: color-mix(in srgb, var(--default-color), transparent 50%);
-  }
+  <style>
+    .indicador-arrastre {
+        font-style: italic;
+        font-size: 14px;
+        color: color-mix(in srgb, var(--default-color), transparent 50%);
+    }
+.viewer {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: grab;
+}
+
+.viewer img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@media screen and (min-width: 1024px) {
   .viewer {
-    width: 100%;
+    height: 200px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .viewer {
+    height: 250px;
+  }
+}
+
+@media screen and (min-width: 1536px) {
+  .viewer {
     height: 400px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: grab;
   }
-  .viewer img {
-    max-width: 100%;
-    max-height: 100%;
-  }
-  @media screen and (min-width: 1024px) {
-    .viewer {
-      height: 200px;
-    }
-  }
-  @media screen and (min-width: 1280px) {
-    .viewer {
-      height: 250px;
-    }
-  }
-  @media screen and (min-width: 1536px) {
-    .viewer {
-      height: 400px;
-    }
-  }
-  .viewer:active {
-    cursor: grabbing;
-  }
-  .spinner {
-    border: 8px solid #f3f3f3; /* Gris claro */
-    border-top: 8px solid #eb0a1e; /* Azul */
-    border-radius: 50%;
-    width: 60px;
-    height: 60px;
-    animation: spin 1.5s linear infinite;
-  }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-  .tabs {
-    display: flex;
-    justify-content: center;
-  }
-  .tab {
-    padding: 0 20px;
-    margin: 0 10px;
-    cursor: pointer;
-    transition: color 0.3s ease;
-  }
-  .tab:first-child {
-    margin-left: 0;
-  }
-  .tab:last-child {
-    margin-right: 0;
-    border-right: none;
-  }
-  .tab:hover {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--accent-color);
-  }
-  .tab.active {
-    color: var(--accent-color);
-    border-bottom: 2px solid var(--accent-color);
-  }
-  .color-button {
-    display: inline-block;
-    text-align: center;
-    user-select: none;
-    border: 2px solid #500-gray;
-    font-weight: normal;
-    white-space: nowrap;
-    padding: 0.75rem;
-    line-height: normal;
-    text-decoration: none;
-    color: white;
-    border-radius: 9999px;
-  }
-</style>
+}
+
+.viewer:active {
+  cursor: grabbing;
+}
+/* Spinner para mostrar mientras se cargan las imágenes */
+.spinner {
+  border: 8px solid #f3f3f3; /* Gris claro */
+  border-top: 8px solid #eb0a1e; /* Azul */
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Estilos para las tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+}
+
+.tab {
+  padding: 0 20px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  
+}
+
+.tab:first-child {
+  margin-left: 0;
+}
+
+.tab:last-child {
+  margin-right: 0;
+  border-right: none;
+} 
+
+.tab:hover {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.tab.active {
+  color: var(--accent-color);
+  border-bottom: 2px solid var(--accent-color);
+}
+
+  </style>
   
   <script is:inline define:vars={{currentModel, currentColor, currentProduct}}>
     
