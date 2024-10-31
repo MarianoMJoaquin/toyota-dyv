@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 
-const TabSliderComponent = () => {
+const ModelosTabSliderComponent = () => {
   const [activeTab, setActiveTab] = useState("Autos");
   const [autos, setAutos] = useState([]);
   const [pickups, setPickups] = useState([]);
@@ -120,9 +120,9 @@ const TabSliderComponent = () => {
             {/*<p className="catalog__item-text">holaaaa</p>*/}
           </div>
           <div className="catalog__item-bottom">
-            <button className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
+            <a href={`/modelos/${vehicle.slug}`} className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
               Ver más
-            </button>
+            </a>
             <div className="catalog__item-price text-xl">
               <span className="catalog__item-price-text">Desde </span>
               <span className="catalog__item-price-number">
@@ -221,4 +221,4 @@ const TabSliderComponent = () => {
   );
 };
 
-export default TabSliderComponent;
+export default ModelosTabSliderComponent;

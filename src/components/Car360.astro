@@ -4,8 +4,9 @@ interface Props {
   currentColor: string;
   currentProduct: string;
 }
-const { currentColor, currentProduct, currentModel } = Astro.props;    
+const { currentColor, currentProduct, currentModel } = Astro.props;
 ---
+
 <!--<div class="viewer bg-white shadow-lg rounded-md p-4 mb-4" id="productViewer">
     <div id="spinner" class="spinner"></div>
     <img src=`/images/modelos/${currentModel}/${currentProduct}/${currentColor}/4.png` alt="Producto en 360" id="productImage" style="display:none;">
@@ -15,320 +16,344 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
     <button class="bg-white text-black px-4 py-2 rounded" data-color="white">Blanco</button>
     <button class="bg-red-500 text-white px-4 py-2 rounded" data-color="green">Rojo</button>
 </div>-->
-
 <div class="viewer bg-white rounded-md" id="productViewer">
-    <div id="spinner" class="spinner"></div>
-    <img src=`/images/modelos/${currentModel}/${currentProduct}/${currentColor}/4.png` alt="Producto en 360" id="productImage">
+  <div id="spinner" class="spinner"></div>
+  <img
+    src=`/images/modelos/${currentModel}/${currentProduct}/${currentColor}/4.png`
+    alt="Producto en 360"
+    id="productImage"
+  />
 </div>
 <div class="indicador-arrastre">
-  <i class="ri-arrow-left-s-line"></i> Arrastre para girar <i class="ri-arrow-right-s-line"></i>
+  <i class="ri-arrow-left-s-line"></i> Arrastre para girar <i
+    class="ri-arrow-right-s-line"></i>
 </div>
 <div class="flex gap-3">
-    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-red-600 text-white px-3 rounded-full" data-color="red"></button>
-    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-200 text-white px-3 rounded-full" data-color="white"></button>
-    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-700  text-white px-3 rounded-full" data-color="gray"></button>
-    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-400 text-white px-3 rounded-full" data-color="silver"></button>
-    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-black text-white px-3 rounded-full" data-color="black"></button>
-    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-300 text-white px-3 rounded-full" data-color="white-perl"></button>
-    <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-sky-900 text-white px-3 rounded-full" data-color="blue"></button>
+  <button
+    class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-red-600 text-white px-3 rounded-full"
+    data-color="red"></button>
+  <button
+    class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-200 text-white px-3 rounded-full"
+    data-color="white"></button>
+  <button
+    class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-700 text-white px-3 rounded-full"
+    data-color="gray"></button>
+  <button
+    class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-400 text-white px-3 rounded-full"
+    data-color="silver"></button>
+  <button
+    class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-black text-white px-3 rounded-full"
+    data-color="black"></button>
+  <button
+    class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-300 text-white px-3 rounded-full"
+    data-color="white-perl"></button>
+  <button
+    class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-sky-900 text-white px-3 rounded-full"
+    data-color="blue"></button>
 </div>
 <div class="colors mb-5">
-  <span id="colorName">Color seleccionado: </span>
+  <span id="colorName"
+    >{
+      `Color seleccionado: ${currentColor === "red" ? "Rojo Metalizado" : currentColor === "gray" ? "Gris Oscuro" : ""}`
+    }</span
+  >
 </div>
-  <style>
-    .indicador-arrastre {
-        font-style: italic;
-        font-size: 14px;
-        color: color-mix(in srgb, var(--default-color), transparent 50%);
-    }
-.viewer {
-  width: 100%;
-  height: 400px;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: grab;
-}
-
-.viewer img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-@media screen and (min-width: 1024px) {
-  .viewer {
-    height: 200px;
+<style>
+  .indicador-arrastre {
+    font-style: italic;
+    font-size: 14px;
+    color: color-mix(in srgb, var(--default-color), transparent 50%);
   }
-}
-
-@media screen and (min-width: 1280px) {
   .viewer {
-    height: 250px;
-  }
-}
-
-@media screen and (min-width: 1536px) {
-  .viewer {
+    width: 100%;
     height: 400px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: grab;
   }
-}
 
-.viewer:active {
-  cursor: grabbing;
-}
-/* Spinner para mostrar mientras se cargan las imágenes */
-.spinner {
-  border: 8px solid #f3f3f3; /* Gris claro */
-  border-top: 8px solid #eb0a1e; /* Azul */
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  animation: spin 1.5s linear infinite;
-}
+  .viewer img {
+    max-width: 100%;
+    max-height: 100%;
+  }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+  @media screen and (min-width: 1024px) {
+    .viewer {
+      height: 200px;
+    }
+  }
 
-/* Estilos para las tabs */
-.tabs {
-  display: flex;
-  justify-content: center;
-}
+  @media screen and (min-width: 1280px) {
+    .viewer {
+      height: 250px;
+    }
+  }
 
-.tab {
-  padding: 0 20px;
-  margin: 0 10px;
-  cursor: pointer;
-  transition: color 0.3s ease;
-  
-}
+  @media screen and (min-width: 1536px) {
+    .viewer {
+      height: 400px;
+    }
+  }
 
-.tab:first-child {
-  margin-left: 0;
-}
+  .viewer:active {
+    cursor: grabbing;
+  }
+  /* Spinner para mostrar mientras se cargan las imágenes */
+  .spinner {
+    border: 5px solid #f3f3f3; /* Gris claro */
+    border-top: 5px solid #eb0a1e; /* Azul */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 1s linear infinite;
+  }
 
-.tab:last-child {
-  margin-right: 0;
-  border-right: none;
-} 
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-.tab:hover {
-  color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
-}
+  /* Estilos para las tabs */
+  .tabs {
+    display: flex;
+    justify-content: center;
+  }
 
-.tab.active {
-  color: var(--accent-color);
-  border-bottom: 2px solid var(--accent-color);
-}
+  .tab {
+    padding: 0 20px;
+    margin: 0 10px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
 
-  </style>
-  
-  <script is:inline define:vars={{currentModel, currentColor, currentProduct}}>
-    
-    let currentModelAux = currentModel;
-    let currentColorAux = currentColor;
-    let currentProductAux = currentProduct;
+  .tab:first-child {
+    margin-left: 0;
+  }
 
+  .tab:last-child {
+    margin-right: 0;
+    border-right: none;
+  }
 
-    let currentFrame = 4; // Frame inicial
-    const totalFrames = 30; // Total de frames
-    let isDragging = false; // Bandera para saber si se está arrastrando
-    let startX = 0; // Posición inicial del mouse
-    let accumulatedMovement = 0; // Movimiento acumulado para mayor precisión
-    const frameChangeThreshold = 20; // Ajustamos el umbral para hacer el touch más suave
-    const productImage = document.getElementById('productImage');
-    /*let currentColor = 'red'; // Color inicial
+  .tab:hover {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+  }
+
+  .tab.active {
+    color: var(--accent-color);
+    border-bottom: 2px solid var(--accent-color);
+  }
+</style>
+
+<script is:inline define:vars={{ currentModel, currentColor, currentProduct }}>
+  let currentModelAux = currentModel; // Modelo actual del auto (Yaris Hatchback o Yaris Sedán)
+  let currentColorAux = currentColor; // Color actual del auto (Rojo, Blanco, Gris, etc.)
+  let currentProductAux = currentProduct; // Producto actual del auto (XS, XLS, S)
+
+  let currentFrame = 4; // Frame inicial
+  const totalFrames = 30; // Total de frames
+  let isDragging = false; // Bandera para saber si se está arrastrando
+  let startX = 0; // Posición inicial del mouse
+  let accumulatedMovement = 0; // Movimiento acumulado para mayor precisión
+  const frameChangeThreshold = 20; // Ajustamos el umbral para hacer el touch más suave
+  const productImage = document.getElementById("productImage");
+  /*let currentColor = 'red'; // Color inicial
     let currentProduct = 'XS'; // Producto inicial*/
-    let imagesLoaded = false; // Bandera para saber si las imágenes se han cargado
-    const colorName = document.getElementById('colorName'); // Elemento para mostrar el nombre del color
+  let imagesLoaded = false; // Bandera para saber si las imágenes se han cargado
+  const colorName = document.getElementById("colorName"); // Elemento para mostrar el nombre del color
 
-    // Preload de todas las imágenes
-    let imageCache = {};
-    let imagesToLoad = [];
+  // Preload de todas las imágenes
+  let imageCache = {};
+  let imagesToLoad = [];
 
-    function preloadImages() {
-      imagesToLoad = []; // Reiniciamos las imágenes a cargar
-      for (let i = 1; i <= totalFrames; i++) {
-        const imgSrc = `/images/modelos/${currentModelAux}/${currentProductAux}/${currentColorAux}/${i}.png`;
-        imagesToLoad.push(imgSrc);
-      }
-
-      loadNextImage(); // Iniciar la precarga
+  function preloadImages() {
+    imagesToLoad = []; // Reiniciamos las imágenes a cargar
+    for (let i = 1; i <= totalFrames; i++) {
+      const imgSrc = `/images/modelos/${currentModelAux}/${currentProductAux}/${currentColorAux}/${i}.png`;
+      imagesToLoad.push(imgSrc);
     }
 
-    function loadNextImage() {
-      if (imagesToLoad.length === 0) {
-        // Todas las imágenes se han cargado
-        document.getElementById('spinner').style.display = 'none';
-        productImage.style.display = 'block';
-        imagesLoaded = true;
-        return;
-      }
+    loadNextImage(); // Iniciar la precarga
+  }
 
-      const nextImageSrc = imagesToLoad.shift();
-      const img = new Image();
-      img.src = nextImageSrc;
-
-      img.onload = function() {
-        imageCache[nextImageSrc] = img;
-        loadNextImage(); // Recursivamente cargar la siguiente imagen
-      };
-
-      img.onerror = function() {
-        console.error('Error cargando la imagen:', nextImageSrc);
-        loadNextImage(); // Continuar cargando las siguientes aunque falle una
-      };
+  function loadNextImage() {
+    if (imagesToLoad.length === 0) {
+      // Todas las imágenes se han cargado
+      document.getElementById("spinner").style.display = "none";
+      productImage.style.display = "block";
+      imagesLoaded = true;
+      return;
     }
 
-    // Ejecutar la precarga de imágenes cuando se carga la página
-    window.onload = function() {
-      preloadImages();
+    const nextImageSrc = imagesToLoad.shift();
+    const img = new Image();
+    img.src = nextImageSrc;
+
+    img.onload = function () {
+      imageCache[nextImageSrc] = img;
+      loadNextImage(); // Recursivamente cargar la siguiente imagen
     };
 
-    productImage.addEventListener('dragstart', (event) => {
-      event.preventDefault(); 
-    });
+    img.onerror = function () {
+      console.error("Error cargando la imagen:", nextImageSrc);
+      loadNextImage(); // Continuar cargando las siguientes aunque falle una
+    };
+  }
 
-    const viewer = document.getElementById('productViewer');
+  // Ejecutar la precarga de imágenes cuando se carga la página
+  window.onload = function () {
+    preloadImages();
+  };
 
-    // --- Controladores para el mouse ---
-    viewer.addEventListener('mousedown', (event) => {
-      if (!imagesLoaded) return; // No permitir interacción hasta que las imágenes se carguen
-      isDragging = true;
+  productImage.addEventListener("dragstart", (event) => {
+    event.preventDefault();
+  });
+
+  const viewer = document.getElementById("productViewer");
+
+  // --- Controladores para el mouse ---
+  viewer.addEventListener("mousedown", (event) => {
+    if (!imagesLoaded) return; // No permitir interacción hasta que las imágenes se carguen
+    isDragging = true;
+    startX = event.pageX;
+    viewer.style.cursor = "grabbing";
+    productImage.style.transition = "transform 0s"; //  Desactivar la transición para un arrastre más suave
+  });
+
+  viewer.addEventListener("mouseup", () => {
+    isDragging = false;
+    viewer.style.cursor = "grab";
+  });
+
+  viewer.addEventListener("mouseleave", () => {
+    isDragging = false;
+    viewer.style.cursor = "grab";
+  });
+
+  viewer.addEventListener("mousemove", (event) => {
+    if (isDragging) {
+      const diff = event.pageX - startX;
+      handleMouseDrag(diff);
       startX = event.pageX;
-      viewer.style.cursor = "grabbing";
-      productImage.style.transition = 'transform 0s'; //  Desactivar la transición para un arrastre más suave
-    });
-
-    viewer.addEventListener('mouseup', () => {
-      isDragging = false;
-      viewer.style.cursor = "grab";
-    });
-
-    viewer.addEventListener('mouseleave', () => {
-      isDragging = false;
-      viewer.style.cursor = "grab";
-    });
-
-    viewer.addEventListener('mousemove', (event) => {
-      if (isDragging) {
-        const diff = event.pageX - startX;
-        handleMouseDrag(diff);
-        startX = event.pageX;
-      }
-    });
-
-    function handleMouseDrag(diff) {
-      accumulatedMovement += diff;
-
-      if (Math.abs(accumulatedMovement) > frameChangeThreshold) {
-        const framesToMove = Math.floor(Math.abs(accumulatedMovement) / frameChangeThreshold);
-        currentFrame += (diff > 0) ? -framesToMove : framesToMove;
-
-        if (currentFrame > totalFrames) currentFrame = 1;
-        if (currentFrame < 1) currentFrame = totalFrames;
-
-        updateImage();
-        accumulatedMovement = accumulatedMovement % frameChangeThreshold;
-      }
     }
+  });
 
-    // --- Controladores para dispositivos táctiles (touch) ---
-    viewer.addEventListener('touchstart', (event) => {
-      if (!imagesLoaded || event.touches.length !== 1) return; // No permitir interacción hasta que las imágenes se carguen
-      isDragging = true;
-      startX = event.touches[0].pageX; // Capturamos la posición inicial del primer toque
-      accumulatedMovement = 0; // Reiniciamos el acumulador de movimiento
-    });
+  function handleMouseDrag(diff) {
+    accumulatedMovement += diff;
 
-    viewer.addEventListener('touchend', () => {
-      isDragging = false; // El usuario ha dejado de arrastrar, reseteamos el arrastre
-    });
+    if (Math.abs(accumulatedMovement) > frameChangeThreshold) {
+      const framesToMove = Math.floor(
+        Math.abs(accumulatedMovement) / frameChangeThreshold
+      );
+      currentFrame += diff > 0 ? -framesToMove : framesToMove;
 
-    viewer.addEventListener('touchmove', (event) => {
-      if (isDragging && event.touches.length === 1) {
-        const diff = event.touches[0].pageX - startX; // Calculamos la diferencia entre la posición inicial y la actual
-        handleTouchDrag(diff);
-        startX = event.touches[0].pageX; // Actualizamos la posición inicial al nuevo punto de arrastre
-      }
-    });
+      if (currentFrame > totalFrames) currentFrame = 1;
+      if (currentFrame < 1) currentFrame = totalFrames;
 
-    function handleTouchDrag(diff) {
-      accumulatedMovement += diff;
-
-      if (Math.abs(accumulatedMovement) > frameChangeThreshold) {
-        const framesToMove = Math.floor(Math.abs(accumulatedMovement) / frameChangeThreshold);
-        currentFrame += (diff > 0) ? -framesToMove : framesToMove;
-
-        if (currentFrame > totalFrames) currentFrame = 1;
-        if (currentFrame < 1) currentFrame = totalFrames;
-
-        updateImage();
-        accumulatedMovement = accumulatedMovement % frameChangeThreshold;
-      }
+      updateImage();
+      accumulatedMovement = accumulatedMovement % frameChangeThreshold;
     }
+  }
 
-    function updateImage() {
-      productImage.src = `/images/modelos/${currentModelAux}/${currentProductAux}/${currentColorAux}/${currentFrame}.png`;
+  // --- Controladores para dispositivos táctiles (touch) ---
+  viewer.addEventListener("touchstart", (event) => {
+    if (!imagesLoaded || event.touches.length !== 1) return; // No permitir interacción hasta que las imágenes se carguen
+    isDragging = true;
+    startX = event.touches[0].pageX; // Capturamos la posición inicial del primer toque
+    accumulatedMovement = 0; // Reiniciamos el acumulador de movimiento
+  });
+
+  viewer.addEventListener("touchend", () => {
+    isDragging = false; // El usuario ha dejado de arrastrar, reseteamos el arrastre
+  });
+
+  viewer.addEventListener("touchmove", (event) => {
+    if (isDragging && event.touches.length === 1) {
+      const diff = event.touches[0].pageX - startX; // Calculamos la diferencia entre la posición inicial y la actual
+      handleTouchDrag(diff);
+      startX = event.touches[0].pageX; // Actualizamos la posición inicial al nuevo punto de arrastre
     }
+  });
 
-    // Cambiar de Versión cuando se hace clic en una tab
-    const tabs = document.querySelectorAll('.tab');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => t.classList.remove('active')); // Remover la clase "active" de todas las tabs
-        tab.classList.add('active'); // Activar la tab seleccionada
+  function handleTouchDrag(diff) {
+    accumulatedMovement += diff;
 
-        currentProductAux = tab.getAttribute('data-product'); // Cambiar al producto seleccionado // Reiniciar el color
-        imagesLoaded = false; // Marcar las imágenes como no cargadas
-        document.getElementById('spinner').style.display = 'block'; // Mostrar el spinner
-        productImage.style.display = 'none'; // Ocultar la imagen actual
-        currentFrame = 4; //Reiniciar el frame
-        updateCarInfo(); // Actualizar la información del auto
-        preloadImages(); // Cargar las imágenes del nuevo producto
-        updateImage(); // Actualizar la imagen
-      });
+    if (Math.abs(accumulatedMovement) > frameChangeThreshold) {
+      const framesToMove = Math.floor(
+        Math.abs(accumulatedMovement) / frameChangeThreshold
+      );
+      currentFrame += diff > 0 ? -framesToMove : framesToMove;
+
+      if (currentFrame > totalFrames) currentFrame = 1;
+      if (currentFrame < 1) currentFrame = totalFrames;
+
+      updateImage();
+      accumulatedMovement = accumulatedMovement % frameChangeThreshold;
+    }
+  }
+
+  function updateImage() {
+    productImage.src = `/images/modelos/${currentModelAux}/${currentProductAux}/${currentColorAux}/${currentFrame}.png`;
+  }
+
+  // Cambiar de Versión cuando se hace clic en una tab
+  const tabs = document.querySelectorAll(".tab");
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      tabs.forEach((t) => t.classList.remove("active")); // Remover la clase "active" de todas las tabs
+      tab.classList.add("active"); // Activar la tab seleccionada
+
+      currentProductAux = tab.getAttribute("data-product"); // Cambiar al producto seleccionado // Reiniciar el color
+      imagesLoaded = false; // Marcar las imágenes como no cargadas
+      document.getElementById("spinner").style.display = "block"; // Mostrar el spinner
+      productImage.style.display = "none"; // Ocultar la imagen actual
+      currentFrame = 4; //Reiniciar el frame
+      updateCarInfo(); // Actualizar la información del auto
+      preloadImages(); // Cargar las imágenes del nuevo producto
+      updateImage(); // Actualizar la imagen
     });
+  });
 
-    
-    // Función para cambiar el color seleccionado
-    function colorSelected(color) {
-      if (color === 'red') {
-        if (currentModelAux === 'yaris-hatchback'){
-          colorName.innerText = 'Color seleccionado: Negro Mica';
-        }
-      } else if (color === 'black') {
-        colorName.innerText = 'Color seleccionado: Negro Mica';
-      } else if(color === 'white'){
-        colorName.innerText = 'Color seleccionado: Super Blanco';
-      } else if(color === 'gray'){
-        colorName.innerText = 'Color seleccionado: Gris Oscuro';
-      } else if(color === 'silver'){
-        colorName.innerText = 'Color seleccionado: Gris Plata';
-      } else if(color === 'blue'){
-        colorName.innerText = 'Color seleccionado: Gris Azulado';
-      } else if(color === 'white-perl'){
-        colorName.innerText = 'Color seleccionado: Blanco Perlado';
+  // Función para cambiar el color seleccionado
+  function colorSelected(color) {
+    if (color === "red") {
+      if (currentModelAux === "yaris-hatchback") {
+        colorName.innerText = "Color seleccionado: Rojo";
       }
-
+    } else if (color === "black") {
+      colorName.innerText = "Color seleccionado: Negro Mica";
+    } else if (color === "white") {
+      colorName.innerText = "Color seleccionado: Super Blanco";
+    } else if (color === "gray") {
+      colorName.innerText = "Color seleccionado: Gris Oscuro";
+    } else if (color === "silver") {
+      colorName.innerText = "Color seleccionado: Gris Plata";
+    } else if (color === "blue") {
+      colorName.innerText = "Color seleccionado: Gris Azulado";
+    } else if (color === "white-perl") {
+      colorName.innerText = "Color seleccionado: Blanco Perlado";
     }
+  }
 
-    // Cambiar color y recargar imágenes
-    const colorButtons = document.querySelectorAll('button[data-color]');
-    colorButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        currentColorAux = button.getAttribute('data-color');
-        colorSelected(currentColorAux);
-        preloadImages(); // Cargar las imágenes del nuevo color
-        updateImage(); // Actualizar la imagen
-      });
+  // Cambiar color y recargar imágenes
+  const colorButtons = document.querySelectorAll("button[data-color]");
+  colorButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      currentColorAux = button.getAttribute("data-color");
+      colorSelected(currentColorAux);
+      preloadImages(); // Cargar las imágenes del nuevo color
+      updateImage(); // Actualizar la imagen
     });
+  });
 
-/*
+  /*
         //Tabs de las especificaciones
         function openTab(tabName) {
             let i,tabcontent, tablinks;
@@ -443,96 +468,140 @@ const { currentColor, currentProduct, currentModel } = Astro.props;
               });
             }
           });*/
-          
-      
-          // Actualizar la información del auto
-          let manualXsTab = document.getElementById('manual-xs-tab');
-          let automaticoXsTab = document.getElementById('automatico-xs-tab');
-      
-          let manualXlsTab = document.getElementById('manual-xls-tab');
-          let automaticoXlsTab = document.getElementById('automatico-xls-tab');
-          let automaticoXlsPackTab = document.getElementById('automatico-xls-pack-tab');
-      
-          let automaticoS = document.getElementById('automatico-s-tab');
-      
-          // Actualizar la información del auto
-          if (manualXsTab && automaticoXsTab && manualXlsTab && automaticoXlsTab && automaticoXlsPackTab && automaticoS) {
-            manualXsTab.click();
-            console.log('click')
-            manualXsTab.style.display = 'block';
-            automaticoXsTab.style.display = 'block';
-            manualXlsTab.style.display = 'none';
-            automaticoXlsTab.style.display = 'none';
-            automaticoXlsPackTab.style.display = 'none';
-            automaticoS.style.display = 'none';
-          }
 
-          if (currentModelAux === 'yaris-hatchback'){
-            manualXsTab.click();
-          } else if (currentModelAux === 'yaris-sedan'){
-            if (manualXlsTab){
-              manualXlsTab.click();
-              console.log('click');
-            } else{
-              console.log('no click');
-            }
-          }
-          
-           // Actualizar la información del auto
-          function updateCarInfo(){
-            if(currentProduct === 'XS'){
-              if (manualXsTab && automaticoXsTab && manualXlsTab && automaticoXlsTab && automaticoXlsPackTab && automaticoS) { // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
-                manualXsTab.click();
-                manualXsTab.style.display = 'block';
-                automaticoXsTab.style.display = 'block';
-                manualXlsTab.style.display = 'none';
-                automaticoXlsTab.style.display = 'none';
-                automaticoXlsPackTab.style.display = 'none';
-                automaticoS.style.display = 'none';
-              }
-            } else if(currentProduct === 'XLS'){
-              if (manualXlsTab && automaticoXlsTab && automaticoXlsPackTab && automaticoS && manualXsTab && automaticoXsTab) { // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
-                manualXlsTab.click();
-                manualXlsTab.style.display = 'block';
-                automaticoXlsTab.style.display = 'block';
-                automaticoXlsPackTab.style.display = 'block';
-                manualXsTab.style.display = 'none';
-                automaticoXsTab.style.display = 'none';
-                automaticoS.style.display = 'none';
-              }
-            } else if(currentProduct === 'S'){
-              if (automaticoS && manualXsTab && automaticoXsTab && manualXlsTab && automaticoXlsTab && automaticoXlsPackTab) { // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
-                automaticoS.click();
-                automaticoS.style.display = 'block';
-                manualXsTab.style.display = 'none';
-                automaticoXsTab.style.display = 'none';
-                manualXlsTab.style.display = 'none';
-                automaticoXlsTab.style.display = 'none';
-                automaticoXlsPackTab.style.display = 'none';
-              }
-            }
-          }
+  // Actualizar la información del auto
+  let manualXsTab = document.getElementById("manual-xs-tab");
+  let automaticoXsTab = document.getElementById("automatico-xs-tab");
 
-          function updateCarModelColors(modelo){
-            if (modelo === "yaris-sedan"){
-              colorButtons.forEach(button => {
-                if (button.getAttribute('data-color') === 'gray' || button.getAttribute('data-color') === 'silver' || button.getAttribute('data-color') === 'black' || button.getAttribute('data-color') === 'white-perl' || button.getAttribute('data-color') === 'blue' || button.getAttribute('data-color') === 'white') { 
-                  return; // No hacer nada
-                } else {
-                  button.style.display = 'none'; // Ocultar el botón de color que no corresponda al modelo seleccionado
-                }
-              });
-            } else if (modelo === "yaris-hatchback"){
-              colorButtons.forEach(button => {
-                if (button.getAttribute('data-color') === 'red' || button.getAttribute('data-color') === 'white' || button.getAttribute('data-color') === 'blue' || button.getAttribute('data-color') === 'black' || button.getAttribute('data-color') === 'gray' || button.getAttribute('data-color') === 'silver' || button.getAttribute('data-color') === 'white-perl') {
-                  return; // No hacer nada
-                } else {
-                  button.style.display = 'none';  // Ocultar el botón de color que no corresponda al modelo seleccionado
-                }
-              });
-            }
-          }
+  let manualXlsTab = document.getElementById("manual-xls-tab");
+  let automaticoXlsTab = document.getElementById("automatico-xls-tab");
+  let automaticoXlsPackTab = document.getElementById("automatico-xls-pack-tab");
 
-          updateCarModelColors(currentModelAux);
-    
-  </script>
+  let automaticoS = document.getElementById("automatico-s-tab");
+
+  // Actualizar la información del auto
+  if (
+    manualXsTab &&
+    automaticoXsTab &&
+    manualXlsTab &&
+    automaticoXlsTab &&
+    automaticoXlsPackTab &&
+    automaticoS
+  ) {
+    manualXsTab.click();
+    console.log("click");
+    manualXsTab.style.display = "block";
+    automaticoXsTab.style.display = "block";
+    manualXlsTab.style.display = "none";
+    automaticoXlsTab.style.display = "none";
+    automaticoXlsPackTab.style.display = "none";
+    automaticoS.style.display = "none";
+  }
+
+  if (currentModelAux === "yaris-hatchback") {
+    manualXsTab.click();
+  } else if (currentModelAux === "yaris-sedan") {
+    if (manualXlsTab) {
+      manualXlsTab.click();
+      console.log("click");
+    } else {
+      console.log("no click");
+    }
+  }
+
+  // Actualizar la información del auto
+  function updateCarInfo() {
+    if (currentProduct === "XS") {
+      if (
+        manualXsTab &&
+        automaticoXsTab &&
+        manualXlsTab &&
+        automaticoXlsTab &&
+        automaticoXlsPackTab &&
+        automaticoS
+      ) {
+        // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
+        manualXsTab.click();
+        manualXsTab.style.display = "block";
+        automaticoXsTab.style.display = "block";
+        manualXlsTab.style.display = "none";
+        automaticoXlsTab.style.display = "none";
+        automaticoXlsPackTab.style.display = "none";
+        automaticoS.style.display = "none";
+      }
+    } else if (currentProduct === "XLS") {
+      if (
+        manualXlsTab &&
+        automaticoXlsTab &&
+        automaticoXlsPackTab &&
+        automaticoS &&
+        manualXsTab &&
+        automaticoXsTab
+      ) {
+        // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
+        manualXlsTab.click();
+        manualXlsTab.style.display = "block";
+        automaticoXlsTab.style.display = "block";
+        automaticoXlsPackTab.style.display = "block";
+        manualXsTab.style.display = "none";
+        automaticoXsTab.style.display = "none";
+        automaticoS.style.display = "none";
+      }
+    } else if (currentProduct === "S") {
+      if (
+        automaticoS &&
+        manualXsTab &&
+        automaticoXsTab &&
+        manualXlsTab &&
+        automaticoXlsTab &&
+        automaticoXlsPackTab
+      ) {
+        // Si los elementos existen en el DOM (no son null) entonces se ejecuta el código dentro de las llaves {}
+        automaticoS.click();
+        automaticoS.style.display = "block";
+        manualXsTab.style.display = "none";
+        automaticoXsTab.style.display = "none";
+        manualXlsTab.style.display = "none";
+        automaticoXlsTab.style.display = "none";
+        automaticoXlsPackTab.style.display = "none";
+      }
+    }
+  }
+
+  /*function updateCarModelColors(modelo) {
+    if (modelo === "yaris-sedan") {
+      colorButtons.forEach((button) => {
+        if (
+          button.getAttribute("data-color") === "gray" ||
+          button.getAttribute("data-color") === "silver" ||
+          button.getAttribute("data-color") === "black" ||
+          button.getAttribute("data-color") === "white-perl" ||
+          button.getAttribute("data-color") === "blue" ||
+          button.getAttribute("data-color") === "white"
+        ) {
+          return; // No hacer nada
+        } else {
+          button.style.display = "none"; // Ocultar el botón de color que no corresponda al modelo seleccionado
+        }
+      });
+    } else if (modelo === "yaris-hatchback") {
+      colorButtons.forEach((button) => {
+        if (
+          button.getAttribute("data-color") === "red" ||
+          button.getAttribute("data-color") === "white" ||
+          button.getAttribute("data-color") === "blue" ||
+          button.getAttribute("data-color") === "black" ||
+          button.getAttribute("data-color") === "gray" ||
+          button.getAttribute("data-color") === "silver" ||
+          button.getAttribute("data-color") === "white-perl"
+        ) {
+          return; // No hacer nada
+        } else {
+          button.style.display = "none"; // Ocultar el botón de color que no corresponda al modelo seleccionado
+        }
+      });
+    }
+  }
+
+  updateCarModelColors(currentModelAux);*/
+</script>
