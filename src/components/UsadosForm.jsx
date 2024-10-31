@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const ContactForm = () => {
+const UsadosForm = () => {
   const [message, setMessage] = useState({
     name: '',
     phone: '',
@@ -191,4 +191,4 @@ const ContactForm = () => {
   );
 };
 
-export default ContactForm;
+export default UsadosForm;

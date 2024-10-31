@@ -4,7 +4,9 @@ import Layout from '../layouts/Layout.astro';
 import '../assets/styles/swiper.css'
 
 
-import ContactForm from '../components/ContactForm';
+import ContactForm from '../components/UsadosForm';
+import TestDriveForm from '../components/TestDriveForm';
+
 ---
 
 <Layout title="Toyota Plan | Derka y Vargas">
@@ -12,8 +14,7 @@ import ContactForm from '../components/ContactForm';
     <main class="main">
         <section class="home section" id="home">
             
-            
-            <ContactForm client:load/>
+            <TestDriveForm client:load/>
           </section>
     </main>
 </Layout>
