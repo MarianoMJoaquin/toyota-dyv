@@ -59,7 +59,7 @@ const UsadosForm = () => {
     try {
       const response = await axios.post('https://panelweb.derkayvargas.com/api/message/', message, {
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         }
       });
 

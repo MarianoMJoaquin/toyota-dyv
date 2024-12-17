@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 import '../assets/styles/swiper.css'
 
 
-import ContactForm from '../components/UsadosForm';
+import UsadosForm from '../components/UsadosForm';
 import TestDriveForm from '../components/TestDriveForm';
 
 ---
@@ -14,6 +14,7 @@ import TestDriveForm from '../components/TestDriveForm';
     <main class="main">
         <section class="home section" id="home">
             <TestDriveForm client:load/>
+            <UsadosForm client:load/>
           </section>
     </main>
 </Layout>

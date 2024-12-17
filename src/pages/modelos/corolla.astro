@@ -1,0 +1,15 @@
+---
+import axios from "axios";
+import Layout from "../../layouts/Layout.astro";
+
+const response = await axios.get("/api/vehicles");
+const data = response.data;
+
+console.log(data);
+
+
+---
+
+<Layout title="Corolla">
+  <p>corola</p>
+</Layout> 
