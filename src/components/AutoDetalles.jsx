@@ -166,7 +166,7 @@ export default function AutoDetalles({ slug }) {
               effect="fade"
               loop={true}
               thumbs={{ swiper: thumbsSwiper }}
-              className="rounded-lg xl:w-11/12"
+              className="rounded-lg"
             >
               {detallesAuto.photos.map((photo, index) => (
                 <SwiperSlide key={index}>
@@ -174,7 +174,7 @@ export default function AutoDetalles({ slug }) {
                     <img
                       src={`https://panelweb.derkayvargas.com${photo.public_path}`}
                       alt={`Imagen ${index + 1}`}
-                      className="object-cover rounded-lg border-2 border-gray-300"
+                      className="object-cover rounded-lg"
                     />
                     {detallesAuto.uct === 1 ? (
                       <img
