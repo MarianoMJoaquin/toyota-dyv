@@ -6,7 +6,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 
-const UsedCarsSlider = () => {
+const SwiperUsados = () => {
   const [usedCars, setUsedCars] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -137,4 +137,4 @@ const UsedCarsSlider = () => {
   );
 };
 
-export default UsedCarsSlider;
+export default SwiperUsados;

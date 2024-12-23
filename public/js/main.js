@@ -5632,15 +5632,17 @@
   );
 });
 
-  const scrollArrow = document.querySelector(".scroll-arrow ");
-  window.addEventListener("scroll", function () {
-    pageYOffset > 450
-      ? scrollArrow.classList.add("scroll-arrow_active")
-      : pageYOffset < 450 && scrollArrow.classList.remove("scroll-arrow_active");
-  }),
+  const scrollArrow = document.querySelector(".scroll-arrow");
+  if (scrollArrow) {
+    window.addEventListener("scroll", function () {
+      pageYOffset > 450
+        ? scrollArrow.classList.add("scroll-arrow_active")
+        : pageYOffset < 450 && scrollArrow.classList.remove("scroll-arrow_active");
+    });
     scrollArrow.addEventListener("click", () => {
       window.scrollTo(0, 0);
     });
+  }
   
   /*const menuBtn = document.querySelector(".menu__btn"),
   menu = document.querySelector(".menu");
@@ -5684,10 +5686,12 @@
       addBtnClass(slideIndex - 1),
       (sliderInner.style.transform = `translateX(-${offset}%)`);
   }
-  (sliderInner.style.cssText = `display: flex; width: ${
-    100 * sliderItems.length
-  }%;`),
-    (sliderWrapper.style.overflow = "hidden");
+  if (sliderInner) {
+    sliderInner.style.cssText = `display: flex; width: ${100 * sliderItems.length}%;`;
+  }
+  if (sliderWrapper) {
+    sliderWrapper.style.overflow = "hidden";
+  }
   let slideTimer = setInterval(slideMoveNext, 1e4);
   function removeBtnClass() {
     sliderNavBtns.forEach((e) => e.classList.remove("slider__nav-btn_active"));
@@ -5697,21 +5701,23 @@
       clearInterval(slideTimer),
       (slideTimer = setInterval(slideMoveNext, 1e4));
   }
-  sliderArrowNext.addEventListener("click", () => {
-    slideMoveNext();
-  }),
-    sliderArrowPrev.addEventListener("click", () => {
-      slideMovePrev();
+  if (sliderInner) {
+    sliderArrowNext.addEventListener("click", () => {
+      slideMoveNext();
     }),
-    sliderNavBtns.forEach((e, t) => {
-      e.addEventListener("click", () => {
-        removeBtnClass(),
-          (offset = (100 / sliderItems.length) * t),
-          (slideIndex = t + 1),
-          (sliderInner.style.transform = `translateX(-${offset}%)`),
-          addBtnClass(t);
+      sliderArrowPrev.addEventListener("click", () => {
+        slideMovePrev();
+      }),
+      sliderNavBtns.forEach((e, t) => {
+        e.addEventListener("click", () => {
+          removeBtnClass(),
+            (offset = (100 / sliderItems.length) * t),
+            (slideIndex = t + 1),
+            (sliderInner.style.transform = `translateX(-${offset}%)`),
+            addBtnClass(t);
+        });
       });
-    });
+  }
   let x1 = null,
     y1 = null;
   function handleTouchStart(e) {
@@ -5729,11 +5735,15 @@
       Math.abs(r) > Math.abs(i) ? (r > 0 ? "prev" : "next") : void 0
     );
   }
-  sliderInner.addEventListener("touchstart", handleTouchStart),
-    sliderInner.addEventListener("touchmove", (e) => {
-      let t = handleTouchMove(e);
-      "prev" === t ? slideMovePrev() : "next" === t && slideMoveNext();
-    });
+  if (sliderInner) {
+    sliderInner.addEventListener("touchstart", handleTouchStart);
+  }
+    if (sliderInner) {
+      sliderInner.addEventListener("touchmove", (e) => {
+        let t = handleTouchMove(e);
+        "prev" === t ? slideMovePrev() : "next" === t && slideMoveNext();
+      });
+    }
   
     
   class CarCard {
@@ -5854,24 +5864,38 @@ function showTab(tabId) {
 
   // Show the selected tab with animation
   const selectedTab = document.getElementById(tabId);
-  selectedTab.classList.remove('hidden');
+  if (selectedTab) {
+    selectedTab.classList.remove('hidden');
+  }
   setTimeout(() => {
-      selectedTab.classList.remove('opacity-0', 'scale-95');
-      selectedTab.classList.add('opacity-100', 'scale-100');
+      if (selectedTab) {
+          selectedTab.classList.remove('opacity-0', 'scale-95');
+          selectedTab.classList.add('opacity-100', 'scale-100');
+      }
   }, 50);  // Delay for smooth transition
 }
 
-document.getElementById('autos-tab').addEventListener('click', function() {
-  showTab('autos');
-});
+const autosTab = document.getElementById('autos-tab');
+const pickupsTab = document.getElementById('pickups-tab');
+const crossTab = document.getElementById('cross-tab');
 
-document.getElementById('pickups-tab').addEventListener('click', function() {
-  showTab('pickups');
-});
+if (autosTab) {
+  autosTab.addEventListener('click', function() {
+    showTab('autos');
+  });
+}
 
-document.getElementById('cross-tab').addEventListener('click', function() {
-  showTab('cross');
-});
+if (pickupsTab) {
+  pickupsTab.addEventListener('click', function() {
+    showTab('pickups');
+  });
+}
+
+if (crossTab) {
+  crossTab.addEventListener('click', function() {
+    showTab('cross');
+  });
+}
 
 // Initial tab to show
 showTab('autos');

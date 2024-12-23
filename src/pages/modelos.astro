@@ -1,0 +1,12 @@
+---
+import ModelosList from "../components/ModelosList";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Modelos">
+  <section class=section">
+    <h1>Modelos</hjson>
+    <p>En esta sección encontrarás los modelos de coches que tenemos disponibles en nuestro concesionario.</p>
+    <ModelosList client:load />
+  </section>
+</Layout>
