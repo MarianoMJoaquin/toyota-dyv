@@ -212,9 +212,13 @@ const ModelosTabSliderComponent = () => {
       <div className="flex justify-end">
         <a
           href="/modelos"
-          className="text-gray-500 rounded-lg text-xl hover:text-black transition-all inline-block items-center"
+          className="text-gray-500 rounded-lg text-xl hover:text-black transition-all inline-flex items-center relative group overflow-hidden"
         >
-          Ver todos los modelos <i className="ml-1 text-2xl ri-arrow-right-s-line"></i>
+          <span className="flex items-center mb-1">
+            <span className="flex items-center leading-none">Ver todos los modelos</span>
+            <i className="ri-arrow-right-s-line text-2xl flex items-center leading-none transform group-hover:translate-x-1 transition-transform duration-300"></i>
+          </span>
+          <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
         </a>
       </div>
     </div>
