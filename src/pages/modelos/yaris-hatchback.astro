@@ -170,205 +170,17 @@ import CarComponent360 from "../../components/CarComponent360.jsx";
             <p>Encontrá tu versión</p>
           </div><!-- End Section Title -->
     
-          <div class="container mx-auto sm:px-4">
-            <!--<div class="tabs mb-5">
-              <div class="tab active" data-product="XS">XS</div>
-              <div class="tab" data-product="XLS">XLS</div>
-              <div class="tab" data-product="S">S</div>
-            </div>-->        
+          <div class="container mx-auto sm:px-4">   
     
             <div class="flex flex-wrap " data-aos="fade-up" data-aos-delay="200">
     
               <div class="menu-item">
                 <div class="menu-content gap-4 flex-col justify-center items-center">
-                 <!-- <div class="viewer bg-white rounded-md" id="productViewer">
-                      <div id="spinner" class="spinner"></div>
-                      <img src="/images/modelos/yaris-hatchback/XS/red/4.png" alt="Producto en 360" id="productImage">
-                  </div>
-                  <div class="menu-ingredients">
-                    <i class="ri-arrow-left-s-line"></i> Arrastre para girar <i class="ri-arrow-right-s-line"></i>
-                  </div>
-                  <div class="flex gap-3">
-                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-red-600 text-white px-3 rounded-full" data-color="red"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-200 text-white px-3 rounded-full" data-color="white"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-700  text-white px-3 rounded-full" data-color="gray"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-400 text-white px-3 rounded-full" data-color="silver"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-black text-white px-3 rounded-full" data-color="black"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-gray-300 text-white px-3 rounded-full" data-color="white-perl"></button>
-                      <button class="inline-block align-middle text-center select-none border-2 border-500-gray font-normal whitespace-no-wrap py-3 leading-normal no-underline bg-sky-900 text-white px-3 rounded-full" data-color="blue"></button>
-                  </div>
-                  <div class="colors mb-5">
-                    <span id="colorName">Color seleccionado: Rojo Metalizado</span>
-                  </div>-->
                   <CarComponent360 client:load initialModel="yaris_hatchback" initialVersion="xs" initialColor="red" initialSubversion="XS 1.5 6M/T 5P"/>
                 </div>
               </div>
     
-              <!--<div class="lg:w-1/2 flex justify-between items-start">
-                <div class="max-w-xl mx-auto">
-                  
-                  <div id="tab-info" class="border-b border-gray-200">
-                    <ul  class="flex justify-center space-x-4" role="tablist">
-                      <li>
-                        <button
-                          id="manual-xs-tab"
-                          class="px-4 py-2 border-b-2 font-medium text-sm text-red-600 border-red-500 transition-colors duration-300 ease-in-out"
-                          
-                        >
-                          XS 1.5 6M/T 5P
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          id="automatico-xs-tab"
-                          class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          
-                        >
-                          XS 1.5 CVT 5P
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          id="manual-xls-tab"
-                          class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          
-                        >
-                          XLS 1.5 6M/T 5P
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          id="automatico-xls-tab"
-                          class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                         
-                        >
-                          XLS 1.5 CVT 5P
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          id="automatico-xls-pack-tab"
-                          class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          
-                        >
-                          XLS PACK 1.5 CVT 5P
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          id="automatico-s-tab"
-                          class="px-4 py-2 border-b-2 font-medium text-sm text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 transition-colors duration-300 ease-in-out"
-                          
-                        >
-                          S 1.5 CVT 5P
-                        </button>
-                      </li>
-                    </ul>
-                  </div>
-              
-                  
-                  <div id="manual" class="tab-content active fade show">
-                    <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 space-y-2">
-                      <li>Motor 1,5 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 107 CV de potencia máxima</li>
-                      <li>Manual de 6 velocidades</li>
-                      <li>Espejos exteriores con regulación eléctrica y luz de de giro incorporada</li>
-                      <li>Luces de circulación diurnas de LED (DRL)</li>
-                      <li>Ópticas delanteras halógenas con regulación en altura</li>
-                      <li>Llantas de acero de 15”</li>
-                      <li>Levanta cristales eléctricos con función “One Touch” - conductor</li>
-                      <li>Computadora de abordo</li>
-                      <li>Volante con control de audio, display de información múltiple y teléfono</li>
-                      <li>Audio con pantalla táctil LCD de 6.8” y USB (en consola central)</li>
-                      <li>Conectividad: Apple Car Play® & Android Auto®</li>
-                      <li>Control de estabilidad (VSC), control de tracción (TRC) y asistente de arranque en pendientes (HAC)</li>
-                      <li>Faros antiniebla traseros</li>
-                      <li>7 airbags: frontales (x2), de rodilla (conductor), laterales (x2) y de cortina (x2)</li>
-                    </ul>
-                  </div>
     
-                  <div id="automatico" class="tab-content fade">
-                    <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                      <li>Motor 1,5 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 107 CV de potencia máxima</li>
-                      <li>Incluye funciones selectas XS MT, más:
-                        <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                          <li>
-                            Caja automática CVT de 7 velocidades
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-    
-                  <div id="manual-xls" class="tab-content fade">
-                    <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 space-y-2">
-                      <li>Motor 1,5 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 107 CV de potencia máxima</li>
-                      <li>Incluye funciones selectas XS MT mas:
-                        <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                          <li>Espejos exteriores retráctiles eléctricamente</li>
-                          <li>Ópticas delanteras halógenas con regulación en altura y proyector</li>
-                          <li>Ópticas traseras LED</li>
-                          <li>Llantas de aleación de 15”</li>
-                          <li>Aire acondicionado con climatizador automático digital</li>
-                          <li>Espejo retrovisor interno con anti-encandilamiento automático</li>
-                          <li>Levanta cristales eléctricos con función “One Touch” - 4 puertas</li>
-                          <li>Monitor con cámara de estacionamiento</li>
-                          <li>Faros antiniebla delanteros</li>
-                          <li>Sensores de estacionamiento frontales y traseros</li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-    
-                  <div id="automatico-xls" class="tab-content fade">
-                    <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                      <li>Motor 1,5 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 107 CV de potencia máxima</li>
-                      <li> Incluye funciones selectas XLS MT, más:
-                        <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                          <li>Caja automática CVT de 7 velocidades</li>
-                          <li>Control de velocidad crucero</li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-    
-                  <div id="automatico-xls-pack" class="tab-content fade">
-                    <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                      <li>Motor 1,5 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 107 CV de potencia máxima</li>
-                      <li>Incluye funciones selectas XLS CVT, más:
-                        <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                            <li>Llantas de aleación de 16”</li>
-                            <li>Asientos con tapizado de cuero ecológico</li>
-                            <li>Paddle Shifts (levas al volante)</li>
-                            <li>Display de información múltiple de 4,2”</li>
-                            <li>Toyota Safety Sense*:</li>
-                            <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                                <li>Sistema de pre-colisión frontal (PCS)*</li>
-                                <li>Sistema de alerta de cambio de carril (LDA)*</li>
-                            </ul>
-                        </ul>
-                        *Toyota Safety Sense integra diferentes sistemas de seguridad activa que pueden variar según cada modelo y/o versión. A su vez, estos sistemas están diseñados para asistir al conductor, no para sustituirlo. El conductor debe mantener en todo momento el control de su vehículo y es responsable de su conducción, por cuanto este sistema no reemplaza la conducción segura. El correcto funcionamiento del Toyota Safety Sense depende de muchos factores incluyendo las condiciones del camino, el clima y el vehículo, razón por la cual el/los sistemas podrán verse afectados u obstaculizados debido a factores externos, no siendo Toyota Argentina S.A. responsable de las consecuencias derivadas del uso del sistema. Para más información sobre Toyota Safety Sense consulte el manual de usuario.
-                      </li>
-                    </ul>
-                  </div>
-    
-                  <div id="automatico-s" class="tab-content fade">
-                    <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                      <li>Motor 1,5 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 107 CV de potencia máxima</li>
-                      <li>Integra funciones selectas XLS Pack CVT, más:
-                        <ul class="list-disc lg:text-xs xl:text-xs 2xl:text-base ml-5 mb-5 space-y-2">
-                            <li>Ópticas delanteras LED con regulación en altura</li>
-                            <li>Techo solar eléctrico</li>
-                            <li>Manijas exteriores cromadas</li>
-                            <li>Sistema de encendido por botón (Push Start Button) y Sistema de ingreso inteligente (Smart Entry System)</li>
-                        </ul>
-                        *Toyota Safety Sense integra diferentes sistemas de seguridad activa que pueden variar según cada modelo y/o versión. A su vez, estos sistemas están diseñados para asistir al conductor, no para sustituirlo. El conductor debe mantener en todo momento el control de su vehículo y es responsable de su conducción, por cuanto este sistema no reemplaza la conducción segura. El correcto funcionamiento del Toyota Safety Sense depende de muchos factores incluyendo las condiciones del camino, el clima y el vehículo, razón por la cual el/los sistemas podrán verse afectados u obstaculizados debido a factores externos, no siendo Toyota Argentina S.A. responsable de las consecuencias derivadas del uso del sistema. Para más información sobre Toyota Safety Sense consulte el manual de usuario.
-                        </li>
-                      </li>
-                    </ul>
-                  </div>
-    
-                </div>
-              </div> -->
               
             </div><!-- Menu Container -->
             
@@ -544,18 +356,6 @@ import CarComponent360 from "../../components/CarComponent360.jsx";
        
        
 <style>
-    /**
-* Template Name: Restaurantly
-* Template URL: https://bootstrapmade.com/restaurantly-restaurant-template/
-* Updated: Aug 07 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
---------------------------------------------------------------*/
 /* Fonts */
 :root {
   --default-font: "Toyota-Type",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
