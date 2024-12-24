@@ -151,11 +151,11 @@ html {
     opacity: 1;
     visibility: visible;
   }
-  @media (max-width: 768px) {
+  /*@media (max-width: 768px) {
     .scroll-arrow {
       display: none;
     }
-  }
+  }*/
   .btn {
     background-color: #fff;
     padding: 0.8rem 1.8rem;
