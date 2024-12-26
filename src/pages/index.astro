@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 
 import srcImage1 from "../assets/images/cross-2.png";
@@ -7,7 +7,7 @@ import srcImage1 from "../assets/images/cross-2.png";
 import SwiperUsados from '../components/SwiperUsados';
 import ModelosTabSliderComponent from '../components/ModelosTabSliderComponent.jsx';
 
-      
+import srcBannerimg from "../assets/images/banner-index.jpeg";
 
 ---
 
@@ -449,14 +449,42 @@ import ModelosTabSliderComponent from '../components/ModelosTabSliderComponent.j
 		  </div>
 		</section>
 		
+		<section class="section">
+			<div class="relative w-full">
+				<Picture 
+					src={srcBannerimg} 
+					formats={['avif', 'webp']}
+					widths={[400, 800, 1200]}
+					sizes="(max-width: 500px) 400px, (max-width: 768px) 800px, 1200px"
+					alt="Imagen de banner"
+					class="w-full h-[200px] sm:h-[300px] md:h-[400px] lg:h-[500px] object-cover"
+				>
+					<source media="(max-width: 500px)" srcset="/src/assets/images/banner-mobile.jpeg" />
+					<source media="(max-width: 768px)" srcset="/src/assets/images/banner-tablet.jpeg" />
+				</Picture>
+				<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
+				<div class="absolute bottom-0 left-0 right-0 text-center px-4 sm:px-6 pb-6 sm:pb-8 md:pb-10 lg:pb-12" data-aos="fade-up">
+					<h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 md:mb-4">
+						Conocé la nueva Toyota Hilux
+					</h1>
+					<a 
+						href="https://dyv.e.toyota.com.ar/inventory" 
+						class="inline-block about__link text-sm sm:text-base md:text-lg"
+					>
+						Conocer más
+					</a>
+				</div>
+			</div>
+			
+		</section>
 		
 		<!--======================= ABOUT =======================-->
 		<section class="about section">
 		  <div class="container">
 			<!--<h1 class="about__title heading-1">
 						  About Toyota
-					  </h1>-->
-  
+				</h1>-->
+			<!--E toyota -->
 			<div class="about__inner about__inner_company">
 			  <div class="about__info">
 				<h5 class="about__span">Conocé e-Toyota</h5>
@@ -481,7 +509,7 @@ import ModelosTabSliderComponent from '../components/ModelosTabSliderComponent.j
 				  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 			  </div>
 			</div>
-  
+			<!--Gazoo Racing -->
 			<div class="about__inner about__inner_leadership">
 			  <div class="about__info">
 				<h5 class="about__span">Pushing the limits for better</h5>
@@ -495,7 +523,7 @@ import ModelosTabSliderComponent from '../components/ModelosTabSliderComponent.j
 				<img class="about__img" src="images/gr.jpg" alt="Leadership" />
 			  </div>
 			</div>
-  
+			<!--Kinto Share -->
 			<div class="about__inner about__inner_company">
 			  <div class="about__info">
 				<h5 class="about__span">Tené siempre un Toyota</h5>
