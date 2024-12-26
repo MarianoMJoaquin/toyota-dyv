@@ -1000,7 +1000,7 @@ html {
   }
   @media (max-width: 520px) {
     .about__link {
-      padding: 1.5rem 2.5rem;
+      padding: 1rem 2rem;
     }
   }
   /*.footer {
