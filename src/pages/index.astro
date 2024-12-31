@@ -8,6 +8,7 @@ import SwiperUsados from '../components/SwiperUsados';
 import ModelosTabSliderComponent from '../components/ModelosTabSliderComponent.jsx';
 
 import srcBannerimg from "../assets/images/banner-index.jpeg";
+import Slider from '../components/Slider.astro';
 
 ---
 
@@ -21,87 +22,7 @@ import srcBannerimg from "../assets/images/banner-index.jpeg";
   
 		<!--======================= HOME =======================-->
 		<section class="home" id="home">
-		  <div class="slider">
-			<div class="slider__wrapper">
-			  <div class="slider__inner">
-				<div class="slider__item">
-				  <h1 class="slider__item-title">
-					Toyota Corolla Cross
-					<span>Nuevo diseño exterior, mayor tecnología y seguridad</span>
-				  </h1>
-				  <button class="slider__item-btn btn">Conocé más</button>
-				  <a class="slider__item-bg" href="#!">
-					<!--<picture>
-					  <source srcset="images/home-1-3.jpg" media="(max-width: 500px)" />
-					  <source srcset="images/home-1-2.jpg" media="(max-width: 768px)" />
-					  <img class="slider__item-img" src="images/cross-2.png" alt="Camry" />
-					</picture> -->
-					<Image src={srcImage1} format='avif' alt="Camry" class="slider__item-img"/>
-				  </a>
-				</div>
-  
-				<div class="slider__item">
-				  <h1 class="slider__item-title">
-					Tenemos nuevos planes para ti
-					<span>Te mueve el sueño de tu OKm</span>
-				  </h1>
-				  <button class="slider__item-btn btn">Explorar planes</button>
-				  <a class="slider__item-bg" href="#!">
-					<picture>
-					  <source srcset="images/home-2-3.jpg" media="(max-width: 500px)" />
-					  <source srcset="images/home-2-2.jpg" media="(max-width: 768px)" />
-					  <img class="slider__item-img" src="images/fondo.png" alt="Tundra" />
-					</picture>
-				  </a>
-				</div>
-  
-				<div class="slider__item">
-				  <h1 class="slider__item-title">
-					KINTO Share
-					<span>Alquilá y movete en un Toyota donde quieras y cuando quieras</span>
-				  </h1>
-				  <button class="slider__item-btn btn">Explorar Rav4</button>
-				  <a class="slider__item-bg" href="#!">
-					<picture>
-					  <source srcset="images/home-3-3.jpg" media="(max-width: 500px)" />
-					  <source srcset="images/home-3-2.jpg" media="(max-width: 768px)" />
-					  <img class="slider__item-img" src="images/kinto.jpeg" alt="Rav4" />
-					</picture>
-				  </a>
-				</div>
-				<div class="slider__item">
-				  <h1 class="slider__item-title">
-					Toyota Usados
-					<span>Comprá o vendé tu auto con la confianza Toyota</span>
-				  </h1>
-				  <button class="slider__item-btn btn">
-					Explorar Camry 2025
-				  </button>
-				  <a class="slider__item-bg" href="#!">
-					<picture>
-					  <source srcset="images/home-3-3.jpg" media="(max-width: 500px)" />
-					  <source srcset="images/home-3-2.jpg" media="(max-width: 768px)" />
-					  <img class="slider__item-img" src="images/usados.jpeg" alt="Rav4" />
-					</picture>
-				  </a>
-				</div>
-			  </div>
-			</div>
-			<div class="slider__nav">
-			  <button class="slider__nav-btn slider__nav-btn_active"></button>
-			  <button class="slider__nav-btn"></button>
-			  <button class="slider__nav-btn"></button>
-			  <button class="slider__nav-btn"></button>
-			</div>
-			<div class="slider__arrows">
-			  <button class="slider__arrow slider__arrow_prev">
-				<img class="slider__arrow-icon" src="images/arrow-prev-icon.svg" alt="" />
-			  </button>
-			  <button class="slider__arrow slider__arrow_next">
-				<img class="slider__arrow-icon" src="images/arrow-next-icon.svg" alt="" />
-			  </button>
-			</div>
-		  </div>
+		  <Slider groupId={9}/>
 		</section>
   
 		<!--======================= VEHICLES =======================-->

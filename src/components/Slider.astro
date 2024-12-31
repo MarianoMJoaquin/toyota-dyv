@@ -1,0 +1,475 @@
+---
+interface Props {
+  groupId?: number;  // ID del grupo de slides a mostrar
+}
+
+const { groupId = 1 } = Astro.props; // Por defecto usa el grupo "Principal" (id: 1)
+
+// Interfaces for API data types
+interface SlideImage {
+  id: number;
+  path: string;
+  public_path: string;
+}
+
+interface SlideItem {
+  id: number;
+  slide_id: number;
+  orden: number;
+  url: string;
+  size: 'SM' | 'MD';
+  text: string | null;
+  button_text: string | null;
+  image: SlideImage;
+}
+
+interface SlideGroup {
+  id: number;
+  nombre: string;
+  items: SlideItem[];
+}
+
+// Fetch slides from API
+const response = await fetch('https://panelweb.derkayvargas.com/api/slides/');
+const data: SlideGroup[] = await response.json();
+
+// Get slides from specified group and sort by orden
+const group = data.find(g => g.id === groupId);
+const slides: SlideItem[] = group?.items || [];
+const sortedSlides = slides.sort((a, b) => a.orden - b.orden);
+
+// Group slides by orden to pair MD with SM images
+type SlideMap = Record<number, Partial<Record<'SM' | 'MD', SlideItem>>>; // Added type definition
+const slidesMap: SlideMap = sortedSlides.reduce((acc, slide) => {
+  if (!acc[slide.orden]) {
+    acc[slide.orden] = {};
+  }
+  acc[slide.orden][slide.size] = slide;
+  return acc;
+}, {} as SlideMap);
+
+// Get unique slides (using MD as main slide)
+const uniqueSlides = Object.values(slidesMap)
+  .filter((group): group is { MD: SlideItem } => Boolean(group.MD)) // Corrección aquí
+  .map(group => group.MD);
+---
+
+<div class="slider">
+  <div class="slider__wrapper">
+    <div class="slider__inner">
+      {uniqueSlides.map((slide) => (
+        <div class="slider__item">
+          {slide.text && (
+            <h1 class="slider__item-title">
+              {slide.text}
+            </h1>
+          )}
+          {slide.button_text && (
+            <a href={slide.url} class="slider__item-btn btn">{slide.button_text}</a>
+          )}
+          <a class="slider__item-bg" href={slide.url || '#'}>
+            <picture>
+              {slidesMap[slide.orden]?.SM && (
+                <source 
+                  srcset={`https://panelweb.derkayvargas.com${slidesMap[slide.orden].SM?.image.public_path}`} 
+                  media="(max-width: 500px)" 
+                />
+              )}
+              <img 
+                class="slider__item-img" 
+                src={`https://panelweb.derkayvargas.com${slide.image.public_path}`} 
+                alt={slide.text || ''} 
+              />
+            </picture>
+          </a>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="slider__nav">
+    {uniqueSlides.map((_, index) => (
+      <button class={`slider__nav-btn ${index === 0 ? 'slider__nav-btn_active' : ''}`}></button>
+    ))}
+  </div>
+
+  <div class="slider__arrows">
+    <button class="slider__arrow slider__arrow_prev">
+      <img class="slider__arrow-icon" src="images/arrow-prev-icon.svg" alt="" />
+    </button>
+    <button class="slider__arrow slider__arrow_next">
+      <img class="slider__arrow-icon" src="images/arrow-next-icon.svg" alt="" />
+    </button>
+  </div>
+</div>
+
+<script is:inline>
+  const sliderWrapper = document.querySelector(".slider__wrapper"),
+  sliderInner = document.querySelector(".slider__inner"),
+  sliderItems = document.querySelectorAll(".slider__item"),
+  sliderArrowNext = document.querySelector(".slider__arrow_next"),
+  sliderArrowPrev = document.querySelector(".slider__arrow_prev"),
+  sliderNavBtns = document.querySelectorAll(".slider__nav-btn");
+let slideIndex = 1,
+  offset = 0;
+function slideMoveNext() {
+  removeBtnClass(),
+    slideIndex == sliderItems.length
+      ? ((offset = 0), (slideIndex = 1))
+      : ((offset += 100 / sliderItems.length), slideIndex++),
+    addBtnClass(slideIndex - 1),
+    (sliderInner.style.transform = `translateX(-${offset}%)`);
+}
+function slideMovePrev() {
+  removeBtnClass(),
+    1 == slideIndex
+      ? ((offset = (100 / sliderItems.length) * (sliderItems.length - 1)),
+        (slideIndex = sliderItems.length))
+      : ((offset -= 100 / sliderItems.length), slideIndex--),
+    addBtnClass(slideIndex - 1),
+    (sliderInner.style.transform = `translateX(-${offset}%)`);
+}
+if (sliderInner) {
+  sliderInner.style.cssText = `display: flex; width: ${100 * sliderItems.length}%;`;
+}
+if (sliderWrapper) {
+  sliderWrapper.style.overflow = "hidden";
+}
+let slideTimer = setInterval(slideMoveNext, 1e4);
+function removeBtnClass() {
+  sliderNavBtns.forEach((e) => e.classList.remove("slider__nav-btn_active"));
+}
+function addBtnClass(e = 0) {
+  sliderNavBtns[e].classList.add("slider__nav-btn_active"),
+    clearInterval(slideTimer),
+    (slideTimer = setInterval(slideMoveNext, 1e4));
+}
+if (sliderInner) {
+  sliderArrowNext.addEventListener("click", () => {
+    slideMoveNext();
+  }),
+    sliderArrowPrev.addEventListener("click", () => {
+      slideMovePrev();
+    }),
+    sliderNavBtns.forEach((e, t) => {
+      e.addEventListener("click", () => {
+        removeBtnClass(),
+          (offset = (100 / sliderItems.length) * t),
+          (slideIndex = t + 1),
+          (sliderInner.style.transform = `translateX(-${offset}%)`),
+          addBtnClass(t);
+      });
+    });
+}
+let x1 = null,
+  y1 = null;
+function handleTouchStart(e) {
+  (x1 = e.touches[0].clientX), (y1 = e.touches[0].clientY);
+}
+function handleTouchMove(e) {
+  if (!x1 || !y1) return !1;
+  let t = e.touches[0].clientX,
+    n = e.touches[0].clientY,
+    r = t - x1,
+    i = n - y1;
+  return (
+    (x1 = null),
+    (y1 = null),
+    Math.abs(r) > Math.abs(i) ? (r > 0 ? "prev" : "next") : void 0
+  );
+}
+if (sliderInner) {
+  sliderInner.addEventListener("touchstart", handleTouchStart);
+}
+  if (sliderInner) {
+    sliderInner.addEventListener("touchmove", (e) => {
+      let t = handleTouchMove(e);
+      "prev" === t ? slideMovePrev() : "next" === t && slideMoveNext();
+    });
+  }
+</script>
+
+<style>
+  .slider {
+  margin-bottom: 1rem;
+  position: relative;
+  margin: 0 auto;
+}
+.slider__item {
+  position: relative;
+  width: 100%;
+}
+.slider__item-title,
+.slider__item-btn {
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.slider__item-title {
+  text-align: center;
+  font-size: 2pc;
+  font-weight: 500;
+  bottom: 5rem;
+  color: #fff;
+  white-space: nowrap;
+  font-family: 'Toyota-Type-Semibold', sans-seri;
+  margin-bottom: 1rem;
+}
+
+.slider__item-title span {
+  margin-top: .5rem;
+  display: block;
+  font-weight: 400;
+  font-size: 1pc;
+  text-align: center;
+  font-family: 'Toyota-Type-Book', sans-serif;
+}
+.slider__item-btn {
+  bottom: 1.5rem;
+}
+.slider__item-bg {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.slider__item-bg::after {
+  content: "";
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0.65)),
+    to(transparent)
+  );
+  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.65), transparent);
+  background: linear-gradient(360deg, rgba(0, 0, 0, 0.65), transparent);
+}
+
+.slider__item-bg::before {
+  content: "";
+  position: absolute;
+  height: 200px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0.65)),
+    to(transparent)
+  );
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65), transparent);
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent);
+}
+
+.slider__item-img {
+  width: 100%;
+  height: 100%;
+}
+.slider__inner {
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.slider__arrow {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 4rem;
+  height: 4rem;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  background-color: rgba(31, 31, 31, 0.8);
+  border-radius: 50%;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.slider__arrow_prev {
+  left: 2rem;
+}
+.slider__arrow_next {
+  right: 2rem;
+}
+@media (min-width: 768px) {
+  .slider__arrow:hover {
+    background-color: rgba(31, 31, 31, 0.9);
+  }
+}
+.slider__nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 3px;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.slider__nav-btn {
+  width: 100%;
+  height: 8px;
+  background-color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+}
+.slider__nav-btn::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 0;
+  background-color: #000;
+}
+.slider__nav-btn_active {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+.slider__nav-btn_active::after {
+  -webkit-animation: btnTimeInterval 10s linear forwards;
+  animation: btnTimeInterval 10s linear forwards;
+}
+@-webkit-keyframes btnTimeInterval {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes btnTimeInterval {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@media (max-width: 768px) {
+  /*.home {
+    padding-top: 6rem;
+  }*/
+  .swiper-button-prev,
+  .swiper-button-next{
+    display: none !important;
+  }
+}
+@media (max-width: 520px) {
+  .slider__arrow {
+    width: 2rem;
+    height: 2rem;
+    display: none;
+  }
+  .slider__arrow img {
+    width: 1.8rem;
+  }
+  .slider__item-title {
+    font-size: 1.5rem;
+  }
+  .slider__item-title span {
+    font-size: 1rem;
+  }
+  .slider__item-btn {
+    bottom: 1.8rem;
+  }
+  .swiper-button-prev,
+  .swiper-button-next{
+    display: none !important;
+  }
+}
+@media (max-width: 425px) { /*Dispositivos móviles asta 425px de anco, mas de 425px de anco no se aplican los estilos los estilos*/
+  .slider__item-btn {
+    bottom: 1.8rem;
+  }
+  .swiper-button-prev,
+  .swiper-button-next{
+    display: none !important;
+  }
+}
+.vehicles__title {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+.swiper-wrapper {
+  height: max-content !important ;
+  padding-bottom: 2rem !important;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  content: "" !important;
+}
+.swiper-button-prev,
+.swiper-button-next {
+  font-size: 2rem !important;
+  color: white !important;
+  background-color: black !important;
+  height: 2pc !important;
+  width: 2pc !important; 
+  border-radius: 5rem !important;
+}
+.swiper-button-prev {
+  transition: all 0.3s !important;  
+}
+.swiper-button-next {
+  transition: all 0.3s !important;  
+}
+
+.swiper-pagination-bullet {
+  background-color: #e64b58 !important;
+  opacity: 1 !important;
+  transition: all 0.3s !important;  
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #eb0a1e !important;
+  transform: scale(1.3) !important; 
+}
+.btn {
+  background-color: #fff;
+  padding: 0.8rem 1.8rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  color: #000;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+@media (min-width: 768px) {
+  .btn:hover {
+    background-color: #d8d8d8;
+  }
+}
+@media (max-width: 768px) {
+  .btn {
+    padding: 0.5rem 1.5rem;
+    font-size: 1.2rem;
+  }
+}
+</style>
