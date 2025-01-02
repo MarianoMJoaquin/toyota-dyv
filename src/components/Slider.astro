@@ -1,4 +1,35 @@
 ---
+/**
+ * Componente Slider
+ * 
+ * Este componente crea un carrusel de imágenes con texto y botones superpuestos.
+ * Consume datos de una API externa y permite mostrar diferentes grupos de slides.
+ * 
+ * @component
+ * @prop {number} [groupId=1] - ID del grupo de slides a mostrar (por defecto muestra el grupo "Principal")
+ * 
+ * Estructura de datos:
+ * - Cada slide puede tener:
+ *   - title_text: Título principal
+ *   - text: Texto descriptivo/subtítulo
+ *   - button_text: Texto del botón de acción
+ *   - url: Enlace al hacer clic
+ *   - image: Imagen del slide (versiones MD y SM para responsive)
+ * 
+ * Características:
+ * - Navegación con flechas y dots
+ * - Autoplay cada 10 segundos
+ * - Soporte touch para dispositivos móviles
+ * - Diseño responsive con imágenes adaptativas
+ * - Gradientes para mejorar legibilidad del texto
+ * 
+ * Ejemplo de uso:
+ * ```astro
+ * <Slider groupId={1} /> // Muestra slides del grupo "Principal"
+ * <Slider groupId={3} /> // Muestra slides del grupo "Posventa"
+ * ```
+ */
+
 interface Props {
   groupId?: number;  // ID del grupo de slides a mostrar
 }
