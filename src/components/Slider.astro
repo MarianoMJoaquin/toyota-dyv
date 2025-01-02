@@ -20,6 +20,7 @@ interface SlideItem {
   size: 'SM' | 'MD';
   text: string | null;
   button_text: string | null;
+  title_text: string | null;  // Agregamos el nuevo campo
   image: SlideImage;
 }
 
@@ -59,14 +60,17 @@ const uniqueSlides = Object.values(slidesMap)
     <div class="slider__inner">
       {uniqueSlides.map((slide) => (
         <div class="slider__item">
-          {slide.text && (
-            <h1 class="slider__item-title">
-              {slide.text}
-            </h1>
-          )}
-          {slide.button_text && (
-            <a href={slide.url} class="slider__item-btn btn">{slide.button_text}</a>
-          )}
+          <div class="slider__item-content">
+            {slide.title_text && (
+              <h1 class="slider__item-title">
+                {slide.title_text}
+                {slide.text && <span>{slide.text}</span>}
+              </h1>
+            )}
+            {slide.button_text && (
+              <a href={slide.url} class="slider__item-btn btn">{slide.button_text}</a>
+            )}
+          </div>
           <a class="slider__item-bg" href={slide.url || '#'}>
             <picture>
               {slidesMap[slide.orden]?.SM && (
@@ -471,5 +475,26 @@ if (sliderInner) {
     padding: 0.5rem 1.5rem;
     font-size: 1.2rem;
   }
+}
+.slider__item-content {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+}
+
+.slider__item-title {
+  margin-bottom: 2rem;
+}
+
+.slider__item-title span {
+  margin-top: 1rem;
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: 'Toyota-Type-Book', sans-serif;
 }
 </style>
