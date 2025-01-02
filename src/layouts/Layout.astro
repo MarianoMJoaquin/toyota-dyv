@@ -32,12 +32,10 @@ const { title } = Astro.props;
     <Header />
     <slot />
     <Footer />
-    <!--<script is:inline src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script> -->
-    <script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     
+    <script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <script is:inline src="/js/main.js"></script>
     <script is:inline src="/js/menu.js"></script>
-
     <script is:inline src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
@@ -102,15 +100,6 @@ const { title } = Astro.props;
 
       requestAnimationFrame(raf);
 
-       // Ukiyo
-      /*const images = document.querySelectorAll('.ukiyo');
-        images.forEach(image => {
-          new Ukiyo(image, {
-            scale: 1.2,
-            speed: 2
-          });
-        });*/
-     
     </script>
   </body>
 </html>

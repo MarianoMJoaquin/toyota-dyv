@@ -2,6 +2,8 @@
 import { Image, Picture } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 
+import srcImage1 from "../assets/images/cross-2.png";
+
 import SwiperUsados from '../components/SwiperUsados';
 import ModelosTabSliderComponent from '../components/ModelosTabSliderComponent.jsx';
 
@@ -11,6 +13,7 @@ import Slider from '../components/Slider.astro';
 ---
 
 <Layout title="Toyota | Derka y Vargas">
+
 	<main class="main">
 		<!--======================= SCROLL-ARROW =======================-->
 		<button class="scroll-arrow">
@@ -371,7 +374,7 @@ import Slider from '../components/Slider.astro';
 			<div class="relative w-full">
 				<Picture 
 					src={srcBannerimg} 
-					formats={['jpeg', 'webp', 'avif']}
+					formats={['avif', 'webp']}
 					widths={[400, 800, 1200]}
 					sizes="(max-width: 500px) 400px, (max-width: 768px) 800px, 1200px"
 					alt="Imagen de banner"
@@ -380,7 +383,7 @@ import Slider from '../components/Slider.astro';
 				<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
 				<div class="absolute top-20 left-0 right-0 text-center px-4 sm:px-6 pb-6 sm:pb-8 md:pb-10 lg:pb-12" data-aos="fade-up">
 					<h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-3 md:mb-4">
-						Conocé la nueva Toyota Hiluxx
+						Conocé la nueva Toyota Hilux
 					</h1>
 					<p class="text-white text-sm sm:text-base md:text-lg mb-2 sm:mb-3 md:mb-4">
 						La pick-up más vendida de Argentina
@@ -467,4 +470,5 @@ import Slider from '../components/Slider.astro';
 			</div>
 		</section> 
 	  </main>
+	   
 </Layout>
