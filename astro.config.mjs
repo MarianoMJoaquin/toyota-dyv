@@ -11,10 +11,7 @@ import react from '@astrojs/react';
 
 
 
-import node from '@astrojs/node';
 
-
-import vercel from '@astrojs/vercel';
 
 
 
@@ -22,10 +19,5 @@ import vercel from '@astrojs/vercel';
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: 'server',
-  adapters: [
-    netlify(), 
-    vercel(), 
-    node({
-    mode: 'standalone',
-  })]
+  adapters: netlify()
 });
