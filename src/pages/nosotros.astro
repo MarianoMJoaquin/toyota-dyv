@@ -2,6 +2,56 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Nosotros">
-  <h1>Nosotros</h1>
+<Layout title="Nosotros - Toyota">
+    <script src="https://cdn.jsdelivr.net/npm/ukiyojs@2.0.2/dist/ukiyo.min.js"></script>
+
+    <section class="hero mb-16">
+        <div class="container mx-auto px-4">
+            <img 
+                class="ukiyo w-full h-[60vh] object-cover rounded-lg"
+                src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?ixlib=rb-4.0.3"
+                alt="Toyota Headquarters"
+            />
+        </div>
+    </section>
+
+    <section class="py-16">
+        <div class="container mx-auto px-4">
+            <h1 class="text-4xl font-bold mb-8">Nuestra Historia</h1>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <p>Desde 1937, Toyota ha estado impulsando la innovación y el progreso en la industria automotriz. Nuestra historia comenzó con un simple telar automático y el sueño de Sakichi Toyoda de mejorar la vida de las personas a través de la innovación.</p>
+                    <p>Hoy, más de 80 años después, seguimos fieles a nuestros principios fundamentales de calidad, durabilidad y confiabilidad, mientras nos adaptamos a un mundo en constante evolución.</p>
+                </div>
+                <div>
+                    <img 
+                        class="ukiyo w-full rounded-lg"
+                        src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3"
+                        alt="Toyota Showroom"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-8">Compromiso con el Futuro</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <img 
+                    class="ukiyo w-full rounded-lg"
+                    src="https://images.unsplash.com/photo-1590362891991-f776e747a588?ixlib=rb-4.0.3"
+                    alt="Toyota Electric Vehicle"
+                />
+                <div class="space-y-6">
+                    <p>En Toyota, nuestra visión va más allá de fabricar automóviles. Nos dedicamos a crear un futuro más sostenible y movilidad para todos. Nuestro compromiso con la innovación tecnológica y la responsabilidad ambiental nos impulsa a desarrollar vehículos híbridos y eléctricos de última generación.</p>
+                    <p>Cada vehículo que producimos representa nuestra dedicación a la excelencia y nuestra promesa de contribuir a un mundo mejor para las generaciones futuras.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script is:inline>
+        
+    </script>
 </Layout>
