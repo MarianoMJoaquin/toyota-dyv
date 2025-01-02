@@ -14,12 +14,13 @@ import react from '@astrojs/react';
 import node from '@astrojs/node';
 
 
+import vercel from '@astrojs/vercel';
+
+
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: 'server',
-  adapter: node({
-    mode: 'standalone'
-  })
+  adapters: [netlify(), vercel(), node()]
 });
