@@ -22,7 +22,7 @@ const { title } = Astro.props;
     <title>{title}</title>   
     <link rel="stylesheet" href="/css/styles.css"> <!-- Main CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/> <!-- AOS CSS -->
-    
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css"> <!-- Lenis CSS -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/> <!-- Remixicon CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" /> <!-- GLightbox CSS -->
   </head>
@@ -30,15 +30,16 @@ const { title } = Astro.props;
     
 
     <Header />
-      <slot />
+    <slot />
     <Footer />
+    <script is:inline src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
     <script is:inline src="/js/main.js"></script>
     <script is:inline src="/js/menu.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
     <script is:inline src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script is:inline src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-    
+    <script is:inline src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script is:inline>
        /**
        * Animation on scroll function and init
@@ -88,6 +89,26 @@ const { title } = Astro.props;
 
       window.addEventListener('load', toggleScrollTop);
       document.addEventListener('scroll', toggleScrollTop);
+      
+      // smooth scroll Lenis
+      const lenis = new Lenis();
+
+      function raf(time) {
+        lenis.raf(time);
+        requestAnimationFrame(raf);
+      }
+
+      requestAnimationFrame(raf);
+
+       // Ukiyo
+      const images = document.querySelectorAll('.ukiyo');
+        images.forEach(image => {
+          new Ukiyo(image, {
+            scale: 1.2,
+            speed: 2
+          });
+        });
+     
     </script>
   </body>
 </html>
