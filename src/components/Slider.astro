@@ -36,7 +36,7 @@ interface Props {
 
 const { groupId = 1 } = Astro.props; // Por defecto usa el grupo "Principal" (id: 1)
 
-// Interfaces for API data types
+// Interfaces for API data types //Español: Interfaces para tipos de datos de la API
 interface SlideImage {
   id: number;
   path: string;
@@ -51,7 +51,7 @@ interface SlideItem {
   size: 'SM' | 'MD';
   text: string | null;
   button_text: string | null;
-  title_text: string | null;  // Agregamos el nuevo campo
+  title_text: string | null; 
   image: SlideImage;
 }
 
@@ -61,17 +61,17 @@ interface SlideGroup {
   items: SlideItem[];
 }
 
-// Fetch slides from API
+// Fetch slides from API //Español: Obtener slides de la API externa
 const response = await fetch('https://panelweb.derkayvargas.com/api/slides/');
 const data: SlideGroup[] = await response.json();
 
-// Get slides from specified group and sort by orden
+// Get slides from specified group and sort by orden //Español: Obtener slides del grupo especificado y ordenar por orden //Español: Obtener slides del grupo especificado y ordenar por orden
 const group = data.find(g => g.id === groupId);
 const slides: SlideItem[] = group?.items || [];
 const sortedSlides = slides.sort((a, b) => a.orden - b.orden);
 
-// Group slides by orden to pair MD with SM images
-type SlideMap = Record<number, Partial<Record<'SM' | 'MD', SlideItem>>>; // Added type definition
+// Group slides by orden to pair MD with SM images //Español: Agrupar slides por orden para emparejar imágenes MD con SM
+type SlideMap = Record<number, Partial<Record<'SM' | 'MD', SlideItem>>>; 
 const slidesMap: SlideMap = sortedSlides.reduce((acc, slide) => {
   if (!acc[slide.orden]) {
     acc[slide.orden] = {};
@@ -80,9 +80,9 @@ const slidesMap: SlideMap = sortedSlides.reduce((acc, slide) => {
   return acc;
 }, {} as SlideMap);
 
-// Get unique slides (using MD as main slide)
+// Get unique slides (using MD as main slide) //Español: Obtener slides únicos (usando MD como slide principal)
 const uniqueSlides = Object.values(slidesMap)
-  .filter((group): group is { MD: SlideItem } => Boolean(group.MD)) // Corrección aquí
+  .filter((group): group is { MD: SlideItem } => Boolean(group.MD))
   .map(group => group.MD);
 ---
 
