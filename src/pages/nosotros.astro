@@ -2,49 +2,189 @@
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Nosotros - Toyota">
-
-    <section class="hero mb-16">
-        <div class="container mx-auto px-4">
-            <img 
-                class="ukiyo w-full h-[60vh] object-cover rounded-lg"
-                src="https://images.unsplash.com/photo-1559416523-140ddc3d238c?ixlib=rb-4.0.3"
-                alt="Toyota Headquarters"
-            />
+<Layout title="Nuestra Historia - Derka y Vargas">
+    <!-- Hero Section -->
+    <section class="relative h-[80vh]">
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
+        <img 
+            src="/images/Concesionario/ruta.jpg" 
+            alt="Derka y Vargas Concesionario"
+            class="w-full h-full object-cover ukiyo"
+        />
+        <div class="absolute inset-0 z-20 flex items-center justify-center text-white">
+            <div class="text-center space-y-4 max-w-4xl mx-auto px-4">
+                <h1 class="text-5xl md:text-6xl font-bold">Derka y Vargas</h1>
+                <p class="text-xl md:text-2xl">Más de 57 años construyendo confianza en el Chaco</p>
+            </div>
         </div>
     </section>
 
-    <section class="py-16">
+    <!-- Timeline Section -->
+    <section class="py-20">
         <div class="container mx-auto px-4">
-            <h1 class="text-4xl font-bold mb-8">Nuestra Historia</h1>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <div class="space-y-6">
-                    <p>Desde 1937, Toyota ha estado impulsando la innovación y el progreso en la industria automotriz. Nuestra historia comenzó con un simple telar automático y el sueño de Sakichi Toyoda de mejorar la vida de las personas a través de la innovación.</p>
-                    <p>Hoy, más de 80 años después, seguimos fieles a nuestros principios fundamentales de calidad, durabilidad y confiabilidad, mientras nos adaptamos a un mundo en constante evolución.</p>
+            <h2 class="mb-16 vehicles__title heading-1">Nuestra Historia</h2>
+            
+            <div class="space-y-24">
+                <!-- 1966 - Fundación -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-4">
+                        <span class="text-toyota-red font-bold">1966</span>
+                        <h3 class="text-3xl font-bold">El Comienzo</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Eduardo Fredy Vargas y Rodolfo Luis Derka inician su actividad comercial 
+                            en Presidencia Roque Sáenz Peña. Comienzan con la compra de "TEOSIL S.A.", 
+                            concesionario IKA - RENAULT, operando en la calle San Martín 859.
+                        </p>
+                    </div>
+                    <div class="relative h-96">
+                        <img 
+                            src="/images/Concesionario/ruta.jpg" 
+                            alt="Inicios de Derka y Vargas"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
                 </div>
-                <div>
-                    <img 
-                        class="ukiyo w-full rounded-lg"
-                        src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3"
-                        alt="Toyota Showroom"
-                    />
+
+                <!-- 1995 - Toyota -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="relative h-96 order-2 md:order-1">
+                        <img 
+                            src="/images/Concesionario/ruta.jpg" 
+                            alt="Concesionario Toyota"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
+                    <div class="space-y-4 order-1 md:order-2">
+                        <span class="text-toyota-red font-bold">1995</span>
+                        <h3 class="text-3xl font-bold">Concesionaria Oficial Toyota</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Un hito crucial en nuestra historia: DERKA Y VARGAS S.A. es nombrada 
+                            Concesionaria Oficial TOYOTA para la provincia del Chaco, instalándose 
+                            en Av. Mc Lean Nº 58 de Resistencia.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2009 - Expansión -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="space-y-4">
+                        <span class="text-toyota-red font-bold">2009</span>
+                        <h3 class="text-3xl font-bold">Nuevo Centro de Operaciones</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Inauguramos nuestro moderno local en Ruta Nicolás Avellaneda Km. 11,9, 
+                            con más de 5000 m² cubiertos, incluyendo servicio express y amplias 
+                            instalaciones de posventa.
+                        </p>
+                    </div>
+                    <div class="relative h-96">
+                        <img 
+                            src="/images/Concesionario/ruta.jpg" 
+                            alt="Sede Actual"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-16 bg-gray-50">
+    <!-- Valores Section -->
+    <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-8">Compromiso con el Futuro</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <img 
-                    class="ukiyo w-full rounded-lg"
-                    src="https://images.unsplash.com/photo-1590362891991-f776e747a588?ixlib=rb-4.0.3"
-                    alt="Toyota Electric Vehicle"
-                />
-                <div class="space-y-6">
-                    <p>En Toyota, nuestra visión va más allá de fabricar automóviles. Nos dedicamos a crear un futuro más sostenible y movilidad para todos. Nuestro compromiso con la innovación tecnológica y la responsabilidad ambiental nos impulsa a desarrollar vehículos híbridos y eléctricos de última generación.</p>
-                    <p>Cada vehículo que producimos representa nuestra dedicación a la excelencia y nuestra promesa de contribuir a un mundo mejor para las generaciones futuras.</p>
+            <h2 class="text-4xl font-bold text-center mb-16">Nuestros Valores</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[
+                    {
+                        titulo: "Compromiso",
+                        texto: "Nos sentimos involucrados tanto personal, como familiar y empresarialmente con la misión, visión y valores del grupo empresario."
+                    },
+                    {
+                        titulo: "Honestidad",
+                        texto: "Somos transparentes en todas nuestras actividades y relaciones con colaboradores, clientes y proveedores."
+                    },
+                    {
+                        titulo: "Respeto",
+                        texto: "Reconocemos y valoramos las opiniones con una actitud empática, desarrollando la capacidad de escucha."
+                    },
+                    {
+                        titulo: "Responsabilidad",
+                        texto: "Asumimos las consecuencias de nuestros actos, respetando nuestra misión, visión y valores."
+                    },
+                    {
+                        titulo: "Confiabilidad",
+                        texto: "Construimos relaciones duraderas basadas en la confianza mutua."
+                    },
+                    {
+                        titulo: "Lealtad",
+                        texto: "Respeto hacia la marca, colaboradores, clientes, proveedores y la comunidad."
+                    }
+                ].map(valor => (
+                    <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                        <h3 class="text-2xl font-bold mb-4 text-toyota-red">{valor.titulo}</h3>
+                        <p class="text-gray-600">{valor.texto}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Visión y Misión -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-3xl font-bold mb-6 text-toyota-red">Nuestra Visión</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Que la marca "Derka y Vargas" sea reconocida como referente por el cliente 
+                        del mercado automotor en la región NEA, por nuestros valores, compromiso 
+                        socio-ambiental, calidad humana y profesional y sensibilidad social.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-3xl font-bold mb-6 text-toyota-red">Nuestra Misión</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Liderar el negocio automotriz y de la movilidad de la región, aportando 
+                        valor al mismo, logrando la fidelización de nuestros clientes como miembros 
+                        de la comunidad del grupo empresario Derka y Vargas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compromiso Social -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Compromiso Social y Ambiental</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img 
+                        src="/images/Concesionario/ruta.jpg" 
+                        alt="Certificación ISO"
+                        class="w-full h-48 object-cover ukiyo"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">ISO 14001</h3>
+                        <p class="text-gray-600">
+                            Desde 2010 certificamos y recertificamos anualmente nuestro compromiso 
+                            con el medio ambiente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img 
+                        src="/images/Concesionario/ruta.jpg" 
+                        alt="Programa META"
+                        class="w-full h-48 object-cover ukiyo"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Programa META</h3>
+                        <p class="text-gray-600">
+                            Mejora de la Educación Técnica Automotriz, formando profesionales 
+                            desde 2011.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
