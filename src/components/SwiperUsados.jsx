@@ -15,17 +15,19 @@ const SwiperUsados = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://panelweb.derkayvargas.com/api/usados?visible=1"
-        ); // Obtenemos los autos usados
-        const data = response.data.data; // Accedemos a la lista de autos usados
+          "https://panelweb.derkayvargas.com/api/usados"
+        );
+        const data = response.data.data;
+        
+        // Filtrar autos visibles y disponibles, ordenar por más recientes
+        const filteredCars = data
+          .filter(car => car.visible === 1 && car.estado === "DISPONIBLE")
+          .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
 
-        setUsedCars(data);
+        setUsedCars(filteredCars);
         setLoading(false);
       } catch (error) {
-        console.error(
-          "Error al obtener los datos de la API de autos usados:",
-          error
-        );
+        console.error("Error al obtener los datos de la API:", error);
         setLoading(false);
       }
     };
