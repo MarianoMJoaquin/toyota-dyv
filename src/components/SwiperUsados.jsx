@@ -9,6 +9,7 @@ import { Pagination, Navigation } from "swiper/modules";
 const SwiperUsados = () => {
   const [usedCars, setUsedCars] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isLastSlide, setIsLastSlide] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -81,9 +82,9 @@ const SwiperUsados = () => {
           <div className="catalog__item-name text-xl">
             {car.marca} {car.modelo}
           </div>
-          {/*<p className="catalog__item-text text-lg">
+          <p className="catalog__item-text text-lg">
             {car.descripcion || "Descripción no disponible"}
-          </p>*/}
+          </p>
         </div>
         <div className="catalog__item-bottom">
           <a href={`/usados/${car.slug}`} className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
@@ -110,21 +111,52 @@ const SwiperUsados = () => {
         prevEl: ".swiper-button-prev",
       }}
       pagination={{ clickable: true }}
+      onSlideChange={(swiper) => {
+        setIsLastSlide(swiper.isEnd);
+      }}
       breakpoints={{
         640: { slidesPerView: 1 },
         768: { slidesPerView: 2 },
         1024: { slidesPerView: 3 },
       }}
     >
-      {cars.map((car) => (
+      {cars.slice(0, 6).map((car) => (
         <SwiperSlide key={car.id} className="mb-5">
           {renderCard(car)}
         </SwiperSlide>
       ))}
+      <SwiperSlide className="mb-5">
+        <div className="catalog__item relative bg-transparent">
+          {/* Fondo con efecto glassmorphism */}
+          <div className="absolute inset-0 backdrop-blur-md bg-white/40"></div>
+          
+          {/* Estructura similar a renderCard */}
+          <div className="relative z-10">
+            <div className="w-full h-72 border border-white/20 rounded-t-lg"></div>
+            <div className="catalog__item-info backdrop-blur-sm bg-white/20">
+              <div className="catalog__item-top">
+                <span className="opacity-50">•••</span>
+              </div>
+              <div className="catalog__item-middle flex flex-col items-center justify-center">
+                <h3 className="text-2xl font-bold mb-2 text-gray-800">¿Querés ver más?</h3>
+                <a 
+                  href="/usados" 
+                  className="group catalog__item-btn px-8 py-3 bg-red-600 text-white text-xl rounded-full hover:bg-red-700 transition-all flex items-center gap-2 mt-4"
+                >
+                  Ver más usados
+                  <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
+                    →
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </SwiperSlide>
       <div className="swiper-button-prev hover:text-red-500">
         <i className="ri-arrow-left-s-line text-2xl text-white"></i>
       </div>
-      <div className="swiper-button-next hover:text-red-500">
+      <div className={`swiper-button-next hover:text-red-500 ${isLastSlide ? 'opacity-0 pointer-events-none' : ''}`}>
         <i className="ri-arrow-right-s-line text-2xl text-white"></i>
       </div>
     </Swiper>
