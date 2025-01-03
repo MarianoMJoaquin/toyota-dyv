@@ -1,13 +1,13 @@
 ---
 /**
  * Componente Slider
- * 
+ *
  * Este componente crea un carrusel de imágenes con texto y botones superpuestos.
  * Consume datos de una API externa y permite mostrar diferentes grupos de slides.
- * 
+ *
  * @component
  * @prop {number} [groupId=1] - ID del grupo de slides a mostrar (por defecto muestra el grupo "Principal")
- * 
+ *
  * Estructura de datos:
  * - Cada slide puede tener:
  *   - title_text: Título principal
@@ -15,14 +15,19 @@
  *   - button_text: Texto del botón de acción
  *   - url: Enlace al hacer clic
  *   - image: Imagen del slide (versiones MD y SM para responsive)
- * 
+ *   - video_url: URL del video a mostrar (si media_type es 'video')
+ *   - media_type: Tipo de contenido ('image' o 'video')
+ *
  * Características:
  * - Navegación con flechas y dots
  * - Autoplay cada 10 segundos
  * - Soporte touch para dispositivos móviles
  * - Diseño responsive con imágenes adaptativas
  * - Gradientes para mejorar legibilidad del texto
- * 
+ * - Efecto de escala en las imágenes con Ukiyo
+ * - Pausa del autoplay al reproducir un video
+ *
+ *
  * Ejemplo de uso:
  * ```astro
  * <Slider groupId={1} /> // Muestra slides del grupo "Principal"
@@ -31,7 +36,7 @@
  */
 
 interface Props {
-  groupId?: number;  // ID del grupo de slides a mostrar
+  groupId?: number; // ID del grupo de slides a mostrar
 }
 
 const { groupId = 1 } = Astro.props; // Por defecto usa el grupo "Principal" (id: 1)
@@ -48,11 +53,13 @@ interface SlideItem {
   slide_id: number;
   orden: number;
   url: string;
-  size: 'SM' | 'MD';
+  size: "SM" | "MD";
   text: string | null;
   button_text: string | null;
-  title_text: string | null; 
-  image: SlideImage;
+  title_text: string | null;
+  media_type: "image" | "video";
+  video_url: string | null;
+  image: SlideImage | null;
 }
 
 interface SlideGroup {
@@ -62,16 +69,16 @@ interface SlideGroup {
 }
 
 // Fetch slides from API //Español: Obtener slides de la API externa
-const response = await fetch('https://panelweb.derkayvargas.com/api/slides/');
+const response = await fetch("https://panelweb.derkayvargas.com/api/slides/");
 const data: SlideGroup[] = await response.json();
 
 // Get slides from specified group and sort by orden //Español: Obtener slides del grupo especificado y ordenar por orden //Español: Obtener slides del grupo especificado y ordenar por orden
-const group = data.find(g => g.id === groupId);
+const group = data.find((g) => g.id === groupId);
 const slides: SlideItem[] = group?.items || [];
 const sortedSlides = slides.sort((a, b) => a.orden - b.orden);
 
 // Group slides by orden to pair MD with SM images //Español: Agrupar slides por orden para emparejar imágenes MD con SM
-type SlideMap = Record<number, Partial<Record<'SM' | 'MD', SlideItem>>>; 
+type SlideMap = Record<number, Partial<Record<"SM" | "MD", SlideItem>>>;
 const slidesMap: SlideMap = sortedSlides.reduce((acc, slide) => {
   if (!acc[slide.orden]) {
     acc[slide.orden] = {};
@@ -83,49 +90,78 @@ const slidesMap: SlideMap = sortedSlides.reduce((acc, slide) => {
 // Get unique slides (using MD as main slide) //Español: Obtener slides únicos (usando MD como slide principal)
 const uniqueSlides = Object.values(slidesMap)
   .filter((group): group is { MD: SlideItem } => Boolean(group.MD))
-  .map(group => group.MD);
+  .map((group) => group.MD);
 ---
 
 <div class="slider">
   <div class="slider__wrapper">
     <div class="slider__inner">
-      {uniqueSlides.map((slide) => (
-        <div class="slider__item">
-          <div class="slider__item-content">
-            {slide.title_text && (
-              <h1 class="slider__item-title">
-                {slide.title_text}
-                {slide.text && <span>{slide.text}</span>}
-              </h1>
-            )}
-            {slide.button_text && (
-              <a href={slide.url} class="slider__item-btn btn">{slide.button_text}</a>
-            )}
-          </div>
-          <a class="slider__item-bg" href={slide.url || '#'}>
-            <picture>
-              {slidesMap[slide.orden]?.SM && (
-                <source 
-                  srcset={`https://panelweb.derkayvargas.com${slidesMap[slide.orden].SM?.image.public_path}`} 
-                  media="(max-width: 500px)" 
-                />
+      {
+        uniqueSlides.map((slide) => (
+          <div class="slider__item">
+            <div class="slider__item-content">
+              {slide.title_text && (
+                <h1 class="slider__item-title">
+                  {slide.title_text}
+                  {slide.text && <span>{slide.text}</span>}
+                </h1>
               )}
-              <img 
-                class="slider__item-img ukiyo" 
-                src={`https://panelweb.derkayvargas.com${slide.image.public_path}`} 
-                alt={slide.text || ''} 
-              />
-            </picture>
-          </a>
-        </div>
-      ))}
+              {slide.button_text && (
+                <a href={slide.url} class="slider__item-btn btn">
+                  {slide.button_text}
+                </a>
+              )}
+            </div>
+            <a class="slider__item-bg" href={slide.url || "#"}>
+              <div class="slider__media-container">
+                {slide.media_type === "video" ? (
+                  <video
+                    class="slider__item-video ukiyo"
+                    src={slide.video_url || ""}
+                    autoplay
+                    loop
+                    muted
+                    playsinline
+                  />
+                ) : (
+                  <picture>
+                    {slidesMap[slide.orden]?.SM && (
+                      <source
+                        srcset={`https://panelweb.derkayvargas.com${slidesMap[slide.orden].SM?.image?.public_path}`}
+                        media="(max-width: 500px)"
+                      />
+                    )}
+                    <img
+                      class="slider__item-img ukiyo"
+                      src={`https://panelweb.derkayvargas.com${slide.image?.public_path}`}
+                      alt={slide.text || ""}
+                    />
+                  </picture>
+                )}
+                <button class="slider__control">
+                  <span class="slider__control-icon slider__control-icon--pause">
+                    <i class="ri-pause-line" />
+                  </span>
+                  <span class="slider__control-icon slider__control-icon--play">
+                    <i class="ri-play-line" />
+                  </span>
+                </button>
+              </div>
+            </a>
+          </div>
+        ))
+      }
     </div>
   </div>
 
   <div class="slider__nav">
-    {uniqueSlides.map((_, index) => (
-      <button class={`slider__nav-btn ${index === 0 ? 'slider__nav-btn_active' : ''}`}></button>
-    ))}
+    {
+      uniqueSlides.map((_, index) => (
+        <button
+          class={`slider__nav-btn ${index === 0 ? "slider__nav-btn_active" : ""}`}
+        />
+      ))
+    }
   </div>
 
   <div class="slider__arrows">
@@ -140,239 +176,573 @@ const uniqueSlides = Object.values(slidesMap)
 
 <script is:inline>
   const sliderWrapper = document.querySelector(".slider__wrapper"),
-  sliderInner = document.querySelector(".slider__inner"),
-  sliderItems = document.querySelectorAll(".slider__item"),
-  sliderArrowNext = document.querySelector(".slider__arrow_next"),
-  sliderArrowPrev = document.querySelector(".slider__arrow_prev"),
-  sliderNavBtns = document.querySelectorAll(".slider__nav-btn");
-let slideIndex = 1,
-  offset = 0;
-function slideMoveNext() {
-  removeBtnClass(),
-    slideIndex == sliderItems.length
-      ? ((offset = 0), (slideIndex = 1))
-      : ((offset += 100 / sliderItems.length), slideIndex++),
-    addBtnClass(slideIndex - 1),
-    (sliderInner.style.transform = `translateX(-${offset}%)`);
-}
-function slideMovePrev() {
-  removeBtnClass(),
-    1 == slideIndex
-      ? ((offset = (100 / sliderItems.length) * (sliderItems.length - 1)),
-        (slideIndex = sliderItems.length))
-      : ((offset -= 100 / sliderItems.length), slideIndex--),
-    addBtnClass(slideIndex - 1),
-    (sliderInner.style.transform = `translateX(-${offset}%)`);
-}
-if (sliderInner) {
-  sliderInner.style.cssText = `display: flex; width: ${100 * sliderItems.length}%;`;
-}
-if (sliderWrapper) {
-  sliderWrapper.style.overflow = "hidden";
-}
-let slideTimer = setInterval(slideMoveNext, 1e4);
-function removeBtnClass() {
-  sliderNavBtns.forEach((e) => e.classList.remove("slider__nav-btn_active"));
-}
-function addBtnClass(e = 0) {
-  sliderNavBtns[e].classList.add("slider__nav-btn_active"),
-    clearInterval(slideTimer),
-    (slideTimer = setInterval(slideMoveNext, 1e4));
-}
-if (sliderInner) {
-  sliderArrowNext.addEventListener("click", () => {
-    slideMoveNext();
-  }),
-    sliderArrowPrev.addEventListener("click", () => {
-      slideMovePrev();
-    }),
-    sliderNavBtns.forEach((e, t) => {
-      e.addEventListener("click", () => {
-        removeBtnClass(),
-          (offset = (100 / sliderItems.length) * t),
-          (slideIndex = t + 1),
-          (sliderInner.style.transform = `translateX(-${offset}%)`),
-          addBtnClass(t);
-      });
+    sliderInner = document.querySelector(".slider__inner"),
+    sliderItems = document.querySelectorAll(".slider__item"),
+    sliderArrowNext = document.querySelector(".slider__arrow_next"),
+    sliderArrowPrev = document.querySelector(".slider__arrow_prev"),
+    sliderNavBtns = document.querySelectorAll(".slider__nav-btn");
+  let slideIndex = 1,
+    offset = 0;
+  function slideMoveNext() {
+    removeBtnClass(),
+      slideIndex == sliderItems.length
+        ? ((offset = 0), (slideIndex = 1))
+        : ((offset += 100 / sliderItems.length), slideIndex++),
+      addBtnClass(slideIndex - 1),
+      (sliderInner.style.transform = `translateX(-${offset}%)`);
+  }
+  function slideMovePrev() {
+    removeBtnClass(),
+      1 == slideIndex
+        ? ((offset = (100 / sliderItems.length) * (sliderItems.length - 1)),
+          (slideIndex = sliderItems.length))
+        : ((offset -= 100 / sliderItems.length), slideIndex--),
+      addBtnClass(slideIndex - 1),
+      (sliderInner.style.transform = `translateX(-${offset}%)`);
+  }
+  if (sliderInner) {
+    sliderInner.style.cssText = `display: flex; width: ${100 * sliderItems.length}%;`;
+  }
+  if (sliderWrapper) {
+    sliderWrapper.style.overflow = "hidden";
+  }
+  let slideTimer = setInterval(slideMoveNext, 1e4);
+  function removeBtnClass() {
+    sliderNavBtns.forEach((e) => e.classList.remove("slider__nav-btn_active"));
+  }
+  function addBtnClass(index = 0) {
+    sliderNavBtns.forEach(btn => {
+      btn.classList.remove("slider__nav-btn_active", "paused");
     });
-}
-let x1 = null,
-  y1 = null;
-function handleTouchStart(e) {
-  (x1 = e.touches[0].clientX), (y1 = e.touches[0].clientY);
-}
-function handleTouchMove(e) {
-  if (!x1 || !y1) return !1;
-  let t = e.touches[0].clientX,
-    n = e.touches[0].clientY,
-    r = t - x1,
-    i = n - y1;
-  return (
-    (x1 = null),
-    (y1 = null),
-    Math.abs(r) > Math.abs(i) ? (r > 0 ? "prev" : "next") : void 0
-  );
-}
-if (sliderInner) {
-  sliderInner.addEventListener("touchstart", handleTouchStart);
-}
+    
+    const activeBtn = sliderNavBtns[index];
+    activeBtn.classList.add('slider__nav-btn_active');
+    
+    // Reiniciar la animación
+    activeBtn.style.animation = 'none';
+    activeBtn.offsetHeight; // Trigger reflow
+    activeBtn.style.animation = null;
+    
+    clearInterval(slideTimer);
+    slideTimer = setInterval(slideMoveNext, 10000);
+    
+    // Si hay un video en el slide actual, sincronizar su estado
+    const currentSlide = sliderItems[index];
+    const video = currentSlide.querySelector('video');
+    const control = currentSlide.querySelector('.slider__control');
+    
+    if (video && control.hasAttribute('data-state')) {
+      activeBtn.classList.add('paused');
+      clearInterval(slideTimer);
+    }
+  }
+  if (sliderInner) {
+    sliderArrowNext.addEventListener("click", () => {
+      slideMoveNext();
+    }),
+      sliderArrowPrev.addEventListener("click", () => {
+        slideMovePrev();
+      }),
+      sliderNavBtns.forEach((e, t) => {
+        e.addEventListener("click", () => {
+          removeBtnClass(),
+            (offset = (100 / sliderItems.length) * t),
+            (slideIndex = t + 1),
+            (sliderInner.style.transform = `translateX(-${offset}%)`),
+            addBtnClass(t);
+        });
+      });
+  }
+  let x1 = null,
+    y1 = null;
+  function handleTouchStart(e) {
+    (x1 = e.touches[0].clientX), (y1 = e.touches[0].clientY);
+  }
+  function handleTouchMove(e) {
+    if (!x1 || !y1) return !1;
+    let t = e.touches[0].clientX,
+      n = e.touches[0].clientY,
+      r = t - x1,
+      i = n - y1;
+    return (
+      (x1 = null),
+      (y1 = null),
+      Math.abs(r) > Math.abs(i) ? (r > 0 ? "prev" : "next") : void 0
+    );
+  }
+  if (sliderInner) {
+    sliderInner.addEventListener("touchstart", handleTouchStart);
+  }
   if (sliderInner) {
     sliderInner.addEventListener("touchmove", (e) => {
       let t = handleTouchMove(e);
       "prev" === t ? slideMovePrev() : "next" === t && slideMoveNext();
     });
   }
+
+  // Manejo unificado de videos y progreso
+  const videoContainers = document.querySelectorAll(".slider__video-container");
+
+  videoContainers.forEach((container) => {
+    const video = container.querySelector("video");
+    const control = container.querySelector(".slider__video-control");
+    
+    control.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const activeBtn = document.querySelector('.slider__nav-btn_active');
+      
+      if (video.paused) {
+        video.play();
+        control.removeAttribute("data-state");
+        if (activeBtn) {
+          const currentWidth = activeBtn.offsetWidth;
+          const progress = getComputedStyle(activeBtn, '::after').width;
+          const progressPercent = (parseInt(progress) / currentWidth) * 100;
+          
+          activeBtn.style.setProperty('--current-width', `${progressPercent}%`);
+          activeBtn.classList.remove('paused');
+        }
+      } else {
+        video.pause();
+        control.setAttribute("data-state", "paused");
+        if (activeBtn) {
+          activeBtn.classList.add('paused');
+        }
+      }
+    });
+  });
+
+  // Control unificado de reproducción/pausa
+  const mediaContainers = document.querySelectorAll('.slider__media-container');
+
+  mediaContainers.forEach((container) => {
+    const control = container.querySelector('.slider__control');
+    const video = container.querySelector('video');
+    
+    control.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      const activeBtn = document.querySelector('.slider__nav-btn_active');
+      const isPaused = control.hasAttribute('data-state');
+      
+      if (isPaused) {
+        // Reanudar todo
+        control.removeAttribute('data-state');
+        if (video) video.play();
+        activeBtn.classList.remove('paused');
+        // Calculamos el tiempo restante basado en el progreso actual
+        const progressBar = activeBtn.querySelector('::after');
+        const currentWidth = progressBar ? progressBar.getBoundingClientRect().width : 0;
+        const totalWidth = activeBtn.getBoundingClientRect().width;
+        const progress = currentWidth / totalWidth;
+        const remainingTime = (1 - progress) * 10000; // 10000ms = 10s
+        
+        clearInterval(slideTimer);
+        slideTimer = setTimeout(slideMoveNext, remainingTime);
+      } else {
+        // Pausar todo
+        control.setAttribute('data-state', 'paused');
+        if (video) video.pause();
+        activeBtn.classList.add('paused');
+        clearInterval(slideTimer);
+      }
+    });
+  });
+
+  // Modificar addBtnClass para manejar el timer correctamente
+  function addBtnClass(index = 0) {
+    sliderNavBtns.forEach(btn => {
+      btn.classList.remove("slider__nav-btn_active", "paused");
+    });
+    
+    const activeBtn = sliderNavBtns[index];
+    activeBtn.classList.add("slider__nav-btn_active");
+    
+    // Reset y start de la animación
+    activeBtn.style.animation = 'none';
+    activeBtn.offsetHeight; // Trigger reflow
+    activeBtn.style.animation = null;
+    
+    // Configurar el timer exactamente a 10 segundos
+    clearTimeout(slideTimer);
+    slideTimer = setTimeout(slideMoveNext, 10000);
+  }
+
+  // Agregar listener para el final de la animación
+  sliderNavBtns.forEach(btn => {
+    btn.addEventListener('animationend', () => {
+      if (btn.classList.contains('slider__nav-btn_active') && !btn.classList.contains('paused')) {
+        slideMoveNext();
+      }
+    });
+  });
+
 </script>
 
 <style>
   .slider {
-  margin-bottom: 1rem;
-  position: relative;
-  margin: 0 auto;
-}
-.slider__item {
-  position: relative;
-  width: 100%;
-}
-.slider__item-title,
-.slider__item-btn {
-  position: absolute;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  z-index: 1;
-}
-.slider__item-title {
-  text-align: center;
-  font-size: 2pc;
-  font-weight: 500;
-  bottom: 5rem;
-  color: #fff;
-  white-space: nowrap;
-  font-family: 'Toyota-Type-Semibold', sans-seri;
-  margin-bottom: 1rem;
-}
-
-.slider__item-title span {
-  margin-top: .5rem;
-  display: block;
-  font-weight: 400;
-  font-size: 1pc;
-  text-align: center;
-  font-family: 'Toyota-Type-Book', sans-serif;
-}
-.slider__item-btn {
-  bottom: 1.5rem;
-}
-.slider__item-bg {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
-.slider__item-bg::after {
-  content: "";
-  position: absolute;
-  height: 200px;
-  width: 100%;
-  bottom: 0;
-  left: 0;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(rgba(0, 0, 0, 0.65)),
-    to(transparent)
-  );
-  background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.65), transparent);
-  background: linear-gradient(360deg, rgba(0, 0, 0, 0.65), transparent);
-}
-
-.slider__item-bg::before {
-  content: "";
-  position: absolute;
-  height: 200px;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    from(rgba(0, 0, 0, 0.65)),
-    to(transparent)
-  );
-  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65), transparent);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent);
-}
-
-.slider__item-img {
-  width: 100%;
-  height: 100%;
-}
-.slider__inner {
-  -webkit-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  transition: all 0.5s;
-}
-
-.slider__arrow {
-  position: absolute;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-  z-index: 5;
-  width: 4rem;
-  height: 4rem;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  background-color: rgba(31, 31, 31, 0.8);
-  border-radius: 50%;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.slider__arrow_prev {
-  left: 2rem;
-}
-.slider__arrow_next {
-  right: 2rem;
-}
-@media (min-width: 768px) {
-  .slider__arrow:hover {
-    background-color: rgba(31, 31, 31, 0.9);
+    margin-bottom: 1rem;
+    position: relative;
+    margin: 0 auto;
   }
-}
-.slider__nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 3px;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
-.slider__nav-btn {
-  width: 100%;
-  height: 8px;
-  background-color: rgba(255, 255, 255, 0.5);
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-  position: relative;
-}
+  .slider__item {
+    position: relative;
+    width: 100%;
+  }
+  .slider__item-title,
+  .slider__item-btn {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  .slider__item-title {
+    text-align: center;
+    font-size: 3pc;
+    font-weight: 500;
+    bottom: 5rem;
+    color: #fff;
+    white-space: nowrap;
+    font-family: "Toyota-Type-Semibold", sans-seri;
+    margin-bottom: 1rem;
+  }
+
+  .slider__item-title span {
+    margin-top: 0.5rem;
+    display: block;
+    font-weight: 400;
+    font-size: 1pc;
+    text-align: center;
+    font-family: "Toyota-Type-Book", sans-serif;
+  }
+  .slider__item-btn {
+    bottom: 1.5rem;
+  }
+  .slider__item-bg {
+    position: relative;
+    height: 100%;
+    width: 100%;
+  }
+  .slider__item-bg::after {
+    content: "";
+    position: absolute;
+    height: 200px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.65)),
+      to(transparent)
+    );
+    background: -o-linear-gradient(bottom, rgba(0, 0, 0, 0.65), transparent);
+    background: linear-gradient(360deg, rgba(0, 0, 0, 0.65), transparent);
+  }
+
+  .slider__item-bg::before {
+    content: "";
+    position: absolute;
+    height: 200px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      from(rgba(0, 0, 0, 0.65)),
+      to(transparent)
+    );
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0.65), transparent);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent);
+  }
+
+  .slider__item-img {
+    width: 100%;
+    height: 100%;
+  }
+  .slider__inner {
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+
+  .slider__arrow {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 4rem;
+    height: 4rem;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    background-color: rgba(31, 31, 31, 0.8);
+    border-radius: 50%;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  .slider__arrow_prev {
+    left: 2rem;
+  }
+  .slider__arrow_next {
+    right: 2rem;
+  }
+  @media (min-width: 768px) {
+    .slider__arrow:hover {
+      background-color: rgba(31, 31, 31, 0.9);
+    }
+  }
+  .slider__nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 3px;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+  .slider__nav-btn {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.5);
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+    position: relative;
+  }
+  .slider__nav-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: var(--progress, 0%);
+    background-color: #000;
+    transition: width 0.1s linear;
+  }
+  .slider__nav-btn_active {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  .slider__nav-btn_active::after {
+    -webkit-animation: btnTimeInterval 10s linear forwards;
+    animation: btnTimeInterval 10s linear forwards;
+    animation-play-state: running;
+  }
+  .slider__nav-btn_active::after {
+    width: 100%;
+    transition: width 10s linear;
+  }
+
+  .slider__nav-btn_active.paused::after {
+    transition: none;
+  }
+  @media (max-width: 768px) {
+    /*.home {
+    padding-top: 6rem;
+  }*/
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none !important;
+    }
+  }
+  @media (max-width: 520px) {
+    .slider__arrow {
+      width: 2rem;
+      height: 2rem;
+      display: none;
+    }
+    .slider__arrow img {
+      width: 1.8rem;
+    }
+    .slider__item-title {
+      font-size: 1.5rem;
+    }
+    .slider__item-title span {
+      font-size: 1rem;
+    }
+    .slider__item-btn {
+      bottom: 1.8rem;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none !important;
+    }
+  }
+  @media (max-width: 425px) {
+    /*Dispositivos móviles asta 425px de anco, mas de 425px de anco no se aplican los estilos los estilos*/
+    .slider__item-btn {
+      bottom: 1.8rem;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+      display: none !important;
+    }
+  }
+  .vehicles__title {
+    margin-bottom: 3rem;
+    text-align: center;
+  }
+  .swiper-wrapper {
+    height: max-content !important ;
+    padding-bottom: 2rem !important;
+  }
+  .swiper-button-prev:after,
+  .swiper-button-next:after {
+    content: "" !important;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    font-size: 2rem !important;
+    color: white !important;
+    background-color: black !important;
+    height: 2pc !important;
+    width: 2pc !important;
+    border-radius: 5rem !important;
+  }
+  .swiper-button-prev {
+    transition: all 0.3s !important;
+  }
+  .swiper-button-next {
+    transition: all 0.3s !important;
+  }
+
+  .swiper-pagination-bullet {
+    background-color: #e64b58 !important;
+    opacity: 1 !important;
+    transition: all 0.3s !important;
+  }
+
+  .swiper-pagination-bullet-active {
+    background-color: #eb0a1e !important;
+    transform: scale(1.3) !important;
+  }
+  .btn {
+    background-color: #fff;
+    padding: 0.8rem 1.8rem;
+    border-radius: 2rem;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    color: #000;
+    -webkit-transition: all 0.3s;
+    -o-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+  @media (min-width: 768px) {
+    .btn:hover {
+      background-color: #d8d8d8;
+    }
+  }
+  @media (max-width: 768px) {
+    .btn {
+      padding: 0.5rem 1.5rem;
+      font-size: 1.2rem;
+    }
+  }
+  .slider__item-content {
+    position: absolute;
+    left: 50%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+  }
+
+  .slider__item-title {
+    margin-bottom: 2rem;
+  }
+
+  .slider__item-title span {
+    margin-top: 1rem;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 400;
+    font-family: "Toyota-Type-Book", sans-serif;
+  }
+
+  .slider__item-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .slider__video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .slider__video-control {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+  }
+
+  .slider__video-control:hover {
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .slider__video-control-icon {
+    font-size: 1.2rem;
+    color: white;
+  }
+
+  .slider__video-control-icon--play {
+    display: none;
+  }
+
+  .slider__video-control[data-state="paused"]
+    .slider__video-control-icon--play {
+    display: block;
+  }
+
+  .slider__video-control[data-state="paused"]
+    .slider__video-control-icon--pause {
+    display: none;
+  }
+
+  @keyframes btnTimeInterval {
+    0% {
+      width: 0%;
+    }
+    100% {
+      width: 100%;
+    }
+  }
+
 .slider__nav-btn::after {
   content: "";
   position: absolute;
@@ -381,151 +751,79 @@ if (sliderInner) {
   height: 100%;
   width: 0;
   background-color: #000;
+  transition: width 10s linear;
 }
-.slider__nav-btn_active {
-  background-color: rgba(255, 255, 255, 0.8);
-}
+
 .slider__nav-btn_active::after {
-  -webkit-animation: btnTimeInterval 10s linear forwards;
-  animation: btnTimeInterval 10s linear forwards;
-}
-@-webkit-keyframes btnTimeInterval {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-@keyframes btnTimeInterval {
-  0% {
-    width: 0%;
-  }
-  100% {
-    width: 100%;
-  }
-}
-@media (max-width: 768px) {
-  /*.home {
-    padding-top: 6rem;
-  }*/
-  .swiper-button-prev,
-  .swiper-button-next{
-    display: none !important;
-  }
-}
-@media (max-width: 520px) {
-  .slider__arrow {
-    width: 2rem;
-    height: 2rem;
-    display: none;
-  }
-  .slider__arrow img {
-    width: 1.8rem;
-  }
-  .slider__item-title {
-    font-size: 1.5rem;
-  }
-  .slider__item-title span {
-    font-size: 1rem;
-  }
-  .slider__item-btn {
-    bottom: 1.8rem;
-  }
-  .swiper-button-prev,
-  .swiper-button-next{
-    display: none !important;
-  }
-}
-@media (max-width: 425px) { /*Dispositivos móviles asta 425px de anco, mas de 425px de anco no se aplican los estilos los estilos*/
-  .slider__item-btn {
-    bottom: 1.8rem;
-  }
-  .swiper-button-prev,
-  .swiper-button-next{
-    display: none !important;
-  }
-}
-.vehicles__title {
-  margin-bottom: 3rem;
-  text-align: center;
-}
-.swiper-wrapper {
-  height: max-content !important ;
-  padding-bottom: 2rem !important;
-}
-.swiper-button-prev:after,
-.swiper-button-next:after {
-  content: "" !important;
-}
-.swiper-button-prev,
-.swiper-button-next {
-  font-size: 2rem !important;
-  color: white !important;
-  background-color: black !important;
-  height: 2pc !important;
-  width: 2pc !important; 
-  border-radius: 5rem !important;
-}
-.swiper-button-prev {
-  transition: all 0.3s !important;  
-}
-.swiper-button-next {
-  transition: all 0.3s !important;  
-}
-
-.swiper-pagination-bullet {
-  background-color: #e64b58 !important;
-  opacity: 1 !important;
-  transition: all 0.3s !important;  
-}
-
-.swiper-pagination-bullet-active {
-  background-color: #eb0a1e !important;
-  transform: scale(1.3) !important; 
-}
-.btn {
-  background-color: #fff;
-  padding: 0.8rem 1.8rem;
-  border-radius: 2rem;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
-  font-weight: 700;
-  color: #000;
-  -webkit-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  transition: all 0.3s;
-}
-@media (min-width: 768px) {
-  .btn:hover {
-    background-color: #d8d8d8;
-  }
-}
-@media (max-width: 768px) {
-  .btn {
-    padding: 0.5rem 1.5rem;
-    font-size: 1.2rem;
-  }
-}
-.slider__item-content {
-  position: absolute;
-  left: 50%;
-  bottom: 2rem;
-  transform: translateX(-50%);
-  z-index: 1;
-  text-align: center;
   width: 100%;
 }
 
-.slider__item-title {
-  margin-bottom: 2rem;
+.slider__nav-btn.paused::after {
+  transition: none;
+  width: calc(var(--current-width, 0%));
 }
 
-.slider__item-title span {
-  margin-top: 1rem;
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 400;
-  font-family: 'Toyota-Type-Book', sans-serif;
+.slider__nav-btn_active:not(.paused)::after {
+  width: 100%;
+  transition: width var(--remaining-time, 10s) linear;
 }
+
+.slider__media-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.slider__control {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.slider__control:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.slider__control-icon {
+  font-size: 1.2rem;
+  color: white;
+}
+
+.slider__control-icon--play {
+  display: none;
+}
+
+.slider__control[data-state="paused"] .slider__control-icon--play {
+  display: block;
+}
+
+.slider__control[data-state="paused"] .slider__control-icon--pause {
+  display: none;
+}
+
+.slider__nav-btn_active::after {
+  animation: navProgress 10s linear forwards;
+  animation-play-state: running;
+}
+
+.slider__nav-btn_active.paused::after {
+  animation-play-state: paused;
+}
+
+@keyframes navProgress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
 </style>

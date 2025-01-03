@@ -147,7 +147,7 @@ const SwiperUsados = () => {
                 >
                   Ver más usados
                   <span className="transform translate-x-0 group-hover:translate-x-2 transition-transform duration-300">
-                    →
+                    <i className="ri-arrow-right-s-line"></i>
                   </span>
                 </a>
               </div>
