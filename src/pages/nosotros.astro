@@ -71,9 +71,11 @@ const toyotaImages = {
 
     <!-- Timeline Section con mejoras visuales -->
     <section id="historia" class="py-32 relative bg-gradient-to-b from-gray-50 to-white">
-        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-toyota-red/20 to-toyota-red/40 hidden md:block"></div>
-        <div class="container mx-auto px-4">
-            <h2 class="mb-16 vehicles__title heading-1 text-center">Nuestra Trayectoria</h2>
+        <h2 class="mb-16 vehicles__title heading-1 text-center">Nuestra Trayectoria</h2>
+        
+        <div class="container mx-auto px-4 relative">
+            <!-- Línea del timeline reposicionada -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-[calc(100%-4rem)] w-1 bg-gradient-to-b from-toyota-red/20 to-toyota-red/40 hidden md:block top-8"></div>
             
             <div class="space-y-32 relative">
                 <!-- 1966 - Fundación -->
@@ -215,8 +217,8 @@ const toyotaImages = {
         </div>
     </section>
 
-    <!-- Nuevo Banner de Logros -->
-    <section class="relative py-24 overflow-hidden">
+    <!-- Nuevo Banner de Logros con z-index ajustado -->
+    <section class="relative py-24 overflow-hidden z-10">
         <div class="absolute inset-0">
             <img 
                 src={toyotaImages.values}
