@@ -386,9 +386,9 @@ export default function UsadosList() {
                 autoSeleccionado && setAutoSeleccionado(null);
               }}
               placeholder="Buscar por marca o modelo..."
-              className="caret-red-600 block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-red-500 focus:outline-none focus:ring-0 focus:border-red-600 focus:transition ease-in-out peer"
+              className="caret-red-600 block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 focus:transition ease-in-out peer"
             />
-            <i className="ri-search-line absolute top-1/2 left-3 -translate-y-1/2 text-gray-600 dark:text-gray-300 transition-all ease-in-out peer-focus:text-red-600 peer-focus:transition"></i>
+            <i className="ri-search-line absolute top-1/2 left-3 -translate-y-1/2 text-gray-600 transition-all ease-in-out peer-focus:text-red-600 peer-focus:transition"></i>
           </div>
 
           {/* Sección de Filtros Activos */}
@@ -804,7 +804,7 @@ export default function UsadosList() {
                     autoSeleccionado && setAutoSeleccionado(null);
                   }}
                   placeholder="Desde"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                 />
                 <input
                   type="number"
@@ -815,7 +815,7 @@ export default function UsadosList() {
                     autoSeleccionado && setAutoSeleccionado(null);
                   }}
                   placeholder="Hasta"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                 />
               </div>
             </div>
@@ -1114,7 +1114,7 @@ export default function UsadosList() {
             {/* Drawer */}
             <div
               id="drawer-right-example"
-              className="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80 dark:bg-gray-800"
+              className="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80"
               tabIndex="-1"
               aria-labelledby="drawer-right-label"
             >
@@ -1123,7 +1123,7 @@ export default function UsadosList() {
                 type="button"
                 data-drawer-hide="drawer-right-example"
                 aria-controls="drawer-right-example"
-                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center dark:hover:bg-gray-600 dark:hover:text-white"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center"
               >
                 <svg
                   className="w-3 h-3"
@@ -1589,7 +1589,7 @@ export default function UsadosList() {
                         autoSeleccionado && setAutoSeleccionado(null);
                       }}
                       placeholder="Desde"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                     />
                     <input
                       type="number"
@@ -1600,7 +1600,7 @@ export default function UsadosList() {
                         autoSeleccionado && setAutoSeleccionado(null);
                       }}
                       placeholder="Hasta"
-                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-red-500 dark:focus:border-red-500"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-red-500 focus:border-red-500 block w-full p-2.5"
                     />
                   </div>
                 </div>
@@ -1758,7 +1758,7 @@ export default function UsadosList() {
             <div role="status" style={{height: "40vh"}} className="flex justify-center items-center">
               <svg
                 aria-hidden="true"
-                className="inline w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
+                className="inline w-16 h-16 text-gray-200 animate-spin fill-red-600"
                 viewBox="0 0 100 101"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"

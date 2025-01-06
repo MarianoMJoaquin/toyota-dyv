@@ -81,7 +81,7 @@ export default function AutoDetalles({ slug }) {
       >
         <svg
           aria-hidden="true"
-          className="w-16 h-16 text-gray-200 animate-spin dark:text-gray-600 fill-red-600"
+          className="w-16 h-16 text-gray-200 animate-spin fill-red-600"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -308,7 +308,7 @@ export default function AutoDetalles({ slug }) {
                         <input
                           id="npm-install"
                           type="text"
-                          class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                           value={`https://test-dyv.netlify.app/usados/${detallesAuto.slug}`}
                           disabled
                           readonly
