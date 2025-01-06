@@ -13,13 +13,6 @@ const toyotaImages = {
     values: "https://global.toyota/pages/news/images/2021/10/15/1330/20211015_01_1.jpg",
     sustainability: "https://global.toyota/pages/news/images/2021/06/23/1330/20210623_01_1.jpg"
 };
-
-const styles = {
-    timeline: {
-        dot: "hidden md:block w-8 h-8 rounded-full bg-red-600 absolute left-1/2 transform -translate-x-1/2",
-        line: "absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-red-100 hidden md:block",
-    }
-}
 ---
 
 <Layout title="Nuestra Historia - Derka y Vargas">
@@ -38,13 +31,13 @@ const styles = {
         <div class="absolute inset-0 z-20 flex items-center justify-center text-white">
             <div class="text-center space-y-6 max-w-4xl mx-auto px-4">
                 <h1 class="text-6xl md:text-8xl font-bold tracking-tight">
-                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-red-600">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-toyota-red">
                         Derka y Vargas
                     </span>
                 </h1>
                 <p class="text-2xl md:text-3xl font-light">Más de 57 años construyendo confianza en el Chaco</p>
                 <div class="pt-4">
-                    <a href="#historia" class="inline-block px-8 py-4 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-300">
+                    <a href="#historia" class="inline-block px-8 py-4 bg-toyota-red text-white rounded-full hover:bg-red-700 transition-colors duration-300">
                         Descubre nuestra historia
                     </a>
                 </div>
@@ -53,7 +46,7 @@ const styles = {
     </section>
 
     <!-- Banner Estadísticas -->
-    <section class="bg-red-600 text-white py-12">
+    <section class="bg-toyota-red text-white py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                 <div class="space-y-2">
@@ -78,15 +71,17 @@ const styles = {
 
     <!-- Timeline Section con mejoras visuales -->
     <section id="historia" class="py-32 relative bg-gradient-to-b from-gray-50 to-white">
-        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-toyota-red/20 to-toyota-red/40 hidden md:block"></div>
-        <div class="container mx-auto px-4">
-            <h2 class="mb-16 vehicles__title heading-1 text-center">Nuestra Trayectoria</h2>
+        <h2 class="mb-16 vehicles__title heading-1 text-center">Nuestra Trayectoria</h2>
+        
+        <div class="container mx-auto px-4 relative">
+            <!-- Línea del timeline reposicionada -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-[calc(100%-4rem)] w-1 bg-gradient-to-b from-toyota-red/20 to-toyota-red/40 hidden md:block top-8"></div>
             
             <div class="space-y-32 relative">
                 <!-- 1966 - Fundación -->
                 <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
                     <div class="space-y-4">
-                        <div class="flex items-center">
+                        <div class="flex items-center justify-end">
                             <span class="text-toyota-red font-bold text-4xl">1966</span>
                             <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
                         </div>
@@ -116,8 +111,8 @@ const styles = {
                     </div>
                     <div class="space-y-4 order-1 md:order-2">
                         <div class="flex items-center">
-                            <span class="text-red-600 font-bold text-4xl">1978</span>
-                            <div class={styles.timeline.dot}></div>
+                            <span class="text-toyota-red font-bold text-4xl">1978</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
                         </div>
                         <h3 class="text-3xl font-bold">Primer Local Propio</h3>
                         <p class="text-gray-600 leading-relaxed">
@@ -130,7 +125,7 @@ const styles = {
                 <!-- 1993 - Expansión -->
                 <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
                     <div class="space-y-4">
-                        <div class="flex items-center">
+                        <div class="flex items-center justify-end">
                             <span class="text-toyota-red font-bold text-4xl">1993</span>
                             <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
                         </div>
@@ -160,8 +155,8 @@ const styles = {
                     </div>
                     <div class="space-y-4 order-1 md:order-2">
                         <div class="flex items-center">
-                            <span class="text-red-600 font-bold text-4xl">1995</span>
-                            <div class={styles.timeline.dot}></div>
+                            <span class="text-toyota-red font-bold text-4xl">1995</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
                         </div>
                         <h3 class="text-3xl font-bold">Concesionaria Oficial Toyota</h3>
                         <p class="text-gray-600 leading-relaxed">
@@ -175,7 +170,7 @@ const styles = {
                 <!-- 2009 - Expansión -->
                 <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
                     <div class="space-y-4">
-                        <div class="flex items-center">
+                        <div class="flex items-center justify-end">
                             <span class="text-toyota-red font-bold text-4xl">2009</span>
                             <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
                         </div>
@@ -206,8 +201,8 @@ const styles = {
                     </div>
                     <div class="space-y-4 order-1 md:order-2">
                         <div class="flex items-center">
-                            <span class="text-red-600 font-bold text-4xl">2018 - Presente</span>
-                            <div class={styles.timeline.dot}></div>
+                            <span class="text-toyota-red font-bold text-4xl">2018 - Presente</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
                         </div>
                         <h3 class="text-3xl font-bold">Crecimiento Continuo</h3>
                         <p class="text-gray-600 leading-relaxed">
@@ -235,7 +230,7 @@ const styles = {
             <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Nuestros Logros</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div class="text-center backdrop-blur-sm bg-white/10 p-8 rounded-lg">
-                    <i class="fas fa-award text-4xl mb-4 text-red-600"></i>
+                    <i class="fas fa-award text-4xl mb-4 text-toyota-red"></i>
                     <h3 class="text-2xl font-bold mb-2">ISO 14001</h3>
                     <p>Certificación ambiental desde 2010</p>
                 </div>
@@ -275,7 +270,7 @@ const styles = {
                     }
                 ].map(valor => (
                     <div class="value-card">
-                        <h3 class="text-2xl font-bold mb-4 text-red-600">{valor.titulo}</h3>
+                        <h3 class="text-2xl font-bold mb-4 text-toyota-red">{valor.titulo}</h3>
                         <p class="text-gray-600">{valor.texto}</p>
                     </div>
                 ))}
@@ -288,7 +283,7 @@ const styles = {
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
                 <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-3xl font-bold mb-6 text-red-600">Nuestra Visión</h3>
+                    <h3 class="text-3xl font-bold mb-6 text-toyota-red">Nuestra Visión</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Que la marca "Derka y Vargas" sea reconocida como referente por el cliente 
                         del mercado automotor en la región NEA, por nuestros valores, compromiso 
@@ -296,7 +291,7 @@ const styles = {
                     </p>
                 </div>
                 <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-3xl font-bold mb-6 text-red-600">Nuestra Misión</h3>
+                    <h3 class="text-3xl font-bold mb-6 text-toyota-red">Nuestra Misión</h3>
                     <p class="text-gray-600 leading-relaxed">
                         Liderar el negocio automotriz y de la movilidad de la región, aportando 
                         valor al mismo, logrando la fidelización de nuestros clientes como miembros 
@@ -350,24 +345,24 @@ const styles = {
         .value-card {
             @apply bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
             background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
-            border: 1px solid rgba(220, 38, 38, 0.1);
+            border: 1px solid rgba(235, 10, 30, 0.1);
         }
         
         .value-card:hover {
             transform: translateY(-5px);
         }
 
-        .text-red-600 {
-            color: #DC2626;
+        .text-toyota-red {
+            color: #EB0A1E;
         }
 
-        .bg-red-600 {
-            background-color: #DC2626;
+        .bg-toyota-red {
+            background-color: #EB0A1E;
         }
 
         .timeline-dot::before {
             content: '';
-            @apply absolute w-16 h-16 bg-red-100 rounded-full -translate-x-1/2 -translate-y-1/2;
+            @apply absolute w-16 h-16 bg-toyota-red/10 rounded-full -translate-x-1/2 -translate-y-1/2;
             animation: pulse 2s infinite;
         }
 
@@ -393,7 +388,7 @@ const styles = {
 
         .timeline-dot:hover {
             transform: scale(1.2);
-            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+            box-shadow: 0 0 20px rgba(235, 10, 30, 0.3);
         }
     </style>
 </Layout>
