@@ -37,9 +37,12 @@ const toyotaImages = {
                 </h1>
                 <p class="text-2xl md:text-3xl font-light">Más de 57 años construyendo confianza en el Chaco</p>
                 <div class="pt-4">
-                    <a href="#historia" class="inline-block px-8 py-4 bg-toyota-red text-white rounded-full hover:bg-red-700 transition-colors duration-300">
+                    <button 
+                        id="scrollButton"
+                        class="inline-block px-8 py-4 bg-toyota-red text-white rounded-full hover:bg-red-700 transition-all duration-300 hover:scale-105"
+                    >
                         Descubre nuestra historia
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -391,4 +394,18 @@ const toyotaImages = {
             box-shadow: 0 0 20px rgba(235, 10, 30, 0.3);
         }
     </style>
+
+    <script>
+        // Agregar el script al final del archivo
+        document.getElementById('scrollButton')?.addEventListener('click', () => {
+            const historiaSection = document.getElementById('historia');
+            if (historiaSection) {
+                historiaSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest'
+                });
+            }
+        });
+    </script>
 </Layout>
