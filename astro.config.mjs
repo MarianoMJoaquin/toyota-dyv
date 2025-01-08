@@ -11,7 +11,7 @@ import react from '@astrojs/react';
 
 
 
-
+import node from '@astrojs/node';
 
 
 
@@ -19,5 +19,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: 'server',
-  adapter: netlify()
+  adapter: node({
+    mode: 'standalone'
+  })
 });

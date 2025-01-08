@@ -858,7 +858,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
   };
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+    
       <div className="flex bg-white p-5 rounded-lg flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 w-full shadow-lg">
         <div className="flex flex-col items-center space-y-4 w-full md:w-2/3">
           <div id="versionTabs" className="flex justify-center md:justify-start space-x-2 md:space-x-4 mb-4"></div>
@@ -904,7 +904,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };
 
