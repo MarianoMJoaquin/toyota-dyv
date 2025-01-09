@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import emailjs from '@emailjs/browser';
 
 const Form = ({ type = 'contacto' }) => {
   const [formData, setFormData] = useState({
@@ -61,6 +62,49 @@ const Form = ({ type = 'contacto' }) => {
       'la_voz_del_cliente': 'CONVENCIONAL'
     };
     return interestMap[type] || 'CONVENCIONAL';
+  };
+
+  const sendEmails = async (formData, sucursalCode) => {
+    try {
+      // Email al cliente
+      await emailjs.send(
+        'service_cxe31lg', // Reemplazar con tu service ID de EmailJS
+        'template_bx44n36', // Reemplazar con tu template ID para clientes
+        {
+          to_email: formData.email,
+          to_name: formData.name,
+          sucursal: formData.sucursal,
+          message: formData.message
+        },
+        'LUANX8cxp5oT811f4' // Reemplazar con tu public key de EmailJS
+      );
+
+      // Email a la sucursal
+      const sucursalEmails = {
+        'RESI': 'fabianaaranda@derkayvargas.com.ar',
+        'VANG': 'fabianaaranda@derkayvargas.com.ar',
+        'RSPÑ': 'fabianaaranda@derkayvargas.com.ar',
+        'CHAR2': 'fabianaaranda@derkayvargas.com.ar'
+      };
+
+      await emailjs.send(
+        'service_cxe31lg',
+        'template_bx44n36', // Reemplazar con tu template ID para sucursales
+        {
+          to_email: sucursalEmails[sucursalCode],
+          client_name: formData.name,
+          client_email: formData.email,
+          client_phone: formData.phone,
+          message: formData.message
+        },
+        'LUANX8cxp5oT811f4'
+      );
+
+      return true;
+    } catch (error) {
+      console.error('Error sending emails:', error);
+      return false;
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -144,8 +188,20 @@ const Form = ({ type = 'contacto' }) => {
     console.log('Sending data:', JSON.stringify(dataToSend, null, 2)); // Debug
 
     try {
+      // Primero enviamos al CRM
       const response = await axios.post('/api/leads', dataToSend);
-      setStatus({ loading: false, error: null, success: true });
+      
+      // Luego enviamos los correos
+      const sucursalCode = getBocaVenta(formData.sucursal);
+      const emailsSent = await sendEmails(formData, sucursalCode);
+
+      setStatus({ 
+        loading: false, 
+        error: null, 
+        success: true,
+        emailsSent 
+      });
+
       setFormData({
         name: '',
         phone: '',
@@ -173,9 +229,13 @@ const Form = ({ type = 'contacto' }) => {
       )}
 
       {status.success && (
-        <div className="bg-green-50 border-l-4 border-green-500 text-green-700 p-4 rounded mb-6 shadow-sm transition-all duration-300">
-          <p className="font-medium">¡Éxito!</p>
-          <p className="text-sm">Nos contactaremos pronto contigo.</p>
+        <div className="bg-green-50 border-l-4 border-green-500 text-green-700 p-4 rounded mb-6 shadow-sm">
+          <p className="font-medium">¡Solicitud enviada con éxito!</p>
+          <p className="text-sm mt-2">
+            {status.emailsSent ? 
+              "Hemos enviado un correo de confirmación a tu email y notificado a la sucursal correspondiente." :
+              "Tu información ha sido registrada, pero hubo un problema al enviar los correos de confirmación."}
+          </p>
         </div>
       )}
 
