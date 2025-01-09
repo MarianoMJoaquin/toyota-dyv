@@ -316,156 +316,300 @@ export default function ModelosList() {
 
   // In the main return, update the layout
   return (
-    <section className="container mx-auto py-12 px-4">
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Filters Column */}
-        <div className="lg:col-span-1">
-          <div className="sticky top-4">
-            <FilterSection title="Búsqueda">
-              <div className="relative">
-                <input
-                  type="text"
-                  value={busqueda}
-                  onChange={(e) => setBusqueda(e.target.value)}
-                  placeholder="Buscar modelo..."
-                  className="w-full p-3 pl-10 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
-                />
-                <svg className="w-5 h-5 text-gray-400 absolute left-3 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </FilterSection>
-            
-            {/* Rest of filter sections with new FilterSection component */}
-            <FilterSection title="Categorías">
-              {Array.from(
-                new Set(modelos.flatMap(modelo => 
-                  modelo.categories.map(cat => cat.name)
-                ))
-              ).map((category) => (
-                <div key={category} className="mb-2">
-                  <input
-                    type="checkbox"
-                    id={`cat-${category}`}
-                    onChange={() => handleCheckbox(filtroCategories, setFiltroCategories, category)}
-                    checked={filtroCategories.includes(category)}
-                    className="mr-2"
-                  />
-                  <label htmlFor={`cat-${category}`}>{category}</label>
-                </div>
-              ))}
-            </FilterSection>
+    <section className="container mx-auto section">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        <div className="lg:col-span-1 mx-5 xl:mx-5">
+          {/* Columna para filtros y búsqueda */}
 
-            <FilterSection title="Tags">
-              {Array.from(
-                new Set(modelos.flatMap(modelo => modelo.tags))
-              ).map((tag) => (
-                <div key={tag} className="mb-2">
-                  <input
-                    type="checkbox"
-                    id={`tag-${tag}`}
-                    onChange={() => handleCheckbox(filtroTags, setFiltroTags, tag)}
-                    checked={filtroTags.includes(tag)}
-                    className="mr-2"
-                  />
-                  <label htmlFor={`tag-${tag}`}>{capitalizar(tag)}</label>
-                </div>
-              ))}
-            </FilterSection>
+          <div className="mb-4 relative">
+            <input
+              type="text"
+              value={busqueda}
+              onChange={(e) => {
+                setBusqueda(e.target.value);
+                setPaginaActual(1);
+                modeloSeleccionado && setModeloSeleccionado(null);
+              }}
+              placeholder="Buscar por modelo..."
+              className="caret-red-600 block py-2.5 px-3 pl-12 w-full text-lg text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-red-600 focus:transition ease-in-out peer"
+            />
+            <i className="ri-search-line absolute top-1/2 left-3 -translate-y-1/2 text-gray-600 transition-all ease-in-out peer-focus:text-red-600 peer-focus:transition"></i>
+          </div>
 
-            <FilterSection title="Rango de Precio">
-              <Range
-                step={100000}
-                min={0}
-                max={100000000}
-                values={precioRango}
-                onChange={(values) => setPrecioRango(values)}
-                renderTrack={({ props, children }) => (
-                  <div
-                    {...props}
-                    style={{
-                      ...props.style,
-                      height: "5px",
-                      background: "#d1d5db",
-                      borderRadius: "5px",
-                    }}
+          {/* Sección de Filtros Activos */}
+          <div className="mb-6 p-4 max-lg:hidden bg-gray-100 rounded-lg">
+            <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+              Filtros Activos
+            </h3>
+            <div className="space-y-2">
+              {/* Mostrar filtros activos */}
+              {busqueda && (
+                <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
+                  <span className="text-lg">Búsqueda: {busqueda}</span>
+                  <button
+                    onClick={() => setBusqueda("")}
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
-                    {children}
+                    <i className="ri-close-circle-line"></i>
+                  </button>
+                </div>
+              )}
+              {filtroCategories.map((category) => (
+                <div
+                  key={category}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
+                  <span className="text-lg">Categoría: {capitalizar(category)}</span>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroCategories, setFiltroCategories, category)
+                    }
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
+                  >
+                    <i className="ri-close-circle-line"></i>
+                  </button>
+                </div>
+              ))}
+              {filtroTags.map((tag) => (
+                <div
+                  key={tag}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
+                  <span className="text-lg">Tag: {capitalizar(tag)}</span>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroTags, setFiltroTags, tag)
+                    }
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
+                  >
+                    <i className="ri-close-circle-line"></i>
+                  </button>
+                </div>
+              ))}
+              {(precioRango[0] !== 0 ||
+                precioRango[1] !== 100000000) && (
+                <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
+                  <span className="text-lg">
+                    Precio: ${Number(precioRango[0]).toLocaleString()} - $
+                    {Number(precioRango[1]).toLocaleString()}
+                  </span>
+                  <button
+                    onClick={() => setPrecioRango([0, 100000000])}
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
+                  >
+                    <i className="ri-close-circle-line"></i>
+                  </button>
+                </div>
+              )}
+              {filtroYear.map((year) => (
+                <div
+                  key={year}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
+                  <span className="text-lg">Año: {year}</span>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroYear, setFiltroYear, year)
+                    }
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
+                  >
+                    <i className="ri-close-circle-line"></i>
+                  </button>
+                </div>
+              ))}
+              {filtroTransmision.map((trans) => (
+                <div
+                  key={trans}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
+                  <span className="text-lg">Transmisión: {capitalizar(trans)}</span>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroTransmision, setFiltroTransmision, trans)
+                    }
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
+                  >
+                    <i className="ri-close-circle-line"></i>
+                  </button>
+                </div>
+              ))}
+              {filtroMotor.map((motor) => (
+                <div
+                  key={motor}
+                  className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full"
+                >
+                  <span className="text-lg">Motor: {capitalizar(motor)}</span>
+                  <button
+                    onClick={() =>
+                      eliminarFiltro(filtroMotor, setFiltroMotor, motor)
+                    }
+                    className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
+                  >
+                    <i className="ri-close-circle-line"></i>
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Sección de Filtros */}
+          <div className="mb-6 p-4 max-lg:hidden bg-gray-100 rounded-lg">
+            <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+              Filtros
+            </h3>
+            <div className="space-y-4">
+              {/* Filtro de Categorías */}
+              <div>
+                <h4 className="text-md font-semibold mb-2">Categorías</h4>
+                {categories.map((category) => (
+                  <div key={category} className="flex items-center mb-2">
+                    <input
+                      type="checkbox"
+                      id={`cat-${category}`}
+                      onChange={() =>
+                        handleCheckbox(filtroCategories, setFiltroCategories, category)
+                      }
+                      checked={filtroCategories.includes(category)}
+                      className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor={`cat-${category}`} className="text-gray-700">
+                      {capitalizar(category)}
+                    </label>
                   </div>
-                )}
-                renderThumb={({ props, index }) => (
-                  <div
-                    {...props}
-                    style={{
-                      ...props.style,
-                      height: "12px",
-                      width: "12px",
-                      backgroundColor: "#eb0a1e",
-                      borderRadius: "50%",
-                      boxShadow: "0px 2px 6px #AAA",
-                    }}
-                  />
-                )}
-              />
-              <div className="flex justify-between mt-2">
-                <span className="text-lg">
-                  ${Number(precioRango[0]).toLocaleString()}
-                </span>
-                <span className="text-lg">
-                  ${Number(precioRango[1]).toLocaleString()}
-                </span>
+                ))}
               </div>
-            </FilterSection>
 
-            <FilterSection title="Año">
-              {getUniqueValues(modelos, 'details.creationYear').map((year) => (
-                <div key={year} className="mb-2 flex items-center">
-                  <input
-                    type="checkbox"
-                    id={`year-${year}`}
-                    onChange={() => handleCheckbox(filtroYear, setFiltroYear, year)}
-                    checked={filtroYear.includes(year)}
-                    className="mr-2 h-4 w-4"
-                  />
-                  <label htmlFor={`year-${year}`} className="text-gray-700">{year}</label>
-                </div>
-              ))}
-            </FilterSection>
+              {/* Filtro de Tags */}
+              <div>
+                <h4 className="text-md font-semibold mb-2">Tags</h4>
+                {Array.from(new Set(modelos.flatMap((modelo) => modelo.tags))).map(
+                  (tag) => (
+                    <div key={tag} className="flex items-center mb-2">
+                      <input
+                        type="checkbox"
+                        id={`tag-${tag}`}
+                        onChange={() => handleCheckbox(filtroTags, setFiltroTags, tag)}
+                        checked={filtroTags.includes(tag)}
+                        className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor={`tag-${tag}`} className="text-gray-700">
+                        {capitalizar(tag)}
+                      </label>
+                    </div>
+                  )
+                )}
+              </div>
 
-            <FilterSection title="Transmisión">
-              {getUniqueValues(modelos, 'details.transmission.type').map((trans) => (
-                <div key={trans} className="mb-2 flex items-center">
-                  <input
-                    type="checkbox"
-                    id={`trans-${trans}`}
-                    onChange={() => handleCheckbox(filtroTransmision, setFiltroTransmision, trans)}
-                    checked={filtroTransmision.includes(trans)}
-                    className="mr-2 h-4 w-4"
-                  />
-                  <label htmlFor={`trans-${trans}`} className="text-gray-700">{trans}</label>
+              {/* Filtro de Rango de Precio */}
+              <div>
+                <h4 className="text-md font-semibold mb-2">Rango de Precio</h4>
+                <Range
+                  step={100000}
+                  min={0}
+                  max={100000000}
+                  values={precioRango}
+                  onChange={(values) => setPrecioRango(values)}
+                  renderTrack={({ props, children }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "5px",
+                        background: "#d1d5db",
+                        borderRadius: "5px",
+                      }}
+                    >
+                      {children}
+                    </div>
+                  )}
+                  renderThumb={({ props, index }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "12px",
+                        width: "12px",
+                        backgroundColor: "#eb0a1e",
+                        borderRadius: "50%",
+                        boxShadow: "0px 2px 6px #AAA",
+                      }}
+                    />
+                  )}
+                />
+                <div className="flex justify-between mt-2">
+                  <span className="text-lg">
+                    ${Number(precioRango[0]).toLocaleString()}
+                  </span>
+                  <span className="text-lg">
+                    ${Number(precioRango[1]).toLocaleString()}
+                  </span>
                 </div>
-              ))}
-            </FilterSection>
+              </div>
 
-            <FilterSection title="Motor">
-              {['Híbrido', 'Nafta'].map((motor) => (
-                <div key={motor} className="mb-2">
-                  <input
-                    type="checkbox"
-                    id={`motor-${motor}`}
-                    onChange={() => handleCheckbox(filtroMotor, setFiltroMotor, motor)}
-                    checked={filtroMotor.includes(motor)}
-                    className="mr-2"
-                  />
-                  <label htmlFor={`motor-${motor}`}>{motor}</label>
-                </div>
-              ))}
-            </FilterSection>
+              {/* Filtro de Año */}
+              <div>
+                <h4 className="text-md font-semibold mb-2">Año</h4>
+                {years.map((year) => (
+                  <div key={year} className="flex items-center mb-2">
+                    <input
+                      type="checkbox"
+                      id={`year-${year}`}
+                      onChange={() => handleCheckbox(filtroYear, setFiltroYear, year)}
+                      checked={filtroYear.includes(year)}
+                      className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor={`year-${year}`} className="text-gray-700">
+                      {year}
+                    </label>
+                  </div>
+                ))}
+              </div>
+
+              {/* Filtro de Transmisión */}
+              <div>
+                <h4 className="text-md font-semibold mb-2">Transmisión</h4>
+                {transmissionTypes.map((trans) => (
+                  <div key={trans} className="flex items-center mb-2">
+                    <input
+                      type="checkbox"
+                      id={`trans-${trans}`}
+                      onChange={() =>
+                        handleCheckbox(filtroTransmision, setFiltroTransmision, trans)
+                      }
+                      checked={filtroTransmision.includes(trans)}
+                      className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor={`trans-${trans}`} className="text-gray-700">
+                      {capitalizar(trans)}
+                    </label>
+                  </div>
+                ))}
+              </div>
+
+              {/* Filtro de Motor */}
+              <div>
+                <h4 className="text-md font-semibold mb-2">Motor</h4>
+                {["Híbrido", "Nafta"].map((motor) => (
+                  <div key={motor} className="flex items-center mb-2">
+                    <input
+                      type="checkbox"
+                      id={`motor-${motor}`}
+                      onChange={() => handleCheckbox(filtroMotor, setFiltroMotor, motor)}
+                      checked={filtroMotor.includes(motor)}
+                      className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                    />
+                    <label htmlFor={`motor-${motor}`} className="text-gray-700">
+                      {motor}
+                    </label>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Results Column */}
         <div className="lg:col-span-3">
+          {/* Columna para resultados */}
           {cargando ? (
             <div className="flex items-center justify-center h-64">
               <div className="animate-spin rounded-full h-16 w-16 border-4 border-red-600 border-t-transparent"></div>
