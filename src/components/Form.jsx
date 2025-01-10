@@ -141,7 +141,7 @@ const Form = ({ type = 'contacto' }) => {
       }
     };
 
-    //console.log('Sending data:', JSON.stringify(dataToSend, null, 2)); // Debug
+    //+console.log('Sending data:', JSON.stringify(dataToSend, null, 2)); // Debug
 
     try {
       const response = await axios.post('/api/leads', dataToSend);

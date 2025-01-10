@@ -12,9 +12,16 @@ import react from '@astrojs/react';
 
 
 
+import node from '@astrojs/node';
+
+
+
+
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), react()],
   output: 'server',
-  adapter: netlify(),
+  adapter: node({
+    mode: 'standalone',
+  }),
 });
