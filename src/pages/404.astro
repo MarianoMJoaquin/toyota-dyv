@@ -1,1 +1,95 @@
- hola
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="404 - Toyota">
+  
+  <section class="section">
+    <main class="min-h-screen">
+        <div class="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-[80vh]">
+          <div class="w-full max-w-2xl text-center">
+            <img 
+              src="/images/logodyv.png" 
+              alt="Toyota" 
+              class="h-12 md:h-20 mx-auto mb-8"
+            />
+            
+            <h1 class="font-toyota text-[120px] leading-none font-bold text-[#EB0A1E] mb-4">
+              404
+            </h1>
+            
+            <h2 class="text-2xl font-toyota-bold text-gray-800 mb-6">
+              Parece que tomó un desvío inesperado
+            </h2>
+            
+            <p class="text-lg text-gray-600 mb-8 max-w-lg mx-auto">
+              La página que está buscando no se encuentra disponible. 
+              Le invitamos a explorar nuestro sitio desde la página principal.
+            </p>
+            
+            <div class="flex justify-center gap-4">
+              <a 
+                href="/" 
+                class="inline-flex items-center px-8 py-3 bg-[#EB0A1E] text-white font-toyota-bold 
+                       hover:bg-[#cc091a] transition-colors rounded-full">
+                Ir al inicio
+              </a>
+              <button 
+                onclick="window.history.back()"
+                class="inline-flex items-center px-8 py-3 border-2 border-[#EB0A1E] text-[#EB0A1E] 
+                       font-toyota-bold hover:bg-[#EB0A1E] hover:text-white transition-colors rounded-full">
+                Volver atrás
+              </button>
+            </div>
+          </div>
+    
+          <div class="mt-16 w-full max-w-4xl">
+            <h3 class="text-center text-gray-600 font-toyota-bold mb-8">Accesos rápidos</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <a href="/modelos" class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div class="flex flex-col items-center text-center">
+                  <span class="text-[#EB0A1E] mb-3 group-hover:scale-110 transition-transform duration-300 text-3xl">
+                    <i class="ri-car-line"></i>
+                  </span>
+                  <h4 class="font-toyota-bold text-gray-800 mb-2">Modelos</h4>
+                  <p class="text-sm text-gray-600">Explore nuestra línea completa</p>
+                </div>
+              </a>
+    
+              <a href="/servicios" class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div class="flex flex-col items-center text-center">
+                  <span class="text-[#EB0A1E] mb-3 group-hover:scale-110 transition-transform duration-300 text-3xl">
+                    <i class="ri-tools-line"></i>
+                  </span>
+                  <h4 class="font-toyota-bold text-gray-800 mb-2">Servicios</h4>
+                  <p class="text-sm text-gray-600">Mantenimiento y más</p>
+                </div>
+              </a>
+    
+              <a href="/contacto" class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div class="flex flex-col items-center text-center">
+                  <span class="text-[#EB0A1E] mb-3 group-hover:scale-110 transition-transform duration-300 text-3xl">
+                    <i class="ri-map-pin-2-line"></i>
+                  </span>
+                  <h4 class="font-toyota-bold text-gray-800 mb-2">Contacto</h4>
+                  <p class="text-sm text-gray-600">Estamos para ayudarte</p>
+                </div>
+              </a>
+    
+              <a href="/novedades" class="group bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100">
+                <div class="flex flex-col items-center text-center">
+                  <span class="text-[#EB0A1E] mb-3 group-hover:scale-110 transition-transform duration-300 text-3xl">
+                    <i class="ri-newspaper-line"></i>
+                  </span>
+                  <h4 class="font-toyota-bold text-gray-800 mb-2">Novedades</h4>
+                  <p class="text-sm text-gray-600">Últimas noticias</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+  </section>
+
+  
+</Layout>
