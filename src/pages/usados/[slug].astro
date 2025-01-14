@@ -4,8 +4,12 @@ import Layout from '../../layouts/Layout.astro';
 
 // Obtener el parámetro dinámico (slug) desde la URL
 const { slug } = Astro.params;
+
+const response = await fetch(`https://panelweb.derkayvargas.com/api/usados/${slug}`);
+const data = await response.json();
+
 ---
-<Layout title="Usados | Derka y Vargas" theme_color="#EB0A1E">
+<Layout title="Usados | Derka y Vargas" theme_color="#EB0A1E" image={data.data.foto.replace("public", "storage")}>
     <main class="main">
         <section class="container mx-auto section">
             <AutoDetalles client:load slug={slug} />

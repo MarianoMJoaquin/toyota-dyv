@@ -60,7 +60,7 @@ export default function AutoDetalles({ slug }) {
     texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 
   const copiarEnlace = () => {
-    const enlace = `https://test-dyv.netlify.app/usados/${detallesAuto.slug}`;
+    const enlace = `https://test-website.derkayvargas.com/usados/${detallesAuto.slug}`;
     navigator.clipboard.writeText(enlace);
 
     // Mostrar el popover de "¡Copiado!"

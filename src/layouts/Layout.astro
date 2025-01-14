@@ -6,9 +6,10 @@ import Footer from '../components/Footer.astro';
 interface Props {
   title: string;
   theme_color: string;
+  image: string;
 }
 
-const { title, theme_color } = Astro.props;
+const { title, theme_color, image } = Astro.props;
 
 ---
 
@@ -19,16 +20,19 @@ const { title, theme_color } = Astro.props;
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <!-- SEO -->
     <meta name="author" content="Mariano Joaquin Medina - Derka y Vargas S.A" />
     <meta name="keywords" content="Toyota, Derka y Vargas, Concesionario Oficial, Chaco, Argentina" /> <!-- SEO -->
     <meta name="robots" content="index, follow" /> <!-- SEO -->
     <meta name="theme-color" content= {theme_color} /> <!-- SEO -->
-    
+    <meta name="description" content="Derka y Vargas S.A - Concesionario Oficial Toyota en Chaco" />
+    <!-- Open Graph -->
     <meta property="og:title" content={title} /> <!-- SEO -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:image" content="https://i.imgur.com/AabFmC0.png" />
+    <meta property="og:image" content={image} />
     <meta property="og:description" content="Derka y Vargas S.A - Concesionario Oficial Toyota en Chaco" />
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content="Derka y Vargas S.A - Concesionario Oficial Toyota en Chaco" />
