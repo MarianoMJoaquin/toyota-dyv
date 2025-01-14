@@ -5,7 +5,7 @@ import Layout from '../../layouts/Layout.astro';
 // Obtener el parámetro dinámico (slug) desde la URL
 const { slug } = Astro.params;
 ---
-<Layout title="Usados | Derka y Vargas">
+<Layout title="Usados | Derka y Vargas" theme_color="#EB0A1E">
     <main class="main">
         <section class="container mx-auto section">
             <AutoDetalles client:load slug={slug} />
