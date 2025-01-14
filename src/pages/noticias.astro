@@ -38,7 +38,7 @@ const noticiasData = await fetchNoticias();
 const noticias = noticiasData.data || [];
 ---
 
-<Layout title="Noticias | Derka y Vargas">
+<Layout title="Noticias | Derka y Vargas" theme_color="#EB0A1E">
   <main class="main">
     <NoticiaList client:load noticias={noticias} categorias={categorias} />
   </main>
