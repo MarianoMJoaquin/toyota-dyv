@@ -1858,10 +1858,10 @@ export default function UsadosList() {
                             {`${auto.marca} ${auto.modelo}`.substring(0, 50)}
                           </h2>
                           <div className="flex justify-start items-center text-base mt-2">
-                            <p className="mr-2">{auto.anio}</p>
-                            <p className="mr-2">|</p>
-                            <p className="mr-2">{Number(auto.km).toLocaleString()} km</p>
-                            <p className="mr-2">|</p>
+                            <p className="mr-1">{auto.anio}</p>
+                            <p className="mr-1">|</p>
+                            <p className="mr-1">{Number(auto.km).toLocaleString()} km</p>
+                            <p className="mr-1">|</p>
                             {auto.estado === "DISPONIBLE" ? (
                               <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
                                 Disponible
