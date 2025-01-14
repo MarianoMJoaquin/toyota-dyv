@@ -17,9 +17,25 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/images/faviconn.ico" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>   
+    <meta name="author" content="Mariano Joaquin Medina - Derka y Vargas S.A" />
+    <meta name="keywords" content="Toyota, Derka y Vargas, Concesionario Oficial, Chaco, Argentina" /> <!-- SEO -->
+    <meta name="robots" content="index, follow" /> <!-- SEO -->
+    <meta name="theme-color" content="#eb0a1e" /> <!-- SEO -->
+    
+    <meta property="og:title" content={title} /> <!-- SEO -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:image" content="/images/Concesionario/ruta.jpg" />
+    <meta property="og:description" content="Concesionario Oficial Toyota en Chaco - Derka y Vargas S.A" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content="Concesionario Oficial Toyota en Chaco - Derka y Vargas S.A" />
+    <meta name="twitter:image" content="/images/Concesionario/ruta.jpg" />
+    <link rel="canonical" href={Astro.url} />
+    
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/images/faviconn.ico" />   
     <link rel="stylesheet" href="/css/styles.css"> <!-- Main CSS -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"/> <!-- AOS CSS -->
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css"> <!-- Lenis CSS -->
