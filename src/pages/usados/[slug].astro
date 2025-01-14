@@ -7,9 +7,10 @@ const { slug } = Astro.params;
 
 const response = await fetch(`https://panelweb.derkayvargas.com/api/usados/${slug}`);
 const data = await response.json();
+const auto = data.data || {};
 
 ---
-<Layout title="Usados | Derka y Vargas" theme_color="#EB0A1E" image={data.data.foto.replace("public", "storage")}>
+<Layout title="Usados | Derka y Vargas" theme_color="#EB0A1E" image={`https://panelweb.derkayvargas.com${auto.foto}`}>
     <main class="main">
         <section class="container mx-auto section">
             <AutoDetalles client:load slug={slug} />
