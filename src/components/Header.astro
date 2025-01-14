@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets"
 
-import logo from "../assets/images/logodyv.webp"
+
 import srcImage1 from "../assets/images/copia1.webp"
 import srcImage2 from "../assets/images/copia2.webp"
 import srcImage3 from "../assets/images/copia3.webp"
@@ -27,7 +27,11 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
     <nav class="nav container">
         <div class="nav__data">
             <a href="/" class="nav__logo">
-                <Image src={logo} alt="Logo">
+                <Image 
+                  src="/images/logodyv.webp"
+                  width={200}
+                  height={50}
+                  alt="Logo">
             </a>
 
             <div class="nav__toggle" id="nav-toggle">
