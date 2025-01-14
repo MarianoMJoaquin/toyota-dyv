@@ -1853,9 +1853,9 @@ export default function UsadosList() {
                             className="max-sm:w-72 w-96 max-sm:h-44 h-72"
                           />
                         </a>
-                        <div className="w-full p-4 flex flex-col max-sm:gap-0 gap-8">
+                        <div className="w-full p-4 flex flex-col max-sm:gap-0 gap-6">
                           <h2 className="text-sm lg:text-2xl xl:text-3xl font-semibold border-b-2 border-red-600 max-w-max mb-2">
-                            {auto.marca} {auto.modelo}
+                            {`${auto.marca} ${auto.modelo}`.substring(0, 50)}
                           </h2>
                           <div className="flex justify-start items-center text-base mt-2">
                             <p className="mr-2">{auto.anio}</p>
@@ -1863,7 +1863,7 @@ export default function UsadosList() {
                             <p className="mr-2">{Number(auto.km).toLocaleString()} km</p>
                             <p className="mr-2">|</p>
                             {auto.estado === "DISPONIBLE" ? (
-                              <span className="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
+                              <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
                                 Disponible
                               </span>
                             ) : (
@@ -1873,12 +1873,15 @@ export default function UsadosList() {
                             )}
                           </div>
                           <div className="flex justify-start items-center gap-2">
-                            <p className="text-base text-gray-500">{auto.descripcion}</p>
+                            <p className="text-base text-gray-500">
+                              {auto.descripcion.substring(0, 30)}
+                              {auto.descripcion.length > 30 ? '...' : ''}
+                            </p>
                           </div>
                           <div className="mt-4 flex justify-between items-center">
                             <a
                               href={`/usados/${auto.slug}`}
-                              className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
+                              className="text-white text-base max-sm:py-0 py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
                             >
                               Ver más
                             </a>
@@ -1891,11 +1894,11 @@ export default function UsadosList() {
                     </CSSTransition>
                   ))}
                 </div>
-              )}
-            </TransitionGroup>
-          )}
+                )}
+                </TransitionGroup>
+                )}
 
-          {/* Paginación */}
+                {/* Paginación */}
           {autosFiltrados.length > autosPorPagina && (
             <div
               className={`${
