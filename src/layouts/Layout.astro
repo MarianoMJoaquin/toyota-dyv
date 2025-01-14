@@ -26,6 +26,7 @@ const { title, theme_color, image } = Astro.props;
     <meta name="robots" content="index, follow" /> <!-- SEO -->
     <meta name="theme-color" content= {theme_color} /> <!-- SEO -->
     <meta name="description" content="Derka y Vargas S.A - Concesionario Oficial Toyota en Chaco" />
+    
     <!-- Open Graph -->
     <meta property="og:title" content={title} /> <!-- SEO -->
     <meta property="og:type" content="website" />
@@ -36,7 +37,7 @@ const { title, theme_color, image } = Astro.props;
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content="Derka y Vargas S.A - Concesionario Oficial Toyota en Chaco" />
-    <meta name="twitter:image" content="/images/Concesionario/ruta.jpg" />
+    <meta name="twitter:image" content={image} />
     <link rel="canonical" href={Astro.url} />
     
     <title>{title}</title>

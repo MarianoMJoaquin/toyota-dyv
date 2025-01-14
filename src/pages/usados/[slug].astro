@@ -10,7 +10,11 @@ const data = await response.json();
 const auto = data.data || {};
 
 ---
-<Layout title="Usados | Derka y Vargas" theme_color="#EB0A1E" image={`https://panelweb.derkayvargas.com${auto.foto}`}>
+<Layout 
+    title={`${auto.marca} ${auto.modelo} | Usados | Derka y Vargas S.A`} 
+    theme_color="#EB0A1E" 
+    image={`https://panelweb.derkayvargas.com${auto.foto}`}
+>
     <main class="main">
         <section class="container mx-auto section">
             <AutoDetalles client:load slug={slug} />
