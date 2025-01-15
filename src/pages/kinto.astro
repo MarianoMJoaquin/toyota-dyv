@@ -1,12 +1,18 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { Image } from 'astro:assets';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
 ---
 
-<Layout title="KINTO | Toyota" theme_color='#147b96' image="https://www.kinto-mobility.com/images/service-logos/logo-kinto.svg">
+<Layout
+  title="KINTO | Toyota"
+  theme_color="#147b96"
+  image="https://www.kinto-mobility.com/images/service-logos/logo-kinto.svg"
+>
   <main class="overflow-hidden">
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center text-white">
+    <section
+      class="relative h-screen flex items-center justify-center text-white"
+    >
       <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50">
         <!--<img src="/images/kinto/kinto-banner.jpeg" alt="KINTO Banner" class="w-full h-full object-cover -z-10 ukiyo" /> -->
         <Image
@@ -15,8 +21,8 @@ import { Image } from 'astro:assets';
           class="w-full h-full object-cover -z-10 ukiyo"
           width={1920}
           height={1080}
-          loading={'lazy'}
-          decoding={'async'}
+          loading={"lazy"}
+          decoding={"async"}
         />
       </div>
       <div data-aos="fade-up" class="container mx-auto px-4 text-center z-10">
@@ -33,9 +39,16 @@ import { Image } from 'astro:assets';
           width={256}
           height={256}
         />
-        <h1 class="text-5xl md:text-6xl font-bold mb-6">Movilidad flexible para tu estilo de vida</h1>
-        <p class="text-xl mb-8">Descubre una nueva forma de disfrutar tu vehículo con KINTO</p>
-        <a href="#contacto" class="inline-block bg-[#147b96] hover:bg-[#1a94b4] text-white px-8 py-4 rounded-full transition-colors duration-300">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          Movilidad flexible para tu estilo de vida
+        </h1>
+        <p class="text-xl mb-8">
+          Descubre una nueva forma de disfrutar tu vehículo con KINTO
+        </p>
+        <a
+          href="#contacto"
+          class="inline-block bg-[#147b96] hover:bg-[#1a94b4] text-white px-8 py-4 rounded-full transition-colors duration-300"
+        >
           Conoce más
         </a>
       </div>
@@ -45,26 +58,34 @@ import { Image } from 'astro:assets';
     <section class="py-24 px-4" data-aos="fade-up">
       <div class="container mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">Nuestros Servicios</h2>
-          <p class="text-xl text-gray-600">Descubre las diferentes opciones que KINTO tiene para ti</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">
+            Nuestros Servicios
+          </h2>
+          <p class="text-xl text-gray-600">
+            Descubre las diferentes opciones que KINTO tiene para ti
+          </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {['One', 'Share', 'Fleet'].map((service) => (
-            <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
-              <img 
-                loading="lazy"
-                src={`/images/kinto/${service.toLowerCase()}.webp`} 
-                alt={`KINTO ${service}`}
-                class="w-full h-48 object-cover rounded-lg mb-6"
-              />
-              <h3 class="text-2xl font-bold mb-4">KINTO {service}</h3>
-              <p class="text-gray-600">
-                {service === 'One' && 'Suscripción flexible de vehículos todo incluido'}
-                {service === 'Share' && 'Comparte vehículos por horas o días'}
-                {service === 'Fleet' && 'Soluciones de movilidad para empresas'}
-              </p>
-            </div>
-          ))}
+          {
+            ["One", "Share", "Fleet"].map((service) => (
+              <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+                <img
+                  loading="lazy"
+                  src={`/images/kinto/${service.toLowerCase()}.webp`}
+                  alt={`KINTO ${service}`}
+                  class="w-full h-48 object-cover rounded-lg mb-6"
+                />
+                <h3 class="text-2xl font-bold mb-4">KINTO {service}</h3>
+                <p class="text-gray-600">
+                  {service === "One" &&
+                    "Suscripción flexible de vehículos todo incluido"}
+                  {service === "Share" && "Comparte vehículos por horas o días"}
+                  {service === "Fleet" &&
+                    "Soluciones de movilidad para empresas"}
+                </p>
+              </div>
+            ))
+          }
         </div>
       </div>
     </section>
@@ -73,39 +94,49 @@ import { Image } from 'astro:assets';
     <section class="bg-gray-50 py-24 px-4" data-aos="fade-up">
       <div class="container mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl md:text-5xl font-bold text-[#147b96] mb-4">¿Cómo Funciona 
+          <h2 class="text-3xl md:text-5xl font-bold text-[#147b96] mb-4">
+            ¿Cómo Funciona
             <span class="inline-block align-center">
-              <img loading="lazy" src="/images/kinto/logo-kinto.svg" alt="KINTO" class="h-8 md:h-14"/>
+              <img
+                loading="lazy"
+                src="/images/kinto/logo-kinto.svg"
+                alt="KINTO"
+                class="h-8 md:h-14"
+              />
             </span> ?
           </h2>
-          <p class="text-xl text-gray-600">Un proceso simple y transparente en solo tres pasos</p>
+          <p class="text-xl text-gray-600">
+            Un proceso simple y transparente en solo tres pasos
+          </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            {
-              icon: 'ri-car-line',
-              title: 'Elige tu Plan',
-              desc: 'Selecciona entre nuestra amplia gama de vehículos Toyota'
-            },
-            {
-              icon: 'ri-file-list-3-line',
-              title: 'Completa tu Solicitud',
-              desc: 'Proceso 100% digital sin papeleo'
-            },
-            {
-              icon: 'ri-key-line',
-              title: 'Recibe tu Vehículo',
-              desc: 'Entrega donde lo necesites'
-            }
-          ].map((step, index) => (
-            <div class="bg-white rounded-xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-2">
-              <div class="w-16 h-16 bg-[#147b96] rounded-full flex items-center justify-center mb-6 mx-auto">
-                <i class={`${step.icon} text-2xl text-white`}></i>
+          {
+            [
+              {
+                icon: "ri-car-line",
+                title: "Elige tu Plan",
+                desc: "Selecciona entre nuestra amplia gama de vehículos Toyota",
+              },
+              {
+                icon: "ri-file-list-3-line",
+                title: "Completa tu Solicitud",
+                desc: "Proceso 100% digital sin papeleo",
+              },
+              {
+                icon: "ri-key-line",
+                title: "Recibe tu Vehículo",
+                desc: "Entrega donde lo necesites",
+              },
+            ].map((step, index) => (
+              <div class="bg-white rounded-xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-[#147b96] rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <i class={`${step.icon} text-2xl text-white`} />
+                </div>
+                <h3 class="text-xl font-bold mb-4 text-center">{step.title}</h3>
+                <p class="text-gray-600 text-center">{step.desc}</p>
               </div>
-              <h3 class="text-xl font-bold mb-4 text-center">{step.title}</h3>
-              <p class="text-gray-600 text-center">{step.desc}</p>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </section>
@@ -114,25 +145,39 @@ import { Image } from 'astro:assets';
     <section class="py-24 px-4" data-aos="fade-up">
       <div class="container mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl md:text-5xl font-bold text-[#147b96] mb-4">¿Por qué elegir 
+          <h2 class="text-3xl md:text-5xl font-bold text-[#147b96] mb-4">
+            ¿Por qué elegir
             <span class="inline-block align-center">
-              <img loading="lazy" src="/images/kinto/logo-kinto.svg" alt="KINTO" class="h-8 md:h-14"/>
+              <img
+                loading="lazy"
+                src="/images/kinto/logo-kinto.svg"
+                alt="KINTO"
+                class="h-8 md:h-14"
+              />
             </span> ?
           </h2>
-          <p class="text-xl text-gray-600">Las ventajas que nos hacen diferentes</p>
+          <p class="text-xl text-gray-600">
+            Las ventajas que nos hacen diferentes
+          </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+          <div
+            class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2"
+          >
             <i class="ri-exchange-line text-4xl text-[#147b96] mb-4"></i>
             <h3 class="text-2xl font-bold mb-4">Flexibilidad</h3>
             <p class="text-gray-600">Adapta tu plan según tus necesidades</p>
           </div>
-          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+          <div
+            class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2"
+          >
             <i class="ri-tools-line text-4xl text-[#147b96] mb-4"></i>
             <h3 class="text-2xl font-bold mb-4">Todo Incluido</h3>
             <p class="text-gray-600">Mantenimiento, seguros y más</p>
           </div>
-          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+          <div
+            class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2"
+          >
             <i class="ri-leaf-line text-4xl text-[#147b96] mb-4"></i>
             <h3 class="text-2xl font-bold mb-4">Sustentable</h3>
             <p class="text-gray-600">Comprometidos con el medio ambiente</p>
@@ -144,8 +189,10 @@ import { Image } from 'astro:assets';
     <!-- Estadísticas -->
     <section data-aos="fade-up" class="bg-[#147b96] text-white py-24 px-4">
       <div class="container mx-auto">
-        <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Nuestros Números</h2>
-        
+        <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+          Nuestros Números
+        </h2>
+
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <div class="text-center bg-white/5 p-8 rounded-lg">
             <i class="ri-group-line text-6xl mb-4 block"></i>
@@ -172,19 +219,33 @@ import { Image } from 'astro:assets';
     <section data-aos="fade-up" class="py-24 px-4">
       <div class="container mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">Lo que Dicen Nuestros Clientes</h2>
-          <p class="text-xl text-gray-600">Experiencias reales de usuarios KINTO</p>
+          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">
+            Lo que Dicen Nuestros Clientes
+          </h2>
+          <p class="text-xl text-gray-600">
+            Experiencias reales de usuarios KINTO
+          </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+          <div
+            class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2"
+          >
             <div class="text-4xl text-[#147b96] mb-4">❝</div>
-            <p class="text-gray-600 mb-4">KINTO me ha permitido tener la flexibilidad que necesitaba sin preocuparme por el mantenimiento.</p>
+            <p class="text-gray-600 mb-4">
+              KINTO me ha permitido tener la flexibilidad que necesitaba sin
+              preocuparme por el mantenimiento.
+            </p>
             <div class="font-bold">María G.</div>
             <div class="text-gray-500">Cliente KINTO One</div>
           </div>
-          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+          <div
+            class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2"
+          >
             <div class="text-4xl text-[#147b96] mb-4">❝</div>
-            <p class="text-gray-600 mb-4">Excelente servicio y atención al cliente. La mejor decisión para mi empresa.</p>
+            <p class="text-gray-600 mb-4">
+              Excelente servicio y atención al cliente. La mejor decisión para
+              mi empresa.
+            </p>
             <div class="font-bold">Carlos R.</div>
             <div class="text-gray-500">Cliente KINTO Fleet</div>
           </div>
@@ -196,36 +257,43 @@ import { Image } from 'astro:assets';
     <section data-aos="fade-up" class="bg-gray-50 py-24 px-4">
       <div class="container mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">Preguntas Frecuentes</h2>
+          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">
+            Preguntas Frecuentes
+          </h2>
           <p class="text-xl text-gray-600">Resolvemos tus dudas sobre KINTO</p>
         </div>
         <div class="space-y-4 max-w-3xl mx-auto" id="faq-container">
-          {[
-            {
-              question: "¿Qué incluye la suscripción?",
-              answer: "La suscripción incluye mantenimiento, seguro, asistencia en carretera 24/7 y todos los servicios necesarios para tu movilidad sin preocupaciones."
-            },
-            {
-              question: "¿Puedo cambiar de vehículo?",
-              answer: "Sí, dependiendo de tu plan, puedes cambiar de vehículo al renovar tu suscripción o en determinados períodos del año."
-            },
-            {
-              question: "¿Cuál es el período mínimo de suscripción?",
-              answer: "Los períodos varían según el servicio, desde opciones por día hasta contratos anuales flexibles."
-            }
-          ].map((faq, index) => (
-            <div class="faq-item bg-white rounded-xl shadow-lg">
-              <button 
-                class="faq-button w-full text-left p-6 focus:outline-none hover:bg-gray-50 transition-colors duration-300 flex justify-between items-center"
-              >
-                <span class="font-bold text-lg md:text-2xl text-gray-800">{faq.question}</span>
-                <i class="ri-arrow-down-s-line text-2xl text-[#147b96] transform transition-transform duration-300"></i>
-              </button>
-              <div class="faq-answer overflow-hidden bg-gray-50">
-                <p class="p-6 text-gray-600">{faq.answer}</p>
+          {
+            [
+              {
+                question: "¿Qué incluye la suscripción?",
+                answer:
+                  "La suscripción incluye mantenimiento, seguro, asistencia en carretera 24/7 y todos los servicios necesarios para tu movilidad sin preocupaciones.",
+              },
+              {
+                question: "¿Puedo cambiar de vehículo?",
+                answer:
+                  "Sí, dependiendo de tu plan, puedes cambiar de vehículo al renovar tu suscripción o en determinados períodos del año.",
+              },
+              {
+                question: "¿Cuál es el período mínimo de suscripción?",
+                answer:
+                  "Los períodos varían según el servicio, desde opciones por día hasta contratos anuales flexibles.",
+              },
+            ].map((faq, index) => (
+              <div class="faq-item bg-white rounded-xl shadow-lg">
+                <button class="faq-button w-full text-left p-6 focus:outline-none hover:bg-gray-50 transition-colors duration-300 flex justify-between items-center">
+                  <span class="font-bold text-lg md:text-2xl text-gray-800">
+                    {faq.question}
+                  </span>
+                  <i class="ri-arrow-down-s-line text-2xl text-[#147b96] transform transition-transform duration-300" />
+                </button>
+                <div class="faq-answer overflow-hidden bg-gray-50">
+                  <p class="p-6 text-gray-600">{faq.answer}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))
+          }
         </div>
       </div>
     </section>
@@ -234,21 +302,23 @@ import { Image } from 'astro:assets';
     <section data-aos="fade-up" id="contacto" class="bg-gray-50 py-24 px-4">
       <div class="container mx-auto max-w-2xl">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">Contáctanos</h2>
+          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">
+            Contáctanos
+          </h2>
           <p class="text-xl text-gray-600">Estamos aquí para ayudarte</p>
         </div>
         <form class="space-y-8">
           <div class="relative z-0 w-full group">
-            <input 
-              type="text" 
-              name="nombre" 
-              id="nombre" 
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer" 
-              placeholder=" " 
-              required 
+            <input
+              type="text"
+              name="nombre"
+              id="nombre"
+              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
+              placeholder=" "
+              required
             />
-            <label 
-              for="nombre" 
+            <label
+              for="nombre"
               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Nombre completo
@@ -256,16 +326,16 @@ import { Image } from 'astro:assets';
           </div>
 
           <div class="relative z-0 w-full group">
-            <input 
-              type="email" 
-              name="email" 
-              id="email" 
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer" 
-              placeholder=" " 
-              required 
+            <input
+              type="email"
+              name="email"
+              id="email"
+              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
+              placeholder=" "
+              required
             />
-            <label 
-              for="email" 
+            <label
+              for="email"
               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Email
@@ -273,15 +343,15 @@ import { Image } from 'astro:assets';
           </div>
 
           <div class="relative z-0 w-full group">
-            <input 
-              type="tel" 
-              name="telefono" 
-              id="telefono" 
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer" 
-              placeholder=" " 
+            <input
+              type="tel"
+              name="telefono"
+              id="telefono"
+              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
+              placeholder=" "
             />
-            <label 
-              for="telefono" 
+            <label
+              for="telefono"
               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Teléfono
@@ -289,10 +359,10 @@ import { Image } from 'astro:assets';
           </div>
 
           <div class="relative z-0 w-full group">
-            <select 
-              name="servicio" 
-              id="servicio" 
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer" 
+            <select
+              name="servicio"
+              id="servicio"
+              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
               required
             >
               <option value="" selected disabled></option>
@@ -300,8 +370,8 @@ import { Image } from 'astro:assets';
               <option value="kinto-share">KINTO Share</option>
               <option value="kinto-fleet">KINTO Fleet</option>
             </select>
-            <label 
-              for="servicio" 
+            <label
+              for="servicio"
               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Selecciona un servicio
@@ -309,23 +379,22 @@ import { Image } from 'astro:assets';
           </div>
 
           <div class="relative z-0 w-full group">
-            <textarea 
-              name="mensaje" 
-              id="mensaje" 
-              rows="4" 
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer" 
-              placeholder=" " 
-              required
-            ></textarea>
-            <label 
-              for="mensaje" 
+            <textarea
+              name="mensaje"
+              id="mensaje"
+              rows="4"
+              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
+              placeholder=" "
+              required></textarea>
+            <label
+              for="mensaje"
               class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
             >
               Mensaje
             </label>
           </div>
 
-          <button 
+          <button
             type="submit"
             class="w-full bg-[#147b96] hover:bg-[#1a94b4] text-white font-bold py-4 px-6 rounded-lg transition-colors duration-300"
           >
@@ -338,14 +407,19 @@ import { Image } from 'astro:assets';
 </Layout>
 
 <script>
-  const stats = document.querySelectorAll('.stat-number[data-target]');
-    
-  const animateValue = (obj: HTMLElement, start: number, end: number, duration: number) => {
+  const stats = document.querySelectorAll(".stat-number[data-target]");
+
+  const animateValue = (
+    obj: HTMLElement,
+    start: number,
+    end: number,
+    duration: number
+  ) => {
     let startTimestamp: number | null = null;
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
       const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      obj.innerHTML = Math.floor(progress * (end - start) + start) + '+';
+      obj.innerHTML = Math.floor(progress * (end - start) + start) + "+";
       if (progress < 1) {
         window.requestAnimationFrame(step);
       }
@@ -353,40 +427,45 @@ import { Image } from 'astro:assets';
     window.requestAnimationFrame(step);
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        if (entry.target.hasAttribute('data-target')) {
-          const element = entry.target as HTMLElement;
-          const target = element.getAttribute('data-target');
-          if (target) {
-            animateValue(element, 0, parseInt(target), 2000);
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          if (entry.target.hasAttribute("data-target")) {
+            const element = entry.target as HTMLElement;
+            const target = element.getAttribute("data-target");
+            if (target) {
+              animateValue(element, 0, parseInt(target), 2000);
+            }
           }
         }
-      }
-    });
-  }, { threshold: 0.1 });
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-  document.querySelectorAll('.reveal-on-scroll, .stat-number[data-target]').forEach((el) => observer.observe(el));
+  document
+    .querySelectorAll(".reveal-on-scroll, .stat-number[data-target]")
+    .forEach((el) => observer.observe(el));
 
   // FAQ functionality
-  document.addEventListener('DOMContentLoaded', () => {
-    const faqItems = document.querySelectorAll('.faq-item');
-    
-    faqItems.forEach(item => {
-      const button = item.querySelector('.faq-button');
-      
-      button?.addEventListener('click', () => {
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll(".faq-item");
+
+    faqItems.forEach((item) => {
+      const button = item.querySelector(".faq-button");
+
+      button?.addEventListener("click", () => {
         // Close all other items
-        faqItems.forEach(otherItem => {
+        faqItems.forEach((otherItem) => {
           if (otherItem !== item) {
-            otherItem.classList.remove('active');
+            otherItem.classList.remove("active");
           }
         });
-        
+
         // Toggle current item
-        item.classList.toggle('active');
+        item.classList.toggle("active");
       });
     });
   });
