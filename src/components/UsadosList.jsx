@@ -17,9 +17,9 @@ export default function UsadosList() {
   const [filtroAnioHasta, setFiltroAnioHasta] = useState("");
 
   // Rango de precios
-  const [rangoPrecios, setRangoPrecios] = useState([0, 100000000]);
+  const [rangoPrecios, setRangoPrecios] = useState([0, 60000000]);
   const minPrecio = 0;
-  const maxPrecio = 100000000;
+  const maxPrecio = 60000000;
 
   // Rango de kilómetros
   const [rangoKilometros, setRangoKilometros] = useState([0, 500000]);
@@ -1011,7 +1011,7 @@ export default function UsadosList() {
               </div>
 
               {/* Botón para abrir el Drawer */}
-              <div>
+              {/*<div>
                 <button
                   className="text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
                   type="button"
@@ -1019,12 +1019,13 @@ export default function UsadosList() {
                   data-drawer-show="drawer-right-example"
                   data-drawer-placement="right"
                   data-drawer-body-scrolling="true"
+                  data-drawer-backdrop="true"
                   aria-controls="drawer-right-example"
                 >
                   <i className="ri-filter-3-line"></i>
                   Filtros
                 </button>
-              </div>
+              </div>*/}
             </div>
           </div>
 
@@ -1055,6 +1056,7 @@ export default function UsadosList() {
               </button>
             </div>
           </div>
+          
 
           <div className="flex lg:hidden items-center max-lg:justify-between justify-end mb-4">
             {/* Filtro de orden */}
@@ -1103,7 +1105,7 @@ export default function UsadosList() {
                 data-drawer-target="drawer-right-example"
                 data-drawer-show="drawer-right-example"
                 data-drawer-placement="right"
-                data-drawer-body-scrolling="true"
+                data-drawer-backdrop="true"
                 aria-controls="drawer-right-example"
               >
                 <i className="ri-filter-3-line"></i>
@@ -1114,7 +1116,7 @@ export default function UsadosList() {
             {/* Drawer */}
             <div
               id="drawer-right-example"
-              className="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80"
+              className="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80 shadow-lg"
               tabIndex="-1"
               aria-labelledby="drawer-right-label"
             >
@@ -1772,11 +1774,11 @@ export default function UsadosList() {
                   fill="currentFill"
                 />
               </svg>
-              <span className="sr-only">Cargando noticias...</span>
+              <span className="sr-only">Cargando autos usados...</span>
             </div>
           ) : autosPaginados.length === 0 ? (
             <TransitionGroup>
-              <CSSTransition key="no-news" timeout={300} classNames="fade">
+              <CSSTransition key="no-results" timeout={300} classNames="fade">
                 <div className="text-center text-gray-500 w-full max-w-full h-screen">
                   <h2 className="text-xl font-semibold mb-4">
                     No se encontraron autos con los filtros aplicados
@@ -1788,117 +1790,120 @@ export default function UsadosList() {
               </CSSTransition>
             </TransitionGroup>
           ) : (
-            <TransitionGroup>
-              {modoVista === "grilla" ? (
-                // Vista en grilla
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {autosPaginados.map((auto) => (
-                    <CSSTransition key={auto.id} timeout={300} classNames="fade">
-                      <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
-                        <a href={`/usados/${auto.slug}`} className="cursor-pointer">
-                          <img
-                            src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
-                            alt={`${auto.marca} ${auto.modelo}`}
-                            className="w-full h-72 object-cover"
-                          />
-                        </a>
-                        <div className="p-4 flex flex-col justify-center gap-2">
-                          <h2 className="text-lg font-semibold border-b-2 border-red-600 max-w-max mb-2">
-                            {auto.marca} {auto.modelo}
-                          </h2>
-                          <div className="flex justify-start items-center text-base mt-2">
-                            <p className="mr-2">{auto.anio}</p>
-                            <p className="mr-2">|</p>
-                            <p className="mr-2">{Number(auto.km).toLocaleString()} km</p>
-                            <p className="mr-2">|</p>
-                            {auto.estado === "DISPONIBLE" ? (
-                              <span className="bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
-                                Disponible
-                              </span>
-                            ) : (
-                              <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
-                                Reservado
-                              </span>
-                            )}
-                          </div>
-                          <div className="flex justify-start items-center gap-2">
-                            <p className="text-base text-gray-500">{auto.descripcion}</p>
-                          </div>
-                          <div className="mt-4 flex justify-between items-center">
-                            <a
-                              href={`/usados/${auto.slug}`}
-                              className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
-                            >
-                              Ver más
-                            </a>
-                            <p className="font-bold">
-                              ARS$ {Number(auto.precio).toLocaleString()}
-                            </p>
-                          </div>
+            modoVista === "grilla" ? (
+              <TransitionGroup className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {autosPaginados.map((auto) => (
+                  <CSSTransition key={auto.id} timeout={300} classNames="fade">
+                    <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
+                      <a href={`/usados/${auto.slug}`} className="cursor-pointer">
+                        <img
+                          src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
+                          alt={`${auto.marca} ${auto.modelo}`}
+                          className="w-full h-72 object-cover"
+                        />
+                      </a>
+                      <div className="p-4 flex flex-col justify-center gap-2">
+                        <h2 className="text-lg font-semibold border-b-2 border-red-600 max-w-max mb-2">
+                          {auto.marca} {auto.modelo}
+                        </h2>
+                        <div className="flex justify-start items-center text-base mt-2">
+                          <p className="mr-1">{auto.anio}</p>
+                          <p className="mr-1">|</p>
+                          <p className="mr-1">{Number(auto.km).toLocaleString()} km</p>
+                          <p className="mr-1">|</p>
+                          {auto.estado === "DISPONIBLE" ? (
+                            <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
+                              Disponible
+                            </span>
+                          ) : (
+                            <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
+                              Reservado
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex justify-start items-center gap-2">
+                          <p className="text-base text-gray-500">
+                            {window.innerWidth <= 640 
+                              ? auto.descripcion.substring(0, 30)
+                              : auto.descripcion.substring(0, 100)}
+                            {auto.descripcion.length > (window.innerWidth <= 640 ? 30 : 100) ? '...' : ''}
+                          </p>
+                        </div>
+                        <div className="mt-4 flex justify-between items-center">
+                          <a
+                            href={`/usados/${auto.slug}`}
+                            className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
+                          >
+                            Ver más
+                          </a>
+                          <p className="font-bold">
+                            ARS$ {Number(auto.precio).toLocaleString()}
+                          </p>
                         </div>
                       </div>
-                    </CSSTransition>
-                  ))}
-                </div>
-              ) : (
-                // Vista en lista
-                <div className="space-y-6">
-                  {autosPaginados.map((auto) => (
-                    <CSSTransition key={auto.id} timeout={300} classNames="fade">
-                      <div className="flex items-center max-sm:h-44 h-72 bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
-                        <a href={`/usados/${auto.slug}`} className="cursor-pointer">
-                          <img
-                            src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
-                            alt={`${auto.marca} ${auto.modelo}`}
-                            className="max-sm:w-72 w-96 max-sm:h-44 h-72"
-                          />
-                        </a>
-                        <div className="w-full p-4 flex flex-col max-sm:gap-0 gap-6">
-                          <h2 className="text-sm lg:text-2xl xl:text-3xl font-semibold border-b-2 border-red-600 max-w-max mb-2">
-                            {`${auto.marca} ${auto.modelo}`.substring(0, 50)}
-                          </h2>
-                          <div className="flex justify-start items-center text-base mt-2">
-                            <p className="mr-1">{auto.anio}</p>
-                            <p className="mr-1">|</p>
-                            <p className="mr-1">{Number(auto.km).toLocaleString()} km</p>
-                            <p className="mr-1">|</p>
-                            {auto.estado === "DISPONIBLE" ? (
-                              <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
-                                Disponible
-                              </span>
-                            ) : (
-                              <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
-                                Reservado
-                              </span>
-                            )}
-                          </div>
-                          <div className="flex justify-start items-center gap-2">
-                            <p className="text-base text-gray-500">
-                              {auto.descripcion.substring(0, 30)}
-                              {auto.descripcion.length > 30 ? '...' : ''}
-                            </p>
-                          </div>
-                          <div className="mt-4 flex justify-between items-center">
-                            <a
-                              href={`/usados/${auto.slug}`}
-                              className="text-white text-base max-sm:py-0 py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
-                            >
-                              Ver más
-                            </a>
-                            <p className="font-bold text-black text-lg">
-                              ARS$ {Number(auto.precio).toLocaleString()}
-                            </p>
-                          </div>
+                    </div>
+                  </CSSTransition>
+                ))}
+              </TransitionGroup>
+            ) : (
+              <TransitionGroup className="space-y-6">
+                {autosPaginados.map((auto) => (
+                  <CSSTransition key={auto.id} timeout={300} classNames="fade">
+                    <div className="flex items-center max-sm:h-44 h-72 bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
+                      <a href={`/usados/${auto.slug}`} className="cursor-pointer">
+                        <img
+                          src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
+                          alt={`${auto.marca} ${auto.modelo}`}
+                          className="max-sm:w-72 w-96 max-sm:h-44 h-72"
+                        />
+                      </a>
+                      <div className="w-full p-4 flex flex-col max-sm:gap-0 gap-6">
+                        <h2 className="text-sm lg:text-2xl xl:text-3xl font-semibold border-b-2 border-red-600 max-w-max mb-2">
+                          {`${auto.marca} ${auto.modelo}`.substring(0, 50)}
+                        </h2>
+                        <div className="flex justify-start items-center text-base mt-2">
+                          <p className="mr-1">{auto.anio}</p>
+                          <p className="mr-1">|</p>
+                          <p className="mr-1">{Number(auto.km).toLocaleString()} km</p>
+                          <p className="mr-1">|</p>
+                          {auto.estado === "DISPONIBLE" ? (
+                            <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
+                              Disponible
+                            </span>
+                          ) : (
+                            <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase">
+                              Reservado
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex justify-start items-center gap-2">
+                          <p className="text-base text-gray-500">
+                            {window.innerWidth <= 640 
+                              ? auto.descripcion.substring(0, 30)
+                              : auto.descripcion.substring(0, 100)}
+                            {auto.descripcion.length > (window.innerWidth <= 640 ? 30 : 100) ? '...' : ''}
+                          </p>
+                        </div>
+                        <div className="mt-4 flex justify-between items-center">
+                          <a
+                            href={`/usados/${auto.slug}`}
+                            className="text-white text-base max-sm:py-0 py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
+                          >
+                            Ver más
+                          </a>
+                          <p className="font-bold text-black text-lg">
+                            ARS$ {Number(auto.precio).toLocaleString()}
+                          </p>
                         </div>
                       </div>
-                    </CSSTransition>
-                  ))}
-                </div>
-                )}
-                </TransitionGroup>
-                )}
+                    </div>
+                  </CSSTransition>
+                ))}
+              </TransitionGroup>
+            )
+          )}
 
-                {/* Paginación */}
+          {/* Paginación */}
           {autosFiltrados.length > autosPorPagina && (
             <div
               className={`${
