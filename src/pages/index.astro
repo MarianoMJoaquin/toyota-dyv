@@ -50,7 +50,8 @@ import srcGR from "../assets/images/gr.webp";
   
 			<div class="services__container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
 			  <div class="services__content">
-				<Image src={ServiceSVG} alt="Svg de Service" class="services__img"/>
+				<!--<Image src={ServiceSVG} alt="Svg de Service" class="services__img"/> -->
+				<img src={ServiceSVG.src} alt="Svg de Service" class="services__img" loading="lazy" decoding="async"/>
 				<a href="#" >
 				  <h3 class="services__title">Solicitar un servicio</h3>
 				</a>
