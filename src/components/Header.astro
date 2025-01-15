@@ -1,7 +1,7 @@
 ---
-import { Image } from "astro:assets"
+//import { Image } from "astro:assets"
 
-
+import logo from "../assets/images/logodyv.webp"
 import srcImage1 from "../assets/images/copia1.webp"
 import srcImage2 from "../assets/images/copia2.webp"
 import srcImage3 from "../assets/images/copia3.webp"
@@ -27,11 +27,13 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
     <nav class="nav container">
         <div class="nav__data">
             <a href="/" class="nav__logo">
-                <Image 
+                <!--<Image 
                   src="/images/logodyv.webp"
                   width={200}
                   height={50}
-                  alt="Logo">
+                  alt="Logo"
+                  > -->
+                <img src={logo.src} alt="Logo Derka y Vargas" loading="lazy" decoding="async" width="875" height="177">
             </a>
 
             <div class="nav__toggle" id="nav-toggle">
@@ -62,26 +64,29 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                         <a href="/modelos/yaris-hatchback" class="dropdown__link">
                                             Yaris Hatchback
                                             <!--<Image src={srcImage1} alt=""> -->
-                                            <img src={srcImage1.src} alt="Yaris Hatchback">
+                                            <img src={srcImage1.src} alt="Yaris Hatchback" loading="lazy" decoding="async" width="379" height="165">
                                         </a>
                                     </li>
                                     
                                     <li>
                                         <a href="/modelos/yaris-sedan" class="dropdown__link">
                                             Yaris Sedán
-                                            <Image src={srcImage2} format="avif" alt="">
+                                            <!--<Image src={srcImage2} format="avif" alt=""> -->
+                                            <img src={srcImage2.src} alt="Yaris Sedán" loading="lazy" decoding="async" width="400" height="155">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Corolla
-                                            <Image src={srcImage3} format="avif" alt="">
+                                            <!--<Image src={srcImage3} format="avif" alt=""> -->
+                                            <img src={srcImage3.src} alt="Corolla" loading="lazy" decoding="async" width="415" height="161">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Corolla Hybrid
-                                            <Image src={srcImage10} format="avif" alt="">
+                                            <!--<Image src={srcImage10} format="avif" alt=""> -->
+                                            <img src={srcImage10.src} alt="Corolla Hybrid" loading="lazy" decoding="async" width="496" height="161">
                                         </a>
                                     </li>
                                 </ul>
@@ -98,19 +103,22 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Hilux Cabina Simple
-                                            <Image src={srcImage4} format="avif" alt="">
+                                            <!--<Image src={srcImage4} format="avif" alt=""> -->
+                                            <img src={srcImage4.src} alt="Hilux Cabina Simple" loading="lazy" decoding="async" width="446" height="177">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Hilux Cabina Doble
-                                            <Image src={srcImage5} format="avif" alt="">
+                                            <!--<Image src={srcImage5} format="avif" alt=""> -->
+                                            <img src={srcImage5.src} alt="Hilux Cabina Doble" loading="lazy" decoding="async" width="468" height="182">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Hilux Chasis Cabina
-                                            <Image src={srcImage6} format="avif" alt="">
+                                            <!--<Image src={srcImage6} format="avif" alt=""> -->
+                                            <img src={srcImage6.src} alt="Hilux Chasis Cabina" loading="lazy" decoding="async" width="467" height="183">
                                         </a>
                                     </li>
                                 </ul>
@@ -127,19 +135,22 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Corolla Cross
-                                            <Image src={srcImage7} format="avif" alt="">
+                                            <!--<Image src={srcImage7} format="avif" alt=""> -->
+                                            <img src={srcImage7.src} alt="Corolla Cross" loading="lazy" decoding="async" width="394" height="169">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Corolla Cross Hybrid
-                                            <Image src={srcImage8} format="avif" alt="">
+                                             <!--<Image src={srcImage7} format="avif" alt=""> -->
+                                            <img src={srcImage7.src} alt="Corolla Cross Hybrid" loading="lazy" decoding="async" width="400" height="165">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             SW4
-                                            <Image src={srcImage9} format="avif" alt="">
+                                            <!--<Image src={srcImage9} format="avif" alt=""> -->
+                                            <img src={srcImage9.src} alt="SW4" loading="lazy" decoding="async" width="450" height="192">
                                         </a>
                                     </li>
                                 </ul>
@@ -156,19 +167,22 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Hiace Furgón
-                                            <Image src={srcImage11} format="avif" alt="">
+                                            <!--<Image src={srcImage11} format="avif" alt=""> -->
+                                            <img src={srcImage11.src} alt="Hiace Furgón" loading="lazy" decoding="async" width="447" height="184">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Hiace Commuter
-                                            <Image src={srcImage12} format="avif" alt="">
+                                            <!--<Image src={srcImage12} format="avif" alt=""> -->
+                                            <img src={srcImage12.src} alt="Hiace Commuter" loading="lazy" decoding="async" width="466" height="195">
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#" class="dropdown__link">
                                             Hiace Wagon
-                                            <Image src={srcImage13} format="avif" alt="">
+                                            <!--<Image src={srcImage13} format="avif" alt=""> -->
+                                            <img src={srcImage13.src} alt="Hiace Wagon" loading="lazy" decoding="async" width="451" height="186">
                                         </a>
                                     </li>
                                     <li>
@@ -220,7 +234,8 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
 
                             <div class="dropdown__group">
                                 <div class="dropdown__icon_kinto">
-                                    <Image src={srcImage16} format="avif" alt=""></Image>
+                                    <!--<Image src={srcImage16} format="avif" alt=""></Image> -->
+                                    <img src={srcImage16.src} alt="Kinto One Fleet" loading="lazy" decoding="async" width="96" height="96">
                                 </div>
 
                                 <span class="dropdown__title_kinto">Kinto One Fleet</span>
@@ -236,7 +251,8 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
 
                             <div class="dropdown__group">
                                 <div class="dropdown__icon_kinto">
-                                    <Image src={srcImage17} format="avif" alt=""></Image>
+                                    <!--<Image src={srcImage17} format="avif" alt=""></Image> -->
+                                    <img src={srcImage17.src} alt="Kinto One Personal" loading="lazy" decoding="async" width="96" height="96">
                                 </div>
 
                                 <span class="dropdown__title_kinto">Kinto One Personal</span>

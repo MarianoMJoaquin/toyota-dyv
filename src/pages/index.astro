@@ -15,7 +15,8 @@ import ModelosTabSliderComponent from '../components/ModelosTabSliderComponent.j
 
 import srcBannerimg from "../assets/images/banner-index.jpeg";
 import Slider from '../components/Slider.astro';
-
+import srcKinto from "../assets/images/kinto3.webp";
+import srcGR from "../assets/images/gr.webp";
 ---
 
 <Layout title="Toyota | Derka y Vargas" theme_color="#FFFFFF" image='https://i.imgur.com/AabFmC0.png'>
@@ -152,21 +153,21 @@ import Slider from '../components/Slider.astro';
 				<a class="about__link__gr" href="#!"> Conocer más </a>
 			  </div>
 			  <div class="about__img-wrapper">
-				<img class="about__img ukiyo" src="images/gr.jpg" alt="Leadership" />
+				<img class="about__img ukiyo" src={srcGR.src} alt="Toyota Gazoo Racing" loading="lazy" decoding="async"  />
 			  </div>
 			</div>
 			<!--Kinto Share -->
 			<div class="about__inner about__inner_company">
 			  <div class="about__info">
-				<h5 class="about__span">Tené siempre un Toyota</h5>
+				<h5 class="about__span__kinto">Tené siempre un Toyota</h5>
 				<h5 class="about__subtitle">Kinto Share</h5>
 				<div class="about__text">
 				  La solución de movilidad más conveniente, inteligente y confiable que se adapta a tus necesidades. Alquila un Toyota por el tiempo que quieras y en el lugar que más te convenga.
 				</div>
-				<a class="about__link" href="#!"> Conocer más </a>
+				<a class="about__link__kinto" href="#!"> Conocer más </a>
 			  </div>
 			  <div class="about__img-wrapper">
-				<img class="about__img" src="images/kinto.webp" alt="Toyota" />
+				<img class="about__img ukiyo" src={srcKinto.src} alt="Kinto Share" loading="lazy" decoding="async" width="6000" height="4000" />
 			  </div>
 			</div>
 		  </div>

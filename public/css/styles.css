@@ -871,6 +871,12 @@ html {
     color: #eb0a1e;
     font-family: 'Toyota-Type-Semibold', sans-serif;
   }
+
+  .about__span__kinto{
+    font-size: 1.3rem;
+    color: #147b96;
+    font-family: 'Toyota-Type-Semibold', sans-serif;
+  }
   
   .about__inner {
     display: -webkit-box;
@@ -945,6 +951,22 @@ html {
     padding: 1rem 2rem;
     border: solid 0.1px #eb0a1e;
     background-color: black;
+    transition: all 0.2s;
+  }
+
+  .about__link__kinto {
+    padding: 1rem 2rem;
+    background-color: #147b96;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 3rem;
+    transition: all 0.2s;
+    width: max-content;
+    font-size: 1rem;
+  }
+
+  .about__link__kinto:hover {
+    background-color: #0f5f7b;
     transition: all 0.2s;
   }
   
