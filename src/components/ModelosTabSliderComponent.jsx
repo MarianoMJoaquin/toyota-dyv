@@ -110,25 +110,50 @@ const ModelosTabSliderComponent = () => {
           />
         </a>
         <div className="catalog__item-info">
-          {/* <div className="catalog__item-top">
-            <span className="catalog__item-year">hola</span>
+          <div className="catalog__item-top">
+            <span className="catalog__item-year">{vehicle.variants[0].details.creationYear}</span>
             <span>|</span>
-            <span className="catalog__item-type">hola</span>
-          </div>*/}
+            <span className="catalog__item-type">{vehicle.categories[0].name}</span>
+          </div>
           <div className="catalog__item-middle">
             <div className="catalog__item-name">{vehicle.name}</div>
-            {/*<p className="catalog__item-text">holaaaa</p>*/}
+            <div className="grid grid-cols-3 grid-rows-1 gap-2">
+                <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
+                  <i className="ri-speed-up-line"></i>
+                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0].details.motor}</p>
+                </div>
+                <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
+                <i class="ri-car-line"></i>
+                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0].details.body_types}</p>
+                </div>
+                <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
+                  <i className="ri-user-line"></i>
+                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0].details.passengers}</p>
+                </div>
+            </div>
           </div>
           <div className="catalog__item-bottom">
-            <a href={`/modelos/${vehicle.slug}`} className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
-              Ver más
-            </a>
             <div className="catalog__item-price text-xl">
               <span className="catalog__item-price-text">Desde </span>
               <span className="catalog__item-price-number">
                 {vehicle.defaultPrice?.currency}${" "}
                 {vehicle.defaultPrice?.amount.toLocaleString()}
               </span>
+            </div>
+            <div className="flex justify-center space-x-2">
+              <a href={`/modelos/${vehicle.slug}`} className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
+                Ver más
+              </a>
+              <a
+                href={`https://dyv.e.toyota.com.ar/inventory/${vehicle.slug}`}
+                className="text-white rounded-lg text-xl transition-all inline-flex items-center relative group overflow-hidden"
+              >
+                <span className="flex items-center ml-1">     
+                  <span className="flex items-center leading-none">Cotizar</span>
+                  <i className="ri-arrow-right-s-line w-7 h-6 relative transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                </span>
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
+              </a>
             </div>
           </div>
         </div>
@@ -214,9 +239,9 @@ const ModelosTabSliderComponent = () => {
           href="/modelos"
           className="text-gray-500 rounded-lg text-xl hover:text-black transition-all inline-flex items-center relative group overflow-hidden"
         >
-          <span className="flex items-center mb-1">
+          <span className="flex items-center mb-1 ml-1">
             <span className="flex items-center leading-none">Ver todos los modelos</span>
-            <i className="ri-arrow-right-s-line text-2xl flex items-center leading-none transform group-hover:translate-x-1 transition-transform duration-300"></i>
+            <i className="ri-arrow-right-s-line w-7 h-6 relative transform group-hover:translate-x-1 transition-transform duration-300"></i>
           </span>
           <span className="absolute bottom-0 left-0 w-full h-0.5 bg-black transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
         </a>
