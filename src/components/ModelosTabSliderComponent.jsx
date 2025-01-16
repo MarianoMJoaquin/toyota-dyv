@@ -133,7 +133,7 @@ const ModelosTabSliderComponent = () => {
             </div>
           </div>
           <div className="catalog__item-bottom">
-            <div className="catalog__item-price text-base flex items-center space-x-2">
+            <div className="catalog__item-price max-sm:text-base text-base lg:text-xl  flex items-center space-x-2">
               <span className="catalog__item-price-text">Desde </span>
               <span className="catalog__item-price-number">
                 {vehicle.defaultPrice?.currency}${" "}
