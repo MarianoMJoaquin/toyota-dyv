@@ -133,7 +133,7 @@ const ModelosTabSliderComponent = () => {
             </div>
           </div>
           <div className="catalog__item-bottom">
-            <div className="catalog__item-price text-xl">
+            <div className="catalog__item-price text-base flex items-center space-x-2">
               <span className="catalog__item-price-text">Desde </span>
               <span className="catalog__item-price-number">
                 {vehicle.defaultPrice?.currency}${" "}
@@ -141,7 +141,7 @@ const ModelosTabSliderComponent = () => {
               </span>
             </div>
             <div className="flex justify-center space-x-2">
-              <a href={`/modelos/${vehicle.slug}`} className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
+              <a href={`/modelos/${vehicle.slug}`} className="catalog__item-btn px-4 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
                 Ver más
               </a>
               <a
@@ -149,7 +149,7 @@ const ModelosTabSliderComponent = () => {
                 className="text-white rounded-lg text-xl transition-all inline-flex items-center relative group overflow-hidden"
               >
                 <span className="flex items-center ml-1">     
-                  <span className="flex items-center leading-none">Cotizar</span>
+                  <span className="flex text-base items-center leading-none">Cotizar</span>
                   <i className="ri-arrow-right-s-line w-7 h-6 relative transform group-hover:translate-x-1 transition-transform duration-300"></i>
                 </span>
                 <span className="absolute bottom-0 left-0 w-full h-0.5 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300"></span>
