@@ -26,7 +26,16 @@
  * - Gradientes para mejorar legibilidad del texto
  * - Efecto de escala en las imágenes con Ukiyo
  * - Pausa del autoplay al reproducir un video
- *
+ * 
+ * @example
+ * <Slider groupId={1} /> // Muestra slides del grupo "Principal"
+ * <Slider groupId={3} /> // Muestra slides del grupo "Posventa"
+ * 
+ * @see https://astro.build/blog/introducing-astro
+ * 
+ * @version 1.0.0
+ * 
+ * 
  *
  * Ejemplo de uso:
  * ```astro
@@ -83,8 +92,10 @@ const smSlides = slides.filter(slide => slide.size === "SM").sort((a, b) => a.or
 // Detectar dispositivo (podemos usar el user-agent o un valor por defecto)
 const isMobileView = Astro.request.headers.get('user-agent')?.toLowerCase().includes('mobile');
 
-// Seleccionar el array de slides según el dispositivo
-const activeSlides = isMobileView ? smSlides : mdSlides;
+// Seleccionar el array de slides según el dispositivo con fallback
+const activeSlides = isMobileView 
+  ? (smSlides.length > 0 ? smSlides : mdSlides) // Si no hay slides SM, usar MD
+  : (mdSlides.length > 0 ? mdSlides : smSlides); // Si no hay slides MD, usar SM
 ---
 
 <div class="slider">
@@ -654,14 +665,14 @@ const activeSlides = isMobileView ? smSlides : mdSlides;
   }
   @media (max-width: 768px) {
     .btn {
-      padding: 0.5rem 1.5rem;
-      font-size: 1.2rem;
+      padding: 0.4rem 0.7rem;
+      font-size: 1rem;
     }
   }
   .slider__item-content {
     position: absolute;
     left: 50%;
-    bottom: 2rem;
+    bottom: 1rem;
     transform: translateX(-50%);
     z-index: 1;
     text-align: center;
@@ -669,13 +680,13 @@ const activeSlides = isMobileView ? smSlides : mdSlides;
   }
 
   .slider__item-title {
-    margin-bottom: 2rem;
+    margin-bottom: 0.2rem;
   }
 
   .slider__item-title span {
-    margin-top: 1rem;
+    margin-top: 0.2rem;
     display: block;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 400;
     font-family: "Toyota-Type-Book", sans-serif;
   }
