@@ -75,29 +75,23 @@ const data: SlideGroup[] = await response.json();
 // Get slides from specified group and sort by orden //Español: Obtener slides del grupo especificado y ordenar por orden //Español: Obtener slides del grupo especificado y ordenar por orden
 const group = data.find((g) => g.id === groupId);
 const slides: SlideItem[] = group?.items || [];
-const sortedSlides = slides.sort((a, b) => a.orden - b.orden);
 
-// Group slides by orden to pair MD with SM images //Español: Agrupar slides por orden para emparejar imágenes MD con SM
-type SlideMap = Record<number, Partial<Record<"SM" | "MD", SlideItem>>>;
-const slidesMap: SlideMap = sortedSlides.reduce((acc, slide) => {
-  if (!acc[slide.orden]) {
-    acc[slide.orden] = {};
-  }
-  acc[slide.orden][slide.size] = slide;
-  return acc;
-}, {} as SlideMap);
+// Separar slides por tamaño y ordenarlos
+const mdSlides = slides.filter(slide => slide.size === "MD").sort((a, b) => a.orden - b.orden);
+const smSlides = slides.filter(slide => slide.size === "SM").sort((a, b) => a.orden - b.orden);
 
-// Get unique slides (using MD as main slide) //Español: Obtener slides únicos (usando MD como slide principal)
-const uniqueSlides = Object.values(slidesMap)
-  .filter((group): group is { MD: SlideItem } => Boolean(group.MD))
-  .map((group) => group.MD);
+// Detectar dispositivo (podemos usar el user-agent o un valor por defecto)
+const isMobileView = Astro.request.headers.get('user-agent')?.toLowerCase().includes('mobile');
+
+// Seleccionar el array de slides según el dispositivo
+const activeSlides = isMobileView ? smSlides : mdSlides;
 ---
 
 <div class="slider">
   <div class="slider__wrapper">
     <div class="slider__inner">
       {
-        uniqueSlides.map((slide) => (
+        activeSlides.map((slide) => (
           <div class="slider__item">
             <div class="slider__item-content">
               {slide.title_text && (
@@ -124,19 +118,11 @@ const uniqueSlides = Object.values(slidesMap)
                     playsinline
                   />
                 ) : (
-                  <picture>
-                    {slidesMap[slide.orden]?.SM && (
-                      <source
-                        srcset={`https://panelweb.derkayvargas.com${slidesMap[slide.orden].SM?.image?.public_path}`}
-                        media="(max-width: 500px)"
-                      />
-                    )}
-                    <img
-                      class="slider__item-img"
-                      src={`https://panelweb.derkayvargas.com${slide.image?.public_path}`}
-                      alt={slide.text || ""}
-                    />
-                  </picture>
+                  <img
+                    class="slider__item-img"
+                    src={`https://panelweb.derkayvargas.com${slide.image?.public_path}`}
+                    alt={slide.text || ""}
+                  />
                 )}
                 <button class="slider__control">
                   <span class="slider__control-icon slider__control-icon--pause">
@@ -156,7 +142,7 @@ const uniqueSlides = Object.values(slidesMap)
 
   <div class="slider__nav">
     {
-      uniqueSlides.map((_, index) => (
+      activeSlides.map((_, index) => (
         <button
           class={`slider__nav-btn ${index === 0 ? "slider__nav-btn_active" : ""}`}
         />
@@ -175,6 +161,18 @@ const uniqueSlides = Object.values(slidesMap)
 </div>
 
 <script is:inline>
+  // Al inicio del script
+  window.addEventListener('DOMContentLoaded', () => {
+    // Si cambia el viewport, recargamos para obtener el contenido correcto
+    const mediaQuery = window.matchMedia('(max-width: 768px)');
+    const wasMobile = mediaQuery.matches;
+    
+    mediaQuery.addEventListener('change', (e) => {
+      if (wasMobile !== e.matches) {
+        window.location.reload();
+      }
+    });
+  });
   const sliderWrapper = document.querySelector(".slider__wrapper"),
     sliderInner = document.querySelector(".slider__inner"),
     sliderItems = document.querySelectorAll(".slider__item"),
