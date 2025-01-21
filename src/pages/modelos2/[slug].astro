@@ -1,0 +1,25 @@
+---
+
+import ModeloDetalles from "../../components/ModeloDetalles.jsx";
+import Layout from "../../layouts/Layout.astro";
+
+// Obtener el parámetro dinámico (slug) desde la URL
+const { slug } = Astro.params;
+
+const response = await fetch('http://localhost:4321/api/vehicles')
+const data = await response.json()
+const modelo = data.find((modelo: { slug: string }) => modelo.slug === slug) || {}
+
+---
+
+<Layout 
+    title={`${modelo.name} | Modelos | Derka y Vargas S.A`}
+    theme_color="#EB0A1E"
+    image={`http://localhost:4321${modelo.image}`}
+>
+    <main class="main">
+        <section class="container mx-auto section">
+            <ModeloDetalles client:load slug={slug} />
+        </section>
+    </main>
+</Layout>
