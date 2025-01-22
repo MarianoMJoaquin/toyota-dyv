@@ -3,7 +3,7 @@ import Swiper from 'swiper';
 import 'swiper/css';
 import CarComponent360 from './CarComponent360';
 import '../assets/styles/modelos.css';
-import '../../public/css/styles.css';
+
 
 export default function ModeloDetalles({ slug }) {
   const [modelData, setModelData] = useState(null);
@@ -43,7 +43,7 @@ export default function ModeloDetalles({ slug }) {
     return (
         <div
         role="status"
-        style={{ height: "80vh" }}
+        style={{ height: "100vh" }}
         className="flex items-center justify-center"
       >
         <svg
