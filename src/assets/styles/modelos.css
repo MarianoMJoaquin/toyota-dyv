@@ -1236,11 +1236,11 @@ section,
   /*padding: 30px 30px 70px 30px;*/
 }
 
-.why-us .card-item:hover span,
+/*.why-us .card-item:hover span,
 .why-us .card-item:hover h4 a,
 .why-us .card-item:hover p {
-  /*color: var(--background-color);*/
-}
+  /*color: var(--background-color);
+}*/
 
 /*--------------------------------------------------------------
 # Menu Section
@@ -1497,7 +1497,7 @@ section,
 
 .events .swiper-pagination {
   margin-top: 30px;
-  position: relative;
+  position: relative; 
 }
 
 .events .swiper-pagination .swiper-pagination-bullet {
@@ -1860,6 +1860,3 @@ section,
 /*--------------------------------------------------------------
 # Starter Section Section
 --------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
-}

@@ -512,7 +512,46 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
             { name: "Negro Mica", code: "black", hex: "#292826" }
         ]
       }
+    },
+    corolla_cross: {
+      xli: {
+        "XLI 2.0 CVT": [
+          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+        ]
+          },
+          xei: {
+        "XEI 2.0 CVT": [
+          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+        ]
+          },
+          seg: {
+        "SEG 2.0 CVT": [
+          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+        ]
+      }
     }
+   
+
+
+    
   };
 
   const versions = {
