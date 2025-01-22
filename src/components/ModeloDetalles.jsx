@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import Swiper from 'swiper';
 import 'swiper/css';
 import CarComponent360 from './CarComponent360';
-import '../assets/styles/modelos.css'
+import '../assets/styles/modelos.css';
+import '../../public/css/styles.css';
 
 export default function ModeloDetalles({ slug }) {
   const [modelData, setModelData] = useState(null);
@@ -100,37 +101,42 @@ export default function ModeloDetalles({ slug }) {
 
         <div className="container mx-auto">
           <div className="flex flex-wrap gap-y-4">
-            <div className="lg:w-1/4 pr-4 pl-4" data-aos="fade-up" data-aos-delay="100">
-              <div className="card-item">
-                <span><i className="ri-speed-up-line"></i></span>
-                <h4><a href="" className="stretched-link">Motor</a></h4>
-                <p>{modelData.variants[0]?.details?.motor}</p>
-              </div>
-            </div>
+        <div className="lg:w-1/4 pr-4 pl-4" data-aos="fade-up" data-aos-delay="100">
+          <div className="card-item">
+            <span><i className="ri-speed-up-line"></i></span>
+            <h4><a href="" className="stretched-link">Motor</a></h4>
+            <p>{modelData.variants[0]?.details?.motor?.replace(/;;/g, '')}</p>
+          </div>
+        </div>
 
-            <div className="lg:w-1/4 pr-4 pl-4" data-aos="fade-up" data-aos-delay="200">
-              <div className="card-item">
-                <span><i className="ri-car-line"></i></span>
-                <h4><a href="" className="stretched-link">Diseño</a></h4>
-                <p>{modelData.variants[0]?.details?.summary}</p>
-              </div>
-            </div>
+        <div className="lg:w-1/4 pr-4 pl-4" data-aos="fade-up" data-aos-delay="200">
+          <div className="card-item">
+            <span><i className="ri-car-line"></i></span>
+            <h4><a href="" className="stretched-link">Diseño</a></h4>
+            {/*{modelData.variants[0]?.details?.summary?.split(';;').map((item, index) => (
+              <p key={index}>{item}<br /></p>
+            ))} */}
+            <p>{modelData.variants[0]?.details?.summary?.split(';;')[0]}</p>
+            <p>{modelData.variants[0]?.details?.summary?.split(';;')[3]}</p>
+            <p>{modelData.variants[0]?.details?.summary?.split(';;')[4]}</p>
+          </div>
+        </div>
 
-            <div className="lg:w-1/4 pr-4 pl-4" data-aos="fade-up" data-aos-delay="300">
-              <div className="card-item">
-                <span><i className="ri-git-branch-line"></i></span>
-                <h4><a href="" className="stretched-link">Transmisión</a></h4>
-                <p>{modelData.variants[0]?.details?.transmission?.description}</p>
-              </div>
-            </div>
+        <div className="lg:w-1/4 pr-4 pl-4" data-aos="fade-up" data-aos-delay="300">
+          <div className="card-item">
+            <span><i className="ri-git-branch-line"></i></span>
+            <h4><a href="" className="stretched-link">Transmisión</a></h4>
+            <p>{modelData.variants[0]?.details?.transmission?.description?.replace(/;;/g, '')}</p>
+          </div>
+        </div>
 
-            <div className="lg:w-1/4 pr-4 pl-4" data-aos="fade-up" data-aos-delay="400">
-              <div className="card-item">
-                <span><i className="ri-user-line"></i></span>
-                <h4><a href="" className="stretched-link">Confort</a></h4>
-                <p>{modelData.variants[0]?.details?.passengers}</p>
-              </div>
-            </div>
+        <div className="lg:w-1/4 pr-4 pl-4" data-aos="fade-up" data-aos-delay="400">
+          <div className="card-item">
+            <span><i className="ri-user-line"></i></span>
+            <h4><a href="" className="stretched-link">Confort</a></h4>
+            <p>{modelData.variants[0]?.details?.passengers?.replace(/;;/g, '')}</p>
+          </div>
+        </div>
           </div>
         </div>
       </section>
@@ -174,6 +180,7 @@ export default function ModeloDetalles({ slug }) {
             <div className="menu-item">
               <div className="menu-content gap-4 flex-col justify-center items-center">
                 { modelData.slug === 'corolla' ? <CarComponent360 client:load initialModel="corolla" initialVersion="xli" initialColor="red" initialSubversion="2.0 XLI CVT"/> : null }
+                { modelData.slug === 'yaris-hatchback' ? <CarComponent360 client:load initialModel="yaris_hatchback" initialVersion="xs" initialColor="red" initialSubversion="XS 1.5 6M/T 5P"/> : null }
               </div>
             </div>
           </div>

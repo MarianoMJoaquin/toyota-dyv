@@ -17,9 +17,5 @@ const modelo = data.find((modelo: { slug: string }) => modelo.slug === slug) || 
     theme_color="#EB0A1E"
     image={`http://localhost:4321${modelo.image}`}
 >
-    <main class="main">
-        <section class="container mx-auto section">
-            <ModeloDetalles client:load slug={slug} />
-        </section>
-    </main>
+    <ModeloDetalles client:load slug={slug} />
 </Layout>
