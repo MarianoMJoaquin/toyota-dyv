@@ -6,7 +6,7 @@ import Layout from "../../layouts/Layout.astro";
 // Obtener el parámetro dinámico (slug) desde la URL
 const { slug } = Astro.params;
 
-const response = await fetch('http://localhost:4321/api/vehicles')
+const response = await fetch(`${import.meta.env.SITE}/api/vehicles`)
 const data = await response.json()
 const modelo = data.find((modelo: { slug: string }) => modelo.slug === slug) || {}
 
@@ -15,7 +15,7 @@ const modelo = data.find((modelo: { slug: string }) => modelo.slug === slug) || 
 <Layout 
     title={`${modelo.name} | Modelos | Derka y Vargas S.A`}
     theme_color="#EB0A1E"
-    image={`http://localhost:4321${modelo.image}`}
+    image={`${import.meta.env.SITE}${modelo.image}`}
 >
     <ModeloDetalles client:load slug={slug} />
 </Layout>
