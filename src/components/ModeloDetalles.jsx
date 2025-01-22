@@ -72,27 +72,28 @@ export default function ModeloDetalles({ slug }) {
   }
 
   return (
+    
     <main className="main">
-      {/* Hero Section */}
-      <section id="hero" className="hero section dark-background">
-        <img src={modelData.images[0]?.url} className="hero-bg" alt="" data-aos="fade-in" />
-        <div className="container mx-auto sm:px-4">
-          <div className="flex flex-wrap justify-center">
-            <div className="lg:w-2/3 pr-4 pl-4 flex flex-col items-center lg:items-start">
-              <p data-aos="fade-up" data-aos-delay="200">Toyota</p>
-              <h2 data-aos="fade-up" data-aos-delay="100">{modelData.name}</h2>
-              <div className="flex mt-4" data-aos="fade-up" data-aos-delay="300">
-                <a href={`https://dyv.e.toyota.com.ar/inventory/${modelData.slug}`} className="cta-btn">Cotizar ahora</a>
-              </div>
-            </div>
-            <div className="lg:w-1/3 pr-4 pl-4 flex items-center justify-center mt-5 lg:mt-0">
-              <a href="#" className="glightbox pulsating-play-btn"></a>
+      
+        <section id="hero" className="hero section dark-background">
+          <img src={modelData.images.find(img => img.data.viewType === "banner")?.formats?.large?.url} className="hero-bg" alt="" data-aos="fade-in" />
+          <div className="container mx-auto sm:px-4">
+            <div className="flex flex-wrap justify-center">
+          <div className="lg:w-2/3 pr-4 pl-4 flex flex-col items-center lg:items-start">
+            <p data-aos="fade-up" data-aos-delay="200">Toyota</p>
+            <h2 data-aos="fade-up" data-aos-delay="100">{modelData.name}</h2>
+            <div className="flex mt-4" data-aos="fade-up" data-aos-delay="300">
+              <a href={`https://dyv.e.toyota.com.ar/inventory/${modelData.slug}`} className="cta-btn">Cotizar ahora</a>
             </div>
           </div>
-        </div>
-      </section>
+          <div className="lg:w-1/3 pr-4 pl-4 flex items-center justify-center mt-5 lg:mt-0">
+            <a href="#" className="glightbox pulsating-play-btn"></a>
+          </div>
+            </div>
+          </div>
+        </section>
 
-      {/* Specs Section */}
+        {/* Specs Section */}
       <section id="why-us" className="why-us lg:mx-5 section">
         <div className="container mx-auto section-title" data-aos="fade-up">
           <h2>{modelData.name.toUpperCase()}</h2>
@@ -144,31 +145,31 @@ export default function ModeloDetalles({ slug }) {
       {/* Events/Slider Section */}
       <section id="events" className="events 2xl:mx-44 xl:mx-5 lg:mx-5 section">
         {/* Fondo del slider */}
-        <img src={modelData.images[0]?.url} className="slider-bg" alt="" data-aos="fade-in" />
-        
-        <div className="container mx-auto sm:px-4">
-          <div className="swiper init-swiper" data-aos="fade-up" data-aos-delay="100">
-            <div className="swiper-wrapper">
-              {modelData.images.filter(img => img.type === "gallery").map((image, index) => (
+              <img src={modelData.images[0]?.url} className="slider-bg" alt="" data-aos="fade-in" />
+              
+              <div className="container mx-auto sm:px-4">
+              <div className="swiper init-swiper" data-aos="fade-up" data-aos-delay="100">
+                <div className="swiper-wrapper">
+                {modelData.images.filter(img => img.type === "gallery" || img.type === "inventory").slice(0, 5).map((image, index) => (
                 <div key={index} className="swiper-slide">
                   <div className="flex flex-wrap gy-4 event-item">
-                    <div className="lg:w-1/2 pr-4 pl-4">
-                      <img src={image.url} className="max-w-full h-auto" alt="" />
-                    </div>
-                    <div className="lg:w-1/2 pr-4 pl-4 pt-4 lg:pt-0 flex flex-col justify-center content">
-                      <h3>{modelData.name}</h3>
-                      <p>{image.data?.description || modelData.variants[0]?.details?.summary}</p>
-                    </div>
+                  <div className="lg:w-1/2 pr-4 pl-4">
+                    <img src={image.url} className="max-w-full h-auto" alt="" />
+                  </div>
+                  <div className="lg:w-1/2 pr-4 pl-4 pt-4 lg:pt-0 flex flex-col justify-center content">
+                    <h3>{modelData.name}</h3>
+                    <p>{image.data?.description || modelData.variants[0]?.details?.summary}</p>
+                  </div>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div className="swiper-pagination"></div>
-          </div>
-        </div>
-      </section>
+                ))}
+                </div>
+                <div className="swiper-pagination"></div>
+              </div>
+              </div>
+                </section>
 
-      {/* Version Section */}
+                {/* Version Section */}
       <section id="menu" className="menu lg:mx-5 section">
         <div className="container mx-auto section-title" data-aos="fade-up">
           <h2>{modelData.name.toUpperCase()}</h2>
@@ -196,7 +197,7 @@ export default function ModeloDetalles({ slug }) {
 
         <div className="flex flex-wrap mx-6 md:mx-6 lg:mx-16" data-aos="fade-up" data-aos-delay="100">
           <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
-            {modelData.images.filter(img => img.type === "gallery").map((image, index) => (
+            {modelData.images.filter(img => img.type === "gallery" || img.type === "inventory").slice(0, 5).map((image, index) => (
               <div key={index} className={`col-span-1 md:col-span-${index < 3 ? '2' : '3'} lg:col-span-${index < 3 ? '2' : '3'}`}>
                 <div className="gallery-item">
                   <a href={image.url} className="glightbox" data-gallery="images-gallery">

@@ -120,15 +120,16 @@ const ModelosTabSliderComponent = () => {
             <div className="grid grid-cols-3 grid-rows-1 gap-2">
                 <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
                   <i className="ri-speed-up-line"></i>
-                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0].details.motor}</p>
+                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0]?.details?.motor}</p>
                 </div>
                 <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
                 <i class="ri-car-line"></i>
-                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0].details.body_types}</p>
+                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0]?.details?.body_types}</p>
+                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0]?.details?.summary?.split(';')[0]}</p>
                 </div>
                 <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
                   <i className="ri-user-line"></i>
-                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0].details.passengers}</p>
+                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0]?.details?.passengers}</p>
                 </div>
             </div>
           </div>
@@ -141,7 +142,7 @@ const ModelosTabSliderComponent = () => {
               </span>
             </div>
             <div className="flex justify-center space-x-2">
-              <a href={`/modelos/${vehicle.slug}`} className="catalog__item-btn px-4 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
+              <a href={`/modelos2/${vehicle.slug}`} className="catalog__item-btn px-4 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
                 Ver más
               </a>
               <a
