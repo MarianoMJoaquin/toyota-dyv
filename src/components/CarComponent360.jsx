@@ -271,7 +271,8 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
         "Guardabarros extendidos con overfenders en color carrocería",
         "Toyota Safety Sense *(1): Control de velocidad crucero adaptativo (ACC); Sistema de pre colisión frontal"
       ]
-    }
+    },
+    
   };
 
   const colors = {

@@ -39,6 +39,18 @@ export default function ModeloDetalles({ slug }) {
     }
   }, [modelData]);
 
+  // Agregar nuevo useEffect para inicializar GLightbox
+  useEffect(() => {
+    if (modelData && typeof window !== 'undefined' && window.GLightbox) {
+      const lightbox = window.GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        loop: true,
+        autoplayVideos: true
+      });
+    }
+  }, [modelData]); // Se ejecutará cuando modelData cambie
+
   if (cargando) {
     return (
         <div
@@ -87,7 +99,14 @@ export default function ModeloDetalles({ slug }) {
             </div>
           </div>
           <div className="lg:w-1/3 pr-4 pl-4 flex items-center justify-center mt-5 lg:mt-0">
-            <a href="#" className="glightbox pulsating-play-btn"></a>
+            { modelData.slug === 'yaris-hatchback' ? <a href="https://youtu.be/nxRG2RrQFbc?si=FNkJrMsjQgaT40Ql" className="glightbox pulsating-play-btn"></a> : null }
+            { modelData.slug === 'yaris-sedan' ? <a href="https://youtu.be/nxRG2RrQFbc?si=FNkJrMsjQgaT40Ql" className="glightbox pulsating-play-btn"></a> : null }
+            { modelData.slug === 'corolla' ? <a href="https://youtu.be/bfZj4rnxvNA?si=F_qXjEiy9zws-QDM" className="glightbox pulsating-play-btn"></a> : null }
+            { modelData.slug === 'corolla-hybrid' ? <a href="https://youtu.be/bfZj4rnxvNA?si=F_qXjEiy9zws-QDM" className="glightbox pulsating-play-btn"></a> : null }
+            { modelData.slug === 'hilux-cabina-doble' ? <a href="https://youtu.be/q9SOy7bm_wo?si=LEcMNOIhjMiht965" className="glightbox pulsating-play-btn"></a> : null }
+            { modelData.slug === 'corolla-cross' ? <a href="https://youtu.be/N9wWHAkhLyo?si=sYMYI4X5OknMh821" className="glightbox pulsating-play-btn"></a> : null }
+            { modelData.slug === 'corolla-cross-hybrid' ? <a href="https://youtu.be/N9wWHAkhLyo?si=sYMYI4X5OknMh821" className="glightbox pulsating-play-btn"></a> : null }
+            { modelData.slug === 'sw4' ? <a href="https://youtu.be/5PekEJU9S8Q?si=RHNDxRYse25UrKe6" className="glightbox pulsating-play-btn"></a> : null }
           </div>
             </div>
           </div>
@@ -180,8 +199,10 @@ export default function ModeloDetalles({ slug }) {
           <div className="flex flex-wrap" data-aos="fade-up" data-aos-delay="200">
             <div className="menu-item">
               <div className="menu-content gap-4 flex-col justify-center items-center">
-                { modelData.slug === 'corolla' ? <CarComponent360 client:load initialModel="corolla" initialVersion="xli" initialColor="red" initialSubversion="2.0 XLI CVT"/> : null }
                 { modelData.slug === 'yaris-hatchback' ? <CarComponent360 client:load initialModel="yaris_hatchback" initialVersion="xs" initialColor="red" initialSubversion="XS 1.5 6M/T 5P"/> : null }
+                { modelData.slug === 'yaris-sedan' ? <CarComponent360 client:load initialModel="yaris_sedan" initialVersion="xls" initialColor="gray" initialSubversion="XLS 1.5 6M/T 4P"/> : null }
+                { modelData.slug === 'corolla' ? <CarComponent360 client:load initialModel="corolla" initialVersion="xli" initialColor="white-perl" initialSubversion="2.0 XLI CVT"/> : null }
+                { modelData.slug === 'corolla-hybrid' ? <CarComponent360 client:load initialModel="corolla_hybrid" initialVersion="xei" initialColor="white-perl" initialSubversion="HEV 1.8 XEI eCVT"/> : null }
               </div>
             </div>
           </div>
