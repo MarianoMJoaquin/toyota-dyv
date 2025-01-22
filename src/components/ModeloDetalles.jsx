@@ -290,19 +290,44 @@ export default function ModeloDetalles({ slug }) {
             {modelData.images
               .filter((img) => img.type === "gallery" || img.type === "inventory")
               .slice(0, 5)
-              .map((image, index) => (
-                <SwiperSlide key={index}>
-                  <div className="flex flex-wrap gy-4 event-item">
-                    <div className="lg:w-1/2 pr-4 pl-4">
-                      <img src={image.url} className="max-w-full h-auto" alt="" />
+              .map((image, index) => {
+                const descriptions = {
+                  "yaris-hatchback": {
+                    title: [
+                      "Conectividad en todas sus versiones",
+                      "Toyota Safety Sense",
+                      "Confort interior",
+                      "Diseño exterior",
+                      "Sistema de seguridad"
+                    ],
+                    descriptions: [
+                      "Audio con pantalla táctil LCD de 6.8\" con conectividad Apple Car Play® & Android Auto®",
+                      "Sistema de Pre-colisión frontal (PCS) y Sistema de alerta de cambio de carril (LDA). Estos sistemas avanzados de asistencia a la conducción complementan al conductor.",
+                      "Equipado con climatizador automático digital, cámara de estacionamiento y control de velocidad crucero.",
+                      "Diseño deportivo con líneas aerodinámicas y detalles modernos.",
+                      "Equipado con 7 airbags y sistema de frenos ABS con distribución electrónica de frenado."
+                    ],
+                  },
+                  // ... Aquí podrías agregar más descripciones para otros modelos
+                };
+                
+                const modelTitle = descriptions[modelData.slug]?.title || Array(5).fill("");
+                const modelDescriptions = descriptions[modelData.slug]?.descriptions || Array(5).fill("");
+
+                return (
+                  <SwiperSlide key={index}>
+                    <div className="flex flex-wrap gy-4 event-item">
+                      <div className="lg:w-1/2 pr-4 pl-4">
+                        <img src={image.url} className="max-w-full h-auto" alt="" />
+                      </div>
+                      <div className="lg:w-1/2 pr-4 pl-4 pt-4 lg:pt-0 flex flex-col justify-center content">
+                        <h3>{modelTitle[index]}</h3>
+                        <p>{modelDescriptions[index]}</p>
+                      </div>
                     </div>
-                    <div className="lg:w-1/2 pr-4 pl-4 pt-4 lg:pt-0 flex flex-col justify-center content">
-                      <h3>{/* ...existing title logic... */}</h3>
-                      <p>{/* ...existing description logic... */}</p>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
+                  </SwiperSlide>
+                );
+              })}
             <div className="swiper-pagination !relative !bottom-0 mt-4"></div>
           </Swiper>
         </div>
