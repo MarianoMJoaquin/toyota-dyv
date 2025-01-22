@@ -1,4 +1,4 @@
-* Fonts */
+/* Fonts */
 :root {
   --default-font: "Toyota-Type",  system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --heading-font: "Toyota-Type",  sans-serif;
@@ -1321,16 +1321,7 @@ section,
   font-weight: 600;
 }
 
-@media screen and (max-width: 768px) {
-  #manual,
-  #automatico,
-  #manual-xls,
-  #automatico-xls,
-  #automatico-xls-pack,
-  #automatico-s {
-    font-size: 1.3rem;
-  }
-}
+
 
 
 /*--------------------------------------------------------------
