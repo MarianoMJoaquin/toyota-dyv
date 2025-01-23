@@ -54,8 +54,11 @@ export default function ModeloDetalles({ slug }) {
       if (window.galleryLightbox) {
         window.galleryLightbox.destroy();
       }
+      if (window.videoLightbox) {
+        window.videoLightbox.destroy();
+      }
 
-      // Crear nueva instancia según la vista activa
+      // Crear instancia para la galería
       window.galleryLightbox = window.GLightbox({
         selector: `.galeria-${activeView}`,
         touchNavigation: true,
@@ -63,9 +66,20 @@ export default function ModeloDetalles({ slug }) {
         autoplayVideos: true
       });
 
+      // Crear instancia para el video del hero
+      window.videoLightbox = window.GLightbox({
+        selector: '.glightbox',
+        touchNavigation: true,
+        autoplayVideos: true
+      });
+
       return () => {
+        // Destruir instancias al desmontar el componente
         if (window.galleryLightbox) {
           window.galleryLightbox.destroy();
+        }
+        if (window.videoLightbox) {
+          window.videoLightbox.destroy();
         }
       };
     }
