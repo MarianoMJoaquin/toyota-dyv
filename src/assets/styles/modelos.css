@@ -95,15 +95,16 @@ body {
   font-family: var(--default-font);
 }
 
-a {
+.material-link {
   color: var(--accent-color);
   text-decoration: none;
   transition: 0.3s;
 }
 
-a:hover {
+.material-link:hover {
   color: color-mix(in srgb, var(--accent-color), transparent 25%);
   text-decoration: none;
+  transition: 0.3s ease-in-out;
 }
 
 h1,
@@ -116,57 +117,6 @@ h6 {
   font-family: var(--heading-font);
 }
 
-/* PHP Email Form Messages
-------------------------------*/
-.php-email-form .error-message {
-  display: none;
-  background: #df1529;
-  color: #ffffff;
-  text-align: left;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .sent-message {
-  display: none;
-  color: #ffffff;
-  background: #059652;
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-  font-weight: 600;
-}
-
-.php-email-form .loading {
-  display: none;
-  background: var(--surface-color);
-  text-align: center;
-  padding: 15px;
-  margin-bottom: 24px;
-}
-
-.php-email-form .loading:before {
-  content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--accent-color);
-  border-top-color: var(--surface-color);
-  animation: php-email-form-loading 1s linear infinite;
-}
-
-@keyframes php-email-form-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
 
 /* Pulsating Play Button
 ------------------------------*/
@@ -1321,6 +1271,52 @@ section,
   font-weight: 600;
 }
 
+/* Estilos para la galería con tabs */
+.galeria-container {
+  opacity: 0;
+  transform: translateY(20px);
+  visibility: hidden;
+  transition: all 0.5s ease-out;
+}
+
+.galeria-container.active {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.galeria-tab-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.galeria-tab-button {
+  padding: 0.5rem 2rem;
+  border: 2px solid var(--accent-color);
+  border-radius: 5rem;
+  color: var(--accent-color);
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.galeria-tab-button.active {
+  background: var(--accent-color);
+  color: white;
+}
+
+.galeria .galeria-item {
+  overflow: hidden;
+  border-right: 3px solid var(--background-color);
+  border-bottom: 3px solid var(--background-color);
+  border-radius: 1rem;
+}
+
+.galeria .galeria-item img {
+  transition: all ease-in-out 0.4s;
+}
 
 
 
@@ -1373,7 +1369,7 @@ section,
   background-color: var(--accent-color);
 }
 
-.specials .tab-pane.active {
+specials .tab-pane.active {
   animation: fadeIn 0.5s ease-out;
 }
 
@@ -1387,7 +1383,7 @@ section,
   color: color-mix(in srgb, var(--default-color), transparent 20%);
 }
 
-.specials .details p:last-child {
+specials .details p:last-child {
   margin-bottom: 0;
 }
 
@@ -1675,20 +1671,21 @@ section,
   border-radius: 1rem;
 }
 
-.gallery .gallery-item {
+.galeria .galeria-item {
   overflow: hidden;
   border-right: 3px solid var(--background-color);
   border-bottom: 3px solid var(--background-color);
   border-radius: 1rem;
 }
 
-.gallery .gallery-item img {
+.galeria .galeria-item img {
   transition: all ease-in-out 0.4s;
 }
 
-.gallery .gallery-item:hover img {
+.galeria .galeria-item:hover img {
   transform: scale(1.1);
 }
+
 
 /*--------------------------------------------------------------
 # Chefs Section

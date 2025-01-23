@@ -754,8 +754,8 @@ html {
     border-radius: 2rem;
     overflow: hidden;
     color: #fff;
-    -webkit-animation: showBlock 0.3s linear forwards;
-    animation: showBlock 0.3s linear forwards;
+    -webkit-animation: showBlock 0.3s linear forwards; /*Animación de entrada de los elementos*/
+    animation: showBlock 0.3s linear forwards; 
   }
   .catalog__item.hidden {
     display: none;

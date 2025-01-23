@@ -9,9 +9,26 @@ import CarComponent360 from "./CarComponent360";
 import "../assets/styles/modelos.css";
 import "swiper/swiper-bundle.css";
 
+// Función auxiliar para determinar el grid
+const getGridSpan = (totalImages, index) => {
+  if (totalImages === 1) return "col-span-1 md:col-span-6 lg:col-span-6";
+  if (totalImages === 2) return "col-span-1 md:col-span-3 lg:col-span-3";
+  if (totalImages === 3) return "col-span-1 md:col-span-2 lg:col-span-2";
+  if (totalImages === 4) {
+    return index < 2 
+      ? "col-span-1 md:col-span-3 lg:col-span-3"
+      : "col-span-1 md:col-span-3 lg:col-span-3";
+  }
+  // 5 o más imágenes
+  return index < 3 
+    ? "col-span-1 md:col-span-2 lg:col-span-2"
+    : "col-span-1 md:col-span-3 lg:col-span-3";
+};
+
 export default function ModeloDetalles({ slug }) {
   const [modelData, setModelData] = useState(null);
   const [cargando, setCargando] = useState(true);
+  const [activeView, setActiveView] = useState('exterior'); // Nuevo estado para controlar la vista activa
 
   useEffect(() => {
     async function fetchModelData() {
@@ -30,17 +47,29 @@ export default function ModeloDetalles({ slug }) {
     fetchModelData();
   }, [slug]);
 
-  // Agregar nuevo useEffect para inicializar GLightbox
+  // Modificar el useEffect de GLightbox
   useEffect(() => {
     if (modelData && typeof window !== "undefined" && window.GLightbox) {
-      const lightbox = window.GLightbox({
-        selector: ".glightbox",
+      // Destruir instancias previas si existen
+      if (window.galleryLightbox) {
+        window.galleryLightbox.destroy();
+      }
+
+      // Crear nueva instancia según la vista activa
+      window.galleryLightbox = window.GLightbox({
+        selector: `.galeria-${activeView}`,
         touchNavigation: true,
         loop: true,
-        autoplayVideos: true,
+        autoplayVideos: true
       });
+
+      return () => {
+        if (window.galleryLightbox) {
+          window.galleryLightbox.destroy();
+        }
+      };
     }
-  }, [modelData]); // Se ejecutará cuando modelData cambie
+  }, [modelData, activeView]);
 
   if (cargando) {
     return (
@@ -296,15 +325,41 @@ export default function ModeloDetalles({ slug }) {
                     title: [
                       "Conectividad en todas sus versiones",
                       "Toyota Safety Sense",
-                      "Confort interior",
+                      "Diseño exterior", 
                     ],
                     descriptions: [
-                      "Audio con pantalla táctil LCD de 6.8\" con conectividad Apple Car Play® & Android Auto®",
+                      "Audio con pantalla táctil LCD de 6.8\" con conectividad Apple Car Play® & Android Auto®. Equipado con climatizador automático digital, cámara de estacionamiento y control de velocidad crucero, disponibles en versiones XLS+ y S.",
                       "Yaris ofrece, en las versión S, Sistema de Pre-colisión frontal (PCS)* y Sistema de alerta de cambio de carril (LDA)*. Estos sistemas avanzados de asistencia a la conducción complementan al conductor en diversas situaciones de peligro para mitigar o evitar accidentes de tránsito.",
-                      "Equipado con climatizador automático digital, cámara de estacionamiento y control de velocidad crucero, disponibles en versiones XLS+ y S."
+                      "Diseño frontal con ópticas delanteras LED con regulación en altura, disponible en la versión S. Llantas de aleación de 16” para versiones XLS+ y S."
                     ],
                   },
-                  // ... Aquí podrías agregar más descripciones para otros modelos
+                  "yaris-sedan": { 
+                    title: [
+                      "Diseño exterior",
+                      "Toyota Safety Sense",
+                      "Conectividad en todas sus versiones", 
+                    ],
+                    descriptions: [
+                      "Equipada con airbags frontales y laterales para los pasajeros delanteros, airbag de rodilla para el conductor, y airbags de cortina delanteros y traseros, brindando un ambiente seguro para todos los ocupantes.",
+                      "Yaris ofrece, en las versión S, Sistema de Pre-colisión frontal (PCS)* y Sistema de alerta de cambio de carril (LDA)*. Estos sistemas avanzados de asistencia a la conducción complementan al conductor en diversas situaciones de peligro para mitigar o evitar accidentes de tránsito.",
+                      "Audio con pantalla táctil LCD de 6.8\" con conectividad Apple Car Play® & Android Auto®. Equipado con climatizador automático digital, cámara de estacionamiento y control de velocidad crucero, disponibles en versiones XLS+ y S."
+                    ],
+                  },
+                  "corolla": { 
+                    title: [
+                      "Confort",
+                      "Equipamiento",
+                      "Toyota Safety Sense",
+                      "Tecnología", 
+                    ],
+                    descriptions: [
+                      "La versión SEG equipa un tablero de información múltiple full digital de 12,3” pulgadas, mientras que las versiones XEI y XLI cuentan con un display de información de 7”. ​Además, las versiones SEG y XEI están equipadas con salidas de aire acondicionado y dos puertos USB tipo “C” en las plazas traseras.",
+                      "Aire acondicionado trasero con salidas de aire en las plazas traseras, disponible en versiones SEG y XEI. Además, la versión SEG cuenta con asientos delanteros con regulación eléctrica y memoria para el conductor.",
+                      "Todas las versiones de Corolla están equipadas con Toyota Safety Sense*: un paquete de seguridad activa que incorpora un radar de ondas milimétricas que, combinado con una cámara monocular, pueden detectar una variedad de peligros y alertar al conductor para evitar o mitigar accidentes. El nuevo Corolla cuenta con: Sistema de Pre-colisión frontal (PCS), Control de velocidad crucero adaptativo (ACC), Sistema de alerta de cambio de carril (LDA)* y Luces Altas Automáticas (AHB)*.",
+                      "Todas las versiones cuentan con equipo multimedia con una pantalla de 10” y conectividad inalámbrica para Android Auto y Apple CarPlay.* Cargador inalámbrico para smartphones que soportan carga inalámbrica* en la versión SEG. La versión SEG incorpora paquete de Servicios Conectados (*)."
+                    ],
+                  },
+
                 };
                 
                 const modelTitle = descriptions[modelData.slug]?.title || Array(5).fill(""); // Si no hay titulos, se llena con 5 strings vacíos
@@ -441,88 +496,176 @@ export default function ModeloDetalles({ slug }) {
       </section>
 
       {/* Gallery Section */}
-      <section id="gallery" className="gallery 2xl:mx-44 lg:mx-5 section">
+      <section className="galeria 2xl:mx-44 lg:mx-5 section">
         <div className="container mx-auto section-title" data-aos="fade-up">
           <h2>{modelData.name.toUpperCase()}</h2>
           <p>Galería</p>
         </div>
 
-        <div
-          className="flex flex-wrap mx-6 md:mx-6 lg:mx-16"
-          data-aos="fade-up"
-          data-aos-delay="100"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
-            {modelData.images
-              .filter(
-                (img) => img.type === "gallery" || img.type === "inventory"
-              )
-              .slice(0, 5)
-              .map((image, index) => (
-                <div
-                  key={index}
-                  className={`col-span-1 md:col-span-${index < 3 ? "2" : "3"} lg:col-span-${index < 3 ? "2" : "3"}`}
-                >
-                  <div className="gallery-item">
-                    <a
-                      href={image.url}
-                      className="glightbox"
-                      data-gallery="images-gallery"
-                    >
-                      <img src={image.url} className="w-full" alt="" />
-                    </a>
-                  </div>
-                </div>
-              ))}
-          </div>
+        <div className="galeria-tab-buttons">
+          <button 
+            className={`galeria-tab-button ${activeView === 'exterior' ? 'active' : ''}`}
+            onClick={() => setActiveView('exterior')}
+          >
+            Exterior
+          </button>
+          <button 
+            className={`galeria-tab-button ${activeView === 'interior' ? 'active' : ''}`}
+            onClick={() => setActiveView('interior')}
+          >
+            Interior
+          </button>
         </div>
+
+        {activeView === 'exterior' && (
+          <div className="galeria-container active">
+            <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+              {modelData.images
+                .filter(img => {
+                  const isGalleryOrInventory = img.type === "gallery" || img.type === "inventory";
+                  return isGalleryOrInventory && img.data?.viewType === 'exterior';
+                })
+                .slice(0, 5)
+                .map((image, index, filteredArray) => (
+                  <div
+                    key={index}
+                    className={`${getGridSpan(filteredArray.length, index)} transform transition-all duration-300 ease-in-out`}
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href={image.url}
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img 
+                          src={image.url} 
+                          className="w-full transition-opacity duration-300 ease-in-out" 
+                          alt="" 
+                        />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
+
+        {activeView === 'interior' && (
+          <div className="galeria-container active">
+            <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+              {modelData.images
+                .filter(img => {
+                  const isGalleryOrInventory = img.type === "gallery" || img.type === "inventory";
+                  return isGalleryOrInventory && img.data?.viewType === 'interior';
+                })
+                .slice(0, 5)
+                .map((image, index, filteredArray) => (
+                  <div
+                    key={index}
+                    className={`${getGridSpan(filteredArray.length, index)} transform transition-all duration-300 ease-in-out`}
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href={image.url}
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img 
+                          src={image.url} 
+                          className="w-full transition-opacity duration-300 ease-in-out" 
+                          alt="" 
+                        />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Material descargable */}
       <section
-        id="material-descargable"
-        className="material-descargable lg:mx-5 section"
-      >
-        <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Material descargable</p>
-        </div>
+    id="material-descargable"
+    className="material-descargable lg:mx-5 section"
+  >
+    <div className="container mx-auto section-title" data-aos="fade-up">
+      <h2>{modelData.name.toUpperCase()}</h2>
+      <p>Material descargable</p>
+    </div>
 
-        <div className="container mx-auto">
-          <div className="flex flex-wrap gap-y-4">
-            {modelData.links.map((link, index) => (
-              <div
-                key={index}
-                className="lg:w-1/3 pr-4 pl-4"
-                data-aos="fade-up"
-                data-aos-delay={(index + 1) * 100}
-              >
-                <div className="card-item">
-                  <span>
-                    <img
-                      src={`https://media.toyota.com.ar/icons/${link.type}.png`}
-                      alt=""
-                    />
-                  </span>
-                  <h4>
-                    <a
-                      href={link.url}
-                      target="_blank"
-                      className="stretched-link"
-                    >
-                      {link.type === "brochure"
-                        ? "Ficha Técnica"
-                        : link.type === "consumption"
-                          ? "Información de consumo"
-                          : "Información sobre airbags"}
-                    </a>
-                  </h4>
-                </div>
+    <div className="container mx-auto">
+      <div className="flex flex-wrap gap-y-4">
+        {modelData.links.map((link, index) => {
+          // Define custom images based on link type
+          const getCustomImage = (type) => {
+            switch (type) {
+              case 'brochure':
+                return 'ri-file-text-line';
+              case 'consumption':
+                return 'ri-bar-chart-horizontal-line';
+              default:
+                return 'https://media.toyota.com.ar/icons/default.png';
+            }
+          };
+
+          return (
+            <div
+              key={index}
+              className="lg:w-1/3 pr-4 pl-4"
+              data-aos="fade-up"
+              data-aos-delay={(index + 1) * 100}
+            >
+              <div className="card-item">
+                <span>
+                  {/*<img
+                    src={getCustomImage(link.type)}
+                    alt={link.type}
+                  /> */}
+                  <i className={getCustomImage(link.type)}></i>
+                </span>
+                <h4>
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    className="material-link text-xl md:text-2xl lg:text-3xl"
+                  >
+                    {link.type === "brochure"
+                      ? "Ficha Técnica"
+                      : link.type === "consumption"
+                        ? "Información de consumo"
+                        : "Información sobre airbags"}
+                  </a>
+                </h4>
               </div>
-            ))}
+            </div>
+          );
+        })}
+
+        {/* Additional card for airbags */}
+        <div
+          className="lg:w-1/3 pr-4 pl-4"
+          data-aos="fade-up"
+          
+        >
+          <div className="card-item">
+            <span>
+              <i class="ri-information-line"></i>
+            </span>
+            <h4>
+              <a
+                href="https://media.toyota.com.ar/52dca697-53be-41e1-9562-e9d6a346687a.pdf"
+                target="_blank"
+                className="material-link text-xl md:text-2xl lg:text-3xl"
+              >
+                Información sobre airbags
+              </a>
+            </h4>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section>
     </main>
   );
 }
