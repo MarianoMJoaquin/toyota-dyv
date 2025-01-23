@@ -11,7 +11,7 @@ const data = await response.json()
 const modelo = data.find((modelo: { slug: string }) => modelo.slug === slug) || {}
 
 const heroImage = modelo.images.find((img: { data: { viewType: string } }) => img.data.viewType === "banner");
-const imageUrl = heroImage?.formats?.large?.url || modelo.defaultImage?.formats?.small?.url;
+const imageUrl = heroImage?.formats?.thumbnail?.url || modelo.defaultImage?.formats?.small?.url;
 
 ---
 
