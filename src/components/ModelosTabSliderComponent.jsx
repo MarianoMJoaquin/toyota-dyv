@@ -135,11 +135,17 @@ const ModelosTabSliderComponent = () => {
           </div>
           <div className="catalog__item-bottom">
             <div className="catalog__item-price max-sm:text-base text-base lg:text-xl  flex items-center space-x-2">
-              <span className="catalog__item-price-text">Desde </span>
-              <span className="catalog__item-price-number">
-                {vehicle.defaultPrice?.currency}${" "}
-                {vehicle.defaultPrice?.amount.toLocaleString()}
-              </span>
+              {vehicle.defaultStock === 0 ? (
+                <span className="catalog__item-price-text">Consultar disponibilidad</span>
+              ) : (
+                <>
+                  <span className="catalog__item-price-text">Desde </span>
+                  <span className="catalog__item-price-number">
+                    {vehicle.defaultPrice?.currency}${" "}
+                    {vehicle.defaultPrice?.amount.toLocaleString()}
+                  </span>
+                </>
+              )}
             </div>
             <div className="flex justify-center space-x-2">
               <a href={`/modelos2/${vehicle.slug}`} className="catalog__item-btn px-4 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
