@@ -292,27 +292,23 @@ export default function ModeloDetalles({ slug }) {
               .slice(0, 5)
               .map((image, index) => {
                 const descriptions = {
-                  "yaris-hatchback": {
+                  "yaris-hatchback": { 
                     title: [
                       "Conectividad en todas sus versiones",
                       "Toyota Safety Sense",
                       "Confort interior",
-                      "Diseño exterior",
-                      "Sistema de seguridad"
                     ],
                     descriptions: [
                       "Audio con pantalla táctil LCD de 6.8\" con conectividad Apple Car Play® & Android Auto®",
-                      "Sistema de Pre-colisión frontal (PCS) y Sistema de alerta de cambio de carril (LDA). Estos sistemas avanzados de asistencia a la conducción complementan al conductor.",
-                      "Equipado con climatizador automático digital, cámara de estacionamiento y control de velocidad crucero.",
-                      "Diseño deportivo con líneas aerodinámicas y detalles modernos.",
-                      "Equipado con 7 airbags y sistema de frenos ABS con distribución electrónica de frenado."
+                      "Yaris ofrece, en las versión S, Sistema de Pre-colisión frontal (PCS)* y Sistema de alerta de cambio de carril (LDA)*. Estos sistemas avanzados de asistencia a la conducción complementan al conductor en diversas situaciones de peligro para mitigar o evitar accidentes de tránsito.",
+                      "Equipado con climatizador automático digital, cámara de estacionamiento y control de velocidad crucero, disponibles en versiones XLS+ y S."
                     ],
                   },
                   // ... Aquí podrías agregar más descripciones para otros modelos
                 };
                 
-                const modelTitle = descriptions[modelData.slug]?.title || Array(5).fill("");
-                const modelDescriptions = descriptions[modelData.slug]?.descriptions || Array(5).fill("");
+                const modelTitle = descriptions[modelData.slug]?.title || Array(5).fill(""); // Si no hay titulos, se llena con 5 strings vacíos
+                const modelDescriptions = descriptions[modelData.slug]?.descriptions || Array(5).fill(""); // Si no hay descripciones propiamente dichas, se llena con 5 strings vacíos
 
                 return (
                   <SwiperSlide key={index}>
