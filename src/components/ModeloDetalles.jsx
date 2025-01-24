@@ -141,7 +141,7 @@ export default function ModeloDetalles({ slug }) {
                 {modelData.name}
               </h2>
               <div
-                className="flex mt-4"
+                className="hidden md:block"
                 data-aos="fade-up"
                 data-aos-delay="300"
               >
@@ -202,6 +202,14 @@ export default function ModeloDetalles({ slug }) {
                   className="glightbox pulsating-play-btn"
                 ></a>
               ) : null}
+            </div>
+            <div className="lg:w-1/3 pr-4 pl-4 items-center justify-center mt-5 lg:mt-0 hidden max-sm:block">
+                <a
+                  href={`https://dyv.e.toyota.com.ar/inventory/${modelData.slug}`}
+                  className="cta-btn"
+                >
+                  Cotizar ahora
+                </a>
             </div>
           </div>
         </div>
