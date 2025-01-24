@@ -1271,18 +1271,33 @@ section,
   font-weight: 600;
 }
 
-/* Estilos para la galería con tabs */
 .galeria-container {
   opacity: 0;
   transform: translateY(20px);
   visibility: hidden;
   transition: all 0.5s ease-out;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 
 .galeria-container.active {
   opacity: 1;
   transform: translateY(0);
   visibility: visible;
+  position: relative;
+  transition: all 0.5s ease-out;
+}
+
+.galeria-wrapper {
+  position: relative;
+  min-height: 400px;
+  overflow: hidden;
+}
+
+.galeria .grid {
+  transition: all 0.5s ease-out;
 }
 
 .galeria-tab-buttons {
@@ -1307,7 +1322,7 @@ section,
   color: white;
 }
 
-.galeria .galeria-item {
+/*.galeria .galeria-item {
   overflow: hidden;
   border-right: 3px solid var(--background-color);
   border-bottom: 3px solid var(--background-color);
@@ -1316,7 +1331,7 @@ section,
 
 .galeria .galeria-item img {
   transition: all ease-in-out 0.4s;
-}
+}*/
 
 
 

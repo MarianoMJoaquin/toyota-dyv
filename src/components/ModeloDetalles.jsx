@@ -531,8 +531,8 @@ export default function ModeloDetalles({ slug }) {
           </button>
         </div>
 
-        {activeView === 'exterior' && (
-          <div className="container mx-auto active">
+        <div className="galeria-wrapper">
+          <div className={`galeria-container ${activeView === 'exterior' ? 'active' : ''}`}>
             <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
               {modelData.images
                 .filter(img => {
@@ -562,10 +562,8 @@ export default function ModeloDetalles({ slug }) {
                 ))}
             </div>
           </div>
-        )}
 
-        {activeView === 'interior' && (
-          <div className="container mx-auto active">
+          <div className={`galeria-container ${activeView === 'interior' ? 'active' : ''}`}>
             <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
               {modelData.images
                 .filter(img => {
@@ -578,7 +576,7 @@ export default function ModeloDetalles({ slug }) {
                     key={index}
                     className={`${getGridSpan(filteredArray.length, index)} transform transition-all duration-300 ease-in-out`}
                   >
-                    <div className="galeria-item">
+                    <div>
                       <a
                         href={image.url}
                         className="galeria-interior"
@@ -595,7 +593,7 @@ export default function ModeloDetalles({ slug }) {
                 ))}
             </div>
           </div>
-        )}
+        </div>
       </section>
 
       {/* Material descargable */}
