@@ -308,7 +308,7 @@ export default function ModeloDetalles({ slug }) {
       </section>
 
       {/* Events/Slider Section */}
-      <section id="events" className="events mx-10 section">
+      <section id="events" className="events container mx-auto section">
         {/* Fondo del slider */}
         <img
           src={modelData.images[0]?.url}
@@ -317,7 +317,7 @@ export default function ModeloDetalles({ slug }) {
           data-aos="fade-in"
         />
 
-        <div className="container mx-auto sm:px-4">
+        <div className="container mx-auto ">
           <Swiper
             modules={[Pagination, Navigation]}
             spaceBetween={20}
@@ -510,7 +510,7 @@ export default function ModeloDetalles({ slug }) {
       </section>
 
       {/* Gallery Section */}
-      <section className="galeria 2xl:mx-44 lg:mx-5 section">
+      <section className="galeria lg:mx-5 section">
         <div className="container mx-auto section-title" data-aos="fade-up">
           <h2>{modelData.name.toUpperCase()}</h2>
           <p>Galería</p>
@@ -532,7 +532,7 @@ export default function ModeloDetalles({ slug }) {
         </div>
 
         {activeView === 'exterior' && (
-          <div className="galeria-container active">
+          <div className="container mx-auto active">
             <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
               {modelData.images
                 .filter(img => {
@@ -565,7 +565,7 @@ export default function ModeloDetalles({ slug }) {
         )}
 
         {activeView === 'interior' && (
-          <div className="galeria-container active">
+          <div className="container mx-auto active">
             <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
               {modelData.images
                 .filter(img => {
@@ -599,7 +599,7 @@ export default function ModeloDetalles({ slug }) {
       </section>
 
       {/* Material descargable */}
-      <section
+  <section
     id="material-descargable"
     className="material-descargable lg:mx-5 section"
   >
