@@ -531,7 +531,7 @@ export default function ModeloDetalles({ slug }) {
           </button>
         </div>
 
-        <div className="galeria-wrapper">
+        <div className="galeria-wrapper container mx-auto">
           <div className={`galeria-container ${activeView === 'exterior' ? 'active' : ''}`}>
             <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
               {modelData.images
@@ -576,7 +576,7 @@ export default function ModeloDetalles({ slug }) {
                     key={index}
                     className={`${getGridSpan(filteredArray.length, index)} transform transition-all duration-300 ease-in-out`}
                   >
-                    <div>
+                    <div className="galeria-item">
                       <a
                         href={image.url}
                         className="galeria-interior"
