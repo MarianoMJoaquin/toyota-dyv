@@ -118,6 +118,7 @@ export default function ModeloDetalles({ slug }) {
   }
 
   return (
+    <>
     <main className="main">
       <section id="hero" className="hero section dark-background">
         <img
@@ -214,13 +215,12 @@ export default function ModeloDetalles({ slug }) {
         </div>
 
         <div className="container mx-auto">
-          <div className="flex flex-wrap gap-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <div
-              className="lg:w-1/4 pr-4 pl-4"
               data-aos="fade-up"
               data-aos-delay="100"
             >
-              <div className="card-item">
+              <div className="card-item h-full">
                 <span>
                   <i className="ri-speed-up-line"></i>
                 </span>
@@ -236,11 +236,10 @@ export default function ModeloDetalles({ slug }) {
             </div>
 
             <div
-              className="lg:w-1/4 pr-4 pl-4"
               data-aos="fade-up"
               data-aos-delay="200"
             >
-              <div className="card-item">
+              <div className="card-item h-full">
                 <span>
                   <i className="ri-car-line"></i>
                 </span>
@@ -249,21 +248,21 @@ export default function ModeloDetalles({ slug }) {
                     Diseño
                   </a>
                 </h4>
-                {/*{modelData.variants[0]?.details?.summary?.split(';;').map((item, index) => (
-              <p key={index}>{item}<br /></p>
-            ))} */}
-                <p>{modelData.variants[0]?.details?.summary?.split(";;")[0]}</p>
-                <p>{modelData.variants[0]?.details?.summary?.split(";;")[3]}</p>
-                <p>{modelData.variants[0]?.details?.summary?.split(";;")[4]}</p>
+                <p>{modelData.variants[2]?.details?.summary?.split(";")[0]}</p>
+                <p>{modelData.variants[2]?.details?.summary?.split(";")[1]}</p>
+                <p>{modelData.variants[2]?.details?.summary?.split(";")[2]}</p>
+                <p>{modelData.variants[2]?.details?.summary?.split(";")[3]}</p>
+                <p>{modelData.variants[2]?.details?.summary?.split(";")[4]}</p>
+                <p>{modelData.variants[2]?.details?.summary?.split(";")[5]}</p>
+                <p>{modelData.variants[2]?.details?.summary?.split(";")[7]}</p>
               </div>
             </div>
 
             <div
-              className="lg:w-1/4 pr-4 pl-4"
               data-aos="fade-up"
               data-aos-delay="300"
             >
-              <div className="card-item">
+              <div className="card-item h-full">
                 <span>
                   <i className="ri-git-branch-line"></i>
                 </span>
@@ -282,11 +281,10 @@ export default function ModeloDetalles({ slug }) {
             </div>
 
             <div
-              className="lg:w-1/4 pr-4 pl-4"
               data-aos="fade-up"
               data-aos-delay="400"
             >
-              <div className="card-item">
+              <div className="card-item h-full">
                 <span>
                   <i className="ri-user-line"></i>
                 </span>
@@ -596,88 +594,139 @@ export default function ModeloDetalles({ slug }) {
         </div>
       </section>
 
-      {/* Material descargable */}
-  <section
-    id="material-descargable"
-    className="material-descargable lg:mx-5 section"
-  >
-    <div className="container mx-auto section-title" data-aos="fade-up">
-      <h2>{modelData.name.toUpperCase()}</h2>
-      <p>Material descargable</p>
-    </div>
+      {/* Solicitud de Test Drive (Solo disponible para : ) */}
 
-    <div className="container mx-auto">
-      <div className="flex flex-wrap gap-y-4">
-        {modelData.links.map((link, index) => {
-          // Define custom images based on link type
-          const getCustomImage = (type) => {
-            switch (type) {
-              case 'brochure':
-                return 'ri-file-text-line';
-              case 'consumption':
-                return 'ri-bar-chart-horizontal-line';
-              default:
-                return 'https://media.toyota.com.ar/icons/default.png';
-            }
-          };
+      {modelData.slug === "yaris-hatchback" ? (
+        <section id="test-drive" className="test-drive lg:mx-5 section red-background">
+        <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Solicitá un Test Drive</p>
+        </div>
 
-          return (
+        <div className="container mx-auto">
+          <div className="flex flex-wrap gap-y-4">
             <div
-              key={index}
-              className="lg:w-1/3 pr-4 pl-4"
-              data-aos="fade-up"
-              data-aos-delay={(index + 1) * 100}
+              className="lg:w-1/2 pr-4 pl-4 bg-red-300"
+              data-aos=""
+              data-aos-delay=""
             >
               <div className="card-item">
                 <span>
-                  {/*<img
-                    src={getCustomImage(link.type)}
-                    alt={link.type}
-                  /> */}
-                  <i className={getCustomImage(link.type)}></i>
+                  <i className="ri-user-3-line"></i>
+                </span>
+                <h4>
+                  <a href="https://dyv.e.toyota.com.ar/test-drive" className="stretched-link hover:text-[#eb001b] transition-colors duration-300">
+                    Solicitar un Test Drive
+                  </a>
+                </h4>
+                <p>
+                  Probá tu {modelData.name} en la concesionaria más cercana.
+                </p>
+              </div>
+            </div>
+
+            <div
+              className="lg:w-1/2 pr-4 pl-4"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div className="card-item">
+                <span>
+                  <i className="ri-map-pin-line"></i>
+                </span>
+                <h4>
+                  <a href="https://www.toyota.com.ar/concesionarios" className="stretched-link">
+                    Encontrá tu concesionaria
+                  </a>
+                </h4>
+                <p>
+                  Ubicá la concesionaria más cercana a tu domicilio.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      ) : null}
+
+      {/* Material descargable */}
+      <section
+        id="material-descargable"
+        className="material-descargable lg:mx-5 section"
+      >
+        <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Material descargable</p>
+        </div>
+
+        <div className="container mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {modelData.links.map((link, index) => {
+              const getCustomImage = (type) => {
+                switch (type) {
+                  case 'brochure':
+                    return 'ri-file-text-line';
+                  case 'consumption':
+                    return 'ri-bar-chart-horizontal-line';
+                  default:
+                    return 'https://media.toyota.com.ar/icons/default.png';
+                }
+              };
+
+              return (
+                <div
+                  key={index}
+                  data-aos="fade-up"
+                  data-aos-delay={(index + 1) * 100}
+                >
+                  <div className="card-item h-full">
+                    <span>
+                      <i className={getCustomImage(link.type)}></i>
+                    </span>
+                    <h4>
+                      <a
+                        href={link.url}
+                        target="_blank"
+                        className="material-link text-xl md:text-2xl lg:text-3xl"
+                      >
+                        {link.type === "brochure"
+                          ? "Ficha Técnica"
+                          : link.type === "consumption"
+                            ? "Información de consumo"
+                            : "Información sobre airbags"}
+                      </a>
+                    </h4>
+                  </div>
+                </div>
+              );
+            })}
+
+            {/* Card adicional para información de airbag */}
+            <div
+              data-aos="fade-up"
+              data-aos-delay={(modelData.links.length + 1) * 100}
+            >
+              <div className="card-item h-full">
+                <span>
+                  <i className="ri-information-line"></i>
                 </span>
                 <h4>
                   <a
-                    href={link.url}
+                    href="https://media.toyota.com.ar/52dca697-53be-41e1-9562-e9d6a346687a.pdf"
                     target="_blank"
                     className="material-link text-xl md:text-2xl lg:text-3xl"
                   >
-                    {link.type === "brochure"
-                      ? "Ficha Técnica"
-                      : link.type === "consumption"
-                        ? "Información de consumo"
-                        : "Información sobre airbags"}
+                    Información sobre airbags
                   </a>
                 </h4>
               </div>
             </div>
-          );
-        })}
-
-        {/* Additional card for airbags */}
-        <div
-          className="lg:w-1/3 pr-4 pl-4"
-          data-aos="fade-up"
-          
-        >
-          <div className="card-item">
-            <span>
-              <i class="ri-information-line"></i>
-            </span>
-            <h4>
-              <a
-                href="https://media.toyota.com.ar/52dca697-53be-41e1-9562-e9d6a346687a.pdf"
-                target="_blank"
-                className="material-link text-xl md:text-2xl lg:text-3xl"
-              >
-                Información sobre airbags
-              </a>
-            </h4>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
     </main>
+      {/*Scroll Top */}
+      <a href="#" id="scroll-top" class="scroll-top flex items-center justify-center"><i class="ri-arrow-up-s-line"></i></a>
+    </>
   );
 }
