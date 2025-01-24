@@ -726,7 +726,7 @@ export default function ModeloDetalles({ slug }) {
       </section>
     </main>
       {/*Scroll Top */}
-      <a href="#" id="scroll-top" class="scroll-top flex items-center justify-center"><i class="ri-arrow-up-s-line"></i></a>
+      
     </>
   );
 }

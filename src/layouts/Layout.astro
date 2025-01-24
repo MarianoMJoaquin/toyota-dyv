@@ -54,6 +54,8 @@ const { title, theme_color, image } = Astro.props;
 
     <Header />
     <slot />
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top flex items-center justify-center"><i class="ri-arrow-up-s-line"></i></a>
     <Footer />
     <script is:inline src="https://cdn.jsdelivr.net/npm/ukiyojs@4.1.2/dist/ukiyo.min.js"></script>
     <script is:inline src="/js/menu.js"></script>
@@ -129,9 +131,10 @@ const { title, theme_color, image } = Astro.props;
             scale: 1.2,
             speed: 2
           });
-        });
+        });  
 
     </script>
+    
   </body>
 </html>
 <style is:global>
