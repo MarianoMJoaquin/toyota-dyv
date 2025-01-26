@@ -263,7 +263,7 @@ const Form = ({ type = 'contacto' }) => {
             htmlFor="name"
             className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
           >
-            Nombre completo
+            Nombre y Apellido
           </label>
         </div>
 
