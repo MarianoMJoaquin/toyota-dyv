@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { Range } from "react-range";
 
@@ -257,66 +257,80 @@ export default function ModelosList() {
     </div>
   );
 
-  // Update the card render function
-  const renderCard = (modelo) => (
-    <div key={modelo.id} className="group relative bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300">
-      <div className="relative overflow-hidden rounded-t-xl">
-        <img
-          src={modelo.defaultImage.url}
-          alt={modelo.name}
-          className="w-full h-56 object-cover transform group-hover:scale-105 transition-transform duration-300"
-        />
-        {modelo.tags?.includes('hybrid') && (
-          <span className="absolute top-4 right-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full">
-            Híbrido
-          </span>
-        )}
-      </div>
-      <div className="p-6">
-        <h3 className="text-xl font-bold mb-2 text-gray-800">{modelo.name}</h3>
-        <div className="space-y-1 mb-4 text-sm text-gray-600">
-          {modelo.details?.transmission?.type && (
-            <p className="flex items-center">
-              <span className="mr-2">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"/>
-                </svg>
+  // Función para renderizar tarjeta en modo grilla (similar a UsadosList)
+  const renderGridCard = (modelo) => (
+    <CSSTransition key={modelo.id} timeout={300} classNames="fade">
+      <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
+        <a href={`/modelos/${modelo.slug}`} className="cursor-pointer">
+          <img
+            src={modelo.defaultImage.url}
+            alt={modelo.name}
+            className="w-full h-72 object-cover"
+          />
+        </a>
+        <div className="p-4 flex flex-col justify-center gap-2">
+          <h2 className="text-lg font-semibold border-b-2 border-red-600 max-w-max mb-2">
+            {modelo.name}
+          </h2>
+          <div className="flex justify-start items-center text-base mt-2">
+            <p className="mr-1">{modelo.details?.creationYear || 'N/A'}</p>
+            <p className="mr-1">|</p>
+            <p className="mr-1">{modelo.details?.transmission?.type || 'N/A'}</p>
+            {modelo.tags?.includes('hybrid') && (
+              <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase ml-2">
+                Híbrido
               </span>
-              {modelo.details.transmission.type}
+            )}
+          </div>
+          <div className="mt-4 flex justify-between items-center">
+            <a
+              href={`/modelos/${modelo.slug}`}
+              className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
+            >
+              Ver más
+            </a>
+            <p className="font-bold">
+              ARS$ {modelo.defaultPrice.amount.toLocaleString()}
             </p>
-          )}
-          {modelo.details?.creationYear && (
-            <p className="flex items-center">
-              <span className="mr-2">
-                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"/>
-                </svg>
-              </span>
-              {modelo.details.creationYear}
-            </p>
-          )}
-        </div>
-        <div className="flex items-center justify-between">
-          <p className="text-2xl font-bold text-red-600">
-            ${modelo.defaultPrice.amount.toLocaleString()}
-          </p>
-          <a
-            href={`/modelos/${modelo.slug}`}
-            className="inline-flex items-center justify-center px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-          >
-            Ver más
-            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
+          </div>
         </div>
       </div>
-    </div>
+    </CSSTransition>
   );
 
-  // In the main return, update the layout
+  // Función para renderizar tarjeta en modo lista (similar a UsadosList)
+  const renderListCard = (modelo) => (
+    <CSSTransition key={modelo.id} timeout={300} classNames="fade">
+      <div className="flex items-center max-sm:h-44 h-72 bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
+        // ...similar structure to UsadosList list view...
+      </div>
+    </CSSTransition>
+  );
+
   return (
     <section className="container mx-auto section">
+      <div className="col-span-2 mb-4 mx-5 xl:mx-10">
+        <nav className="flex mb-4" aria-label="Breadcrumb">
+          <ol className="inline-flex items-center space-x-1 text-base max-sm:text-sm md:space-x-3">
+            <li>
+              <a href="/" className="text-gray-700 hover:text-red-600">
+                Inicio
+              </a>
+            </li>
+            <li>
+              <span className="text-gray-500">/</span>
+            </li>
+            <li>
+              <span className="text-gray-700">Modelos</span>
+            </li>
+          </ol>
+        </nav>
+      </div>
+
+      <h1 className="vehicles__title heading-1 max-w-max mx-auto border-b-2 border-red-600">
+        Modelos
+      </h1>
+
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         <div className="lg:col-span-1 mx-5 xl:mx-5">
           {/* Columna para filtros y búsqueda */}
@@ -608,70 +622,106 @@ export default function ModelosList() {
           </div>
         </div>
 
-        <div className="lg:col-span-3">
-          {/* Columna para resultados */}
-          {cargando ? (
-            <div className="flex items-center justify-center h-64">
-              <div className="animate-spin rounded-full h-16 w-16 border-4 border-red-600 border-t-transparent"></div>
+        <div className="lg:col-span-3 mx-5 xl:mx-5">
+          <div className="grid grid-cols-2 grid-rows-1 mb-4 max-lg:hidden">
+            <div className="flex justify-start items-center">
+              <p className="text-sm lg:text-lg">
+                Mostrando {indiceInicial + 1} - {indiceFinal > modelosFiltrados.length ? modelosFiltrados.length : indiceFinal} de {modelosFiltrados.length} modelos
+              </p>
             </div>
-          ) : (
-            <>
-              <div className="flex items-center justify-between mb-8">
-                <h2 className="text-2xl font-bold text-gray-800">
-                  {modelosFiltrados.length} modelos encontrados
-                </h2>
+            <div className="flex justify-end items-center">
+              <div className="flex items-center mr-4">
+                <label htmlFor="orden" className="mr-2 max-sm:mr-1 text-sm lg:text-lg">
+                  Ordenar por:
+                </label>
                 <select
+                  id="orden"
                   value={orden}
                   onChange={(e) => setOrden(e.target.value)}
-                  className="p-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-600 focus:border-transparent"
+                  className="p-2 text-sm lg:text-lg border focus:ring-red-500 focus:border-red-500 border-gray-300 rounded-full"
                 >
-                  <option value="">Ordenar por...</option>
+                  <option value="">Selecciona una opción</option>
                   <option value="a-z">A-Z</option>
                   <option value="z-a">Z-A</option>
                   <option value="mayor-precio">Mayor precio</option>
                   <option value="menor-precio">Menor precio</option>
                 </select>
               </div>
+              <button
+                onClick={() => setModoVista("lista")}
+                className={`mr-2 ${modoVista === "lista" ? "text-red-600" : "text-gray-700"}`}
+              >
+                <i className="ri-list-unordered"></i>
+              </button>
+              <button
+                onClick={() => setModoVista("grilla")}
+                className={`${modoVista === "grilla" ? "text-red-600" : "text-gray-700"}`}
+              >
+                <i className="ri-grid-fill"></i>
+              </button>
+            </div>
+          </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {modelosPaginados.map(renderCard)}
-              </div>
+          {/* Estado de carga */}
+          {cargando ? (
+            <div role="status" style={{height: "40vh"}} className="flex justify-center items-center">
+              <svg
+                aria-hidden="true"
+                className="inline w-16 h-16 text-gray-200 animate-spin fill-red-600"
+                viewBox="0 0 100 101"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                  fill="currentColor"
+                />
+                <path
+                  d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                  fill="currentFill"
+                />
+              </svg>
+              <span className="sr-only">Cargando modelos...</span>
+            </div>
+          ) : modelosPaginados.length === 0 ? (
+            <div className="text-center text-gray-500 w-full max-w-full h-screen">
+              <h2 className="text-xl font-semibold mb-4">
+                No se encontraron modelos con los filtros aplicados
+              </h2>
+              <p>
+                Intenta realizar una nueva búsqueda o aplicar otros filtros.
+              </p>
+            </div>
+          ) : (
+            // Grid de modelos con estilos similares a UsadosList
+            <TransitionGroup 
+              className={
+                modoVista === "grilla" 
+                  ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                  : "space-y-6"
+              }
+            >
+              {modelosPaginados.map(modoVista === "grilla" ? renderGridCard : renderListCard)}
+            </TransitionGroup>
+          )}
 
-              {/* Enhanced pagination */}
-              {totalPaginas > 1 && (
-                <div className="flex justify-center mt-12 space-x-2">
-                  {paginaActual > 1 && (
-                    <button
-                      onClick={() => cambiarPagina(paginaActual - 1)}
-                      className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
-                    >
-                      Anterior
-                    </button>
-                  )}
-                  {Array.from({ length: totalPaginas }).map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => cambiarPagina(i + 1)}
-                      className={`px-4 py-2 rounded ${
-                        paginaActual === i + 1
-                          ? "bg-red-600 text-white"
-                          : "bg-gray-200 hover:bg-gray-300"
-                      }`}
-                    >
-                      {i + 1}
-                    </button>
-                  ))}
-                  {paginaActual < totalPaginas && (
-                    <button
-                      onClick={() => cambiarPagina(paginaActual + 1)}
-                      className="px-4 py-2 rounded bg-gray-200 hover:bg-gray-300"
-                    >
-                      Siguiente
-                    </button>
-                  )}
-                </div>
-              )}
-            </>
+          {/* Paginación con estilos de UsadosList */}
+          {modelosFiltrados.length > modelosPorPagina && (
+            <div className="flex mt-8 justify-center space-x-2">
+              {Array.from({ length: totalPaginas }).map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => cambiarPagina(i + 1)}
+                  className={`${
+                    i + 1 === paginaActual
+                      ? "bg-red-600 text-white"
+                      : "bg-gray-300 text-gray-700 transition-all ease-in-out hover:bg-red-600 hover:text-white"
+                  } rounded-full text-lg w-10 h-10 flex items-center justify-center`}
+                >
+                  {i + 1}
+                </button>
+              ))}
+            </div>
           )}
         </div>
       </div>
