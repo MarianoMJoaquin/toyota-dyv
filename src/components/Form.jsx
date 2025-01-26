@@ -196,85 +196,173 @@ const Form = ({ type = 'contacto' }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-4">
+    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6 space-y-6">
+      {/* Mensaje de Error */}
       {status.error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-          {status.error}
+        <div className="flex items-center gap-3 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg shadow-sm transition-all duration-300 transform translate-y-0 opacity-100 scale-100 motion-safe:transition-all motion-safe:duration-300">
+          <div className="flex-shrink-0">
+            <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <p className="text-sm text-red-700 font-medium">
+              {status.error}
+            </p>
+          </div>
+          <button 
+            onClick={() => setStatus(prev => ({ ...prev, error: null }))}
+            className="flex-shrink-0 text-red-700 hover:text-red-900 transition-colors duration-200"
+            type="button"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       )}
 
+      {/* Mensaje de Éxito */}
       {status.success && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
-          ¡Mensaje enviado con éxito! Nos contactaremos pronto.
+        <div className="flex items-center gap-3 bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm transition-all duration-300 transform translate-y-0 opacity-100 scale-100 motion-safe:transition-all motion-safe:duration-300">
+          <div className="flex-shrink-0">
+            <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <p className="text-sm text-green-700 font-medium">
+              ¡Mensaje enviado con éxito! Nos contactaremos pronto.
+            </p>
+          </div>
+          <button 
+            onClick={() => setStatus(prev => ({ ...prev, success: false }))}
+            className="flex-shrink-0 text-green-700 hover:text-green-900 transition-colors duration-200"
+            type="button"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       )}
 
-      <div className="space-y-4">
-        <input
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          placeholder="Nombre completo"
-          className="w-full p-2 border rounded"
-          required
-        />
+      <div className="space-y-6">
+        <div className="relative">
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            placeholder="Nombre"
+            required
+          />
+          <label
+            htmlFor="name"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Nombre completo
+          </label>
+        </div>
 
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="Teléfono"
-          className="w-full p-2 border rounded"
-          required
-        />
+        <div className="relative">
+          <input
+            type="tel"
+            name="phone"
+            id="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            placeholder="Teléfono"
+            required
+          />
+          <label
+            htmlFor="phone"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Teléfono
+          </label>
+        </div>
 
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Email"
-          className="w-full p-2 border rounded"
-          required
-        />
+        <div className="relative">
+          <input
+            type="email"
+            name="email"
+            id="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            placeholder="Email"
+            required
+          />
+          <label
+            htmlFor="email"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Email
+          </label>
+        </div>
 
-        <select
-          name="sucursal"
-          value={formData.sucursal}
-          onChange={handleChange}
-          className="w-full p-2 border rounded"
-          required
-        >
-          <option value="">Seleccione una sucursal</option>
-          {sucursales.map(sucursal => (
-            <option key={sucursal} value={sucursal}>
-              {sucursal}
-            </option>
-          ))}
-        </select>
+        <div className="relative">
+          <select
+            name="sucursal"
+            id="sucursal"
+            value={formData.sucursal}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+            required
+          >
+            <option value="" disabled>Seleccione una opción</option>
+            {sucursales.map(sucursal => (
+              <option key={sucursal} value={sucursal}>
+                {sucursal}
+              </option>
+            ))}
+          </select>
+          <label
+            htmlFor="sucursal"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-focus:text-red-500"
+          >
+            Sucursal
+          </label>
+          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
+            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
 
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Mensaje"
-          className="w-full p-2 border rounded"
-          rows="4"
-          required
-        />
+        <div className="relative">
+          <textarea
+            name="message"
+            id="message"
+            value={formData.message}
+            onChange={handleChange}
+            rows="4"
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 resize-none"
+            placeholder="Mensaje"
+            required
+          />
+          <label
+            htmlFor="message"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Mensaje
+          </label>
+        </div>
 
         <div className="relative">
           <button
             type="submit"
             disabled={status.loading}
-            className="w-full bg-[#eb001b] p-2 text-white rounded relative overflow-hidden"
+            className="w-full bg-[#eb001b] p-3 text-white rounded-lg relative overflow-hidden hover:bg-red-700 transition-colors duration-200 text-lg font-medium"
           >
             <span className={`relative z-10 transition-all duration-200 ${
               status.loading ? 'text-white/90' : ''
             }`}>
-              {status.loading ? `Enviando ${Math.round(progress)}%` : 'Enviar mensaje'}
+              {status.loading ? 'Enviando...' : 'Enviar mensaje'}
             </span>
             
             {status.loading && (
