@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Form = ({ type = 'contacto' }) => {
@@ -16,6 +16,8 @@ const Form = ({ type = 'contacto' }) => {
     error: null,
     success: false
   });
+
+  const [progress, setProgress] = useState(0);
 
   const sucursales = [
     'Sáenz Peña',
@@ -63,6 +65,23 @@ const Form = ({ type = 'contacto' }) => {
     return interestMap[type] || 'CONVENCIONAL';
   };
 
+  useEffect(() => {
+    let progressInterval;
+    if (status.loading) {
+      setProgress(0);
+      progressInterval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 90) return 90; // Se mantiene en 90% hasta que termine el envío
+          return prev + Math.random() * 15; // Incrementos aleatorios más naturales
+        });
+      }, 200);
+    } else if (status.success) {
+      setProgress(100); // Completa el progreso al finalizar
+      setTimeout(() => setProgress(0), 1000); // Reset después de 1s
+    }
+    return () => clearInterval(progressInterval);
+  }, [status.loading, status.success]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -83,7 +102,7 @@ const Form = ({ type = 'contacto' }) => {
     const firstName = arrNames[0];
     const lastName = arrNames.length > 1 ? arrNames[1] : arrNames[0];
     
-    // Construir el JSON exactamente como en el ejemplo
+    // Datos para la primera API (original)
     const dataToSend = {
       "prospect": {
         "requestdate": formattedDate,
@@ -141,10 +160,22 @@ const Form = ({ type = 'contacto' }) => {
       }
     };
 
-    //+console.log('Sending data:', JSON.stringify(dataToSend, null, 2)); // Debug
+    // Datos para la segunda API
+    const secondApiData = {
+      name: formData.name,
+      phone: formData.phone,
+      email: formData.email,
+      message: formData.message,
+      from: formData.from
+    };
 
     try {
-      const response = await axios.post('/api/leads', dataToSend);
+      // Ejecutar ambas llamadas API en paralelo
+      const [firstApiResponse, secondApiResponse] = await Promise.all([
+        axios.post('/api/leads', dataToSend),
+        axios.post('https://panelweb.derkayvargas.com/api/message', secondApiData)
+      ]);
+
       setStatus({ loading: false, error: null, success: true });
       setFormData({
         name: '',
@@ -155,6 +186,7 @@ const Form = ({ type = 'contacto' }) => {
         from: type
       });
     } catch (error) {
+      setProgress(0);
       setStatus({
         loading: false,
         error: error.response?.data?.message || 'Ocurrió un error',
@@ -233,17 +265,28 @@ const Form = ({ type = 'contacto' }) => {
           required
         />
 
-        <button
-          type="submit"
-          disabled={status.loading}
-          className={`w-full p-2 text-white rounded ${
-            status.loading 
-              ? 'bg-gray-400' 
-              : 'bg-red-600 hover:bg-red-700'
-          }`}
-        >
-          {status.loading ? 'Enviando...' : 'Enviar mensaje'}
-        </button>
+        <div className="relative">
+          <button
+            type="submit"
+            disabled={status.loading}
+            className="w-full bg-[#eb001b] p-2 text-white rounded relative overflow-hidden"
+          >
+            <span className={`relative z-10 transition-all duration-200 ${
+              status.loading ? 'text-white/90' : ''
+            }`}>
+              {status.loading ? `Enviando ${Math.round(progress)}%` : 'Enviar mensaje'}
+            </span>
+            
+            {status.loading && (
+              <div 
+                className="absolute left-0 top-0 h-full bg-red-800 transition-all duration-200 ease-out"
+                style={{
+                  width: `${progress}%`,
+                }}
+              />
+            )}
+          </button>
+        </div>
       </div>
     </form>
   );
