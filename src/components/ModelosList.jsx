@@ -15,12 +15,12 @@ export default function ModelosList() {
   const [detallesModelo, setDetallesModelo] = useState(null);
   const [modoVista, setModoVista] = useState("grilla");
   const [orden, setOrden] = useState("");
-  const [precioRango, setPrecioRango] = useState([0, 100000000]); // Add price range
+  const [precioRango, setPrecioRango] = useState([0, 0]); // Modificar el estado inicial de precioRango para usar valores por defecto
   const [filtroYear, setFiltroYear] = useState([]); // Add year filter
   const [filtroTransmision, setFiltroTransmision] = useState([]); // Add transmission filter
   const [filtroMotor, setFiltroMotor] = useState([]); // Add engine filter
 
-  const modelosPorPagina = 12;
+  const modelosPorPagina = 6;
 
   // Cargar modelos desde la API
   useEffect(() => {
@@ -30,11 +30,21 @@ export default function ModelosList() {
           "/api/vehicles"
         );
         const data = await respuesta.json();
-        setModelos(data);
-        setModelosFiltrados(data);
+        
+        if (data && data.length > 0) {
+          // Calcular precios min/max solo si hay datos
+          const precios = data.map(modelo => modelo.defaultPrice?.amount || 0);
+          const precioMinimo = Math.min(...precios);
+          const precioMaximo = Math.max(...precios);
+          
+          setModelos(data);
+          setModelosFiltrados(data);
+          setPrecioRango([precioMinimo, precioMaximo]);
+        }
         setCargando(false);
       } catch (error) {
         console.error("Error al cargar los modelos:", error);
+        setCargando(false);
       }
     };
 
@@ -43,6 +53,8 @@ export default function ModelosList() {
 
   // Función que aplica filtros y ordenación
   const aplicarFiltrosYOrden = () => {
+    if (!modelos || modelos.length === 0) return;
+
     let modelosFiltrados = [...modelos];
 
     // Filtros de búsqueda
@@ -189,6 +201,15 @@ export default function ModelosList() {
     setBusqueda("");
     setFiltroCategories([]);
     setFiltroTags([]);
+    setFiltroYear([]);
+    setFiltroTransmision([]);
+    setFiltroMotor([]);
+    
+    // Obtener los precios mínimos y máximos actuales
+    const precios = modelos.map(modelo => modelo.defaultPrice.amount);
+    const precioMinimo = Math.min(...precios);
+    const precioMaximo = Math.max(...precios);
+    setPrecioRango([precioMinimo, precioMaximo]);
   };
 
   // Helper functions
@@ -258,51 +279,118 @@ export default function ModelosList() {
   );
 
   // Función para renderizar tarjeta en modo grilla (similar a UsadosList)
-  const renderGridCard = (modelo) => (
-    <CSSTransition key={modelo.id} timeout={300} classNames="fade">
-      <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
-        <a href={`/modelos/${modelo.slug}`} className="cursor-pointer">
-          <img
-            src={modelo.defaultImage.url}
-            alt={modelo.name}
-            className="w-full h-72 object-cover"
-          />
-        </a>
-        <div className="p-4 flex flex-col justify-center gap-2">
-          <h2 className="text-lg font-semibold border-b-2 border-red-600 max-w-max mb-2">
-            {modelo.name}
-          </h2>
-          <div className="flex justify-start items-center text-base mt-2">
-            <p className="mr-1">{modelo.details?.creationYear || 'N/A'}</p>
-            <p className="mr-1">|</p>
-            <p className="mr-1">{modelo.details?.transmission?.type || 'N/A'}</p>
-            {modelo.tags?.includes('hybrid') && (
-              <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase ml-2">
-                Híbrido
-              </span>
-            )}
-          </div>
-          <div className="mt-4 flex justify-between items-center">
-            <a
-              href={`/modelos/${modelo.slug}`}
-              className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
-            >
-              Ver más
-            </a>
-            <p className="font-bold">
-              ARS$ {modelo.defaultPrice.amount.toLocaleString()}
-            </p>
+  const renderGridCard = (modelo) => {
+    if (!modelo) return null;
+    
+    return (
+      <CSSTransition key={modelo.id} timeout={300} classNames="fade">
+        <div className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
+          <a href={`/modelos/${modelo.slug}`} className="cursor-pointer">
+            <img
+              src={modelo.defaultImage.url}
+              alt={modelo.name}
+              className="w-full h-72 object-cover"
+            />
+          </a>
+          <div className="p-4 flex flex-col justify-center gap-2">
+            <h2 className="text-lg font-semibold border-b-2 border-red-600 max-w-max mb-2">
+              {modelo.name}
+            </h2>
+            <div className="flex justify-start items-center text-base mt-2">
+              <p className="mr-1">{modelo.variants[0]?.details?.creationYear || 'N/A'}</p>
+              <p className="mr-1">|</p>
+              <p className="mr-1">{modelo.categories[0]?.name || 'N/A'}</p>
+              {modelo.tags?.includes('hybrid') && (
+                <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase ml-2">
+                  Híbrido
+                </span>
+              )}
+              {modelo.tags?.includes('gazoo_racing') && (
+                <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase ml-2">
+                  Deportivo
+                </span>
+              )}
+            </div>
+            <div className="flex justify-start items-center gap-2">
+              <p className="text-base text-gray-500">
+                {window.innerWidth <= 640
+                  ? (modelo.variants[0]?.details?.summary.replaceAll(';', ',') || 'Hola').substring(0, 30)
+                  : (modelo.variants[0]?.details?.summary.replaceAll(';', ',') || '').substring(0, 100)}
+                {(modelo.variants[0]?.details?.summary.replaceAll(';', ',') || '').length > (window.innerWidth <= 640 ? 30 : 100) ? '...' : ''}
+              </p>
+            </div>
+            <div className="mt-4 flex justify-between items-center">
+              <a
+                href={`/modelos/${modelo.slug}`}
+                className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
+              >
+                Ver más
+              </a>
+              {modelo.defaultStock === 1 ? (
+                <p className="font-bold text-black text-lg">
+                  ARS$ {modelo.defaultPrice.amount.toLocaleString()}
+                </p>
+              ) : (
+                <p className="font-bold text-lg text-red-600">Consultar disponibilidad</p>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </CSSTransition>
-  );
+      </CSSTransition>
+    );
+  };
 
   // Función para renderizar tarjeta en modo lista (similar a UsadosList)
   const renderListCard = (modelo) => (
     <CSSTransition key={modelo.id} timeout={300} classNames="fade">
       <div className="flex items-center max-sm:h-44 h-72 bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-transform transform hover:scale-105">
-        // ...similar structure to UsadosList list view...
+        <a href={`/modelos/${modelo.slug}`} className="cursor-pointer">
+          <img
+              src={modelo.defaultImage.url}
+              alt={modelo.name}
+              className="w-full h-full object-cover"
+              style={{minHeight: "200px", maxHeight: "300px"}}
+          />
+        </a>
+        <div className="w-full p-4 flex flex-col max-sm:gap-0 gap-6">
+          <h2 className="text-sm lg:text-2xl xl:text-3xl font-semibold border-b-2 border-red-600 max-w-max mb-2">
+            {modelo.name.substring(0, 50)}
+          </h2>
+          <div className="flex justify-start items-center text-base mt-2">
+            <p className="mr-1">{modelo.variants[0]?.details?.creationYear || 'N/A'}</p>
+            <p className="mr-1">|</p>
+            <p className="mr-1">{modelo.variants[0]?.details?.transmission?.type || 'N/A'}</p>
+            {modelo.tags?.includes('hybrid') && (
+              <span className="bg-green-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase ml-2">
+                Híbrido
+              </span>
+            )}
+            {modelo.tags?.includes('gazoo_racing') && (
+              <span className="bg-red-600 text-white text-xs font-semibold px-2 py-1 rounded-full uppercase ml-2">
+                Gazoo Racing
+              </span>
+            )}
+          </div>
+          <div className="flex justify-start items-center gap-2">
+            <p className="text-base text-gray-500">
+              {window.innerWidth <= 640 
+                ? (modelo.variants[0]?.details?.summary.replaceAll(';', ',') || 'Hola').substring(0, 30)
+                : (modelo.variants[0]?.details?.summary.replaceAll(';', ',') || '').substring(0, 100)}
+              {(modelo.variants[0]?.details?.summary.replaceAll(';', ',') || '').length > (window.innerWidth <= 640 ? 30 : 100) ? '...' : ''}
+            </p>
+          </div>
+          <div className="mt-4 flex justify-between items-center">
+            <a
+              href={`/modelos/${modelo.slug}`}
+              className="text-white text-base max-sm:py-0 py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
+            >
+              Ver más
+            </a>
+            <p className="font-bold text-black text-lg">
+              ARS$ {modelo.defaultPrice.amount.toLocaleString()}
+            </p>
+          </div>
+        </div>
       </div>
     </CSSTransition>
   );
@@ -400,15 +488,15 @@ export default function ModelosList() {
                   </button>
                 </div>
               ))}
-              {(precioRango[0] !== 0 ||
-                precioRango[1] !== 100000000) && (
+              {(precioRango[0] !== Math.min(...modelos.map(m => m.defaultPrice?.amount || 0)) ||
+                precioRango[1] !== Math.max(...modelos.map(m => m.defaultPrice?.amount || 100000000))) && (
                 <div className="max-w-max flex justify-center items-center px-2 bg-gray-200 rounded-full">
                   <span className="text-lg">
                     Precio: ${Number(precioRango[0]).toLocaleString()} - $
                     {Number(precioRango[1]).toLocaleString()}
                   </span>
                   <button
-                    onClick={() => setPrecioRango([0, 100000000])}
+                    onClick={() => setPrecioRango([Math.min(...modelos.map(m => m.defaultPrice?.amount || 0)), Math.max(...modelos.map(m => m.defaultPrice?.amount || 100000000))])}
                     className="ml-2 text-red-600 transition-all ease-in-out hover:text-red-500"
                   >
                     <i className="ri-close-circle-line"></i>
@@ -463,161 +551,172 @@ export default function ModelosList() {
                   </button>
                 </div>
               ))}
+              {busqueda ||
+              filtroCategories.length > 0 ||
+              filtroTags.length > 0 ||
+              filtroYear.length > 0 ||
+              filtroTransmision.length > 0 ||
+              filtroMotor.length > 0 ||
+              (modelos.length > 0 && (
+                precioRango[0] !== Math.min(...modelos.map(m => m.defaultPrice?.amount || 0)) ||
+                precioRango[1] !== Math.max(...modelos.map(m => m.defaultPrice?.amount || 100000000))
+              )) ? (
+                <button
+                  onClick={limpiarFiltros}
+                  className="text-red-600 text-sm py-1 px-2 rounded-full"
+                >
+                  Limpiar filtros
+                </button>
+              ) : (
+                <div className="max-w-max flex justify-center items-center">
+                  <span className="text-lg">No hay filtros activos</span>
+                </div>
+              )}
             </div>
           </div>
 
           {/* Sección de Filtros */}
-          <div className="mb-6 p-4 max-lg:hidden bg-gray-100 rounded-lg">
-            <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
-              Filtros
-            </h3>
-            <div className="space-y-4">
-              {/* Filtro de Categorías */}
-              <div>
-                <h4 className="text-md font-semibold mb-2">Categorías</h4>
-                {categories.map((category) => (
-                  <div key={category} className="flex items-center mb-2">
-                    <input
-                      type="checkbox"
-                      id={`cat-${category}`}
-                      onChange={() =>
-                        handleCheckbox(filtroCategories, setFiltroCategories, category)
-                      }
-                      checked={filtroCategories.includes(category)}
-                      className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor={`cat-${category}`} className="text-gray-700">
-                      {capitalizar(category)}
-                    </label>
-                  </div>
-                ))}
-              </div>
-
-              {/* Filtro de Tags */}
-              <div>
-                <h4 className="text-md font-semibold mb-2">Tags</h4>
-                {Array.from(new Set(modelos.flatMap((modelo) => modelo.tags))).map(
-                  (tag) => (
-                    <div key={tag} className="flex items-center mb-2">
-                      <input
-                        type="checkbox"
-                        id={`tag-${tag}`}
-                        onChange={() => handleCheckbox(filtroTags, setFiltroTags, tag)}
-                        checked={filtroTags.includes(tag)}
-                        className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
-                      />
-                      <label htmlFor={`tag-${tag}`} className="text-gray-700">
-                        {capitalizar(tag)}
-                      </label>
-                    </div>
-                  )
-                )}
-              </div>
-
-              {/* Filtro de Rango de Precio */}
-              <div>
-                <h4 className="text-md font-semibold mb-2">Rango de Precio</h4>
-                <Range
-                  step={100000}
-                  min={0}
-                  max={100000000}
-                  values={precioRango}
-                  onChange={(values) => setPrecioRango(values)}
-                  renderTrack={({ props, children }) => (
-                    <div
-                      {...props}
-                      style={{
-                        ...props.style,
-                        height: "5px",
-                        background: "#d1d5db",
-                        borderRadius: "5px",
-                      }}
-                    >
-                      {children}
-                    </div>
-                  )}
-                  renderThumb={({ props, index }) => (
-                    <div
-                      {...props}
-                      style={{
-                        ...props.style,
-                        height: "12px",
-                        width: "12px",
-                        backgroundColor: "#eb0a1e",
-                        borderRadius: "50%",
-                        boxShadow: "0px 2px 6px #AAA",
-                      }}
-                    />
-                  )}
-                />
-                <div className="flex justify-between mt-2">
-                  <span className="text-lg">
-                    ${Number(precioRango[0]).toLocaleString()}
-                  </span>
-                  <span className="text-lg">
-                    ${Number(precioRango[1]).toLocaleString()}
-                  </span>
+          <div className="max-lg:hidden space-y-4">
+            {/* Filtro de Categorías */}
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Categorías
+              </h3>
+              {categories.map((category) => (
+                <div key={category} className="flex items-center mb-2">
+                  <input
+                    type="checkbox"
+                    id={`cat-${category}`}
+                    onChange={() =>
+                      handleCheckbox(filtroCategories, setFiltroCategories, category)
+                    }
+                    checked={filtroCategories.includes(category)}
+                    className="cursor-pointer mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                  />
+                  <label htmlFor={`cat-${category}`} className="text-lg cursor-pointer">
+                    {capitalizar(category)}
+                  </label>
                 </div>
-              </div>
+              ))}
+            </div>
 
-              {/* Filtro de Año */}
-              <div>
-                <h4 className="text-md font-semibold mb-2">Año</h4>
-                {years.map((year) => (
-                  <div key={year} className="flex items-center mb-2">
-                    <input
-                      type="checkbox"
-                      id={`year-${year}`}
-                      onChange={() => handleCheckbox(filtroYear, setFiltroYear, year)}
-                      checked={filtroYear.includes(year)}
-                      className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor={`year-${year}`} className="text-gray-700">
-                      {year}
-                    </label>
+            {/* Filtro de Tags */}
+                  <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                    <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Otros filtros
+                    </h3>
+                    {Array.from(new Set(modelos.flatMap((modelo) => modelo.tags))).map(
+                      (tag) => (
+                        <div key={tag} className="flex items-center mb-2">
+                        <input
+                          type="checkbox"
+                          id={`tag-${tag}`}
+                          onChange={() => handleCheckbox(filtroTags, setFiltroTags, tag)}
+                          checked={filtroTags.includes(tag)}
+                          className="cursor-pointer mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                        />
+                        <label htmlFor={`tag-${tag}`} className="text-lg">
+                          {tag === "gazoo_racing" 
+                          ? "Deportivos" 
+                          : tag === "hybrid" 
+                            ? "Híbridos"
+                            : capitalizar(tag)}
+                        </label>
+                        </div>
+                      )
+                    )}
                   </div>
-                ))}
-              </div>
 
-              {/* Filtro de Transmisión */}
-              <div>
-                <h4 className="text-md font-semibold mb-2">Transmisión</h4>
-                {transmissionTypes.map((trans) => (
-                  <div key={trans} className="flex items-center mb-2">
-                    <input
-                      type="checkbox"
-                      id={`trans-${trans}`}
-                      onChange={() =>
-                        handleCheckbox(filtroTransmision, setFiltroTransmision, trans)
-                      }
-                      checked={filtroTransmision.includes(trans)}
-                      className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor={`trans-${trans}`} className="text-gray-700">
-                      {capitalizar(trans)}
-                    </label>
+                  {/* Filtro de Rango de Precio */}
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Rango de Precio
+              </h3>
+              <Range
+                step={100000}
+                min={Math.min(...(modelos.length > 0 ? modelos.map(m => m.defaultPrice?.amount || 0) : [0]))}
+                max={Math.max(...(modelos.length > 0 ? modelos.map(m => m.defaultPrice?.amount || 100000000) : [100000000]))}
+                values={precioRango}
+                onChange={(values) => setPrecioRango(values)}
+                renderTrack={({ props, children }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: "5px",
+                      background: "#d1d5db",
+                      borderRadius: "5px",
+                    }}
+                  >
+                    {children}
                   </div>
-                ))}
+                )}
+                renderThumb={({ props, index }) => (
+                  <div
+                    {...props}
+                    style={{
+                      ...props.style,
+                      height: "12px",
+                      width: "12px",
+                      backgroundColor: "#eb0a1e",
+                      borderRadius: "50%",
+                      boxShadow: "0px 2px 6px #AAA",
+                    }}
+                  />
+                )}
+              />
+              <div className="flex justify-between mt-2">
+                <span className="text-lg">
+                  ${Number(precioRango[0]).toLocaleString()}
+                </span>
+                <span className="text-lg">
+                  ${Number(precioRango[1]).toLocaleString()}
+                </span>
               </div>
+            </div>
 
-              {/* Filtro de Motor */}
-              <div>
-                <h4 className="text-md font-semibold mb-2">Motor</h4>
-                {["Híbrido", "Nafta"].map((motor) => (
-                  <div key={motor} className="flex items-center mb-2">
-                    <input
-                      type="checkbox"
-                      id={`motor-${motor}`}
-                      onChange={() => handleCheckbox(filtroMotor, setFiltroMotor, motor)}
-                      checked={filtroMotor.includes(motor)}
-                      className="mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
-                    />
-                    <label htmlFor={`motor-${motor}`} className="text-gray-700">
-                      {motor}
-                    </label>
-                  </div>
-                ))}
-              </div>
+            {/* Filtro de Año */}
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Año
+              </h3>
+              {years.map((year) => (
+                <div key={year} className="flex items-center mb-2">
+                  <input
+                    type="checkbox"
+                    id={`year-${year}`}
+                    onChange={() => handleCheckbox(filtroYear, setFiltroYear, year)}
+                    checked={filtroYear.includes(year)}
+                    className="cursor-pointer mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                  />
+                  <label htmlFor={`year-${year}`} className="text-lg">
+                    {year}
+                  </label>
+                </div>
+              ))}
+            </div>
+
+            {/* Filtro de Transmisión */}
+            <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                Transmisión
+              </h3>
+              {transmissionTypes.map((trans) => (
+                <div key={trans} className="flex items-center mb-2">
+                  <input
+                    type="checkbox"
+                    id={`trans-${trans}`}
+                    onChange={() =>
+                      handleCheckbox(filtroTransmision, setFiltroTransmision, trans)
+                    }
+                    checked={filtroTransmision.includes(trans)}
+                    className="cursor-pointer mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                  />
+                  <label htmlFor={`trans-${trans}`} className="text-lg">
+                    {capitalizar(trans)}
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
         </div>

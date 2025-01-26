@@ -147,7 +147,7 @@ export default function ModeloDetalles({ slug }) {
               >
                 <a
                   href={`https://dyv.e.toyota.com.ar/inventory/${modelData.slug}`}
-                  className="cta-btn"
+                  className="cta-btn mt-4"
                 >
                   Cotizar ahora
                 </a>
