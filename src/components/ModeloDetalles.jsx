@@ -413,7 +413,6 @@ export default function ModeloDetalles({ slug }) {
 
         <div className="container mx-auto sm:px-4">
           <div
-            className="flex flex-wrap"
             data-aos="fade-up"
             data-aos-delay="200"
           >

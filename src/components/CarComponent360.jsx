@@ -2,6 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import 'tailwindcss/tailwind.css';
 
 const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, initialColor }) => {
+  // Validación de props iniciales
+  if (!initialModel || !initialVersion || !initialSubversion || !initialColor) {
+    console.error('Missing required props');
+    return null;
+  }
+
   const [currentModel, setCurrentModel] = useState(initialModel.toLowerCase());
   const [currentVersion, setCurrentVersion] = useState(initialVersion.toLowerCase());
   const [currentSubversion, setCurrentSubversion] = useState(initialSubversion);
@@ -12,7 +18,6 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
 
   const viewerRef = useRef(null);
   const descriptionListRef = useRef(null);
-  const viewMoreButtonRef = useRef(null);
 
   const totalFrames = 30;
   const frameWidthPercentage = 100 / totalFrames;
@@ -624,51 +629,129 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
   const imageCache = new Map();
 
   useEffect(() => {
-    initialize();
+    if (!versions[currentModel]) {
+      console.error(`Invalid model: ${currentModel}`);
+      return;
+    }
+    
+    // Inicialización inicial
     preloadImages();
-    window.addEventListener('beforeunload', clearImageCache);
-    return () => {
-      window.removeEventListener('beforeunload', clearImageCache);
-    };
-  }, [currentModel]);
+    renderAll();
+
+    return () => clearImageCache();
+  }, [currentModel]); // Solo se ejecuta cuando cambia el modelo
 
   useEffect(() => {
+    renderAll();
+  }, [currentVersion, currentSubversion, currentColor]);
+
+  const renderAll = () => {
+    renderVersions();
+    renderSubversions();
+    renderColors();
     updateSprite();
-    updateActiveVersionButton();
-    updateActiveSubversionButton();
-    renderSubversionTabs();
-    renderColorButtons();
-  }, [currentColor, currentModel, currentVersion, currentSubversion]);
+    updateDescription();
+  }
 
-  useEffect(() => {
-    const colorName = colors[currentModel]?.[currentVersion]?.[currentSubversion]?.find(color => color.code === currentColor)?.name;
-    if (colorName) {
-      updateSelectedColorName(colorName);
+  const renderVersions = () => {
+    const container = document.getElementById('versionTabs');
+    if (!container) return;
+
+    container.innerHTML = '';
+    container.className = 'flex flex-wrap justify-center gap-4 w-full mb-2';
+    
+    versions[currentModel]?.forEach(version => {
+      const btn = document.createElement('button');
+      btn.textContent = version.name;
+      btn.className = `px-8 py-3 font-bold rounded transition-all duration-300 transform ${
+        currentVersion === version.slug 
+          ? 'bg-[#eb001b] text-white shadow-lg scale-105 hover:bg-[#d10018]' 
+          : 'bg-white text-gray-700 hover:bg-gray-50 hover:text-[#eb001b] border-2 border-gray-200 hover:border-[#eb001b]'
+      } mx-2 hover:shadow-md active:scale-95`;
+      
+      btn.onclick = () => {
+        setCurrentVersion(version.slug);
+        // Al cambiar versión, establecer primera subversión
+        setCurrentSubversion(version.subversions[0]);
+        // Establecer primer color disponible para la nueva configuración
+        const firstAvailableColor = colors[currentModel]?.[version.slug]?.[version.subversions[0]]?.[0]?.code;
+        if (firstAvailableColor) setCurrentColor(firstAvailableColor);
+      };
+      
+      container.appendChild(btn);
+    });
+  };
+
+  const renderSubversions = () => {
+    const container = document.getElementById('subversionTabs');
+    if (!container) return;
+
+    const currentVersionData = versions[currentModel]?.find(v => v.slug === currentVersion);
+    if (!currentVersionData) return;
+
+    container.innerHTML = '';
+    container.className = 'flex flex-wrap justify-center gap-3 max-w-4xl px-4';
+    
+    currentVersionData.subversions.forEach(subversion => {
+      const btn = document.createElement('button');
+      btn.textContent = subversion;
+      btn.className = `px-6 py-2.5 text-sm font-semibold rounded-full transition-all duration-300 transform ${
+        currentSubversion === subversion 
+          ? 'bg-gradient-to-r from-[#eb001b] to-[#d10018] text-white shadow-lg scale-105' 
+          : 'bg-gray-50 text-gray-600 hover:bg-gray-100 border border-gray-200 hover:border-[#eb001b] hover:text-[#eb001b]'
+      } whitespace-nowrap hover:shadow active:scale-95`;
+      
+      btn.onclick = () => {
+        setCurrentSubversion(subversion);
+        // Al cambiar subversión, verificar si el color actual existe
+        const availableColors = colors[currentModel]?.[currentVersion]?.[subversion];
+        if (!availableColors?.some(c => c.code === currentColor)) {
+          setCurrentColor(availableColors?.[0]?.code);
+        }
+      };
+      
+      container.appendChild(btn);
+    });
+  };
+
+  const updateSelectedColorName = (colorName) => {
+    const selectedColorNameElement = document.getElementById('selectedColorName');
+    if (selectedColorNameElement && colorName) {
+      selectedColorNameElement.textContent = `${colorName}`;
     }
-  }, [currentColor]);
+  };
 
-  useEffect(() => {
-    // Asegurar que el auto se cargue correctamente cuando la página se carga por primera vez.
-    const model = initialModel.toLowerCase();
-    const version = initialVersion.toLowerCase();
-    const subversion = initialSubversion;
-    const color = initialColor;
+  const renderColors = () => {
+    const container = document.getElementById('colorButtons');
+    if (!container) return;
 
-    if (versions[model] && versions[model].some(v => v.slug === version)) {
-      setCurrentModel(model);
-      setCurrentVersion(version);
-      setCurrentSubversion(subversion);
-      setCurrentColor(color);
-      renderVersionTabs();
-      renderSubversionTabs();
-      renderColorButtons();
-      updateSprite();
-      updateDescription();
-      resetViewMoreButton();
-    } else {
-      console.error('Invalid initial parameters:', { model, version, subversion, color });
+    const availableColors = colors[currentModel]?.[currentVersion]?.[currentSubversion];
+    if (!availableColors) return;
+
+    container.innerHTML = '';
+    container.className = 'flex justify-center flex-wrap gap-3 max-w-xl px-4';
+    
+    availableColors.forEach(color => {
+      const btn = document.createElement('button');
+      btn.className = `w-10 h-10 rounded-full transition-all duration-300 transform ${
+        currentColor === color.code 
+          ? 'scale-110 shadow-lg ring-2 ring-[#eb001b] ring-offset-2' 
+          : 'hover:scale-110 hover:shadow-md border-2 border-gray-200'
+      }`;
+      btn.style.backgroundColor = color.hex;
+      btn.onclick = () => {
+        setCurrentColor(color.code);
+        updateSelectedColorName(color.name);
+      };
+      container.appendChild(btn);
+    });
+
+    // Actualizar nombre del color actual
+    const currentColorData = availableColors.find(c => c.code === currentColor);
+    if (currentColorData) {
+      updateSelectedColorName(currentColorData.name);
     }
-  }, []);
+  };
 
   const preloadImages = () => {
     const imageUrls = [];
@@ -691,138 +774,31 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
     imageCache.clear();
   };
 
-  const initialize = () => {
-    renderVersionTabs();
-    renderSubversionTabs();
-    renderColorButtons();
-    updateDescription();
-    resetViewMoreButton();
-  };
-
-  const renderVersionTabs = () => {
-    const versionTabs = document.getElementById('versionTabs');
-    versionTabs.innerHTML = '';
-    versions[currentModel]?.forEach(version => {
-      const button = document.createElement('button');
-      button.textContent = version.name;
-      button.className = `version-tab px-4 py-2 font-semibold transition-transform duration-200 border-b-2 ${
-        currentVersion === version.slug ? 'border-gray-800 text-gray-800' : 'border-transparent text-gray-500 hover:border-gray-400'
-      }`;
-      button.addEventListener('click', () => {
-        setCurrentVersion(version.slug);
-        setCurrentSubversion(version.subversions[0]);
-        setCurrentColor(colors[currentModel]?.[version.slug]?.[version.subversions[0]]?.[0]?.code);
-        renderSubversionTabs();
-        renderColorButtons();
-        updateSprite();
-        updateDescription();
-        resetViewMoreButton();
-      });
-      button.dataset.version = version.slug;
-      versionTabs.appendChild(button);
-    });
-  };
-
-  const updateActiveVersionButton = () => {
-    document.querySelectorAll('.version-tab').forEach(button => {
-      if (button.dataset.version === currentVersion) {
-        button.classList.add('border-gray-800', 'text-gray-800');
-        button.classList.remove('border-transparent', 'text-gray-500', 'hover:border-gray-400');
-      } else {
-        button.classList.add('border-transparent', 'text-gray-500', 'hover:border-gray-400');
-        button.classList.remove('border-gray-800', 'text-gray-800');
-      }
-    });
-  };
-
-  const renderSubversionTabs = () => {
-    const version = versions[currentModel]?.find(v => v.slug === currentVersion);
-    if (!version) return;
-
-    const subversionTabs = document.getElementById('subversionTabs');
-    subversionTabs.innerHTML = '';
-    version.subversions.forEach(subversion => {
-      const tab = document.createElement('button');
-      tab.textContent = subversion.toUpperCase();
-      tab.className = `subversion-tab text-xs px-4 py-2 font-semibold transition-transform duration-200 border-b-2 ${
-        currentSubversion === subversion ? 'border-gray-800 text-gray-800' : 'border-transparent text-gray-500 hover:border-gray-400'
-      }`;
-      tab.dataset.subversion = subversion;
-      tab.addEventListener('click', () => {
-        setCurrentSubversion(subversion);
-        setCurrentColor(colors[currentModel]?.[currentVersion]?.[subversion]?.[0]?.code);
-        updateActiveSubversionButton();
-        renderColorButtons();
-        updateSprite();
-        updateDescription();
-        resetViewMoreButton();
-      });
-      subversionTabs.appendChild(tab);
-    });
-  };
-
-  const updateActiveSubversionButton = () => {
-    document.querySelectorAll('.subversion-tab').forEach(tab => {
-      if (tab.dataset.subversion === currentSubversion) {
-        tab.classList.add('border-gray-800', 'text-gray-800');
-        tab.classList.remove('border-transparent', 'text-gray-500', 'hover:border-gray-400');
-      } else {
-        tab.classList.add('border-transparent', 'text-gray-500', 'hover:border-gray-400');
-        tab.classList.remove('border-gray-800', 'text-gray-800');
-      }
-    });
-  };
-
-  const renderColorButtons = () => {
-    const colorButtons = document.getElementById('colorButtons');
-    colorButtons.innerHTML = '';
-    colors[currentModel]?.[currentVersion]?.[currentSubversion]?.forEach(color => {
-      const button = document.createElement('button');
-      button.className = `w-8 h-8 rounded-full border-2 border-gray-300 hover:scale-110 transition-transform duration-200`;
-      button.style.backgroundColor = color.hex;
-      button.addEventListener('click', () => {
-        setCurrentColor(color.code);
-        updateSprite();
-        updateSelectedColorName(color.name);
-      });
-      colorButtons.appendChild(button);
-    });
-    updateSelectedColorName(colors[currentModel]?.[currentVersion]?.[currentSubversion]?.[0]?.name);
-  };
-
-  const updateSelectedColorName = colorName => {
-    const selectedColorNameElement = document.getElementById('selectedColorName');
-    selectedColorNameElement.textContent = `Color seleccionado: ${colorName}`;
-  };
-
   const updateSprite = () => {
     const viewer = viewerRef.current;
-    viewer.classList.add('transition-all', 'duration-200');
-    viewer.style.backgroundImage = `url('/images-modelos/${currentModel}/${currentModel}-${currentVersion}-${currentColor}.png')`;
+    if (!viewer) return;
+    const imageUrl = `/images-modelos/${currentModel}/${currentModel}-${currentVersion}-${currentColor}.png`;
+    viewer.style.backgroundImage = `url('${imageUrl}')`;
     viewer.style.backgroundSize = '3000%';
     viewer.style.backgroundPosition = `${currentFrame * frameWidthPercentage}% 0`;
-    setTimeout(() => {
-      viewer.classList.remove('transition-all', 'duration-200');
-    }, 200);
   };
 
   const updateDescription = () => {
     const descriptionList = descriptionListRef.current;
     descriptionList.innerHTML = '';
+    descriptionList.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4';
+    
     subversionDescriptions[currentModel]?.[currentSubversion]?.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item;
-      descriptionList.appendChild(li);
+      const card = document.createElement('div');
+      card.className = 'bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:border-[#eb001b]';
+      
+      const text = document.createElement('p');
+      text.className = 'text-xl text-gray-700 leading-relaxed';
+      text.textContent = item;
+      
+      card.appendChild(text);
+      descriptionList.appendChild(card);
     });
-    descriptionList.classList.add('max-h-32');
-    viewMoreButtonRef.current.textContent = 'Ver más';
-  };
-
-  const resetViewMoreButton = () => {
-    const descriptionList = descriptionListRef.current;
-    descriptionList.classList.remove('max-h-[1000px]', 'transition-all', 'duration-500', 'ease-in-out');
-    descriptionList.classList.add('max-h-32');
-    viewMoreButtonRef.current.textContent = 'Ver más';
   };
 
   const updateFrame = diffX => {
@@ -884,24 +860,11 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
     }
   };
 
-  const handleViewMoreClick = () => {
-    const descriptionList = descriptionListRef.current;
-    if (descriptionList.classList.contains('max-h-32')) {
-      descriptionList.classList.remove('max-h-32');
-      descriptionList.classList.add('max-h-[1000px]', 'transition-all', 'duration-500', 'ease-in-out');
-      viewMoreButtonRef.current.textContent = 'Ver menos';
-    } else {
-      descriptionList.classList.remove('max-h-[1000px]', 'transition-all', 'duration-500', 'ease-in-out');
-      descriptionList.classList.add('max-h-32');
-      viewMoreButtonRef.current.textContent = 'Ver más';
-    }
-  };
-
   return (
     
-      <div className="flex bg-white p-5 rounded-lg flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8 w-full shadow-lg">
-        <div className="flex flex-col items-center space-y-4 w-full md:w-2/3">
-          <div id="versionTabs" className="flex justify-center md:justify-start space-x-2 md:space-x-4 mb-4"></div>
+      <div className="flex bg-white p-8 rounded-lg flex-col items-center space-y-20 w-full shadow-lg">
+        <div className="flex flex-col items-center space-y-10 w-full md:w-2/3">
+          <div id="versionTabs"></div>
 
           <div
             id="viewer"
@@ -916,31 +879,27 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
             onTouchMove={handleTouchMove}
           ></div>
 
-          <div className="flex justify-center space-x-4 font-semibold italic text-gray-600">
+          <div className="flex justify-center items-center space-x-4 font-semibold italic text-gray-400">
+            <i class="ri-arrow-left-s-line h-7"></i>
             <p>Arrastra para girar</p>
+            <i class="ri-arrow-right-s-line h-7"></i>
           </div>
 
-          <div id="colorButtons" className="flex justify-center space-x-2 md:space-x-4"></div>
-          <p id="selectedColorName" className="text-center font-semibold mt-2 text-gray-700"></p>
+          <div id="colorButtons"></div>
+          <p id="selectedColorName" className="text-center font-semibold text-gray-700"></p>
         </div>
 
-        <div className="flex flex-col space-y-4 w-full md:w-1/3 justify-center items-center">
-          <div id="subversionTabs" className="flex justify-center space-x-2"></div>
-          <div className="bg-white p-4 rounded-lg shadow-md w-full">
-            <h2 className="text-lg md:text-xl font-semibold mb-2 text-gray-800">Descripción</h2>
-            <ul
+        <div className="flex flex-col space-y-6 w-full max-w-max items-center">
+          <div id="subversionTabs"></div>
+          <div className="bg-white p-6 w-full">
+            <h2 className="text-3xl font-bold mb-6 text-[#eb001b] border-b pb-2">
+              Características
+            </h2>
+            <div
               id="descriptionList"
               ref={descriptionListRef}
-              className="list-disc pl-5 text-sm md:text-base text-gray-700 max-h-32 overflow-hidden transition-all duration-300"
-            ></ul>
-            <button
-              id="viewMoreButton"
-              ref={viewMoreButtonRef}
-              className="mt-2 text-blue-500 hover:underline"
-              onClick={handleViewMoreClick}
-            >
-              Ver más
-            </button>
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            ></div>
           </div>
         </div>
       </div>
