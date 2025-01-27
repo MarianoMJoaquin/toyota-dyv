@@ -940,9 +940,9 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
           ></div>
 
           <div className="flex justify-center items-center space-x-4 font-semibold italic text-gray-400">
-            <i class="ri-arrow-left-s-line h-7"></i>
+            <i className="ri-arrow-left-s-line h-7"></i>
             <p>Arrastra para girar</p>
-            <i class="ri-arrow-right-s-line h-7"></i>
+            <i className="ri-arrow-right-s-line h-7"></i>
           </div>
 
           <div id="colorButtons"></div>
