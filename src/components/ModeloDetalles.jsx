@@ -232,9 +232,7 @@ export default function ModeloDetalles({ slug }) {
                   <i className="ri-speed-up-line"></i>
                 </span>
                 <h4>
-                  <a href="" className="stretched-link">
                     Motor
-                  </a>
                 </h4>
                 <p>
                   {modelData.variants[0]?.details?.motor?.replace(/;;/g, "")}
@@ -251,9 +249,7 @@ export default function ModeloDetalles({ slug }) {
                   <i className="ri-car-line"></i>
                 </span>
                 <h4>
-                  <a href="" className="stretched-link">
                     Diseño
-                  </a>
                 </h4>
                 <p>{modelData.variants[2]?.details?.summary?.split(";")[0]}</p>
                 <p>{modelData.variants[2]?.details?.summary?.split(";")[1]}</p>
@@ -274,9 +270,7 @@ export default function ModeloDetalles({ slug }) {
                   <i className="ri-git-branch-line"></i>
                 </span>
                 <h4>
-                  <a href="" className="stretched-link">
                     Transmisión
-                  </a>
                 </h4>
                 <p>
                   {modelData.variants[0]?.details?.transmission?.description?.replace(
@@ -296,13 +290,11 @@ export default function ModeloDetalles({ slug }) {
                   <i className="ri-user-line"></i>
                 </span>
                 <h4>
-                  <a href="" className="stretched-link">
                     Confort
-                  </a>
                 </h4>
                 <p>
                   {modelData.variants[0]?.details?.passengers?.replace(
-                    /;;/g,
+                    /;/g,
                     ""
                   )}
                 </p>
@@ -313,7 +305,7 @@ export default function ModeloDetalles({ slug }) {
       </section>
 
       {/* Events/Slider Section */}
-      <section id="events" className="events md:mx-10 lg:mx-15 section">
+      <section id="events" className="events md:mx-10 section">
         {/* Fondo del slider */}
         <img
           src={modelData.images[0]?.url}
@@ -610,60 +602,67 @@ export default function ModeloDetalles({ slug }) {
 
       {/* Solicitud de Test Drive (Solo disponible para : ) */}
 
-      {modelData.slug === "yaris-hatchback" ? (
-        <section id="test-drive" className="test-drive lg:mx-5 section red-background">
-        <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Solicitá un Test Drive</p>
-        </div>
+        {modelData.slug === "yaris-hatchback" ? (
+          <section id="test-drive" className="test-drive lg:mx-5 section red-background">
+          <div className="container mx-auto section-title" data-aos="fade-up">
+            <h2>{modelData.name.toUpperCase()}</h2>
+            <p>Solicitá un Test Drive</p>
+          </div>
 
-        <div className="container mx-auto">
-          <div className="flex flex-wrap gap-y-4">
-            <div
-              className="lg:w-1/2 pr-4 pl-4 bg-red-300"
-              data-aos=""
-              data-aos-delay=""
-            >
-              <div className="card-item">
-                <span>
-                  <i className="ri-user-3-line"></i>
-                </span>
-                <h4>
-                  <a href="https://dyv.e.toyota.com.ar/test-drive" className="stretched-link hover:text-[#eb001b] transition-colors duration-300">
-                    Solicitar un Test Drive
-                  </a>
-                </h4>
-                <p>
-                  Probá tu {modelData.name} en la concesionaria más cercana.
-                </p>
+          <div className="container mx-auto">
+            <div className="flex flex-wrap gap-6 px-4">
+              <div
+                className="lg:w-[calc(50%-12px)] w-full"
+                data-aos="fade-up"
+                data-aos-delay="100"
+              >
+                <div className="card-item border border-gray-300 p-8 hover:border-[#eb001b] rounded-2xl transition-all duration-300 h-full">
+                  <span className="inline-block mb-4">
+                    <i className="ri-car-line text-3xl text-[#eb001b] bg-red-50 p-4 rounded-full"></i>
+                  </span>
+                  <h4 className="text-3xl font-bold my-4">
+                    <a href="https://dyv.e.toyota.com.ar/test-drive" 
+                      className="hover:text-[#eb001b] transition-colors duration-300 inline-flex items-center gap-2">
+                      Solicitar un Test Drive
+                    </a>
+                  </h4>
+                  <p className="text-gray-600 text-2xl mb-6">
+                    Probá tu {modelData.name} en la concesionaria más cercana.*
+                  </p>
+                  <div className="mt-auto">
+                    <p className="text-base text-gray-500 italic">
+                      *Sujeto a disponibilidad de stock.
+                    </p>
+                  </div>
+                </div>
               </div>
-            </div>
 
-            <div
-              className="lg:w-1/2 pr-4 pl-4"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div className="card-item">
-                <span>
-                  <i className="ri-map-pin-line"></i>
-                </span>
-                <h4>
-                  <a href="https://www.toyota.com.ar/concesionarios" className="stretched-link">
-                    Encontrá tu concesionaria
-                  </a>
-                </h4>
-                <p>
-                  Ubicá la concesionaria más cercana a tu domicilio.
-                </p>
+              <div
+                className="lg:w-[calc(50%-12px)] w-full"
+                data-aos="fade-up"
+                data-aos-delay="200"
+              >
+                <div className="card-item border border-gray-300 p-8 hover:border-[#eb001b] rounded-2xl transition-all duration-300 h-full">
+                  <span className="inline-block mb-4">
+                    <i className="ri-map-pin-line text-3xl text-[#eb001b] bg-red-50 p-4 rounded-full"></i>
+                  </span>
+                  <h4 className="text-3xl font-bold my-4">
+                    <a href="https://www.toyota.com.ar/concesionarios" 
+                      className="hover:text-[#eb001b] transition-colors duration-300 inline-flex items-center gap-2">
+                      Encontrá tu concesionaria
+                    </a>
+                  </h4>
+                  <p className="text-gray-600 text-2xl mb-6">
+                    Ubicá la concesionaria más cercana a tu domicilio.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-      ) : null}
+        </section>
+        ) : null}
 
-      {/* Material descargable */}
+        {/* Material descargable */}
       <section
         id="material-descargable"
         className="material-descargable lg:mx-5 section"
