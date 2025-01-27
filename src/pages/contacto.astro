@@ -1,0 +1,280 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Form from "../components/Form.jsx";
+import GoogleMap from "../components/GoogleMap.jsx";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+---
+
+<Layout title="Toyota | Derka y Vargas" theme_color="#EB0A1E" image='https://i.imgur.com/AabFmC0.png'>
+    <main class="main">
+        <section class="section">
+            <!-- Breadcrumb original -->
+            <div class="col-span-2 mb-4 mx-5 xl:mx-10">
+                <nav class="flex mb-4" aria-label="Breadcrumb">
+                    <ol class="inline-flex items-center space-x-1 text-base max-sm:text-sm md:space-x-3">
+                        <li>
+                            <a href="/" class="text-gray-700 hover:text-red-600 transition-colors">Inicio</a>
+                        </li>
+                        <li><span class="text-gray-500">/</span></li>
+                        <li><span class="text-gray-700">Contacto</span></li>
+                    </ol>
+                </nav>
+            </div>
+            <h1 class="vehicles__title heading-1 max-w-max mx-auto border-b-2 border-red-600 mb-8">
+                Contacto
+            </h1>
+            <p class="text-xl text-gray-600 max-w-max mx-auto mb-10">
+                Si tenés alguna consulta, no dudes en contactarnos. Estamos para ayudarte.
+            </p>
+            <div class="contact__info container mx-auto">
+                <!-- Form y Info Cards - Grid principal -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
+                    <!-- Info Cards - Ocupando todo el espacio -->
+                    <div class="order-2 lg:order-1 h-full flex flex-col">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-grow">
+                            <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
+                                <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
+                                    <i class="ri-customer-service-2-line text-red-600 text-xl"></i>
+                                    Ventas
+                                </h3>
+                                <div class="space-y-2">
+                                    <p class="text-sm text-gray-600">Consulta por nuestros vehículos nuevos y usados.</p>
+                                    <a href="tel:3624468400" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
+                                        <i class="ri-phone-line"></i>
+                                        (362) 446-8400
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
+                                <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
+                                    <i class="ri-tools-line text-red-600 text-xl"></i>
+                                    Posventa
+                                </h3>
+                                <div class="space-y-2">
+                                    <p class="text-sm text-gray-600">Servicio técnico y mantenimiento de tu Toyota.</p>
+                                    <a href="tel:3624468410" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
+                                        <i class="ri-phone-line"></i>
+                                        (362) 446-8410
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
+                                <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
+                                    <i class="ri-time-line text-red-600 text-xl"></i>
+                                    Horarios
+                                </h3>
+                                <div class="space-y-2">
+                                    <p class="text-sm text-gray-600">Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00</p>
+                                    <p class="text-sm text-gray-600">Sábados: 8:00 - 13:00</p>
+                                </div>
+                            </div>
+                            <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
+                                <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
+                                    <i class="ri-mail-send-line text-red-600 text-xl"></i>
+                                    Consultas
+                                </h3>
+                                <div class="space-y-2">
+                                    <p class="text-sm text-gray-600">Envianos tu consulta por email.</p>
+                                    <a href="mailto:info@derkayvargas.com.ar" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
+                                        <i class="ri-mail-line"></i>
+                                        info@derkayvargas.com.ar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Form -->
+                    <div class="order-1 lg:order-2 bg-white rounded-xl shadow-lg p-8 transition-shadow h-full">
+                        <Form type='contacto'/>
+                    </div>
+                </div>
+
+                <!-- Sucursales Section -->
+                <div class="mt-16">
+                    <h1 class="vehicles__title heading-1 max-w-max mx-auto border-b-2 border-red-600 mb-8">
+                        Sucursales
+                    </h1>
+                    <p class="text-xl text-gray-600 max-w-max mx-auto mb-10">
+                        Conocé nuestras sucursales y encontrá la más cercana a vos.
+                    </p>
+                    
+                    <!-- Swiper -->
+                    <div class="swiper sucursalesSwiper">
+                        <div class="swiper-wrapper">
+                            <!-- Casa Central -->
+                            <div class="swiper-slide">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+                                    <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
+                                        <GoogleMap location="resistencia"/>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-8 flex flex-col justify-center">
+                                        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Casa Central</h3>
+                                        <div class="space-y-4">
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-map-pin-line text-red-600 text-xl"></i>
+                                                Av. 25 de Mayo 1515 - Resistencia
+                                            </p>
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-phone-line text-red-600 text-xl"></i>
+                                                (362) 446-8400
+                                            </p>
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-time-line text-red-600 text-xl"></i>
+                                                Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00
+                                            </p>
+                                            <a href="https://maps.app.goo.gl/7NQWKHYKFHXhHwmt7" 
+                                               target="_blank" 
+                                               class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors mt-4">
+                                                <i class="ri-navigation-line"></i>
+                                                Cómo llegar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Villa Ángela -->
+                            <div class="swiper-slide">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+                                    <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
+                                        <GoogleMap location="villa-angela"/>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-8 flex flex-col justify-center">
+                                        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Sucursal Villa Ángela</h3>
+                                        <div class="space-y-4">
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-map-pin-line text-red-600 text-xl"></i>
+                                                Ruta 95 y Güemes - Villa Ángela
+                                            </p>
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-phone-line text-red-600 text-xl"></i>
+                                                (3735) 15-466100
+                                            </p>
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-time-line text-red-600 text-xl"></i>
+                                                Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00
+                                            </p>
+                                            <a href="https://maps.app.goo.gl/kNXrFaVNGvSSDpcb8" 
+                                               target="_blank" 
+                                               class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors mt-4">
+                                                <i class="ri-navigation-line"></i>
+                                                Cómo llegar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Charata -->
+                            <div class="swiper-slide">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+                                    <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
+                                        <GoogleMap location="charata"/>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-8 flex flex-col justify-center">
+                                        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Sucursal Charata</h3>
+                                        <div class="space-y-4">
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-map-pin-line text-red-600 text-xl"></i>
+                                                Ruta 89 y Monseñor de Carlo - Charata
+                                            </p>
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-phone-line text-red-600 text-xl"></i>
+                                                (364) 15-4580334
+                                            </p>
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-time-line text-red-600 text-xl"></i>
+                                                Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00
+                                            </p>
+                                            <a href="https://maps.app.goo.gl/CsqSjquF9VDeLEVR9" 
+                                               target="_blank" 
+                                               class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors mt-4">
+                                                <i class="ri-navigation-line"></i>
+                                                Cómo llegar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sáenz Peña -->
+                            <div class="swiper-slide">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+                                    <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
+                                        <GoogleMap location="saenz-pena"/>
+                                    </div>
+                                    <div class="bg-white rounded-xl p-8 flex flex-col justify-center">
+                                        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Sucursal Sáenz Peña</h3>
+                                        <div class="space-y-4">
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-map-pin-line text-red-600 text-xl"></i>
+                                                Ruta 16 km 173.5 - Sáenz Peña
+                                            </p>
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-phone-line text-red-600 text-xl"></i>
+                                                (364) 15-4580334
+                                            </p>
+                                            <p class="flex items-center gap-3 text-gray-600">
+                                                <i class="ri-time-line text-red-600 text-xl"></i>
+                                                Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00
+                                            </p>
+                                            <a href="https://maps.app.goo.gl/uPCCPCBBPVcytN8v8" 
+                                               target="_blank" 
+                                               class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors mt-4">
+                                                <i class="ri-navigation-line"></i>
+                                                Cómo llegar
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</Layout>
+
+<script>
+    import Swiper from 'swiper';
+    import { Pagination, Autoplay } from 'swiper/modules';
+
+    const swiper = new Swiper('.sucursalesSwiper', {
+        modules: [Pagination, Autoplay],
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+            delay: 6000,
+            disableOnInteraction: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+</script>
+
+<style>
+    .sucursalesSwiper {
+        width: 100%;
+        padding: 20px;
+    }
+
+    :root {
+        --swiper-theme-color: #eb0a1e;
+    }
+
+    .swiper-pagination-bullet-active {
+        background: #eb0a1e;
+    }
+</style>
+
+
+
+
+
+

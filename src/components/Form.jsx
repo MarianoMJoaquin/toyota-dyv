@@ -196,7 +196,7 @@ const Form = ({ type = 'contacto' }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-lg mx-auto p-6 space-y-6">
+    <form onSubmit={handleSubmit} className="max-w-full space-y-6">
       {/* Mensaje de Error */}
       {status.error && (
         <div className="flex items-center gap-3 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg shadow-sm transition-all duration-300 transform translate-y-0 opacity-100 scale-100 motion-safe:transition-all motion-safe:duration-300">
@@ -261,7 +261,7 @@ const Form = ({ type = 'contacto' }) => {
           />
           <label
             htmlFor="name"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
           >
             Nombre y Apellido
           </label>
@@ -280,7 +280,7 @@ const Form = ({ type = 'contacto' }) => {
           />
           <label
             htmlFor="phone"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
           >
             Teléfono
           </label>
@@ -299,7 +299,7 @@ const Form = ({ type = 'contacto' }) => {
           />
           <label
             htmlFor="email"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
           >
             Email
           </label>
@@ -311,7 +311,7 @@ const Form = ({ type = 'contacto' }) => {
             id="sucursal"
             value={formData.sucursal}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+            className="text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
             required
           >
             <option value="" disabled>Seleccione una opción</option>
@@ -323,15 +323,10 @@ const Form = ({ type = 'contacto' }) => {
           </select>
           <label
             htmlFor="sucursal"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-focus:text-red-500"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-focus:text-red-500"
           >
             Sucursal
           </label>
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-            <svg className="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-            </svg>
-          </div>
         </div>
 
         <div className="relative">
