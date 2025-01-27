@@ -118,7 +118,6 @@ export default function ModeloDetalles({ slug }) {
   }
 
   return (
-    <>
     <main className="main">
       <section id="hero" className="hero section dark-background">
         <img
@@ -314,7 +313,7 @@ export default function ModeloDetalles({ slug }) {
       </section>
 
       {/* Events/Slider Section */}
-      <section id="events" className="events container mx-auto section">
+      <section id="events" className="events md:mx-10 lg:mx-15 section">
         {/* Fondo del slider */}
         <img
           src={modelData.images[0]?.url}
@@ -323,11 +322,11 @@ export default function ModeloDetalles({ slug }) {
           data-aos="fade-in"
         />
 
-        <div className="container mx-auto ">
+        <div className="container mx-auto px-4">
           <Swiper
             modules={[Pagination, Navigation]}
             spaceBetween={20}
-            slidesPerView="auto"
+            slidesPerView={1}
             pagination={{
               clickable: true,
               el: '.swiper-pagination',
@@ -387,19 +386,27 @@ export default function ModeloDetalles({ slug }) {
 
                 return (
                   <SwiperSlide key={index}>
-                    <div className="flex flex-wrap gy-4 event-item">
-                      <div className="lg:w-1/2 pr-4 pl-4">
-                        <img src={image.url} className="max-w-full h-auto" alt="" />
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 event-item">
+                      <div className="w-full">
+                        <img 
+                          src={image.url} 
+                          className="w-full h-auto object-cover rounded-lg" 
+                          alt="" 
+                        />
                       </div>
-                      <div className="lg:w-1/2 pr-4 pl-4 pt-4 lg:pt-0 flex flex-col justify-center content">
-                        <h3>{modelTitle[index]}</h3>
-                        <p>{modelDescriptions[index]}</p>
+                      <div className="w-full flex flex-col justify-center py-4 lg:py-0">
+                        <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-4">
+                          {modelTitle[index]}
+                        </h3>
+                        <p className="text-base md:text-lg">
+                          {modelDescriptions[index]}
+                        </p>
                       </div>
                     </div>
                   </SwiperSlide>
                 );
               })}
-            <div className="swiper-pagination !relative !bottom-0 mt-4"></div>
+            <div className="swiper-pagination !relative !bottom-0 mt-8"></div>
           </Swiper>
         </div>
       </section>
@@ -732,8 +739,5 @@ export default function ModeloDetalles({ slug }) {
         </div>
       </section>
     </main>
-      {/*Scroll Top */}
-      
-    </>
   );
 }
