@@ -15,6 +15,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
   const [currentFrame, setCurrentFrame] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
+  const [showAllDescriptions, setShowAllDescriptions] = useState(false);
 
   const viewerRef = useRef(null);
   const descriptionListRef = useRef(null);
@@ -643,7 +644,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
 
   useEffect(() => {
     renderAll();
-  }, [currentVersion, currentSubversion, currentColor]);
+  }, [currentVersion, currentSubversion, currentColor, showAllDescriptions]);
 
   const renderAll = () => {
     renderVersions();
@@ -785,13 +786,28 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
 
   const updateDescription = () => {
     const descriptionList = descriptionListRef.current;
+    if (!descriptionList) return;
+    
     descriptionList.innerHTML = '';
     descriptionList.className = 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4';
     
-    subversionDescriptions[currentModel]?.[currentSubversion]?.forEach(item => {
+    const descriptions = subversionDescriptions[currentModel]?.[currentSubversion] || [];
+    const itemsToShow = showAllDescriptions ? descriptions : descriptions.slice(0, 6);
+    
+    itemsToShow.forEach((item, index) => {
       const card = document.createElement('div');
-      card.className = 'bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-200 hover:border-[#eb001b]';
+      card.className = `
+        bg-gray-50 p-4 rounded-lg shadow-sm hover:shadow-md 
+        border border-gray-200 hover:border-[#eb001b]
+        transform transition-all duration-500 ease-in-out
+        opacity-0 translate-y-4
+      `;
       
+      // Aplicar la animación con un retraso basado en el índice
+      setTimeout(() => {
+        card.classList.remove('opacity-0', 'translate-y-4');
+      }, index * 100);
+
       const text = document.createElement('p');
       text.className = 'text-xl text-gray-700 leading-relaxed';
       text.textContent = item;
@@ -799,6 +815,50 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
       card.appendChild(text);
       descriptionList.appendChild(card);
     });
+
+    // Si hay más de 6 descripciones, mostrar el botón correspondiente
+    if (descriptions.length > 6) {
+      const buttonContainer = document.createElement('div');
+      buttonContainer.className = 'col-span-full flex justify-center mt-8';
+      
+      const button = document.createElement('button');
+      button.className = `
+        px-6 py-2 bg-[#eb001b] text-white rounded-full 
+        hover:bg-[#d10018] transform transition-all duration-300 
+        hover:scale-105 active:scale-95 flex items-center gap-2
+      `;
+      
+      if (showAllDescriptions) {
+        button.innerHTML = `
+          Ver menos características
+          <i class="ri-arrow-up-s-line text-xl transition-transform duration-300"></i>
+        `;
+      } else {
+        button.innerHTML = `
+          Ver más características
+          <i class="ri-arrow-down-s-line text-xl transition-transform duration-300"></i>
+        `;
+      }
+      
+      button.onclick = () => {
+        const cards = descriptionList.querySelectorAll('.bg-gray-50');
+        
+        // Animar la salida de las cards actuales
+        cards.forEach((card, index) => {
+          card.style.transition = 'all 30ms ease-in-out';
+          card.style.transitionDelay = `${index * 50}ms`;
+          card.classList.add('opacity-0', 'translate-y-4');
+        });
+
+        // Esperar a que termine la animación antes de actualizar
+        setTimeout(() => {
+          setShowAllDescriptions(!showAllDescriptions);
+        }, cards.length * 50 + 30); // 30ms extra de margen para asegurar que todas las animaciones terminen
+      };
+      
+      buttonContainer.appendChild(button);
+      descriptionList.appendChild(buttonContainer);
+    }
   };
 
   const updateFrame = diffX => {
