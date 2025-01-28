@@ -9,7 +9,7 @@ function GoogleMap({ location = 'resistencia' }) {
 
   // Validar que la ubicación existe
   if (!mapUrls[location]) {
-    console.error(`Location "${location}" not found. Defaulting to Resistencia.`);
+    console.error(`La localidad "${location}" no se encuentra. Por defecto, se mostrará Resistencia.`);
     location = 'resistencia';
   }
 
