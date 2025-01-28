@@ -5,6 +5,7 @@ import GoogleMap from "../components/GoogleMap.jsx";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/effect-fade';
 ---
 
 <Layout title="Toyota | Derka y Vargas" theme_color="#EB0A1E" image='https://i.imgur.com/AabFmC0.png'>
@@ -29,64 +30,63 @@ import 'swiper/css/pagination';
                 Si tenés alguna consulta, no dudes en contactarnos. Estamos para ayudarte.
             </p>
             <div class="contact__info container mx-auto">
-                <!-- Form y Info Cards - Grid principal -->
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 h-full">
-                    <!-- Info Cards - Ocupando todo el espacio -->
-                    <div class="order-2 lg:order-1 h-full flex flex-col">
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 flex-grow">
-                            <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
-                                <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                    <i class="ri-customer-service-2-line text-red-600 text-xl"></i>
-                                    Ventas
-                                </h3>
-                                <div class="space-y-2">
-                                    <p class="text-sm text-gray-600">Consulta por nuestros vehículos nuevos y usados.</p>
-                                    <a href="tel:3624468400" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
-                                        <i class="ri-phone-line"></i>
-                                        (362) 446-8400
-                                    </a>
-                                </div>
+                <!-- Grid principal -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+                    <!-- Info Cards - Columna izquierda en desktop, segunda en móvil -->
+                    <div class="space-y-6 order-2 lg:order-1">
+                        <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
+                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
+                                <i class="ri-customer-service-2-line text-red-600 text-xl"></i>
+                                Ventas
+                            </h3>
+                            <div class="space-y-2">
+                                <p class="text-sm text-gray-600">Consulta por nuestros vehículos nuevos y usados.</p>
+                                <a href="tel:3624468400" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
+                                    <i class="ri-phone-line"></i>
+                                    (362) 446-8400
+                                </a>
                             </div>
-                            <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
-                                <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                    <i class="ri-tools-line text-red-600 text-xl"></i>
-                                    Posventa
-                                </h3>
-                                <div class="space-y-2">
-                                    <p class="text-sm text-gray-600">Servicio técnico y mantenimiento de tu Toyota.</p>
-                                    <a href="tel:3624468410" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
-                                        <i class="ri-phone-line"></i>
-                                        (362) 446-8410
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
+                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
+                                <i class="ri-tools-line text-red-600 text-xl"></i>
+                                Posventa
+                            </h3>
+                            <div class="space-y-2">
+                                <p class="text-sm text-gray-600">Servicio técnico y mantenimiento de tu Toyota.</p>
+                                <a href="tel:3624468410" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
+                                    <i class="ri-phone-line"></i>
+                                    (362) 446-8410
+                                </a>
                             </div>
-                            <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
-                                <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                    <i class="ri-time-line text-red-600 text-xl"></i>
-                                    Horarios
-                                </h3>
-                                <div class="space-y-2">
-                                    <p class="text-sm text-gray-600">Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00</p>
-                                    <p class="text-sm text-gray-600">Sábados: 8:00 - 13:00</p>
-                                </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
+                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
+                                <i class="ri-time-line text-red-600 text-xl"></i>
+                                Horarios
+                            </h3>
+                            <div class="space-y-2">
+                                <p class="text-sm text-gray-600">Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00</p>
+                                <p class="text-sm text-gray-600">Sábados: 8:00 - 13:00</p>
                             </div>
-                            <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
-                                <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                    <i class="ri-mail-send-line text-red-600 text-xl"></i>
-                                    Consultas
-                                </h3>
-                                <div class="space-y-2">
-                                    <p class="text-sm text-gray-600">Envianos tu consulta por email.</p>
-                                    <a href="mailto:info@derkayvargas.com.ar" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
-                                        <i class="ri-mail-line"></i>
-                                        info@derkayvargas.com.ar
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
+                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
+                                <i class="ri-mail-send-line text-red-600 text-xl"></i>
+                                Consultas
+                            </h3>
+                            <div class="space-y-2">
+                                <p class="text-sm text-gray-600">Envianos tu consulta por email.</p>
+                                <a href="mailto:info@derkayvargas.com.ar" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
+                                    <i class="ri-mail-line"></i>
+                                    info@derkayvargas.com.ar
+                                </a>
                             </div>
                         </div>
                     </div>
-                    <!-- Form -->
-                    <div class="order-1 lg:order-2 bg-white rounded-xl shadow-lg p-8 transition-shadow h-full">
+
+                    <!-- Form - Columna derecha en desktop, primera en móvil -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 transition-shadow h-full order-1 lg:order-2">
                         <Form type='contacto'/>
                     </div>
                 </div>
@@ -107,24 +107,30 @@ import 'swiper/css/pagination';
                             <div class="swiper-slide">
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
                                     <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
-                                        <GoogleMap location="resistencia"/>
+                                        <GoogleMap location="saenz-pena"/>
                                     </div>
                                     <div class="bg-white rounded-xl p-8 flex flex-col justify-center">
                                         <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Casa Central</h3>
                                         <div class="space-y-4">
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-map-pin-line text-red-600 text-xl"></i>
-                                                Av. 25 de Mayo 1515 - Resistencia
+                                                Belgrano 872 (Calle 10 esq. 19) - Sáenz Peña, Chaco
                                             </p>
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-phone-line text-red-600 text-xl"></i>
-                                                (362) 446-8400
+                                                <a href="tel:+5493644423550" class="hover:text-[#eb0a1e] transition-colors">
+                                                    3644-423550
+                                                </a>
+                                                |
+                                                <a href="tel:+5493644420566" class="hover:text-[#eb0a1e] transition-colors">
+                                                    3644-420566
+                                                </a>
                                             </p>
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-time-line text-red-600 text-xl"></i>
                                                 Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00
                                             </p>
-                                            <a href="https://maps.app.goo.gl/7NQWKHYKFHXhHwmt7" 
+                                            <a href="https://maps.app.goo.gl/zh1dq8qL3qUrU22p7" 
                                                target="_blank" 
                                                class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors mt-4">
                                                 <i class="ri-navigation-line"></i>
@@ -135,28 +141,38 @@ import 'swiper/css/pagination';
                                 </div>
                             </div>
 
-                            <!-- Villa Ángela -->
+                            <!-- Resistencia -->
                             <div class="swiper-slide">
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
                                     <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
-                                        <GoogleMap location="villa-angela"/>
+                                        <GoogleMap location="resistencia"/>
                                     </div>
                                     <div class="bg-white rounded-xl p-8 flex flex-col justify-center">
-                                        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Sucursal Villa Ángela</h3>
+                                        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Sucursal Resistencia</h3>
                                         <div class="space-y-4">
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-map-pin-line text-red-600 text-xl"></i>
-                                                Ruta 95 y Güemes - Villa Ángela
+                                                Ruta Nicolas Avellaneda Km 11,9 - Resistencia, Chaco
                                             </p>
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-phone-line text-red-600 text-xl"></i>
-                                                (3735) 15-466100
+                                                <a href="tel:+5493625270614" class="hover:text-[#eb0a1e] transition-colors">
+                                                    3625-270614
+                                                </a>
+                                                |
+                                                <a href="tel:+5493624870100" class="hover:text-[#eb0a1e] transition-colors">
+                                                    3624-870100
+                                                </a>
+                                                |
+                                                <a href="tel:+5493624870148" class="hover:text-[#eb0a1e] transition-colors">
+                                                    3624-870148
+                                                </a>
                                             </p>
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-time-line text-red-600 text-xl"></i>
                                                 Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00
                                             </p>
-                                            <a href="https://maps.app.goo.gl/kNXrFaVNGvSSDpcb8" 
+                                            <a href="https://maps.app.goo.gl/65cJvjc7wN85H2JKA" 
                                                target="_blank" 
                                                class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors mt-4">
                                                 <i class="ri-navigation-line"></i>
@@ -178,17 +194,23 @@ import 'swiper/css/pagination';
                                         <div class="space-y-4">
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-map-pin-line text-red-600 text-xl"></i>
-                                                Ruta 89 y Monseñor de Carlo - Charata
+                                                Ruta 89 Km. 74 - Charata, Chaco
                                             </p>
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-phone-line text-red-600 text-xl"></i>
-                                                (364) 15-4580334
+                                                <a href="+5493731639760">
+                                                    3731-639760
+                                                </a>
+                                                |
+                                                <a href="+5493731458844">
+                                                    3731-458844
+                                                </a>
                                             </p>
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-time-line text-red-600 text-xl"></i>
                                                 Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00
                                             </p>
-                                            <a href="https://maps.app.goo.gl/CsqSjquF9VDeLEVR9" 
+                                            <a href="https://maps.app.goo.gl/ENbgNXDnMqV97yvw5" 
                                                target="_blank" 
                                                class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors mt-4">
                                                 <i class="ri-navigation-line"></i>
@@ -199,28 +221,30 @@ import 'swiper/css/pagination';
                                 </div>
                             </div>
 
-                            <!-- Sáenz Peña -->
+                            <!-- Villa Ángela -->
                             <div class="swiper-slide">
                                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
                                     <div class="bg-white rounded-xl shadow-lg overflow-hidden h-[400px]">
-                                        <GoogleMap location="saenz-pena"/>
+                                        <GoogleMap location="villa-angela"/>
                                     </div>
                                     <div class="bg-white rounded-xl p-8 flex flex-col justify-center">
-                                        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Sucursal Sáenz Peña</h3>
+                                        <h3 class="text-2xl font-bold mb-6 text-gray-800 border-b pb-4">Sucursal Villa Ángela</h3>
                                         <div class="space-y-4">
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-map-pin-line text-red-600 text-xl"></i>
-                                                Ruta 16 km 173.5 - Sáenz Peña
+                                                Av. 25 de Mayo 1101 - Villa Ángela, Chaco
                                             </p>
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-phone-line text-red-600 text-xl"></i>
-                                                (364) 15-4580334
+                                                <a href="tel:+5493735423200" class="hover:text-[#eb0a1e] transition-colors">
+                                                    3735-423200
+                                                </a>
                                             </p>
                                             <p class="flex items-center gap-3 text-gray-600">
                                                 <i class="ri-time-line text-red-600 text-xl"></i>
                                                 Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00
                                             </p>
-                                            <a href="https://maps.app.goo.gl/uPCCPCBBPVcytN8v8" 
+                                            <a href="https://maps.app.goo.gl/kNXrFaVNGvSSDpcb8" 
                                                target="_blank" 
                                                class="inline-flex items-center gap-2 text-red-600 hover:text-red-700 transition-colors mt-4">
                                                 <i class="ri-navigation-line"></i>
@@ -241,11 +265,13 @@ import 'swiper/css/pagination';
 
 <script>
     import Swiper from 'swiper';
-    import { Pagination, Autoplay } from 'swiper/modules';
+    import {EffectFade, Pagination, Autoplay } from 'swiper/modules';
 
     const swiper = new Swiper('.sucursalesSwiper', {
-        modules: [Pagination, Autoplay],
+        modules: [EffectFade, Pagination, Autoplay],
         spaceBetween: 30,
+        loop: true,
+        effect: 'fade',
         centeredSlides: true,
         autoplay: {
             delay: 6000,
