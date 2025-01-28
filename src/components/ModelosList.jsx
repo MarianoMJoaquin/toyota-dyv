@@ -638,11 +638,11 @@ export default function ModelosList() {
                 max={Math.max(...(modelos.length > 0 ? modelos.map(m => m.defaultPrice?.amount || 100000000) : [100000000]))}
                 values={precioRango}
                 onChange={(values) => setPrecioRango(values)}
-                renderTrack={({ props, children }) => (
+                renderTrack={({ props: trackProps, children }) => (
                   <div
-                    {...props}
+                    {...trackProps}
                     style={{
-                      ...props.style,
+                      ...trackProps.style,
                       height: "5px",
                       background: "#d1d5db",
                       borderRadius: "5px",
@@ -651,11 +651,11 @@ export default function ModelosList() {
                     {children}
                   </div>
                 )}
-                renderThumb={({ props, index }) => (
+                renderThumb={({ props: thumbProps, index }) => (
                   <div
-                    {...props}
+                    {...thumbProps}
                     style={{
-                      ...props.style,
+                      ...thumbProps.style,
                       height: "12px",
                       width: "12px",
                       backgroundColor: "#eb0a1e",

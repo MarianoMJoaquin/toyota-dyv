@@ -426,7 +426,7 @@ export default function AutoDetalles({ slug }) {
               Más información
             </h3>
 
-            <GoogleMap />
+            <GoogleMap location="resistencia"/>
           </div>
         </div>
       </div>

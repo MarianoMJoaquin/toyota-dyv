@@ -17,14 +17,14 @@ export default function UsadosList() {
   const [filtroAnioHasta, setFiltroAnioHasta] = useState("");
 
   // Rango de precios
-  const [rangoPrecios, setRangoPrecios] = useState([0, 60000000]);
-  const minPrecio = 0;
-  const maxPrecio = 60000000;
+  const [rangoPrecios, setRangoPrecios] = useState([0, 60000000]); // Valor por defecto temporal
+  const [minPrecio, setMinPrecio] = useState(0);
+  const [maxPrecio, setMaxPrecio] = useState(60000000); // Valor por defecto temporal
 
   // Rango de kilómetros
-  const [rangoKilometros, setRangoKilometros] = useState([0, 500000]);
-  const minKilometros = 0;
-  const maxKilometros = 500000;
+  const [rangoKilometros, setRangoKilometros] = useState([0, 500000]); // Valor por defecto temporal
+  const [minKilometros, setMinKilometros] = useState(0);
+  const [maxKilometros, setMaxKilometros] = useState(500000); // Valor por defecto temporal
 
   const [autosFiltrados, setAutosFiltrados] = useState([]);
   const [paginaActual, setPaginaActual] = useState(1);
@@ -48,11 +48,34 @@ export default function UsadosList() {
           "https://panelweb.derkayvargas.com/api/usados?visible=1"
         );
         const data = await respuesta.json();
-        setAutos(data.data);
-        setAutosFiltrados(data.data);
+        
+        if (data.data && data.data.length > 0) {
+          // Calcular precios min/max
+          const precios = data.data.map(auto => auto.precio || 0);
+          const precioMinimo = Math.min(...precios);
+          const precioMaximo = Math.max(...precios);
+          
+          // Calcular kilómetros min/max
+          const kilometros = data.data.map(auto => auto.km || 0);
+          const kmMinimo = Math.min(...kilometros);
+          const kmMaximo = Math.max(...kilometros);
+          
+          // Asegurar que los valores mínimos y máximos sean diferentes
+          setMinPrecio(precioMinimo);
+          setMaxPrecio(precioMaximo > precioMinimo ? precioMaximo : precioMinimo + 1000000);
+          setRangoPrecios([precioMinimo, precioMaximo > precioMinimo ? precioMaximo : precioMinimo + 1000000]);
+          
+          setMinKilometros(kmMinimo);
+          setMaxKilometros(kmMaximo > kmMinimo ? kmMaximo : kmMinimo + 1000);
+          setRangoKilometros([kmMinimo, kmMaximo > kmMinimo ? kmMaximo : kmMinimo + 1000]);
+          
+          setAutos(data.data);
+          setAutosFiltrados(data.data);
+        }
         setCargando(false);
       } catch (error) {
         console.error("Error al cargar los autos:", error);
+        setCargando(false);
       }
     };
 
@@ -701,11 +724,11 @@ export default function UsadosList() {
                     setPaginaActual(1);
                     autoSeleccionado && setAutoSeleccionado(null);
                   }}
-                  renderTrack={({ props, children }) => (
+                  renderTrack={({ props: trackProps, children }) => (
                     <div
-                      {...props}
+                      {...trackProps}
                       style={{
-                        ...props.style,
+                        ...trackProps.style,
                         height: "5px",
                         background: "#d1d5db",
                         borderRadius: "5px",
@@ -714,11 +737,11 @@ export default function UsadosList() {
                       {children}
                     </div>
                   )}
-                  renderThumb={({ props, index }) => (
+                  renderThumb={({ props: thumbProps, index }) => (
                     <div
-                      {...props}
+                      {...thumbProps}
                       style={{
-                        ...props.style,
+                        ...thumbProps.style,
                         height: "12px",
                         width: "12px",
                         backgroundColor: "#eb0a1e",
@@ -752,11 +775,11 @@ export default function UsadosList() {
                     setPaginaActual(1);
                     autoSeleccionado && setAutoSeleccionado(null);
                   }}
-                  renderTrack={({ props, children }) => (
+                  renderTrack={({ props: trackProps, children }) => (
                     <div
-                      {...props}
+                      {...trackProps}
                       style={{
-                        ...props.style,
+                        ...trackProps.style,
                         height: "5px",
                         background: "#d1d5db",
                         borderRadius: "5px",
@@ -765,11 +788,11 @@ export default function UsadosList() {
                       {children}
                     </div>
                   )}
-                  renderThumb={({ props, index }) => (
+                  renderThumb={({ props: thumbProps, index }) => (
                     <div
-                      {...props}
+                      {...thumbProps}
                       style={{
-                        ...props.style,
+                        ...thumbProps.style,
                         height: "12px",
                         width: "12px",
                         backgroundColor: "#eb0a1e",
@@ -1488,11 +1511,11 @@ export default function UsadosList() {
                         setPaginaActual(1);
                         autoSeleccionado && setAutoSeleccionado(null);
                       }}
-                      renderTrack={({ props, children }) => (
+                      renderTrack={({ props: trackProps, children }) => (
                         <div
-                          {...props}
+                          {...trackProps}
                           style={{
-                            ...props.style,
+                            ...trackProps.style,
                             height: "5px",
                             background: "#d1d5db",
                             borderRadius: "5px",
@@ -1501,11 +1524,11 @@ export default function UsadosList() {
                           {children}
                         </div>
                       )}
-                      renderThumb={({ props, index }) => (
+                      renderThumb={({ props: thumbProps, index }) => (
                         <div
-                          {...props}
+                          {...thumbProps}
                           style={{
-                            ...props.style,
+                            ...thumbProps.style,
                             height: "12px",
                             width: "12px",
                             backgroundColor: "#eb0a1e",
@@ -1539,11 +1562,11 @@ export default function UsadosList() {
                         setPaginaActual(1);
                         autoSeleccionado && setAutoSeleccionado(null);
                       }}
-                      renderTrack={({ props, children }) => (
+                      renderTrack={({ props: trackProps, children }) => (
                         <div
-                          {...props}
+                          {...trackProps}
                           style={{
-                            ...props.style,
+                            ...trackProps.style,
                             height: "5px",
                             background: "#d1d5db",
                             borderRadius: "5px",
@@ -1552,11 +1575,11 @@ export default function UsadosList() {
                           {children}
                         </div>
                       )}
-                      renderThumb={({ props, index }) => (
+                      renderThumb={({ props: thumbProps, index }) => (
                         <div
-                          {...props}
+                          {...thumbProps}
                           style={{
-                            ...props.style,
+                            ...thumbProps.style,
                             height: "12px",
                             width: "12px",
                             backgroundColor: "#eb0a1e",
