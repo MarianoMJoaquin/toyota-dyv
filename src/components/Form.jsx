@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
-const Form = ({ type = 'contacto' }) => {
+const Form = ({ type = 'contacto', slug }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -9,6 +10,7 @@ const Form = ({ type = 'contacto' }) => {
     message: '',
     sucursal: '',
     from: type,
+    modelo: ''
   });
 
   const [status, setStatus] = useState({
@@ -19,12 +21,64 @@ const Form = ({ type = 'contacto' }) => {
 
   const [progress, setProgress] = useState(0);
 
+  //Sucursales DyV
   const sucursales = [
     'Sáenz Peña',
     'Resistencia',
     'Charata',
     'Villa Ángela'
   ];
+
+  //Modelos TPA
+  const modelosTpa = [
+    'Flex - Usado/0km',
+    'Yaris XS CVT 5P',
+    'Hilux 4x2 DX DC',
+    'Hilux 4x4 DX DC',
+    'Corolla XLI CVT',
+    'Corolla Cross XLI CVT',
+    'Corolla Cross XEI HEV ECVT'
+  ];
+
+  //Modelos Convencionales (obtenidos de la API de vehículos de manera dinámica)
+  const [modelosConvencionales, setModelosConvencionales] = useState([]);
+
+  // Nuevo estado para almacenar información del usado
+  const [vehiculoUsado, setVehiculoUsado] = useState(null);
+  const [modelosUsados, setModelosUsados] = useState([]);
+
+  useEffect(() => {
+    const fetchVehicles = async () => {
+      try {
+        if (type === 'contacto' || type === 'financiacion') {
+          const response = await axios.get('/api/vehicles');
+          const vehiculos = response.data.map(vehicle => vehicle.name);
+          setModelosConvencionales(vehiculos);
+        } else if (type === 'usados') {
+          if (slug) {
+            const response = await axios.get(`https://panelweb.derkayvargas.com/api/usados/${slug}`);
+            setVehiculoUsado(response.data);
+            setFormData(prev => ({
+              ...prev,
+              modelo: `${response.data.marca} ${response.data.modelo}`
+            }));
+          } else {
+            const response = await axios.get('https://panelweb.derkayvargas.com/api/usados');
+            // Asegurarse de que response.data sea un array
+            const usados = Array.isArray(response.data) ? response.data : 
+                          response.data.data ? response.data.data : []; // Por si viene en formato { data: [...] }
+            setModelosUsados(usados);
+          }
+        }
+      } catch (error) {
+        console.error('Error al cargar los vehículos:', error);
+        // Inicializar como array vacío en caso de error
+        if (type === 'usados') setModelosUsados([]);
+      }
+    };
+
+    fetchVehicles();
+  }, [type, slug]);
 
   const handleChange = (e) => {
     setFormData({
@@ -39,6 +93,7 @@ const Form = ({ type = 'contacto' }) => {
     if (!formData.email) return 'El email es requerido';
     if (!formData.message) return 'El mensaje es requerido';
     if (!formData.sucursal) return 'Debe seleccionar una sucursal';
+    if ((type === 'tpa' || type === 'contacto') && !formData.modelo) return 'Debe seleccionar un modelo';
     return null;
   };
 
@@ -65,6 +120,56 @@ const Form = ({ type = 'contacto' }) => {
     return interestMap[type] || 'CONVENCIONAL';
   };
 
+  // Función para obtener el código de vehículo según el modelo elegido que coincide con la API de Vehicles
+  const getVehicleCode = (modelo) => {
+    // Normalizar el modelo (quitar acentos, convertir a minúsculas)
+    const normalizeText = (text) => {
+      return text.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    };
+
+    const normalizedModel = normalizeText(modelo);
+
+    // Reglas de matching más específicas para que coincida con el modelo correcto en la API de Vehicles
+    const modelRules = [
+      {
+        match: (model) => /\bcorolla\s+cross\b/.test(model),
+        code: '245'
+      },
+      {
+        match: (model) => /\bcorolla\b/.test(model) && !model.includes('cross'),
+        code: '2'
+      },
+      {
+        match: (model) => /\byaris\b/.test(model),
+        code: '227'
+      },
+      {
+        match: (model) => /\bhilux\b/.test(model),
+        code: '1'
+      },
+      {
+        match: (model) => /\bsw4\b/.test(model),
+        code: '226'
+      },
+      {
+        match: (model) => /\bhiace\b/.test(model),
+        code: '224'
+      }
+    ];
+
+    // Buscar coincidencia
+    const match = modelRules.find(rule => rule.match(normalizedModel));
+    
+    if (match) {
+      return match.code;
+    }
+
+    console.log(`No se encontró código para el modelo: ${modelo}`);
+    return "";
+  };
+
   useEffect(() => {
     let progressInterval;
     if (status.loading) {
@@ -72,7 +177,7 @@ const Form = ({ type = 'contacto' }) => {
       progressInterval = setInterval(() => {
         setProgress(prev => {
           if (prev >= 90) return 90; // Se mantiene en 90% hasta que termine el envío
-          return prev + Math.random() * 15; // Incrementos aleatorios más naturales
+          return prev + Math.random() * 10; // Incremento aleatorio entre 0 y 10 para simular progreso variable (para que sea mas natural y no se vea falso. Si se quiere ajustar el tiempo de envío, se puede cambiar el 10 por un número más grande)
         });
       }, 200);
     } else if (status.success) {
@@ -145,9 +250,13 @@ const Form = ({ type = 'contacto' }) => {
         },
         "vehicles": [
           {
-            "make": "",
-            "model": "",
-            "code": ""
+            "make": type === 'usados' ? 
+              (vehiculoUsado?.marca || formData.modelo.split(' ')[0]) : 
+              "Toyota",
+            "model": type === 'usados' ? 
+              (vehiculoUsado?.modelo || formData.modelo.split(' ').slice(1).join(' ')) : 
+              ((type === 'tpa' || type === 'contacto' || type === 'financiacion') ? formData.modelo : ""),
+            "code": (type === 'contacto' || type === 'financiacion') ? getVehicleCode(formData.modelo) : ""
           }
         ],
         "provider": {
@@ -166,6 +275,7 @@ const Form = ({ type = 'contacto' }) => {
       phone: formData.phone,
       email: formData.email,
       message: formData.message,
+      sucursal: formData.sucursal,
       from: formData.from
     };
 
@@ -183,7 +293,8 @@ const Form = ({ type = 'contacto' }) => {
         email: '',
         message: '',
         sucursal: '',
-        from: type
+        from: type,
+        modelo: ''
       });
     } catch (error) {
       setProgress(0);
@@ -329,6 +440,108 @@ const Form = ({ type = 'contacto' }) => {
           </label>
         </div>
 
+        {/* Nuevo campo select para modelos, solo visible cuando type es 'tpa' */}
+        {type === 'tpa' && (
+          <div className="relative">
+            <select
+              name="modelo"
+              id="modelo"
+              value={formData.modelo}
+              onChange={handleChange}
+              className="text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+              required
+            >
+              <option value="" disabled>Seleccione un modelo</option>
+              {modelosTpa.map(modelo => (
+                <option key={modelo} value={modelo}>
+                  {modelo}
+                </option>
+              ))}
+            </select>
+            <label
+              htmlFor="modelo"
+              className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-focus:text-red-500"
+            >
+              Modelo
+            </label>
+          </div>
+        )}
+
+        {/* Nuevo select para modelos convencionales */}
+        {(type === 'contacto' || type === 'financiacion') && (
+          <div className="relative">
+            <select
+              name="modelo"
+              id="modelo"
+              value={formData.modelo}
+              onChange={handleChange}
+              className="text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+              required
+            >
+              <option value="" disabled>Seleccione un modelo</option>
+              {modelosConvencionales.map(modelo => (
+                <option key={modelo} value={modelo}>
+                  {modelo}
+                </option>
+              ))}
+            </select>
+            <label
+              htmlFor="modelo"
+              className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-focus:text-red-500"
+            >
+              Modelo
+            </label>
+          </div>
+        )}
+
+        {/* Modificar la sección de selección de modelo para incluir usados */}
+        {type === 'usados' && !slug && Array.isArray(modelosUsados) && modelosUsados.length > 0 && (
+          <div className="relative">
+            <select
+              name="modelo"
+              id="modelo"
+              value={formData.modelo}
+              onChange={handleChange}
+              className="text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+              required
+            >
+              <option value="" disabled>Seleccione un modelo</option>
+              {modelosUsados.map(usado => (
+                <option key={usado.id || `${usado.marca}-${usado.modelo}`} value={`${usado.marca} ${usado.modelo}`}>
+                  {usado.marca} {usado.modelo}
+                </option>
+              ))}
+            </select>
+            <label
+              htmlFor="modelo"
+              className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-focus:text-red-500"
+            >
+              Modelo
+            </label>
+          </div>
+        )}
+
+        {/* Si hay un slug, mostramos el modelo como texto en lugar de select */}
+        {type === 'usados' && slug && vehiculoUsado && (
+          
+          <div className="relative">
+            <input
+              type="text"
+              name="modelo"
+              id="modelo"
+              value={`${vehiculoUsado.data.marca} ${vehiculoUsado.data.modelo}`}
+              disabled
+              className="peer w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50"
+            />
+            <label
+              htmlFor="modelo"
+              className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600"
+            >
+              Modelo
+            </label>
+          </div>
+        )}
+
         <div className="relative">
           <textarea
             name="message"
@@ -373,6 +586,12 @@ const Form = ({ type = 'contacto' }) => {
       </div>
     </form>
   );
+};
+
+// Definir los tipos de propiedades esperadas en el componente
+Form.propTypes = {
+  type: PropTypes.oneOf(['contacto', 'tpa', 'usados', 'financiacion', 'la_voz_del_cliente']),
+  slug: PropTypes.string
 };
 
 export default Form;
