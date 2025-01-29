@@ -929,7 +929,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
           <div
             id="viewer"
             ref={viewerRef}
-            className="aspect-video w-full cursor-grab bg-cover bg-no-repeat"
+            className="aspect-video w-full lg:w-3/4 cursor-grab bg-cover bg-no-repeat bg-center"
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseLeave={handleMouseLeave}
