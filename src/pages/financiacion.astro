@@ -1,0 +1,235 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+---
+
+<Layout title="Financiación - Derka y Vargas" theme_color="#EB0A1E" image="https://i.imgur.com/AabFmC0.png">
+  <main class="overflow-hidden">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-white">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50">
+        <Image
+          src="/images/financiacion/hero-banner.jpg"
+          alt="Financiación Banner"
+          class="w-full h-full object-cover -z-10 ukiyo"
+          width={1920}
+          height={1080}
+          loading={"lazy"}
+          decoding={"async"}
+        />
+      </div>
+      <div data-aos="fade-up" class="container mx-auto px-4 text-center z-10">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          Financiá tu próximo Toyota
+        </h1>
+        <p class="text-xl mb-8">
+          Descubrí todas las opciones de financiación que tenemos para vos
+        </p>
+        <a
+          href="#planes"
+          class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full transition-colors duration-300"
+        >
+          Ver planes
+        </a>
+      </div>
+    </section>
+
+    <!-- Planes Section -->
+    <section id="planes" class="py-24 px-4" data-aos="fade-up">
+      <div class="container mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-red-600 mb-4">
+            Nuestros Planes
+          </h2>
+          <p class="text-xl text-gray-600">
+            Elegí la opción que mejor se adapte a tus necesidades
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="group bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-800">Toyota Plan</h2>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Es un plan de ahorro que te permite programar la compra de tu Toyota 0km. Podés elegir el modelo que más te guste y pagar cuotas fijas y en pesos.
+            </p>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Cuotas fijas y en pesos</li>
+              <li>Sin interés</li>
+              <li>Planes de 70/30 y 80/20</li>
+              <li>Entrega pactada</li>
+            </ul>
+            <div class="mt-6">
+              <a href="#contacto" class="inline-flex items-center text-red-600 font-semibold hover:text-red-700">
+                Conocé más
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="group bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100">
+            <div class="flex items-center mb-6">
+              <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+              </div>
+              <h2 class="text-2xl font-bold text-gray-800">Financiación Bancaria</h2>
+            </div>
+            <p class="text-gray-600 mb-4">
+              Trabajamos con los principales bancos del país para ofrecerte las mejores opciones de financiación.
+            </p>
+            <ul class="list-disc list-inside text-gray-600 space-y-2">
+              <li>Hasta 60 cuotas</li>
+              <li>Tasa preferencial</li>
+              <li>Mínimos requisitos</li>
+              <li>Rápida aprobación</li>
+            </ul>
+            <div class="mt-6">
+              <a href="#contacto" class="inline-flex items-center text-red-600 font-semibold hover:text-red-700">
+                Conocé más
+                <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-24 px-4 bg-gray-50" data-aos="fade-up">
+      <div class="container mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-red-600 mb-4">
+            ¿Por qué financiar con nosotros?
+          </h2>
+          <p class="text-xl text-gray-600">
+            Las ventajas que nos hacen diferentes
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-timer-line text-4xl text-red-600 mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Rápida aprobación</h3>
+            <p class="text-gray-600">Respuesta en menos de 24 horas</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-secure-payment-line text-4xl text-red-600 mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Cuotas accesibles</h3>
+            <p class="text-gray-600">Planes adaptados a tu presupuesto</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-file-list-3-line text-4xl text-red-600 mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Mínimos requisitos</h3>
+            <p class="text-gray-600">Proceso simple y transparente</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-24 px-4" data-aos="fade-up">
+      <div class="container mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-red-600 mb-4">
+            Preguntas Frecuentes
+          </h2>
+          <p class="text-xl text-gray-600">Todo lo que necesitás saber</p>
+        </div>
+        <div class="space-y-4 max-w-3xl mx-auto" id="faq-container">
+          {[
+            {
+              question: "¿Qué documentación necesito?",
+              answer: "DNI, comprobante de domicilio y últimos 3 recibos de sueldo o declaración de ingresos."
+            },
+            {
+              question: "¿Cuál es el plazo máximo de financiación?",
+              answer: "Ofrecemos planes de hasta 60 cuotas según el modelo y tipo de financiación elegida."
+            },
+            {
+              question: "¿Puedo cancelar anticipadamente?",
+              answer: "Sí, podés realizar cancelaciones parciales o totales sin penalidad."
+            }
+          ].map((faq) => (
+            <div class="faq-item bg-white rounded-xl shadow-lg">
+              // ...existing FAQ item code...
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Contacto Section -->
+    <div id="contacto" class="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 border border-gray-100">
+      <h2 class="text-3xl font-bold text-center text-gray-800 mb-8">¿Querés más información?</h2>
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="space-y-2">
+          <label class="text-sm font-medium text-gray-700" for="nombre">Nombre completo</label>
+          <input 
+            type="text" 
+            id="nombre" 
+            name="nombre" 
+            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200"
+            placeholder="Tu nombre"
+          >
+        </div>
+        <div class="space-y-2">
+          <label class="text-sm font-medium text-gray-700" for="telefono">Teléfono</label>
+          <input type="tel" id="telefono" name="telefono" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200" placeholder="Tu teléfono">
+        </div>
+        <div class="md:col-span-2 space-y-2">
+          <label class="text-sm font-medium text-gray-700" for="email">Email</label>
+          <input type="email" id="email" name="email" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200" placeholder="Tu email">
+        </div>
+        <div class="md:col-span-2 space-y-2">
+          <label class="text-sm font-medium text-gray-700" for="mensaje">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" rows="4" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200" placeholder="Tu mensaje"></textarea>
+        </div>
+        <div class="md:col-span-2 text-center">
+          <button type="submit" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-red-600 hover:bg-red-700 md:py-4 md:text-lg md:px-10 transition-all duration-200 transform hover:scale-105">
+            Enviar consulta
+            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  // ...existing FAQ functionality...
+</script>
+
+<style>
+  .section {
+    @apply py-12;
+  }
+  
+  input:focus, textarea:focus {
+    @apply outline-none shadow-lg;
+  }
+  
+  .group:hover h2 {
+    @apply text-red-600 transition-colors duration-200;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out;
+  }
+</style>
