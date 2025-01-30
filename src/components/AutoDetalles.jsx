@@ -20,6 +20,7 @@ import "swiper/css/zoom";
 import "../assets/styles/swiperAutoDetalles.css";
 
 import GoogleMap from "./GoogleMap.jsx";
+import Form from "./Form.jsx";
 
 export default function AutoDetalles({ slug }) {
   const [detallesAuto, setDetallesAuto] = useState(null);
@@ -426,7 +427,9 @@ export default function AutoDetalles({ slug }) {
               Más información
             </h3>
 
-            <GoogleMap location="resistencia"/>
+            <div className="relative">
+              <GoogleMap location="resistencia"/>
+            </div>
           </div>
         </div>
       </div>
@@ -452,8 +455,9 @@ export default function AutoDetalles({ slug }) {
               puntos y cuentan con una garantía de 1 año o 200.000 km, lo que
               ocurra primero.
             </p>
-            </div>
+          </div>
 
+          <Form tipo="usados" slug={slug} />
       </div>
     </>
   );

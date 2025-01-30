@@ -638,7 +638,7 @@ export default function ModeloDetalles({ slug }) {
                 data-aos="fade-up"
                 data-aos-delay="200"
               >
-                <a href="/concesionarias">
+                <a href="/contacto#sucursales">
                   <div className="card-item border border-gray-300 p-8 hover:border-[#eb001b] rounded-2xl transition-all duration-300 h-full">
                     <span className="inline-block mb-4">
                       <i className="ri-map-pin-line text-3xl text-[#eb001b] bg-red-50 p-4 rounded-full"></i>

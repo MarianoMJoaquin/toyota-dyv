@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import PropTypes from 'prop-types';
 
-const Form = ({ type = 'contacto', slug }) => {
+
+const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional, por defecto es un string vacío
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     message: '',
     sucursal: '',
-    from: type,
+    from: tipo,
     modelo: ''
   });
 
@@ -50,11 +50,11 @@ const Form = ({ type = 'contacto', slug }) => {
   useEffect(() => {
     const fetchVehicles = async () => {
       try {
-        if (type === 'contacto' || type === 'financiacion') {
+        if (tipo === 'contacto' || tipo === 'financiacion') {
           const response = await axios.get('/api/vehicles');
           const vehiculos = response.data.map(vehicle => vehicle.name);
           setModelosConvencionales(vehiculos);
-        } else if (type === 'usados') {
+        } else if (tipo === 'usados') {
           if (slug) {
             const response = await axios.get(`https://panelweb.derkayvargas.com/api/usados/${slug}`);
             setVehiculoUsado(response.data);
@@ -73,12 +73,12 @@ const Form = ({ type = 'contacto', slug }) => {
       } catch (error) {
         console.error('Error al cargar los vehículos:', error);
         // Inicializar como array vacío en caso de error
-        if (type === 'usados') setModelosUsados([]);
+        if (tipo === 'usados') setModelosUsados([]);
       }
     };
 
     fetchVehicles();
-  }, [type, slug]);
+  }, [tipo, slug]);
 
   const handleChange = (e) => {
     setFormData({
@@ -93,7 +93,7 @@ const Form = ({ type = 'contacto', slug }) => {
     if (!formData.email) return 'El email es requerido';
     if (!formData.message) return 'El mensaje es requerido';
     if (!formData.sucursal) return 'Debe seleccionar una sucursal';
-    if ((type === 'tpa' || type === 'contacto') && !formData.modelo) return 'Debe seleccionar un modelo';
+    if ((tipo === 'tpa' || tipo === 'contacto') && !formData.modelo) return 'Debe seleccionar un modelo';
     return null;
   };
 
@@ -109,7 +109,7 @@ const Form = ({ type = 'contacto', slug }) => {
   };
 
   // Agregar función para determinar el interest según el type
-  const getInterest = (type) => {
+  const getInterest = (tipo) => {
     const interestMap = {
       'tpa': 'PLAN',
       'usados': 'USADO',
@@ -117,7 +117,7 @@ const Form = ({ type = 'contacto', slug }) => {
       'financiacion': 'CONVENCIONAL',
       'la_voz_del_cliente': 'CONVENCIONAL'
     };
-    return interestMap[type] || 'CONVENCIONAL';
+    return interestMap[tipo] || 'CONVENCIONAL';
   };
 
   // Función para obtener el código de vehículo según el modelo elegido que coincide con la API de Vehicles
@@ -250,13 +250,13 @@ const Form = ({ type = 'contacto', slug }) => {
         },
         "vehicles": [
           {
-            "make": type === 'usados' ? 
-              (vehiculoUsado?.marca || formData.modelo.split(' ')[0]) : 
+            "make": tipo === 'usados' ? 
+              (vehiculoUsado?.data.marca || formData.modelo.split(' ')[0]) : 
               "Toyota",
-            "model": type === 'usados' ? 
-              (vehiculoUsado?.modelo || formData.modelo.split(' ').slice(1).join(' ')) : 
-              ((type === 'tpa' || type === 'contacto' || type === 'financiacion') ? formData.modelo : ""),
-            "code": (type === 'contacto' || type === 'financiacion') ? getVehicleCode(formData.modelo) : ""
+            "model": tipo === 'usados' ? 
+              (vehiculoUsado?.data.modelo || formData.modelo.split(' ').slice(1).join(' ')) : 
+              ((tipo === 'tpa' || tipo === 'contacto' || tipo === 'financiacion') ? formData.modelo : ""),
+            "code": (tipo === 'contacto' || tipo === 'financiacion') ? getVehicleCode(formData.modelo) : ""
           }
         ],
         "provider": {
@@ -293,7 +293,7 @@ const Form = ({ type = 'contacto', slug }) => {
         email: '',
         message: '',
         sucursal: '',
-        from: type,
+        from: tipo,
         modelo: ''
       });
     } catch (error) {
@@ -440,8 +440,8 @@ const Form = ({ type = 'contacto', slug }) => {
           </label>
         </div>
 
-        {/* Nuevo campo select para modelos, solo visible cuando type es 'tpa' */}
-        {type === 'tpa' && (
+        {/* Nuevo campo select para modelos TPA, solo visible cuando tipo es 'tpa' */}
+        {tipo === 'tpa' && (
           <div className="relative">
             <select
               name="modelo"
@@ -467,8 +467,8 @@ const Form = ({ type = 'contacto', slug }) => {
           </div>
         )}
 
-        {/* Nuevo select para modelos convencionales */}
-        {(type === 'contacto' || type === 'financiacion') && (
+        {/* Nuevo select para modelos convencionales, solo visible cuando es Convencional o Financiación */}
+        {(tipo === 'contacto' || tipo === 'financiacion') && (
           <div className="relative">
             <select
               name="modelo"
@@ -495,7 +495,7 @@ const Form = ({ type = 'contacto', slug }) => {
         )}
 
         {/* Modificar la sección de selección de modelo para incluir usados */}
-        {type === 'usados' && !slug && Array.isArray(modelosUsados) && modelosUsados.length > 0 && (
+        {tipo === 'usados' && !slug && Array.isArray(modelosUsados) && modelosUsados.length > 0 && (
           <div className="relative">
             <select
               name="modelo"
@@ -522,7 +522,7 @@ const Form = ({ type = 'contacto', slug }) => {
         )}
 
         {/* Si hay un slug, mostramos el modelo como texto en lugar de select */}
-        {type === 'usados' && slug && vehiculoUsado && (
+        {tipo === 'usados' && slug && vehiculoUsado && (
           
           <div className="relative">
             <input
@@ -586,12 +586,6 @@ const Form = ({ type = 'contacto', slug }) => {
       </div>
     </form>
   );
-};
-
-// Definir los tipos de propiedades esperadas en el componente
-Form.propTypes = {
-  type: PropTypes.oneOf(['contacto', 'tpa', 'usados', 'financiacion', 'la_voz_del_cliente']),
-  slug: PropTypes.string
 };
 
 export default Form;
