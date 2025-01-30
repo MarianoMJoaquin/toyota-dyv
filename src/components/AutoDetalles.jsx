@@ -303,13 +303,13 @@ export default function AutoDetalles({ slug }) {
 
                       {/* Botón para copiar el enlace */}
                       <div className="relative">
-                        <label for="npm-install" class="sr-only">
+                        <label for="npm-install" className="sr-only">
                           Label
                         </label>
                         <input
                           id="npm-install"
                           type="text"
-                          class="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                          className="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                           value={`https://test-website.derkayvargas.com/usados/${detallesAuto.slug}`}
                           disabled
                           readonly
@@ -348,22 +348,22 @@ export default function AutoDetalles({ slug }) {
               {/* Info de color, transmisión, combustible y UCT */}
             <div className="flex justify-center gap-4 items-center">
               <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
-                <i class="ri-palette-line text-lg text-red-500"></i>
+                <i className="ri-palette-line text-lg text-red-500"></i>
                 <p className="text-base max-sm:text-sm text-gray-600">Color</p>
                 <p className="text-lg max-sm:text-base">{capitalizar(detallesAuto.color)}</p>
               </div>
               <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
-                <i class="ri-git-branch-line text-lg text-red-500"></i>
+                <i className="ri-git-branch-line text-lg text-red-500"></i>
                 <p className="text-base max-sm:text-sm text-gray-600">Transmisión</p>
                 <p className="text-lg max-sm:text-base">{capitalizar(detallesAuto.transmision)}</p>
               </div>
               <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
-                <i class="ri-gas-station-line text-lg text-red-500"></i>
+                <i className="ri-gas-station-line text-lg text-red-500"></i>
                 <p className="text-base max-sm:text-sm text-gray-600">Combustible</p>
                 <p className="text-lg max-sm:text-base">{capitalizar(detallesAuto.combustible)}</p>
               </div>
               <div className="w-56 h-26 p-2 justify-center flex flex-col text-base rounded-lg bg-gray-200">
-                <i class="ri-car-line text-lg text-red-500"></i>
+                <i className="ri-car-line text-lg text-red-500"></i>
                 <p className="text-base max-sm:text-sm text-gray-600">UCT</p>
                 <p className="text-lg max-sm:text-base">{detallesAuto.uct === 1 ? "Sí" : "No"}</p>
               </div>
