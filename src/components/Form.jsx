@@ -31,7 +31,7 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
 
   //Modelos TPA
   const modelosTpa = [
-    'Flex - Usado/0km',
+    'Plan Flex - Usado/0km',
     'Yaris XS CVT 5P',
     'Hilux 4x2 DX DC',
     'Hilux 4x4 DX DC',
@@ -159,6 +159,62 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
       {
         match: (model) => /\bhiace\b/.test(model),
         code: '224'
+      },
+      {
+        match: (model) => /\betios\b/.test(model),
+        code: '225'
+      },
+      {
+        match: (model) => /\brav\s+4\b/.test(model),
+        code: '3'
+      },
+      {
+        match: (model) => /\bc-hr\b/.test(model),
+        code: '236'
+      },
+      {
+        match: (model) => /\bprius\b/.test(model),
+        code: '219'
+      },
+      {
+        match: (model) => /\bcamry\b/.test(model),
+        code: '5'
+      },
+      {
+        match: (model) => /\binnova\b/.test(model),
+        code: '228'
+      },
+      {
+        match: (model) => /\bland\s+cruiser\b/.test(model),
+        code: '228'
+      },
+      {
+        match: (model) => /\bland\s+cruiser\s+prado\b/.test(model),
+        code: '27'
+      },
+      {
+        match: (model) => /\byaris\s+cross\b/.test(model),
+        code: '27'
+      },
+      {
+        match: (model) => /\bplan\s+flex\b/.test(model),
+        code: '00144'
+      },
+      {
+        match: (model) => /\bfielder\b/.test(model),
+        code: '34'
+      },
+      {
+        match: (model) => /\bcrown\b/.test(model),
+        code: '263'
+      },
+      {
+        match: (model) => /\bcrown\b/.test(model),
+        code: '263'
+      },
+      {
+        match: (model) => /\bgr86\b/.test(model),
+        code: '255'
       }
     ];
 
@@ -259,7 +315,7 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             "model": tipo === 'usados' ? 
               (vehiculoUsado?.modelo || formData.modelo.split(' ').slice(1).join(' ')) : 
               ((tipo === 'tpa' || tipo === 'contacto' || tipo === 'financiacion') ? formData.modelo : ""),
-            "code": (tipo === 'contacto' || tipo === 'financiacion') ? getVehicleCode(formData.modelo) : ""
+            "code": (tipo === 'contacto' || tipo === 'financiacion' || tipo === 'usados' || tipo === 'tpa') ? getVehicleCode(formData.modelo) : ""
           }
         ],
         "provider": {
