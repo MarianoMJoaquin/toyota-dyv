@@ -57,16 +57,17 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
         } else if (tipo === 'usados') {
           if (slug) {
             const response = await axios.get(`https://panelweb.derkayvargas.com/api/usados/${slug}`);
-            setVehiculoUsado(response.data);
-            setFormData(prev => ({
+            // Acceder correctamente a los datos anidados
+            const usadoData = response.data.data;
+            setVehiculoUsado(usadoData);
+            setFormData(prev => ({ // Actualizar el modelo en el formulario con la marca y modelo del usado seleccionado
               ...prev,
-              modelo: `${response.data.marca} ${response.data.modelo}`
+              modelo: `${usadoData.marca} ${usadoData.modelo}`
             }));
           } else {
             const response = await axios.get('https://panelweb.derkayvargas.com/api/usados');
-            // Asegurarse de que response.data sea un array
-            const usados = Array.isArray(response.data) ? response.data : 
-                          response.data.data ? response.data.data : []; // Por si viene en formato { data: [...] }
+            // Asegurarse de que response.data.data sea un array
+            const usados = response.data.data || [];
             setModelosUsados(usados);
           }
         }
@@ -93,7 +94,9 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
     if (!formData.email) return 'El email es requerido';
     if (!formData.message) return 'El mensaje es requerido';
     if (!formData.sucursal) return 'Debe seleccionar una sucursal';
-    if ((tipo === 'tpa' || tipo === 'contacto') && !formData.modelo) return 'Debe seleccionar un modelo';
+    if ((tipo === 'tpa' || tipo === 'contacto' || tipo === 'financiacion' || tipo === 'usados') && !formData.modelo) {
+      return 'Debe seleccionar un modelo';
+    }
     return null;
   };
 
@@ -212,7 +215,7 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
       "prospect": {
         "requestdate": formattedDate,
         "customer": {
-          "comments": `${formData.message}. Sucursal: ${formData.sucursal}`,
+          "comments": (tipo === 'usados' && slug) ? `Interno: ${vehiculoUsado.interno}; Dominio: ${vehiculoUsado.dominio}; Mensaje del cliente: ${formData.message}` : `${formData.message}. Sucursal: ${formData.sucursal}`, // Agregar datos adicionales para usados
           "interest": getInterest(formData.from),
           "contacts": [{
             "emails": [
@@ -251,10 +254,10 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
         "vehicles": [
           {
             "make": tipo === 'usados' ? 
-              (vehiculoUsado?.data.marca || formData.modelo.split(' ')[0]) : 
+              (vehiculoUsado?.marca || formData.modelo.split(' ')[0]) : 
               "Toyota",
             "model": tipo === 'usados' ? 
-              (vehiculoUsado?.data.modelo || formData.modelo.split(' ').slice(1).join(' ')) : 
+              (vehiculoUsado?.modelo || formData.modelo.split(' ').slice(1).join(' ')) : 
               ((tipo === 'tpa' || tipo === 'contacto' || tipo === 'financiacion') ? formData.modelo : ""),
             "code": (tipo === 'contacto' || tipo === 'financiacion') ? getVehicleCode(formData.modelo) : ""
           }
@@ -269,22 +272,30 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
       }
     };
 
-    // Datos para la segunda API
+  
     const secondApiData = {
       name: formData.name,
       phone: formData.phone,
       email: formData.email,
       message: formData.message,
       sucursal: formData.sucursal,
-      from: formData.from
+      from: formData.from,
     };
 
     try {
+      // Para debugging: console.log de ambas llamadas
+      console.log('Enviando a /api/leads:', dataToSend);
+      console.log('Enviando a /api/message:', secondApiData);
+
       // Ejecutar ambas llamadas API en paralelo
       const [firstApiResponse, secondApiResponse] = await Promise.all([
         axios.post('/api/leads', dataToSend),
         axios.post('https://panelweb.derkayvargas.com/api/message', secondApiData)
       ]);
+
+      // Para debugging: console.log de las respuestas
+      console.log('Respuesta de /api/leads:', firstApiResponse);
+      console.log('Respuesta de /api/message:', secondApiResponse);
 
       setStatus({ loading: false, error: null, success: true });
       setFormData({
@@ -297,6 +308,7 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
         modelo: ''
       });
     } catch (error) {
+      console.error('Error en las llamadas API:', error);
       setProgress(0);
       setStatus({
         loading: false,
@@ -529,7 +541,7 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
               type="text"
               name="modelo"
               id="modelo"
-              value={`${vehiculoUsado.data.marca} ${vehiculoUsado.data.modelo}`}
+              value={`${vehiculoUsado.marca} ${vehiculoUsado.modelo}`}
               disabled
               className="peer w-full px-4 py-3 rounded-lg border border-gray-300 bg-gray-50"
             />
