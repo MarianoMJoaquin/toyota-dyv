@@ -134,7 +134,7 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
 
     const normalizedModel = normalizeText(modelo);
 
-    // Reglas de matching más específicas para que coincida con el modelo correcto en la API de Vehicles
+    // Reglas de matching más específicas para que coincida con el modelo correcto en la API de Vehicles y también con la API de Usados
     const modelRules = [
       {
         match: (model) => /\bcorolla\s+cross\b/.test(model),
@@ -194,7 +194,7 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
       },
       {
         match: (model) => /\byaris\s+cross\b/.test(model),
-        code: '27'
+        code: '264'
       },
       {
         match: (model) => /\bplan\s+flex\b/.test(model),
