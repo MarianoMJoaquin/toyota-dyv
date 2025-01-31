@@ -339,19 +339,11 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
     };
 
     try {
-      // Para debugging: console.log de ambas llamadas
-      console.log('Enviando a /api/leads:', dataToSend);
-      console.log('Enviando a /api/message:', secondApiData);
-
       // Ejecutar ambas llamadas API en paralelo
       const [firstApiResponse, secondApiResponse] = await Promise.all([
         axios.post('/api/leads', dataToSend),
         axios.post('https://panelweb.derkayvargas.com/api/message', secondApiData)
       ]);
-
-      // Para debugging: console.log de las respuestas
-      console.log('Respuesta de /api/leads:', firstApiResponse);
-      console.log('Respuesta de /api/message:', secondApiResponse);
 
       setStatus({ loading: false, error: null, success: true });
       setFormData({

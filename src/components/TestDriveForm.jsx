@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const TestDriveForm = () => {
@@ -8,12 +8,14 @@ const TestDriveForm = () => {
     email: '',
     sucursal: '',
     fecha_estimada: '',
-    modelo: ''
+    modelo: '',
+    from: 'web-site'
   });
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   // Opciones estáticas para el select
   const sucursales = ['Sáenz Peña', 'Resistencia', 'Charata'];
@@ -49,11 +51,7 @@ const TestDriveForm = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await axios.post('https://panelweb.derkayvargas.com/api/solicitar-test-drive/', formData, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
+      const response = await axios.post('https://panelweb.derkayvargas.com/api/solicitar-test-drive/', formData);
 
       if (response.status === 200) {
         setSubmitted(true);
@@ -63,10 +61,11 @@ const TestDriveForm = () => {
           email: '',
           sucursal: '',
           fecha_estimada: '',
-          modelo: ''
+          modelo: '',
+          from: 'web-site'
         });
         setErrors({});
-        alert('Formulario enviado con éxito');
+      
       }
     } catch (error) {
       console.error('Error al enviar el formulario:', error);
@@ -80,109 +79,212 @@ const TestDriveForm = () => {
     setIsSubmitting(false);
   };
 
+  useEffect(() => {
+    let progressInterval;
+    if (isSubmitting) {
+      setProgress(0);
+      progressInterval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 90) return 90;
+          return prev + Math.random() * 19;
+        });
+      }, 200);
+    } else if (submitted) {
+      setProgress(100);
+      setTimeout(() => setProgress(0), 1000);
+    }
+    return () => clearInterval(progressInterval);
+  }, [isSubmitting, submitted]);
+
   return (
     <div className="max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg">
       <h2 className="text-3xl font-semibold text-center mb-6">Solicitar Test Drive</h2>
+
+      {/* Mensaje de Error - Mismo estilo que Form */}
+      {Object.keys(errors).length > 0 && (
+        <div className="flex items-center gap-3 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg shadow-sm transition-all duration-300 transform translate-y-0 opacity-100 scale-100 motion-safe:transition-all motion-safe:duration-300">
+          <div className="flex-shrink-0">
+            <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <p className="text-sm text-red-700 font-medium">
+              Por favor, corrija los errores en el formulario
+            </p>
+          </div>
+        </div>
+      )}
+
+      {/* Mensaje de Éxito - Mismo estilo que Form */}
+      {submitted && (
+        <div className="flex items-center gap-3 bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm transition-all duration-300 transform translate-y-0 opacity-100 scale-100 motion-safe:transition-all motion-safe:duration-300">
+          <div className="flex-shrink-0">
+            <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <p className="text-sm text-green-700 font-medium">
+              ¡Solicitud de Test Drive con éxito! Nos contactaremos pronto.
+            </p>
+          </div>
+          <button 
+            onClick={() => setSubmitted(false)}
+            className="flex-shrink-0 text-green-700 hover:text-green-900 transition-colors duration-200"
+            type="button"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      )}
+
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div>
-          <label htmlFor="cliente" className="block text-sm font-medium text-gray-700">Apellido y Nombre</label>
+        {/* Campos del formulario con el mismo estilo que Form */}
+        <div className="relative">
           <input
             type="text"
             name="cliente"
             value={formData.cliente}
             onChange={handleChange}
-            placeholder="Apellido y Nombre"
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md ${errors.cliente ? 'border-red-500' : 'border-gray-300'}`}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            placeholder="Nombre y Apellido"
+            required
           />
+          <label
+            htmlFor="cliente"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Nombre y Apellido
+          </label>
           {errors.cliente && <div className="text-red-500 text-sm mt-1">{errors.cliente}</div>}
         </div>
 
-        <div>
-          <label htmlFor="telefono" className="block text-sm font-medium text-gray-700">Teléfono</label>
+        <div className="relative">
           <input
             type="tel"
             name="telefono"
             value={formData.telefono}
             onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
             placeholder="Teléfono"
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md ${errors.telefono ? 'border-red-500' : 'border-gray-300'}`}
+            required
           />
+          <label
+            htmlFor="telefono"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Teléfono
+          </label>
           {errors.telefono && <div className="text-red-500 text-sm mt-1">{errors.telefono}</div>}
         </div>
 
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+        <div className="relative">
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
             placeholder="Correo Electrónico"
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+            required
           />
+          <label
+            htmlFor="email"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Correo Electrónico
+          </label>
           {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
         </div>
 
-        <div>
-          <label htmlFor="sucursal" className="block text-sm font-medium text-gray-700">Sucursal</label>
+        <div className="relative">
           <select
             name="sucursal"
             value={formData.sucursal}
             onChange={handleChange}
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md ${errors.sucursal ? 'border-red-500' : 'border-gray-300'}`}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            required
           >
             <option value="">Selecciona una sucursal</option>
             {sucursales.map((sucursal, index) => (
               <option key={index} value={sucursal}>{sucursal}</option>
             ))}
           </select>
+          <label
+            htmlFor="sucursal"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Sucursal
+          </label>
           {errors.sucursal && <div className="text-red-500 text-sm mt-1">{errors.sucursal}</div>}
         </div>
 
-        <div>
-          <label htmlFor="modelo" className="block text-sm font-medium text-gray-700">Modelo</label>
+        <div className="relative">
           <select
             name="modelo"
             value={formData.modelo}
             onChange={handleChange}
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md ${errors.modelo ? 'border-red-500' : 'border-gray-300'}`}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            required
           >
             <option value="">Selecciona un modelo</option>
             {modelos.map((modelo, index) => (
               <option key={index} value={modelo}>{modelo}</option>
             ))}
           </select>
+          <label
+            htmlFor="modelo"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Modelo
+          </label>
           {errors.modelo && <div className="text-red-500 text-sm mt-1">{errors.modelo}</div>}
         </div>
 
-        <div>
-          <label htmlFor="fecha_estimada" className="block text-sm font-medium text-gray-700">Fecha Estimada</label>
+        <div className="relative">
           <input
             type="date"
             name="fecha_estimada"
             value={formData.fecha_estimada}
             onChange={handleChange}
-            className={`mt-1 p-3 block w-full shadow-sm sm:text-sm border rounded-md ${errors.fecha_estimada ? 'border-red-500' : 'border-gray-300'}`}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            required
           />
+          <label
+            htmlFor="fecha_estimada"
+            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+          >
+            Fecha Estimada
+          </label>
           {errors.fecha_estimada && <div className="text-red-500 text-sm mt-1">{errors.fecha_estimada}</div>}
         </div>
 
-        <div className="flex justify-center">
+        <div className="relative">
           <button
             type="submit"
             disabled={isSubmitting}
-            className={`w-full bg-indigo-600 text-white p-3 rounded-md font-semibold transition-all duration-300 ease-in-out ${isSubmitting ? 'opacity-70' : 'hover:bg-indigo-700'}`}
+            className="w-full bg-[#eb001b] p-3 text-white rounded-lg relative overflow-hidden hover:bg-red-700 transition-colors duration-200 text-lg font-medium"
           >
-            {isSubmitting ? 'Enviando...' : 'Enviar'}
+            <span className={`relative z-10 transition-all duration-200 ${
+              isSubmitting ? 'text-white/90' : ''
+            }`}>
+              {isSubmitting ? 'Enviando...' : 'Enviar'}
+            </span>
+            
+            {isSubmitting && (
+              <div 
+                className="absolute left-0 top-0 h-full bg-red-800 transition-all duration-200 ease-out"
+                style={{
+                  width: `${progress}%`,
+                }}
+              />
+            )}
           </button>
         </div>
       </form>
-
-      {submitted && (
-        <div className="mt-6 text-center">
-          <p className="text-green-600 font-semibold text-lg">¡Formulario enviado con éxito!</p>
-        </div>
-      )}
     </div>
   );
 };
