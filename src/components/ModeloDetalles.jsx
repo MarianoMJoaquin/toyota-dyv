@@ -201,6 +201,18 @@ export default function ModeloDetalles({ slug }) {
                   className="glightbox pulsating-play-btn"
                 ></a>
               ) : null}
+              {modelData.slug === "corolla-gr-sport" ? (
+                <a
+                  href="https://youtu.be/4hbANRYLqWY?si=-hfPUdoiSL2ASF0T"
+                  className="glightbox pulsating-play-btn"
+                ></a>
+              ) : null}
+              {modelData.slug === "hilux-gr-sport-iv" ? (
+                <a
+                  href="https://youtu.be/KDcuFv60GMw?si=Vq-7jQoLKuPlvI2z"
+                  className="glightbox pulsating-play-btn"
+                ></a>
+              ) : null}
             </div>
             <div className="lg:w-1/3 pr-4 pl-4 items-center justify-center mt-5 lg:mt-0 hidden max-sm:block">
                 <a

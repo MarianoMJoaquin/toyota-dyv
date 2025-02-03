@@ -1,0 +1,1850 @@
+{
+    "data": [
+      {
+        "id": 7,
+        "nombre": "Cromado p/ manija de puertas",
+        "precio": null,
+        "modelo_id": 29,
+        "activo": 1,
+        "created_at": "2019-12-03 13:59:33",
+        "updated_at": "2023-09-20 08:01:47",
+        "fotos": [
+          {
+            "id": 7,
+            "name": "dbe5c24d66b140ef477f33b941d7b04f",
+            "extension": "jpeg",
+            "path": "public/fotos/dbe5c24d66b140ef477f33b941d7b04f.jpeg",
+            "public_path": "/storage/fotos/dbe5c24d66b140ef477f33b941d7b04f.jpeg",
+            "created_at": "2019-12-03 13:59:33",
+            "updated_at": "2019-12-03 13:59:33",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 7,
+              "file_id": 7
+            }
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "nombre": "Zocalos de aluminio",
+        "precio": null,
+        "modelo_id": 29,
+        "activo": 1,
+        "created_at": "2019-12-03 14:07:58",
+        "updated_at": "2023-09-20 08:01:53",
+        "fotos": [
+          {
+            "id": 12,
+            "name": "847f057e330a12b8655afa233e604ac9",
+            "extension": "jpeg",
+            "path": "public/fotos/847f057e330a12b8655afa233e604ac9.jpeg",
+            "public_path": "/storage/fotos/847f057e330a12b8655afa233e604ac9.jpeg",
+            "created_at": "2019-12-03 14:07:58",
+            "updated_at": "2019-12-03 14:07:58",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 11,
+              "file_id": 12
+            }
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "nombre": "Tuercas de seguridad HB",
+        "precio": null,
+        "modelo_id": 29,
+        "activo": 1,
+        "created_at": "2019-12-03 14:09:08",
+        "updated_at": "2023-09-20 08:02:00",
+        "fotos": [
+          {
+            "id": 13,
+            "name": "9183e3dc3fae7cd0997b05c51d471c64",
+            "extension": "jpeg",
+            "path": "public/fotos/9183e3dc3fae7cd0997b05c51d471c64.jpeg",
+            "public_path": "/storage/fotos/9183e3dc3fae7cd0997b05c51d471c64.jpeg",
+            "created_at": "2019-12-03 14:09:08",
+            "updated_at": "2019-12-03 14:09:08",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 12,
+              "file_id": 13
+            }
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "nombre": "Bandeja de baul SD",
+        "precio": null,
+        "modelo_id": 29,
+        "activo": 1,
+        "created_at": "2019-12-03 14:15:22",
+        "updated_at": "2023-09-20 08:02:08",
+        "fotos": [
+          {
+            "id": 15,
+            "name": "90df40f16da9d42d1ae16de7d6b88878",
+            "extension": "jpeg",
+            "path": "public/fotos/90df40f16da9d42d1ae16de7d6b88878.jpeg",
+            "public_path": "/storage/fotos/90df40f16da9d42d1ae16de7d6b88878.jpeg",
+            "created_at": "2019-12-03 14:15:22",
+            "updated_at": "2019-12-03 14:15:22",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 14,
+              "file_id": 15
+            }
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "nombre": "Red de carga",
+        "precio": null,
+        "modelo_id": 30,
+        "activo": 1,
+        "created_at": "2019-12-06 13:09:22",
+        "updated_at": "2023-09-20 08:02:13",
+        "fotos": [
+          {
+            "id": 27,
+            "name": "463f46491a6626268ea67e49c699a026",
+            "extension": "jpeg",
+            "path": "public/fotos/463f46491a6626268ea67e49c699a026.jpeg",
+            "public_path": "/storage/fotos/463f46491a6626268ea67e49c699a026.jpeg",
+            "created_at": "2019-12-06 13:09:23",
+            "updated_at": "2019-12-06 13:09:23",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 26,
+              "file_id": 27
+            }
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "nombre": "Zocalos de aluminio",
+        "precio": null,
+        "modelo_id": 30,
+        "activo": 1,
+        "created_at": "2019-12-06 13:30:29",
+        "updated_at": "2023-09-20 08:02:22",
+        "fotos": [
+          {
+            "id": 28,
+            "name": "e3095f047bcd118b270de00e73bee0cf",
+            "extension": "jpeg",
+            "path": "public/fotos/e3095f047bcd118b270de00e73bee0cf.jpeg",
+            "public_path": "/storage/fotos/e3095f047bcd118b270de00e73bee0cf.jpeg",
+            "created_at": "2019-12-06 13:30:29",
+            "updated_at": "2019-12-06 13:30:29",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 27,
+              "file_id": 28
+            }
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "nombre": "Deflectores de ventanillas",
+        "precio": null,
+        "modelo_id": 30,
+        "activo": 1,
+        "created_at": "2019-12-06 14:03:12",
+        "updated_at": "2023-09-20 08:02:28",
+        "fotos": [
+          {
+            "id": 29,
+            "name": "fbe310717d4264d4e18d325c59e8447d",
+            "extension": "jpeg",
+            "path": "public/fotos/fbe310717d4264d4e18d325c59e8447d.jpeg",
+            "public_path": "/storage/fotos/fbe310717d4264d4e18d325c59e8447d.jpeg",
+            "created_at": "2019-12-06 14:03:12",
+            "updated_at": "2019-12-06 14:03:12",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 28,
+              "file_id": 29
+            }
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "nombre": "Compresor 12v",
+        "precio": null,
+        "modelo_id": 30,
+        "activo": 1,
+        "created_at": "2019-12-07 12:40:13",
+        "updated_at": "2023-09-20 08:02:33",
+        "fotos": [
+          {
+            "id": 32,
+            "name": "a543341f3c4b0cb9b00aa83a9286ed92",
+            "extension": "jpeg",
+            "path": "public/fotos/a543341f3c4b0cb9b00aa83a9286ed92.jpeg",
+            "public_path": "/storage/fotos/a543341f3c4b0cb9b00aa83a9286ed92.jpeg",
+            "created_at": "2019-12-07 12:40:15",
+            "updated_at": "2019-12-07 12:40:15",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 31,
+              "file_id": 32
+            }
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "nombre": "Cobertor de caja DC",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 12:22:32",
+        "updated_at": "2023-09-20 08:02:46",
+        "fotos": [
+          {
+            "id": 34,
+            "name": "405f8352a7fce6c9c99b7e465c72249c",
+            "extension": "jpeg",
+            "path": "public/fotos/405f8352a7fce6c9c99b7e465c72249c.jpeg",
+            "public_path": "/storage/fotos/405f8352a7fce6c9c99b7e465c72249c.jpeg",
+            "created_at": "2019-12-12 12:22:36",
+            "updated_at": "2019-12-12 12:22:36",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 33,
+              "file_id": 34
+            }
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "nombre": "Barra de Trabajo D/C",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 12:25:14",
+        "updated_at": "2023-09-20 08:02:57",
+        "fotos": [
+          {
+            "id": 35,
+            "name": "ab7f11f2624e354ef48cad6924fdfb36",
+            "extension": "jpeg",
+            "path": "public/fotos/ab7f11f2624e354ef48cad6924fdfb36.jpeg",
+            "public_path": "/storage/fotos/ab7f11f2624e354ef48cad6924fdfb36.jpeg",
+            "created_at": "2019-12-12 12:25:14",
+            "updated_at": "2019-12-12 12:25:14",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 34,
+              "file_id": 35
+            }
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "nombre": "Caja Multiproposito frontal",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 12:27:07",
+        "updated_at": "2023-09-20 08:03:07",
+        "fotos": [
+          {
+            "id": 36,
+            "name": "32d3b8959fac71cd7ca7fb413203d7b2",
+            "extension": "jpeg",
+            "path": "public/fotos/32d3b8959fac71cd7ca7fb413203d7b2.jpeg",
+            "public_path": "/storage/fotos/32d3b8959fac71cd7ca7fb413203d7b2.jpeg",
+            "created_at": "2019-12-12 12:27:07",
+            "updated_at": "2019-12-12 12:27:07",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 35,
+              "file_id": 36
+            }
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "nombre": "Caja de herramientas lateral",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 12:35:44",
+        "updated_at": "2023-09-20 08:03:17",
+        "fotos": [
+          {
+            "id": 37,
+            "name": "e8967f13835fdf43be6e987fec95efa2",
+            "extension": "jpeg",
+            "path": "public/fotos/e8967f13835fdf43be6e987fec95efa2.jpeg",
+            "public_path": "/storage/fotos/e8967f13835fdf43be6e987fec95efa2.jpeg",
+            "created_at": "2019-12-12 12:35:44",
+            "updated_at": "2019-12-12 12:35:44",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 36,
+              "file_id": 37
+            }
+          }
+        ]
+      },
+      {
+        "id": 37,
+        "nombre": "Calco lateral",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 13:00:38",
+        "updated_at": "2023-09-20 08:03:25",
+        "fotos": [
+          {
+            "id": 38,
+            "name": "90a8aace29733583a6b6481151bc3cae",
+            "extension": "jpeg",
+            "path": "public/fotos/90a8aace29733583a6b6481151bc3cae.jpeg",
+            "public_path": "/storage/fotos/90a8aace29733583a6b6481151bc3cae.jpeg",
+            "created_at": "2019-12-12 13:00:38",
+            "updated_at": "2019-12-12 13:00:38",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 37,
+              "file_id": 38
+            }
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "nombre": "Gancho de arrastre",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 13:06:26",
+        "updated_at": "2023-09-20 08:04:12",
+        "fotos": [
+          {
+            "id": 39,
+            "name": "8c11a59701ca69ccebbf36358e392d00",
+            "extension": "jpeg",
+            "path": "public/fotos/8c11a59701ca69ccebbf36358e392d00.jpeg",
+            "public_path": "/storage/fotos/8c11a59701ca69ccebbf36358e392d00.jpeg",
+            "created_at": "2019-12-12 13:06:26",
+            "updated_at": "2019-12-12 13:06:26",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 38,
+              "file_id": 39
+            }
+          }
+        ]
+      },
+      {
+        "id": 41,
+        "nombre": "Deflector de capot",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 13:16:27",
+        "updated_at": "2023-09-20 08:04:50",
+        "fotos": [
+          {
+            "id": 42,
+            "name": "c62358d42f9747595ea721340d4048eb",
+            "extension": "jpeg",
+            "path": "public/fotos/c62358d42f9747595ea721340d4048eb.jpeg",
+            "public_path": "/storage/fotos/c62358d42f9747595ea721340d4048eb.jpeg",
+            "created_at": "2019-12-12 13:16:27",
+            "updated_at": "2019-12-12 13:16:27",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 41,
+              "file_id": 42
+            }
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "nombre": "Cola de escape cromada",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 13:23:54",
+        "updated_at": "2023-09-20 08:05:00",
+        "fotos": [
+          {
+            "id": 44,
+            "name": "c31b6fec5a1e7d99cbd1e56c3cfce613",
+            "extension": "jpeg",
+            "path": "public/fotos/c31b6fec5a1e7d99cbd1e56c3cfce613.jpeg",
+            "public_path": "/storage/fotos/c31b6fec5a1e7d99cbd1e56c3cfce613.jpeg",
+            "created_at": "2019-12-12 13:23:54",
+            "updated_at": "2019-12-12 13:23:54",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 43,
+              "file_id": 44
+            }
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "nombre": "Kit Estribos",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 13:26:29",
+        "updated_at": "2023-09-20 08:05:10",
+        "fotos": [
+          {
+            "id": 45,
+            "name": "e53ed6c8bb97fe1a96730861062cefaf",
+            "extension": "jpeg",
+            "path": "public/fotos/e53ed6c8bb97fe1a96730861062cefaf.jpeg",
+            "public_path": "/storage/fotos/e53ed6c8bb97fe1a96730861062cefaf.jpeg",
+            "created_at": "2019-12-12 13:26:29",
+            "updated_at": "2019-12-12 13:26:29",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 44,
+              "file_id": 45
+            }
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "nombre": "Embellecedor cromado porton de carga",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 13:47:12",
+        "updated_at": "2023-09-20 08:05:23",
+        "fotos": [
+          {
+            "id": 46,
+            "name": "ff3b91b1e5927f4b2869b41d3a602872",
+            "extension": "jpeg",
+            "path": "public/fotos/ff3b91b1e5927f4b2869b41d3a602872.jpeg",
+            "public_path": "/storage/fotos/ff3b91b1e5927f4b2869b41d3a602872.jpeg",
+            "created_at": "2019-12-12 13:47:12",
+            "updated_at": "2019-12-12 13:47:12",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 45,
+              "file_id": 46
+            }
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "nombre": "Embellecedor Crom. de Capot",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 13:51:13",
+        "updated_at": "2023-09-20 08:05:43",
+        "fotos": [
+          {
+            "id": 47,
+            "name": "1b880985e709fbec861945d4d98c1d76",
+            "extension": "jpeg",
+            "path": "public/fotos/1b880985e709fbec861945d4d98c1d76.jpeg",
+            "public_path": "/storage/fotos/1b880985e709fbec861945d4d98c1d76.jpeg",
+            "created_at": "2019-12-12 13:51:13",
+            "updated_at": "2019-12-12 13:51:13",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 46,
+              "file_id": 47
+            }
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "nombre": "Lona cubre caja",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 14:04:56",
+        "updated_at": "2023-09-20 09:14:01",
+        "fotos": [
+          {
+            "id": 50,
+            "name": "505cb6ffd72a8ba8bf1df31d5ff6162f",
+            "extension": "jpeg",
+            "path": "public/fotos/505cb6ffd72a8ba8bf1df31d5ff6162f.jpeg",
+            "public_path": "/storage/fotos/505cb6ffd72a8ba8bf1df31d5ff6162f.jpeg",
+            "created_at": "2019-12-12 14:04:56",
+            "updated_at": "2019-12-12 14:04:56",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 49,
+              "file_id": 50
+            }
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "nombre": "Deflectores de ventanillas",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-12 14:13:13",
+        "updated_at": "2025-01-08 18:18:53",
+        "fotos": [
+          {
+            "id": 51,
+            "name": "01fe462b08848d6c848fc7f6abcfcf5b",
+            "extension": "jpeg",
+            "path": "public/fotos/01fe462b08848d6c848fc7f6abcfcf5b.jpeg",
+            "public_path": "/storage/fotos/01fe462b08848d6c848fc7f6abcfcf5b.jpeg",
+            "created_at": "2019-12-12 14:13:13",
+            "updated_at": "2019-12-12 14:13:13",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 50,
+              "file_id": 51
+            }
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "nombre": "Overfenders L21",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-18 22:35:23",
+        "updated_at": "2023-09-20 09:24:37",
+        "fotos": [
+          {
+            "id": 52,
+            "name": "124fd701b8cf16171a9c5d1e8564e562",
+            "extension": "jpeg",
+            "path": "public/fotos/124fd701b8cf16171a9c5d1e8564e562.jpeg",
+            "public_path": "/storage/fotos/124fd701b8cf16171a9c5d1e8564e562.jpeg",
+            "created_at": "2019-12-18 22:35:26",
+            "updated_at": "2019-12-18 22:35:26",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 51,
+              "file_id": 52
+            }
+          }
+        ]
+      },
+      {
+        "id": 53,
+        "nombre": "Barras portaequipajes",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-18 22:38:48",
+        "updated_at": "2023-09-20 09:24:47",
+        "fotos": [
+          {
+            "id": 54,
+            "name": "2eedb14a80d03fa7d728059dde008082",
+            "extension": "jpeg",
+            "path": "public/fotos/2eedb14a80d03fa7d728059dde008082.jpeg",
+            "public_path": "/storage/fotos/2eedb14a80d03fa7d728059dde008082.jpeg",
+            "created_at": "2019-12-18 22:38:48",
+            "updated_at": "2019-12-18 22:38:48",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 53,
+              "file_id": 54
+            }
+          }
+        ]
+      },
+      {
+        "id": 54,
+        "nombre": "Barra de lujo p/lona",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-18 22:42:33",
+        "updated_at": "2023-09-20 09:24:57",
+        "fotos": [
+          {
+            "id": 55,
+            "name": "387ef7b931df049f34ad9c9bffc3d772",
+            "extension": "jpeg",
+            "path": "public/fotos/387ef7b931df049f34ad9c9bffc3d772.jpeg",
+            "public_path": "/storage/fotos/387ef7b931df049f34ad9c9bffc3d772.jpeg",
+            "created_at": "2019-12-18 22:42:33",
+            "updated_at": "2019-12-18 22:42:33",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 54,
+              "file_id": 55
+            }
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "nombre": "Barra deportiva nueva",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-19 12:58:44",
+        "updated_at": "2023-09-20 09:25:07",
+        "fotos": [
+          {
+            "id": 2567,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/6lif7oHYtAeRV5kiHcEM9PbaID0rcw9cNzpU4f43.jpeg",
+            "public_path": "/storage/fotos/6lif7oHYtAeRV5kiHcEM9PbaID0rcw9cNzpU4f43.jpeg",
+            "created_at": "2022-12-13 08:13:01",
+            "updated_at": "2022-12-13 08:13:01",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 55,
+              "file_id": 2567
+            }
+          }
+        ]
+      },
+      {
+        "id": 56,
+        "nombre": "Candado de seguridad rueda auxilio",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2019-12-19 22:14:53",
+        "updated_at": "2023-09-20 09:25:15",
+        "fotos": [
+          {
+            "id": 57,
+            "name": "4cf59ef720853fad05e1833def6940b6",
+            "extension": "jpeg",
+            "path": "public/fotos/4cf59ef720853fad05e1833def6940b6.jpeg",
+            "public_path": "/storage/fotos/4cf59ef720853fad05e1833def6940b6.jpeg",
+            "created_at": "2019-12-19 22:14:53",
+            "updated_at": "2019-12-19 22:14:53",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 56,
+              "file_id": 57
+            }
+          }
+        ]
+      },
+      {
+        "id": 59,
+        "nombre": "Bandeja de baul 7 asientos",
+        "precio": null,
+        "modelo_id": 31,
+        "activo": 1,
+        "created_at": "2019-12-19 22:20:21",
+        "updated_at": "2023-09-20 09:25:24",
+        "fotos": [
+          {
+            "id": 60,
+            "name": "78636409f1dc85b7fec40cacbc14fc9d",
+            "extension": "jpeg",
+            "path": "public/fotos/78636409f1dc85b7fec40cacbc14fc9d.jpeg",
+            "public_path": "/storage/fotos/78636409f1dc85b7fec40cacbc14fc9d.jpeg",
+            "created_at": "2019-12-19 22:20:21",
+            "updated_at": "2019-12-19 22:20:21",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 59,
+              "file_id": 60
+            }
+          }
+        ]
+      },
+      {
+        "id": 60,
+        "nombre": "Calco lateral",
+        "precio": null,
+        "modelo_id": 31,
+        "activo": 1,
+        "created_at": "2019-12-19 22:21:14",
+        "updated_at": "2023-09-20 09:25:32",
+        "fotos": [
+          {
+            "id": 61,
+            "name": "6ccc8f84393d1762d097db35e7138b82",
+            "extension": "jpeg",
+            "path": "public/fotos/6ccc8f84393d1762d097db35e7138b82.jpeg",
+            "public_path": "/storage/fotos/6ccc8f84393d1762d097db35e7138b82.jpeg",
+            "created_at": "2019-12-19 22:21:14",
+            "updated_at": "2019-12-19 22:21:14",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 60,
+              "file_id": 61
+            }
+          }
+        ]
+      },
+      {
+        "id": 61,
+        "nombre": "Deflectores de ventanillas",
+        "precio": null,
+        "modelo_id": 31,
+        "activo": 1,
+        "created_at": "2019-12-19 22:23:09",
+        "updated_at": "2023-09-20 09:25:39",
+        "fotos": [
+          {
+            "id": 62,
+            "name": "4976cfc0c73304843c5ccfd049664a9c",
+            "extension": "jpeg",
+            "path": "public/fotos/4976cfc0c73304843c5ccfd049664a9c.jpeg",
+            "public_path": "/storage/fotos/4976cfc0c73304843c5ccfd049664a9c.jpeg",
+            "created_at": "2019-12-19 22:23:09",
+            "updated_at": "2019-12-19 22:23:09",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 61,
+              "file_id": 62
+            }
+          }
+        ]
+      },
+      {
+        "id": 62,
+        "nombre": "Gancho de arrastre c/bocha",
+        "precio": null,
+        "modelo_id": 31,
+        "activo": 1,
+        "created_at": "2019-12-19 22:24:52",
+        "updated_at": "2023-09-20 09:25:47",
+        "fotos": [
+          {
+            "id": 63,
+            "name": "17f3d5d6076e9ac86ad950a29c29f52a",
+            "extension": "jpeg",
+            "path": "public/fotos/17f3d5d6076e9ac86ad950a29c29f52a.jpeg",
+            "public_path": "/storage/fotos/17f3d5d6076e9ac86ad950a29c29f52a.jpeg",
+            "created_at": "2019-12-19 22:24:52",
+            "updated_at": "2019-12-19 22:24:52",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 62,
+              "file_id": 63
+            }
+          }
+        ]
+      },
+      {
+        "id": 65,
+        "nombre": "Cola de escape cromada",
+        "precio": null,
+        "modelo_id": 31,
+        "activo": 1,
+        "created_at": "2019-12-19 22:32:46",
+        "updated_at": "2023-09-20 09:25:55",
+        "fotos": [
+          {
+            "id": 66,
+            "name": "d6b91350fdbd56ff45685c0a4b0b75e5",
+            "extension": "jpeg",
+            "path": "public/fotos/d6b91350fdbd56ff45685c0a4b0b75e5.jpeg",
+            "public_path": "/storage/fotos/d6b91350fdbd56ff45685c0a4b0b75e5.jpeg",
+            "created_at": "2019-12-19 22:32:46",
+            "updated_at": "2019-12-19 22:32:46",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 65,
+              "file_id": 66
+            }
+          }
+        ]
+      },
+      {
+        "id": 66,
+        "nombre": "Bandeja de baul 2020",
+        "precio": null,
+        "modelo_id": 42,
+        "activo": 1,
+        "created_at": "2020-08-04 17:05:54",
+        "updated_at": "2023-09-20 09:26:03",
+        "fotos": [
+          {
+            "id": 91,
+            "name": "a2c14040a82e421ed04287dca58e135c",
+            "extension": "jpeg",
+            "path": "public/fotos/a2c14040a82e421ed04287dca58e135c.jpeg",
+            "public_path": "/storage/fotos/a2c14040a82e421ed04287dca58e135c.jpeg",
+            "created_at": "2020-08-04 17:05:54",
+            "updated_at": "2020-08-04 17:05:54",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 66,
+              "file_id": 91
+            }
+          }
+        ]
+      },
+      {
+        "id": 67,
+        "nombre": "Zocalos corolla 2020",
+        "precio": null,
+        "modelo_id": 42,
+        "activo": 1,
+        "created_at": "2020-08-04 17:07:42",
+        "updated_at": "2023-09-20 09:26:12",
+        "fotos": [
+          {
+            "id": 92,
+            "name": "7797b8fd622cea99bb8111253e3ef600",
+            "extension": "jpeg",
+            "path": "public/fotos/7797b8fd622cea99bb8111253e3ef600.jpeg",
+            "public_path": "/storage/fotos/7797b8fd622cea99bb8111253e3ef600.jpeg",
+            "created_at": "2020-08-04 17:07:42",
+            "updated_at": "2020-08-04 17:07:42",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 67,
+              "file_id": 92
+            }
+          }
+        ]
+      },
+      {
+        "id": 68,
+        "nombre": "Deflectores de viento corolla 2020",
+        "precio": null,
+        "modelo_id": 42,
+        "activo": 1,
+        "created_at": "2020-08-04 17:09:47",
+        "updated_at": "2023-09-20 09:26:19",
+        "fotos": [
+          {
+            "id": 93,
+            "name": "ecaece51dd90e1d1090c784db887fa40",
+            "extension": "jpeg",
+            "path": "public/fotos/ecaece51dd90e1d1090c784db887fa40.jpeg",
+            "public_path": "/storage/fotos/ecaece51dd90e1d1090c784db887fa40.jpeg",
+            "created_at": "2020-08-04 17:09:47",
+            "updated_at": "2020-08-04 17:09:47",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 68,
+              "file_id": 93
+            }
+          }
+        ]
+      },
+      {
+        "id": 69,
+        "nombre": "Barras portaequipaje corolla 2020",
+        "precio": null,
+        "modelo_id": 42,
+        "activo": 1,
+        "created_at": "2020-08-04 17:11:08",
+        "updated_at": "2023-09-20 09:26:28",
+        "fotos": [
+          {
+            "id": 94,
+            "name": "8d2fd26569e0ba4e227176dea416e131",
+            "extension": "jpeg",
+            "path": "public/fotos/8d2fd26569e0ba4e227176dea416e131.jpeg",
+            "public_path": "/storage/fotos/8d2fd26569e0ba4e227176dea416e131.jpeg",
+            "created_at": "2020-08-04 17:11:08",
+            "updated_at": "2020-08-04 17:11:08",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 69,
+              "file_id": 94
+            }
+          }
+        ]
+      },
+      {
+        "id": 70,
+        "nombre": "Moldura exterior baja",
+        "precio": null,
+        "modelo_id": 42,
+        "activo": 1,
+        "created_at": "2020-08-04 17:12:52",
+        "updated_at": "2023-09-20 09:26:35",
+        "fotos": [
+          {
+            "id": 95,
+            "name": "0ae8a731c3429135d6c2447f3b64a877",
+            "extension": "jpeg",
+            "path": "public/fotos/0ae8a731c3429135d6c2447f3b64a877.jpeg",
+            "public_path": "/storage/fotos/0ae8a731c3429135d6c2447f3b64a877.jpeg",
+            "created_at": "2020-08-04 17:12:53",
+            "updated_at": "2020-08-04 17:12:53",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 70,
+              "file_id": 95
+            }
+          }
+        ]
+      },
+      {
+        "id": 71,
+        "nombre": "Cola de escape crom",
+        "precio": null,
+        "modelo_id": 42,
+        "activo": 1,
+        "created_at": "2020-08-04 17:14:25",
+        "updated_at": "2023-09-20 09:26:44",
+        "fotos": [
+          {
+            "id": 96,
+            "name": "809ac5596dd256fc2adfb8f97c94731e",
+            "extension": "jpeg",
+            "path": "public/fotos/809ac5596dd256fc2adfb8f97c94731e.jpeg",
+            "public_path": "/storage/fotos/809ac5596dd256fc2adfb8f97c94731e.jpeg",
+            "created_at": "2020-08-04 17:14:25",
+            "updated_at": "2020-08-04 17:14:25",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 71,
+              "file_id": 96
+            }
+          }
+        ]
+      },
+      {
+        "id": 73,
+        "nombre": "EMBELLECEDOR DE FAROS DELANTEROS LUZ LED",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2021-06-01 17:43:50",
+        "updated_at": "2023-09-20 09:26:53",
+        "fotos": [
+          {
+            "id": 820,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/ngHj78IfbJxKVQ4MZS2pkvPx8gEaChoyReN0Zcuk.png",
+            "public_path": "/storage/fotos/ngHj78IfbJxKVQ4MZS2pkvPx8gEaChoyReN0Zcuk.png",
+            "created_at": "2021-06-01 17:43:50",
+            "updated_at": "2021-06-01 17:43:50",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 73,
+              "file_id": 820
+            }
+          }
+        ]
+      },
+      {
+        "id": 74,
+        "nombre": "EMBELLECEDOR FAROS TRASEROS",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2021-06-01 17:53:46",
+        "updated_at": "2023-09-20 09:27:01",
+        "fotos": [
+          {
+            "id": 821,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/fy0juk8kvwdu1ocl8zO3ekBIhSSK97Vxl9ED9k5m.png",
+            "public_path": "/storage/fotos/fy0juk8kvwdu1ocl8zO3ekBIhSSK97Vxl9ED9k5m.png",
+            "created_at": "2021-06-01 17:53:46",
+            "updated_at": "2021-06-01 17:53:46",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 74,
+              "file_id": 821
+            }
+          }
+        ]
+      },
+      {
+        "id": 75,
+        "nombre": "RED BICHERO",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2021-06-01 17:56:51",
+        "updated_at": "2023-09-20 09:27:11",
+        "fotos": [
+          {
+            "id": 822,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/dAebWo820evC3DhA64ics2b2jmUd9eM1UKinswEJ.jpeg",
+            "public_path": "/storage/fotos/dAebWo820evC3DhA64ics2b2jmUd9eM1UKinswEJ.jpeg",
+            "created_at": "2021-06-01 17:56:51",
+            "updated_at": "2021-06-01 17:56:51",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 75,
+              "file_id": 822
+            }
+          }
+        ]
+      },
+      {
+        "id": 76,
+        "nombre": "ASISTENTE DE APERTURA Y CIERRE DE COMPUERTA",
+        "precio": null,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2021-06-01 18:11:21",
+        "updated_at": "2023-09-20 09:27:33",
+        "fotos": [
+          {
+            "id": 823,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/511v3uuw1D0uZS38VoWo0K2snbbmbCUAWnKrMHql.jpeg",
+            "public_path": "/storage/fotos/511v3uuw1D0uZS38VoWo0K2snbbmbCUAWnKrMHql.jpeg",
+            "created_at": "2021-06-01 18:11:21",
+            "updated_at": "2021-06-01 18:11:21",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 76,
+              "file_id": 823
+            }
+          }
+        ]
+      },
+      {
+        "id": 77,
+        "nombre": "PROTECTOR FRONTAL 2021",
+        "precio": null,
+        "modelo_id": 31,
+        "activo": 1,
+        "created_at": "2021-06-08 08:50:00",
+        "updated_at": "2023-09-20 09:27:42",
+        "fotos": [
+          {
+            "id": 840,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/ZdHEf6Rp0KFlxeU6xaM0zIaqJ4Jjmygq7AZb1eqV.png",
+            "public_path": "/storage/fotos/ZdHEf6Rp0KFlxeU6xaM0zIaqJ4Jjmygq7AZb1eqV.png",
+            "created_at": "2021-06-08 08:50:00",
+            "updated_at": "2021-06-08 08:50:00",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 77,
+              "file_id": 840
+            }
+          }
+        ]
+      },
+      {
+        "id": 79,
+        "nombre": "Cargador Inalambrico",
+        "precio": null,
+        "modelo_id": 31,
+        "activo": 1,
+        "created_at": "2021-06-08 09:37:14",
+        "updated_at": "2023-09-20 09:27:49",
+        "fotos": [
+          {
+            "id": 842,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/CeWWbmiJzsUphZhpzJWfT49iGCiTeDjXMO7x15dd.png",
+            "public_path": "/storage/fotos/CeWWbmiJzsUphZhpzJWfT49iGCiTeDjXMO7x15dd.png",
+            "created_at": "2021-06-08 09:37:14",
+            "updated_at": "2021-06-08 09:37:14",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 79,
+              "file_id": 842
+            }
+          }
+        ]
+      },
+      {
+        "id": 80,
+        "nombre": "PROTECTOR TRASERO",
+        "precio": null,
+        "modelo_id": 31,
+        "activo": 1,
+        "created_at": "2021-06-08 09:56:02",
+        "updated_at": "2023-09-20 09:27:58",
+        "fotos": [
+          {
+            "id": 843,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/zxwwARkoyI1ZFAMY0W7F3Bi6t02MBZbNpYblElt1.png",
+            "public_path": "/storage/fotos/zxwwARkoyI1ZFAMY0W7F3Bi6t02MBZbNpYblElt1.png",
+            "created_at": "2021-06-08 09:56:02",
+            "updated_at": "2021-06-08 09:56:02",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 80,
+              "file_id": 843
+            }
+          }
+        ]
+      },
+      {
+        "id": 84,
+        "nombre": "Apoya Cabeza GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 09:51:56",
+        "updated_at": "2022-11-05 09:51:56",
+        "fotos": [
+          {
+            "id": 2455,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/yi5Ft4x0s3GeNbEi7Mxq9fip2Un6TWzT3Ps9ICCC.png",
+            "public_path": "/storage/fotos/yi5Ft4x0s3GeNbEi7Mxq9fip2Un6TWzT3Ps9ICCC.png",
+            "created_at": "2022-11-05 09:51:56",
+            "updated_at": "2022-11-05 09:51:56",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 84,
+              "file_id": 2455
+            }
+          }
+        ]
+      },
+      {
+        "id": 85,
+        "nombre": "Barra Deportiva GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 09:53:13",
+        "updated_at": "2022-11-05 09:53:13",
+        "fotos": [
+          {
+            "id": 2456,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/MBQAi5IS128dvaFpOiD8Pid7yQHJtH3fvQ5NdwOq.png",
+            "public_path": "/storage/fotos/MBQAi5IS128dvaFpOiD8Pid7yQHJtH3fvQ5NdwOq.png",
+            "created_at": "2022-11-05 09:53:13",
+            "updated_at": "2022-11-05 09:53:13",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 85,
+              "file_id": 2456
+            }
+          }
+        ]
+      },
+      {
+        "id": 86,
+        "nombre": "Barra Gazoo II GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 09:54:22",
+        "updated_at": "2022-11-05 09:55:11",
+        "fotos": [
+          {
+            "id": 2457,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/psBvhU9PHu6UBA7395l9xScMu0q1u5eGkSd89aUv.png",
+            "public_path": "/storage/fotos/psBvhU9PHu6UBA7395l9xScMu0q1u5eGkSd89aUv.png",
+            "created_at": "2022-11-05 09:54:22",
+            "updated_at": "2022-11-05 09:54:22",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 86,
+              "file_id": 2457
+            }
+          }
+        ]
+      },
+      {
+        "id": 87,
+        "nombre": "Barra GRS",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 09:56:06",
+        "updated_at": "2022-11-05 09:56:06",
+        "fotos": [
+          {
+            "id": 2458,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/6O4xSOVRk6vq2wP1c4mPS8rDXO0OQTxQRBMFBbmt.png",
+            "public_path": "/storage/fotos/6O4xSOVRk6vq2wP1c4mPS8rDXO0OQTxQRBMFBbmt.png",
+            "created_at": "2022-11-05 09:56:06",
+            "updated_at": "2022-11-05 09:56:06",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 87,
+              "file_id": 2458
+            }
+          }
+        ]
+      },
+      {
+        "id": 88,
+        "nombre": "Cámara Digital Dash GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 09:57:50",
+        "updated_at": "2022-11-05 09:57:50",
+        "fotos": [
+          {
+            "id": 2459,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/8zkvbEe8ffeuyMImCAQAMHBPnLGyROdx9WrzqbbC.png",
+            "public_path": "/storage/fotos/8zkvbEe8ffeuyMImCAQAMHBPnLGyROdx9WrzqbbC.png",
+            "created_at": "2022-11-05 09:57:50",
+            "updated_at": "2022-11-05 09:57:50",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 88,
+              "file_id": 2459
+            }
+          }
+        ]
+      },
+      {
+        "id": 89,
+        "nombre": "Dash Camera GR2",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 09:59:46",
+        "updated_at": "2022-11-05 09:59:46",
+        "fotos": [
+          {
+            "id": 2460,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/dfaU3MXKCZiw390yqhZ5bDJH6TrGxRxyTCL0ckWC.png",
+            "public_path": "/storage/fotos/dfaU3MXKCZiw390yqhZ5bDJH6TrGxRxyTCL0ckWC.png",
+            "created_at": "2022-11-05 09:59:46",
+            "updated_at": "2022-11-05 09:59:46",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 89,
+              "file_id": 2460
+            }
+          }
+        ]
+      },
+      {
+        "id": 90,
+        "nombre": "Dress UP Muffler GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:00:44",
+        "updated_at": "2022-11-05 10:00:44",
+        "fotos": [
+          {
+            "id": 2461,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/hTyNGj5cTZ6hZOFb1v1h4K8ebqYudlNDrh40tA0R.png",
+            "public_path": "/storage/fotos/hTyNGj5cTZ6hZOFb1v1h4K8ebqYudlNDrh40tA0R.png",
+            "created_at": "2022-11-05 10:00:44",
+            "updated_at": "2022-11-05 10:00:44",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 90,
+              "file_id": 2461
+            }
+          }
+        ]
+      },
+      {
+        "id": 91,
+        "nombre": "Estribo Eléctrico (solo lado conductor) GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:02:47",
+        "updated_at": "2022-11-05 10:04:07",
+        "fotos": [
+          {
+            "id": 2462,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/2UkldBwcO1NRhPkWxZl6V3qlVLtkZ4ApxMgKFZAQ.png",
+            "public_path": "/storage/fotos/2UkldBwcO1NRhPkWxZl6V3qlVLtkZ4ApxMgKFZAQ.png",
+            "created_at": "2022-11-05 10:02:47",
+            "updated_at": "2022-11-05 10:02:47",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 91,
+              "file_id": 2462
+            }
+          }
+        ]
+      },
+      {
+        "id": 92,
+        "nombre": "Estribo Eléctrico GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:05:37",
+        "updated_at": "2022-11-05 10:05:37",
+        "fotos": [
+          {
+            "id": 2463,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/JdBkVigKaRQd18XG1dRho3pkpomcWXpMM51Z11bx.png",
+            "public_path": "/storage/fotos/JdBkVigKaRQd18XG1dRho3pkpomcWXpMM51Z11bx.png",
+            "created_at": "2022-11-05 10:05:37",
+            "updated_at": "2022-11-05 10:05:37",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 92,
+              "file_id": 2463
+            }
+          }
+        ]
+      },
+      {
+        "id": 93,
+        "nombre": "Estribo RH GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:06:18",
+        "updated_at": "2022-11-05 10:06:18",
+        "fotos": [
+          {
+            "id": 2464,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/cvHnIwq4qQJE0uinAWVJrVPXbH2lthdahZvYLxsJ.png",
+            "public_path": "/storage/fotos/cvHnIwq4qQJE0uinAWVJrVPXbH2lthdahZvYLxsJ.png",
+            "created_at": "2022-11-05 10:06:18",
+            "updated_at": "2022-11-05 10:06:18",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 93,
+              "file_id": 2464
+            }
+          }
+        ]
+      },
+      {
+        "id": 94,
+        "nombre": "Front Bumper Cover GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:07:48",
+        "updated_at": "2022-11-05 10:07:48",
+        "fotos": [
+          {
+            "id": 2465,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/GhAxQsn4nwtz40dcWu1qtTIkBg72ONsyMpihXM0u.png",
+            "public_path": "/storage/fotos/GhAxQsn4nwtz40dcWu1qtTIkBg72ONsyMpihXM0u.png",
+            "created_at": "2022-11-05 10:07:48",
+            "updated_at": "2022-11-05 10:07:48",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 94,
+              "file_id": 2465
+            }
+          }
+        ]
+      },
+      {
+        "id": 95,
+        "nombre": "Grilla Frontal GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:08:35",
+        "updated_at": "2022-11-05 10:08:35",
+        "fotos": [
+          {
+            "id": 2466,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/AIOk7kI5oPUEYmwMV07bsr8lcmkeQQ3o3KQvjcPu.png",
+            "public_path": "/storage/fotos/AIOk7kI5oPUEYmwMV07bsr8lcmkeQQ3o3KQvjcPu.png",
+            "created_at": "2022-11-05 10:08:35",
+            "updated_at": "2022-11-05 10:08:35",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 95,
+              "file_id": 2466
+            }
+          }
+        ]
+      },
+      {
+        "id": 96,
+        "nombre": "Grilla Radiador GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:09:31",
+        "updated_at": "2022-11-05 10:09:31",
+        "fotos": [
+          {
+            "id": 2467,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/Vm8JahAfWSQl527sm0fhlUjTerhp1YH2drVVyIPX.png",
+            "public_path": "/storage/fotos/Vm8JahAfWSQl527sm0fhlUjTerhp1YH2drVVyIPX.png",
+            "created_at": "2022-11-05 10:09:31",
+            "updated_at": "2022-11-05 10:09:31",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 96,
+              "file_id": 2467
+            }
+          }
+        ]
+      },
+      {
+        "id": 97,
+        "nombre": "Kit Alfombras GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:10:30",
+        "updated_at": "2022-11-05 10:10:30",
+        "fotos": [
+          {
+            "id": 2468,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/hHfXKqKBInXKAUc6VN22pwA7eJzgRGo3x3TtheXB.png",
+            "public_path": "/storage/fotos/hHfXKqKBInXKAUc6VN22pwA7eJzgRGo3x3TtheXB.png",
+            "created_at": "2022-11-05 10:10:30",
+            "updated_at": "2022-11-05 10:10:30",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 97,
+              "file_id": 2468
+            }
+          }
+        ]
+      },
+      {
+        "id": 98,
+        "nombre": "Kit Escape Deportivo GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:11:39",
+        "updated_at": "2022-11-05 10:11:39",
+        "fotos": [
+          {
+            "id": 2469,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/S5iQuPonxNZJv1CT1FMwvi2Du7gRtau8mwROLGTJ.png",
+            "public_path": "/storage/fotos/S5iQuPonxNZJv1CT1FMwvi2Du7gRtau8mwROLGTJ.png",
+            "created_at": "2022-11-05 10:11:39",
+            "updated_at": "2022-11-05 10:11:39",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 98,
+              "file_id": 2469
+            }
+          }
+        ]
+      },
+      {
+        "id": 99,
+        "nombre": "Llanta 17' GR 2",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:12:52",
+        "updated_at": "2022-11-05 10:12:52",
+        "fotos": [
+          {
+            "id": 2470,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/eoofj1yfA3VRr4dOSBsgXpbK0JmDuNiOlUMWun6F.png",
+            "public_path": "/storage/fotos/eoofj1yfA3VRr4dOSBsgXpbK0JmDuNiOlUMWun6F.png",
+            "created_at": "2022-11-05 10:12:52",
+            "updated_at": "2022-11-05 10:12:52",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 99,
+              "file_id": 2470
+            }
+          }
+        ]
+      },
+      {
+        "id": 100,
+        "nombre": "Llanta 17' GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:13:40",
+        "updated_at": "2022-11-05 10:13:40",
+        "fotos": [
+          {
+            "id": 2471,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/Vur8xhjVpUQm5M75U8LXYnDHpXc59nFK5keZCmI2.png",
+            "public_path": "/storage/fotos/Vur8xhjVpUQm5M75U8LXYnDHpXc59nFK5keZCmI2.png",
+            "created_at": "2022-11-05 10:13:40",
+            "updated_at": "2022-11-05 10:13:40",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 100,
+              "file_id": 2471
+            }
+          }
+        ]
+      },
+      {
+        "id": 101,
+        "nombre": "Llanta Aleación 18' GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:15:33",
+        "updated_at": "2022-11-05 10:15:33",
+        "fotos": [
+          {
+            "id": 2472,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/MsXBqKyx9Ea0QXnILzlCmKgvsDiaEM7WC7DsLhw0.png",
+            "public_path": "/storage/fotos/MsXBqKyx9Ea0QXnILzlCmKgvsDiaEM7WC7DsLhw0.png",
+            "created_at": "2022-11-05 10:15:33",
+            "updated_at": "2022-11-05 10:15:33",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 101,
+              "file_id": 2472
+            }
+          }
+        ]
+      },
+      {
+        "id": 102,
+        "nombre": "Protector Carter GR Stick",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:16:29",
+        "updated_at": "2022-11-05 10:16:29",
+        "fotos": [
+          {
+            "id": 2473,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/NfFIwJmkgAAUyyRcxIA1qUbgtvK6eCBir9OrPgfW.png",
+            "public_path": "/storage/fotos/NfFIwJmkgAAUyyRcxIA1qUbgtvK6eCBir9OrPgfW.png",
+            "created_at": "2022-11-05 10:16:29",
+            "updated_at": "2022-11-05 10:16:29",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 102,
+              "file_id": 2473
+            }
+          }
+        ]
+      },
+      {
+        "id": 103,
+        "nombre": "Salida de Escape Cromada GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:17:22",
+        "updated_at": "2022-11-05 10:17:22",
+        "fotos": [
+          {
+            "id": 2474,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/TrbBlY0pF4EwBG1X9IG3qUFQEmoVlDvsL2oGYSF5.png",
+            "public_path": "/storage/fotos/TrbBlY0pF4EwBG1X9IG3qUFQEmoVlDvsL2oGYSF5.png",
+            "created_at": "2022-11-05 10:17:23",
+            "updated_at": "2022-11-05 10:17:23",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 103,
+              "file_id": 2474
+            }
+          }
+        ]
+      },
+      {
+        "id": 104,
+        "nombre": "Set de Suspensión GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:18:42",
+        "updated_at": "2022-11-05 10:18:42",
+        "fotos": [
+          {
+            "id": 2475,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/oFM7f8F9wy8EXrRRpGvU6jasa1FmCcscEAPfIZ8v.png",
+            "public_path": "/storage/fotos/oFM7f8F9wy8EXrRRpGvU6jasa1FmCcscEAPfIZ8v.png",
+            "created_at": "2022-11-05 10:18:42",
+            "updated_at": "2022-11-05 10:18:42",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 104,
+              "file_id": 2475
+            }
+          }
+        ]
+      },
+      {
+        "id": 105,
+        "nombre": "Side Step GR RH",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:19:37",
+        "updated_at": "2022-11-05 10:19:37",
+        "fotos": [
+          {
+            "id": 2476,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/4oRd697AGJLuWfuCZBLdjPqLZ9ufSLXkv1a5z15O.png",
+            "public_path": "/storage/fotos/4oRd697AGJLuWfuCZBLdjPqLZ9ufSLXkv1a5z15O.png",
+            "created_at": "2022-11-05 10:19:37",
+            "updated_at": "2022-11-05 10:19:37",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 105,
+              "file_id": 2476
+            }
+          }
+        ]
+      },
+      {
+        "id": 106,
+        "nombre": "Switch Boton Arranque GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:20:38",
+        "updated_at": "2022-11-05 10:20:38",
+        "fotos": [
+          {
+            "id": 2477,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/AzmYJHTvOMnoWjBJbAp0VXYKY6bImMXnuqgPNCNW.png",
+            "public_path": "/storage/fotos/AzmYJHTvOMnoWjBJbAp0VXYKY6bImMXnuqgPNCNW.png",
+            "created_at": "2022-11-05 10:20:38",
+            "updated_at": "2022-11-05 10:20:38",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 106,
+              "file_id": 2477
+            }
+          }
+        ]
+      },
+      {
+        "id": 107,
+        "nombre": "Zocalo PTA. DC GR",
+        "precio": 0,
+        "modelo_id": 41,
+        "activo": 1,
+        "created_at": "2022-11-05 10:21:33",
+        "updated_at": "2022-11-05 10:21:33",
+        "fotos": [
+          {
+            "id": 2478,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/jEdtGJWtl5fJPNcklcN8jXFAEEcxRKGk2RIEzqXZ.png",
+            "public_path": "/storage/fotos/jEdtGJWtl5fJPNcklcN8jXFAEEcxRKGk2RIEzqXZ.png",
+            "created_at": "2022-11-05 10:21:33",
+            "updated_at": "2022-11-05 10:21:33",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 107,
+              "file_id": 2478
+            }
+          }
+        ]
+      },
+      {
+        "id": 108,
+        "nombre": "Funda protectora Hilux",
+        "precio": 0,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2022-12-13 08:25:03",
+        "updated_at": "2024-03-27 18:14:06",
+        "fotos": [
+          {
+            "id": 2568,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/9kjshS12zOFiYyRT8OAC78Gx58PPCmmwZP8w40QH.jpeg",
+            "public_path": "/storage/fotos/9kjshS12zOFiYyRT8OAC78Gx58PPCmmwZP8w40QH.jpeg",
+            "created_at": "2022-12-13 08:25:03",
+            "updated_at": "2022-12-13 08:25:03",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 108,
+              "file_id": 2568
+            }
+          }
+        ]
+      },
+      {
+        "id": 109,
+        "nombre": "Emb Crom de guardabarros",
+        "precio": 0,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2022-12-13 08:44:00",
+        "updated_at": "2024-03-27 18:13:50",
+        "fotos": [
+          {
+            "id": 2569,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/NeP35MkOLDYsgiAIpXhI90Ghxq3i5E2A53gWPg2k.jpeg",
+            "public_path": "/storage/fotos/NeP35MkOLDYsgiAIpXhI90Ghxq3i5E2A53gWPg2k.jpeg",
+            "created_at": "2022-12-13 08:44:00",
+            "updated_at": "2022-12-13 08:44:00",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 109,
+              "file_id": 2569
+            }
+          }
+        ]
+      },
+      {
+        "id": 110,
+        "nombre": "MOLDURAS LATERALES DETALLE CROM.",
+        "precio": 0,
+        "modelo_id": 28,
+        "activo": 1,
+        "created_at": "2022-12-14 09:35:32",
+        "updated_at": "2024-03-27 18:13:34",
+        "fotos": [
+          {
+            "id": 2570,
+            "name": "",
+            "extension": "",
+            "path": "public/fotos/QNcZJkdpsAZVOIA0QhXGCGUH84rKvHDrqtgQZz0A.jpeg",
+            "public_path": "/storage/fotos/QNcZJkdpsAZVOIA0QhXGCGUH84rKvHDrqtgQZz0A.jpeg",
+            "created_at": "2022-12-14 09:35:32",
+            "updated_at": "2022-12-14 09:35:32",
+            "notable_id": null,
+            "notable_type": null,
+            "pivot": {
+              "accesorio_id": 110,
+              "file_id": 2570
+            }
+          }
+        ]
+      }
+    ]
+  }

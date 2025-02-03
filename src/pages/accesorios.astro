@@ -1,0 +1,11 @@
+---
+import Layout from "../layouts/Layout.astro";
+import '../assets/styles/tailwind.css';
+import AccesoriosList from "../components/AccesoriosList";
+---
+
+<Layout title="Accesorios" theme_color="#EB0A1E" image="https://i.imgur.com/AabFmC0.png">
+  <section class=section">
+    <AccesoriosList client:load/>
+  </section>
+</Layout>
