@@ -149,7 +149,7 @@ import PlanesVigentes from '../components/PlanesVigentes';
     </section>
 
     <!-- FAQ -->
-    <section data-aos="fade-up" class="bg-gray-50 py-24 px-4">
+    <section data-aos="fade-up" class="bg-white py-24 px-4">
       <div class="container mx-auto">
         <div class="text-center max-w-6xl mx-auto mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">Preguntas Frecuentes</h2>
@@ -209,49 +209,7 @@ import PlanesVigentes from '../components/PlanesVigentes';
   </main>
 </Layout>
 
-<script>
-    const stats = document.querySelectorAll(".stat-number[data-target]");
-  
-    const animateValue = (
-      obj: HTMLElement,
-      start: number,
-      end: number,
-      duration: number
-    ) => {
-      let startTimestamp: number | null = null;
-      const step = (timestamp: number) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        obj.innerHTML = Math.floor(progress * (end - start) + start) + "+";
-        if (progress < 1) {
-          window.requestAnimationFrame(step);
-        }
-      };
-      window.requestAnimationFrame(step);
-    };
-  
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            if (entry.target.hasAttribute("data-target")) {
-              const element = entry.target as HTMLElement;
-              const target = element.getAttribute("data-target");
-              if (target) {
-                animateValue(element, 0, parseInt(target), 2000);
-              }
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-  
-    document
-      .querySelectorAll(".reveal-on-scroll, .stat-number[data-target]")
-      .forEach((el) => observer.observe(el));
-  
+<script is:inline>
     // FAQ functionality
     document.addEventListener("DOMContentLoaded", () => {
       const faqItems = document.querySelectorAll(".faq-item");
@@ -309,21 +267,7 @@ import PlanesVigentes from '../components/PlanesVigentes';
     .faq-item.active .faq-button i {
       transform: rotate(180deg);
     }
-  
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  
-    .animate-fade-in {
-      animation: fadeIn 1s ease-out;
-    }
+
     
   </style>
 

@@ -1,10 +1,11 @@
 ---
+import Form from "../components/Form";
 import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 ---
 
 <Layout
-  title="KINTO | Toyota"
+  title="Kinto | Derka y vargas S.A."
   theme_color="#147b96"
   image="https://www.kinto-mobility.com/images/service-logos/logo-kinto.svg"
 >
@@ -14,8 +15,8 @@ import { Image } from "astro:assets";
       class="relative h-screen flex items-center justify-center text-white"
     >
       <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50">
-        <!--<img src="/images/kinto/kinto-banner.jpeg" alt="KINTO Banner" class="w-full h-full object-cover -z-10 ukiyo" /> -->
-        <Image
+        <img src="/images/kinto/kinto-banner.jpeg" alt="KINTO Banner" class="w-full h-full object-cover -z-10 ukiyo" />
+        <!--<Image
           src="/images/kinto/kinto-banner.jpeg"
           alt="KINTO Banner"
           class="w-full h-full object-cover -z-10 ukiyo"
@@ -23,22 +24,22 @@ import { Image } from "astro:assets";
           height={1080}
           loading={"lazy"}
           decoding={"async"}
-        />
+        /> -->
       </div>
       <div data-aos="fade-up" class="container mx-auto px-4 text-center z-10">
-        <!--<img
+        <img
           loading="lazy" 
           src="/images/kinto/logo-kinto.svg" 
           alt="KINTO Logo" 
           class="w-48 md:w-64 mx-auto mb-8 animate-fade-in"
-        />-->
-        <Image
+        />
+        <!--<Image
           src="/images/kinto/logo-kinto.svg"
           alt="KINTO Logo"
           class="w-48 md:w-64 mx-auto mb-8 animate-fade-in"
           width={256}
           height={256}
-        />
+        /> -->
         <h1 class="text-5xl md:text-6xl font-bold mb-6">
           Movilidad flexible para tu estilo de vida
         </h1>
@@ -67,7 +68,7 @@ import { Image } from "astro:assets";
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           {
-            ["One", "Share", "Fleet"].map((service) => (
+            ["One Personal", "Share", "One Fleet"].map((service) => (
               <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
                 <img
                   loading="lazy"
@@ -77,12 +78,36 @@ import { Image } from "astro:assets";
                 />
                 <h3 class="text-2xl font-bold mb-4">KINTO {service}</h3>
                 <p class="text-gray-600">
-                  {service === "One" &&
+                  {service === "One Personal" &&
                     "Suscripción flexible de vehículos todo incluido"}
                   {service === "Share" && "Comparte vehículos por horas o días"}
-                  {service === "Fleet" &&
+                  {service === "One Fleet" &&
                     "Soluciones de movilidad para empresas"}
                 </p>
+                {service === "One Personal" && (
+                  <a
+                    href="/kinto/kinto-one-personal/"
+                    class="inline-block mt-4 text-[#147b96] font-bold hover:underline"
+                  >
+                    Conoce más
+                  </a>
+                )}
+                {service === "Share" && (
+                  <a
+                    href="/kinto/kinto-share/"
+                    class="inline-block mt-4 text-[#147b96] font-bold hover:underline"
+                  >
+                    Conoce más
+                  </a>
+                )}
+                {service === "One Fleet" && (
+                  <a
+                    href="/kinto/kinto-one-fleet/"
+                    class="inline-block mt-4 text-[#147b96] font-bold hover:underline"
+                  >
+                    Conoce más
+                  </a>
+                )}
               </div>
             ))
           }
@@ -94,7 +119,7 @@ import { Image } from "astro:assets";
     <section class="bg-gray-50 py-24 px-4" data-aos="fade-up">
       <div class="container mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl md:text-5xl font-bold text-[#147b96] mb-4">
+          <h2 class="text-4xl lg:text-6xl font-bold text-[#147b96] mb-4">
             ¿Cómo Funciona
             <span class="inline-block align-center">
               <img
@@ -145,7 +170,7 @@ import { Image } from "astro:assets";
     <section class="py-24 px-4" data-aos="fade-up">
       <div class="container mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
-          <h2 class="text-3xl md:text-5xl font-bold text-[#147b96] mb-4">
+          <h2 class="text-4xl lg:text-6xl font-bold text-[#147b96] mb-4">
             ¿Por qué elegir
             <span class="inline-block align-center">
               <img
@@ -190,33 +215,29 @@ import { Image } from "astro:assets";
     <section data-aos="fade-up" class="bg-[#147b96] text-white py-24 px-4">
       <div class="container mx-auto">
         <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
-          Nuestros Números
+          Alquilá directamente desde la app Kinto Share
         </h2>
+        <p class="text-center text-xl max-w-3xl mx-auto mb-8">
+          Descarga la app y comienza a disfrutar de la movilidad que necesitas
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <a href="https://play.google.com/store/apps/details?id=com.goodtravelsoftware.sharecar.toyotaargentina" class="text-center" target="_blank">
+            <div class="text-center bg-white/5 p-1 flex justify-center items-center max-h-max rounded-lg hover:bg-white/10 duration-300 hover:shadow-lg transition-all">
+              <img src="/images/kinto/kinto-google-play.png" alt="">
+            </div>
+          </a>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div class="text-center bg-white/5 p-8 rounded-lg">
-            <i class="ri-group-line text-6xl mb-4 block"></i>
-            <span class="text-5xl font-bold block mb-2">1000+</span>
-            <p class="text-xl">Clientes Satisfechos</p>
-          </div>
-
-          <div class="text-center bg-white/5 p-8 rounded-lg">
-            <i class="ri-car-line text-6xl mb-4 block"></i>
-            <span class="text-5xl font-bold block mb-2">500+</span>
-            <p class="text-xl">Vehículos Disponibles</p>
-          </div>
-
-          <div class="text-center bg-white/5 p-8 rounded-lg">
-            <i class="ri-time-line text-6xl mb-4 block"></i>
-            <span class="text-5xl font-bold block mb-2">24/7</span>
-            <p class="text-xl">Soporte al Cliente</p>
-          </div>
+          <a href="https://apps.apple.com/ar/app/kinto-share-latam/id1436690858" class="text-center" target="_blank">
+            <div class="text-center bg-white/5 p-1 flex justify-center items-center max-h-max rounded-lg hover:bg-white/10 duration-300 hover:shadow-lg transition-all">
+              <img src="/images/kinto/kinto-app-store.png" alt="">
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- Testimonios -->
-    <section data-aos="fade-up" class="py-24 px-4">
+    <!--<section data-aos="fade-up" class="py-24 px-4">
       <div class="container mx-auto">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">
@@ -251,7 +272,7 @@ import { Image } from "astro:assets";
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- FAQ -->
     <section data-aos="fade-up" class="bg-gray-50 py-24 px-4">
@@ -307,147 +328,14 @@ import { Image } from "astro:assets";
           </h2>
           <p class="text-xl text-gray-600">Estamos aquí para ayudarte</p>
         </div>
-        <form class="space-y-8">
-          <div class="relative z-0 w-full group">
-            <input
-              type="text"
-              name="nombre"
-              id="nombre"
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
-              placeholder=" "
-              required
-            />
-            <label
-              for="nombre"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Nombre completo
-            </label>
-          </div>
-
-          <div class="relative z-0 w-full group">
-            <input
-              type="email"
-              name="email"
-              id="email"
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
-              placeholder=" "
-              required
-            />
-            <label
-              for="email"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Email
-            </label>
-          </div>
-
-          <div class="relative z-0 w-full group">
-            <input
-              type="tel"
-              name="telefono"
-              id="telefono"
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
-              placeholder=" "
-            />
-            <label
-              for="telefono"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Teléfono
-            </label>
-          </div>
-
-          <div class="relative z-0 w-full group">
-            <select
-              name="servicio"
-              id="servicio"
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
-              required
-            >
-              <option value="" selected disabled></option>
-              <option value="kinto-one">KINTO One</option>
-              <option value="kinto-share">KINTO Share</option>
-              <option value="kinto-fleet">KINTO Fleet</option>
-            </select>
-            <label
-              for="servicio"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Selecciona un servicio
-            </label>
-          </div>
-
-          <div class="relative z-0 w-full group">
-            <textarea
-              name="mensaje"
-              id="mensaje"
-              rows="4"
-              class="block py-2.5 px-0 w-full text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-[#147b96] peer"
-              placeholder=" "
-              required></textarea>
-            <label
-              for="mensaje"
-              class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 peer-focus:text-[#147b96] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-            >
-              Mensaje
-            </label>
-          </div>
-
-          <button
-            type="submit"
-            class="w-full bg-[#147b96] hover:bg-[#1a94b4] text-white font-bold py-4 px-6 rounded-lg transition-colors duration-300"
-          >
-            Enviar
-          </button>
-        </form>
+        <Form tipo="kinto" client:load />
       </div>
     </section>
   </main>
 </Layout>
 
-<script>
-  const stats = document.querySelectorAll(".stat-number[data-target]");
-
-  const animateValue = (
-    obj: HTMLElement,
-    start: number,
-    end: number,
-    duration: number
-  ) => {
-    let startTimestamp: number | null = null;
-    const step = (timestamp: number) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      obj.innerHTML = Math.floor(progress * (end - start) + start) + "+";
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-    window.requestAnimationFrame(step);
-  };
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          if (entry.target.hasAttribute("data-target")) {
-            const element = entry.target as HTMLElement;
-            const target = element.getAttribute("data-target");
-            if (target) {
-              animateValue(element, 0, parseInt(target), 2000);
-            }
-          }
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  document
-    .querySelectorAll(".reveal-on-scroll, .stat-number[data-target]")
-    .forEach((el) => observer.observe(el));
+<script is:inline>
+  
 
   // FAQ functionality
   document.addEventListener("DOMContentLoaded", () => {
@@ -471,7 +359,7 @@ import { Image } from "astro:assets";
   });
 </script>
 
-<style>
+<style is:global>
   .faq-answer {
     max-height: 0;
     transition: max-height 0.3s ease-out;
@@ -486,18 +374,33 @@ import { Image } from "astro:assets";
     transform: rotate(180deg);
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .scroll-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 99999;
+    background-color: #147b96;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: all 0.4s;
   }
-
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out;
+  
+  .scroll-top i {
+    font-size: 24px;
+    color: #fff;
+    line-height: 0;
+  }
+  
+  .scroll-top:hover {
+    background-color: color-mix(in srgb, #147b96, transparent 20%);
+    color: #0c0b09;
+  }
+  
+  .scroll-top.active {
+    visibility: visible;
+    opacity: 1;
   }
 </style>

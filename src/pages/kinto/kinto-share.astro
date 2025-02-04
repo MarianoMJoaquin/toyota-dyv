@@ -1,0 +1,354 @@
+---
+import Form from "../../components/Form.jsx";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout
+  title="Kinto Share | Derka y vargas S.A."
+  theme_color="#147b96"
+  image="https://www.kinto-mobility.com/images/service-logos/logo-kinto.svg"
+>
+  <main class="overflow-hidden">
+    <!-- Hero Section -->
+    <section
+      class="relative h-screen flex items-center justify-center text-white"
+    >
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50">
+        <img src="/images/kinto/kinto-banner.jpeg" alt="KINTO Banner" class="w-full h-full object-cover -z-10 ukiyo" />
+        <!--<Image
+          src="/images/kinto/kinto-banner.jpeg"
+          alt="KINTO Banner"
+          class="w-full h-full object-cover -z-10 ukiyo"
+          width={1920}
+          height={1080}
+          loading={"lazy"}
+          decoding={"async"}
+        /> -->
+      </div>
+      <div data-aos="fade-up" class="container mx-auto px-4 text-center z-10">
+        <img
+          loading="lazy" 
+          src="/images/kinto/logo-share.svg" 
+          alt="KINTO Logo" 
+          class="w-48 md:w-1/3 mx-auto mb-8 animate-fade-in"
+        />
+        <!--<Image
+          src="/images/kinto/logo-kinto.svg"
+          alt="KINTO Logo"
+          class="w-48 md:w-64 mx-auto mb-8 animate-fade-in"
+          width={256}
+          height={256}
+        /> -->
+        
+        <p class="text-2xl mb-8">
+          El toyota que querés, cuando lo necesitás, por el tiempo que lo necesitás
+        </p>
+        <a
+          href="#share"
+          class="inline-block bg-[#147b96] hover:bg-[#1a94b4] text-white px-8 py-4 rounded-full transition-colors duration-300"
+        >
+          Conoce más
+        </a>
+      </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <section id="share" class="py-24 px-4 scroll-mt-20">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="relative aspect-video bg-gray-50 rounded-xl overflow-hidden">
+              <img 
+                src="/images/kinto/share.png" 
+                alt="Kinto one Personal" 
+                class="w-full h-full ukiyo object-cover rounded-xl"
+              />
+            </div>
+            <div>
+              <h2 class="text-4xl lg:text-6xl font-bold text-[#147b96] mb-6">
+                ¿Qué es 
+                <span class="inline-block align-center">
+                <img
+                  loading="lazy"
+                  src="/images/kinto/logo-share.svg"
+                  alt="KINTO"
+                  class="h-8 md:h-14"
+                />
+              </span> ?
+               </h2>
+              <p class="text-lg lg:text-2xl text-gray-600 leading-relaxed text-justify">
+                KINTO SHARE ofrece una solución de coche compartido sostenible que permite tanto a particulares como a empresas acceder a vehículos según sus necesidades.
+
+Simplemente reserve y use el vehículo de su elección a través de nuestras aplicaciones KINTO fáciles de usar, brindándole acceso perfecto al transporte cuando lo necesite.
+
+Al utilizar KINTO SHARE, usted contribuye a reducir el tráfico de la ciudad, aliviando la tensión en el estacionamiento y disminuyendo la huella ambiental.
+              </p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="bg-gray-50 py-24 px-4" data-aos="fade-up">
+      <div class="container mx-auto">
+        <div class="text-center max-w-8xl mx-auto mb-16">
+          <h2 class="text-3xl lg:text-6xl md:text-5xl font-bold text-[#147b96] mb-4">
+            ¿Cómo Funciona
+            <span class="inline-block align-center">
+              <img
+                loading="lazy"
+                src="/images/kinto/logo-share.svg"
+                alt="KINTO"
+                class="h-8 md:h-14"
+              />
+            </span> ?
+          </h2>
+          <p class="text-xl text-gray-600">
+            Un proceso simple y transparente en solo cuatro pasos
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+          {
+            [
+              {
+                icon: "ri-smartphone-line",
+                title: "Descargá la app de KINTO Share en tu smartphone o tablet",
+                desc: "Ingresá tus datos personales, licencia de conducir vigente y una tarjeta de crédito*.",
+              },
+              {
+                icon: "ri-survey-line",
+                title: "Registrate con tus datos personales",
+                desc: "Ingresá tus datos personales, licencia de conducir vigente y una tarjeta de crédito*.",
+              },
+              {
+                icon: "ri-calendar-line",
+                title: "Elegí las fechas de retiro y devolución",
+                desc: "Podes alquilar por hora o por día de acuerdo a tus necesidades.",
+              },
+              {
+                icon: "ri-home-line",
+                title: "Seleccioná la estación Kinto y el auto que quieras",
+                desc: "Podes retirar y/o devolver el vehículo por la estación o solicitar el servicio puerta a puerta**.",
+              },
+            ].map((step, index) => (
+              <div class="bg-white rounded-xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-2">
+                <div class="w-16 h-16 bg-[#147b96] rounded-full flex items-center justify-center mb-6 mx-auto">
+                  <i class={`${step.icon} text-3xl text-white`} />
+                </div>
+                <h3 class="text-xl lg:text-2xl font-bold mb-4 text-center">{step.title}</h3>
+                <p class="text-gray-600 text-center text-base lg:text-lg">{step.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+        <p class="text-center mt-8 text-gray-400">
+            <small>
+                * Se realizará una validación de la disponibilidad de la tarjeta por $10.000.
+            </small>
+        </p>
+        <p class="text-center mt-2 text-gray-400">
+            <small>
+                ** La posibilidad de brindar este adicional o accesorio está sujeta a disponibilidad y decisión de Toyota Argentina. Sujeto a los horarios de cada estación.
+            </small>
+        </p>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-24 px-4" data-aos="fade-up">
+      <div class="container mx-auto">
+        <div class="text-center max-w-8xl mx-auto mb-16">
+          <h2 class="text-3xl lg:text-6xl font-bold text-[#147b96] mb-4">
+            ¿Por qué elegir
+            <span class="inline-block align-center">
+              <img
+                loading="lazy"
+                src="/images/kinto/logo-share.svg"
+                alt="KINTO"
+                class="h-8 md:h-14"
+              />
+            </span> ?
+          </h2>
+          <p class="text-xl text-gray-600">
+            Las ventajas que nos hacen diferentes
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {
+            [
+              {
+                icon: "ri-map-pin-line",
+                title: "Federalidad",
+                desc: "Estaciones Kinto en todo el país.",
+              },
+              {
+                icon: "ri-smartphone-line",
+                title: "A demanda",
+                desc: "Alquilás un Toyota por hora, días, semanas de acuerdo con tus necesidades.",
+              },
+              {
+                icon: "ri-customer-service-line",
+                title: "Asistencia",
+                desc: "Soporte y asistencia 24hs ante cualquier eventualidad",
+              },
+              {
+                icon: "ri-shield-check-line",
+                title: "Todo incluido",
+                desc: "Las tarifas incluyen seguro contra todo riesgo con franquicia.",
+              },
+              {
+                icon: "ri-checkbox-circle-line",
+                title: "Calidad",
+                desc: "Vehículos Toyota con la calidad y respaldo de concesionarios oficiales.",
+              },
+              {
+                icon: "ri-car-line",
+                title: "Modelos",
+                desc: "Recibís el mismo modelo que elegiste en la reserva",
+              },
+            ].map((benefit) => (
+              <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+                <i class={`${benefit.icon} text-4xl text-[#147b96]`}></i>
+                <h3 class="text-2xl font-bold my-4">{benefit.title}</h3>
+                <p class="text-gray-600">{benefit.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Estadísticas -->
+    <section data-aos="fade-up" class="bg-[#147b96] text-white py-24 px-4">
+        <div class="container mx-auto">
+          <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">
+            Alquilá directamente desde la app Kinto Share
+          </h2>
+          <p class="text-center text-xl max-w-3xl mx-auto mb-8">
+            Descarga la app y comienza a disfrutar de la movilidad que necesitas
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <a href="https://play.google.com/store/apps/details?id=com.goodtravelsoftware.sharecar.toyotaargentina" class="text-center" target="_blank">
+              <div class="text-center bg-white/5 p-1 flex justify-center items-center max-h-max rounded-lg hover:bg-white/10 duration-300 hover:shadow-lg transition-all">
+                <img src="/images/kinto/kinto-google-play.png" alt="">
+              </div>
+            </a>
+  
+            <a href="https://apps.apple.com/ar/app/kinto-share-latam/id1436690858" class="text-center" target="_blank">
+              <div class="text-center bg-white/5 p-1 flex justify-center items-center max-h-max rounded-lg hover:bg-white/10 duration-300 hover:shadow-lg transition-all">
+                <img src="/images/kinto/kinto-app-store.png" alt="">
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    <!-- FAQ -->
+    <!--<section data-aos="fade-up" class="bg-gray-50 py-24 px-4">
+      <div class="container mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">
+            Preguntas Frecuentes
+          </h2>
+          <p class="text-xl text-gray-600">Resolvemos tus dudas sobre KINTO</p>
+        </div>
+        <div class="space-y-4 max-w-3xl mx-auto" id="faq-container">
+          {
+            [
+              {
+                question: "¿Qué incluye la suscripción?",
+                answer:
+                  "La suscripción incluye mantenimiento, seguro, asistencia en carretera 24/7 y todos los servicios necesarios para tu movilidad sin preocupaciones.",
+              },
+              {
+                question: "¿Puedo cambiar de vehículo?",
+                answer:
+                  "Sí, dependiendo de tu plan, puedes cambiar de vehículo al renovar tu suscripción o en determinados períodos del año.",
+              },
+              {
+                question: "¿Cuál es el período mínimo de suscripción?",
+                answer:
+                  "Los períodos varían según el servicio, desde opciones por día hasta contratos anuales flexibles.",
+              },
+            ].map((faq, index) => (
+              <div class="faq-item bg-white rounded-xl shadow-lg">
+                <button class="faq-button w-full text-left p-6 focus:outline-none hover:bg-gray-50 transition-colors duration-300 flex justify-between items-center">
+                  <span class="font-bold text-lg md:text-2xl text-gray-800">
+                    {faq.question}
+                  </span>
+                  <i class="ri-arrow-down-s-line text-2xl text-[#147b96] transform transition-transform duration-300" />
+                </button>
+                <div class="faq-answer overflow-hidden bg-gray-50">
+                  <p class="p-6 text-gray-600">{faq.answer}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section> -->
+
+    <!-- Contacto -->
+    <section data-aos="fade-up" id="contacto" class="bg-white py-24 px-4">
+      <div class="container mx-auto max-w-4xl">
+        <div class="text-center max-w-3xl lg:max-w-6xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#147b96] mb-4">
+            Contáctanos
+          </h2>
+          <p class="text-xl text-gray-600">
+            ¿Quieres saber más sobre KINTO One Personal? ¡Déjanos tus datos y te
+            contactaremos!
+          </p>
+        </div>
+        <Form tipo="kinto" client:load />
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script is:inline>
+  // Smooth scroll functionality
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+</script>
+
+<style is:global>
+  .scroll-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 99999;
+    background-color: #147b96;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: all 0.4s;
+  }
+  
+  .scroll-top i {
+    font-size: 24px;
+    color: #fff;
+    line-height: 0;
+  }
+  
+  .scroll-top:hover {
+    background-color: color-mix(in srgb, #147b96, transparent 20%);
+    color: #0c0b09;
+  }
+  
+  .scroll-top.active {
+    visibility: visible;
+    opacity: 1;
+  }
+</style>

@@ -118,7 +118,8 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
       'usados': 'USADO',
       'contacto': 'CONVENCIONAL',
       'financiacion': 'CONVENCIONAL',
-      'la_voz_del_cliente': 'CONVENCIONAL'
+      'la_voz_del_cliente': 'CONVENCIONAL',
+      'kinto': 'CONVENCIONAL'
     };
     return interestMap[tipo] || 'CONVENCIONAL';
   };
@@ -335,7 +336,7 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
       email: formData.email,
       message: formData.message,
       sucursal: formData.sucursal,
-      from: formData.from,
+      from: tipo === 'kinto' ? 'contacto' : formData.from,
     };
 
     try {
@@ -426,13 +427,19 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             id="name"
             value={formData.name}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            className={`peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none ${
+              tipo === 'kinto' 
+                ? 'focus:border-[#147b96] focus:ring-1 focus:ring-[#147b96]' 
+                : 'focus:border-red-500 focus:ring-1 focus:ring-red-500'
+            } transition-all duration-200`}
             placeholder="Nombre"
             required
           />
           <label
             htmlFor="name"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+            className={`absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm ${
+              tipo === 'kinto' ? 'peer-focus:text-[#147b96]' : 'peer-focus:text-red-500'
+            }`}
           >
             Nombre y Apellido
           </label>
@@ -445,13 +452,19 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             id="phone"
             value={formData.phone}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            className={`peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none ${
+              tipo === 'kinto' 
+                ? 'focus:border-[#147b96] focus:ring-1 focus:ring-[#147b96]' 
+                : 'focus:border-red-500 focus:ring-1 focus:ring-red-500'
+            } transition-all duration-200`}
             placeholder="Teléfono"
             required
           />
           <label
             htmlFor="phone"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+            className={`absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm ${
+              tipo === 'kinto' ? 'peer-focus:text-[#147b96]' : 'peer-focus:text-red-500'
+            }`}
           >
             Teléfono
           </label>
@@ -464,13 +477,19 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             id="email"
             value={formData.email}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            className={`peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none ${
+              tipo === 'kinto' 
+                ? 'focus:border-[#147b96] focus:ring-1 focus:ring-[#147b96]' 
+                : 'focus:border-red-500 focus:ring-1 focus:ring-red-500'
+            } transition-all duration-200`}
             placeholder="Email"
             required
           />
           <label
             htmlFor="email"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+            className={`absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm ${
+              tipo === 'kinto' ? 'peer-focus:text-[#147b96]' : 'peer-focus:text-red-500'
+            }`}
           >
             Email
           </label>
@@ -482,7 +501,11 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             id="sucursal"
             value={formData.sucursal}
             onChange={handleChange}
-            className="text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+            className={`text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none ${
+              tipo === 'kinto' 
+                ? 'focus:border-[#147b96] focus:ring-1 focus:ring-[#147b96]' 
+                : 'focus:border-red-500 focus:ring-1 focus:ring-red-500'
+            } transition-all duration-200 appearance-none`}
             required
           >
             <option value="" disabled>Seleccione una opción</option>
@@ -494,7 +517,9 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
           </select>
           <label
             htmlFor="sucursal"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-focus:text-red-500"
+            className={`absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all ${
+              tipo === 'kinto' ? 'peer-focus:text-[#147b96]' : 'peer-focus:text-red-500'
+            }`}
           >
             Sucursal
           </label>
@@ -508,7 +533,11 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
               id="modelo"
               value={formData.modelo}
               onChange={handleChange}
-              className="text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+              className={`text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none ${
+                tipo === 'kinto' 
+                  ? 'focus:border-[#147b96] focus:ring-1 focus:ring-[#147b96]' 
+                  : 'focus:border-red-500 focus:ring-1 focus:ring-red-500'
+              } transition-all duration-200 appearance-none`}
               required
             >
               <option value="" disabled>Seleccione un modelo</option>
@@ -520,7 +549,9 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             </select>
             <label
               htmlFor="modelo"
-              className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-focus:text-red-500"
+              className={`absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all ${
+                tipo === 'kinto' ? 'peer-focus:text-[#147b96]' : 'peer-focus:text-red-500'
+              }`}
             >
               Modelo
             </label>
@@ -535,7 +566,11 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
               id="modelo"
               value={formData.modelo}
               onChange={handleChange}
-              className="text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+              className={`text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none ${
+                tipo === 'kinto' 
+                  ? 'focus:border-[#147b96] focus:ring-1 focus:ring-[#147b96]' 
+                  : 'focus:border-red-500 focus:ring-1 focus:ring-red-500'
+              } transition-all duration-200 appearance-none`}
               required
             >
               <option value="" disabled>Seleccione un modelo</option>
@@ -547,7 +582,9 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             </select>
             <label
               htmlFor="modelo"
-              className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-focus:text-red-500"
+              className={`absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all ${
+                tipo === 'kinto' ? 'peer-focus:text-[#147b96]' : 'peer-focus:text-red-500'
+              }`}
             >
               Modelo
             </label>
@@ -562,7 +599,11 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
               id="modelo"
               value={formData.modelo}
               onChange={handleChange}
-              className="text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 appearance-none"
+              className={`text-sm peer w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none ${
+                tipo === 'kinto' 
+                  ? 'focus:border-[#147b96] focus:ring-1 focus:ring-[#147b96]' 
+                  : 'focus:border-red-500 focus:ring-1 focus:ring-red-500'
+              } transition-all duration-200 appearance-none`}
               required
             >
               <option value="" disabled>Seleccione un modelo</option>
@@ -574,7 +615,9 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             </select>
             <label
               htmlFor="modelo"
-              className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-focus:text-red-500"
+              className={`absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all ${
+                tipo === 'kinto' ? 'peer-focus:text-[#147b96]' : 'peer-focus:text-red-500'
+              }`}
             >
               Modelo
             </label>
@@ -609,13 +652,19 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             value={formData.message}
             onChange={handleChange}
             rows="4"
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200 resize-none"
+            className={`peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none ${
+              tipo === 'kinto' 
+                ? 'focus:border-[#147b96] focus:ring-1 focus:ring-[#147b96]' 
+                : 'focus:border-red-500 focus:ring-1 focus:ring-red-500'
+            } transition-all duration-200 resize-none`}
             placeholder="Mensaje"
             required
           />
           <label
             htmlFor="message"
-            className="absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500"
+            className={`absolute left-4 -top-2.5 bg-white px-1 text-sm text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm ${
+              tipo === 'kinto' ? 'peer-focus:text-[#147b96]' : 'peer-focus:text-red-500'
+            }`}
           >
             Mensaje
           </label>
@@ -625,7 +674,11 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
           <button
             type="submit"
             disabled={status.loading}
-            className="w-full bg-[#eb001b] p-3 text-white rounded-lg relative overflow-hidden hover:bg-red-700 transition-colors duration-200 text-lg font-medium"
+            className={`w-full p-3 text-white rounded-lg relative overflow-hidden transition-colors duration-200 text-lg font-medium ${
+              tipo === 'kinto' 
+                ? 'bg-[#147b96] hover:bg-[#106b84]' 
+                : 'bg-[#eb001b] hover:bg-red-700'
+            }`}
           >
             <span className={`relative z-10 transition-all duration-200 ${
               status.loading ? 'text-white/90' : ''
@@ -635,7 +688,9 @@ const Form = ({ tipo , slug="" }) => { // Agregar slug como parámetro opcional,
             
             {status.loading && (
               <div 
-                className="absolute left-0 top-0 h-full bg-red-800 transition-all duration-200 ease-out"
+                className={`absolute left-0 top-0 h-full transition-all duration-200 ease-out ${
+                  tipo === 'kinto' ? 'bg-[#0c5068]' : 'bg-red-800'
+                }`}
                 style={{
                   width: `${progress}%`,
                 }}
