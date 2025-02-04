@@ -11,8 +11,26 @@ import Layout from "../../layouts/Layout.astro";
   <main class="overflow-hidden">
     <!-- Hero Section -->
     <section
-      class="relative h-screen flex items-center justify-center text-white"
+      class="relative h-screen flex flex-col gap-20 items-center justify-center text-white"
     >
+    <!-- Breadcrumb -->
+    <div class="w-full z-50">
+      <nav class="py-2 px-4">
+        <div class="container mx-auto">
+          <ol class="flex items-center gap-2 text-sm">
+            <li>
+              <a href="/" class="text-white hover:text-[#147b96] text-xl">Inicio</a>
+            </li>
+            <li class="text-white">/</li>
+            <li>
+              <a href="/kinto" class="text-gray-600 hover:text-[#147b96] text-xl">Kinto</a>
+            </li>
+            <li class="text-white">/</li>
+            <li class="text-[#147b96] text-xl">Share</li>
+          </ol>
+        </div>
+      </nav>
+    </div>
       <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50">
         <img src="/images/kinto/kinto-banner.jpeg" alt="KINTO Banner" class="w-full h-full object-cover -z-10 ukiyo" />
         <!--<Image
