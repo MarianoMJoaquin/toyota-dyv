@@ -465,6 +465,15 @@ export default function ModeloDetalles({ slug }) {
                     initialSubversion="HEV 1.8 XEI eCVT"
                   />
                 ) : null}
+                {modelData.slug === "corolla-gr-sport" ? (
+                  <CarComponent360
+                    client:load
+                    initialModel="corolla_gr_sport"
+                    initialVersion="GR-Sport"
+                    initialColor="white-perl"
+                    initialSubversion="2.0 CVT"
+                  />
+                ) : null}
                 {modelData.slug === "hilux-cabina-simple" ? (
                   <CarComponent360
                     client:load
@@ -479,7 +488,7 @@ export default function ModeloDetalles({ slug }) {
                     client:load
                     initialModel="hilux_cabina_doble"
                     initialVersion="dx"
-                    initialColor="gray"
+                    initialColor="silver"
                     initialSubversion="DX 4X2/4X4 6MT"
                   />
                 ) : null}
@@ -498,7 +507,7 @@ export default function ModeloDetalles({ slug }) {
                     initialModel="corolla_cross"
                     initialVersion="xli"
                     initialColor="red"
-                    initialSubversion="XS 2.0 CVT"
+                    initialSubversion="XLI 2.0 CVT"
                   />
                 ) : null}
                 {modelData.slug === "corolla-cross-hybrid" ? (
@@ -515,8 +524,17 @@ export default function ModeloDetalles({ slug }) {
                     client:load
                     initialModel="sw4"
                     initialVersion="srx"
-                    initialColor="black"
-                    initialSubversion="SRX 4X4 7A/T"
+                    initialColor="white-perl"
+                    initialSubversion="SRX 4X4 6AT 7A"
+                  />
+                ) : null}
+                {modelData.slug === "sw4-gr-sport" ? (
+                  <CarComponent360
+                    client:load
+                    initialModel="sw4_gr_sport"
+                    initialVersion="gr-sport"
+                    initialColor="white-perl"
+                    initialSubversion="4X4 6AT 7A"
                   />
                 ) : null}
               </div>

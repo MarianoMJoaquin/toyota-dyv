@@ -88,6 +88,72 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
         "Alerta de tráfico trasero (RCTA)"
       ]
     },
+    corolla_hybrid:{
+      "HEV 1.8 XEI eCVT": [
+        "Motorización Híbrida 1,8 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 122 CV de potencia máxima",
+        "Automático eCVT",
+        "Motor Hibrido",
+        "Modo de conducción EV",
+        "Transmisión automática e-CVT",
+        "Espejos exteriores con regulación eléctrica, luz de giro incorporada y retráctiles",
+        "Ópticas delanteras Bi-LED con regulación en altura",
+        "Luces DRL de LED",
+        "Ópticas traseras con LED",
+        "Sistema automático de encendido de luces",
+        "Llantas de aleación de 17\"",
+        "Aire acondicionado con climatizador automático digital Bi-Zona",
+        "Salidas de aire acondicionado y regulador para plazas traseras",
+        "2 puertos USB tipo \\\"C \\\" en plazas traseras",
+        "Asientos tapizados de tela combinado con cuero ecológico",
+        "Apoyabrazos delantero tapizado en cuero ecológico",
+        "Display de información múltiple con pantalla a color de 7\"",
+        "Espejo retrovisor interno con anti-encandilamiento automático",
+        "Levanta cristales eléctricos con función \\\"One Touch\\\" en las 4 plazas",
+        "Volante revestido en cuero",
+        "Volante con control de audio, display de información múltiple y teléfono",
+        "Modos de conducción normal, ECO, SPORT y EV",
+        "Monitor con cámara de estacionamiento",
+        "Sensores de estacionamiento delanteros y traseros",
+        "Sistema de encendido por botón (Push Start Button) y Sistema de ingreso inteligente (Smart Entry System)",
+        "Audio con pantalla táctil de 9\" con manos libres y Bluetooth",
+        "Conectividad: Apple Car Play ® & Android Auto® inalámbrica**",
+        "7 airbags: frontales (x2), de rodilla (conductor), laterales (x2) y de cortina (x2)",
+        "Control de estabilidad (VSC) y Control de tracción (TRC) y Asistencia de arranque en pendientes (HAC)",
+        "Asistencia activa en curvas (ACA)",
+        "Limitador automático de velocidad (ASL)",
+        "Faros antiniebla de LED",
+        "Alarma antirrobo e inmovilizador de motor",
+        "Tuerca de seguridad para llantas",
+        "Toyota Safety Sense:**",
+        "Control de velocidad crucero adaptativo (ACC) de rango completo*",
+        "Sistema de pre colisión frontal (PCS)*",
+        "Sistema de alerta de cambio de carril (LDA)*",
+        "Sistema de asistencia de cambio de carril (LTA)*",
+        "Sistema de luces altas automáticas (AHB)*",
+        "Sistema de alerta de vaivén (SWS)*"
+        ],
+      "HEV 1.8 SEG eCVT": [
+        "Motorización Híbrida 1,8 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 122 CV de potencia máxima",
+        "Automático",
+        "Incluye funciones selectas HEV 1.8 XEI eCVT, más: Espejos exteriores retráctiles automáticos y con desempañador",
+        "Ópticas traseras Full LED",
+        "Asientos tapizados de cuero natural y ecológico",
+        "Asiento del conductor con regulación eléctrica",
+        "Display de información múltiple con pantalla a color de 12.3\"",
+        "Bandeja de baúl",
+        "Cargador inalámbrico para celulares**",
+        "Sensor de lluvia",
+        "Servicios Conectados **Solo para smartphones compatibles. Verificá la compatibilidad de tu modelo de smartphone con su respectivo fabricante."
+        ]
+    },
+    corolla_gr_sport: {
+      "2.0 CVT": [
+        "Motor 2 Litros, de 4 cilindros y 16 válvulas con 171 CV de potencia máxima",
+        "Automático CVT, secuencial de 10 velocidades",
+        "Techo solar; Puerto USB (x2); Audio con pantalla táctil de 10\"; Conectividad AppleCar Play® & Android Auto® inalámbrica; Display de información múltiple de 12,3\";Salidas de aire acondicionado para plazas traseras; Sensores de estacionamiento delanteros y traseros",
+        "Servicios Conectados"
+      ]
+    },
     yaris_hatchback: {
       "XS 1.5 6M/T 5P": [
         "Motor 1,5 litros de 4 cilindros y 16 válvulas con Regulación Variable de Válvulas con Inteligencia 13,0 con 107 CV de potencia máxima Manual de 6 velocidades",
@@ -245,7 +311,6 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
       ],
       "SR 4X2/4X4 6AT": [
         "Motor 2,8 litros de 4 cilindros y 16 válvulas con 204 CV de potencia máxima Automático de 6 velocidades",
-        "Motor 2,8 l de 204 CV",
         "Carrocería extendida",
         "Display de información múltiple con pantalla a color de 4,2\" (TFT)",
         "Llantas de aleación 17\" con neumáticos 265/65 R17 AT",
@@ -278,147 +343,245 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
         "Toyota Safety Sense *(1): Control de velocidad crucero adaptativo (ACC); Sistema de pre colisión frontal"
       ]
     },
-    
+    hilux_cabina_simple: {
+      "DX 4X2/4X4 MT": [
+        "Motor 2,4 litros de 4 cilindros y 16 válvulas con 150 CV de potencia máxima",
+        "Manual de 6 velocidades",
+        "Audio con pantalla táctil de 9\" con USB y Bluetooth®",
+        "Conectividad: Android Auto® y Apple CarPlay® inalámbrica*(1)",
+        "7 airbags: frontales (x2), de rodilla (conductor), laterales (x2) y de cortina (x2)",
+        "Control de estabilidad (VSC)",
+        "Control de tracción (TRC)",
+        "Asistente de arranque en pendientes (HAC)",
+        "Control de balanceo de tráiler (TSC)",
+        "Control de velocidad crucero (CCS)",
+        "Protector de cárter \"Heavy Duty\", y de tanque de combustible",
+        "Cierre centralizado de puertas con comando a distancia",
+        "Levantacristales eléctricos",
+        "Espejos exteriores con regulación eléctrica",
+        "Guantera con llave",
+        "Volante con control de audio y de teléfono",
+        "Volante con regulación en altura y profundidad",
+        "Inmovilizador de motor",
+        "Cobertor de caja de carga",
+        "*(1) Solo para teléfonos compatibles"
+      ]
+    },
+    hilux_chasis_cabina: {
+      "DX 4X2/4X4 MT": [
+        "Motor 2,4 litros de 4 cilindros y 16 válvulas con 150 CV de potencia máxima",
+        "Manual de 6 velocidades",
+        "Audio con pantalla táctil de 9\" con USB y Bluetooth®",
+        "Conectividad: Android Auto® y Apple CarPlay® inalámbrica*(1)",
+        "7 airbags: frontales (x2), de rodilla (conductor), laterales (x2) y de cortina (x2)",
+        "Control de estabilidad (VSC)",
+        "Control de tracción (TRC)",
+        "Asistente de arranque en pendientes (HAC)",
+        "Control de balanceo de tráiler (TSC)",
+        "Control de velocidad crucero (CCS)",
+        "Protector de cárter \\\"Heavy Duty\\\", y de tanque de combustible",
+        "Cierre centralizado de puertas con comando a distancia",
+        "Levantacristales eléctricos",
+        "Espejos exteriores con regulación eléctrica",
+        "Guantera con llave",
+        "Volante con control de audio y de teléfono",
+        "Volante con regulación en altura y profundidad",
+        "Inmovilizador de motor",
+        "*(1) Solo para teléfonos compatibles"
+      ]
+    },
+    hilux_gr_sport_iv: {
+      "4X4": [
+        "Motor 2,8 litros de 4 cilindros y 16 válvulas con 224 CV de potencia máxima",
+        "Automático de 6 velocidades",
+        "Motor 2,8l de 224 CV",
+        "Llantas de aleación de 17\" de diseño exclusivo GR con neumáticos 265/65 R17\" AT",
+        "Barra tubular negra",
+        "Techo Bitono negro*(1)",
+        "*(1) Solo disponible en color Blanco perlado o Rojo"
+      ]
+    },
+    corolla_cross: {
+      "XLI 2.0 CVT": [
+        "Dynamic Force 2.0L Dual VVT-i, 4 cilindros en línea con 16 válvulas DOHC con 171 CV de potencia máxima Automático Direct Shift CVT de 10 velocidades preprogramadas",
+        "Transmisión automática Direct Shift CVT De 10 velocidades",
+        "Faros traseros de LED",
+        "Llantas de aleacion de 17”",
+        "Faros delanteros Bi-LED con regulación en altura",
+        "Sistema automático de encendido de luces",
+        "Faros antinieblas LED",
+        "Faros traseros de LED con efecto cortina",
+        "Espejos exteriores con regulación eléctrica, luz de giro incorporada y retráctiles automaticamente",
+        "Aire acondicionado con climatizador automático digital",
+        "Freno de mano eletrónico con función Auto Hold",
+        "Display de información múltiple con pantalla a color de 7”",
+        "Volante con control de audio, display de información múltiple y teléfono",
+        "Monitor con cámara de estacionamiento",
+        "Audio con pantalla táctil de 9 pulgadas con manos libres y Bluetooth",
+        "Conectividad: AppleCar Play ® & Android Auto® inalámbrica",
+        "Puertos USB (x2) en plazas traseras",
+        "7 airbags: frontales (x2), de rodilla (conductor), laterales (x2) y de cortina (x2)",
+        "Tuerca de seguridad para llantas",
+        "Toyota Safety Sense: *Control de velocidad crucero adaptativo (ACC) de rango completo",
+        "Sistema de pre-colisión frontal (PCS)",
+        "Sistema de alerta de cambio de carril (LDA)",
+        "Sistema de luces altas automáticas (AHB)", 
+        "Sistema de alerta de vaivén (SWS)"
+      ],
+      "XEI 2.0 CVT": [
+        "Dynamic Force 2.0L Dual VVT-i, 4 cilindros en línea con 16 válvulas DOHC con 171 CV de potencia máxima",
+        "Automático 'Direct Shift CVT' de 10 velocidades preprogramadas",
+        "Incluye funciones selectas XLI CVT, más: Llantas de aleación de 18\"",
+        "Techo solar con apertura eléctrica",
+        "Sistema de encendido por botón (Push Start Button) y Sistema de ingreso inteligente (Smart Entry System)",
+        "Alerta de punto ciego (BSM) y Alerta de tráfico cruzado trasero (RCTA)",
+        "Sensores de estacionamiento delanteros (x4) y traseros (x4) con asistente de frenado",
+        "Aire acondicionado con climatizador automatico Bi-Zona",
+        "Espejo retrovisor interno con anti-encandilamiento automático",
+        "Cargador inalámbrico para smarthphones compatibles",
+        "Volante revestido en cuero",
+        "Levas al volante"
+        ],
+      "SEG 2.0 CVT": [
+        "Dynamic Force 2.0L Dual VVT-i, 4 cilindros en línea con 16 válvulas DOHC con 171 CV de potencia máxima",
+        "Automático 'Direct Shift CVT' de 10 velocidades preprogramadas",
+        "Incluye funciones selectas XEI CVT, más:",
+        "Asientos tapizados en cuero natural y ecológico",
+        "Asiento del conductor con regulación eléctrica",
+        "Cámara de retroceso 360°",
+        "Display de información múltiple Full Digital de 12.3”",
+        "Portón trasero con sistema de apertura y cierre eléctrico con sensor 'manos libres'",
+        "Sensor de lluvia",
+        "Luces de giro secuenciales en ópticas delanteras",
+        "Iluminación interior ambiente LED en posavasos, consola central, tablero y puertas delanteras",
+        "Bandeja de baúl",
+        "Servicios Conectados"
+        ]
+      },
+    corolla_cross_hybrid: {
+      "XEI HEV 1.8 eCVT": [
+        "Sistema híbrido auto-recargable 1.8L, 4 cilindros en línea con 16 válvulas DOHC con 122 CV de potencia máxima combinada",
+        "Automático eCVT",
+        "Transmisión automática eCVT",
+        "Llantas de aleación de 18”",
+        "Faros delanteros Bi-LED con regulación en altura",
+        "Sistema automático de encendido de luces",
+        "Faros antinieblas LED",
+        "Faros traseros de LED con efecto cortina",
+        "Sistema de encendido por botón (Push Start Button) y Sistema de ingreso inteligente (Smart Entry System)",
+        "4 modos de manejo: Normal, Eco, Power y EV Espejos exteriores con regulación eléctrica, luz de giro incorporada y retráctiles automáticamente",
+        "Alerta de punto ciego (BSM) y Alerta de tráfico cruzado trasero (RCTA)",
+        "Sensores de estacionamiento delanteros (x4) y traseros (x4) con asistente de frenado",
+        "Aire acondicionado con climatizador automático Bi-Zona",
+        "Espejo retrovisor interno con anti-encandilamiento automático",
+        "Cargador inalámbrico para smartphones compatibles",
+        "Volante revestido en cuero",
+        "Freno de mano electrónico con función 'Auto Hold'",
+        "Display de información múltiple con pantalla a color de 7”",
+        "Monitor con cámara de estacionamiento",
+        "Audio con pantalla táctil de 9' con manos libres y Bluetooth",
+        "Conectividad: AppleCar Play ® & Android Auto® inalámbrica**",
+        "Puertos USB (x2) en plazas traseras",
+        "7 airbags: frontales (x2), de rodilla (conductor), laterales (x2) y de cortina (x2)",
+        "Tuerca de seguridad para llantas",
+        "Toyota Safety Sense:*",
+        "Control de velocidad crucero adaptativo (ACC) de rango completo*",
+        "Sistema de pre colisión frontal (PCS)*",
+        "Sistema de alerta de cambio de carril (LDA)*",
+        "Sistema de asistencia para mantenimiento de Carril (LTA)*",
+        "Sistema de luces altas automáticas (AHB)*",
+        "Sistema de alerta de vaivén (SWS)*"
+        ],
+      "SEG HEV 1.8 eCVT": [
+        "Sistema híbrido auto-recargable 1.8L, 4 cilindros en línea con 16 válvulas DOHC con 122 CV de potencia máxima combinada",
+        "Automático eCVT",
+        "Incluye funciones selectas XEI HEV 1.8 CVT, más:",
+        "Asientos tapizados en cuero natural y ecológico",
+        "Asiento del conductor con regulación eléctrica",
+        "Cámara de retroceso 360°",
+        "Display de información múltiple Full Digital de 12.3”",
+        "Portón trasero con sistema de apertura y cierre eléctrico con sensor 'manos libres'",
+        "Sensor de lluvia",
+        "Luces de giro secuenciales en ópticas delanteras",
+        "Iluminación interior ambiente LED en posavasos, consola central, tablero y puertas delanteras",
+        "Bandeja de baúl",
+        "Servicios Conectados"
+        ]
+      },
+      corolla_cross_gr_sport: {
+        "2.0 CVT GR-SPORT": [
+          "Dynamic Force 2.0L Dual VVT-i, 4 cilindros en línea con 16 válvulas DOHC con 171 CV de potencia máxima",
+          "Automático \\\"Direct Shift CVT\\\" de 10 velocidades preprogramadas",
+          "Incluye funciones selectas XEI CVT, más:",
+          "Asientos tapizados en cuero natural y ecológico combinado con ultrasuede y detalles en rojo",
+          "Asiento del conductor con regulación eléctrica",
+          "Cámara de retroceso 360°",
+          "Display de información múltiple Full Digital de 12.3”",
+          "Portón trasero con sistema de apertura y cierre eléctrico con sensor \\\"manos libres\\\"",
+          "Sensor de lluvia",
+          "Luces de giro secuenciales en ópticas delanteras",
+          "Iluminación interior ambiente LED en posavasos, consola central, tablero y puertas delanteras",
+          "Bandeja de baúl",
+          "Servicios Conectados"
+        ]
+      },
+      sw4: {
+        "SRX 4X4 6AT 7A": [
+          "Motor 2,8 litros de 4 cilindros y 16 válvulas con 204 CV de potencia máxima",
+          "Automático de 6 velocidades",
+          "Sistema de ingreso inteligente (Smart Entry System) y Sistema de encendido por botón (Push Start Button)",
+          "Llantas de aleación 18\" con neumáticos 265/60 R18",
+          "Manijas exteriores y molduras en ventanillas cromadas",
+          "Aire acondicionado con climatizador automático digital bizona y salidas para plazas traseras",
+          "Butacas con tapizado de cuero natural y ecológico, con función de ventilación",
+          "Butacas con regulación eléctrica para el conductor y acompañante",
+          "Toyota Safety Sense *(1): Control de velocidad crucero adaptativo (ACC); Sistema de pre colisión frontal (PCS); Sistema de alerta de cambio de carril (LDA)",
+          "Audio con pantalla táctil de 9\" con USB y Bluetooth®",
+          "Conectividad: Android Auto® y Apple CarPlay® inalámbrica *(2)",
+          "Sistema de audio Premium JBL® con 10 parlantes y subwoofer",
+          "Monitor de sistema de visión 360° (PVM) en pantalla de audio",
+          "Portón trasero con sistema de apertura y cierre eléctrico",
+          "Espejos exteriores con desempañador",
+          "Cargador inalámbrico para smartphones*(2)",
+          "Espejo retrovisor interno con función antiencandilamiento automático",
+          "Alerta de punto ciego (BSM)",
+          "Alerta de tráfico trasero (RCTA)",
+          "Candado de seguridad para rueda de auxilio"
+        ],
+        "DIAMOND 4X4 6AT 7A": [
+          "Motor 2,8 litros de 4 cilindros y 16 válvulas con 204 CV de potencia máxima",
+          "Automático de 6 velocidades",
+          "Faros delanteros Full-LED de diseño exclusivo",
+          "Luces intermitentes secuenciales",
+          "Portón trasero con sistema de apertura y cierre eléctrico con sensor \\\"manos libres\\\"",
+          "Techo Bitono negro*(1)",
+          "Iluminación interior ambiente LED",
+          "Tapizado de cuero natural y ecológico perforado color beige",
+          "USB tipo C en plazas traseras (x2)",
+          "Llave de diseño exclusivo",
+          "Cubrealfombras de diseño exclusivo \\\"DIAMOND\\\"",
+          "*(1)Solo disponible en color Blanco perlado o Gris plata metalizado."
+        ]
+      },
+      sw4_gr_sport:{
+        "4X4 6AT 7A": [
+          "Motor 2,8 litros de 4 cilindros y 16 válvulas con 224 CV de potencia máxima",
+          "Automático de 6 velocidades",
+          "Faros delanteros Bi-LED",
+          "Faros traseros de LED",
+          "Sensores de estacionamiento delanteros (x2) y traseros (x4)",
+          "Cargador inalámbrico para smartphones *(1)",
+          "Estribos laterales",
+          "Aire acondicionado con climatizador automático digital bizona y salidas para plazas traseras",
+          "USB tipo C en plazas traseras (x2)",
+          "Asistencia de apertura y cierre de portón trasero",
+          "Cobertor de caja de carga",
+          "*(1) Solo para smartphones compatibles"
+        ]
+      }
   };
 
   const colors = {
-    corolla: {
-      xli: {
-        "2.0 XLI CVT": [
-          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
-          { name: "Negro Mica", code: "black", hex: "#292826" },
-          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
-          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
-          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
-          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
-          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
-        ]
-      },
-      xei: {
-        "2.0 XEI CVT": [
-          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
-          { name: "Negro Mica", code: "black", hex: "#292826" },
-          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
-          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
-          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
-          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
-          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
-        ]
-      },
-      seg: {
-        "2.0 SEG CVT": [
-          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
-          { name: "Negro Mica", code: "black", hex: "#292826" },
-          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
-          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
-          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
-          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
-          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
-        ]
-      }
-    },
-    hilux_cabina_doble: {
-      dx: {
-        "DX 4X2/4X4 6MT": [
-          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
-          { name: "Negro Mica", code: "black", hex: "#191919" },
-          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
-          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
-          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
-        ],
-        "DX 4X2/4X4 6AT": [
-          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
-          { name: "Negro Mica", code: "black", hex: "#191919" },
-          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
-          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
-          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
-        ]
-      },
-      sr: {
-        "SR 4X2/4X4 6MT": [
-          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
-          { name: "Negro Mica", code: "black", hex: "#191919" },
-          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
-          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
-          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
-        ],
-        "SR 4X2/4X4 6AT": [
-          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
-          { name: "Negro Mica", code: "black", hex: "#191919" },
-          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
-          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
-          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
-        ]
-      },
-      srv: {
-        "SRV 4X2/4X4 6AT": [
-          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
-          { name: "Negro Mica", code: "black", hex: "#191919" },
-          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
-          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
-          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" },
-          { name: "Blanco Perlado", code: "white-perl", hex: "#E9E8E3" }
-        ]
-      },
-      srx: {
-        "SRX 4X2/4X4 6AT": [
-          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
-          { name: "Negro Mica", code: "black", hex: "#191919" },
-          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
-          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
-          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
-        ]
-      }
-    },
-    hilux_cabina_simple: {
-      dx: {
-        "DX 4X2/4X4 MT": [
-          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
-          { name: "Super Blanco", code: "white", hex: "#F1F1EF" }
-        ]
-      }
-    },
-    hilux_chasis_cabina: {
-      dx: {
-        "DX 4X2/4X4 MT": [
-          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
-          { name: "Super Blanco", code: "white", hex: "#F1F1EF" }
-        ]
-      }
-    },
-    corolla_hybrid: {
-      xei: {
-        "HEV 1.8 XEI eCVT": [
-          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
-          { name: "Negro Mica", code: "black", hex: "#292826" },
-          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
-          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
-          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
-          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
-          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
-        ]
-      },
-      seg: {
-        "HEV 1.8 SEG eCVT": [
-          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
-          { name: "Negro Mica", code: "black", hex: "#292826" },
-          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
-          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
-          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
-          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
-          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
-        ]
-      }
-    },
-    corolla_gr_sport: {
-      "gr-sport": {
-        "2.0 CVT": [
-          { name: "Negro Mica", code: "black", hex: "#191919" },
-          { name: "Blanco Perlado Bitono", code: "white-perl", hex: "#D1D0CE" },
-          { name: "Rojo Metalizado Bitono", code: "red", hex: "#8A0309" }
-        ]
-      }
-    },
     yaris_hatchback: {
       xs: {
         "XS 1.5 6M/T 5P": [
@@ -512,6 +675,143 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
         ]
       }
     },
+    corolla: {
+      xli: {
+        "2.0 XLI CVT": [
+          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+        ]
+      },
+      xei: {
+        "2.0 XEI CVT": [
+          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+        ]
+      },
+      seg: {
+        "2.0 SEG CVT": [
+          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+        ]
+      }
+    },
+    corolla_hybrid: {
+      xei: {
+        "HEV 1.8 XEI eCVT": [
+          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+        ]
+      },
+      seg: {
+        "HEV 1.8 SEG eCVT": [
+          { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+          { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+        ]
+      }
+    },
+    corolla_gr_sport: {
+      "gr-sport": {
+        "2.0 CVT": [
+          { name: "Blanco Perlado Bitono", code: "white-perl", hex: "#D1D0CE" },
+          { name: "Negro Mica", code: "black", hex: "#191919" },
+          { name: "Rojo Metalizado Bitono", code: "red", hex: "#8A0309" }
+        ]
+      }
+    },
+    hilux_cabina_doble: {
+      dx: {
+        "DX 4X2/4X4 6MT": [
+          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
+          { name: "Negro Mica", code: "black", hex: "#191919" },
+          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
+          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
+          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
+        ],
+        "DX 4X2/4X4 6AT": [
+          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
+          { name: "Negro Mica", code: "black", hex: "#191919" },
+          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
+          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
+          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
+        ]
+      },
+      sr: {
+        "SR 4X2/4X4 6MT": [
+          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
+          { name: "Negro Mica", code: "black", hex: "#191919" },
+          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
+          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
+          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
+        ],
+        "SR 4X2/4X4 6AT": [
+          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
+          { name: "Negro Mica", code: "black", hex: "#191919" },
+          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
+          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
+          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
+        ]
+      },
+      srv: {
+        "SRV 4X2/4X4 6AT": [
+          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
+          { name: "Negro Mica", code: "black", hex: "#191919" },
+          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
+          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
+          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" },
+          { name: "Blanco Perlado", code: "white-perl", hex: "#E9E8E3" }
+        ]
+      },
+      srx: {
+        "SRX 4X2/4X4 6AT": [
+          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" },
+          { name: "Negro Mica", code: "black", hex: "#191919" },
+          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#A6A6A6" },
+          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
+          { name: "Rojo Metalizado", code: "red", hex: "#8A0309" }
+        ]
+      }
+    },
+    hilux_cabina_simple: {
+      dx: {
+        "DX 4X2/4X4 MT": [
+          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
+          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" }
+        ]
+      }
+    },
+    hilux_chasis_cabina: {
+      dx: {
+        "DX 4X2/4X4 MT": [
+          { name: "Super Blanco", code: "white", hex: "#F1F1EF" },
+          { name: "Plata Metalizado", code: "silver", hex: "#D3D3D3" }
+        ]
+      }
+    },
     hilux_gr_sport_iv: {
       "gr-sport-iv": {
         "4X4": [
@@ -525,8 +825,8 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
           { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
           { name: "Negro Mica", code: "black", hex: "#292826" },
           { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
-          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
           { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+          { name: "Azul Metalizado", code: "blue", hex: "#00022E" },
           { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
           { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
         ]
@@ -536,7 +836,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
           { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
           { name: "Negro Mica", code: "black", hex: "#292826" },
           { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
-          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Azul Metalizado", code: "blue", hex: "#00022E" },
           { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
           { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
           { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
@@ -547,16 +847,71 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
           { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
           { name: "Negro Mica", code: "black", hex: "#292826" },
           { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
-          { name: "Gris Azulado", code: "blue", hex: "#61727B" },
+          { name: "Azul Metalizado", code: "blue", hex: "#00022E" },
           { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
           { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
           { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
         ]
       }
+    },
+    corolla_cross_hybrid: {
+          xei: {
+            "XEI 2.0 CVT": [
+              { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+              { name: "Negro Mica", code: "black", hex: "#292826" },
+              { name: "Blanco", code: "white", hex: "#F8F8F8" },
+              { name: "Azul Metalizado", code: "blue", hex: "#61727B" },
+              { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+              { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+              { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+            ]
+          },
+          seg: {
+            "SEG 2.0 CVT": [
+              { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
+              { name: "Negro Mica", code: "black", hex: "#292826" },
+              { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
+              { name: "Azul Metalizado", code: "blue", hex: "#61727B" },
+              { name: "Blanco Perlado", code: "white-perl", hex: "#DBDAD6" },
+              { name: "Gris Oscuro", code: "gray", hex: "#746D67" },
+              { name: "Gris Plata", code: "silver", hex: "#DCDCDE" }
+            ]
+          }
+    },
+    corolla_cross_gr_sport: {
+      "gr-sport": {
+        "2.0 CVT GR-SPORT": [
+            { name: "Blanco Bitono", code: "white-perl", hex: "#D1D0CE" },
+            { name: "Rojo Metalizado Bitono", code: "red", hex: "#8A0309" }
+        ]
+      }
+    },
+    sw4: {
+      srx: {
+        "SRX 4X4 6AT 7A": [
+            { name: "Blanco Perlado Bitono", code: "white-perl", hex: "#D1D0CE" },
+            { name: "Plata Metalizado Bitono", code: "silver", hex: "#DCDCDE" },
+            { name: "Negro Mica", code: "black", hex: "#292826" },
+            { name: "Gris Oscuro Metalizado", code: "gray", hex: "#746D67" }
+        ]
+      },
+      diamond:{
+        "DIAMOND 4X4 6AT 7A": [
+          { name: "Blanco Perlado Bitono", code: "white-perl", hex: "#D1D0CE" },
+          { name: "Plata Metalizado Bitono", code: "silver", hex: "#DCDCDE" },
+          { name: "Negro Mica", code: "black", hex: "#292826" },
+          { name: "Gris Oscuro Metalizado", code: "gray", hex: "#746D67" }
+        ]
+      }
+    },
+    sw4_gr_sport: {
+      "gr-sport": {
+        "4X4 6AT 7A": [
+            { name: "Blanco Perlado Bitono", code: "white-perl", hex: "#D1D0CE" },
+            { name: "Negro Mica", code: "black", hex: "#292826" }
+        ]
+      }
     }
-   
-
-
     
   };
 

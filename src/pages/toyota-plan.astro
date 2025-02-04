@@ -7,7 +7,23 @@ import PlanesVigentes from '../components/PlanesVigentes';
 <Layout title="Toyota Plan | Derka y Vargas" theme_color="#EB0A1E" image='https://i.imgur.com/AabFmC0.png'>
   <main class="overflow-hidden main">
     <!-- Hero Section -->
-    <section class="relative h-screen flex items-center justify-center text-white">
+    <section class="relative h-screen flex flex-col gap-20 items-center justify-center text-white">
+      <!-- Breadcrumb -->
+      <div class="w-full z-50">
+        <nav class="py-2 px-4">
+          <div class="container mx-auto">
+            <ol class="flex items-center gap-2 text-sm">
+              <li>
+                <a href="/" class="text-white hover:text-[#EB0A1E] transition-colors duration-300 text-xl">Inicio</a>
+              </li>
+              <li class="text-white">/</li>
+              <li>
+                <a href="/kinto" class="text-[#EB0A1E] transition-colors duration-300 text-xl">Toyota Plan</a>
+              </li>
+            </ol>
+          </div>
+        </nav>
+      </div>
       <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50">
         <!--<Image
           src="/images/toyota_plan.jpeg"
@@ -20,7 +36,7 @@ import PlanesVigentes from '../components/PlanesVigentes';
       </div>
       <div data-aos="fade-up" class="container mx-auto px-4 text-center z-10">
         <h1 class="text-5xl md:text-6xl font-bold mb-6">Toyota Plan de Ahorro</h1>
-        <p class="text-xl mb-8">La manera más accesible de tener tu Toyota 0km</p>
+        <p class="text-xl mb-8">La manera más accesible de tener tu Toyota</p>
         <a href="#video-section" class="inline-block bg-[#EB0A1E] hover:bg-[#ff1c35] text-white px-8 py-4 rounded-full transition-colors duration-300">
           Conocer más
         </a>
