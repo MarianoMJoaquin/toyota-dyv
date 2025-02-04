@@ -1,0 +1,193 @@
+{
+    "data": [
+      {
+        "modelo": "Toyota Plan Flex",
+        "version": "Usado/Okm",
+        "modalidad": "100%",
+        "image": "/imagenes/tpa/plan-flex.png",
+        "slug": "plan-flex",
+        "plazo": "84 Cuotas",
+        "integracion": "Integración Mínima 24 Cuotas",
+        "cuotas": [
+          {
+            "cuota": "Cuota 1",
+            "valor": "200.635,83"
+          },
+          {
+            "cuota": "Cuotas 2 a 18",
+            "valor": "286.104,87"
+          },
+          {
+            "cuota": "Cuotas 19 a 24",
+            "valor": "280.359,20"
+          },
+          {
+            "cuota": "Cuotas 25 a 84",
+            "valor": "281.630,13"
+          }
+        ]
+      },
+      {
+        "modelo": "Yaris",
+        "version": "XS CVT 5P",
+        "modalidad": "70/30",
+        "image": "/imagenes/tpa/yaris100.png",
+        "slug": "yaris-xs-cvt-5p-703096",
+        "plazo": "96 Cuotas",
+        "integracion": "Integración Mínima 36 Cuotas",
+        "cuotas": [
+          {
+            "cuota": "Cuota 1",
+            "valor": "194.768,03"
+          },
+          {
+            "cuota": "Cuotas 2 a 18",
+            "valor": "241.616,09"
+          },
+          {
+            "cuota": "Cuotas 19 a 24",
+            "valor": "216.605,74"
+          },
+          {
+            "cuota": "Cuotas 25 a 96",
+            "valor": "226.209,20"
+          }
+        ]
+      },
+      {
+        "modelo": "Hilux",
+        "version": "4x2 DX CD",
+        "modalidad": "70/30",
+        "image": "/imagenes/tpa/hilux7030.png",
+        "slug": "hilux-4x2-dx-703096",
+        "plazo": "96 Cuotas",
+        "integracion": "Integración Mínima 36 Cuotas",
+        "cuotas": [
+          {
+            "cuota": "Cuota 1",
+            "valor": "316.407,85"
+          },
+          {
+            "cuota": "Cuotas 2 a 18",
+            "valor": "392.514,24"
+          },
+          {
+            "cuota": "Cuotas 19 a 24",
+            "valor": "351.884,01"
+          },
+          {
+            "cuota": "Cuotas 25 a 96",
+            "valor": "367.485,18"
+          }
+        ]
+      },
+      {
+        "modelo": "Hilux",
+        "version": "4x4 DX CD",
+        "modalidad": "70/30",
+        "image": "/imagenes/tpa/hilux100.png",
+        "slug": "hilux-4x4-dx-10096",
+        "plazo": "96 Cuotas",
+        "integracion": "Integración Mínima 36 Cuotas",
+        "cuotas": [
+          {
+            "cuota": "Cuota 1",
+            "valor": "370.587,11"
+          },
+          {
+            "cuota": "Cuotas 2 a 18",
+            "valor": "459.725,37"
+          },
+          {
+            "cuota": "Cuotas 19 a 24",
+            "valor": "412.137,93"
+          },
+          {
+            "cuota": "Cuotas 25 a 96",
+            "valor": "430.410,54"
+          }
+        ]
+      },
+      {
+        "modelo": "Corolla",
+        "version": "XLI CVT",
+        "modalidad": "60/40",
+        "image": "/imagenes/tpa/corolla100.png",
+        "slug": "corolla-xli-cvt-703096",
+        "plazo": "96 Cuotas",
+        "integracion": "Integración Mínima 36 Cuotas",
+        "cuotas": [
+          {
+            "cuota": "Cuota 1",
+            "valor": "237.089,87"
+          },
+          {
+            "cuota": "Cuotas 2 a 18",
+            "valor": "274.856,74"
+          },
+          {
+            "cuota": "Cuotas 19 a 24",
+            "valor": "243.268,17"
+          },
+          {
+            "cuota": "Cuotas 25 a 96",
+            "valor": "247.964,43"
+          }
+        ]
+      },
+      {
+        "modelo": "Corolla Cross",
+        "version": "XLI CVT",
+        "modalidad": "60/40",
+        "image": "/imagenes/tpa/corolla-cross100.png",
+        "slug": "corolla-cross-xli-cvt-604096",
+        "plazo": "96 Cuotas",
+        "integracion": "Integración Mínima 36 Cuotas",
+        "cuotas": [
+          {
+            "cuota": "Cuota 1",
+            "valor": "300.521,70"
+          },
+          {
+            "cuota": "Cuotas 2 a 18",
+            "valor": "348.349,43"
+          },
+          {
+            "cuota": "Cuotas 19 a 24",
+            "valor": "308.309,56"
+          },
+          {
+            "cuota": "Cuotas 25 a 96",
+            "valor": "314.305,68"
+          }
+        ]
+      },
+      {
+        "modelo": "Corolla Cross",
+        "version": "XEI HEV ECVT",
+        "modalidad": "100%",
+        "image": "/imagenes/tpa/corolla-cross100.png",
+        "slug": "corolla-cross-xei-hev-ecvt-10084",
+        "plazo": "96 Cuotas",
+        "integracion": "Integración Mínima 24 Cuotas",
+        "cuotas": [
+          {
+            "cuota": "Cuota 1",
+            "valor": "529.522,83"
+          },
+          {
+            "cuota": "Cuotas 2 a 5",
+            "valor": "582.511,26"
+          },
+          {
+            "cuota": "Cuotas 6 a 24",
+            "valor": "538.012,56"
+          },
+          {
+            "cuota": "Cuotas 25 a 84",
+            "valor": "544.560,29"
+          }
+        ]
+      }
+    ]
+  }

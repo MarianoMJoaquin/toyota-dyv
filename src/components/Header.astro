@@ -15,6 +15,10 @@ import srcImage10 from "../assets/images/copia10.webp"
 import srcImage11 from "../assets/images/copia11.webp"
 import srcImage12 from "../assets/images/copia12.webp"
 import srcImage13 from "../assets/images/copia13.webp"
+import srcImage14 from "../assets/images/copia14.webp"
+import srcImage15 from "../assets/images/copia15.webp"
+import srcImage18 from "../assets/images/copia16.webp"
+import srcImage19 from "../assets/images/copia17.webp"
 //import srcImage14 from "../assets/images/google.svg"
 //import srcImage15 from "../assets/images/apple.svg"
 import srcImage16 from "../assets/images/kinto-fleet.webp"
@@ -88,6 +92,13 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                             <img src={srcImage10.src} alt="Corolla Hybrid" loading="lazy" decoding="async" width="496" height="161">
                                         </a>
                                     </li>
+                                    <li>
+                                      <a href="/modelos/corolla-gr-sport" class="dropdown__link">
+                                          Corolla GR-Sport
+                                          <!--<Image src={srcImage10} format="avif" alt=""> -->
+                                          <img src={srcImage14.src} alt="Corolla GR-Sport" loading="lazy" decoding="async" width="412" height="162">
+                                      </a>
+                                    </li>
                                 </ul>
                             </div>
 
@@ -120,6 +131,13 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                             <img src={srcImage6.src} alt="Hilux Chasis Cabina" loading="lazy" decoding="async" width="467" height="183">
                                         </a>
                                     </li>
+                                    <li>
+                                      <a href="/modelos/hilux-gr-sport-iv" class="dropdown__link">
+                                          Hilux GR-Sport IV
+                                          <!--<Image src={srcImage6} format="avif" alt=""> -->
+                                          <img src={srcImage15.src} alt="Hilux GR-Sport IV" loading="lazy" decoding="async" width="467" height="183">
+                                      </a>
+                                  </li>
                                 </ul>
                             </div>
 
@@ -146,11 +164,25 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                         </a>
                                     </li>
                                     <li>
+                                      <a href="/modelos/corolla-cross-gr-sport" class="dropdown__link">
+                                          Corolla Cross GR-Sport
+                                           <!--<Image src={srcImage7} format="avif" alt=""> -->
+                                          <img src={srcImage18.src} alt="Corolla Cross GR-Sport" loading="lazy" decoding="async" width="400" height="165">
+                                      </a>
+                                    </li>
+                                    <li>
                                         <a href="/modelos/sw4" class="dropdown__link">
                                             SW4
                                             <!--<Image src={srcImage9} format="avif" alt=""> -->
                                             <img src={srcImage9.src} alt="SW4" loading="lazy" decoding="async" width="450" height="192">
                                         </a>
+                                    </li>
+                                    <li>
+                                      <a href="/modelos/sw4-gr-sport" class="dropdown__link">
+                                          SW4 GR-Sport
+                                          <!--<Image src={srcImage9} format="avif" alt=""> -->
+                                          <img src={srcImage19.src} alt="SW4 GR-Sport" loading="lazy" decoding="async" width="450" height="192">
+                                      </a>
                                     </li>
                                 </ul>
                             </div>
@@ -189,11 +221,6 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                             Ver todos los modelos <i class="ri-arrow-right-s-line"></i>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="#" class="dropdown__link inline-block" >
-                                            Toyota Gazoo Racing <i class="ri-arrow-right-s-line"></i>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -224,7 +251,7 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                 <p class="dropdown_text pr-6">Descargá la app, registrate y reservá el modelo que quieras.</p>
                                 <ul class="dropdown__list_kinto">
                                     <li>
-                                        <a href="#" class="dropdown__link inline-block">
+                                        <a href="/kinto" class="dropdown__link inline-block">
                                             Conocer más <i class="ri-arrow-right-s-line"></i>
                                         </a>
                                     </li>
@@ -241,7 +268,7 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                 <p class="dropdown_text pr-6">Buscá ofrecerle a tu empresa el alquiler de vehículos</p>
                                 <ul class="dropdown__list">
                                     <li>
-                                        <a href="#" class="dropdown__link inline-block">
+                                        <a href="/kinto" class="dropdown__link inline-block">
                                             Conocer más <i class="ri-arrow-right-s-line"></i>
                                         </a>
                                     </li>
@@ -258,7 +285,7 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                 <p class="dropdown_text">Alquilá un vehículo bajo la modalidad de suscripción mensual.</p>
                                 <ul class="dropdown__list">
                                     <li>
-                                        <a href="#" class="dropdown__link inline-block">
+                                        <a href="/kinto" class="dropdown__link inline-block">
                                             Conocer más <i class="ri-arrow-right-s-line"></i>
                                         </a>
                                     </li>
@@ -272,9 +299,9 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                     <a href="/financiacion" class="nav__link">Financiación</a>
                 </li>
 
-                <li>
-                    <a href="#" class="nav__link">Seguros</a>
-                </li>
+                <!--<li>
+                    <a href="/seguros" class="nav__link">Seguros</a>
+                </li> -->
                 <!--=============== DROPDOWN 2 ===============-->
                 <li class="dropdown__item">
                     <div class="nav__link dropdown__button">
@@ -288,7 +315,7 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                     <i class="ri-code-line"></i>
                                 </div>
 
-                                <span class="dropdown__title">Web templates</span>
+                                <span class="dropdown__title">Servicios</span>
 
                                 <ul class="dropdown__list">
                                     <li>
@@ -305,7 +332,7 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                     <i class="ri-pen-nib-line"></i>
                                 </div>
 
-                                <span class="dropdown__title">Designs</span>
+                                <span class="dropdown__title">Accesorios</span>
 
                                 <ul class="dropdown__list">
                                     <li>
@@ -325,7 +352,7 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                     <i class="ri-apps-2-line"></i>
                                 </div>
 
-                                <span class="dropdown__title">Others</span>
+                                <span class="dropdown__title">Recall</span>
 
                                 <ul class="dropdown__list">
                                     <li>
@@ -373,14 +400,14 @@ import srcImage17 from "../assets/images/kinto-personal.webp"
                                     <i class="ri-shield-line"></i>
                                 </div>
 
-                                <span class="dropdown__title">Safety and quality</span>
+                                <span class="dropdown__title">Responsabilidad Social Empresarial</span>
 
                                 <ul class="dropdown__list">
                                     <li>
-                                        <a href="#" class="dropdown__link">Cookie settings</a>
+                                        <a href="#" class="dropdown__link">Informe de Sustentabilidad</a>
                                     </li>
                                     <li>
-                                        <a href="#" class="dropdown__link">Privacy Policy</a>
+                                        <a href="#" class="dropdown__link">Boletines y Certificados</a>
                                     </li>
                                 </ul>
                             </div>

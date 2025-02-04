@@ -1,64 +1,333 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-import '../assets/styles/swiper.css'
-
-
-import UsadosForm from '../components/UsadosForm';
-import TestDriveForm from '../components/TestDriveForm';
-import SwiperNews from '../components/SwiperNews';
 import Form from '../components/Form.jsx';
-
-
-
+import PlanesVigentes from '../components/PlanesVigentes';
 ---
 
 <Layout title="Toyota Plan | Derka y Vargas" theme_color="#EB0A1E" image='https://i.imgur.com/AabFmC0.png'>
-    <!--======================= SCROLL-ARROW =======================-->
-    <main class="main">
-        <section class="home section" id="home">
-            <TestDriveForm client:load/>
-            <UsadosForm client:load/>
-            <SwiperNews client:load/>
-            <h1>
-                Contacto
-            </h1>
-            <div class="container mx-auto max-w-max mt-10">
-                <Form tipo="contacto" client:load/> 
+  <main class="overflow-hidden main">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center text-white">
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50">
+        <!--<Image
+          src="/images/toyota_plan.jpeg"
+          alt="Toyota Plan Banner"
+          class="w-full h-full object-cover -z-10 ukiyo"
+          width={1920}
+          height={1080}
+        /> -->
+        <img src="/images/toyota_plan.jpeg" alt="Toyota Plan Banner" class="w-full h-full object-cover -z-10 ukiyo" />
+      </div>
+      <div data-aos="fade-up" class="container mx-auto px-4 text-center z-10">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">Toyota Plan de Ahorro</h1>
+        <p class="text-xl mb-8">La manera más accesible de tener tu Toyota 0km</p>
+        <a href="#video-section" class="inline-block bg-[#EB0A1E] hover:bg-[#ff1c35] text-white px-8 py-4 rounded-full transition-colors duration-300">
+          Conocer más
+        </a>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section id="video-section" class="py-24 px-4 scroll-mt-20">
+      <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div class="relative aspect-video">
+            <a href="https://youtu.be/kZXTRFM--aU?si=rAONnlT-_8hpzCgI" 
+               class="glightbox block w-full h-full relative rounded-xl overflow-hidden"
+               data-type="video">
+              <!--<Image
+                src="/images/plan.png"
+                alt="Video Plan Toyota"
+                class="w-full h-full ukiyo object-cover"
+                width={640}
+                height={360}
+              /> -->
+                <img src="/images/plan.png" alt="Video Plan Toyota" class="w-full h-full ukiyo object-cover" />
+              <div class="absolute inset-0 flex items-center justify-center bg-black/10 hover:bg-black/20 transition-colors">
+                <i class="ri-play-circle-line text-[#EB0A1E] text-8xl"></i>
+              </div>
+            </a>
+          </div>
+          <div>
+            <h2 class="text-4xl lg:text-6xl font-bold text-[#EB0A1E] mb-6">¿Qué es un Plan de Ahorro?</h2>
+            <p class="text-lg lg:text-2xl text-gray-600 leading-relaxed">
+                Es un sistema de ahorro mediante el cual un grupo cerrado de personas realiza un aporte mensual destinado a la adquisición de su vehículo 0km. Conocé más detalles viendo el video.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="bg-gray-50 py-24 px-4" data-aos="fade-up">
+      <div class="container mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-3xl md:text-5xl font-bold text-[#EB0A1E] mb-4">¿Cómo funciona?</h2>
+          <p class="text-xl text-gray-600">Tres simples pasos para tener tu Toyota</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {[
+            {
+              icon: "ri-user-add-line",
+              title: "1. Adherite al plan",
+              desc: "Elegí el modelo y el plan que mejor se adapte a tus necesidades"
+            },
+            {
+              icon: "ri-money-dollar-circle-line",
+              title: "2. Pagá las cuotas",
+              desc: "Abonando mes a mes vas generando tu ahorro"
+            },
+            {
+              icon: "ri-car-line",
+              title: "3. Retirá tu 0km",
+              desc: "Por licitación o sorteo, retirá tu Toyota cuando sea adjudicado"
+            }
+          ].map((step) => (
+            <div class="bg-white rounded-xl p-8 shadow-lg transition-all duration-300 hover:-translate-y-2">
+              <div class="w-16 h-16 bg-[#EB0A1E] rounded-full flex items-center justify-center mb-6 mx-auto">
+                <i class={`${step.icon} text-2xl text-white`} />
+              </div>
+              <h3 class="text-xl font-bold mb-4 text-center">{step.title}</h3>
+              <p class="text-gray-600 text-center">{step.desc}</p>
             </div>
-            <h1>
-                Toyota Plan
-            </h1>  
-            <div class="container mx-auto max-w-max mt-10">
-                <Form tipo="tpa" client:load/> 
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Beneficios -->
+    <section class="py-24 px-4" data-aos="fade-up">
+      <div class="container mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">Beneficios del Plan</h2>
+          <p class="text-xl text-gray-600">Las ventajas de Toyota Plan de Ahorro</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-money-dollar-circle-line text-4xl text-[#EB0A1E] mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Cuotas Accesibles</h3>
+            <p class="text-gray-600">Sin intereses bancarios y con gastos administrativos reducidos</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-shield-check-line text-4xl text-[#EB0A1E] mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Valor Móvil</h3>
+            <p class="text-gray-600">Tu ahorro mantiene su valor respecto al vehículo</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-car-line text-4xl text-[#EB0A1E] mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Adjudicación Asegurada</h3>
+            <p class="text-gray-600">Por sorteo o licitación, tenés garantizada la entrega</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-exchange-dollar-line text-4xl text-[#EB0A1E] mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Flexibilidad Total</h3>
+            <p class="text-gray-600">Podés cambiar de modelo durante el plan a través de nuestro Plan Flex</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-group-line text-4xl text-[#EB0A1E] mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Respaldo Toyota</h3>
+            <p class="text-gray-600">Con la garantía de la marca líder</p>
+          </div>
+          <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+            <i class="ri-bank-card-line text-4xl text-[#EB0A1E] mb-4"></i>
+            <h3 class="text-2xl font-bold mb-4">Múltiples Pagos</h3>
+            <p class="text-gray-600">Diferentes medios de pago disponibles</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Planes Vigentes -->
+    <section class="bg-gray-50 py-24 px-4" data-aos="fade-up">
+      <div class="container mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">Planes Vigentes</h2>
+          <p class="text-xl text-gray-600">Conocé nuestros planes disponibles</p>
+        </div>
+        <PlanesVigentes client:load />
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section data-aos="fade-up" class="bg-gray-50 py-24 px-4">
+      <div class="container mx-auto">
+        <div class="text-center max-w-6xl mx-auto mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">Preguntas Frecuentes</h2>
+          <p class="text-xl text-gray-600">Todo lo que necesitás saber sobre Toyota Plan</p>
+        </div>
+        <div class="space-y-4 max-w-6xl mx-auto" id="faq-container">
+          {[
+            {
+              question: "¿Qué es un Plan de Ahorro para fines determinados?",
+              answer: "El Plan de Ahorro es un sistema a través del cual un grupo determinado de personas realiza un aporte mensual a un fondo común para la compra de bienes (automotor en este caso) que se adjudicarán por sorteo y licitación de acuerdo con la disponibilidad y durante la vigencia del plan (generalmente 84 meses)."
+            },
+            {
+              question: "¿Cuáles son los requisitos que debo reunir para suscribirme a un Plan de Ahorro?",
+              answer: "Para Personas Físicas, contar con una edad mínima de 18 años, o menores que se encuentren emancipados y una edad máxima de 75 años al momento de la suscripción. Completar y firmar en cualquier concesionario de la red una solicitud de adhesión y sus anexos correspondientes. Para Personas Jurídicas, presentar la documentación societaria respaldatoria y acreditar la personería jurídica. Abonar la primera cuota mensual."
+            },
+            {
+              question: "¿Qué es la Cuota Pura? ¿Qué es un Plan 100% y un Plan 70/30?",
+              answer: "Es el importe resultante de dividir el Valor Móvil vigente a la fecha de pago, por la cantidad de meses de duración del plan (plan 100%), o bien de dividir el 70% del Valor Móvil a ser pagado en cuotas que, sumado al 30% que se pagará al momento de la adjudicación, completará el Valor Móvil total del automotor (plan 70/30)."
+            },
+            {
+              question: "¿Puedo cambiar el modelo elegido?",
+              answer: "Sí, podés cambiar el modelo en cualquier momento del plan, antes de la adjudicación, adaptando las cuotas al nuevo valor del vehículo."
+            },
+            {
+              question: "¿Qué documentación necesito?",
+              answer: "DNI, comprobante de domicilio, comprobante de ingresos (recibo de sueldo, certificación de ingresos o declaración de ganancias)."
+            },
+            {
+              question: "¿Qué pasa si me atraso en el pago?",
+              answer: "Las cuotas no abonadas en término generan gastos administrativos adicionales. Es importante mantenerse al día para conservar la posibilidad de adjudicación."
+            }
+          ].map((faq) => (
+            <div class="faq-item bg-white rounded-xl shadow-lg">
+              <button class="faq-button w-full text-left p-6 focus:outline-none hover:bg-gray-50 transition-colors duration-300 flex justify-between items-center">
+                <span class="font-bold text-lg md:text-2xl text-gray-800">{faq.question}</span>
+                <i class="ri-arrow-down-s-line text-2xl text-[#EB0A1E] transform transition-transform duration-300" />
+              </button>
+              <div class="faq-answer overflow-hidden bg-gray-50">
+                <p class="p-6 text-gray-600">{faq.answer}</p>
+              </div>
             </div>
-            <h1>
-                Financiacion    
-            </h1>
-            <div class="container mx-auto max-w-max mt-10">
-                <Form tipo="financiacion" client:load/>
-            </div>
-            <h1>
-                La voz del cliente
-            </h1>
-            <div class="container mx-auto max-w-max mt-10">
-                <Form tipo="la_voz_del_cliente" client:load/>
-            </div> 
-            <h1>
-                Usados
-            </h1>  
-            <div class="container mx-auto max-w-auto mt-10">
-                <Form tipo="usados" client:load/>
-            </div>
-            <h1>
-                Usados con slug
-            </h1>  
-            <div class="container mx-auto max-w-max mt-10">
-                <Form tipo="usados" slug='chevrolet-onix-12-ls-blanco' client:load/>
-            </div>     
-          </section>
-    </main>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Formulario -->
+    <section id="contacto" class="py-24 px-4">
+      <div class="container mx-auto max-w-2xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">¡Comenzá hoy!</h2>
+          <p class="text-xl text-gray-600">Completá el formulario y un asesor se contactará con vos</p>
+        </div>
+        <Form tipo="tpa" client:load/>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<script>
+    const stats = document.querySelectorAll(".stat-number[data-target]");
+  
+    const animateValue = (
+      obj: HTMLElement,
+      start: number,
+      end: number,
+      duration: number
+    ) => {
+      let startTimestamp: number | null = null;
+      const step = (timestamp: number) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start) + "+";
+        if (progress < 1) {
+          window.requestAnimationFrame(step);
+        }
+      };
+      window.requestAnimationFrame(step);
+    };
+  
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            if (entry.target.hasAttribute("data-target")) {
+              const element = entry.target as HTMLElement;
+              const target = element.getAttribute("data-target");
+              if (target) {
+                animateValue(element, 0, parseInt(target), 2000);
+              }
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+  
+    document
+      .querySelectorAll(".reveal-on-scroll, .stat-number[data-target]")
+      .forEach((el) => observer.observe(el));
+  
+    // FAQ functionality
+    document.addEventListener("DOMContentLoaded", () => {
+      const faqItems = document.querySelectorAll(".faq-item");
+  
+      faqItems.forEach((item) => {
+        const button = item.querySelector(".faq-button");
+  
+        button?.addEventListener("click", () => {
+          // Close all other items
+          faqItems.forEach((otherItem) => {
+            if (otherItem !== item) {
+              otherItem.classList.remove("active");
+            }
+          });
+  
+          // Toggle current item
+          item.classList.toggle("active");
+        });
+      });
+    });
+
+    // Inicializar GLightbox
+
+    const lightbox = GLightbox({
+      touchNavigation: true,
+      autoplayVideos: true
+    });
+
+    // Smooth scroll functionality
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
+  
+  <style>
+    .faq-answer {
+      max-height: 0;
+      transition: max-height 0.3s ease-out;
+    }
+  
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      transition: max-height 0.5s ease-in;
+    }
+  
+    .faq-item.active .faq-button i {
+      transform: rotate(180deg);
+    }
+  
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out;
+    }
+    
+  </style>
+
+
 
 
 

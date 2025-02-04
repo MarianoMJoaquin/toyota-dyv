@@ -148,7 +148,7 @@ const ModelosTabSliderComponent = () => {
               )}
             </div>
             <div className="flex justify-center space-x-2">
-              <a href={`/modelos2/${vehicle.slug}`} className="catalog__item-btn px-4 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
+              <a href={`/modelos/${vehicle.slug}`} className="catalog__item-btn px-4 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
                 Ver más
               </a>
               <a

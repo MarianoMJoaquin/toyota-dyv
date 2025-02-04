@@ -31,62 +31,9 @@ import 'swiper/css/effect-fade';
             </p>
             <div class="contact__info container mx-auto">
                 <!-- Grid principal -->
-                <div class="grid p-8 grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-                    <!-- Info Cards - Columna izquierda en desktop, segunda en móvil -->
-                    <div class="space-y-6 order-2 lg:order-1">
-                        <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
-                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                <i class="ri-customer-service-2-line text-red-600 text-xl"></i>
-                                Ventas
-                            </h3>
-                            <div class="space-y-2">
-                                <p class="text-sm text-gray-600">Consulta por nuestros vehículos nuevos y usados.</p>
-                                <a href="tel:3624468400" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
-                                    <i class="ri-phone-line"></i>
-                                    (362) 446-8400
-                                </a>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
-                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                <i class="ri-tools-line text-red-600 text-xl"></i>
-                                Posventa
-                            </h3>
-                            <div class="space-y-2">
-                                <p class="text-sm text-gray-600">Servicio técnico y mantenimiento de tu Toyota.</p>
-                                <a href="tel:3624468410" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
-                                    <i class="ri-phone-line"></i>
-                                    (362) 446-8410
-                                </a>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
-                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                <i class="ri-time-line text-red-600 text-xl"></i>
-                                Horarios
-                            </h3>
-                            <div class="space-y-2">
-                                <p class="text-sm text-gray-600">Lunes a Viernes: 8:00 - 12:00 y 16:00 - 20:00</p>
-                                <p class="text-sm text-gray-600">Sábados: 8:00 - 13:00</p>
-                            </div>
-                        </div>
-                        <div class="bg-white rounded-xl p-6 transition-shadow border border-[#eb0a1e]">
-                            <h3 class="text-lg font-bold mb-4 flex items-center gap-2 text-gray-800">
-                                <i class="ri-mail-send-line text-red-600 text-xl"></i>
-                                Consultas
-                            </h3>
-                            <div class="space-y-2">
-                                <p class="text-sm text-gray-600">Envianos tu consulta por email.</p>
-                                <a href="mailto:info@derkayvargas.com.ar" class="flex items-center gap-2 text-sm text-gray-600 hover:text-red-600 transition-colors">
-                                    <i class="ri-mail-line"></i>
-                                    info@derkayvargas.com.ar
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Form - Columna derecha en desktop, primera en móvil -->
-                    <div class="bg-white rounded-xl shadow-lg p-8 transition-shadow h-full order-1 lg:order-2">
+                <div class="grid grid-cols-1 mb-16">
+                    <!-- Form - centrado -->
+                    <div class="bg-white rounded-xl shadow-lg p-8 transition-shadow h-full max-w-xl lg:max-w-2xl mx-auto w-full">
                         <Form tipo="contacto" client:load/>
                     </div>
                 </div>
