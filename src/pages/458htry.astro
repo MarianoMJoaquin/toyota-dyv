@@ -1,0 +1,412 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Añadimos imágenes de Toyota para usar en la página
+const toyotaImages = {
+    hero: "https://global.toyota/pages/news/images/2020/09/17/1330/20200917_01_ogp.jpg",
+    timeline: {
+        inicio: "https://global.toyota/pages/news/images/2019/11/07/1400/plant.jpg",
+        toyota: "https://global.toyota/pages/news/images/2021/05/12/1330/20210512_02_1.jpg",
+        modern: "https://global.toyota/pages/news/images/2020/03/06/1330/20200306_01_1.jpg",
+        future: "https://global.toyota/pages/news/images/2021/12/14/1330/20211214_02_1.jpg"
+    },
+    values: "https://global.toyota/pages/news/images/2021/10/15/1330/20211015_01_1.jpg",
+    sustainability: "https://global.toyota/pages/news/images/2021/06/23/1330/20210623_01_1.jpg"
+};
+---
+
+<Layout title="Nuestra Historia - Derka y Vargas" theme_color="#EB0A1E" image="https://i.imgur.com/AabFmC0.png">
+    <!-- Hero Section Mejorado -->
+    <section class="relative h-[90vh]">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40 z-10"></div>
+        <video 
+            class="absolute inset-0 w-full h-full object-cover"
+            autoplay 
+            muted 
+            loop 
+            poster={toyotaImages.hero}
+        >
+            <!--<source src="https://cdn.pixabay.com/video/2025/01/03/250601.mp4" type="video/mp4">-->
+            <source src="https://cdn.pixabay.com/video/2025/01/06/251190.mp4" type="video/mp4">
+        </video>
+        <div class="absolute inset-0 z-20 flex items-center justify-center text-white">
+            <div data-aos="fade-in-out" class="text-center space-y-6 max-w-4xl mx-auto px-4">
+                <h1 class="text-6xl md:text-8xl font-bold tracking-tight">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-white to-toyota-red">
+                        Derka y Vargas
+                    </span>
+                </h1>
+                <p class="text-2xl md:text-3xl font-light">Más de 57 años construyendo confianza en el Chaco</p>
+                <div class="pt-4">
+                    <button 
+                        id="scrollButton"
+                        class="inline-block px-8 py-4 bg-toyota-red text-white rounded-full hover:bg-red-700 transition-all duration-300 hover:scale-105"
+                    >
+                        Descubre nuestra historia
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Estadísticas -->
+    <section class="bg-toyota-red text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="space-y-2">
+                    <span class="text-4xl font-bold">57+</span>
+                    <p class="text-sm uppercase">Años de Historia</p>
+                </div>
+                <div class="space-y-2">
+                    <span class="text-4xl font-bold">4</span>
+                    <p class="text-sm uppercase">Ciudades</p>
+                </div>
+                <div class="space-y-2">
+                    <span class="text-4xl font-bold">5000+</span>
+                    <p class="text-sm uppercase">m² Cubiertos</p>
+                </div>
+                <div class="space-y-2">
+                    <span class="text-4xl font-bold">1995</span>
+                    <p class="text-sm uppercase">Concesionario Toyota</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section con mejoras visuales -->
+    <section id="historia" class="py-32 relative bg-gradient-to-b from-gray-50 to-white">
+        <h2 class="mb-16 vehicles__title heading-1 text-center">Nuestra Trayectoria</h2>
+        
+        <div class="container mx-auto px-4 relative">
+            <!-- Línea del timeline reposicionada -->
+            <div class="absolute left-1/2 transform -translate-x-1/2 h-[calc(100%-4rem)] w-1 bg-gradient-to-b from-toyota-red/20 to-toyota-red/40 hidden md:block top-8"></div>
+            
+            <div class="space-y-32 relative">
+                <!-- 1966 - Fundación -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-end">
+                            <span class="text-toyota-red font-bold text-4xl">1966</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                        <h3 class="text-3xl font-bold text-right">El Comienzo</h3>
+                        <p class="text-gray-600 leading-relaxed text-right">
+                            Eduardo Fredy Vargas y Rodolfo Luis Derka inician su actividad comercial 
+                            en Presidencia Roque Sáenz Peña, dando inicio a una historia de éxito en el Chaco.
+                        </p>
+                    </div>
+                    <div class="relative h-96">
+                        <img 
+                            src={toyotaImages.timeline.inicio} 
+                            alt="Inicios de Derka y Vargas"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
+                </div>
+
+                <!-- 1978 - Primer Local Propio -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+                    <div class="relative h-96 order-2 md:order-1">
+                        <img 
+                            src={toyotaImages.timeline.inicio} 
+                            alt="Primer Local Propio"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
+                    <div class="space-y-4 order-1 md:order-2">
+                        <div class="flex items-center">
+                            <span class="text-toyota-red font-bold text-4xl">1978</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                        <h3 class="text-3xl font-bold">Primer Local Propio</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Traslado al local propio en calle Belgrano Nº 872 bajo la razón social "EDIAN S.A.",
+                            marcando un hito en el crecimiento de la empresa.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 1993 - Expansión -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-end">
+                            <span class="text-toyota-red font-bold text-4xl">1993</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                        <h3 class="text-3xl font-bold text-right">Nueva Sociedad</h3>
+                        <p class="text-gray-600 leading-relaxed text-right">
+                            Formación de "DEYVAR AUTOMOTORES S.A." y adquisición de la concesionaria 
+                            Fiat Peugeot SEVEL en Presidencia Roque Sáenz Peña.
+                        </p>
+                    </div>
+                    <div class="relative h-96">
+                        <img 
+                            src={toyotaImages.timeline.inicio} 
+                            alt="Inicios de Derka y Vargas"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
+                </div>
+
+                <!-- 1995 - Toyota -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+                    <div class="relative h-96 order-2 md:order-1">
+                        <img 
+                            src={toyotaImages.timeline.toyota} 
+                            alt="Concesionario Toyota"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
+                    <div class="space-y-4 order-1 md:order-2">
+                        <div class="flex items-center">
+                            <span class="text-toyota-red font-bold text-4xl">1995</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                        <h3 class="text-3xl font-bold">Concesionaria Oficial Toyota</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Un hito crucial en nuestra historia: DERKA Y VARGAS S.A. es nombrada 
+                            Concesionaria Oficial TOYOTA para la provincia del Chaco, instalándose 
+                            en Av. Mc Lean Nº 58 de Resistencia.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2009 - Expansión -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-end">
+                            <span class="text-toyota-red font-bold text-4xl">2009</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                        <h3 class="text-3xl font-bold text-right">Nuevo Centro de Operaciones</h3>
+                        <p class="text-gray-600 leading-relaxed text-right">
+                            Inauguramos nuestro moderno local en Ruta Nicolás Avellaneda Km. 11,9, 
+                            con más de 5000 m² cubiertos, incluyendo servicio express y amplias 
+                            instalaciones de posventa.
+                        </p>
+                    </div>
+                    <div class="relative h-96">
+                        <img 
+                            src={toyotaImages.timeline.modern} 
+                            alt="Sede Actual"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
+                </div>
+
+                <!-- 2018 - Presente -->
+                <div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+                    <div class="relative h-96 order-2 md:order-1">
+                        <img 
+                            src={toyotaImages.timeline.future} 
+                            alt="Presente"
+                            class="w-full h-full object-cover rounded-lg shadow-xl ukiyo"
+                        />
+                    </div>
+                    <div class="space-y-4 order-1 md:order-2">
+                        <div class="flex items-center">
+                            <span class="text-toyota-red font-bold text-4xl">2018 - Presente</span>
+                            <div class="hidden md:block w-8 h-8 rounded-full bg-toyota-red absolute left-1/2 transform -translate-x-1/2"></div>
+                        </div>
+                        <h3 class="text-3xl font-bold">Crecimiento Continuo</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Inauguración de la sede en Charata y consolidación como líder en el mercado automotriz 
+                            del NEA, con presencia en Resistencia, Presidencia Roque Sáenz Peña, 
+                            Charata y Villa Ángela.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nuevo Banner de Logros con z-index ajustado -->
+    <section class="relative py-24 overflow-hidden z-10">
+        <div class="absolute inset-0">
+            <img 
+                src={toyotaImages.values}
+                alt="Toyota Values"
+                class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-black/60"></div>
+        </div>
+        <div class="relative z-10 container mx-auto px-4 text-white">
+            <h2 class="text-4xl md:text-5xl font-bold text-center mb-16">Nuestros Logros</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="text-center backdrop-blur-sm bg-white/10 p-8 rounded-lg">
+                    <i class="fas fa-award text-4xl mb-4 text-toyota-red"></i>
+                    <h3 class="text-2xl font-bold mb-2">ISO 14001</h3>
+                    <p>Certificación ambiental desde 2010</p>
+                </div>
+                <!-- más logros -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Valores Section con diseño mejorado -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Nuestros Valores</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {[{
+                        titulo: "Compromiso",
+                        texto: "Nos sentimos involucrados tanto personal, como familiar y empresarialmente con la misión, visión y valores del grupo empresario."
+                    },
+                    {
+                        titulo: "Honestidad",
+                        texto: "Somos transparentes en todas nuestras actividades y relaciones con colaboradores, clientes y proveedores."
+                    },
+                    {
+                        titulo: "Respeto",
+                        texto: "Reconocemos y valoramos las opiniones con una actitud empática, desarrollando la capacidad de escucha."
+                    },
+                    {
+                        titulo: "Responsabilidad",
+                        texto: "Asumimos las consecuencias de nuestros actos, respetando nuestra misión, visión y valores."
+                    },
+                    {
+                        titulo: "Confiabilidad",
+                        texto: "Construimos relaciones duraderas basadas en la confianza mutua."
+                    },
+                    {
+                        titulo: "Lealtad",
+                        texto: "Respeto hacia la marca, colaboradores, clientes, proveedores y la comunidad."
+                    }
+                ].map(valor => (
+                    <div class="value-card">
+                        <h3 class="text-2xl font-bold mb-4 text-toyota-red">{valor.titulo}</h3>
+                        <p class="text-gray-600">{valor.texto}</p>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+    <!-- Visión y Misión -->
+    <section class="py-20">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-3xl font-bold mb-6 text-toyota-red">Nuestra Visión</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Que la marca "Derka y Vargas" sea reconocida como referente por el cliente 
+                        del mercado automotor en la región NEA, por nuestros valores, compromiso 
+                        socio-ambiental, calidad humana y profesional y sensibilidad social.
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <h3 class="text-3xl font-bold mb-6 text-toyota-red">Nuestra Misión</h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Liderar el negocio automotriz y de la movilidad de la región, aportando 
+                        valor al mismo, logrando la fidelización de nuestros clientes como miembros 
+                        de la comunidad del grupo empresario Derka y Vargas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compromiso Social -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-16">Compromiso Social y Ambiental</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img 
+                        src={toyotaImages.sustainability} 
+                        alt="Certificación ISO"
+                        class="w-full h-48 object-cover ukiyo"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">ISO 14001</h3>
+                        <p class="text-gray-600">
+                            Desde 2010 certificamos y recertificamos anualmente nuestro compromiso 
+                            con el medio ambiente.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <img 
+                        src={toyotaImages.sustainability} 
+                        alt="Programa META"
+                        class="w-full h-48 object-cover ukiyo"
+                    />
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-4">Programa META</h3>
+                        <p class="text-gray-600">
+                            Mejora de la Educación Técnica Automotriz, formando profesionales 
+                            desde 2011.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Añadir estilos para animaciones suaves -->
+    <style>
+        .value-card {
+            @apply bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border: 1px solid rgba(235, 10, 30, 0.1);
+        }
+        
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .text-toyota-red {
+            color: #EB0A1E;
+        }
+
+        .bg-toyota-red {
+            background-color: #EB0A1E;
+        }
+
+        .timeline-dot::before {
+            content: '';
+            @apply absolute w-16 h-16 bg-toyota-red/10 rounded-full -translate-x-1/2 -translate-y-1/2;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        [data-aos] {
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 600ms;
+        }
+
+        .timeline-dot {
+            transition: all 0.3s ease;
+        }
+
+        .timeline-dot:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(235, 10, 30, 0.3);
+        }
+    </style>
+
+    <script>
+        // Agregar el script al final del archivo
+        document.getElementById('scrollButton')?.addEventListener('click', () => {
+            const historiaSection = document.getElementById('historia');
+            if (historiaSection) {
+                historiaSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest'
+                });
+            }
+        });
+    </script>
+</Layout>
