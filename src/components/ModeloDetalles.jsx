@@ -120,6 +120,16 @@ export default function ModeloDetalles({ slug }) {
   return (
     <main className="main">
       <section id="hero" className="hero section dark-background">
+        {modelData.slug === "corolla-gr-sport" ? (
+          <img
+          loading="lazy"
+          decoding="async"
+          src="/images/corolla-gr2.jpeg"
+          className="hero-bg"
+          alt=""
+          data-aos="fade-in"
+        />
+        ) : (
         <img
           loading="lazy"
           decoding="async"
@@ -130,6 +140,7 @@ export default function ModeloDetalles({ slug }) {
           alt=""
           data-aos="fade-in"
         />
+        )}
         <div className="container mx-auto sm:px-4">
           <div className="flex max-sm:flex-col justify-center gap-20 items-center lg:justify-between">
             <div className="lg:w-2/3 pr-4 pl-4 flex flex-col items-center lg:items-start">
@@ -198,12 +209,6 @@ export default function ModeloDetalles({ slug }) {
               {modelData.slug === "sw4" ? (
                 <a
                   href="https://youtu.be/5PekEJU9S8Q?si=RHNDxRYse25UrKe6"
-                  className="glightbox pulsating-play-btn"
-                ></a>
-              ) : null}
-              {modelData.slug === "corolla-gr-sport" ? (
-                <a
-                  href="https://youtu.be/4hbANRYLqWY?si=-hfPUdoiSL2ASF0T"
                   className="glightbox pulsating-play-btn"
                 ></a>
               ) : null}
@@ -371,12 +376,20 @@ export default function ModeloDetalles({ slug }) {
       {modelData.slug === "hilux-cabina-simple" || modelData.slug === "hilux-chasis-cabina" || modelData.slug === "sw4-gr-sport" || modelData.slug === "hiace-wagon" ? null : (
         <section id="events" className="events md:mx-10 section">
         {/* Fondo del slider */}
-        <img
-          src={modelData.images[0]?.url}
+        {modelData.slug === "corolla-gr-sport" ? ( 
+          <img
+          src="/images/corolla-gr2.jpeg"
           className="slider-bg"
           alt=""
           data-aos="fade-in"
-        />
+        />) : (
+           <img
+           src={modelData.images[0]?.url}
+           className="slider-bg"
+           alt=""
+           data-aos="fade-in"
+         />
+        )}
 
         <div className="container mx-auto px-4">
           <Swiper
@@ -845,7 +858,7 @@ export default function ModeloDetalles({ slug }) {
           </div>
         </div>
       </section> */}
-      {modelData.slug === "hilux-cabina-simple" || modelData.slug === "hilux-chasis-cabina" || modelData.slug === "sw4-gr-sport" || modelData.slug === "hiace-wagon" ? null : (
+      {modelData.slug === "corolla-gr-sport" || modelData.slug === "hilux-cabina-simple" || modelData.slug === "hilux-chasis-cabina" || modelData.slug === "sw4-gr-sport" || modelData.slug === "hiace-wagon" ? null : (
         <section className="galeria lg:mx-5 section">
           <div className="container mx-auto section-title" data-aos="fade-up">
             <h2>{modelData.name.toUpperCase()}</h2>
@@ -932,6 +945,198 @@ export default function ModeloDetalles({ slug }) {
           </div>
         </section>
       )}
+
+      {/* Corolla GR Sport galería */}
+      {modelData.slug === "corolla-gr-sport" ? (
+        <section className="galeria lg:mx-5 section">
+        <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Galería</p>
+        </div>
+
+        <div className="galeria-tab-buttons">
+          <button
+            className={`galeria-tab-button ${activeView === 'exterior' ? 'active' : ''}`}
+            onClick={() => setActiveView('exterior')}
+          >
+            Exterior
+          </button>
+          <button
+            className={`galeria-tab-button ${activeView === 'interior' ? 'active' : ''}`}
+            onClick={() => setActiveView('interior')}
+          >
+            Interior
+          </button>
+        </div>
+
+        <div className="galeria-wrapper container mx-auto">
+          <div className={`galeria-container ${activeView === 'exterior' ? 'active' : ''}`}>
+            <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/exterior/1.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/exterior/1.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/exterior/12.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/exterior/12.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/exterior/8.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/exterior/8.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/exterior/6.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/exterior/6.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/exterior/13.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/exterior/13.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          <div className={`galeria-container ${activeView === 'interior' ? 'active' : ''}`}>
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/interior/1.jpeg"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/interior/1.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/interior/2.jpeg"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/interior/2.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/interior/3.jpeg"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/interior/3.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-corollagr/images/interior/4.jpeg"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-corollagr/images/interior/4.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      ) : null}
+
+      {/* Test Drive Section */}
 
       <section id="test-drive" className="test-drive lg:mx-5 section red-background">
           <div className="container mx-auto section-title" data-aos="fade-up">
