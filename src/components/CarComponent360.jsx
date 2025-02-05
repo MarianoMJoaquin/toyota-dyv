@@ -147,7 +147,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
         ]
     },
     corolla_gr_sport: {
-      "2.0 CVT": [
+      "GR-SPORT 2.0 CVT": [
         "Motor 2 Litros, de 4 cilindros y 16 válvulas con 171 CV de potencia máxima",
         "Automático CVT, secuencial de 10 velocidades",
         "Techo solar; Puerto USB (x2); Audio con pantalla táctil de 10\"; Conectividad AppleCar Play® & Android Auto® inalámbrica; Display de información múltiple de 12,3\";Salidas de aire acondicionado para plazas traseras; Sensores de estacionamiento delanteros y traseros",
@@ -736,7 +736,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
     },
     corolla_gr_sport: {
       "gr-sport": {
-        "2.0 CVT": [
+        "GR-SPORT 2.0 CVT": [
           { name: "Blanco Perlado Bitono", code: "white-perl", hex: "#D1D0CE" },
           { name: "Negro Mica", code: "black", hex: "#191919" },
           { name: "Rojo Metalizado Bitono", code: "red", hex: "#8A0309" }
@@ -856,7 +856,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
     },
     corolla_cross_hybrid: {
           xei: {
-            "XEI 2.0 CVT": [
+            "XEI HEV 1.8 eCVT": [
               { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
               { name: "Negro Mica", code: "black", hex: "#292826" },
               { name: "Blanco", code: "white", hex: "#F8F8F8" },
@@ -867,7 +867,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
             ]
           },
           seg: {
-            "SEG 2.0 CVT": [
+            "SEG HEV 1.8 eCVT": [
               { name: "Rojo Metalizado", code: "red", hex: "#AC1625" },
               { name: "Negro Mica", code: "black", hex: "#292826" },
               { name: "Super Blanco", code: "white", hex: "#F8F8F8" },
@@ -926,7 +926,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
       { name: "SEG", slug: "seg", subversions: ["HEV 1.8 SEG eCVT"] }
     ],
     corolla_gr_sport: [
-      { name: "GR-Sport", slug: "gr-sport", subversions: ["2.0 CVT"] }
+      { name: "GR-Sport", slug: "gr-sport", subversions: ["GR-SPORT 2.0 CVT"] }
     ],
     yaris_hatchback: [
       { name: "XS", slug: "xs", subversions: ["XS 1.5 6M/T 5P", "XS 1.5 CVT 5P"] },

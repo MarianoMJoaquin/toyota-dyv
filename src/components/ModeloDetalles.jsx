@@ -263,13 +263,8 @@ export default function ModeloDetalles({ slug }) {
                 <h4>
                     Diseño
                 </h4>
-                <p>{modelData.variants[2]?.details?.summary?.split(";")[0]}</p>
-                <p>{modelData.variants[2]?.details?.summary?.split(";")[1]}</p>
-                <p>{modelData.variants[2]?.details?.summary?.split(";")[2]}</p>
-                <p>{modelData.variants[2]?.details?.summary?.split(";")[3]}</p>
-                <p>{modelData.variants[2]?.details?.summary?.split(";")[4]}</p>
-                <p>{modelData.variants[2]?.details?.summary?.split(";")[5]}</p>
-                <p>{modelData.variants[2]?.details?.summary?.split(";")[7]}</p>
+                {/*<p>{modelData.variants[1]?.details?.summary?.split(";")[0]}</p> */}
+                <p>{modelData.variants[0]?.details?.body_types}</p>
               </div>
             </div>
 
@@ -313,11 +308,68 @@ export default function ModeloDetalles({ slug }) {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+          {/* Sección de Servicios Conectados y Garantía */}
+          {modelData.variants.find(variant => variant.hasConnectedServices === true) ? (
+            <div className="connected-services-warranty mt-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-      {/* Events/Slider Section */}
-      <section id="events" className="events md:mx-10 section">
+                <div data-aos="fade-up" data-aos-delay="500">
+                  <div className="card-item h-full">
+                    <span>
+                      <i className="ri-wifi-line"></i>
+                    </span>
+                    <h4>Servicios Conectados</h4>
+                    <p>
+                      Las versiones {modelData.variants
+                        .filter(v => v.hasConnectedServices === true)
+                        .map(v => v.name)
+                        .join(", ")} cuentan con Servicios Conectados
+                    </p>
+                  </div>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="600">
+                  <div className="card-item h-full">
+                    <span>
+                      <i className="ri-shield-check-line"></i>
+                    </span>
+                    <h4>Garantía</h4>
+                    <p>
+                    {modelData.variants[0]?.details?.warranty.replace(
+                      /Garantía:/g,
+                      ""
+                    )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="warranty mt-4">
+              <div className="grid grid-cols-1 gap-4">
+                <div data-aos="fade-up" data-aos-delay="500">
+                  <div className="card-item h-full">
+                    <span>
+                      <i className="ri-shield-check-line"></i>
+                    </span>
+                    <h4>Garantía</h4>
+                    <p>
+                      {modelData.variants[0]?.details?.warranty.replace(
+                        /Garantía:/g,
+                        ""
+                      )}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+  </div>
+  </section>
+
+                        {/* Events/Slider Section */}
+      {modelData.slug === "hilux-cabina-simple" || modelData.slug === "hilux-chasis-cabina" || modelData.slug === "sw4-gr-sport" || modelData.slug === "hiace-wagon" ? null : (
+        <section id="events" className="events md:mx-10 section">
         {/* Fondo del slider */}
         <img
           src={modelData.images[0]?.url}
@@ -373,16 +425,177 @@ export default function ModeloDetalles({ slug }) {
                       "Confort",
                       "Equipamiento",
                       "Toyota Safety Sense",
-                      "Tecnología", 
+                      "Tecnología",
+                      "Diseño" 
                     ],
                     descriptions: [
                       "La versión SEG equipa un tablero de información múltiple full digital de 12,3” pulgadas, mientras que las versiones XEI y XLI cuentan con un display de información de 7”. ​Además, las versiones SEG y XEI están equipadas con salidas de aire acondicionado y dos puertos USB tipo “C” en las plazas traseras.",
                       "Aire acondicionado trasero con salidas de aire en las plazas traseras, disponible en versiones SEG y XEI. Además, la versión SEG cuenta con asientos delanteros con regulación eléctrica y memoria para el conductor.",
                       "Todas las versiones de Corolla están equipadas con Toyota Safety Sense*: un paquete de seguridad activa que incorpora un radar de ondas milimétricas que, combinado con una cámara monocular, pueden detectar una variedad de peligros y alertar al conductor para evitar o mitigar accidentes. El nuevo Corolla cuenta con: Sistema de Pre-colisión frontal (PCS), Control de velocidad crucero adaptativo (ACC), Sistema de alerta de cambio de carril (LDA)* y Luces Altas Automáticas (AHB)*.",
-                      "Todas las versiones cuentan con equipo multimedia con una pantalla de 10” y conectividad inalámbrica para Android Auto y Apple CarPlay.* Cargador inalámbrico para smartphones que soportan carga inalámbrica* en la versión SEG. La versión SEG incorpora paquete de Servicios Conectados (*)."
+                      "Todas las versiones cuentan con equipo multimedia con una pantalla de 10” y conectividad inalámbrica para Android Auto y Apple CarPlay.* Cargador inalámbrico para smartphones que soportan carga inalámbrica* en la versión SEG. La versión SEG incorpora paquete de Servicios Conectados (*).",
+                      "Parrilla delantera tipo “panal de abeja” que aporta dinamismo y modernidad. Las versiones XEI incorporan llantas de 17”.​ Además, las versiones SEG y XEI poseen faros delanteros Bi-LED con regulación en altura."
                     ],
                   },
-
+                  "corolla-hybrid": { 
+                    title: [
+                      "Confort",
+                      "Equipamiento",
+                      "Toyota Safety Sense",
+                      "Tecnología",
+                      "Diseño" 
+                    ],
+                    descriptions: [
+                      "La versión SEG equipa un tablero de información múltiple full digital de 12,3” pulgadas, mientras que las versiones XEI y XLI cuentan con un display de información de 7”. ​Además, las versiones SEG y XEI están equipadas con salidas de aire acondicionado y dos puertos USB tipo “C” en las plazas traseras.",
+                      "Aire acondicionado trasero con salidas de aire en las plazas traseras, disponible en versiones SEG y XEI. Además, la versión SEG cuenta con asientos delanteros con regulación eléctrica y memoria para el conductor.",
+                      "Todas las versiones de Corolla están equipadas con Toyota Safety Sense*: un paquete de seguridad activa que incorpora un radar de ondas milimétricas que, combinado con una cámara monocular, pueden detectar una variedad de peligros y alertar al conductor para evitar o mitigar accidentes. El nuevo Corolla cuenta con: Sistema de Pre-colisión frontal (PCS), Control de velocidad crucero adaptativo (ACC), Sistema de alerta de cambio de carril (LDA)* y Luces Altas Automáticas (AHB)*.",
+                      "Todas las versiones cuentan con equipo multimedia con una pantalla de 10” y conectividad inalámbrica para Android Auto y Apple CarPlay.* Cargador inalámbrico para smartphones que soportan carga inalámbrica* en la versión SEG. La versión SEG incorpora paquete de Servicios Conectados (*).",
+                      "Parrilla delantera tipo “panal de abeja” que aporta dinamismo y modernidad. Las versiones XEI incorporan llantas de 17”.​ Además, las versiones SEG y XEI poseen faros delanteros Bi-LED con regulación en altura."
+                    ],
+                  },
+                  "corolla-gr-sport": { 
+                    title: [
+                      "Spoiler y difusor inferior trasero",
+                      "La pasión en cada puntada",
+                      "Deportivo hasta la médula",
+                      "Deportividad y exclusividad",
+                      "Toyota Safety Sense" 
+                    ],
+                    descriptions: [
+                      "Ambos inspirados en la icónica performance GR, guían el flujo de aire de manera precisa minimizando la resistencia aerodinámica. Además, contribuyen a reducir las turbulencias, lo que se traduce en una conducción más segura y placentera en carretera.",
+                      "Textura y diseño se unen en armonía. La imagen revela la calidad de los materiales y el cuidado en cada detalle del interior del Corolla GR-S, donde el contraste del cuero y las costuras rojas evocan deportividad y elegancia.",
+                      "Cada detalle cuenta en el interior del Corolla GR-S. El contraste de las costuras rojas en el volante y la palanca de cambios resalta la deportividad y la atención al detalle que caracterizan a este modelo.",
+                      "El logo GR, símbolo de deportividad y pasión por el automovilismo, preside el interior del Corolla GR-S, recordándote que estás al mando de un coche único en su clase.",
+                      "Todas las versiones de Corolla están equipadas con Toyota Safety Sense*: un paquete de seguridad activa que incorpora un radar de ondas milimétricas que, combinado con una cámara monocular, pueden detectar una variedad de peligros y alertar al conductor para evitar o mitigar accidentes. El nuevo Corolla GR-Sport cuenta con: Sistema de Pre-colisión frontal (PCS), Control de velocidad crucero adaptativo (ACC), Sistema de alerta de cambio de carril (LDA)* y Luces Altas Automáticas (AHB)*."
+                    ],
+                  },
+                  "hilux-cabina-doble": { 
+                    title: [
+                      "Domina cualquier terreno",
+                      "La pasión en cada puntada",
+                      "Tecnología",
+                      "La aventura comienza con un toque",
+                      "Confort interior" 
+                    ],
+                    descriptions: [
+                      "La Toyota Hilux está construida para conquistar lo imposible. Con su legendaria durabilidad y capacidad 4x4, ningún camino se le resiste. La aventura te espera, ¿estás listo?",
+                      "La Toyota Hilux, con su imponente parrilla cromada y líneas definidas, no solo transmite robustez, sino que la demuestra en cada camino. Equipada con un motor turbo diésel 2.8 l de 204 CV y tracción 4x4, está lista para conquistar cualquier desafío, desde el trabajo duro hasta la aventura extrema.",
+                      "Todas las versiones de Hilux cuentan pantalla táctil de 9” con USB, Bluetooth® y conectividad inalámbrica Android Auto® y Apple CarPlay®**. Las versiones SRV y SRX cuentan con cargador inalambrico para smartphones, USB tipo C en plazas traseras (x2) y paquete de servicios conectados*.",
+                      "Con este botón, la potencia y la capacidad de la Hilux están a tu disposición.  Siente la emoción de tener el control y prepárate para vivir experiencias únicas.",
+                      "Las versiones SRX cuentan con tapizado de cuero natural y ecológico con función de ventilación en butacas delanteras. Mientras que todas las versiones están equipadas con sensores de estacionamiento delanteros y traseros y aire acondicionado con climatizador automático digital bizona."
+                    ],
+                  },
+                  "hilux-gr-sport-iv": { 
+                    title: [
+                      "Pasión por los detalles",
+                      "ADN Deportivo GR-Sport",
+                      "Redefiniendo la Aventura",
+                      "Instrumentación Deportiva",
+                      "Confort interior" 
+                    ],
+                    descriptions: [
+                      "Siente la adrenalina GR-Sport incluso antes de arrancar el motor. El interior de la Hilux GR-Sport IV te envuelve en un ambiente deportivo y exclusivo, donde cada detalle está pensado para que vivas la conducción al máximo.",
+                      "Toma el control con el volante deportivo de la Hilux GR-S. Su diseño ergonómico y detalles exclusivos te permiten sentir la conexión entre el conductor y la máquina, mientras que los pedales de aluminio completan la experiencia de manejo deportivo.",
+                      "Descubre un interior donde la deportividad y la comodidad se entrelazan.  Desde los asientos deportivos con detalles en rojo y el icónico logo GR, hasta el diseño intuitivo del tablero y la tecnología al alcance de tu mano, la Hilux GR-Sport IV está lista para llevarte a la próxima aventura con un estilo inconfundible.",
+                      "El tacómetro central con el logo GR te invita a explorar el máximo rendimiento, mientras que el velocímetro de fácil lectura y los indicadores analógicos te brindan información vital de un vistazo.",
+                      "Esta nueva versión incorpora tapizado de cuero natural y ecológico combinado con Suede sintético perforado, apoyacabezas bordado con emblema GR, volante forrado en cuero natural microperforado con costuras rojas de diseño GR y detalles en rojo creando un interior deportivo, lujoso y confortable."
+                    ],
+                  },
+                  "corolla-cross": { 
+                    title: [
+                      "Elegancia y Visión",
+                      "Estilo y Presencia",
+                      "Amplía tus Horizontes",
+                      "Elegancia Reflectante",
+                      "Firma Lumínica Inconfundible" 
+                    ],
+                    descriptions: [
+                      "Descubre la firma lumínica que define al Corolla Cross. Sus faros estilizados, con detalles cromados y una línea bi-LED distintiva, proyectan una mirada moderna y sofisticada. Más que un elemento estético, este diseño sugiere tecnología de iluminación avanzada, listo para iluminar tus caminos con claridad y seguridad.",
+                      "Descubre la evolución del diseño con el Toyota Corolla Cross. Su parrilla delantera rediseñada, con un patrón 3D panal distintivo y el emblemático logo de Toyota, irradia modernidad y confianza. Los faros afilados, integrados a la perfección, complementan su estética elegante y funcional.  Listo para conquistar la ciudad y más allá.",
+                      "Disfruta de una nueva perspectiva con el techo panorámico del Corolla Cross.  Siente la libertad y la conexión con el exterior mientras el sol y el cielo iluminan el interior.  Este detalle, que eleva la experiencia de viaje, te invita a descubrir nuevos horizontes y disfrutar cada aventura al máximo.",
+                      "Descubre un detalle que combina estilo y seguridad en el Corolla Cross. Su espejo retrovisor, con un diseño aerodinámico y un acabado elegante, se integra a la perfección con la estética del vehículo. Más allá de su función esencial, este espejo refleja la calidad y la atención al detalle que caracterizan al Corolla Cross.",
+                      "Destaca en cada camino con el diseño distintivo de la parte trasera del Corolla Cross. El grupo óptico, con su forma elegante y detalles luminosos de alta tecnología, no solo te brinda visibilidad, sino que también define tu estilo. Una combinación perfecta de funcionalidad y estética que refleja la innovación y el dinamismo del Corolla Cross."
+                    ],
+                  },
+                  "corolla-cross-hybrid": { 
+                    title: [
+                      "Elegancia Reflectante",
+                      "El Futuro de la Movilidad:",
+                      "Elegancia y Visión",
+                      "Listo para la Ciudad",
+                      "Trasera que Impresiona" 
+                    ],
+                    descriptions: [
+                      "Descubre un detalle que combina estilo y seguridad en el Corolla Cross. Su espejo retrovisor, con un diseño aerodinámico y un acabado elegante, se integra a la perfección con la estética del vehículo. Más allá de su función esencial, este espejo refleja la calidad y la atención al detalle que caracterizan al Corolla Cross Hybrid.",
+                      "Avanza con estilo y eficiencia. El Corolla Cross Hybrid combina un diseño elegante y moderno con la innovadora tecnología híbrida de Toyota.  Su silueta aerodinámica y detalles distintivos te invitan a descubrir una nueva forma de conducir, más sostenible y emocionante.",
+                      "Descubre la firma lumínica que define al Corolla Cross. Sus faros estilizados, con detalles cromados y una línea bi-LED distintiva, proyectan una mirada moderna y sofisticada. Más que un elemento estético, este diseño sugiere tecnología de iluminación avanzada, listo para iluminar tus caminos con claridad y seguridad.",
+                      "Domina las calles con el Corolla Cross Hybrid. Su diseño moderno y elegante, con líneas definidas y detalles distintivos, te hará destacar en cada recorrido.  Disfruta de una conducción suave y eficiente gracias a su tecnología híbrida, que te permite ahorrar combustible y reducir emisiones, sin sacrificar estilo ni desempeño.  La ciudad te espera.",
+                      "El portón trasero de fácil acceso y la amplia capacidad de carga te brindan la versatilidad que necesitas para tu día a día.  Eficiencia y estilo se unen en un solo vehículo."
+                    ],
+                  },
+                  "corolla-cross-gr-sport": { 
+                    title: [
+                      "Estilo Deportivo Elevado",
+                      "Deportividad en Cada Ángulo",
+                      "Mirada Deportiva",
+                      "Trasera que deslumbra",
+                      "Frontal Imponente" 
+                    ],
+                    descriptions: [
+                      "Atrévete a destacar con el Corolla Cross GR-Sport. Su diseño exterior, con detalles exclusivos como la parrilla frontal distintiva, los faldones laterales deportivos y las llantas de aleación de diseño único, irradia deportividad y sofisticación en cada ángulo.  Una combinación perfecta de estilo y funcionalidad lista para conquistar la ciudad.",
+                      "La parte trasera del Corolla Cross GR-Sport no solo llama la atención, la exige.  Desde el alerón deportivo y el difusor inferior con detalles en rojo, hasta el emblema GR-Sport que confirma su ADN de competición, cada elemento está diseñado para transmitir dinamismo y emoción.  Un diseño que refleja tu espíritu aventurero y te invita a conquistar nuevos caminos.",
+                      "El espíritu deportivo del Corolla Cross GR-Sport. Su parrilla frontal exclusiva, combinada con el diseño aerodinámico y detalles en negro brillante, le dan una presencia imponente y distintiva.  Listo para conquistar la ciudad con estilo y agilidad.",
+                      "La parte trasera del Toyota Corolla Cross GR-Sport no solo llama la atención, sino que la exige. Desde el alerón deportivo que corona su diseño, hasta el difusor inferior con detalles en rojo que evoca su espíritu de competición, cada elemento está diseñado para transmitir dinamismo y deportividad en cada camino.  Un diseño que refleja tu pasión por la aventura y te invita a conquistar nuevos horizontes con un estilo inconfundible.",
+                      "La parrilla delantera exclusiva, que evoca la pasión por el automovilismo, irradia un estilo audaz y distintivo. Su diseño aerodinámico y detalles en negro brillante realzan su presencia imponente, mientras que los faros afilados completan una mirada que no pasa desapercibida. Listo para conquistar cada camino con un estilo inconfundible."
+                    ],
+                  },
+                  "sw4": { 
+                    title: [
+                      "Control Total",
+                      "Máxima Seguridad y Confort",
+                      "Espacio para la Aventura",
+                      "Confort y Control",
+                      "Lista para la Aventura" 
+                    ],
+                    descriptions: [
+                      "Adapta la SW4 a cada terreno y situación con su intuitivo selector de modos de conducción.  Elige entre los modos Eco, Normal y Sport para optimizar el rendimiento y la eficiencia, o activa el modo Off-Road para enfrentar los desafíos más exigentes.  Máximo control y versatilidad al alcance de tu mano.",
+                      "La Toyota SW4 no solo te lleva a la aventura, sino que te protege en cada camino. Con este el interior espacioso y confortable, equipado con múltiples airbags para una máxima seguridad.  Disfruta de cada viaje con la tranquilidad de saber que estás rodeado de la mejor protección, sin sacrificar comodidad ni estilo.",
+                      "Prepárate para compartir cada aventura con total comodidad. La Toyota SW4 te ofrece un interior espacioso y versátil, ideal para familias y grupos de amigos.  Disfruta de asientos confortables y amplio espacio para las piernas, incluso en la tercera fila.  Ya sea un viaje largo o una escapada de fin de semana, la SW4 te brinda la comodidad que necesitas para llegar a tu destino con estilo y relajación.",
+                      "Sumérgete en un interior diseñado para el confort y el control.  Los asientos de cuero te envuelven en un abrazo de comodidad, mientras que el diseño intuitivo del tablero pone todo al alcance de tu mano.  Disfruta de cada viaje con la SW4, donde la calidad se siente en cada detalle y la conducción se convierte en una experiencia placentera.",
+                      "Domina cualquier terreno con la Toyota SW4, una SUV diseñada para la aventura.  Su robusta construcción y su potente motor te llevan a donde quieras llegar, sin importar las condiciones del camino.  Con la SW4, la exploración no tiene límites."
+                    ],
+                  },
+                  "hiace-furgon": { 
+                    title: [
+                      "Máximo Espacio para tu Negocio",
+                      "Visión Clara, Diseño Inteligente",
+                      "Iluminando el Camino del Éxito",
+                      "Repostaje Inteligente",
+                      "Comodidad y Control al Alcance de tu Mano" 
+                    ],
+                    descriptions: [
+                      "Amplía las posibilidades de tu negocio con la Toyota Hiace Furgón.  Su generoso espacio de carga te permite transportar todo lo que necesitas, desde herramientas y materiales hasta mercancías y equipos.  La configuración interior flexible se adapta a tus necesidades específicas, brindándote la versatilidad que buscas para optimizar tu trabajo.  Con la Hiace Furgón, tu negocio llega más lejos.",
+                      "La Hiace Furgón no solo te ofrece espacio y capacidad, sino también seguridad y practicidad en cada detalle.  Su espejo retrovisor de diseño inteligente te brinda una visión clara del entorno, permitiéndote maniobrar con confianza y facilidad, incluso en espacios reducidos.  Un elemento esencial para tu trabajo diario.",
+                      "La Hiace Furgón no solo te lleva a tu destino, sino que ilumina el camino hacia el éxito de tu negocio.  Su faro delantero de diseño moderno y funcional te brinda una visibilidad clara y segura en cada viaje, permitiéndote trabajar con confianza y eficiencia, sin importar las condiciones del camino.  Un detalle que marca la diferencia en tu día a día.",
+                      "La Hiace Furgón está diseñada para facilitar tu día a día, incluso en los detalles.  Su tapa de combustible integrada se abre de forma práctica y sencilla, permitiéndote repostar de manera rápida y eficiente.  Un detalle inteligente que te ahorra tiempo y esfuerzo, para que puedas concentrarte en lo que realmente importa: tu trabajo.",
+                      "Experimenta una conducción placentera y segura con el volante de la Hiace Furgón. Su diseño ergonómico y revestimiento de alta calidad te brindan un agarre cómodo y firme, permitiéndote mantener el control en todo momento.  Además, los controles integrados te permiten acceder a las funciones esenciales del vehículo de forma intuitiva, sin distraerte del camino.  Seguridad y confort se unen para que disfrutes cada viaje al máximo."
+                    ],
+                  },
+                  "hiace-commuter": { 
+                    title: [
+                      "Viaja con Comodidad y Estilo",
+                      "Iluminando la Comodidad",
+                      "Siempre Conectado",
+                      "A Cada Pasajero, Su Confort",
+                      "Modernidad y Confort" 
+                    ],
+                    descriptions: [
+                      "La Hiace Commuter está diseñada para transportar a tus pasajeros con la máxima comodidad y estilo.  Sus amplios y confortables asientos ofrecen un espacio generoso para que todos disfruten del viaje.  Ya sea un traslado de negocios o una excursión familiar, la HiAce Commuter convierte cada trayecto en una experiencia placentera.",
+                      "En la Hiace Commuter, la comodidad de tus pasajeros es primordial.  Esta imagen revela detalles que marcan la diferencia, como las luces de lectura individuales y los controles de fácil acceso.  Pequeños detalles que se traducen en un viaje más placentero para todos.",
+                      "La Hiace Commuter está diseñada para mantenerte conectado en todo momento.  Con sus puertos USB de carga rápida, tanto tú como tus pasajeros podrán mantener sus dispositivos listos para usar durante todo el viaje.  Un detalle práctico que facilita el día a día y asegura que nadie se quede sin batería.",
+                      "La Hiace Commuter piensa en la comodidad de todos. Con controles de climatización, se puede ajustar la temperatura y la dirección del flujo de aire para crear un ambiente perfecto.  Viajes placenteros para todos, sin importar el clima exterior.",
+                      "Diseñado para el trabajo, el tablero de la Hiace Commuter ofrece funcionalidad y practicidad al alcance de tu mano.  Desde el sistema de infoentretenimiento hasta los controles de climatización y el amplio espacio de almacenamiento, cada detalle está pensado para facilitar tu día a día.  Conduce con confianza y eficiencia."
+                    ],
+                  },
                 };
                 
                 const modelTitle = descriptions[modelData.slug]?.title || Array(5).fill(""); // Si no hay titulos, se llena con 5 strings vacíos
@@ -414,13 +627,83 @@ export default function ModeloDetalles({ slug }) {
           </Swiper>
         </div>
       </section>
+      )}
 
       {/* Version Section */}
-      <section id="menu" className="menu lg:mx-5 section">
-        <div className="container mx-auto section-title" data-aos="fade-up">
+      <section id="menu" className="menu lg:mx-5 seccion">
+        {modelData.slug === "yaris-hatchback" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
           <h2>{modelData.name.toUpperCase()}</h2>
           <p>Encontrá tu versión</p>
         </div>
+        ):null}
+        {modelData.slug === "yaris-sedan" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "corolla" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "corolla-hybrid" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "corolla-gr-sport" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "hilux-cabina-simple" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "hilux-cabina-doble" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "hilux-chasis-cabina" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "corolla-cross" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "corolla-cross-hybrid" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "corolla-cross-gr-sport" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        {modelData.slug === "sw4" ? (
+          <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Encontrá tu versión</p>
+        </div>
+        ):null}
+        
 
         <div className="container mx-auto sm:px-4">
           <div
@@ -471,7 +754,7 @@ export default function ModeloDetalles({ slug }) {
                     initialModel="corolla_gr_sport"
                     initialVersion="GR-Sport"
                     initialColor="white-perl"
-                    initialSubversion="2.0 CVT"
+                    initialSubversion="GR-SPORT 2.0 CVT"
                   />
                 ) : null}
                 {modelData.slug === "hilux-cabina-simple" ? (
@@ -514,9 +797,18 @@ export default function ModeloDetalles({ slug }) {
                   <CarComponent360
                     client:load
                     initialModel="corolla_cross_hybrid"
-                    initialVersion="xs"
+                    initialVersion="xei"
                     initialColor="white-perl"
-                    initialSubversion="XS 1.8 HEV eCVT"
+                    initialSubversion="XEI HEV 1.8 eCVT"
+                  />
+                ) : null}
+                {modelData.slug === "corolla-cross-gr-sport" ? (
+                  <CarComponent360
+                    client:load
+                    initialModel="corolla_cross_gr_sport"
+                    initialVersion="gr-sport"
+                    initialColor="white-perl"
+                    initialSubversion="2.0 CVT GR-SPORT"
                   />
                 ) : null}
                 {modelData.slug === "sw4" ? (
@@ -528,15 +820,6 @@ export default function ModeloDetalles({ slug }) {
                     initialSubversion="SRX 4X4 6AT 7A"
                   />
                 ) : null}
-                {modelData.slug === "sw4-gr-sport" ? (
-                  <CarComponent360
-                    client:load
-                    initialModel="sw4_gr_sport"
-                    initialVersion="gr-sport"
-                    initialColor="white-perl"
-                    initialSubversion="4X4 6AT 7A"
-                  />
-                ) : null}
               </div>
             </div>
           </div>
@@ -544,7 +827,7 @@ export default function ModeloDetalles({ slug }) {
       </section>
 
       {/* Gallery Section */}
-      <section className="galeria lg:mx-5 section">
+      {/**<section className="galeria lg:mx-5 section">
         <div className="container mx-auto section-title" data-aos="fade-up">
           <h2>{modelData.name.toUpperCase()}</h2>
           <p>Galería</p>
@@ -628,7 +911,94 @@ export default function ModeloDetalles({ slug }) {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
+      {modelData.slug === "hilux-cabina-simple" || modelData.slug === "hilux-chasis-cabina" || modelData.slug === "sw4-gr-sport" || modelData.slug === "hiace-wagon" ? null : (
+        <section className="galeria lg:mx-5 section">
+          <div className="container mx-auto section-title" data-aos="fade-up">
+            <h2>{modelData.name.toUpperCase()}</h2>
+            <p>Galería</p>
+          </div>
+
+          <div className="galeria-tab-buttons">
+            <button
+              className={`galeria-tab-button ${activeView === 'exterior' ? 'active' : ''}`}
+              onClick={() => setActiveView('exterior')}
+            >
+              Exterior
+            </button>
+            <button
+              className={`galeria-tab-button ${activeView === 'interior' ? 'active' : ''}`}
+              onClick={() => setActiveView('interior')}
+            >
+              Interior
+            </button>
+          </div>
+
+          <div className="galeria-wrapper container mx-auto">
+            <div className={`galeria-container ${activeView === 'exterior' ? 'active' : ''}`}>
+              <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+                {modelData.images
+                  .filter(img => {
+                    const isGalleryOrInventory = img.type === "gallery" || img.type === "inventory";
+                    return isGalleryOrInventory && img.data?.viewType === 'exterior';
+                  })
+                  .slice(0, 5)
+                  .map((image, index, filteredArray) => (
+                    <div
+                      key={index}
+                      className={`${getGridSpan(filteredArray.length, index)} transform transition-all duration-300 ease-in-out`}
+                    >
+                      <div className="galeria-item">
+                        <a
+                          href={image.url}
+                          className="galeria-exterior"
+                          data-gallery="galeria-exterior"
+                        >
+                          <img
+                            src={image.url}
+                            className="w-full transition-opacity duration-300 ease-in-out"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+
+            <div className={`galeria-container ${activeView === 'interior' ? 'active' : ''}`}>
+              <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+                {modelData.images
+                  .filter(img => {
+                    const isGalleryOrInventory = img.type === "gallery" || img.type === "inventory";
+                    return isGalleryOrInventory && img.data?.viewType === 'interior';
+                  })
+                  .slice(0, 5)
+                  .map((image, index, filteredArray) => (
+                    <div
+                      key={index}
+                      className={`${getGridSpan(filteredArray.length, index)} transform transition-all duration-300 ease-in-out`}
+                    >
+                      <div className="galeria-item">
+                        <a
+                          href={image.url}
+                          className="galeria-interior"
+                          data-gallery="galeria-interior"
+                        >
+                          <img
+                            src={image.url}
+                            className="w-full transition-opacity duration-300 ease-in-out"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       <section id="test-drive" className="test-drive lg:mx-5 section red-background">
           <div className="container mx-auto section-title" data-aos="fade-up">
