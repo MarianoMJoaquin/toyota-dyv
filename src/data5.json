@@ -1,0 +1,2864 @@
+{
+    "data": [
+      {
+        "id": 28,
+        "marca_id": 1,
+        "nombre": "Hilux DX/SR",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2018-09-29 12:18:55",
+        "updated_at": "2024-09-06 11:38:14",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/ByyAaTzDmhbowLRbqvzhWgxyYm76HPbzKHmboOOj.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/5tik8Xe9ryYDlLLooMYhFt2y2nfiSAOiChzaj4zF.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-H-DX-SR-23.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 3,
+        "orden": 5,
+        "slug": "hilux-dxsr",
+        "publicar_servicio": 0,
+        "servicios": [
+          {
+            "id": 31,
+            "nombre": "10.000 KM",
+            "precio": 315700,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:44:06",
+            "updated_at": "2024-12-02 11:16:49"
+          },
+          {
+            "id": 32,
+            "nombre": "20.000 KM",
+            "precio": 354700,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:44:27",
+            "updated_at": "2024-12-02 11:16:49"
+          },
+          {
+            "id": 33,
+            "nombre": "30.000 KM",
+            "precio": 366200,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:45:39",
+            "updated_at": "2024-12-02 11:16:49"
+          },
+          {
+            "id": 34,
+            "nombre": "40.000 KM",
+            "precio": 433900,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:46:11",
+            "updated_at": "2024-12-02 11:16:49"
+          },
+          {
+            "id": 35,
+            "nombre": "50.000 KM",
+            "precio": 315700,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:46:26",
+            "updated_at": "2024-12-02 11:16:49"
+          },
+          {
+            "id": 36,
+            "nombre": "60.000 KM",
+            "precio": 354700,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:46:58",
+            "updated_at": "2024-12-02 11:16:49"
+          },
+          {
+            "id": 37,
+            "nombre": "70.000 KM",
+            "precio": 315700,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:47:12",
+            "updated_at": "2024-12-02 11:16:49"
+          },
+          {
+            "id": 38,
+            "nombre": "80.000 KM",
+            "precio": 433900,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:47:54",
+            "updated_at": "2024-12-02 11:16:49"
+          },
+          {
+            "id": 39,
+            "nombre": "90.000 KM",
+            "precio": 366200,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:48:03",
+            "updated_at": "2024-12-02 11:16:50"
+          },
+          {
+            "id": 40,
+            "nombre": "100.000 KM",
+            "precio": 354700,
+            "modelo_id": 28,
+            "created_at": "2020-03-11 18:48:16",
+            "updated_at": "2024-12-02 11:16:50"
+          },
+          {
+            "id": 111,
+            "nombre": "110.000 KM",
+            "precio": 366200,
+            "modelo_id": 28,
+            "created_at": "2022-02-03 20:42:39",
+            "updated_at": "2024-12-02 11:16:50"
+          },
+          {
+            "id": 112,
+            "nombre": "120.000 KM",
+            "precio": 433900,
+            "modelo_id": 28,
+            "created_at": "2022-02-03 20:42:46",
+            "updated_at": "2024-12-02 11:16:50"
+          },
+          {
+            "id": 113,
+            "nombre": "130.000 KM",
+            "precio": 315700,
+            "modelo_id": 28,
+            "created_at": "2022-02-03 20:42:54",
+            "updated_at": "2024-12-02 11:16:50"
+          },
+          {
+            "id": 114,
+            "nombre": "140.000 KM",
+            "precio": 354700,
+            "modelo_id": 28,
+            "created_at": "2022-02-03 20:43:05",
+            "updated_at": "2024-12-02 11:16:50"
+          },
+          {
+            "id": 115,
+            "nombre": "150.000 KM",
+            "precio": 315700,
+            "modelo_id": 28,
+            "created_at": "2022-02-03 20:43:15",
+            "updated_at": "2024-12-02 11:16:50"
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "marca_id": 1,
+        "nombre": "Etios Hatchback",
+        "destacado": 0,
+        "activo": 0,
+        "created_at": "2018-09-29 13:44:38",
+        "updated_at": "2024-09-06 11:38:14",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/sMWy1fhh1MvykK5qF1MhlqOYTvpVP7kKJ1qmFM4O.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/xigbqs5b3p8OJEQs8ind5HluKEhhBThLVUD1SnCg.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-Etios-Hatchback-2023.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 1,
+        "orden": 1,
+        "slug": "etios-hatchback",
+        "publicar_servicio": 0,
+        "servicios": [
+          {
+            "id": 1,
+            "nombre": "10.000 KM",
+            "precio": 177500,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:25:57",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 2,
+            "nombre": "20.000 KM",
+            "precio": 201000,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:26:14",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 3,
+            "nombre": "30.000 KM",
+            "precio": 177500,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:26:31",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 4,
+            "nombre": "40.000 KM",
+            "precio": 256500,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:26:50",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 5,
+            "nombre": "50.000 KM",
+            "precio": 177500,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:27:08",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 6,
+            "nombre": "60.000 KM",
+            "precio": 201000,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:27:22",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 7,
+            "nombre": "70.000 KM",
+            "precio": 177500,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:27:34",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 8,
+            "nombre": "80.000 KM",
+            "precio": 256500,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:27:52",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 9,
+            "nombre": "90.000 KM",
+            "precio": 177500,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:28:05",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 10,
+            "nombre": "100.000 KM",
+            "precio": 256500,
+            "modelo_id": 29,
+            "created_at": "2020-03-11 18:28:23",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 81,
+            "nombre": "110.000 KM",
+            "precio": 177500,
+            "modelo_id": 29,
+            "created_at": "2022-02-03 19:27:30",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 82,
+            "nombre": "120.000 KM",
+            "precio": 256500,
+            "modelo_id": 29,
+            "created_at": "2022-02-03 19:27:55",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 83,
+            "nombre": "130.000 KM",
+            "precio": 177500,
+            "modelo_id": 29,
+            "created_at": "2022-02-03 19:29:01",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 84,
+            "nombre": "140.000 KM",
+            "precio": 201000,
+            "modelo_id": 29,
+            "created_at": "2022-02-03 19:29:39",
+            "updated_at": "2024-12-02 11:28:25"
+          },
+          {
+            "id": 85,
+            "nombre": "150.000 KM",
+            "precio": 177500,
+            "modelo_id": 29,
+            "created_at": "2022-02-03 19:30:04",
+            "updated_at": "2024-12-02 11:28:25"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "marca_id": 1,
+        "nombre": "Yaris Hatchback",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2018-10-12 19:41:29",
+        "updated_at": "2024-09-06 11:38:15",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/qyKiFA1STLpr45b8XXr2LlDKp1peJfzWkAMAsxJx.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/LI1KlG7VR4aXEOMnQ3RegqiUPmnsgPwB9VsCiVkb.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-Yaris-Hatchback-2023.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 1,
+        "orden": 2,
+        "slug": "yaris-hatchback",
+        "publicar_servicio": 0,
+        "servicios": [
+          {
+            "id": 11,
+            "nombre": "10.000 KM",
+            "precio": 204900,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:30:25",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 12,
+            "nombre": "20.000 KM",
+            "precio": 229700,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:31:11",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 13,
+            "nombre": "30.000 KM",
+            "precio": 204900,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:33:08",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 14,
+            "nombre": "40.000 KM",
+            "precio": 256500,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:33:17",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 15,
+            "nombre": "50.000 KM",
+            "precio": 204900,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:33:52",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 16,
+            "nombre": "60.000 KM",
+            "precio": 229700,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:35:00",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 17,
+            "nombre": "70.000 KM",
+            "precio": 204900,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:36:31",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 18,
+            "nombre": "80.000 KM",
+            "precio": 256500,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:36:44",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 19,
+            "nombre": "90.000 KM",
+            "precio": 204900,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:37:06",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 20,
+            "nombre": "100.000 KM",
+            "precio": 256500,
+            "modelo_id": 30,
+            "created_at": "2020-03-11 18:37:25",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 86,
+            "nombre": "110.000 KM",
+            "precio": 204900,
+            "modelo_id": 30,
+            "created_at": "2022-02-03 19:35:28",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 87,
+            "nombre": "120.000 KM",
+            "precio": 256500,
+            "modelo_id": 30,
+            "created_at": "2022-02-03 19:35:52",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 88,
+            "nombre": "130.000 KM",
+            "precio": 204900,
+            "modelo_id": 30,
+            "created_at": "2022-02-03 19:36:19",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 89,
+            "nombre": "140.000 KM",
+            "precio": 229700,
+            "modelo_id": 30,
+            "created_at": "2022-02-03 19:36:38",
+            "updated_at": "2024-12-02 11:37:11"
+          },
+          {
+            "id": 90,
+            "nombre": "150.000 KM",
+            "precio": 204900,
+            "modelo_id": 30,
+            "created_at": "2022-02-03 19:36:57",
+            "updated_at": "2024-12-02 11:37:11"
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "marca_id": 1,
+        "nombre": "SW4",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2018-11-13 18:00:59",
+        "updated_at": "2024-09-06 11:38:12",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/0gkcjYls2M3S3avndzeBuH5Fd15yMILyEbxPuESj.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/jgXuf6narjUEuUUXDfijmbEsnB5k3ktfzOhZrtPh.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-SW4-23.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 6,
+        "orden": 10,
+        "slug": "sw4",
+        "publicar_servicio": 0,
+        "servicios": [
+          {
+            "id": 41,
+            "nombre": "10.000 KM",
+            "precio": 332300,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:50:22",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 42,
+            "nombre": "20.000 KM",
+            "precio": 365500,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:50:32",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 43,
+            "nombre": "30.000 KM",
+            "precio": 367100,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:50:43",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 44,
+            "nombre": "40.000 KM",
+            "precio": 454200,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:52:04",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 45,
+            "nombre": "50.000 KM",
+            "precio": 332300,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:52:47",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 46,
+            "nombre": "60.000 KM",
+            "precio": 365500,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:54:24",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 47,
+            "nombre": "70.000 KM",
+            "precio": 332300,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:54:55",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 48,
+            "nombre": "80.000 KM",
+            "precio": 454200,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:56:05",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 49,
+            "nombre": "90.000 KM",
+            "precio": 367100,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:58:02",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 50,
+            "nombre": "100.000 KM",
+            "precio": 365500,
+            "modelo_id": 31,
+            "created_at": "2020-03-11 18:58:15",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 116,
+            "nombre": "110.000 KM",
+            "precio": 367100,
+            "modelo_id": 31,
+            "created_at": "2022-02-03 20:46:36",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 117,
+            "nombre": "120.000 KM",
+            "precio": 454200,
+            "modelo_id": 31,
+            "created_at": "2022-02-03 20:46:46",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 118,
+            "nombre": "130.000 KM",
+            "precio": 332300,
+            "modelo_id": 31,
+            "created_at": "2022-02-03 20:46:53",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 119,
+            "nombre": "140.000 KM",
+            "precio": 365500,
+            "modelo_id": 31,
+            "created_at": "2022-02-03 20:47:01",
+            "updated_at": "2024-12-02 11:54:48"
+          },
+          {
+            "id": 120,
+            "nombre": "150.000 KM",
+            "precio": 332300,
+            "modelo_id": 31,
+            "created_at": "2022-02-03 20:47:12",
+            "updated_at": "2024-12-02 11:54:48"
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "marca_id": 1,
+        "nombre": "Camry",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2018-11-13 18:18:10",
+        "updated_at": "2024-09-06 11:38:12",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/kKrv8pPfQEmqW6gvpe22SqEaaRfobSJBQiRtBL6G.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/54P3jiZyAnnQ8ITCIlrKQxO21rexvDNAWhvDWtZz.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-Camry-23.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 1,
+        "tipo_vehiculo_id": 5,
+        "orden": 13,
+        "slug": "camry",
+        "publicar_servicio": 0,
+        "servicios": [
+          {
+            "id": 259,
+            "nombre": "10.000 KM",
+            "precio": 302060,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:07:05",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 260,
+            "nombre": "20.000 KM",
+            "precio": 347270,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:07:19",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 261,
+            "nombre": "30.000 KM",
+            "precio": 302060,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:07:36",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 262,
+            "nombre": "40.000 KM",
+            "precio": 372350,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:07:52",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 263,
+            "nombre": "50.000 KM",
+            "precio": 302060,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:08:07",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 264,
+            "nombre": "60.000 KM",
+            "precio": 347270,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:08:20",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 265,
+            "nombre": "70.000 KM",
+            "precio": 302060,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:08:35",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 266,
+            "nombre": "80.000 KM",
+            "precio": 372350,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:08:48",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 267,
+            "nombre": "90.000 KM",
+            "precio": 302060,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:09:01",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 268,
+            "nombre": "100.000 KM",
+            "precio": 372350,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:09:27",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 269,
+            "nombre": "110.000 KM",
+            "precio": 302060,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:09:44",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 270,
+            "nombre": "120.000 KM",
+            "precio": 372350,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:09:55",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 271,
+            "nombre": "130.000 KM",
+            "precio": 302060,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:10:10",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 272,
+            "nombre": "140.000 KM",
+            "precio": 347270,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:10:26",
+            "updated_at": "2024-12-02 11:45:43"
+          },
+          {
+            "id": 273,
+            "nombre": "150.000 KM",
+            "precio": 302060,
+            "modelo_id": 33,
+            "created_at": "2023-09-29 16:10:42",
+            "updated_at": "2024-12-02 11:45:43"
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "marca_id": 1,
+        "nombre": "Innova",
+        "destacado": 0,
+        "activo": 0,
+        "created_at": "2018-11-13 18:26:55",
+        "updated_at": "2024-09-06 11:38:11",
+        "deleted_at": null,
+        "img_logo": null,
+        "slogan": null,
+        "img_modelo": "/storage/modelos/U65jwGIKtp3mU3yd6RSTpY8Wj1NBgOjbM9NMjVxz.png",
+        "link_ficha_tecnica": null,
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 1,
+        "orden": 7,
+        "slug": "innova",
+        "publicar_servicio": 0,
+        "servicios": [
+          {
+            "id": 71,
+            "nombre": "10.000 KM",
+            "precio": 315700,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:27:37",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 72,
+            "nombre": "20.000 KM",
+            "precio": 354700,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:27:53",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 73,
+            "nombre": "30.000 KM",
+            "precio": 366200,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:28:11",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 74,
+            "nombre": "40.000 KM",
+            "precio": 433900,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:28:30",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 75,
+            "nombre": "50.000 KM",
+            "precio": 315700,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:28:49",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 76,
+            "nombre": "60.000 KM",
+            "precio": 354700,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:30:11",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 77,
+            "nombre": "70.000 KM",
+            "precio": 315700,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:30:35",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 78,
+            "nombre": "80.000 KM",
+            "precio": 433900,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:30:58",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 79,
+            "nombre": "90.000 KM",
+            "precio": 366200,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:31:31",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 80,
+            "nombre": "100.000 KM",
+            "precio": 354700,
+            "modelo_id": 34,
+            "created_at": "2021-05-13 11:31:45",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 106,
+            "nombre": "110.000 KM",
+            "precio": 366200,
+            "modelo_id": 34,
+            "created_at": "2022-02-03 20:38:24",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 107,
+            "nombre": "120.000 KM",
+            "precio": 433900,
+            "modelo_id": 34,
+            "created_at": "2022-02-03 20:38:33",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 108,
+            "nombre": "130.000 KM",
+            "precio": 315700,
+            "modelo_id": 34,
+            "created_at": "2022-02-03 20:38:41",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 109,
+            "nombre": "140.000 KM",
+            "precio": 354700,
+            "modelo_id": 34,
+            "created_at": "2022-02-03 20:38:50",
+            "updated_at": "2024-12-02 11:49:34"
+          },
+          {
+            "id": 110,
+            "nombre": "150.000 KM",
+            "precio": 315700,
+            "modelo_id": 34,
+            "created_at": "2022-02-03 20:38:59",
+            "updated_at": "2024-12-02 11:49:34"
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "marca_id": 1,
+        "nombre": "Prius",
+        "destacado": 0,
+        "activo": 0,
+        "created_at": "2018-11-26 20:58:21",
+        "updated_at": "2023-01-09 18:17:08",
+        "deleted_at": null,
+        "img_logo": null,
+        "slogan": null,
+        "img_modelo": "/storage/modelos/W1e8zT5ode1c6QZyIk4V1slNpTlPrVMU4JtPlCfh.png",
+        "link_ficha_tecnica": null,
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 1,
+        "orden": 12,
+        "slug": "prius",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 51,
+            "nombre": "10.000 KM",
+            "precio": 274600,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 09:52:50",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 52,
+            "nombre": "20.000 KM",
+            "precio": 315700,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 09:53:08",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 53,
+            "nombre": "30.000 KM",
+            "precio": 274600,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 09:55:51",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 54,
+            "nombre": "40.000 KM",
+            "precio": 338500,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 09:56:04",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 55,
+            "nombre": "50.000 KM",
+            "precio": 274600,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 09:58:08",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 56,
+            "nombre": "60.000 KM",
+            "precio": 315700,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 09:58:44",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 57,
+            "nombre": "70.000 KM",
+            "precio": 274600,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 09:59:22",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 58,
+            "nombre": "80.000 KM",
+            "precio": 338500,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 09:59:34",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 59,
+            "nombre": "90.000 KM",
+            "precio": 274600,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 10:03:44",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 60,
+            "nombre": "100.000 KM",
+            "precio": 338500,
+            "modelo_id": 35,
+            "created_at": "2020-07-31 10:03:56",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 96,
+            "nombre": "110.000 KM",
+            "precio": 274600,
+            "modelo_id": 35,
+            "created_at": "2022-02-03 20:25:05",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 97,
+            "nombre": "120.000 KM",
+            "precio": 338500,
+            "modelo_id": 35,
+            "created_at": "2022-02-03 20:25:32",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 98,
+            "nombre": "130.000 KM",
+            "precio": 274600,
+            "modelo_id": 35,
+            "created_at": "2022-02-03 20:26:01",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 99,
+            "nombre": "140.000 KM",
+            "precio": 315700,
+            "modelo_id": 35,
+            "created_at": "2022-02-03 20:26:15",
+            "updated_at": "2024-12-02 11:44:19"
+          },
+          {
+            "id": 100,
+            "nombre": "150.000 KM",
+            "precio": 274600,
+            "modelo_id": 35,
+            "created_at": "2022-02-03 20:26:37",
+            "updated_at": "2024-12-02 11:44:19"
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "marca_id": 1,
+        "nombre": "Rav4",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2018-11-27 18:13:49",
+        "updated_at": "2023-01-10 09:09:11",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/tB5h3BSuidXkyDMdQQTWzBknCKa2GE5uvBCVtXxe.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/iLyoYM5fNAwd17DfqIB1R8h4V3kYps2LrWY8Hir0.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-RAV4-22.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 1,
+        "tipo_vehiculo_id": 5,
+        "orden": 11,
+        "slug": "rav4",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 61,
+            "nombre": "10.000 KM",
+            "precio": 279100,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:14:02",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 62,
+            "nombre": "20.000 KM",
+            "precio": 324900,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:14:24",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 63,
+            "nombre": "30.000 KM",
+            "precio": 302500,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:14:42",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 64,
+            "nombre": "40.000 KM",
+            "precio": 385200,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:14:55",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 65,
+            "nombre": "50.000 KM",
+            "precio": 279100,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:16:55",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 66,
+            "nombre": "60.000 KM",
+            "precio": 324900,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:17:51",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 67,
+            "nombre": "70.000 KM",
+            "precio": 279100,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:18:41",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 68,
+            "nombre": "80.000 KM",
+            "precio": 385200,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:19:15",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 69,
+            "nombre": "90.000 KM",
+            "precio": 302500,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:19:28",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 70,
+            "nombre": "100.000 KM",
+            "precio": 324900,
+            "modelo_id": 36,
+            "created_at": "2021-05-13 11:19:41",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 101,
+            "nombre": "110.000 KM",
+            "precio": 302500,
+            "modelo_id": 36,
+            "created_at": "2022-02-03 20:31:33",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 102,
+            "nombre": "120.000 KM",
+            "precio": 385200,
+            "modelo_id": 36,
+            "created_at": "2022-02-03 20:31:54",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 103,
+            "nombre": "130.000 KM",
+            "precio": 279100,
+            "modelo_id": 36,
+            "created_at": "2022-02-03 20:32:05",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 104,
+            "nombre": "140.000 KM",
+            "precio": 324900,
+            "modelo_id": 36,
+            "created_at": "2022-02-03 20:32:17",
+            "updated_at": "2024-12-02 11:47:32"
+          },
+          {
+            "id": 105,
+            "nombre": "150.000 KM",
+            "precio": 279100,
+            "modelo_id": 36,
+            "created_at": "2022-02-03 20:32:28",
+            "updated_at": "2024-12-02 11:47:32"
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "marca_id": 1,
+        "nombre": "Land Cruiser Prado",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2018-12-04 16:53:01",
+        "updated_at": "2023-01-06 17:54:19",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/6roRQ5fMh9nY64qDoQFFA4hwpQGTNG9nIZjFYVS3.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/p4QDnu4m9BjOoaWy18cHmZzkP3bafyehs6ZLlalo.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-LC-P-23.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 6,
+        "orden": 15,
+        "slug": "land-cruiser-prado",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 274,
+            "nombre": "10.000 KM",
+            "precio": 398760,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:03:56",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 275,
+            "nombre": "20.000 KM",
+            "precio": 438600,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:04:34",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 276,
+            "nombre": "30.000 KM",
+            "precio": 440520,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:06:49",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 277,
+            "nombre": "40.000 KM",
+            "precio": 545040,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:07:04",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 278,
+            "nombre": "50.000 KM",
+            "precio": 398760,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:07:18",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 279,
+            "nombre": "60.000 KM",
+            "precio": 438600,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:07:31",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 280,
+            "nombre": "70.000 KM",
+            "precio": 398760,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:08:12",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 281,
+            "nombre": "80.000 KM",
+            "precio": 545040,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:08:35",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 282,
+            "nombre": "90.000 KM",
+            "precio": 440520,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:08:54",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 283,
+            "nombre": "100.000 KM",
+            "precio": 438600,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:09:12",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 284,
+            "nombre": "110.000 KM",
+            "precio": 440520,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:09:31",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 285,
+            "nombre": "120.000 KM",
+            "precio": 545040,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:09:48",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 286,
+            "nombre": "130.000 KM",
+            "precio": 398760,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:10:04",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 287,
+            "nombre": "140.000 KM",
+            "precio": 438600,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:10:21",
+            "updated_at": "2024-12-02 15:48:01"
+          },
+          {
+            "id": 288,
+            "nombre": "150.000 KM",
+            "precio": 398760,
+            "modelo_id": 38,
+            "created_at": "2023-09-29 17:10:43",
+            "updated_at": "2024-12-02 15:48:01"
+          }
+        ]
+      },
+      {
+        "id": 39,
+        "marca_id": 1,
+        "nombre": "Land Cruiser 300",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2018-12-04 17:34:23",
+        "updated_at": "2023-01-09 08:11:40",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/u7wljAco3b4uuk6vDswfNgI8yOEN0y9a9UvNGgqa.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/HkK2QzweAbgZL0RKKyWHZZa7fd1G30cOuC1vxigI.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-LC-300-22.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 6,
+        "orden": 16,
+        "slug": "land-cruiser-300",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 289,
+            "nombre": "10.000 KM",
+            "precio": 398760,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:18:29",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 290,
+            "nombre": "20.000 KM",
+            "precio": 438600,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:18:46",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 291,
+            "nombre": "30.000 KM",
+            "precio": 440520,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:19:04",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 292,
+            "nombre": "40.000 KM",
+            "precio": 545040,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:19:41",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 293,
+            "nombre": "50.000 KM",
+            "precio": 398760,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:20:05",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 294,
+            "nombre": "60.000 KM",
+            "precio": 438600,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:20:20",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 295,
+            "nombre": "70.000 KM",
+            "precio": 398760,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:20:41",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 296,
+            "nombre": "80.000 KM",
+            "precio": 545040,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:20:58",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 297,
+            "nombre": "90.000 KM",
+            "precio": 440520,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:21:13",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 298,
+            "nombre": "100.000 KM",
+            "precio": 438600,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:21:35",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 299,
+            "nombre": "110.000 KM",
+            "precio": 440520,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:21:52",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 300,
+            "nombre": "120.000 KM",
+            "precio": 545040,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:22:09",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 301,
+            "nombre": "130.000 KM",
+            "precio": 398760,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:22:29",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 302,
+            "nombre": "140.000 KM",
+            "precio": 438600,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:22:46",
+            "updated_at": "2024-12-02 15:47:58"
+          },
+          {
+            "id": 303,
+            "nombre": "150.000 KM",
+            "precio": 398760,
+            "modelo_id": 39,
+            "created_at": "2023-09-29 17:23:04",
+            "updated_at": "2024-12-02 15:47:58"
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "marca_id": 1,
+        "nombre": "Hiace Furgón",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2019-09-24 19:32:55",
+        "updated_at": "2023-01-09 08:51:15",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/SrQarr3SRgSyz2gFI70BAvWiZZuQ1Ttmzwe0oDe6.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/kqDvvQqOxzSuUgTFKH9u0WhbEgVbahJT3zvJTHru.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-H-F-23.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 2,
+        "orden": 9,
+        "slug": "hiace-furgon",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 121,
+            "nombre": "10.000 KM",
+            "precio": 315700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:50:26",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 122,
+            "nombre": "20.000 KM",
+            "precio": 354700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:52:39",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 123,
+            "nombre": "30.000 KM",
+            "precio": 366200,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:52:47",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 124,
+            "nombre": "40.000 KM",
+            "precio": 433900,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:52:55",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 125,
+            "nombre": "50.000 KM",
+            "precio": 315700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:53:01",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 126,
+            "nombre": "60.000 KM",
+            "precio": 354700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:53:10",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 127,
+            "nombre": "70.000 KM",
+            "precio": 315700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:53:20",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 128,
+            "nombre": "80.000 KM",
+            "precio": 433900,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:53:30",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 129,
+            "nombre": "90.000 KM",
+            "precio": 366200,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:53:40",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 130,
+            "nombre": "100.000 KM",
+            "precio": 354700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:53:48",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 131,
+            "nombre": "110.000 KM",
+            "precio": 366200,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:53:55",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 132,
+            "nombre": "120.000 KM",
+            "precio": 433900,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:54:03",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 133,
+            "nombre": "130.000 KM",
+            "precio": 315700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:54:11",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 134,
+            "nombre": "140.000 KM",
+            "precio": 354700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:54:20",
+            "updated_at": "2024-12-02 11:57:25"
+          },
+          {
+            "id": 135,
+            "nombre": "150.000 KM",
+            "precio": 315700,
+            "modelo_id": 40,
+            "created_at": "2022-02-03 20:54:29",
+            "updated_at": "2024-12-02 11:57:25"
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "marca_id": 1,
+        "nombre": "Corolla",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2019-12-31 12:49:09",
+        "updated_at": "2023-01-05 18:44:06",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/rT5tNmFZnFXH3lxLaBlbisauvwU7qft3RXgMQJ8d.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/JCreW0mZySZ1KZvM2TpifThpK35fDnPyO8c4sZFs.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-Corolla-2023.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 1,
+        "orden": 4,
+        "slug": "corolla",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 21,
+            "nombre": "10.000 KM",
+            "precio": 274600,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:39:12",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 22,
+            "nombre": "20.000 KM",
+            "precio": 315700,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:39:33",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 23,
+            "nombre": "30.000 KM",
+            "precio": 274600,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:39:44",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 24,
+            "nombre": "40.000 KM",
+            "precio": 338500,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:40:25",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 25,
+            "nombre": "50.000 KM",
+            "precio": 274600,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:40:38",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 26,
+            "nombre": "60.000 KM",
+            "precio": 315700,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:41:00",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 27,
+            "nombre": "70.000 KM",
+            "precio": 274600,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:41:13",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 28,
+            "nombre": "80.000 KM",
+            "precio": 338500,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:41:43",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 29,
+            "nombre": "90.000 KM",
+            "precio": 274600,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:42:00",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 30,
+            "nombre": "100.000 KM",
+            "precio": 338500,
+            "modelo_id": 42,
+            "created_at": "2020-03-11 18:42:12",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 91,
+            "nombre": "110.000 KM",
+            "precio": 274600,
+            "modelo_id": 42,
+            "created_at": "2022-02-03 20:13:59",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 92,
+            "nombre": "120.000 KM",
+            "precio": 338500,
+            "modelo_id": 42,
+            "created_at": "2022-02-03 20:14:25",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 93,
+            "nombre": "130.000 KM",
+            "precio": 274600,
+            "modelo_id": 42,
+            "created_at": "2022-02-03 20:18:44",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 94,
+            "nombre": "140.000 KM",
+            "precio": 315700,
+            "modelo_id": 42,
+            "created_at": "2022-02-03 20:19:33",
+            "updated_at": "2024-12-02 11:39:50"
+          },
+          {
+            "id": 95,
+            "nombre": "150.000 KM",
+            "precio": 274600,
+            "modelo_id": 42,
+            "created_at": "2022-02-03 20:20:00",
+            "updated_at": "2024-12-02 11:39:50"
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "marca_id": 1,
+        "nombre": "C-HR",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2020-01-13 18:05:45",
+        "updated_at": "2024-09-11 18:47:24",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/sXuZcNTIrMo5Odmg5ChSxqNnNhmCmlhHJP2FivdJ.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/tmlUUqrY2VQx1qwzg1B7hosKvP5HAC9tumelzXEZ.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-C-HR-22.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 1,
+        "tipo_vehiculo_id": 5,
+        "orden": 8,
+        "slug": "c-hr",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 136,
+            "nombre": "10.000 KM",
+            "precio": 278000,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 20:59:15",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 137,
+            "nombre": "20.000 KM",
+            "precio": 316800,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 20:59:24",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 138,
+            "nombre": "30.000 KM",
+            "precio": 290800,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 20:59:31",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 139,
+            "nombre": "40.000 KM",
+            "precio": 365500,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 20:59:37",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 140,
+            "nombre": "50.000 KM",
+            "precio": 278000,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 20:59:43",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 141,
+            "nombre": "60.000 KM",
+            "precio": 316800,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 20:59:51",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 142,
+            "nombre": "70.000 KM",
+            "precio": 278000,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:00:02",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 143,
+            "nombre": "80.000 KM",
+            "precio": 365500,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:00:13",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 144,
+            "nombre": "90.000 KM",
+            "precio": 290800,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:00:24",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 145,
+            "nombre": "100.000 KM",
+            "precio": 316800,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:00:34",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 146,
+            "nombre": "110.000 KM",
+            "precio": 290800,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:00:42",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 147,
+            "nombre": "120.000 KM",
+            "precio": 365500,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:00:51",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 148,
+            "nombre": "130.000 KM",
+            "precio": 278000,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:01:02",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 149,
+            "nombre": "140.000 KM",
+            "precio": 316800,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:01:14",
+            "updated_at": "2024-12-02 15:44:44"
+          },
+          {
+            "id": 150,
+            "nombre": "150.000 KM",
+            "precio": 278000,
+            "modelo_id": 43,
+            "created_at": "2022-02-03 21:01:24",
+            "updated_at": "2024-12-02 15:44:44"
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "marca_id": 1,
+        "nombre": "Hiace Commuter",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2021-03-08 11:43:33",
+        "updated_at": "2023-01-09 09:43:10",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/eJvPxcyf4BWIq1Qn92gHkIGDuY6pC7byxJIJtdND.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/sHxm0kal8oIzsg42bgGo5LKQcAkzzq43N5xyS3GK.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-H-Commuter-2023.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 2,
+        "orden": 1,
+        "slug": "hiace-commuter",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 196,
+            "nombre": "10.000 KM",
+            "precio": 315700,
+            "modelo_id": 45,
+            "created_at": "2023-01-10 10:13:27",
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 197,
+            "nombre": "20.000 KM",
+            "precio": 354700,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 198,
+            "nombre": "30.000 KM",
+            "precio": 366200,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 199,
+            "nombre": "40.000 KM",
+            "precio": 433900,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 200,
+            "nombre": "50.000 KM",
+            "precio": 315700,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 201,
+            "nombre": "60.000 KM",
+            "precio": 354700,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 202,
+            "nombre": "70.000 KM",
+            "precio": 315700,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 203,
+            "nombre": "80.000 KM",
+            "precio": 433900,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 204,
+            "nombre": "90.000 KM",
+            "precio": 366200,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 205,
+            "nombre": "100.000 KM",
+            "precio": 354700,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 206,
+            "nombre": "110.000 KM",
+            "precio": 366200,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 207,
+            "nombre": "120.000 KM",
+            "precio": 433900,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 208,
+            "nombre": "130.000 KM",
+            "precio": 315700,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 209,
+            "nombre": "140.000 KM",
+            "precio": 354700,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          },
+          {
+            "id": 210,
+            "nombre": "150.000 KM",
+            "precio": 315700,
+            "modelo_id": 45,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:58:47"
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "marca_id": 1,
+        "nombre": "Hiace Wagon",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2021-03-08 11:47:59",
+        "updated_at": "2023-01-09 11:27:35",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/1UIf6MNB7TZhKeUJDZYbV6NoDaGsZqLRGBjx5e7d.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/TXQ4FueoVwbJJN5vqRWEbQbrnvp1w21zO2BVmicA.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-H-Wagon-2023.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 2,
+        "orden": 1,
+        "slug": "hiace-wagon",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 166,
+            "nombre": "10.000 KM",
+            "precio": 315700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:49:44",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 167,
+            "nombre": "20.000 KM",
+            "precio": 354700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:50:18",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 168,
+            "nombre": "30.000 KM",
+            "precio": 366200,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:50:21",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 169,
+            "nombre": "40.000 KM",
+            "precio": 433900,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:51:13",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 170,
+            "nombre": "50.000 KM",
+            "precio": 315700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:51:23",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 171,
+            "nombre": "60.000 KM",
+            "precio": 354700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:51:31",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 172,
+            "nombre": "70.000 KM",
+            "precio": 315700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:51:39",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 173,
+            "nombre": "80.000 KM",
+            "precio": 433900,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:51:45",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 174,
+            "nombre": "90.000 KM",
+            "precio": 366200,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:51:53",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 175,
+            "nombre": "100.000 KM",
+            "precio": 354700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:52:02",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 176,
+            "nombre": "110.000 KM",
+            "precio": 366200,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:52:15",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 177,
+            "nombre": "120.000 KM",
+            "precio": 433900,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:52:21",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 178,
+            "nombre": "130.000 KM",
+            "precio": 315700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:52:33",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 179,
+            "nombre": "140.000 KM",
+            "precio": 354700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:52:40",
+            "updated_at": "2024-12-02 12:00:36"
+          },
+          {
+            "id": 180,
+            "nombre": "150.000 KM",
+            "precio": 315700,
+            "modelo_id": 46,
+            "created_at": "2022-06-01 11:52:49",
+            "updated_at": "2024-12-02 12:00:36"
+          }
+        ]
+      },
+      {
+        "id": 47,
+        "marca_id": 1,
+        "nombre": "Corolla Cross",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": "2021-04-05 12:39:26",
+        "updated_at": "2023-01-06 08:07:04",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/EIjtgfI5emJGUqWVw5sIkR3YYgiJ2lNWx3MAfRCR.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/PfD5ztVCHmNCdzraby700RYFc1Ht00rgzlK0YTu0.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-Corolla-Cross-2023.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 6,
+        "orden": 1,
+        "slug": "corolla-cross",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 151,
+            "nombre": "10.000 KM",
+            "precio": 274600,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:04:43",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 152,
+            "nombre": "20.000 KM",
+            "precio": 315700,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:04:51",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 153,
+            "nombre": "30.000 KM",
+            "precio": 274600,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:04:58",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 154,
+            "nombre": "40.000 KM",
+            "precio": 338500,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:05:04",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 155,
+            "nombre": "50.000 KM",
+            "precio": 274600,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:05:11",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 156,
+            "nombre": "60.000 KM",
+            "precio": 315700,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:05:20",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 157,
+            "nombre": "70.000 KM",
+            "precio": 274600,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:05:30",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 158,
+            "nombre": "80.000 KM",
+            "precio": 338500,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:05:37",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 159,
+            "nombre": "90.000 KM",
+            "precio": 274600,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:05:45",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 160,
+            "nombre": "100.000 KM",
+            "precio": 325500,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:05:52",
+            "updated_at": "2024-10-01 08:39:58"
+          },
+          {
+            "id": 161,
+            "nombre": "110.000 KM",
+            "precio": 274600,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:05:59",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 162,
+            "nombre": "120.000 KM",
+            "precio": 338500,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:06:07",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 163,
+            "nombre": "130.000 KM",
+            "precio": 274600,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:06:13",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 164,
+            "nombre": "140.000 KM",
+            "precio": 315700,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:06:21",
+            "updated_at": "2024-12-02 11:39:48"
+          },
+          {
+            "id": 165,
+            "nombre": "150.000 KM",
+            "precio": 274600,
+            "modelo_id": 47,
+            "created_at": "2022-02-03 21:06:28",
+            "updated_at": "2024-12-02 11:39:48"
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "marca_id": 1,
+        "nombre": "Etios Sedán",
+        "destacado": 0,
+        "activo": 0,
+        "created_at": "2023-01-05 15:35:31",
+        "updated_at": "2023-01-05 15:39:31",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/vNXuwStrA5rkso6e3KiKBK2g1xcjoA2ecDqOBTHN.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/Omj7odxjixLfolPRaOJV5B1fbE4yW2cLkuvL4RCN.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-Etios-Sedan-2023.pdf.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 1,
+        "orden": 1,
+        "slug": "etios-sedan",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 181,
+            "nombre": "10.000 KM",
+            "precio": 177500,
+            "modelo_id": 49,
+            "created_at": "2023-01-10 09:53:59",
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 182,
+            "nombre": "20.000 KM",
+            "precio": 201000,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 183,
+            "nombre": "30.000 KM",
+            "precio": 177500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 184,
+            "nombre": "40.000 KM",
+            "precio": 256500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 185,
+            "nombre": "50.000 KM",
+            "precio": 177500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 186,
+            "nombre": "60.000 KM",
+            "precio": 201000,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 187,
+            "nombre": "70.000 KM",
+            "precio": 177500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 188,
+            "nombre": "80.000 KM",
+            "precio": 256500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 189,
+            "nombre": "90.000 KM",
+            "precio": 177500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 190,
+            "nombre": "100.000 KM",
+            "precio": 256500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 191,
+            "nombre": "110.000 KM",
+            "precio": 177500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 192,
+            "nombre": "120.000 KM",
+            "precio": 256500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 193,
+            "nombre": "130.000 KM",
+            "precio": 177500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 194,
+            "nombre": "140.000 KM",
+            "precio": 201000,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          },
+          {
+            "id": 195,
+            "nombre": "150.000 KM",
+            "precio": 177500,
+            "modelo_id": 49,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:28:23"
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "marca_id": 1,
+        "nombre": "Yaris Sedán",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": null,
+        "updated_at": "2023-01-05 18:25:06",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/mhPi3BactTjUjq4E3QnUN1diGLeSoDcSlfxa6eCM.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/aoYk13tDEO623teWS1a8UCHPd5rNSxmU07ZjGhwZ.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-Yaris-Sedan-2023.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 1,
+        "orden": 1,
+        "slug": "yaris-sedan",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 211,
+            "nombre": "10.000 KM",
+            "precio": 204900,
+            "modelo_id": 50,
+            "created_at": "2023-01-10 10:21:44",
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 212,
+            "nombre": "20.000 KM",
+            "precio": 229700,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 213,
+            "nombre": "30.000 KM",
+            "precio": 204900,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 214,
+            "nombre": "40.000 KM",
+            "precio": 256500,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 215,
+            "nombre": "50.000 KM",
+            "precio": 204900,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 216,
+            "nombre": "60.000 KM",
+            "precio": 229700,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 217,
+            "nombre": "70.000 KM",
+            "precio": 204900,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 218,
+            "nombre": "80.000 KM",
+            "precio": 256500,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 219,
+            "nombre": "90.000 KM",
+            "precio": 204900,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 220,
+            "nombre": "100.000 KM",
+            "precio": 256500,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 221,
+            "nombre": "110.000 KM",
+            "precio": 204900,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 222,
+            "nombre": "120.000 KM",
+            "precio": 246600,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-10-01 08:29:44"
+          },
+          {
+            "id": 223,
+            "nombre": "130.000 KM",
+            "precio": 204900,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 224,
+            "nombre": "140.000 KM",
+            "precio": 256500,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          },
+          {
+            "id": 225,
+            "nombre": "150.000 KM",
+            "precio": 204900,
+            "modelo_id": 50,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:37:08"
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "marca_id": 1,
+        "nombre": "Hilux SRV/SRX",
+        "destacado": 0,
+        "activo": 1,
+        "created_at": null,
+        "updated_at": "2023-01-05 23:32:09",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/V9TPA6VZJqYdG5m4HqClkcYyapQVzjGRlBodWIpe.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/4hVfidz8gUFwbx3WompAD4LYufQKUqt5HkRQyard.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-H-SRV-SRX-23.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 3,
+        "orden": 1,
+        "slug": "hilux-srvsrx",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 226,
+            "nombre": "10.000 KM",
+            "precio": 315700,
+            "modelo_id": 51,
+            "created_at": "2023-01-10 10:29:46",
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 227,
+            "nombre": "20.000 KM",
+            "precio": 354700,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 228,
+            "nombre": "30.000 KM",
+            "precio": 366200,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 229,
+            "nombre": "40.000 KM",
+            "precio": 433900,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 230,
+            "nombre": "50.000 KM",
+            "precio": 315700,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 231,
+            "nombre": "60.000 KM",
+            "precio": 354700,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 232,
+            "nombre": "70.000 KM",
+            "precio": 315700,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 233,
+            "nombre": "80.000 KM",
+            "precio": 433900,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 234,
+            "nombre": "90.000 KM",
+            "precio": 366200,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 235,
+            "nombre": "100.000 KM",
+            "precio": 354700,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 236,
+            "nombre": "110.000 KM",
+            "precio": 366200,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 237,
+            "nombre": "120.000 KM",
+            "precio": 433900,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 238,
+            "nombre": "130.000 KM",
+            "precio": 315700,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 239,
+            "nombre": "140.000 KM",
+            "precio": 354700,
+            "modelo_id": 51,
+            "created_at": null,
+            "updated_at": "2024-12-02 11:19:48"
+          },
+          {
+            "id": 241,
+            "nombre": "150.000 KM",
+            "precio": 315700,
+            "modelo_id": 51,
+            "created_at": "2023-05-02 08:20:57",
+            "updated_at": "2024-12-02 11:19:49"
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "marca_id": 1,
+        "nombre": "GR Yaris",
+        "destacado": 1,
+        "activo": 1,
+        "created_at": null,
+        "updated_at": "2023-01-09 15:38:27",
+        "deleted_at": null,
+        "img_logo": "/storage/modelos/Xy6YvhWHoKdvK7uHrlZRN16Z2Y5xXZfDEthFxiW4.png",
+        "slogan": null,
+        "img_modelo": "/storage/modelos/SNdh4QE5uOhZSiHkm3iUaIDkF9aaH2tcTPH2ROhv.png",
+        "link_ficha_tecnica": "https://panelweb.derkayvargas.com/uploads/ficha-tecnica/FT-GR-Yaris-22.pdf",
+        "link_catalogo": null,
+        "descripcion": null,
+        "es_hibrido": 0,
+        "tipo_vehiculo_id": 4,
+        "orden": 1,
+        "slug": "gr-yaris",
+        "publicar_servicio": null,
+        "servicios": [
+          {
+            "id": 244,
+            "nombre": "10.000 KM",
+            "precio": 274600,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:01:31",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 245,
+            "nombre": "20.000 KM",
+            "precio": 315700,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:01:44",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 246,
+            "nombre": "30.000 KM",
+            "precio": 274600,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:02:00",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 247,
+            "nombre": "40.000 KM",
+            "precio": 338500,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:02:15",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 248,
+            "nombre": "50.000 KM",
+            "precio": 274600,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:02:29",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 249,
+            "nombre": "60.000 KM",
+            "precio": 315700,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:02:43",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 250,
+            "nombre": "70.000 KM",
+            "precio": 274600,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:02:58",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 251,
+            "nombre": "80.000 KM",
+            "precio": 338500,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:03:13",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 252,
+            "nombre": "90.000 KM",
+            "precio": 274600,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:03:33",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 253,
+            "nombre": "100.000 KM",
+            "precio": 338500,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:03:49",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 254,
+            "nombre": "110.000 KM",
+            "precio": 274600,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:04:12",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 255,
+            "nombre": "120.000 KM",
+            "precio": 338500,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:04:36",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 256,
+            "nombre": "130.000 KM",
+            "precio": 274600,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:04:51",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 257,
+            "nombre": "140.000 KM",
+            "precio": 315700,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:05:07",
+            "updated_at": "2024-12-02 11:44:20"
+          },
+          {
+            "id": 258,
+            "nombre": "150.000 KM",
+            "precio": 274600,
+            "modelo_id": 55,
+            "created_at": "2023-09-29 16:05:26",
+            "updated_at": "2024-12-02 11:44:20"
+          }
+        ]
+      }
+    ]
+  }

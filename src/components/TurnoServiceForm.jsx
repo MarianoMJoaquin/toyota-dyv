@@ -1,0 +1,356 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
+const TurnoServiceForm = () => {
+  const [formData, setFormData] = useState({
+    cliente: '',
+    telefono: '',
+    email: '',
+    modelo: '',
+    dominio: '',
+    servicio: '',
+    fecha: '',
+    sucursal: '',
+    from: 'web-site'
+  });
+
+  const [errors, setErrors] = useState({});
+  const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [modelosData, setModelosData] = useState([]); // Para almacenar toda la data
+  const [serviciosDisponibles, setServiciosDisponibles] = useState([]); // Para los servicios del modelo seleccionado
+
+  const sucursales = ['Sáenz Peña', 'Resistencia', 'Charata'];
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const validateForm = () => {
+    let formErrors = {};
+    if (!formData.cliente) formErrors.cliente = 'El nombre es obligatorio';
+    if (!formData.telefono) formErrors.telefono = 'El teléfono es obligatorio';
+    if (!formData.email) formErrors.email = 'El correo electrónico es obligatorio';
+    if (!formData.modelo) formErrors.modelo = 'El modelo es obligatorio';
+    if (!formData.dominio) formErrors.dominio = 'El dominio es obligatorio';
+    if (!formData.servicio) formErrors.servicio = 'El servicio es obligatorio';
+    if (!formData.fecha) formErrors.fecha = 'La fecha es obligatoria';
+    if (!formData.sucursal) formErrors.sucursal = 'La sucursal es obligatoria';
+    return formErrors;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await axios.post('https://panelweb.derkayvargas.com/api/turno-servicio', formData);
+
+      if (response.status === 200) {
+        setSubmitted(true);
+        setFormData({
+          cliente: '',
+          telefono: '',
+          email: '',
+          modelo: '',
+          dominio: '',
+          servicio: '',
+          fecha: '',
+          sucursal: '',
+          from: 'web-site'
+        });
+        setErrors({});
+      }
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      if (error.response?.data?.error) {
+        setErrors(error.response.data.error);
+      } else {
+        alert('Hubo un error al enviar el mensaje. Inténtalo de nuevo.');
+      }
+    }
+
+    setIsSubmitting(false);
+  };
+
+  useEffect(() => {
+    let progressInterval;
+    if (isSubmitting) {
+      setProgress(0);
+      progressInterval = setInterval(() => {
+        setProgress(prev => {
+          if (prev >= 90) return 90;
+          return prev + Math.random() * 19;
+        });
+      }, 200);
+    } else if (submitted) {
+      setProgress(100);
+      setTimeout(() => setProgress(0), 1000);
+    }
+    return () => clearInterval(progressInterval);
+  }, [isSubmitting, submitted]);
+
+  // Modificar useEffect para obtener datos y manejar correctamente la estructura
+  useEffect(() => {
+    const fetchModelosYServicios = async () => {
+      try {
+        const response = await axios.get('https://panelweb.derkayvargas.com/api/posventa/lista-de-precios');
+        if (response.data && response.data.data) {
+          // Filtramos solo los modelos activos
+          const modelosActivos = response.data.data.filter(modelo => modelo.activo === 1);
+          setModelosData(modelosActivos);
+        }
+      } catch (error) {
+        console.error('Error al obtener los modelos y servicios:', error);
+      }
+    };
+
+    fetchModelosYServicios();
+  }, []);
+
+  // Modificar useEffect para actualizar servicios cuando cambia el modelo
+  useEffect(() => {
+    if (formData.modelo && modelosData.length > 0) {
+      const modeloSeleccionado = modelosData.find(m => m.nombre === formData.modelo);
+      if (modeloSeleccionado && modeloSeleccionado.servicios) {
+        // Transformar los valores de KM a números para ordenar correctamente
+        const serviciosOrdenados = modeloSeleccionado.servicios.sort((a, b) => {
+          const kmA = parseInt(a.nombre.split(' ')[0]);
+          const kmB = parseInt(b.nombre.split(' ')[0]);
+          return kmA - kmB;
+        });
+        setServiciosDisponibles(serviciosOrdenados);
+      }
+    } else {
+      setServiciosDisponibles([]);
+    }
+  }, [formData.modelo, modelosData]);
+
+  return (
+    <div className="max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg">
+      <h2 className="text-3xl font-semibold text-center mb-6">Solicitar Turno Servicio</h2>
+
+      {Object.keys(errors).length > 0 && (
+        <div className="flex items-center gap-3 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg shadow-sm">
+          <div className="flex-shrink-0">
+            <svg className="h-5 w-5 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <p className="text-sm text-red-700 font-medium">
+              Por favor, corrija los errores en el formulario
+            </p>
+          </div>
+        </div>
+      )}
+
+      {submitted && (
+        <div className="flex items-center gap-3 bg-green-50 border-l-4 border-green-500 p-4 rounded-r-lg shadow-sm">
+          <div className="flex-shrink-0">
+            <svg className="h-5 w-5 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="flex-1">
+            <p className="text-sm text-green-700 font-medium">
+              ¡Solicitud de turno enviada con éxito! Nos contactaremos pronto.
+            </p>
+          </div>
+          <button 
+            onClick={() => setSubmitted(false)}
+            className="flex-shrink-0 text-green-700 hover:text-green-900"
+            type="button"
+          >
+            <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      )}
+
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Campo Cliente */}
+        <div className="relative">
+          <input
+            type="text"
+            name="cliente"
+            value={formData.cliente}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500"
+            placeholder="Nombre y Apellido"
+            required
+          />
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Nombre y Apellido
+          </label>
+          {errors.cliente && <div className="text-red-500 text-sm mt-1">{errors.cliente}</div>}
+        </div>
+
+        {/* Campo Teléfono */}
+        <div className="relative">
+          <input
+            type="tel"
+            name="telefono"
+            value={formData.telefono}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            placeholder="Teléfono"
+            required
+          />
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Teléfono
+          </label>
+          {errors.telefono && <div className="text-red-500 text-sm mt-1">{errors.telefono}</div>}
+        </div>
+
+        {/* Campo Email */}
+        <div className="relative">
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            placeholder="Correo Electrónico"
+            required
+          />
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Correo Electrónico
+          </label>
+          {errors.email && <div className="text-red-500 text-sm mt-1">{errors.email}</div>}
+        </div>
+
+        {/* Modificar el select de modelos para mostrar solo modelos activos */}
+        <div className="relative">
+          <select
+            name="modelo"
+            value={formData.modelo}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            required
+          >
+            <option value="">Selecciona un modelo</option>
+            {modelosData.map((item) => (
+              <option key={item.id} value={item.nombre}>
+                {item.nombre}
+              </option>
+            ))}
+          </select>
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Modelo del Vehículo
+          </label>
+          {errors.modelo && <div className="text-red-500 text-sm mt-1">{errors.modelo}</div>}
+        </div>
+
+        {/* Campo Dominio */}
+        <div className="relative">
+          <input
+            type="text"
+            name="dominio"
+            value={formData.dominio}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            placeholder="Dominio"
+            required
+          />
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Dominio
+          </label>
+          {errors.dominio && <div className="text-red-500 text-sm mt-1">{errors.dominio}</div>}
+        </div>
+
+        {/* Modificar el select de servicios */}
+        <div className="relative">
+          <select
+            name="servicio"
+            value={formData.servicio}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            required
+            disabled={!formData.modelo}
+          >
+            <option value="">Selecciona un servicio</option>
+            {serviciosDisponibles.map((servicio) => (
+              <option key={servicio.id} value={servicio.nombre}>
+                {servicio.nombre} - ${new Intl.NumberFormat('es-AR').format(servicio.precio)}
+              </option>
+            ))}
+          </select>
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Servicio
+          </label>
+          {errors.servicio && <div className="text-red-500 text-sm mt-1">{errors.servicio}</div>}
+        </div>
+
+        {/* Campo Fecha */}
+        <div className="relative">
+          <input
+            type="date"
+            name="fecha"
+            value={formData.fecha}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            required
+          />
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Fecha
+          </label>
+          {errors.fecha && <div className="text-red-500 text-sm mt-1">{errors.fecha}</div>}
+        </div>
+
+        {/* Campo Sucursal */}
+        <div className="relative">
+          <select
+            name="sucursal"
+            value={formData.sucursal}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            required
+          >
+            <option value="">Selecciona una sucursal</option>
+            {sucursales.map((sucursal, index) => (
+              <option key={index} value={sucursal}>{sucursal}</option>
+            ))}
+          </select>
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Sucursal
+          </label>
+          {errors.sucursal && <div className="text-red-500 text-sm mt-1">{errors.sucursal}</div>}
+        </div>
+
+        <div className="relative">
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="w-full bg-[#eb001b] p-3 text-white rounded-lg relative overflow-hidden hover:bg-red-700 transition-colors duration-200 text-lg font-medium"
+          >
+            <span className={`relative z-10 ${isSubmitting ? 'text-white/90' : ''}`}>
+              {isSubmitting ? 'Enviando...' : 'Enviar'}
+            </span>
+            
+            {isSubmitting && (
+              <div 
+                className="absolute left-0 top-0 h-full bg-red-800 transition-all duration-200 ease-out"
+                style={{ width: `${progress}%` }}
+              />
+            )}
+          </button>
+        </div>
+      </form>
+    </div>
+  );
+};
+
+export default TurnoServiceForm;
