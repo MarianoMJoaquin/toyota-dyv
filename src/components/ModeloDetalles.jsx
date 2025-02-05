@@ -630,80 +630,12 @@ export default function ModeloDetalles({ slug }) {
       )}
 
       {/* Version Section */}
-      <section id="menu" className="menu lg:mx-5 seccion">
-        {modelData.slug === "yaris-hatchback" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
+      {modelData.slug === "sw4-gr-sport" || modelData.slug === "hiace-wagon" || modelData.slug === "hiace-furgon" || modelData.slug === "hiace-commuter" ? null : (
+        <section id="menu" className="menu lg:mx-5 seccion">
+        <div className="container mx-auto section-title" data-aos="fade-up">
           <h2>{modelData.name.toUpperCase()}</h2>
           <p>Encontrá tu versión</p>
         </div>
-        ):null}
-        {modelData.slug === "yaris-sedan" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "corolla" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "corolla-hybrid" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "corolla-gr-sport" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "hilux-cabina-simple" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "hilux-cabina-doble" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "hilux-chasis-cabina" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "corolla-cross" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "corolla-cross-hybrid" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "corolla-cross-gr-sport" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        {modelData.slug === "sw4" ? (
-          <div className="container mx-auto section-title" data-aos="fade-up">
-          <h2>{modelData.name.toUpperCase()}</h2>
-          <p>Encontrá tu versión</p>
-        </div>
-        ):null}
-        
 
         <div className="container mx-auto sm:px-4">
           <div
@@ -825,6 +757,7 @@ export default function ModeloDetalles({ slug }) {
           </div>
         </div>
       </section>
+      )}
 
       {/* Gallery Section */}
       {/**<section className="galeria lg:mx-5 section">
