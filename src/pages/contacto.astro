@@ -210,7 +210,7 @@ import 'swiper/css/effect-fade';
     </main>
 </Layout>
 
-<script>
+<script is:inline>
     import Swiper from 'swiper';
     import {EffectFade, Pagination, Autoplay } from 'swiper/modules';
 
@@ -228,6 +228,20 @@ import 'swiper/css/effect-fade';
             el: '.swiper-pagination',
             clickable: true,
         },
+    });
+
+    // Smooth scroll functionality
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
     });
 </script>
 
