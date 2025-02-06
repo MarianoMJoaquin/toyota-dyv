@@ -205,7 +205,7 @@ const TestDriveForm = () => {
             name="sucursal"
             value={formData.sucursal}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            className="peer w-full px-4 py-3 text-base rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
             required
           >
             <option value="">Selecciona una sucursal</option>
@@ -227,7 +227,7 @@ const TestDriveForm = () => {
             name="modelo"
             value={formData.modelo}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            className="peer w-full px-4 py-3 text-base rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
             required
           >
             <option value="">Selecciona un modelo</option>

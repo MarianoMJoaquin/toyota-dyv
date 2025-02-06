@@ -1,11 +1,40 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import TestDriveForm from "../components/TestDriveForm.jsx";
 ---
 
 <Layout title="Test Drive" theme_color="#EB0A1E" image="https://i.imgur.com/AabFmC0.png">
   <section class="section">
     <div class="container mx-auto">
-      <h1 class="text-3xl font-bold text-center">Test Drive</h1>
+      <nav class="flex mb-4" aria-label="Breadcrumb">
+        <ol class="inline-flex items-center space-x-1 text-base max-sm:text-sm md:space-x-3">
+          <li>
+            <a href="/" class="text-gray-700 hover:text-red-600">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <span class="text-gray-500">/</span>
+          </li>
+          <li>
+            <span class="text-gray-700">Solicitud de Test Drive</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
+    
+    <section id="contacto" class="py-24 px-4">
+      <div class="container mx-auto max-w-2xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">
+            Solicitar un turno
+          </h2>
+          <p class="text-xl text-gray-600">
+            Completá el formulario para solicitar un turno de servicio técnico.
+          </p>
+        </div>
+        <TestDriveForm client:load/>
       </div>
+    </section>
   </section>
 </Layout>
