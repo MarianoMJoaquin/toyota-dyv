@@ -1221,6 +1221,7 @@ export default function ModeloDetalles({ slug }) {
               };
 
               return (
+                
                 <div
                   key={index}
                   data-aos="fade-up"
@@ -1245,6 +1246,7 @@ export default function ModeloDetalles({ slug }) {
                     </h4>
                   </div>
                 </div>
+                
               );
             })}
 
