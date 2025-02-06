@@ -1,0 +1,24 @@
+---
+
+import ModeloDetalles from "../../components/ModeloDetalles.jsx";
+import Layout from "../../layouts/Layout.astro";
+
+// Obtener el parámetro dinámico (slug) desde la URL
+const { slug } = Astro.params;
+
+const response = await fetch(`${import.meta.env.SITE}/api/vehicles`)
+const data = await response.json()
+const modelo = data.find((modelo: { slug: string }) => modelo.slug === slug) || {}
+
+const heroImage = modelo.images.find((img: { data: { viewType: string } }) => img.data.viewType === "banner");
+const imageUrl = heroImage?.formats?.thumbnail?.url || modelo.defaultImage?.formats?.small?.url;
+
+---
+
+<Layout 
+    title={`${modelo.name} | Modelos | Derka y Vargas S.A`}
+    theme_color="#EB0A1E"
+    image={imageUrl}
+>
+    <ModeloDetalles client:load slug={slug} />
+</Layout>
