@@ -5,6 +5,7 @@ const ServicioList = () => {
   const [modeloSeleccionado, setModeloSeleccionado] = useState('');
   const [serviciosActivos, setServiciosActivos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [expandirLista, setExpandirLista] = useState(false);
 
   useEffect(() => {
     const fetchServicios = async () => {
@@ -73,27 +74,48 @@ const ServicioList = () => {
             <h3 className="text-2xl font-bold text-center">Lista de Servicios</h3>
           </div>
           <div className="p-4">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b-2 border-gray-200">
-                  <th className="py-3 px-4 text-left">Kilometraje</th>
-                  <th className="py-3 px-4 text-right">Precio</th>
-                </tr>
-              </thead>
-              <tbody>
-                {serviciosActivos.map((servicio) => (
-                  <tr 
-                    key={servicio.id} 
-                    className="border-b border-gray-100 hover:bg-gray-50 transition-colors duration-200"
-                  >
-                    <td className="py-3 px-4 text-gray-800">{servicio.nombre}</td>
-                    <td className="py-3 px-4 text-right text-[#EB0A1E] font-bold">
-                      ${servicio.precio.toLocaleString('es-AR')}
-                    </td>
+            <div 
+              className={`
+                overflow-hidden transition-[max-height] duration-500 ease-in-out
+                ${expandirLista ? 'max-h-[3000px]' : 'max-h-[400px]'}
+              `}
+            >
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b-2 border-gray-200">
+                    <th className="py-3 px-4 text-left">Kilometraje</th>
+                    <th className="py-3 px-4 text-right">Precio</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {serviciosActivos
+                    .filter(servicio => {
+                      const km = parseInt(servicio.nombre.replace(/\D/g, ''));
+                      return expandirLista ? true : km <= 50000;
+                    })
+                    .map((servicio) => (
+                      <tr 
+                        key={servicio.id} 
+                        className="border-b border-gray-100 hover:bg-gray-50 transition-colors duration-200"
+                      >
+                        <td className="py-3 px-4 text-gray-800">{servicio.nombre}</td>
+                        <td className="py-3 px-4 text-right text-[#EB0A1E] font-bold">
+                          ${servicio.precio.toLocaleString('es-AR')}
+                        </td>
+                      </tr>
+                    ))}
+                </tbody>
+              </table>
+            </div>
+            
+            <button
+              onClick={() => setExpandirLista(!expandirLista)}
+              className="mt-4 mx-auto block bg-[#EB0A1E] text-white px-6 py-2 rounded-full 
+                hover:bg-red-700 transition-all duration-300 ease-in-out transform 
+                 active:scale-95"
+            >
+              {expandirLista ? 'Ver menos' : 'Ver más'}
+            </button>
           </div>
         </div>
 
