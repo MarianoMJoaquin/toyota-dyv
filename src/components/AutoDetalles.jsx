@@ -393,21 +393,7 @@ export default function AutoDetalles({ slug }) {
 
           </div>
 
-          {/* Info Usado certificado Toyota */}
-          {detallesAuto.uct === 1 && (
-            <div className="col-span-2 mt-4 space-y-4 p-4 bg-gray-100 rounded-lg">
-              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-b-red-600 max-w-max">
-                ¿Qué es un Usado Certificado Toyota (UCT)?
-              </h3>
-              <p className="text-lg text-gray-700 mt-2">
-                Un Usado Certificado Toyota es un vehículo usado que ha sido
-                inspeccionado y certificado por técnicos especializados de Toyota.
-                Estos vehículos han pasado por un proceso de revisión de 150
-                puntos y cuentan con una garantía de 1 año o 200.000 km, lo que
-                ocurra primero.
-              </p>
-            </div>
-          )}
+          
 
           {/* Descripción del auto */}
           {detallesAuto.descripcion && (
@@ -421,44 +407,63 @@ export default function AutoDetalles({ slug }) {
             </div>
           )}
 
+         
+          {detallesAuto.uct === 1 && (
+            <div className="col-span-2 mt-4 space-y-4 p-4 bg-gray-100 rounded-lg">
+              <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-b-red-600 max-w-max">
+                ¿Qué es un Usado Certificado Toyota (UCT)?
+              </h3>
+              <p className="text-lg text-gray-700 mt-2">
+                Un Usado Certificado Toyota es un vehículo usado que ha sido
+                inspeccionado y certificado por técnicos especializados de Toyota.
+                Estos vehículos han pasado por un proceso de revisión de 150
+                puntos, cuentan con una garantía de 1 año o 20.000 km, lo que
+                ocurra primero y son vehículos que fueron atendidos en concesionarios oficiales.
+              </p>
+            </div>
+          )}
+
           {/* Más información */}
           <div className="col-span-2 mt-4 space-y-8 p-4 bg-gray-100 rounded-lg">
             <h3 className="text-2xl font-bold text-gray-800 mt-4 border-b-2 max-w-max border-b-red-600">
               Más información
             </h3>
+            
+            {/* Info de contacto */}
+            <div className="space-y-4">
+              <div className="flex justify-between items-center">
+                <p className="text-lg text-gray-700">Dirección:</p>
+                <p className="text-lg text-gray-700">Av. Sarmiento y Calle González Montaner</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p className="text-lg text-gray-700">Teléfono:</p>
+                <p className="text-lg text-gray-700">3625-270614 | 3624-870100 | 3624-870148</p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p className="text-lg text-gray-700">Email</p>
+                <p className="text-lg text-gray-700">ventas@derkayvargas.com.ar</p>
+              </div>
+            </div>
 
-            <div className="relative">
-              <GoogleMap location="resistencia"/>
+            <div className="relative h-72">
+              <GoogleMap location="tpa"/>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="lg:grid lg:grid-cols-2 justify-center container mx-auto lg:gap-8">
-       
-          {/* Información del auto */}
-          <div className="col-span-1 mt-4 space-y-8 p-4 bg-gray-100 rounded-lg">
-            <h3 className="text-2xl font-bold text-gray-800 border-b-2 max-w-max border-b-red-600">
-              Información de un usado certificado UCT
-            </h3>
-          </div>
-            
-            {/* Info Usado certificado Toyota */}
-          <div className="col-span-1 mt-4 space-y-4 p-4 bg-gray-100 rounded-lg">
-            <h3 className="text-2xl font-bold text-gray-800 border-b-2 border-b-red-600 max-w-max">
-              ¿Qué es un Usado Certificado Toyota (UCT)?
-            </h3>
-            <p className="text-lg text-gray-700 mt-2">
-              Un Usado Certificado Toyota es un vehículo usado que ha sido
-              inspeccionado y certificado por técnicos especializados de Toyota.
-              Estos vehículos han pasado por un proceso de revisión de 150
-              puntos y cuentan con una garantía de 1 año o 200.000 km, lo que
-              ocurra primero.
-            </p>
-          </div>
-
-          <Form tipo="usados" slug={slug} />
+      {/* Formulario de Contacto*/}
+    <section id="contacto" class="py-24 px-4" data-aos="fade-up">
+      <div class="container mx-auto max-w-2xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">
+            ¿Te interesa este auto?
+          </h2>
+          <p class="text-xl text-gray-600">Completá el formulario y un asesor se contactará con vos</p>
+        </div>
+        <Form tipo="usados" slug={slug} />
       </div>
+    </section>
     </>
   );
 }

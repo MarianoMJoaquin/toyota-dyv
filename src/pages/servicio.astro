@@ -37,7 +37,7 @@ import ServicioList from '../components/ServicioList.jsx';
             En Derka y Vargas te ofrecemos el mejor servicio técnico para tu Toyota
         </p>
         <a
-          href="#planes"
+          href="#servicios"
           class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full transition-colors duration-300"
         >
           Ver servicios
@@ -46,7 +46,7 @@ import ServicioList from '../components/ServicioList.jsx';
     </section>
 
 
-    <section class="py-24 px-4 scroll-mt-20" data-aos="fade-up">
+    <section id="servicios" class="py-24 px-4 scroll-mt-20" data-aos="fade-up">
         <div class="container mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="relative aspect-video bg-white rounded-xl overflow-hidden">
@@ -165,7 +165,23 @@ import ServicioList from '../components/ServicioList.jsx';
         </div>
         <img src="/images/servicio/posventa-logo.png" alt="Derka y Vargas" class=" mx-auto" />
       </section>
+
+      <!-- Formulario -->
+    <section id="contacto" class="py-24 px-4">
+      <div class="container mx-auto max-w-2xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">
+            Solicitar un turno
+          </h2>
+          <p class="text-xl text-gray-600">
+            Completá el formulario para solicitar un turno de servicio técnico.
+          </p>
+        </div>
+        <TurnoServiceForm client:load/>
+      </div>
+    </section>
    
+    <!--Toyota App -->
       <section class="py-24 px-4 scroll-mt-20 bg-black" data-aos="fade-up">
         <div class="container mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -180,7 +196,7 @@ import ServicioList from '../components/ServicioList.jsx';
             </div>
             <div class="order-2 md:order-1">
               <h2 class="text-4xl lg:text-6xl font-bold text-white mb-6">
-                Agendá tu próximo turno en Toyota App
+                Agendá tu próximo turno en Toyota App más rápido y fácil
                </h2>
               <p class="text-lg lg:text-2xl text-white leading-relaxed text-justify">
                 Para mejorar la experiencia con Toyota y descubrir todas las soluciones de movilidad. Conectate desde donde estés para agendar tu turno de servicio, visualizar información clave de tus planes de ahorro, descargar los cupones de pago y mucho más.
@@ -193,18 +209,7 @@ import ServicioList from '../components/ServicioList.jsx';
           </div>
         </div>
       </section>
-    <!-- Formulario -->
-    <!--<section id="contacto" class="py-24 px-4">
-      <div class="container mx-auto max-w-2xl">
-        <div class="text-center mb-16">
-          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">
-            Contactanos
-          </h2>
-          <p class="text-xl text-gray-600">Completá el formulario y un asesor se contactará con vos</p>
-        </div>
-        
-      </div>
-    </section> -->
+    
   </main>
 </Layout>
 

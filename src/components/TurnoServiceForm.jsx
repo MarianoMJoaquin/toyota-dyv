@@ -11,6 +11,7 @@ const TurnoServiceForm = () => {
     servicio: '',
     fecha: '',
     sucursal: '',
+    comentario: '',
     from: 'web-site'
   });
 
@@ -68,6 +69,7 @@ const TurnoServiceForm = () => {
           servicio: '',
           fecha: '',
           sucursal: '',
+          comentario: '',
           from: 'web-site'
         });
         setErrors({});
@@ -138,8 +140,7 @@ const TurnoServiceForm = () => {
   }, [formData.modelo, modelosData]);
 
   return (
-    <div className="max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg">
-      <h2 className="text-3xl font-semibold text-center mb-6">Solicitar Turno Servicio</h2>
+    <div className="max-w-3x mx-auto rounded-lg">
 
       {Object.keys(errors).length > 0 && (
         <div className="flex items-center gap-3 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg shadow-sm">
@@ -238,7 +239,7 @@ const TurnoServiceForm = () => {
             name="modelo"
             value={formData.modelo}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            className="peer w-full px-4 py-3 rounded-lg border text-base border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
             required
           >
             <option value="">Selecciona un modelo</option>
@@ -277,7 +278,7 @@ const TurnoServiceForm = () => {
             name="servicio"
             value={formData.servicio}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            className="peer w-full px-4 py-3 rounded-lg border text-base border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
             required
             disabled={!formData.modelo}
           >
@@ -316,7 +317,7 @@ const TurnoServiceForm = () => {
             name="sucursal"
             value={formData.sucursal}
             onChange={handleChange}
-            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            className="peer w-full px-4 py-3 rounded-lg border text-base border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
             required
           >
             <option value="">Selecciona una sucursal</option>
@@ -328,6 +329,21 @@ const TurnoServiceForm = () => {
             Sucursal
           </label>
           {errors.sucursal && <div className="text-red-500 text-sm mt-1">{errors.sucursal}</div>}
+        </div>
+
+        {/* Campo Comentario */}
+        <div className="relative">
+          <textarea
+            name="comentario"
+            value={formData.comentario}
+            onChange={handleChange}
+            className="peer w-full px-4 py-3 rounded-lg border border-gray-300 placeholder-transparent focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all duration-200"
+            placeholder="Comentario (opcional)"
+            rows="4"
+          />
+          <label className="absolute left-4 -top-2.5 bg-white px-1 text-base text-gray-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-red-500">
+            Comentario (opcional)
+          </label>
         </div>
 
         <div className="relative">
