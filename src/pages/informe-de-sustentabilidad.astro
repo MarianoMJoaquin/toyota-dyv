@@ -1,0 +1,261 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TurnoServiceForm from '../components/TurnoServiceForm.jsx';
+import ServicioList from '../components/ServicioList.jsx';
+
+---
+
+<Layout title="Informe de Sustentabilidad - Derka y Vargas" theme_color="#EB0A1E" image="https://i.imgur.com/AabFmC0.png">
+  <main class="overflow-hidden">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex flex-col gap-20 items-center justify-center text-white">
+      <!-- Breadcrumb -->
+      <div class="w-full z-50">
+        <nav class="py-2 px-4">
+          <div class="container mx-auto">
+            <ol class="flex items-center gap-2 text-sm">
+              <li>
+                <a href="/" class="text-white hover:text-[#EB0A1E] transition-colors duration-300 text-xl">Inicio</a>
+              </li>
+              <li class="text-white">/</li>
+              <li>
+                <a href="/servicio" class="text-[#EB0A1E] transition-colors duration-300 text-xl">Servicio</a>
+              </li>
+            </ol>
+          </div>
+        </nav>
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/50">
+        <img src="/images/servicio/servicio-hero.jpeg" alt="Financiación Banner" class="w-full h-full object-cover -z-10 ukiyo" />
+      </div>
+      <div data-aos="fade-up" class="container mx-auto px-4 text-center z-10">
+        
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          Servicio Técnico
+        </h1>
+        <p class="text-xl mb-8">
+            En Derka y Vargas te ofrecemos el mejor servicio técnico para tu Toyota
+        </p>
+        <a
+          href="#planes"
+          class="inline-block bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-full transition-colors duration-300"
+        >
+          Ver servicios
+        </a>
+      </div>
+    </section>
+
+
+    <section class="py-24 px-4 scroll-mt-20" data-aos="fade-up">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="relative aspect-video bg-white rounded-xl overflow-hidden">
+              <img 
+                src="/images/servicio/servicio-bg2.jpg" 
+                alt="Servicio Técnico" 
+                class="w-full h-full ukiyo object-cover rounded-xl"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="order-2 md:order-1">
+              <h2 class="text-4xl lg:text-6xl font-bold text-[#EB0A1E] mb-6">
+                Servicio Técnico Toyota
+               </h2>
+              <p class="text-lg lg:text-2xl text-gray-600 leading-relaxed text-justify">
+                En Derka y Vargas te ofrecemos el mejor servicio técnico para tu Toyota. Contamos con un equipo de profesionales altamente capacitados y con la tecnología necesaria para brindarte un servicio de calidad. 
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="py-24 px-4 scroll-mt-20" data-aos="fade-up">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="order-2 md:order-1">
+              <h2 class="text-4xl lg:text-6xl font-bold text-[#EB0A1E] mb-6">
+                Mantenimiento Express
+               </h2>
+              <p class="text-lg lg:text-2xl text-gray-600 leading-relaxed text-justify">
+                Tu día pasa rápido. Necesitás un servicio Posventa que sea igual. Cuando tenés poco tiempo, necesitás precisión. El mantenimiento express te ofrece tranquilidad de tener tu Toyota listo en 60 minutos, mientras vos disfrutás de un rico café en nuestras instalaciones.
+              </p>
+            </div>
+            <div class="relative aspect-video bg-white rounded-xl overflow-hidden order-1 md:order-2">
+              <img 
+                src="/images/servicio/servicio-bg.jpeg" 
+                alt="Mantenimiento exrepss" 
+                class="w-full h-full ukiyo object-cover rounded-xl"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-gray-50 py-24 px-4" data-aos="fade-up">
+        <div class="container mx-auto">
+          <div class="text-center max-w-3xl lg:max-w-6xl mx-auto mb-16">
+            <h2 class="text-4xl lg:text-6xl font-bold text-[#EB0A1E] mb-4">
+              Beneficios del Mantenimiento Express
+            </h2>
+            <p class="text-xl text-gray-600">
+                Estos son los beneficios que te ofrecemos con nuestro servicio de mantenimiento express.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {
+              [
+                {
+                  icon: "ri-loop-left-line",
+                  title: "Sincronización",
+                  desc: "Operación sincronizada con dos técnicos altamente capacitados.",
+                },
+                {
+                  icon: "ri-suitcase-line",
+                  title: "Puestos de trabajo",
+                  desc: "El área de trabajo equipada con herramental especial.",
+                },
+                {
+                  icon: "ri-time-line",
+                  title: "Horario de entrega garantizado",
+                  desc: "Reducción del tiempo de espera, conociendo el momento exacto de finalización del servicio.",
+                },
+                {
+                  icon: "ri-user-line",
+                  title: "Transparencia",
+                  desc: "Posibilidad de ver el servicio en el momento en el que se está realizando.",
+                },
+                {
+                  icon: "ri-home-line",
+                  title: "Comodidad",
+                  desc: "Espacios ambientados para la total comodidad durante la espera de su vehículo.",
+                },
+                {
+                  icon: "ri-car-washing-line",
+                  title: "Acondicionamiento final",
+                  desc: "El servicio de mantenimiento express incluye el lavado del vehículo.",
+                },
+              ].map((step, index) => (
+                <div class="bg-white rounded-xl shadow-lg p-6 transition-all duration-300 hover:-translate-y-2">
+                    <i class={`${step.icon} text-4xl text-[#EB0A1E]`}></i>
+                    <h3 class="text-2xl font-bold my-4">
+                        {step.title}
+                    </h3>
+                    <p class="text-gray-600">{step.desc}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+   
+      <section class="bg-gray-50 py-24 px-4" data-aos="fade-up">
+        <div class="container mx-auto">
+          <div class="text-center max-w-3xl lg:max-w-6xl mx-auto mb-16">
+            <h2 class="text-4xl lg:text-6xl font-bold text-[#EB0A1E] mb-4">
+              Lista de Precios de los Servicios
+            </h2>
+            <p class="text-xl text-gray-600">
+                Estos son los precios de los servicios que ofrecemos.
+            </p>
+          </div>
+          <ServicioList client:load />
+        </div>
+        <img src="/images/servicio/posventa-logo.png" alt="Derka y Vargas" class=" mx-auto" />
+      </section>
+   
+      <section class="py-24 px-4 scroll-mt-20 bg-black" data-aos="fade-up">
+        <div class="container mx-auto">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="relative aspect-video bg-black rounded-xl overflow-hidden">
+              <img 
+                src="/images/servicio/toyota-app-5.jpeg" 
+                alt="Servicio Técnico" 
+                class="w-full h-full object-cover rounded-xl"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="order-2 md:order-1">
+              <h2 class="text-4xl lg:text-6xl font-bold text-white mb-6">
+                Agendá tu próximo turno en Toyota App
+               </h2>
+              <p class="text-lg lg:text-2xl text-white leading-relaxed text-justify">
+                Para mejorar la experiencia con Toyota y descubrir todas las soluciones de movilidad. Conectate desde donde estés para agendar tu turno de servicio, visualizar información clave de tus planes de ahorro, descargar los cupones de pago y mucho más.
+                Podes reservar turnos eligiendo el concesionario, fecha y horario y otros adicionales.
+              </p>
+              <a href="https://www.toyota.com.ar/mi-toyota/app" class="inline-block bg-black hover:bg-white border-2 border-white text-white hover:text-black px-8 py-4 rounded-full transition-colors duration-300 mt-4">
+                Conocer más
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    <!-- Formulario -->
+    <!--<section id="contacto" class="py-24 px-4">
+      <div class="container mx-auto max-w-2xl">
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-[#EB0A1E] mb-4">
+            Contactanos
+          </h2>
+          <p class="text-xl text-gray-600">Completá el formulario y un asesor se contactará con vos</p>
+        </div>
+        
+      </div>
+    </section> -->
+  </main>
+</Layout>
+
+<script is:inline>
+  // FAQ functionality
+  document.addEventListener("DOMContentLoaded", () => {
+      const faqItems = document.querySelectorAll(".faq-item");
+  
+      faqItems.forEach((item) => {
+        const button = item.querySelector(".faq-button");
+  
+        button?.addEventListener("click", () => {
+          // Close all other items
+          faqItems.forEach((otherItem) => {
+            if (otherItem !== item) {
+              otherItem.classList.remove("active");
+            }
+          });
+  
+          // Toggle current item
+          item.classList.toggle("active");
+        });
+      });
+    });
+  // Smooth scroll functionality
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+</script>
+
+<style>
+  .faq-answer {
+      max-height: 0;
+      transition: max-height 0.3s ease-out;
+    }
+  
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+      transition: max-height 0.5s ease-in;
+    }
+  
+    .faq-item.active .faq-button i {
+      transform: rotate(180deg);
+    }
+</style>
