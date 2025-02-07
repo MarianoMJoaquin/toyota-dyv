@@ -1121,7 +1121,7 @@ export default function UsadosList() {
             </div>
 
             {/* Botón para abrir el Drawer */}
-            <div>
+            <div className="flex items-center">
               <button
                 className="text-white lg:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
                 type="button"
@@ -1822,9 +1822,17 @@ export default function UsadosList() {
                         <img
                           src={`https://panelweb.derkayvargas.com/${auto.foto.replace("public", "storage")}`}
                           alt={`${auto.marca} ${auto.modelo}`}
-                          className="w-full h-72 object-cover"
+                          className="w-full h-72 object-cover z-0"
                         />
+                        
                       </a>
+                      {auto.uct === 1 && (
+                          <img 
+                            src="/images/usado.webp"
+                            alt="Usado Certificado Toyota"
+                            className="absolute top-2 right-2 w-12 z-10"
+                          />
+                      )}
                       <div className="p-4 flex flex-col justify-center gap-2">
                         <h2 className="text-lg font-semibold border-b-2 border-red-600 max-w-max mb-2">
                           {auto.marca} {auto.modelo}
@@ -1879,6 +1887,13 @@ export default function UsadosList() {
                           alt={`${auto.marca} ${auto.modelo}`}
                           className="max-sm:w-72 w-96 max-sm:h-44 h-72"
                         />
+                        {auto.uct === 1 && (
+                          <img 
+                            src="/images/usado.webp"
+                            alt="Usado Certificado Toyota"
+                            className="absolute top-2 left-2 max-sm:w-8 w-12 z-10"
+                          />
+                      )}
                       </a>
                       <div className="w-full p-4 flex flex-col max-sm:gap-0 gap-6">
                         <h2 className="text-sm lg:text-2xl xl:text-3xl font-semibold border-b-2 border-red-600 max-w-max mb-2">

@@ -96,7 +96,7 @@ body {
 }
 
 .material-link {
-  color: var(--accent-color);
+  color: var(--default-color);
   text-decoration: none;
   transition: 0.3s;
 }

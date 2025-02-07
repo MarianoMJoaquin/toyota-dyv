@@ -119,13 +119,22 @@ export default function ModeloDetalles({ slug }) {
 
   return (
     <main className="main">
-      <section id="hero" className="hero section dark-background">
+      {modelData.variants.find(variant => variant.hasConnectedServices === true) ? (
+      <img
+        src="/images/toyota-servicios-conectados.webp"
+        alt="Servicios Conectados"
+        className="absolute top-20 right-4 max-w-52 max-h-96 z-10"
+        loading="lazy"
+        decoding="async"
+      />) : null}
+      <section id="hero" className="hero section dark-background relative">
+       
         {modelData.slug === "corolla-gr-sport" ? (
           <img
           loading="lazy"
           decoding="async"
           src="/images/corolla-gr2.jpeg"
-          className="hero-bg"
+          className="hero-bg z-0"
           alt=""
           data-aos="fade-in"
         />
@@ -141,7 +150,8 @@ export default function ModeloDetalles({ slug }) {
           data-aos="fade-in"
         />
         )}
-        <div className="container mx-auto sm:px-4">
+        <div className="container mx-auto max-h-full sm:px-4">
+          
           <div className="flex max-sm:flex-col justify-center gap-20 items-center lg:justify-between">
             <div className="lg:w-2/3 pr-4 pl-4 flex flex-col items-center lg:items-start">
               <p data-aos="fade-up" data-aos-delay="200">
@@ -227,6 +237,7 @@ export default function ModeloDetalles({ slug }) {
                   Cotizar ahora
                 </a>
             </div>
+            
           </div>
         </div>
       </section>
@@ -331,6 +342,7 @@ export default function ModeloDetalles({ slug }) {
                         .join(", ")} cuentan con Servicios Conectados
                     </p>
                   </div>
+                  
                 </div>
                 
                 <div data-aos="fade-up" data-aos-delay="600">
@@ -1227,26 +1239,25 @@ export default function ModeloDetalles({ slug }) {
                   data-aos="fade-up"
                   data-aos-delay={(index + 1) * 100}
                 >
-                  <div className="card-item h-full">
-                    <span>
-                      <i className={getCustomImage(link.type)}></i>
-                    </span>
-                    <h4>
-                      <a
-                        href={link.url}
-                        target="_blank"
-                        className="material-link text-xl md:text-2xl lg:text-3xl"
-                      >
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    className="block"
+                  >
+                    <div className="card-item h-full border border-gray-50 p-8 hover:border-[#eb001b] rounded-2xl transition-all duration-300">
+                      <span>
+                        <i className={getCustomImage(link.type)}></i>
+                      </span>
+                      <h4 className="material-link text-xl md:text-2xl lg:text-3xl">
                         {link.type === "brochure"
                           ? "Ficha Técnica"
                           : link.type === "consumption"
                             ? "Información de consumo"
                             : "Información sobre airbags"}
-                      </a>
-                    </h4>
-                  </div>
+                      </h4>
+                    </div>
+                  </a>
                 </div>
-                
               );
             })}
 
@@ -1255,20 +1266,20 @@ export default function ModeloDetalles({ slug }) {
               data-aos="fade-up"
               data-aos-delay={(modelData.links.length + 1) * 100}
             >
-              <div className="card-item h-full">
-                <span>
-                  <i className="ri-information-line"></i>
-                </span>
-                <h4>
-                  <a
-                    href="https://media.toyota.com.ar/52dca697-53be-41e1-9562-e9d6a346687a.pdf"
-                    target="_blank"
-                    className="material-link text-xl md:text-2xl lg:text-3xl"
-                  >
+              <a
+                href="https://media.toyota.com.ar/52dca697-53be-41e1-9562-e9d6a346687a.pdf"
+                target="_blank"
+                className="block"
+              >
+                <div className="card-item h-full border border-gray-50 p-8 hover:border-[#eb001b] rounded-2xl transition-all duration-300">
+                  <span>
+                    <i className="ri-information-line"></i>
+                  </span>
+                  <h4 className="material-link text-xl md:text-2xl lg:text-3xl">
                     Información sobre airbags
-                  </a>
-                </h4>
-              </div>
+                  </h4>
+                </div>
+              </a>
             </div>
           </div>
         </div>

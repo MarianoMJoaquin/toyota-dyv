@@ -719,16 +719,32 @@ export default function ModelosList() {
               ))}
             </div>
           </div>
+
         </div>
 
         <div className="lg:col-span-3 mx-5 xl:mx-5">
-          <div className="grid grid-cols-2 grid-rows-1 mb-4 max-lg:hidden">
-            <div className="flex justify-start items-center">
+          <div className="grid grid-cols-2 grid-rows-1 mb-4 max-sm:flex max-sm:flex-col max-sm:gap-4">
+            <div className="flex justify-between  items-center">
               <p className="text-sm lg:text-lg">
                 Mostrando {indiceInicial + 1} - {indiceFinal > modelosFiltrados.length ? modelosFiltrados.length : indiceFinal} de {modelosFiltrados.length} modelos
               </p>
+              {/* Botón para abrir el Drawer */}
+              <div>
+                <button
+                  className="text-white md:hidden bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
+                  type="button"
+                  data-drawer-target="drawer-right-example"
+                  data-drawer-show="drawer-right-example"
+                  data-drawer-placement="right"
+                  data-drawer-backdrop="true"
+                  aria-controls="drawer-right-example"
+                >
+                  <i className="ri-filter-3-line"></i>
+                  Filtros
+                </button>
+              </div>
             </div>
-            <div className="flex justify-end items-center">
+            <div className="flex justify-end max-sm:justify-between items-center">
               <div className="flex items-center mr-4">
                 <label htmlFor="orden" className="mr-2 max-sm:mr-1 text-sm lg:text-lg">
                   Ordenar por:
@@ -746,19 +762,216 @@ export default function ModelosList() {
                   <option value="menor-precio">Menor precio</option>
                 </select>
               </div>
-              <button
-                onClick={() => setModoVista("lista")}
-                className={`mr-2 ${modoVista === "lista" ? "text-red-600" : "text-gray-700"}`}
-              >
-                <i className="ri-list-unordered"></i>
-              </button>
-              <button
-                onClick={() => setModoVista("grilla")}
-                className={`${modoVista === "grilla" ? "text-red-600" : "text-gray-700"}`}
-              >
-                <i className="ri-grid-fill"></i>
-              </button>
+              <div>
+                <button
+                  onClick={() => setModoVista("lista")}
+                  className={`mr-2 ${modoVista === "lista" ? "text-red-600" : "text-gray-700"}`}
+                >
+                  <i className="ri-list-unordered"></i>
+                </button>
+                <button
+                  onClick={() => setModoVista("grilla")}
+                  className={`${modoVista === "grilla" ? "text-red-600" : "text-gray-700"}`}
+                >
+                  <i className="ri-grid-fill"></i>
+                </button>
+              </div>
+              <div className="flex items-center ml-4 md:ml-2 max-sm:hidden">
+                <button
+                  className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
+                  type="button"
+                  data-drawer-target="drawer-right-example"
+                  data-drawer-show="drawer-right-example"
+                  data-drawer-placement="right"
+                  data-drawer-backdrop="true"
+                  aria-controls="drawer-right-example"
+                >
+                  <i className="ri-filter-3-line"></i>
+                  Filtros
+                </button>
+              </div>
             </div>
+            {/* Drawer */}
+            <div
+              id="drawer-right-example"
+              className="fixed top-14 right-0 z-40 h-screen px-4 py-12 overflow-y-auto transition-transform translate-x-full bg-white w-80 shadow-lg"
+              tabIndex="-1"
+              aria-labelledby="drawer-right-label"
+            >
+              {/* Botón para cerrar el Drawer */}
+              <button
+                type="button"
+                data-drawer-hide="drawer-right-example"
+                aria-controls="drawer-right-example"
+                className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 absolute top-2.5 end-2.5 inline-flex items-center justify-center"
+              >
+                <svg
+                  className="w-3 h-3"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 14 14"
+                >
+                  <path
+                    stroke="currentColor"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"
+                  />
+                </svg>
+                <span className="sr-only">Close menu</span>
+              </button>
+              {/* Contenido */}
+              
+              <div className="space-y-4">
+                {/* Filtro de Categorías */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Categorías
+                  </h3>
+                  {categories.map((category) => (
+                    <div key={category} className="flex items-center mb-2">
+                      <input
+                        type="checkbox"
+                        id={`cat-${category}`}
+                        onChange={() =>
+                          handleCheckbox(filtroCategories, setFiltroCategories, category)
+                        }
+                        checked={filtroCategories.includes(category)}
+                        className="cursor-pointer mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor={`cat-${category}`} className="text-lg cursor-pointer">
+                        {capitalizar(category)}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Filtro de Tags */}
+                      <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                        <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                        Otros filtros
+                        </h3>
+                        {Array.from(new Set(modelos.flatMap((modelo) => modelo.tags))).map(
+                          (tag) => (
+                            <div key={tag} className="flex items-center mb-2">
+                            <input
+                              type="checkbox"
+                              id={`tag-${tag}`}
+                              onChange={() => handleCheckbox(filtroTags, setFiltroTags, tag)}
+                              checked={filtroTags.includes(tag)}
+                              className="cursor-pointer mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                            />
+                            <label htmlFor={`tag-${tag}`} className="text-lg">
+                              {tag === "gazoo_racing" 
+                              ? "Deportivos" 
+                              : tag === "hybrid" 
+                                ? "Híbridos"
+                                : capitalizar(tag)}
+                            </label>
+                            </div>
+                          )
+                        )}
+                      </div>
+
+                      {/* Filtro de Rango de Precio */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Rango de Precio
+                  </h3>
+                  <Range
+                    step={100000}
+                    min={Math.min(...(modelos.length > 0 ? modelos.map(m => m.defaultPrice?.amount || 0) : [0]))}
+                    max={Math.max(...(modelos.length > 0 ? modelos.map(m => m.defaultPrice?.amount || 100000000) : [100000000]))}
+                    values={precioRango}
+                    onChange={(values) => setPrecioRango(values)}
+                    renderTrack={({ props: trackProps, children }) => (
+                      <div
+                        {...trackProps}
+                        style={{
+                          ...trackProps.style,
+                          height: "5px",
+                          background: "#d1d5db",
+                          borderRadius: "5px",
+                        }}
+                      >
+                        {children}
+                      </div>
+                    )}
+                    renderThumb={({ props: thumbProps, index }) => (
+                      <div
+                        {...thumbProps}
+                        style={{
+                          ...thumbProps.style,
+                          height: "12px",
+                          width: "12px",
+                          backgroundColor: "#eb0a1e",
+                          borderRadius: "50%",
+                          boxShadow: "0px 2px 6px #AAA",
+                        }}
+                      />
+                    )}
+                  />
+                  <div className="flex justify-between mt-2">
+                    <span className="text-lg">
+                      ${Number(precioRango[0]).toLocaleString()}
+                    </span>
+                    <span className="text-lg">
+                      ${Number(precioRango[1]).toLocaleString()}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Filtro de Año */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Año
+                  </h3>
+                  {years.map((year) => (
+                    <div key={year} className="flex items-center mb-2">
+                      <input
+                        type="checkbox"
+                        id={`year-${year}`}
+                        onChange={() => handleCheckbox(filtroYear, setFiltroYear, year)}
+                        checked={filtroYear.includes(year)}
+                        className="cursor-pointer mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor={`year-${year}`} className="text-lg">
+                        {year}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Filtro de Transmisión */}
+                <div className="mb-6 p-4 bg-gray-100 rounded-lg">
+                  <h3 className="text-lg font-semibold mb-4 max-w-max border-b-red-600 border-b-2">
+                    Transmisión
+                  </h3>
+                  {transmissionTypes.map((trans) => (
+                    <div key={trans} className="flex items-center mb-2">
+                      <input
+                        type="checkbox"
+                        id={`trans-${trans}`}
+                        onChange={() =>
+                          handleCheckbox(filtroTransmision, setFiltroTransmision, trans)
+                        }
+                        checked={filtroTransmision.includes(trans)}
+                        className="cursor-pointer mr-2 h-4 w-4 text-red-600 focus:ring-red-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor={`trans-${trans}`} className="text-lg">
+                        {capitalizar(trans)}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+
+            </div>
+
+
           </div>
 
           {/* Estado de carga */}
