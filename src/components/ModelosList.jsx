@@ -776,7 +776,7 @@ export default function ModelosList() {
                   <i className="ri-grid-fill"></i>
                 </button>
               </div>
-              <div className="flex items-center ml-4 md:ml-2 max-sm:hidden">
+              <div className="max-sm:hidden items-center ml-4 md:ml-2 md:flex lg:hidden">
                 <button
                   className="text-white bg-red-600 ring-1 ring-red-600 hover:text-red-600 hover:bg-white rounded-full py-1 px-2 text-base transition-all ease-in-out"
                   type="button"
