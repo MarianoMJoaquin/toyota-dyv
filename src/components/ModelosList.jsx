@@ -348,7 +348,7 @@ export default function ModelosList() {
           <img
               src={modelo.defaultImage.url}
               alt={modelo.name}
-              className="w-full h-full object-cover"
+              className="max-sm:w-52 w-full h-full lg:object-cover"
               style={{minHeight: "200px", maxHeight: "300px"}}
           />
         </a>
@@ -374,7 +374,7 @@ export default function ModelosList() {
           <div className="flex justify-start items-center gap-2">
             <p className="text-base text-gray-500">
               {window.innerWidth <= 640 
-                ? (modelo.variants[0]?.details?.summary.replaceAll(';', ',') || 'Hola').substring(0, 30)
+                ? (modelo.variants[0]?.details?.summary.replaceAll(';', ',') || '').substring(0, 30)
                 : (modelo.variants[0]?.details?.summary.replaceAll(';', ',') || '').substring(0, 100)}
               {(modelo.variants[0]?.details?.summary.replaceAll(';', ',') || '').length > (window.innerWidth <= 640 ? 30 : 100) ? '...' : ''}
             </p>
