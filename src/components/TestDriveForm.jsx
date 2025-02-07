@@ -98,7 +98,6 @@ const TestDriveForm = () => {
 
   return (
     <div className="max-w-lg mx-auto p-8 bg-white rounded-lg shadow-lg">
-      <h2 className="text-3xl font-semibold text-center mb-6">Solicitar Test Drive</h2>
 
       {/* Mensaje de Error - Mismo estilo que Form */}
       {Object.keys(errors).length > 0 && (
