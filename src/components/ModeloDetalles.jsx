@@ -133,7 +133,7 @@ export default function ModeloDetalles({ slug }) {
           <img
           loading="lazy"
           decoding="async"
-          src="/images/corolla-gr2.jpeg"
+          src="/images/corolla-gr2-3.png"
           className="hero-bg z-0"
           alt=""
           data-aos="fade-in"
@@ -390,7 +390,7 @@ export default function ModeloDetalles({ slug }) {
         {/* Fondo del slider */}
         {modelData.slug === "corolla-gr-sport" ? ( 
           <img
-          src="/images/corolla-gr2.jpeg"
+          src="/images/corolla-gr2-3.png"
           className="slider-bg"
           alt=""
           data-aos="fade-in"

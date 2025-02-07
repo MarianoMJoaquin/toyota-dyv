@@ -102,13 +102,22 @@ const ModelosTabSliderComponent = () => {
 
     return (
       <div className="catalog__item">
-        <a href="javascript:void(0)" className="catalog__item-link">
+        {vehicle.slug === "corolla-gr-sport" ? (
+          <a href={`/modelos/${vehicle.slug}`} className="catalog__item-link">
           <img
             className="w-full h-80 object-cover catalog__item-img"
-            src={imageUrl}
+            src="/images/corolla-gr2-3.png"
             alt={vehicle.name}
           />
         </a>
+        ) : (
+          <a href={`/modelos/${vehicle.slug}`} className="catalog__item-link">
+            <img
+              className="w-full h-80 object-cover catalog__item-img"
+              src={imageUrl}
+              alt={vehicle.name}
+            />
+          </a>)}
         <div className="catalog__item-info">
           <div className="catalog__item-top">
             <span className="catalog__item-year">{vehicle.variants[0].details.creationYear}</span>
@@ -125,7 +134,6 @@ const ModelosTabSliderComponent = () => {
                 <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
                 <i class="ri-car-line"></i>
                   <p className="text-sm max-sm:text-xs">{vehicle.variants[0]?.details?.body_types}</p>
-                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0]?.details?.summary?.split(';')[0]}</p>
                 </div>
                 <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
                   <i className="ri-user-line"></i>

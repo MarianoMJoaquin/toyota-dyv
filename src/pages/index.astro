@@ -43,40 +43,32 @@ import srcTSC from "../assets/images/toyota-servicios-conectados.webp";
 		  <div class="container">
 			<h1 class="about__title heading-1">¿En qué podemos ayudarte?</h1>
   
-			<div class="services__container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-			  <div class="services__content">
-				<!--<Image src={ServiceSVG} alt="Svg de Service" class="services__img"/> -->
-				<img src={ServiceSVG.src} alt="Svg de Service" class="services__img" loading="lazy" decoding="async"/>
-				<a href="/servicio#contacto" >
-				  <h3 class="services__title">Solicitar un servicio</h3>
+			<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto container max-sm:max-w-max">
+				<a href="/servicio#contacto" class="cursor-pointer">
+					<div class="services__content">
+						<img src={ServiceSVG.src} alt="Svg de Service" class="services__img" loading="lazy" decoding="async"/>
+						<h3 class="services__title">Solicitar un servicio</h3>
+					</div>
 				</a>
-			  </div>
-  
-			  <div class="services__content">
-				<!--<Image src={CotizadorSVG} alt="Svg de Cotizador" class="services__img"/> -->
-				<img src={CotizadorSVG.src} alt="Svg de Cotizador" class="services__img" loading="lazy" decoding="async"/>
-				<a href="https://dyv.e.toyota.com.ar/inventory">
-				  <h3 class="services__title">Personalizar y cotizar</h3>
+				<a href="https://dyv.e.toyota.com.ar/inventory" class="cursor-pointer">
+					<div class="services__content">
+						<img src={CotizadorSVG.src} alt="Svg de Cotizador" class="services__img" loading="lazy" decoding="async"/>
+						<h3 class="services__title">Personalizar y cotizar</h3>
+					</div>
 				</a>
-  
-				<span class="border"></span>
-			  </div>
-  
-			  <div class="services__content">
-				<!--<Image src={ModelosSVG} alt="Svg de Modelos" class="services__img"/> -->
-				<img src={ModelosSVG.src} alt="Svg de Modelos" class="services__img" loading="lazy" decoding="async"/>
-				<a href="/modelos/">
-				  <h3 class="services__title">Ver modelos nuevos</h3>
+				<a href="/modelos/" class="cursor-pointer">
+					<div class="services__content">
+						<img src={ModelosSVG.src} alt="Svg de Modelos" class="services__img" loading="lazy" decoding="async"/>
+						<h3 class="services__title">Ver modelos nuevos</h3>
+					</div>
 				</a>
-			  </div>
-  
-			  <div class="services__content">
-				<!--<Image src={RepuestosSVG} alt="Svg de Respuestos" class="services__img"/> -->
-				<img src={RepuestosSVG.src} alt="Svg de Respuestos" class="services__img" loading="lazy" decoding="async"/>
-				<a href="/accesorios/">
-				  <h3 class="services__title ml-1">Ver Repuestos y Accesorios</h3>
+				
+				<a href="/accesorios/" class="cursor-pointer">
+					<div class="services__content">
+						<img src={RepuestosSVG.src} alt="Svg de Respuestos" class="services__img" loading="lazy" decoding="async"/>
+						<h3 class="services__title ml-4">Ver Repuestos y Accesorios</h3>
+					</div>
 				</a>
-			  </div>
 			</div>
 		  </div>
 		</section>
@@ -126,58 +118,58 @@ import srcTSC from "../assets/images/toyota-servicios-conectados.webp";
 		
 		<!--======================= ABOUT =======================-->
 		<section class="about section">
-		  <div class="container">
-			<!--<h1 class="about__title heading-1">
-						  About Toyota
-				</h1>-->
+		  <div class="container space-y-28">
 			<!--E toyota -->
-			<div class="about__inner about__inner_company">
-			  <div class="about__info">
+			<div class="container mx-auto grid grid-cols-1 gap-10 md:grid-cols-2 bg-gray-100 p-12 rounded-2xl justify-center items-center">
+			  <div class="order-2 sm:order-1 ">
 				<h5 class="about__span">Conocé e-Toyota</h5>
-				<h5 class="about__subtitle">Tu toyota a tu medida</h5>
+				<h5 class="text-4xl my-4">Tu Toyota a tu medida</h5>
 				<div class="about__text text-base">
 				  Buscá el modelo y versión que más te guste. Simulá tu
 				  cotización entregando un usado o con financiación. Disfrutá de
 				  la forma más rápida y simple de iniciar el camino a tu nuevo
 				  Toyota.
 				</div>
-				<a class="about__link" href="https://dyv.e.toyota.com.ar/inventory"> Cotizá online ahora </a>
+				<a class="text-white text-lg px-8 py-4 rounded-full bg-[#eb0a1e] max-w-max border-2 border-[#eb0a1e] hover:bg-[#c10d1c] hover:border-[#c10d1c] transition-colors duration-300" href="https://dyv.e.toyota.com.ar/inventory"> 
+					Cotizar ahora 
+				</a>
 			  </div>
-			  <div class="about__img-wrapper">
-				<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/ZC74ooNLpF8?si=TOdE5Zgu_Mzt0iJQ"
+			  <div class="flex justify-center items-center order-1 sm:order-2">
+				<iframe class="rounded-2xl" loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/ZC74ooNLpF8?si=TOdE5Zgu_Mzt0iJQ"
 				  title="YouTube video player" frameborder="0"
 				  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-				  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+				</iframe>
 			  </div>
 			</div>
 			
 			<!--Gazoo Racing -->
-			<div class="about__inner about__inner_leadership">
-			  <div class="about__info">
-				<h5 class="about__span">Pushing the limits for better</h5>
-				<h5 class="about__subtitle">Toyota Gazoo Racing Argentina</h5>
-				<div class="about__text text-base">
+			<div class="container mx-auto grid grid-cols-1 gap-10 md:grid-cols-2 bg-black p-12 rounded-2xl justify-center items-center">	
+			  <div class="order-2 space-y-5">
+				<h5 class="text-[#eb0a1e]">Pushing the limits for better</h5>
+				<h5 class="text-4xl text-white">Toyota Gazoo Racing Argentina</h5>
+				<div class=" text-white text-base">
 				  Toyota Gazoo Racing representa el compromiso de Toyota de superar todos los límites para crear vehículos cada vez mejores.
 				</div>
-				<a class="about__link__gr" href="https://www.toyotagazooracing.com.ar/"> Conocer más </a>
+				<a class="text-white text-lg px-8 py-4 rounded-full bg-[#eb0a1e] max-w-max border-2 border-[#eb0a1e] hover:bg-transparent transition-colors duration-300" href="https://www.toyotagazooracing.com.ar/"> Conocer más </a>
 			  </div>
-			  <div class="about__img-wrapper">
-				<img class=" ukiyo" src={srcGR.src} alt="Toyota Gazoo Racing" loading="lazy" decoding="async"  />
+			  <div class="w-full flex justify-center items-center order-1">
+				<img class=" ukiyo rounded-xl" src={srcGR.src} alt="Toyota Gazoo Racing" loading="lazy" decoding="async"  />
 			  </div>
 			</div>
 
 			<!--Kinto Share -->
-			<div class="about__inner about__inner_company">
-			  <div class="about__info">
-				<h5 class="about__span__kinto">Tené siempre un Toyota</h5>
-				<h5 class="about__subtitle">Kinto</h5>
-				<div class="about__text">
+			<div class="container mx-auto grid grid-cols-1 gap-10 md:grid-cols-2 bg-gray-100 p-12 rounded-2xl justify-center items-center">
+			  <div class="order-2 sm:order-1 space-y-5">
+				<h5 class="text-[#147b96]">Tené siempre un Toyota</h5>
+				<h5 class="text-4xl my-4">Kinto</h5>
+				<div class="text-base">
 				  La solución de movilidad más conveniente, inteligente y confiable que se adapta a tus necesidades. Alquila un Toyota por el tiempo que quieras y en el lugar que más te convenga.
 				</div>
-				<a class="about__link__kinto" href="/kinto"> Conocer más </a>
+				<a class="text-white text-lg px-8 py-4 rounded-full bg-[#147b96] max-w-max border-2 border-[#147b96] hover:bg-[#0f5f7b] hover:border-[#0f5f7b] transition-colors duration-300" href="/kinto"> Conocer más </a>
 			  </div>
-			  <div class="about__img-wrapper">
-				<img class="about__img ukiyo" src={srcKinto.src} alt="Kinto Share" loading="lazy" decoding="async" width="6000" height="4000" />
+			  <div class=" h-full order-1 sm:order-2">
+				<img class="rounded-2xl ukiyo" src={srcKinto.src} alt="Kinto Share" loading="lazy" decoding="async" width="6000" height="4000" />
 			  </div>
 			</div>
 		  </div>

@@ -177,14 +177,14 @@ export default function AutoDetalles({ slug }) {
                       alt={`Imagen ${index + 1}`}
                       className="object-cover rounded-lg"
                     />
-                    {detallesAuto.uct === 1 ? (
+                  </div>
+                  {detallesAuto.uct === 1 ? (
                       <img
                         src="/images/usado.webp"
                         alt="UCT"
                         className="w-16 max-sm:w-11 top-4 right-4 absolute"
                       />
                     ) : null}
-                  </div>
                 </SwiperSlide>
               ))}
 

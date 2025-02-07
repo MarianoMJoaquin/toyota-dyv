@@ -1161,7 +1161,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
       // Aplicar la animación con un retraso basado en el índice
       setTimeout(() => {
         card.classList.remove('opacity-0', 'translate-y-4');
-      }, index * 100);
+      }, index * 50); //
 
       const text = document.createElement('p');
       text.className = 'text-xl text-gray-700 leading-relaxed';
@@ -1178,9 +1178,9 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
       
       const button = document.createElement('button');
       button.className = `
-        px-6 py-2 bg-[#eb001b] text-white rounded-full 
+        px-6 py-2 bg-[#eb001b] text-white text-xl rounded-full 
         hover:bg-[#d10018] transform transition-all duration-300 
-        hover:scale-105 active:scale-95 flex items-center gap-2
+        active:scale-95 flex items-center gap-2
       `;
       
       if (showAllDescriptions) {
@@ -1200,15 +1200,26 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
         
         // Animar la salida de las cards actuales
         cards.forEach((card, index) => {
-          card.style.transition = 'all 30ms ease-in-out';
-          card.style.transitionDelay = `${index * 50}ms`;
+          card.style.transition = 'all ease-in-out';
           card.classList.add('opacity-0', 'translate-y-4');
         });
+
+        // Si estamos mostrando todas y vamos a mostrar menos
+        if (showAllDescriptions) {
+          // Scroll suave hacia el título después de que las cards se oculten
+          setTimeout(() => {
+            document.getElementById('caracteristicasTitle').scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }, 300); // Ajusta este tiempo según la duración de tu animación
+        }
 
         // Esperar a que termine la animación antes de actualizar
         setTimeout(() => {
           setShowAllDescriptions(!showAllDescriptions);
-        }, cards.length * 50 + 30); // 30ms extra de margen para asegurar que todas las animaciones terminen
+        }, cards.length * 50); // 30ms extra de margen para asegurar que todas las animaciones terminen
+
       };
       
       buttonContainer.appendChild(button);
@@ -1296,7 +1307,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
 
           <div className="flex justify-center items-center space-x-4 font-semibold italic text-gray-400">
             <i className="ri-arrow-left-s-line h-7"></i>
-            <p>Arrastra para girar</p>
+            <p id="caracteristicasTitle">Arrastra para girar</p>
             <i className="ri-arrow-right-s-line h-7"></i>
           </div>
 
@@ -1307,7 +1318,7 @@ const CarComponent360 = ({ initialModel, initialVersion, initialSubversion, init
         <div className="flex flex-col space-y-6 w-full max-w-max items-center">
           <div id="subversionTabs"></div>
           <div className="bg-white p-6 w-full">
-            <h2 className="text-3xl font-bold mb-6 text-[#eb001b] border-b pb-2">
+            <h2  className="text-3xl font-bold mb-6 text-[#eb001b] border-b pb-2">
               Características
             </h2>
             <div
