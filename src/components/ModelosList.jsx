@@ -386,9 +386,13 @@ export default function ModelosList() {
             >
               Ver más
             </a>
-            <p className="font-bold text-black text-lg">
-              ARS$ {modelo.defaultPrice.amount.toLocaleString()}
-            </p>
+            {modelo.defaultStock === 1 ? (
+                <p className="font-bold text-black text-lg">
+                  ARS$ {modelo.defaultPrice.amount.toLocaleString()}
+                </p>
+              ) : (
+                <p className="font-bold text-lg text-red-600">Consultar disponibilidad</p>
+            )}
           </div>
         </div>
       </div>
