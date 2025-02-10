@@ -119,32 +119,15 @@ const ModelosTabSliderComponent = () => {
             />
           </a>)}
         <div className="catalog__item-info">
-          <div className="catalog__item-top">
-            <span className="catalog__item-year">{vehicle.variants[0].details.creationYear}</span>
-            <span>|</span>
-            <span className="catalog__item-type">{vehicle.categories[0].name}</span>
-          </div>
-          <div className="catalog__item-middle">
-            <div className="catalog__item-name">{vehicle.name}</div>
-            {/*<div className="grid grid-cols-3 grid-rows-1 gap-2">
-                <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
-                  <i className="ri-speed-up-line"></i>
-                  <p className="text-sm max-sm:text-xs">
-                  {window.innerWidth <= 640 
-                              ? vehicle.variants[0]?.details?.motor.substring(0, 20)
-                              : vehicle.variants[0]?.details?.motor.substring(0, 60)}
-                  {vehicle.variants[0]?.details?.motor.length > (window.innerWidth <= 640 ? 20 : 60) ? '...' : ''}
-                  </p>
-                </div>
-                <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
-                <i class="ri-car-line"></i>
-                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0]?.details?.body_types}</p>
-                </div>
-                <div className="bg-[#272a32] rounded-lg p-2 space-y-2">
-                  <i className="ri-user-line"></i>
-                  <p className="text-sm max-sm:text-xs">{vehicle.variants[0]?.details?.passengers}</p>
-                </div>
-            </div> */}
+          <div className="flex justify-between items-center mb-8">
+            <div className="catalog__item-middle">
+              <div className="catalog__item-name">{vehicle.name}</div>
+            </div>
+            <div className="catalog__item-top">
+              <span className="catalog__item-year">{vehicle.variants[0].details.creationYear}</span>
+              <span>|</span>
+              <span className="catalog__item-type">{vehicle.categories[0].name}</span>
+            </div>
           </div>
           <div className="catalog__item-bottom">
             <div className="catalog__item-price max-sm:text-base text-base lg:text-xl  flex items-center space-x-2">
@@ -152,8 +135,8 @@ const ModelosTabSliderComponent = () => {
                 <span className="catalog__item-price-text">Consultar disponibilidad</span>
               ) : (
                 <>
-                  <span className="catalog__item-price-text">Desde </span>
-                  <span className="catalog__item-price-number">
+                  <span className="lg:text-lg xl:text-xl">Desde </span>
+                  <span className="lg:text-lg xl:text-xl">
                     {vehicle.defaultPrice?.currency}${" "}
                     {vehicle.defaultPrice?.amount.toLocaleString()}
                   </span>
