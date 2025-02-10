@@ -61,7 +61,7 @@ export default function AutoDetalles({ slug }) {
     texto.charAt(0).toUpperCase() + texto.slice(1).toLowerCase();
 
   const copiarEnlace = () => {
-    const enlace = `https://test-website.derkayvargas.com/usados/${detallesAuto.slug}`;
+    const enlace = `${import.meta.env.SITE}usados/${detallesAuto.slug}`;
     navigator.clipboard.writeText(enlace);
 
     // Mostrar el popover de "¡Copiado!"
@@ -119,7 +119,7 @@ export default function AutoDetalles({ slug }) {
     );
   }
 
-  const mensajeWhatsapp = `Hola, estoy interesado en el auto ${detallesAuto.marca} ${detallesAuto.modelo}. ¿Podrías darme más información? Aquí está el enlace del auto: localhost:4321/usados/${detallesAuto.slug}`;
+  //const mensajeWhatsapp = `Hola, estoy interesado en el auto ${detallesAuto.marca} ${detallesAuto.modelo}. ¿Podrías darme más información? Aquí está el enlace del auto: localhost:4321/usados/${detallesAuto.slug}`;
 
   return (
     <>
@@ -310,7 +310,7 @@ export default function AutoDetalles({ slug }) {
                           id="npm-install"
                           type="text"
                           className="col-span-6 bg-gray-50 border border-gray-300 text-gray-500 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                          value={`https://test-website.derkayvargas.com/usados/${detallesAuto.slug}`}
+                          value={`${import.meta.env.SITE}usados/${detallesAuto.slug}`}
                           disabled
                           readonly
                         ></input>
