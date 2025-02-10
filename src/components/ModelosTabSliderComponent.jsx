@@ -124,9 +124,9 @@ const ModelosTabSliderComponent = () => {
               <div className="catalog__item-name">{vehicle.name}</div>
             </div>
             <div className="catalog__item-top">
-              <span className="catalog__item-year">{vehicle.variants[0].details.creationYear}</span>
-              <span>|</span>
-              <span className="catalog__item-type">{vehicle.categories[0].name}</span>
+              <span className="catalog__item-year text-xl">{vehicle.variants[0].details.creationYear}</span>
+              <span className="text-xl">|</span>
+              <span className="catalog__item-type text-xl">{vehicle.categories[0].name}</span>
             </div>
           </div>
           <div className="catalog__item-bottom">
