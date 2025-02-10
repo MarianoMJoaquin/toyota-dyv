@@ -348,8 +348,7 @@ export default function ModelosList() {
           <img
               src={modelo.defaultImage.url}
               alt={modelo.name}
-              className="max-sm:w-52 w-full h-full lg:object-cover"
-              style={{minHeight: "200px", maxHeight: "300px"}}
+              className="max-sm:w-72 w-full bg-white"
           />
         </a>
         <div className="w-full p-4 flex flex-col max-sm:gap-0 gap-6">
