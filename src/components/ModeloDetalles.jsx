@@ -621,6 +621,22 @@ export default function ModeloDetalles({ slug }) {
                       "Diseñado para el trabajo, el tablero de la Hiace Commuter ofrece funcionalidad y practicidad al alcance de tu mano.  Desde el sistema de infoentretenimiento hasta los controles de climatización y el amplio espacio de almacenamiento, cada detalle está pensado para facilitar tu día a día.  Conduce con confianza y eficiencia."
                     ],
                   },
+                  "hiace-wagon": { 
+                    title: [
+                      "Viaja con Comodidad y Estilo HDP",
+                      "Iluminando la Comodidad",
+                      "Siempre Conectado",
+                      "A Cada Pasajero, Su Confort",
+                      "Modernidad y Confort" 
+                    ],
+                    descriptions: [
+                      "La Hiace Commuter está diseñada para transportar a tus pasajeros con la máxima comodidad y estilo.  Sus amplios y confortables asientos ofrecen un espacio generoso para que todos disfruten del viaje.  Ya sea un traslado de negocios o una excursión familiar, la HiAce Commuter convierte cada trayecto en una experiencia placentera.",
+                      "En la Hiace Commuter, la comodidad de tus pasajeros es primordial.  Esta imagen revela detalles que marcan la diferencia, como las luces de lectura individuales y los controles de fácil acceso.  Pequeños detalles que se traducen en un viaje más placentero para todos.",
+                      "La Hiace Commuter está diseñada para mantenerte conectado en todo momento.  Con sus puertos USB de carga rápida, tanto tú como tus pasajeros podrán mantener sus dispositivos listos para usar durante todo el viaje.  Un detalle práctico que facilita el día a día y asegura que nadie se quede sin batería.",
+                      "La Hiace Commuter piensa en la comodidad de todos. Con controles de climatización, se puede ajustar la temperatura y la dirección del flujo de aire para crear un ambiente perfecto.  Viajes placenteros para todos, sin importar el clima exterior.",
+                      "Diseñado para el trabajo, el tablero de la Hiace Commuter ofrece funcionalidad y practicidad al alcance de tu mano.  Desde el sistema de infoentretenimiento hasta los controles de climatización y el amplio espacio de almacenamiento, cada detalle está pensado para facilitar tu día a día.  Conduce con confianza y eficiencia."
+                    ],
+                  },
                 };
                 
                 const modelTitle = descriptions[modelData.slug]?.title || Array(5).fill(""); // Si no hay titulos, se llena con 5 strings vacíos
@@ -1136,6 +1152,352 @@ export default function ModeloDetalles({ slug }) {
                       >
                         <img
                           src="/images/galeria-corollagr/images/interior/4.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      ) : null}
+
+      {/* Hiace Wagon galería */}
+      {modelData.slug === "hiace-wagon" ? (
+        <section className="galeria lg:mx-5 section">
+        <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Galería</p>
+        </div>
+
+        <div className="galeria-tab-buttons">
+          <button
+            className={`galeria-tab-button ${activeView === 'exterior' ? 'active' : ''}`}
+            onClick={() => setActiveView('exterior')}
+          >
+            Exterior
+          </button>
+          <button
+            className={`galeria-tab-button ${activeView === 'interior' ? 'active' : ''}`}
+            onClick={() => setActiveView('interior')}
+          >
+            Interior
+          </button>
+        </div>
+
+        <div className="galeria-wrapper container mx-auto">
+          <div className={`galeria-container ${activeView === 'exterior' ? 'active' : ''}`}>
+            <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-hiace-wagon/exterior/1.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-hiace-wagon/exterior/1.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-hiace-wagon/exterior/2.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-hiace-wagon/exterior/2.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-hiace-wagon/exterior/3.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-hiace-wagon/exterior/3.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-hiace-wagon/exterior/4.jpeg"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-hiace-wagon/exterior/4.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          <div className={`galeria-container ${activeView === 'interior' ? 'active' : ''}`}>
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-hiace-wagon/interior/1.jpeg"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-hiace-wagon/interior/1.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-hiace-wagon/interior/2.jpeg"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-hiace-wagon/interior/2.jpeg"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>                  
+            </div>
+          </div>
+        </div>
+      </section>
+      ) : null}
+
+      {/* SW4 GR-Sport galería */}
+      {modelData.slug === "sw4-gr-sport" ? (
+        <section className="galeria lg:mx-5 section">
+        <div className="container mx-auto section-title" data-aos="fade-up">
+          <h2>{modelData.name.toUpperCase()}</h2>
+          <p>Galería</p>
+        </div>
+
+        <div className="galeria-tab-buttons">
+          <button
+            className={`galeria-tab-button ${activeView === 'exterior' ? 'active' : ''}`}
+            onClick={() => setActiveView('exterior')}
+          >
+            Exterior
+          </button>
+          <button
+            className={`galeria-tab-button ${activeView === 'interior' ? 'active' : ''}`}
+            onClick={() => setActiveView('interior')}
+          >
+            Interior
+          </button>
+        </div>
+
+        <div className="galeria-wrapper container mx-auto">
+          <div className={`galeria-container ${activeView === 'exterior' ? 'active' : ''}`}>
+            <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/exterior/1.webp"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/exterior/1.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/exterior/2.webp"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/exterior/2.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/exterior/3.webp"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/exterior/3.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/exterior/4.webp"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/exterior/4.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/exterior/5.webp"
+                        className="galeria-exterior"
+                        data-gallery="galeria-exterior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/exterior/5.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+            </div>
+          </div>
+
+          <div className={`galeria-container ${activeView === 'interior' ? 'active' : ''}`}>
+          <div className="grid grid-cols-1 md:grid-cols-6 lg:grid-cols-6 gap-4">
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/interior/8.webp"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/interior/8.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/interior/2.webp"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/interior/2.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-2 lg:col-span-2 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/interior/3.webp"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/interior/3.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/interior/10.webp"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/interior/10.webp"
+                          className="w-full transition-opacity duration-300 ease-in-out"
+                          alt=""
+                        />
+                      </a>
+                    </div>
+                  </div>
+                  <div
+                    className="col-span-1 md:col-span-3 lg:col-span-3 transform transition-all duration-300 ease-in-out"
+                  >
+                    <div className="galeria-item">
+                      <a
+                        href="/images/galeria-sw4gr/interior/5.webp"
+                        className="galeria-interior"
+                        data-gallery="galeria-interior"
+                      >
+                        <img
+                          src="/images/galeria-sw4gr/interior/5.webp"
                           className="w-full transition-opacity duration-300 ease-in-out"
                           alt=""
                         />
