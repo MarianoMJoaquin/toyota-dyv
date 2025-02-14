@@ -106,7 +106,7 @@ const ModelosTabSliderComponent = () => {
           <a href={`/modelos/${vehicle.slug}`} className="catalog__item-link">
           <img
             className="w-full h-80 object-cover catalog__item-img"
-            src="/images/corolla-gr2-3.png"
+            src="/images/corolla-gr-banner.png"
             alt={vehicle.name}
           />
         </a>

@@ -133,7 +133,7 @@ export default function ModeloDetalles({ slug }) {
           <img
           loading="lazy"
           decoding="async"
-          src="/images/corolla-gr2-3.png"
+          src="/images/corolla-gr-bg.jpeg"
           className="hero-bg z-0"
           alt=""
           data-aos="fade-in"
@@ -390,7 +390,7 @@ export default function ModeloDetalles({ slug }) {
         {/* Fondo del slider */}
         {modelData.slug === "corolla-gr-sport" ? ( 
           <img
-          src="/images/corolla-gr2-3.png"
+          src="/images/corolla-gr-bg.jpeg"
           className="slider-bg"
           alt=""
           data-aos="fade-in"
@@ -636,7 +636,7 @@ export default function ModeloDetalles({ slug }) {
                       "La Hiace Commuter piensa en la comodidad de todos. Con controles de climatización, se puede ajustar la temperatura y la dirección del flujo de aire para crear un ambiente perfecto.  Viajes placenteros para todos, sin importar el clima exterior.",
                       "Diseñado para el trabajo, el tablero de la Hiace Commuter ofrece funcionalidad y practicidad al alcance de tu mano.  Desde el sistema de infoentretenimiento hasta los controles de climatización y el amplio espacio de almacenamiento, cada detalle está pensado para facilitar tu día a día.  Conduce con confianza y eficiencia."
                     ],
-                  },
+                  }
                 };
                 
                 const modelTitle = descriptions[modelData.slug]?.title || Array(5).fill(""); // Si no hay titulos, se llena con 5 strings vacíos
