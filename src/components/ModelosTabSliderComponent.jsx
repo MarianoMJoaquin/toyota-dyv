@@ -103,21 +103,30 @@ const ModelosTabSliderComponent = () => {
     return (
       <div className="catalog__item">
         {vehicle.slug === "corolla-gr-sport" ? (
-          <a href={`/modelos/${vehicle.slug}`} className="catalog__item-link">
-          <img
-            className="w-full h-80 object-cover catalog__item-img"
-            src="/images/corolla-gr-banner.png"
-            alt={vehicle.name}
-          />
+        <a href={`/modelos/${vehicle.slug}`} className="catalog__item-link">
+        <img
+          className="w-full h-80 object-cover catalog__item-img"
+          src="/images/corolla-gr-banner.png"
+          alt={vehicle.name}
+        />
         </a>
-        ) : (
-          <a href={`/modelos/${vehicle.slug}`} className="catalog__item-link">
-            <img
-              className="w-full h-80 object-cover catalog__item-img"
-              src={imageUrl}
-              alt={vehicle.name}
-            />
-          </a>)}
+      ) : vehicle.slug === "crown" ? (
+        <a href={`/modelos/${vehicle.slug}`} className="catalog__item-link">
+        <img
+          className="w-full h-80 object-cover catalog__item-img"
+          src="/images/crown-banner.png" 
+          alt={vehicle.name}
+        />
+        </a>
+      ) : (
+        <a href={`/modelos/${vehicle.slug}`} className="catalog__item-link">
+        <img
+          className="w-full h-80 object-cover catalog__item-img"
+          src={imageUrl}
+          alt={vehicle.name}
+        />
+        </a>
+      )}
         <div className="catalog__item-info">
           <div className="flex justify-between items-center mb-8">
             <div className="catalog__item-middle">
