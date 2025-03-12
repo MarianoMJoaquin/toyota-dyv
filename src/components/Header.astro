@@ -24,6 +24,7 @@ import srcImage19 from "../assets/images/copia17.webp"
 import srcImage16 from "../assets/images/kinto-fleet.webp"
 import srcImage17 from "../assets/images/kinto-personal.webp"
 import srcImage20 from "../assets/images/svg_repuestos.svg"
+import srcImage21 from "../assets/images/copia18.webp"
 
 ---
 
@@ -94,10 +95,10 @@ import srcImage20 from "../assets/images/svg_repuestos.svg"
                                         </a>
                                     </li>
                                     <li>
-                                      <a href="/modelos/corolla-gr-sport" class="dropdown__link">
-                                          Corolla GR-Sport
+                                      <a href="/modelos/crown" class="dropdown__link">
+                                          Crown
                                           <!--<Image src={srcImage10} format="avif" alt=""> -->
-                                          <img src={srcImage14.src} alt="Corolla GR-Sport" loading="lazy" decoding="async" width="412" height="162">
+                                          <img src={srcImage21.src} alt="Crown" loading="lazy" decoding="async" width="426" height="156">
                                       </a>
                                     </li>
                                 </ul>
@@ -132,13 +133,6 @@ import srcImage20 from "../assets/images/svg_repuestos.svg"
                                             <img src={srcImage6.src} alt="Hilux Chasis Cabina" loading="lazy" decoding="async" width="467" height="183">
                                         </a>
                                     </li>
-                                    <li>
-                                      <a href="/modelos/hilux-gr-sport-iv" class="dropdown__link">
-                                          Hilux GR-Sport IV
-                                          <!--<Image src={srcImage6} format="avif" alt=""> -->
-                                          <img src={srcImage15.src} alt="Hilux GR-Sport IV" loading="lazy" decoding="async" width="467" height="183">
-                                      </a>
-                                  </li>
                                 </ul>
                             </div>
 
@@ -164,13 +158,7 @@ import srcImage20 from "../assets/images/svg_repuestos.svg"
                                             <img src={srcImage7.src} alt="Corolla Cross Hybrid" loading="lazy" decoding="async" width="400" height="165">
                                         </a>
                                     </li>
-                                    <li>
-                                      <a href="/modelos/corolla-cross-gr-sport" class="dropdown__link">
-                                          Corolla Cross GR-Sport
-                                           <!--<Image src={srcImage7} format="avif" alt=""> -->
-                                          <img src={srcImage18.src} alt="Corolla Cross GR-Sport" loading="lazy" decoding="async" width="400" height="165">
-                                      </a>
-                                    </li>
+                                    
                                     <li>
                                         <a href="/modelos/sw4" class="dropdown__link">
                                             SW4
@@ -178,13 +166,7 @@ import srcImage20 from "../assets/images/svg_repuestos.svg"
                                             <img src={srcImage9.src} alt="SW4" loading="lazy" decoding="async" width="450" height="192">
                                         </a>
                                     </li>
-                                    <li>
-                                      <a href="/modelos/sw4-gr-sport" class="dropdown__link">
-                                          SW4 GR-Sport
-                                          <!--<Image src={srcImage9} format="avif" alt=""> -->
-                                          <img src={srcImage19.src} alt="SW4 GR-Sport" loading="lazy" decoding="async" width="450" height="192">
-                                      </a>
-                                    </li>
+                                    
                                 </ul>
                             </div>
 
@@ -217,13 +199,52 @@ import srcImage20 from "../assets/images/svg_repuestos.svg"
                                             <img src={srcImage13.src} alt="Hiace Wagon" loading="lazy" decoding="async" width="451" height="186">
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/modelos" class="dropdown__link mt-10 inline-block" >
-                                            Ver todos los modelos <i class="ri-arrow-right-s-line"></i>
-                                        </a>
-                                    </li>
                                 </ul>
                             </div>
+
+                            <div class="dropdown__group">
+                              <!--<div class="dropdown__icon">
+                                  <i class="ri-file-paper-2-line"></i>
+                              </div> -->
+
+                              <span class="dropdown__title">Deportivos</span>
+
+                              <ul class="dropdown__list">
+                                  <li>
+                                    <a href="/modelos/corolla-gr-sport" class="dropdown__link">
+                                        Corolla GR-Sport
+                                        <!--<Image src={srcImage6} format="avif" alt=""> -->
+                                        <img src={srcImage14.src} alt="Corolla GR-Sport" loading="lazy" decoding="async" width="467" height="183">
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/modelos/hilux-gr-sport-iv" class="dropdown__link">
+                                        Hilux GR-Sport IV
+                                        <!--<Image src={srcImage6} format="avif" alt=""> -->
+                                        <img src={srcImage15.src} alt="Hilux GR-Sport IV" loading="lazy" decoding="async" width="467" height="183">
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/modelos/corolla-cross-gr-sport" class="dropdown__link">
+                                        Corolla Cross GR-Sport
+                                         <!--<Image src={srcImage7} format="avif" alt=""> -->
+                                        <img src={srcImage18.src} alt="Corolla Cross GR-Sport" loading="lazy" decoding="async" width="400" height="165">
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/modelos/sw4-gr-sport" class="dropdown__link">
+                                        SW4 GR-Sport
+                                        <!--<Image src={srcImage9} format="avif" alt=""> -->
+                                        <img src={srcImage19.src} alt="SW4 GR-Sport" loading="lazy" decoding="async" width="450" height="192">
+                                    </a>
+                                  </li>
+                                  <li>
+                                      <a href="/modelos" class="dropdown__link mt-10 inline-block" >
+                                          Ver todos los modelos <i class="ri-arrow-right-s-line"></i>
+                                      </a>
+                                  </li>
+                              </ul>
+                          </div>
                         </div>
                     </div>
                 </li>
@@ -644,7 +665,7 @@ a {
 }
 .dropdown__list {
   row-gap: 2rem;
-  padding-right: 2.5rem;
+  /*padding-right: 2.5rem;*/
 }
 .dropdown__group:last-child {
   border: none;
@@ -721,7 +742,7 @@ a {
     transition: top 0.4s, opacity 0.3s;
   }
   .dropdown__content {
-    grid-template-columns: repeat(4, max-content);
+    grid-template-columns: repeat(5, max-content);
     column-gap: 2.5rem;
     max-width: 1120px;
     margin-inline: auto;
