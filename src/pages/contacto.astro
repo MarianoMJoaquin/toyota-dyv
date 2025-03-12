@@ -33,7 +33,7 @@ import 'swiper/css/effect-fade';
                 <!-- Grid principal -->
                 <div class="grid grid-cols-1 mb-16">
                     <!-- Form - centrado -->
-                    <div class="bg-white rounded-xl shadow-lg p-8 transition-shadow h-full max-w-xl lg:max-w-2xl mx-auto w-full">
+                    <div class="bg-white rounded-xl p-8 transition-shadow h-full max-w-xl lg:max-w-2xl mx-auto w-full">
                         <Form tipo="contacto" client:load/>
                     </div>
                 </div>
@@ -203,6 +203,12 @@ import 'swiper/css/effect-fade';
                             </div>
                         </div>
                         <div class="swiper-pagination"></div>
+                        <div class="swiper-button-prev">
+                            <i class="ri-arrow-left-s-line text-2xl"></i>
+                        </div>
+                        <div class="swiper-button-next">
+                            <i class="ri-arrow-right-s-line text-2xl"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -225,10 +231,10 @@ import 'swiper/css/effect-fade';
 
 <script>
     import Swiper from 'swiper';
-    import {EffectFade, Pagination, Autoplay } from 'swiper/modules';
+    import {EffectFade, Pagination, Navigation, Autoplay } from 'swiper/modules';
 
     const swiper = new Swiper('.sucursalesSwiper', {
-        modules: [EffectFade, Pagination, Autoplay],
+        modules: [EffectFade, Pagination, Autoplay, Navigation],
         spaceBetween: 30,
         loop: true,
         effect: 'fade',
@@ -241,13 +247,17 @@ import 'swiper/css/effect-fade';
             el: '.swiper-pagination',
             clickable: true,
         },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        }
     });
 </script>
 
 <style>
     .sucursalesSwiper {
         width: 100%;
-        padding: 20px;
+        padding: 50px;
     }
 
     :root {
