@@ -136,6 +136,19 @@ export default function AccesoriosList() {
     return modelo ? modelo.nombre : `Modelo ${modeloId}`;
   };
 
+  // Función para abrir WhatsApp con mensaje personalizado
+  const abrirWhatsApp = (accesorio) => {
+    const numeroWhatsApp = "5493624013577";
+    
+    // Obtener el nombre del modelo para este accesorio
+    const nombreModelo = obtenerNombreModelo(accesorio.modelo_id);
+    
+    const mensaje = encodeURIComponent(
+      `Hola, estoy interesado en el accesorio "${accesorio.nombre}" para mi Toyota ${nombreModelo}. ¿Me podrían brindar más información sobre disponibilidad y precio?`
+    );
+    window.open(`https://wa.me/${numeroWhatsApp}?text=${mensaje}`, '_blank');
+  };
+
   return (
     <section className="container mx-auto section">
       {/* Breadcrumb */}
@@ -329,7 +342,10 @@ export default function AccesoriosList() {
                         {accesorio.nombre}
                       </h2>
                       <div className="mt-4">
-                        <button className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out">
+                        <button 
+                          className="text-white text-base py-1 px-2 ring-red-600 ring-1 rounded-full border bg-red-600 border-red-600 hover:bg-transparent hover:text-red-600 transition-all ease-in-out"
+                          onClick={() => abrirWhatsApp(accesorio)}
+                        >
                           Consultar
                         </button>
                       </div>
