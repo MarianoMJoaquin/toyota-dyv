@@ -87,13 +87,7 @@ import srcImage21 from "../assets/images/copia18.webp"
                                             <img src={srcImage3.src} alt="Corolla" loading="lazy" decoding="async" width="415" height="161">
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="/modelos/corolla-hybrid" class="dropdown__link">
-                                            Corolla Hybrid
-                                            <!--<Image src={srcImage10} format="avif" alt=""> -->
-                                            <img src={srcImage10.src} alt="Corolla Hybrid" loading="lazy" decoding="async" width="496" height="161">
-                                        </a>
-                                    </li>
+                                    
                                     <li>
                                       <a href="/modelos/crown" class="dropdown__link">
                                           Crown
@@ -149,13 +143,6 @@ import srcImage21 from "../assets/images/copia18.webp"
                                             Corolla Cross
                                             <!--<Image src={srcImage7} format="avif" alt=""> -->
                                             <img src={srcImage7.src} alt="Corolla Cross" loading="lazy" decoding="async" width="394" height="169">
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="/modelos/corolla-cross-hybrid" class="dropdown__link">
-                                            Corolla Cross Hybrid
-                                             <!--<Image src={srcImage7} format="avif" alt=""> -->
-                                            <img src={srcImage7.src} alt="Corolla Cross Hybrid" loading="lazy" decoding="async" width="400" height="165">
                                         </a>
                                     </li>
                                     
@@ -238,13 +225,39 @@ import srcImage21 from "../assets/images/copia18.webp"
                                         <img src={srcImage19.src} alt="SW4 GR-Sport" loading="lazy" decoding="async" width="450" height="192">
                                     </a>
                                   </li>
+                              </ul>
+                            </div>
+
+                            <div class="dropdown__group">
+                              <!--<div class="dropdown__icon">
+                                  <i class="ri-file-paper-2-line"></i>
+                              </div> -->
+
+                              <span class="dropdown__title">Híbridos</span>
+
+                              <ul class="dropdown__list">
+                                  <li>
+                                    <a href="/modelos/corolla-cross-hybrid" class="dropdown__link">
+                                        Corolla Cross Hybrid
+                                        <!--<Image src={srcImage7} format="avif" alt=""> -->
+                                        <img src={srcImage7.src} alt="Corolla Cross Hybrid" loading="lazy" decoding="async" width="400" height="165">
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a href="/modelos/corolla-hybrid" class="dropdown__link">
+                                        Corolla Hybrid
+                                        <!--<Image src={srcImage10} format="avif" alt=""> -->
+                                        <img src={srcImage10.src} alt="Corolla Hybrid" loading="lazy" decoding="async" width="496" height="161">
+                                    </a>
+                                  </li>
+                                  
                                   <li>
                                       <a href="/modelos" class="dropdown__link mt-10 inline-block" >
                                           Ver todos los modelos <i class="ri-arrow-right-s-line"></i>
                                       </a>
                                   </li>
                               </ul>
-                          </div>
+                            </div>
                         </div>
                     </div>
                 </li>
@@ -392,6 +405,24 @@ import srcImage21 from "../assets/images/copia18.webp"
                                 </li>
                             </ul>
                         </div>
+
+                        <div class="dropdown__group">
+                          <div class="dropdown__icon">
+                            <i class="ri-record-circle-line"></i>
+                          </div>
+
+                          <span class="dropdown__title">Club Toyota</span>
+                          <p class="dropdown_text">
+                            ¿Tenés un Toyota? Sumate al Club Toyota y disfrutá de beneficios exclusivos.
+                          </p>
+                          <ul class="dropdown__list">
+                              <li>
+                                  <a href="/club-toyota" class="dropdown__link inline-block">
+                                      Conocer más <i class="ri-arrow-right-s-line"></i>
+                                  </a>
+                              </li>
+                          </ul>
+                      </div>
                       </div>
                     </div>
                 </li>
@@ -742,7 +773,7 @@ a {
     transition: top 0.4s, opacity 0.3s;
   }
   .dropdown__content {
-    grid-template-columns: repeat(5, max-content);
+    grid-template-columns: repeat(6, max-content);
     column-gap: 2.5rem;
     max-width: 1120px;
     margin-inline: auto;
