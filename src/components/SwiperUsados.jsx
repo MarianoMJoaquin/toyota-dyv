@@ -72,7 +72,7 @@ const SwiperUsados = () => {
           alt={car.marca + " " + car.modelo}
         />
       </a>
-      <div className="catalog__item-info">
+      <div className="catalog__item-info space-y-2">
         <div className="catalog__item-top">
           <span className="catalog__item-year">{car.anio}</span>
           <span>|</span>
@@ -85,10 +85,14 @@ const SwiperUsados = () => {
             {car.marca} {car.modelo}
           </div>
           <p className="catalog__item-text text-lg">
-            {car.descripcion || "Descripción no disponible"}
+            {/*car.descripcion || "Descripción no disponible"*/}
+            {window.innerWidth <= 640 
+              ? car.descripcion.substring(0, 30)
+              : car.descripcion.substring(0, 100)}
+            {car.descripcion.length > (window.innerWidth <= 640 ? 30 : 100) ? '...' : ''}
           </p>
         </div>
-        <div className="catalog__item-bottom">
+        <div className="catalog__item-bottom pt-4">
           <a href={`/usados/${car.slug}`} className="catalog__item-btn px-5 py-2 bg-white text-black text-base rounded-full hover:bg-gray-100 transition-all">
             Ver más
           </a>
@@ -107,7 +111,6 @@ const SwiperUsados = () => {
       modules={[Pagination, Navigation]}
       autoHeight={true}
       spaceBetween={10}
-      slidesPerView={1}
       navigation={{
         nextEl: ".swiper-button-next",
         prevEl: ".swiper-button-prev",
